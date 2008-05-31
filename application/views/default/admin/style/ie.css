@@ -1,0 +1,42 @@
+@charset "utf-8";
+/* CSS Document */
+
+div.leftmenu {
+	background: url("../images/left-menu-top.png") no-repeat 195px 0;
+}
+
+div#main {
+	_margin-bottom: 5em;
+}
+
+div.content hr {
+	margin: -8px 0 10px 0;
+}
+
+form.settings .input-submit,
+form.edit .input-submit,
+form.login .input-submit,
+form.delete .input-submit { 
+	padding: 0.3em 0.7em 0.25em 0.7em; 
+}
+
+form.settings a.input-submit,
+form.edit a.input-submit { 
+	padding: 0.3em 1em 0.25em 1em !important;
+	color: #000000 !important; 
+}
+
+form.edit .input-select,
+form.settings .input-select {
+	margin: 1.2em 1em 0 0;
+}
+
+form.settings div#cache,
+form.edit div#discussion {
+	display: inline-block;
+}
+
+ul.manage a { 
+	color: #000000 !important; 
+}
+
