@@ -19,7 +19,7 @@
 		{
 			
 			$this->load->library('simplepie');
-			$this->simplepie->set_feed_url('http://feeds.haughin.com/blazecms');
+			$this->simplepie->set_feed_url('http://ci-cms.blogspot.com/feeds/posts/default/-/news');
 			$this->simplepie->set_cache_location(APPPATH.'cache/rss');
 			$this->simplepie->init();
 			$this->simplepie->handle_content_type();
