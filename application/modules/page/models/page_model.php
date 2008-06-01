@@ -51,6 +51,23 @@
 			
 			return $pages;
 		}
+
+		function new_pages($limit = 10)
+		{
+			$this->db->select('id, menu_title, uri, active');
+			$this->db->order_by('id', 'DESC');
+			$this->db->limit($limit);
+			$query = $this->db->get($this->table);
+			
+			$pages = array();
+			
+			if ( $query->num_rows() > 0 )
+			{
+				$pages = $query->result_array();
+			}
+			
+			return $pages;
+		}		
 	}
 
 
