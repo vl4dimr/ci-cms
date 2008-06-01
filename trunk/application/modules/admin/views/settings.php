@@ -56,15 +56,32 @@
 		
 		</div>
 		<div id="two">
-		
 			<label for="theme">Theme:</label>
 				<select name="theme" class="input-select" id="theme">
 				<?php foreach ($themes as $theme):?>
 					<option <?php if ($theme == $this->layout->theme):?>selected='selected' <?php endif;?>value="<?=$theme?>"><?=ucwords(str_replace('_', ' ', $theme))?></option>
 				<?php endforeach;?>
 				</select><br />
-			
-				
+			<p><strong><?=__("Available block contents")?></strong></p>
+			<dl>
+					<?php foreach($available_partials as $module => $partials):?>
+					<dt><em><?=ucfirst($module)?></em></dt>
+						<?php foreach($partials as $partial): ?>
+						<dd>
+							<label for="blocks[<?=$module?>][<?=$partial?>]"><?=ucfirst(str_replace('_', ' ', $partial)) ?></label>
+							
+							<select name="blocks[<?=$module?>][<?=$partial?>]" class="input-select" id="block_<?=$partial?>">
+								<option value=""><?=__("None")?>
+							<?php for ($num = 1; $num <= $available_blocks; $num++):?>
+								<option value="<?=$num?>"  <?=($this->layout->is_in_area('area.'.$num, $module, $partial))?"selected=\"selected\"":""?>>Block <?=$num?></option>
+							<?php endfor; ?>
+							</select>
+						</dd>
+						<?php endforeach; ?>
+				<?php endforeach; ?>
+			</dl>
+			<?php 
+			/*
 			<?php for ($num = 1; $num <= $available_blocks; $num++):?>
 			<label for="area_<?=$num?>">Block <?=$num?>:</label>
 			<select name="area_<?=$num?>" class="input-select" id="area.<?=$num?>">
@@ -78,7 +95,8 @@
 				<?php endforeach; ?>
 			</select><br />
 			<?php endfor; ?>
-		
+			*/
+			?>
 		</div>
 	</form>
 <script>
