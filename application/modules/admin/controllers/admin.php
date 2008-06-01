@@ -125,11 +125,12 @@
 				$this->template['themes'] = $this->layout->get_themes();
 				$this->template['available_partials'] = $this->layout->get_available_partials();
 				$this->template['available_blocks'] = $this->layout->get_available_blocks();
-				
+				$this->template['blocks'] = $this->layout->get_blocks();
 				$this->layout->load($this->template, 'settings');
 			}
 			else
 			{
+
 				$fields = array('site_name', 'meta_keywords', 'meta_description', 'cache', 'cache_time', 'theme');
 				
 				$data = array();
@@ -152,35 +153,21 @@
 				
 				$this->db->where('id >', 0);
 				$this->db->delete('blocks');
-
-				while($found == true)
+				if ($blocks = $this->input->post('blocks'))
 				{
-					if ( $this->input->post('area_'.$count) !== false)
+					foreach( $blocks as $module => $modules )
 					{
-						if ($this->input->post('area_'.$count) == 'none')
+						foreach( $modules as $method => $area )
 						{
-							$area_data = array('', '');
-						}
-						else
-						{						
-							$area_data = explode('|', $this->input->post('area_'.$count));
-						}
-						
-						$block = 	array(
+							$block = 	array(
 										'theme' 		=> $this->input->post('theme'),
-										'area'		=> $count,
-										'module'		=> $area_data[0],
-										'method'		=> $area_data[1]
-									);
-						
-						$this->db->insert('blocks', $block);
+										'area'		=> $area,
+										'module'		=> $module,
+										'method'		=> $method
+										);
+							$this->db->insert('blocks', $block);
+						}										
 					}
-					else
-					{
-						$found = false;
-					}
-					
-					$count++;
 				}
 				
 				$query = $this->db->get('settings', 1);

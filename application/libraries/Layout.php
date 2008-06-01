@@ -104,6 +104,26 @@
 			
 		}
 		
+		function is_in_area($harea, $module, $method) {
+			if (!empty($this->blocks))
+			{
+				if (!empty($this->blocks))
+				{
+					foreach ($this->blocks as $areas)
+					{
+						foreach ($areas as $area => $partial) {
+						
+							if ($area == $harea && $partial['module'] == $module && $partial['method'] == $method)
+							{
+								return true;
+							}
+						}
+					}
+				}				
+			}
+			return false;
+		}
+		
 		function render_partials()
 		{
 			$this->get_blocks();
