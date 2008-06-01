@@ -95,7 +95,7 @@
 		{
 			$i = 1;
 			
-			foreach($_POST['navigation_list'] as $key => $value):
+			foreach($_POST['item'] as $key => $value):
 			
 				$data = array('weight' => $i);
 				$this->db->where('id', $value);
@@ -168,7 +168,6 @@
 						
 						$block = 	array(
 										'theme' 		=> $this->input->post('theme'),
-										'template'	=> $this->input->post('template'),
 										'area'		=> $count,
 										'module'		=> $area_data[0],
 										'method'		=> $area_data[1]

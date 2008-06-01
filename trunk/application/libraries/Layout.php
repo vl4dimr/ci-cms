@@ -59,9 +59,12 @@
 				foreach ($this->partials as $area => $areas)
 				{
 					$areadata = "";
-					foreach($areas as $val)
+					if (is_array($areas)) 
 					{
-						$areadata .= $val ."\n";
+						foreach($areas as $val)
+						{
+							$areadata .= $val ."\n";
+						}
 					}
 					$output = str_replace('{'.$area.'}', $areadata, $output);
 				}

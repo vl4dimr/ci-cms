@@ -5,16 +5,14 @@
 	<title><?=$this->system->site_name?> | <?=__("Administration")?></title>
 	<link rel="shortcut icon" href="<?=base_url()?>application/views/default/admin/images/favicon.ico" type="image/x-icon" />
 	<link rel="stylesheet" href="<?=base_url()?>application/views/default/admin/style/admin.css" type="text/css" media="screen" charset="utf-8" />
+	<link rel="stylesheet" href="<?=base_url()?>application/views/default/admin/style/tabs.css" type="text/css" media="screen" charset="utf-8" />
 	<!--[if IE]>
 		<link rel="stylesheet" href="<?=base_url()?>application/views/default/admin/style/ie.css" type="text/css" media="screen" charset="utf-8" />
 	<![endif]-->
-	<script src="<?=base_url()?>application/views/default/admin/javascript/prototype.js" type="text/javascript"></script>
-	<script src="<?=base_url()?>application/views/default/admin/javascript/scriptaculous.js?load=effects,dragdrop" type="text/javascript"></script>
-	<script src="<?=base_url()?>application/views/default/admin/javascript/external.js" type="text/javascript"></script>
-<?php if ($view == 'settings' || $this->uri->segment(3) == ('edit' || 'create')):?>
-	<script src="<?=base_url()?>application/views/default/admin/javascript/tabs.js" type="text/javascript"></script>
-<?php endif;?>
-<?php if ($this->uri->segment(3) == ('edit' || 'create')):?>
+	
+	<script src="<?=base_url()?>application/views/default/admin/javascript/jquery-1.2.6.pack.js" type="text/javascript"></script>
+	<script src="<?=base_url()?>application/views/default/admin/javascript/jquery-ui-personalized-1.5b3.packed.js" type="text/javascript"></script>
+	<?php if ($this->uri->segment(3) == ('edit' || 'create')):?>
 	<script src="<?=base_url()?>application/views/default/admin/javascript/tinymce/tiny_mce.js" type="text/javascript"></script>
 	<script language="javascript" type="text/javascript">
 		tinyMCE.init({
@@ -49,6 +47,7 @@
 <div id="header">
 	<a class="logo" href="<?=site_url('admin')?>">
 		<img src="<?=base_url()?>application/views/default/admin/images/blaze-logo.png" alt="<?=$this->system->site_name?> | Administration" />
+
 	</a>
 	<ul class="topnav">
 		<li><a href="<?=base_url()?>">View live site</a></li>
