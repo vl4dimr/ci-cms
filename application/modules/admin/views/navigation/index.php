@@ -5,26 +5,39 @@
 
 <hr />
 
-<?php if ($notice = $this->session->flashdata('notification')):?>
-<p class="notice"><?=$notice;?></p>
-<?php endif;?>
+
+<p class="notice"><?=isset($notice)?$notice:'';?></p>
+
 
 <p>Welcome to the navigation admin</p>
 
-<ul id="navigation_list">
+<ul id="navigation_list" style="list-style-position: inside; cursor: hand; cursor: pointer;">
 	<?php foreach ($navigation as $nav):?>
-		<li id="item_<?=$nav['id']?>"><div class="handle"></div><?=$nav['title']?></li>
+		<li id="item_<?=$nav['id']?>" class='sortitem' style='padding: 5px; border: 1px solid #bbb; margin: 3px; width: 100px; background: #fff;'><?=$nav['title']?></li>
 	<?php endforeach;?>
 </ul>
 <script type="text/javascript">
-	function updateOrder(){
-	  var options = {
-	    method : 'post',
-	    parameters : Sortable.serialize('navigation_list')
-	  };
-		new Ajax.Request('<?=site_url('admin/nav_ajax_reorder')?>', options);
-	}
-	Sortable.create('navigation_list', {constraint:'vertical', handle:'handle', onUpdate : updateOrder});
+$("#navigation_list").sortable(
+	{
+		opacity: 0.7,
+        revert: true,
+        scroll: true ,
+        update: function()
+		{
+			serial = $("#navigation_list").sortable("serialize");
+			$.ajax({
+				url: "<?=site_url('admin/nav_ajax_reorder')?>",
+				type: "POST",
+				data: serial,
+				// complete: function(){},
+				success: function(feedback){ $("p.notice").show().html(feedback).fadeOut(3000); }
+				//success: function(feedback){ alert(feedback); }
+				// error: function(){}
+			});
+			
+		}
+		
+	});	
 </script>
 
 </div>

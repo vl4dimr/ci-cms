@@ -82,10 +82,11 @@
 		</div>
 	</form>
 <script>
-	var tabs = new Control.Tabs('tabs',{
-		defaultTab: 'last'
-	})
-	tabs.setActiveTab('one');
+
+  $(document).ready(function(){
+    $("#tabs").tabs();
+  });
+
 </script>
 </div>
 <!-- [Content] end -->

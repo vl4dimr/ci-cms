@@ -323,7 +323,7 @@ ul.quickmenu li a {
 }
 
 ul.quickmenu li a:hover {
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 ul.quickmenu li a.active {
