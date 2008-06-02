@@ -11,7 +11,7 @@
 |	http://www.your-site.com/
 |
 */
-$config['base_url']	= "http://localhost/ci/";
+$config['base_url']	= "http://ci-cms/";
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +23,7 @@ $config['base_url']	= "http://localhost/ci/";
 | variable so that it is blank.
 |
 */
-$config['index_page'] = "index.php";
+$config['index_page'] = "";
 
 /*
 |--------------------------------------------------------------------------
@@ -66,7 +66,7 @@ $config['url_suffix'] = "";
 | than english.
 |
 */
-$config['language']	= "english";
+$config['language']	= "en";
 
 /*
 |--------------------------------------------------------------------------
