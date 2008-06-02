@@ -111,24 +111,27 @@ CREATE TABLE `ci_sessions` (
 -- Struttura della tabella `ci_settings`
 -- 
 
+DROP TABLE IF EXISTS `ci_settings`;
 CREATE TABLE `ci_settings` (
-  `id` int(1) NOT NULL auto_increment,
-  `site_name` varchar(70) NOT NULL default '',
-  `meta_keywords` varchar(255) default NULL,
-  `meta_description` varchar(255) default NULL,
-  `cache` tinyint(1) NOT NULL default '0',
-  `cache_time` int(4) NOT NULL default '0',
-  `theme` varchar(100) NOT NULL default '',
-  `template` varchar(100) NOT NULL default '',
-  PRIMARY KEY  (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+  `id` tinyint(4) NOT NULL auto_increment,
+  `name` varchar(255) NOT NULL default '',
+  `value` text NOT NULL,
+  PRIMARY KEY  (`id`),
+  KEY `name` (`name`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 -- 
 -- Dump dei dati per la tabella `ci_settings`
 -- 
 
-INSERT INTO `ci_settings` VALUES (3, 'CI Cms', 'CMS, CodeIgniter', 'Site description for you', 0, 300, 'default', 'index');
-
+INSERT INTO `ci_settings` VALUES (1, 'site_name', 'Codeigniter CMS');
+INSERT INTO `ci_settings` VALUES (2, 'meta_keywords', 'CMS, CodeIgniter');
+INSERT INTO `ci_settings` VALUES (3, 'meta_description', 'Yet another CMS with Codeigniter');
+INSERT INTO `ci_settings` VALUES (4, 'cache', '0');
+INSERT INTO `ci_settings` VALUES (5, 'cache_time', '300');
+INSERT INTO `ci_settings` VALUES (6, 'theme', 'default');
+INSERT INTO `ci_settings` VALUES (7, 'template', 'index');
+        
 -- --------------------------------------------------------
 
 -- 

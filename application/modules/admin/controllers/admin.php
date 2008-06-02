@@ -1,4 +1,4 @@
-<?php
+<?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
 	
 	class Admin extends Controller {
 		
@@ -133,20 +133,16 @@
 
 				$fields = array('site_name', 'meta_keywords', 'meta_description', 'cache', 'cache_time', 'theme');
 				
-				$data = array();
 				
 				foreach ($fields as $field)
 				{
 					if ( $this->input->post($field) !== false)
 					{
-						$data[$field] = $this->input->post($field);
+						$this->system->set($field, $this->input->post($field));
 					}
 				}
 				
-				$found = true;
-				$count = 1;
-				
-				if ($data['cache'] == 0)
+				if ($this->input->post('cache') == 0)
 				{
 					$this->system->clear_cache();
 				}
@@ -170,13 +166,7 @@
 					}
 				}
 				
-				$query = $this->db->get('settings', 1);
-				
-				$row = $query->row();
-				
-				$this->db->where('id', $row->id);
-				$query = $this->db->update('settings', $data);
-				
+			
 				redirect('admin/settings');
 			}
 		}

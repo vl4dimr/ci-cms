@@ -4,6 +4,7 @@
 <h1 id="page">Page Admininistration</h1>
 
 <ul class="manage">
+	<li><a href="<?=site_url('admin/page/settings')?>"><?=__("Settings")?></a></li>
 	<li><a href="<?=site_url('admin/page/create')?>">Create new Page</a></li>
 	<li><a href="<?=site_url('admin')?>" class="last">Cancel</a></li>
 </ul>
