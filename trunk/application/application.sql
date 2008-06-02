@@ -154,4 +154,21 @@ CREATE TABLE `ci_users` (
 -- Dump dei dati per la tabella `ci_users`
 -- 
 
-        
+CREATE TABLE `ci_languages` (
+  `id` int(11) NOT NULL auto_increment,
+  `code` char(2) NOT NULL default '',
+  `name` varchar(100) NOT NULL default '',
+  `ordering` tinyint(4) NOT NULL default '0',
+  `active` tinyint(1) NOT NULL default '0',
+  `default` tinyint(4) NOT NULL default '0',
+  PRIMARY KEY  (`id`),
+  KEY `code` (`code`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+-- 
+-- Dump dei dati per la tabella `ci_languages`
+-- 
+
+INSERT INTO `ci_languages` VALUES (1, 'en', 'English', 0, 1, 0);
+INSERT INTO `ci_languages` VALUES (2, 'fr', 'Français', 0, 1, 1);
+                
