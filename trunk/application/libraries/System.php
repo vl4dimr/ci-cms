@@ -20,16 +20,22 @@
 		
 		function get_settings()
 		{
-			$query = $this->obj->db->get('settings', 1);
-
-			if ( $query->num_rows() == 1 )
+			$query = $this->obj->db->get('settings');
+			if ($query->num_rows() > 0)
 			{
-				$settings = $query->row_array();
-				
-				foreach ($settings as $key => $value)
-				{
-					$this->$key = $value;
-				}
+			   foreach ($query->result() as $row)
+			   {
+			      $this->{$row->name} = $row->value;
+			   }
+			}			
+		}
+		
+		function set($name, $value)
+		{	
+			//update only if changed
+			if ($this->$name != $value) {
+				$this->$name = $value;
+				$this->obj->db->update('settings', array('value' => $value), "name = '$name'");
 			}
 		}
 		

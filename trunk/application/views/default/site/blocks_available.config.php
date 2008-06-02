@@ -1,4 +1,4 @@
 <?php
 	$blocks = array();
-	$blocks['single_column'] = 2;
+	$blocks['index'] = 2;
 ?>
