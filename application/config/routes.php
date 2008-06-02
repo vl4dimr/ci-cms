@@ -41,8 +41,7 @@
 */
 
 //language route
-$route['(\w{2})/(.*)'] = '$2';
-$route['(\w{2})'] = $route['default_controller'];
+$route['(\w{2})(/.*)?'] = 'language/set/$2';
 
 $handle = opendir(APPPATH.'modules');
 
