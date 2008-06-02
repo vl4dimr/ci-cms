@@ -1,4 +1,4 @@
-<?php
+<?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
 	
 	class Page extends Controller {
 		
@@ -7,10 +7,8 @@
 			parent::Controller();
 			
 			$this->template['module'] = "page";
-			
-			//$this->load->model('page_model', 'pages', true);
+			$this->locale->load_textdomain(APPPATH . 'modules/'.$this->template['module'].'/locale/' . $this->session->userdata('lang') . '.mo' );		
 			$this->load->model('page_model', 'pages');
-			
 		}
 		
 		//all available blocks
@@ -36,7 +34,7 @@
 			}
 			else
 			{
-				$built_uri = 'home';
+				$built_uri = $this->system->page_home;
 			}
 			
 			if ( $this->template['page'] = $this->pages->get_page($built_uri) )

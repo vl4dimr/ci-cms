@@ -5,7 +5,7 @@
 		function Layout()
 		{
 			if ( !isset($this->obj) ) $this->obj =& get_instance();
-			
+
 			$this->theme = $this->obj->system->theme;
 			$this->template = $this->obj->system->template;
 		}
@@ -30,14 +30,6 @@
 			
 			$data['view'] = $view;
 			
-			// Load the overall 'system' language
-			
-			//$this->obj->locale->load_textdomain(APPPATH . 'locale/' . $this->obj->session->userdata('lang') . '.mo' );
-
-			// Load the language file for the specific module
-			//$this->obj->locale->load_textdomain(APPPATH . 'modules/'.$data['module'].'/locale/' . $this->obj->session->userdata('lang') . '.mo' );
-			
-
 			
 			if ( (isset($data['admin']) && $data['admin'] == true) || $data['module'] == 'admin')
 			{

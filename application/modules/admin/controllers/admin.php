@@ -10,9 +10,7 @@
 			$this->load->library('administration');
 			
 			$this->template['module'] = "admin";
-			//$this->template['loader'] = "admin";
-			
-			//$this->load->helper('dashboard');
+			$this->locale->load_textdomain(APPPATH . 'modules/'.$this->template['module'].'/locale/' . $this->session->userdata('lang') . '.mo' );
 		}
 		
 		function index()

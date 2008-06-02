@@ -1,5 +1,0 @@
-<?php
-
-	$lang['blog'] = array();
-
-?>

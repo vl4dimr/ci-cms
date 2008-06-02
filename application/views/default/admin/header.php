@@ -12,6 +12,7 @@
 	
 	<script src="<?=base_url()?>application/views/default/admin/javascript/jquery-1.2.6.pack.js" type="text/javascript"></script>
 	<script src="<?=base_url()?>application/views/default/admin/javascript/jquery-ui-personalized-1.5b3.packed.js" type="text/javascript"></script>
+	<script src="<?=base_url()?>application/views/default/admin/javascript/sitelib.js" type="text/javascript"></script>
 	<?php if ($this->uri->segment(3) == ('edit' || 'create')):?>
 	<script src="<?=base_url()?>application/views/default/admin/javascript/tinymce/tiny_mce.js" type="text/javascript"></script>
 	<script language="javascript" type="text/javascript">

@@ -33,7 +33,12 @@
 		function set($name, $value)
 		{	
 			//update only if changed
-			if ($this->$name != $value) {
+			if (!isset($this->$name)) {
+				$this->$name = $value;
+				$this->obj->db->insert('settings', array('name' => $name, 'value' => $value));
+			}
+			elseif ($this->$name != $value) 
+			{
 				$this->$name = $value;
 				$this->obj->db->update('settings', array('value' => $value), "name = '$name'");
 			}

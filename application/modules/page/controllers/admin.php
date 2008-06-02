@@ -1,4 +1,4 @@
-<?php
+<?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 	class Admin extends Controller {
 		
@@ -23,7 +23,31 @@
 			
 			$this->layout->load($this->template, 'admin');
 		}
-		
+		/**
+		 * Dealing with page module settings
+		 **/
+		function settings()
+		{
+			
+			if ($post = $this->input->post('submit') )
+			{
+				$fields = array('page_home');
+				
+				foreach ($fields as $field)
+				{
+					if ( $this->input->post($field) !== false)
+					{
+						$this->system->set($field, $this->input->post($field));
+					}
+				}
+				$this->session->set_flashdata('notification', __("Settings updated"));	
+				redirect('admin/page/settings');
+			}
+			else
+			{
+				$this->layout->load($this->template, 'settings');
+			}
+		}
 		function create()
 		{
 			if ( $post = $this->input->post('submit') )
