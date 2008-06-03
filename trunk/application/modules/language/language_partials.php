@@ -9,7 +9,7 @@
 		
 		function language_links()
 		{
-			$data['langs'] = $this->obj->locale->get_list();
+			$data['langs'] = $this->obj->locale->get_active();
 			return $this->obj->load->view('partials/language_links', $data, true);
 		}
 		

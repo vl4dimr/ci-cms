@@ -24,11 +24,48 @@ class Locale {
 		$this->codes = $this->get_codes();
 		$this->default = $this->get_default();
 		
-		
+		$this->load_messages();
 		log_message('debug', 'Locale Class Initialized');
 
 	}
 
+	function load_messages()
+	{
+		$handle = opendir(APPPATH.'modules');
+	
+		if ($handle)
+		{
+			while ( false !== ($module = readdir($handle)) )
+			{
+				
+				// make sure we don't map silly dirs like .svn, or . or ..
+
+				if (substr($module, 0, 1) != ".")
+				{
+					if ( file_exists(APPPATH . 'modules/'.$module.'/locale/' . $this->obj->session->userdata('lang') . '.mo' )) { 
+						$this->load_textdomain(APPPATH . 'modules/'.$module.'/locale/' . $this->obj->session->userdata('lang') . '.mo' );
+					}
+				}	
+			}
+		}	
+	}
+	
+	
+	function get_active()
+	{
+		$this->obj->db->where('active', 1);
+		$query = $this->obj->db->get($this->table);
+		
+		$languages = array();
+		
+		if ( $query->num_rows() > 0 )
+		{
+			$languages = $query->result_array();
+		}
+		
+		return $languages;
+	}	
+	
 	function get_list()
 	{
 		$query = $this->obj->db->get($this->table);
@@ -67,6 +104,7 @@ class Locale {
 	function get_codes()
 	{
 		$this->obj->db->select('code');
+		$this->obj->db->where('active', 1);
 		$this->obj->db->order_by('ordering');
 		$query = $this->obj->db->get($this->table);
 		$codes = array();
@@ -118,10 +156,16 @@ class Locale {
 		if (isset($this->_l10n[$domain]))
 			return;
 
-		if ( is_readable($mofile))
+		if ( is_readable($mofile)) {
+			
+			
 			$input = new CachedFileReader($mofile);
+			
+		}	
 		else
+		{
 			return;
+		}
 
 		$this->_l10n[$domain] = new gettext_reader($input);
 	}
