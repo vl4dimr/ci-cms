@@ -24,9 +24,9 @@
 				<th width="15%"><?=__("Code")?></th>
 				<th width="20%"><?=__("Name")?></th>
 				<th width="10%"><?=__("Ordering")?></th>
-				<th width="20%"><?=__("Default")?></th>
+				<th width="15%"><?=__("Default")?></th>
 				<th width="10%"><?=__("Active")?></th>
-				<th width="20%"><?=__("Action")?></th>
+				<th width="25%" colspan=3><?=__("Action")?></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -40,6 +40,8 @@
 				<td><?php if ($lang['default']==1): echo __("Yes"); else: echo "<a href='" . site_url('admin/language/setdefault/'. $lang['id']) . "'>" . __("Make default") . "</a>" ;endif;?></td>
 				<td><?php if ($lang['active']==1): echo __("Yes"); else: echo __("No"); endif;?></td>
 				<td><?php if ($lang['active']==1): echo "<a href='" . site_url('admin/language/active/0/'. $lang['id']) . "'>" . __("Deactivate") . "</a>"; else: echo "<a href='" . site_url('admin/language/active/1/'. $lang['id']) . "'>" . __("Activate") . "</a>" ;endif;?></td>
+				<td><a href='<?=site_url('admin/language/delete/'. $lang['id'])?>'><?=__("Delete")?></a></td>
+				<td><a href='<?=site_url('admin/language/edit/'. $lang['id'])?>'><?=__("Edit")?></a></td>
 		</tr>
 <?php $i++; endforeach;?>
 	</tbody>

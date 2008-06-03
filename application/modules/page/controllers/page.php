@@ -7,7 +7,6 @@
 			parent::Controller();
 			
 			$this->template['module'] = "page";
-			$this->locale->load_textdomain(APPPATH . 'modules/'.$this->template['module'].'/locale/' . $this->session->userdata('lang') . '.mo' );		
 			$this->load->model('page_model', 'pages');
 		}
 		

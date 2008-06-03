@@ -10,7 +10,6 @@
 			
 			$this->template['module']	= 'language';
 			$this->template['admin']		= true;
-			$this->locale->load_textdomain(APPPATH . 'modules/'.$this->template['module'].'/locale/' . $this->session->userdata('lang') . '.mo' );
 		}
 		
 		function index()
@@ -32,6 +31,18 @@
 			}
 			redirect('admin/language');
 		}
+
+		function delete($id)
+		{
+			
+			if(isset($id)) {
+				
+				$this->db->where('id', $id);
+				$this->db->delete('languages');
+				$this->session->set_flashdata('notification', __("Language removed"));
+			}
+			redirect('admin/language');
+		}		
 		
 		function setdefault($id) {
 			if(isset($id)) {
@@ -93,52 +104,30 @@
 			}
 		}
 		
-		function edit()
+		function edit($id)
 		{
 			if ( $post = $this->input->post('submit') )
 			{
 				$data = array(
-							'title'				=> $this->input->post('title'),
-							'menu_title'		=> $this->input->post('menu_title'),
-							'uri'				=> $this->input->post('parent').$this->input->post('uri'),
-							'meta_keywords'		=> $this->input->post('meta_keywords'),
-							'meta_description'	=> $this->input->post('meta_description'),
-							'body'				=> $this->input->post('body'),
-							'active'			=> $this->input->post('status')
+							'name'		=> $this->input->post('name'),
+							'code'		=> $this->input->post('code'),
+							'ordering'	=> $this->input->post('ordering').$this->input->post('uri'),
+							'active'	=> $this->input->post('active')
 						);
 					
-				$this->db->where('id', $this->input->post('id'));
-				$this->db->update('pages', $data);
+				$this->db->where('id', $id);
+				$this->db->update('languages', $data);
 				
-				$this->session->set_flashdata('notification', 'Page "'.$this->input->post("title").'" has been saved ...');
+				$this->session->set_flashdata('notification', __("Language updated"));
 				
-				redirect('admin/page/edit/'.$this->input->post('id'));
+				redirect('admin/language');
 			}
-			
-			$this->template['pages'] = $this->pages->list_pages();
-			
-			$this->template['page'] = $this->pages->get_page( array('id' => $this->page_id) );
+			$this->db->where('id', $id);
+			$query = $this->db->get('languages');
+			$this->template['row'] = $query->row_array();
 			$this->layout->load($this->template, 'edit');
 		}
 		
-		function delete()
-		{
-			if ( $post = $this->input->post('submit') )
-			{
-				$this->db->where('id', $this->input->post('id'));
-				$query = $this->db->delete('pages');
-				
-				$this->session->set_flashdata('notification', 'Page has been deleted.');
-				
-				redirect('admin/page');
-			}
-			else
-			{
-				$this->template['page'] = $this->pages->get_page( array('id' => $this->page_id) );
-				
-				$this->layout->load($this->template, 'delete');
-			}
-		}
 		
 	}
 

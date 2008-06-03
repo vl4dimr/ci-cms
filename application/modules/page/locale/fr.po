@@ -7,7 +7,7 @@ msgstr ""
 "Last-Translator: Eugene Hery <hery@serasera.org>\n"
 "Language-Team: Solaitra <hery@serasera.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: French\n"
 "X-Poedit-Country: FRANCE\n"
@@ -17,7 +17,7 @@ msgstr ""
 
 #: ../controllers/admin.php:43
 msgid "Settings updated"
-msgstr "Configuration enregistrÃ©"
+msgstr "Configuration enregistré"
 
 #: ../views/admin.php:7
 #: ../views/settings.php:18
@@ -30,5 +30,5 @@ msgstr "Utiliser cette page pour changer les options du module page"
 
 #: ../views/partials/newpages.php:2
 msgid "Latest Pages"
-msgstr "DerniÃ¨res Pages"
+msgstr "Dernières Pages"
 
