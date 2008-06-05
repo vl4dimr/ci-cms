@@ -1,4 +1,4 @@
---- DROP TABLE IF EXISTS `ci_blog_comments`;
+DROP TABLE IF EXISTS `ci_blog_comments`;
 CREATE TABLE `ci_blog_comments` (
   `id` int(11) NOT NULL auto_increment,
   `post_id` int(11) NOT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE `ci_blog_comments` (
 -- Table structure for table `ci_blog_posts`
 --
 
---- DROP TABLE IF EXISTS `ci_blog_posts`;
+DROP TABLE IF EXISTS `ci_blog_posts`;
 CREATE TABLE `ci_blog_posts` (
   `id` int(11) NOT NULL auto_increment,
   `uri` varchar(100) NOT NULL,
@@ -58,7 +58,7 @@ INSERT INTO `ci_blog_posts` (`id`, `uri`, `status`, `allow_comments`, `allow_pin
 -- Table structure for table `ci_blog_posts_tags`
 --
 
---- DROP TABLE IF EXISTS `ci_blog_posts_tags`;
+DROP TABLE IF EXISTS `ci_blog_posts_tags`;
 CREATE TABLE `ci_blog_posts_tags` (
   `id` int(11) NOT NULL auto_increment,
   `post_id` int(11) NOT NULL,
@@ -83,7 +83,7 @@ INSERT INTO `ci_blog_posts_tags` (`id`, `post_id`, `tag_id`) VALUES
 -- Table structure for table `ci_blog_tags`
 --
 
---- DROP TABLE IF EXISTS `ci_blog_tags`;
+DROP TABLE IF EXISTS `ci_blog_tags`;
 CREATE TABLE `ci_blog_tags` (
   `id` int(11) NOT NULL auto_increment,
   `tag` varchar(50) NOT NULL,
@@ -114,7 +114,7 @@ INSERT INTO `ci_blog_tags` (`id`, `tag`) VALUES
 -- Table structure for table `ci_blog_trackbacks`
 --
 
---- DROP TABLE IF EXISTS `ci_blog_trackbacks`;
+DROP TABLE IF EXISTS `ci_blog_trackbacks`;
 CREATE TABLE `ci_blog_trackbacks` (
   `id` int(11) NOT NULL auto_increment,
   `post_id` int(11) NOT NULL,
