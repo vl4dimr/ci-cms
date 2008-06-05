@@ -44,15 +44,16 @@
 		
 		function check_latest_version()
 		{
-			/*
-			ini_set('default_socket_timeout', 1);
-			$this->latest_version = @file_get_contents("http://blaze.haughin.com/cms/version.php");
 			
+			ini_set('default_socket_timeout', 1);
+			$this->latest_version = @file_get_contents("http://ci-cms.googlecode.com/svn/trunk/application/version.txt");
+			
+
 			if (!$this->latest_version)
 			{
-				//$this->latest_version = BLAZE_VERSION;
+				$this->latest_version = $this->obj->system->version;
 			}
-			*/
+			
 		}
 		
 		function no_active_users()

@@ -30,13 +30,13 @@
 		<h2>System informations</h2>
 		<dl>
 			<dt>Currently running:</dt>
-			<dd class="bold">Blaze CMS v. 1</dd>
-<?php //if ( BLAZE_VERSION < $this->administration->latest_version ): ?>
+			<dd class="bold">CI-CMS <?= $this->system->version ?></dd>
+<?php if ( $this->system->version < $this->administration->latest_version ): ?>
 			<dt>Latest version:</dt>
-			<dd class="red">Blaze CMS v. <?//=$this->administration->latest_version?></dd>
+			<dd class="red">CI CMS <?=$this->administration->latest_version?></dd>
 			<dt>Get new version:</dt>
 			<dd class="bold"><a href="http://blaze.haughin.com/" rel="external">Upgrade Now!</a></dd>
-<?php //endif;?>
+<?php endif;?>
 			<dt>Site name:</dt>
 			<dd><?=$this->system->site_name?></dd>
 			<dt>Site adress:</dt>
