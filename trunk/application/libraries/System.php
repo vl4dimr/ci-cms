@@ -1,13 +1,30 @@
 <?php
 
 	class System {
+		var $version ;
+		var $revision;
 		
 		function System()
 		{
 			$this->obj =& get_instance();
 			
+			$this->get_version();
 			$this->get_settings();
 			$this->start();
+		}
+		
+		
+		function get_version()
+		{
+			$this->version = @file_get_contents(APPPATH . "version.txt");
+			/*
+			if ( $revision = @file_get_contents("http://ci-cms.googlecode.com/svn/") )
+			{
+				if ( ereg ("<title>(.*)</title>", $revision, $contents)) 
+				{
+					$this->latest_revision = $contents[1];
+				}
+			}*/
 		}
 		
 		function start()
