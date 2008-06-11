@@ -9,6 +9,23 @@ class Plugin {
 	
 	function Plugin ()
 	{
+		$handle = opendir(APPPATH.'modules');
+
+		if ($handle)
+		{
+			while ( false !== ($module = readdir($handle)) )
+			{
+				// make sure we don't map silly dirs like .svn, or . or ..
+				
+				if (substr($module, 0, 1) != ".")
+				{
+					if ( file_exists(APPPATH.'modules/'.$module.'/'.$module.'_plugin.php') )
+					{
+						include(APPPATH.'modules/'.$module.'/'.$module.'_plugin.php');
+					}
+				}
+			}
+		}		
 		log_message('debug', "Plugin Class Initialized");
 	}
 	
@@ -125,7 +142,5 @@ class Plugin {
 	}
 
 }
-
-$SPlugin = new SPlugin;
 
 ?>

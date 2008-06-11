@@ -7,14 +7,24 @@ class Member extends Controller {
 	{
 		parent::Controller();
 		$this->template['module']	= 'member';
+			$this->_init();
 	}
 	
-
-	function index()
+	function _init() 
 	{
-		return;
+		/*
+		* default values
+		*/
+		if (!isset($this->system->login_signup_enabled)) ( $this->system->login_signup_enabled = 1);
+		
 	}
-
+	
+	function logout()
+	{
+		$this->user->logout();
+		redirect('member/login');
+	}
+	
 	function login()
 	{
 
@@ -45,8 +55,20 @@ class Member extends Controller {
 			}
 		}
 	}
-	function profile($username) {
-		echo $username;
-		
+	function profile($username = null) 
+	{
+		if ( !$this->user->logged_in ) 
+		{
+			redirect('member/login');
+			return;
+		}
+		if ( is_null($username) )
+		{
+			echo "Izaho";
+		}
+		else
+		{
+			echo $username;
+		}
 	}
 }

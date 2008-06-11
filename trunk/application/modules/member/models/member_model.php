@@ -1,48 +1,26 @@
 <?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-/**
- * SimplyPost
- *
- * @author		Pascal Kriete
- * @package		SimplyPost
- * @copyright	Copyright (c) 2008, Pascal Kriete
- * @license 	http://www.gnu.org/licenses/lgpl.txt
- */
 
-// ------------------------------------------------------------------------
-
-/**
- * User Model
- *
- * @package		SimplyPost
- * @subpackage	Member
- * @category	Model
- * @author		Pascal Kriete
- */
-
-class User_model extends Model {
+class Member_model extends Model {
 	
-	/**
-	 * Constructor
-	 *
-	 * @access	public
-	 */
-    function User_model()
+	var $member_total;
+    function Member_model()
     {
         parent::Model();
+		$this->member_total = $this->get_total();
     }
 
-	// ------------------------------------------------------------------------
-
-	/**
-	 * Get all users
-	 *
-	 * @access	public
-	 * @return 	mixed
-	 */
-	function get_all()
+	function get_total()
 	{
-		$this->db->select('id, username, post_count, joined');
+		$this->db->select('count(id) as nb');
+		$query = $this->db->get('users');
+		$row = $query->row();
+		return $row->nb;
+	}
+		
+
+	function get_list()
+	{
 		$query = $this->db->get('users');
 		return $query->result_array();
 	}

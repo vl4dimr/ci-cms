@@ -24,7 +24,10 @@ class Locale {
 		$this->codes = $this->get_codes();
 		$this->default = $this->get_default();
 		
-		
+		if (!$this->obj->session->userdata('lang')) {
+			$this->obj->session->set_userdata('lang', $this->default);
+		}
+
 		log_message('debug', 'Locale Class Initialized');
 
 	}

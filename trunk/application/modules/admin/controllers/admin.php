@@ -30,6 +30,7 @@
 		{
 			if ( $this->user->logged_in )
 			{
+
 				redirect('admin');
 			}
 			else
@@ -46,10 +47,20 @@
 					
 					if ($this->user->login($username, $password))
 					{
+					
+						if ($this->input->post('redirect')) 
+						{
+							redirect($this->input->post('redirect'));
+							return;
+						}					
 						redirect('admin');
 					}
 					else
 					{
+						if ($this->input->post('redirect')) 
+						{
+							$this->session->set_flashdata('redirect', $this->input->post('redirect'));
+						}
 						$this->layout->load($this->template, 'login');
 					}
 				}
