@@ -12,6 +12,7 @@
 			
 			if ( !$this->obj->user->logged_in && $this->obj->uri->segment(2) != 'login' )
 			{
+				$this->obj->session->set_flashdata('redirect', $this->obj->uri->uri_string());
 				redirect('admin/login');
 				exit;
 			}

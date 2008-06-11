@@ -59,7 +59,7 @@ if ($handle)
 			}
 			if ($module != 'admin') {
 				$route[$module] = $module;
-				$route[$module.'/(.*)'] = $module.'/$1';
+				$route[$module.'(/.*)?'] = $module.'$1';
 				$route['admin/'.$module.'(/.*)?'] = "$module/admin$1";				
 			}
 

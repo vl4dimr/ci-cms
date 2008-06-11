@@ -8,6 +8,9 @@
 
 <form class="login" action="<?=site_url('admin/login')?>" method="post" accept-charset="utf-8">
 	<fieldset>
+<?php if ($notice = $this->session->flashdata('redirect')):?>
+<input type='hidden' name='redirect' value='<?=$this->session->flashdata('redirect');?>' />
+<?php endif;?>	
 		<label for="username">Username:</label>
 		<input type='text' name='username' id='username' class="input-text" /><br />
 		<label for="password">Password:</label>
