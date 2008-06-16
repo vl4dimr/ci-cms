@@ -116,14 +116,28 @@
 			$this->obj->session->set_flashdata('user', 'You are now logged out');
 		}
 		
-		function register($username, $password, $level)
+		function update($username, $data)
+		{
+			//encrypt password
+			if (isset($data['password']))
+			{
+				$data['password'] = $this->_prep_password($data['password']);
+			}
+			$this->obj->db->where('username', $username);
+			$this->obj->db->update($this->table, $data);
+			
+		}
+		
+		function register($username, $password, $email)
 		{
 			// $user is an array...
 			
 			$data	= 	array(
 							'username'	=> $username,
 							'password'	=> $this->_prep_password($password),
-							'status'	=> 'active'
+							'email'		=> $email,
+							'status'	=> 'active',
+							'registered'=> mktime()
 						);
 			
 			$query = $this->obj->db->insert($this->table, $data);
