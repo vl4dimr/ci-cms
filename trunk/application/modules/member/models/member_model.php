@@ -31,13 +31,12 @@ class Member_model extends Model {
 	 * Get specific user
 	 *
 	 * @access	public
-	 * @param	integer	user id
+	 * @param	string	username
 	 * @return	mixed	user data
 	 */
-	function get_user($id)
+	function get_user($username)
 	{
-		$query = $this->db->select('username, id, email, joined, post_count, timezone');
-		$query = $this->db->getwhere('users', array('id' => $id), 1, 0);
+		$query = $this->db->get_where('users', array('username' => $username), 1, 0);
 		
 		if($query->num_rows() == 1)
 			return $query->row_array();
@@ -56,7 +55,7 @@ class Member_model extends Model {
 	 */
 	function exists($fields)
 	{
-		$query = $this->db->getwhere('users', $fields, 1, 0);
+		$query = $this->db->get_where('users', $fields, 1, 0);
 		
 		if($query->num_rows() == 1)
 			return TRUE;
@@ -65,6 +64,7 @@ class Member_model extends Model {
 	}
 	
 	// ------------------------------------------------------------------------
+	
 	
 	/**
 	 * Create a new user

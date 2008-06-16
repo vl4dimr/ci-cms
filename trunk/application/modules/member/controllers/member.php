@@ -7,7 +7,7 @@ class Member extends Controller {
 	{
 		parent::Controller();
 		$this->template['module']	= 'member';
-			$this->_init();
+		$this->_init();
 	}
 	
 	function _init() 
@@ -15,7 +15,10 @@ class Member extends Controller {
 		/*
 		* default values
 		*/
-		if (!isset($this->system->login_signup_enabled)) ( $this->system->login_signup_enabled = 1);
+		if (!isset($this->system->login_signup_enabled)) 
+		{
+			$this->system->login_signup_enabled = 1;
+		}
 		
 	}
 	

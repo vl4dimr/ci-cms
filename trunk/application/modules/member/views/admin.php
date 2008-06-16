@@ -21,9 +21,8 @@
 	<thead>
 		<tr>
 				<th width="3%" class="center">#</th>
-				<th width="27%"><?=__("Name")?></th>
-				<th width="20%"><?=__("Username")?></th>
-				<th width="20%"><?=__("Email")?></th>
+				<th width="27%"><?=__("Username")?></th>
+				<th width="40%"><?=__("Email")?></th>
 				<th width="30%" colspan="3"><?=__("Action")?></th>
 		</tr>
 	</thead>
@@ -32,12 +31,12 @@
 <?php if ($i % 2 != 0): $rowClass = 'odd'; else: $rowClass = 'even'; endif;?>
 		<tr class="<?=$rowClass?>">
 				<td class="center"><?=$i?></td>
-				<td><?=$member['name']?></td>
 				<td><?=$member['username']?></td>
 				<td><?=$member['email']?></td>
-				<td><a href="<?=site_url('admin/'.$module.'/profile/'.$member['id'])?>"><?=__("Profile")?></a></td>
-				<td><a href="<?=site_url('admin/'.$module.'/edit/'.$member['id'])?>"><?=__("Edit")?></a></td>
-				<td><a href="<?=site_url('admin/'.$module.'/delete/'.$member['id'])?>"><?=__("Delete")?></a></td>
+				<td>
+				<a href="<?=site_url('admin/'.$module.'/status/'. $member['username'].'/'.$member['status'])?>"><?=($member['status'] == 'active')?__("Deactivate"):__("Activate")?></a></td>
+				<td><a href="<?=site_url('admin/'.$module.'/edit/'.$member['username'])?>"><?=__("Edit")?></a></td>
+				<td><a href="<?=site_url('admin/'.$module.'/delete/'.$member['username'])?>"><?=__("Delete")?></a></td>
 		</tr>
 <?php $i++; endforeach;?>
 	</tbody>
