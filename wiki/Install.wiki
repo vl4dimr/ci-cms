@@ -1,0 +1,10 @@
+#summary How to install it.
+#labels Phase-Deploy
+
+= Introduction =
+
+A draft instruction for installation.
+
+= Details =
+
+When you install it under a sub-folder and you want to use .htaccess, verify that you specified the _RewriteBase_
