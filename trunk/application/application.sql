@@ -86,8 +86,7 @@ CREATE TABLE `ci_navigation` (
 
 INSERT INTO `ci_navigation` (`id`, `parent_id`, `active`, `weight`, `title`, `uri`) VALUES 
 (1, 0, 1, 1, 'Home', ''),
-(3, 0, 1, 3, 'About', 'about'),
-(5, 0, 1, 2, 'Blog', 'blog');
+(3, 0, 1, 3, 'About', 'about');
 
 -- --------------------------------------------------------
 
