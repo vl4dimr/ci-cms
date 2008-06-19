@@ -5,7 +5,7 @@
 	
 	<ul id="tabs" class="quickmenu">
 		<li><a href="#one"><span><?php echo __("General settings")?></span></a></li>
-		<li><a href="#three"><span><?php echo __("Theme settings")?></span></a></li>
+		<li><a href="#two"><span><?php echo __("Theme settings")?></span></a></li>
 	</ul>
 	<div class="quickend"></div>
 
@@ -16,7 +16,6 @@
 <div class="content slim">
 
 <h1 id="settings">Settings</h1>
-
 <form class="settings" action="<?=site_url('admin/settings')?>" method="post" accept-charset="utf-8">
 		
 		<ul>
@@ -55,7 +54,7 @@
 			<input type="text" name="cache_time" value="<?=$this->system->cache_time?>" id="cache_time" class="input-text" /><span>seconds</span><br />
 		
 		</div>
-		<div id="three">
+		<div id="two">
 			<label for="theme">Theme:</label>
 				<select name="theme" class="input-select" id="theme">
 				<?php foreach ($themes as $theme):?>
@@ -80,32 +79,15 @@
 						<?php endforeach; ?>
 				<?php endforeach; ?>
 			</dl>
-			<?php 
-			/*
-			<?php for ($num = 1; $num <= $available_blocks; $num++):?>
-			<label for="area_<?=$num?>">Block <?=$num?>:</label>
-			<select name="area_<?=$num?>" class="input-select" id="area.<?=$num?>">
-				<option <?php if (empty($this->layout->blocks['area.'.$num])):?>selected="selected"<?php endif;?> value="none">No Content</option>
-				<?php foreach($available_partials as $module => $partials):?>
-					<optgroup label="<?=ucfirst($module)?>">
-						<?php foreach($partials as $partial): ?>
-						<option <?php if (!empty($this->layout->blocks['area.'.$num]) && $this->layout->blocks['area.'.$num]['module'] == $module && $this->layout->blocks['area.'.$num]['method'] == $partial) :?>selected="selected"<?php endif;?> value="<?=$module?>|<?=$partial?>"><?=ucfirst(str_replace('_', ' ', $partial)) ?></option>
-						<?php endforeach; ?>
-					</optgroup>
-				<?php endforeach; ?>
-			</select><br />
-			<?php endfor; ?>
-			*/
-			?>
 		</div>
 	</form>
+
+</div>
 <script>
 
   $(document).ready(function(){
     $("#tabs").tabs();
-	$("#tabs").tabs("add", '<?=site_url('admin/modules')?>', '<?=stripslashes(__("Module settings"))?>', 1);
   });
 
 </script>
-</div>
 <!-- [Content] end -->

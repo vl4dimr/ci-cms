@@ -178,6 +178,8 @@
 				redirect('admin/settings');
 			}
 		}
+		
+
 	}
 
 ?>
