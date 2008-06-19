@@ -193,7 +193,10 @@ CREATE TABLE `ci_users` (
 INSERT INTO `ci_users` VALUES (1, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'admin@your-site.tld', 'active', 0, 1213847506);
        
 
-DROP TABLE IF EXISTS `ci_modules`;
+-- 
+-- Struttura della tabella `ci_modules`
+-- 
+
 CREATE TABLE `ci_modules` (
   `id` int(11) NOT NULL auto_increment,
   `name` varchar(100) NOT NULL default '',
@@ -205,5 +208,12 @@ CREATE TABLE `ci_modules` (
   `description` text NOT NULL,
   PRIMARY KEY  (`id`),
   KEY `name` (`name`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-        
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+-- 
+-- Dump dei dati per la tabella `ci_modules`
+-- 
+
+INSERT INTO `ci_modules` VALUES (3, 'page', 1, '1.0.0', 1, 60, '', 'Page core module');
+INSERT INTO `ci_modules` VALUES (4, 'language', 1, '1.0.0', 1, 10, '', 'Language core module');
+INSERT INTO `ci_modules` VALUES (5, 'member', 1, '1.0.0', 1, 20, '', 'Member core module');   

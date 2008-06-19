@@ -25,31 +25,7 @@
 			$query = $this->obj->db->get('modules');
 			
 			$modules = array();
-			$this->modules = $query->result();
-			/*
-			This will just be for installation
-			
-			$handle = opendir(APPPATH.'modules');
-
-			if ($handle)
-			{
-				while ( false !== ($module = readdir($handle)) )
-				{
-					// make sure we don't map silly dirs like .svn, or . or ..
-
-					if ( (substr($module, 0, 1) != ".") && ($module != 'admin') )
-					{
-						$this->modules[] = $module;
-						
-						if (file_exists(APPPATH.'modules/'.$module.'/controllers/admin.php'))
-						{
-							$this->modules_with_admin[] = $module;
-						}
-					}
-				}
-			}
-			
-			*/
+			$this->modules = $query->result_array();
 		}
 		
 		function check_latest_version()

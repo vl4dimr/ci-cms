@@ -14,7 +14,7 @@
 		
 		function index()
 		{
-				
+			
 			$this->db->order_by('ordering');
 			$query = $this->db->get('modules');
 			
@@ -41,7 +41,7 @@
 
 					if ( (substr($module, 0, 1) != ".") && ($module != 'admin') )
 					{
-						if ( !isset($modules[$module]) )
+						if ( !isset($modules[$module]))
 						{
 							$modules[$module] = array(
 								'name' => $module,
@@ -57,6 +57,49 @@
 			$this->template['modules'] = $modules;
 			$this->layout->load($this->template, 'module/index');
 
+		}
+		
+		function activate($module = null)
+		{
+			if (is_null($module))
+			{
+				$this->session->set_flashdata('notification', __("Please select a module"));
+				redirect('admin/module');
+			}
+			$data = array('status' => 1);
+			$this->db->where(array('name'=> $module, 'ordering >=' => 100));
+			$this->db->update('modules', $data);
+			$this->session->set_flashdata('notification', __("The module is activated"));
+			redirect('admin/module');
+		}
+
+		function deactivate($module = null)
+		{
+			if (is_null($module))
+			{
+				$this->session->set_flashdata('notification', __("Please select a module"));
+				redirect('admin/module');
+			}
+			$data = array('status' => 0);
+			$this->db->where(array('name'=> $module, 'ordering >=' => 100));
+			$this->db->update('modules', $data);
+			$this->session->set_flashdata('notification', __("The module is deactivated"));
+			redirect('admin/module');
+		}
+
+
+		function uninstall($module = null)
+		{
+			if (is_null($module))
+			{
+				$this->session->set_flashdata('notification', __("Please select a module"));
+				redirect('admin/module');
+			}
+			
+			$this->db->where(array('name'=> $module, 'ordering >=' => 100));
+			$this->db->delete('modules');
+			$this->session->set_flashdata('notification', __("The module is uninstalled"));
+			redirect('admin/module');
 		}
 		
 		function install($module = null)
@@ -79,25 +122,35 @@
 				$this->load->helper('xml');
 				$xmldata = join('', file(APPPATH.'modules/'.$module.'/setup.xml'));
 				$xmlarray = xmlize($xmldata);
-				//var_dump($xmlarray);
-				echo "name = " . $xmlarray['module']['@']['name'];
-				echo "\nversion = " . $xmlarray['module']['@']['version'];
-				echo "\ndescription = " . $xmlarray['module']['#']['description'][0]['#'];
-				echo "\nqueries = " . var_dump($xmlarray['module']['#']['install'][0]['#']['query']);
-				
-				/*
-				$sql = "INSERT INTO #__modules (name, rank, active, version, config) VALUES ('" . $xmlarray[module][name] . "', '" . $xmlarray[module][rank] . "', '" . $xmlarray[module][active] . "', '" . $xmlarray[module][version] . "', '" . base64_encode(serialize($xmlarray[module][config])) . "')";
-				echo($sql);
-				$qry = $DB->query($sql);
-
-				//jerena raha misy sql injection
-				if(count($xmlarray[module][query]) > 0) {
-				foreach($xmlarray[module][query] as $qry) {
-				$qry =str_replace("%prefix%", $CFG->prefix, $qry);
-				$DB->query($qry);
+				if (isset($xmlarray['module']['@']['name']) && $xmlarray['module']['@']['name'] == $module)
+				{
+					$data['name'] = trim($xmlarray['module']['@']['name']);
+					$data['description'] = isset($xmlarray['module']['#']['description'][0]['#']) ? trim($xmlarray['module']['#']['description'][0]['#']): '';
+					$data['version'] = isset($xmlarray['module']['@']['version']) ? trim($xmlarray['module']['@']['version']) : '';
+					$data['status'] = 0;
+					$data['ordering'] = 100;
+					if (file_exists(APPPATH.'modules/'.$module.'/controllers/admin.php'))
+					{
+						$data['with_admin'] = 1;
+					}
+					//execute queries
+					if (isset($xmlarray['module']['#']['install'][0]['#']['query']))
+					{
+						$queries = $xmlarray['module']['#']['install'][0]['#']['query'];
+						foreach ($queries as $query)
+						{
+							$this->db->query( $query['#'] );
+						}
+					} 
+					$this->session->set_flashdata('notification', __("The module is installed. Now you need to activate it."));
+					$this->db->insert('modules', $data);
+					redirect('admin/module');
 				}
+				else
+				{
+					$this->session->set_flashdata('notification', __("The module setup file is not valid."));
+					redirect('admin/module');
 				}
-				*/
 			
 			}
 			else
