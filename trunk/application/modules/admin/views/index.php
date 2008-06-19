@@ -5,7 +5,6 @@
 	
 	<ul class="quickmenu">
 		<li><a href="<?=site_url('admin/page/create')?>">Add new page</a></li>
-		<li><a href="<?=site_url('admin/blog/create')?>">Add new blog post</a></li>
 		<li><a href="<?=site_url('admin/settings')?>">System configuration</a></li>
 	</ul>
 	<div class="quickend"></div>
@@ -35,7 +34,7 @@
 			<dt>Latest version:</dt>
 			<dd class="red">CI CMS <?=$this->administration->latest_version?></dd>
 			<dt>Get new version:</dt>
-			<dd class="bold"><a href="http://blaze.haughin.com/" rel="external">Upgrade Now!</a></dd>
+			<dd class="bold"><a href="http://ci-cms.blogspot.com/" rel="external">Upgrade Now!</a></dd>
 <?php endif;?>
 			<dt>Site name:</dt>
 			<dd><?=$this->system->site_name?></dd>
@@ -51,7 +50,7 @@
 	</div>
 	
 	<div class="right">
-		<h2>Latest Blaze News</h2>
+		<h2>Latest News</h2>
 		<ul>
 <?php //$i = 0; if (BLAZE_VERSION < $this->administration->latest_version): $k = 8; else: $k = 6; endif;?>
 <?php foreach ($blaze_news as $news):?>
