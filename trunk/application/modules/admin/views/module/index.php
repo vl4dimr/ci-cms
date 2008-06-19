@@ -38,14 +38,14 @@
 				<td><?=$module['description']?></td>
 				<td><?=$module['version']?></td>				
 				<td>
-				<?php if ($module['status'] == 1): ?>
+				<?php if ($module['status'] == 1 && $module['ordering'] >= 100): ?>
 				<a href="<?=site_url('admin/module/deactivate/'. $module['name'])?>"><?=__("Deactivate")?></a>
 				<?php elseif ($module['status'] == 0) : ?>
 				<a href="<?=site_url('admin/module/activate/'. $module['name'])?>"><?=__("Activate")?></a>
 				<?php endif; ?>
 				</td>
 				<td
-				<?php if ($module['status'] == 0): ?>
+				<?php if ($module['status'] == 0  && $module['ordering'] >= 100): ?>
 				<a href="<?=site_url('admin/module/uninstall/'. $module['name'])?>"><?=__("Uninstall")?></a>
 				<?php elseif ($module['status'] == -1): ?>
 				<a href="<?=site_url('admin/module/install/'. $module['name'])?>"><?=__("Install")?></a>
