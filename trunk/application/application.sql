@@ -192,4 +192,18 @@ CREATE TABLE `ci_users` (
 
 INSERT INTO `ci_users` VALUES (1, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'admin@your-site.tld', 'active', 0, 1213847506);
        
+
+DROP TABLE IF EXISTS `ci_modules`;
+CREATE TABLE `ci_modules` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(100) NOT NULL default '',
+  `with_admin` tinyint(4) NOT NULL default '0',
+  `version` varchar(10) NOT NULL default '',
+  `status` tinyint(4) NOT NULL default '0',
+  `ordering` tinyint(4) NOT NULL default '0',
+  `info` text NOT NULL,
+  `description` text NOT NULL,
+  PRIMARY KEY  (`id`),
+  KEY `name` (`name`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
         
