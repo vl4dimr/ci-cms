@@ -1,21 +1,3 @@
-<!-- [Left menu] start -->
-<div class="leftmenu">
-
-	<h1 id="pageinfo">Page informations</h1>
-	
-	<ul id="tabs" class="quickmenu">
-		<li><a href="#one"><span><?php echo __("General settings")?></span></a></li>
-		<li><a href="#three"><span><?php echo __("Theme settings")?></span></a></li>
-	</ul>
-	<div class="quickend"></div>
-
-</div>
-<!-- [Left menu] end -->
-
-<!-- [Content] start -->
-<div class="content slim">
-
-<h1 id="settings">Settings</h1>
 
 <form class="settings" action="<?=site_url('admin/settings')?>" method="post" accept-charset="utf-8">
 		
@@ -99,13 +81,3 @@
 			?>
 		</div>
 	</form>
-<script>
-
-  $(document).ready(function(){
-    $("#tabs").tabs();
-	$("#tabs").tabs("add", '<?=site_url('admin/modules')?>', '<?=stripslashes(__("Module settings"))?>', 1);
-  });
-
-</script>
-</div>
-<!-- [Content] end -->
