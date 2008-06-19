@@ -2,9 +2,16 @@
 #labels Phase-Deploy
 
 = Introduction =
-
+a working example works in revision r39
 A draft instruction for installation.
 
 = Details =
 
 When you install it under a sub-folder and you want to use .htaccess, verify that you specified the _RewriteBase_
+
+
+
+- You have to insert in the database the application.sql
+- Change your database configuration in database.php
+- Change your configuration in config.php
+- Username: admin Password: admin
