@@ -25,14 +25,14 @@ CREATE TABLE `ci_blocks` (
   `module` varchar(50) NOT NULL default '',
   `method` varchar(50) NOT NULL default '',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=105 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=178 ;
 
 -- 
 -- Dump dei dati per la tabella `ci_blocks`
 -- 
 
-INSERT INTO `ci_blocks` (`id`, `area`, `theme`, `weight`, `module`, `method`) VALUES 
-(102, 1, 'default', 0, 'blog', 'latest_items');
+INSERT INTO `ci_blocks` VALUES (177, 2, 'default', 0, 'page', 'new_pages');
+INSERT INTO `ci_blocks` VALUES (176, 1, 'default', 0, 'language', 'language_links');
 
 -- --------------------------------------------------------
 
@@ -50,15 +50,14 @@ CREATE TABLE `ci_languages` (
   `default` tinyint(4) NOT NULL default '0',
   PRIMARY KEY  (`id`),
   KEY `code` (`code`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 -- 
 -- Dump dei dati per la tabella `ci_languages`
 -- 
 
-INSERT INTO `ci_languages` (`id`, `code`, `name`, `ordering`, `active`, `default`) VALUES 
-(1, 'en', 'English', 0, 1, 0),
-(2, 'fr', 'Français', 0, 1, 1);
+INSERT INTO `ci_languages` VALUES (1, 'en', 'English', 0, 1, 0);
+INSERT INTO `ci_languages` VALUES (3, 'fr', 'Français', 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -78,15 +77,15 @@ CREATE TABLE `ci_navigation` (
   KEY `active` (`active`),
   KEY `weight` (`weight`),
   KEY `parent_id` (`parent_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 -- 
 -- Dump dei dati per la tabella `ci_navigation`
 -- 
 
-INSERT INTO `ci_navigation` (`id`, `parent_id`, `active`, `weight`, `title`, `uri`) VALUES 
-(1, 0, 1, 1, 'Home', ''),
-(3, 0, 1, 3, 'About', 'about');
+INSERT INTO `ci_navigation` VALUES (1, 0, 1, 1, 'Home', '');
+INSERT INTO `ci_navigation` VALUES (3, 0, 1, 2, 'About', 'about');
+
 
 -- --------------------------------------------------------
 
@@ -107,7 +106,7 @@ CREATE TABLE `ci_pages` (
   PRIMARY KEY  (`id`),
   KEY `uri` (`uri`),
   KEY `active` (`active`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 -- 
 -- Dump dei dati per la tabella `ci_pages`
@@ -151,21 +150,20 @@ CREATE TABLE `ci_settings` (
   `value` text NOT NULL,
   PRIMARY KEY  (`id`),
   KEY `name` (`name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 -- 
 -- Dump dei dati per la tabella `ci_settings`
 -- 
 
-INSERT INTO `ci_settings` (`id`, `name`, `value`) VALUES 
-(1, 'site_name', 'Codeigniter CMS'),
-(2, 'meta_keywords', 'CMS, CodeIgniter'),
-(3, 'meta_description', 'Yet another CMS with Codeigniter'),
-(4, 'cache', '0'),
-(5, 'cache_time', '300'),
-(6, 'theme', 'default'),
-(7, 'template', 'index'),
-(8, 'page_home', 'home');
+INSERT INTO `ci_settings` VALUES (1, 'site_name', 'Codeigniter CMS');
+INSERT INTO `ci_settings` VALUES (2, 'meta_keywords', 'CMS, CodeIgniter');
+INSERT INTO `ci_settings` VALUES (3, 'meta_description', 'Yet another CMS with Codeigniter');
+INSERT INTO `ci_settings` VALUES (4, 'cache', '0');
+INSERT INTO `ci_settings` VALUES (5, 'cache_time', '300');
+INSERT INTO `ci_settings` VALUES (6, 'theme', 'default');
+INSERT INTO `ci_settings` VALUES (7, 'template', 'index');
+INSERT INTO `ci_settings` VALUES (8, 'page_home', 'home');
 
 -- --------------------------------------------------------
 
@@ -180,13 +178,18 @@ CREATE TABLE `ci_users` (
   `password` varchar(40) NOT NULL default '',
   `email` varchar(255) NOT NULL default '',
   `status` enum('active','disabled') NOT NULL default 'active',
+  `lastvisit` int(11) NOT NULL default '0',
+  `registered` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`),
   KEY `username` (`username`),
   KEY `password` (`password`),
   KEY `status` (`status`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 -- 
 -- Dump dei dati per la tabella `ci_users`
 -- 
 
+INSERT INTO `ci_users` VALUES (1, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'admin@your-site.tld', 'active', 0, 1213847506);
+       
+        
