@@ -73,11 +73,12 @@
 <?php if ($this->user->logged_in): ?>
 	<ul id="adminnav">
 		<li<?php if ($module == 'admin' && $view == 'index'):?> class="active"<?php endif;?>><a href="<?=site_url('admin')?>">Dashboard</a></li>
-		<li<?php if ($view == 'settings'):?> class="active"<?php endif;?>><a href="<?=site_url('admin/settings')?>">Settings</a></li>
 		<li<?php if ($view == 'navigation/index'):?> class="active"<?php endif;?>><a href="<?=site_url('admin/navigation')?>">Navigation</a></li>
+<?php if (isset($this->administration->modules_with_admin)) : ?>		
 <?php foreach ($this->administration->modules_with_admin as $admin_module): ?>
 		<li<?php if ($module == $admin_module):?> class="active"<?php endif;?>><a href="<?=site_url('admin/'.$admin_module)?>"><?=ucfirst(ereg_replace('[_-]+',' ',$admin_module))?></a></li>
 <?php endforeach;?>
+<?php endif; ?>
 	</ul>	
 <?php endif; ?>
 </div>

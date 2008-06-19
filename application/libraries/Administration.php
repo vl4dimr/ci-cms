@@ -20,7 +20,14 @@
 		
 		function find_modules()
 		{
+			$this->obj->db->where('status', 1);
+			$this->obj->db->order_by('ordering');
+			$query = $this->obj->db->get('modules');
+			
 			$modules = array();
+			$this->modules = $query->result();
+			/*
+			This will just be for installation
 			
 			$handle = opendir(APPPATH.'modules');
 
@@ -41,6 +48,8 @@
 					}
 				}
 			}
+			
+			*/
 		}
 		
 		function check_latest_version()
