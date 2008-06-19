@@ -76,7 +76,8 @@
 			$this->validation->set_rules($rules);	
 
 			$fields['email'] = __("email");	
-			$fields['password'] = __("password");	
+			$fields['username'] = __("username");	
+			$fields['password'] = __("password");
 			$fields['passconf'] = __("password confirmation");	
 
 			$this->validation->set_fields($fields);	
