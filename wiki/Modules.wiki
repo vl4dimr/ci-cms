@@ -48,11 +48,11 @@ You should have a setup.xml file in the folder of your module. It should have th
 	<version>1.0</version>
 	<description>Guestbook module</description>
 	<install>
-		<query>CREATE TABLE....</filename>
-		<query>INSERT INTO...</filename>
+		<query>CREATE TABLE....</query>
+		<query>INSERT INTO...</query>
 	</install>
 	<uninstall>
-		<query>DROP TABLE....</filename>
+		<query>DROP TABLE....</query>
 	</uninstall>
 </module>
 }}}
