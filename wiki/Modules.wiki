@@ -1,0 +1,58 @@
+#summary Module creation and installation
+
+= Introduction =
+
+This CMS is fully modulable. You can install, activate, deactivate, uninstall module anytime.
+
+Modules are in the module directory in 
+{{{
+application/modules/
+}}}
+
+= Core modules =
+
+There are few core modules that cannot be uninstalled nor deactivated. They are
+  * admin: Not listed in the module table but dealing with all backend administration
+  * language: Module for managing language
+  * member: Module to manage users
+  * page: Page module for content and the homepage.
+
+= Other modules =
+
+All other modules are installable 
+Here are the modules that are bundled with the release
+  * blog (not yet ready)
+  * contact (not yet ready)
+  * ...
+
+= Install a module =
+After you download a module (BE SURE THAT YOU DOWNLOAD IT FROM A SECURE SOURCE) just put it inside the module directory. Go in Admin -> Module settings and normally the module will be listed and ready to be installed. When it is installed, you still need to activate it.
+
+= Create a module =
+
+If you want to create your own module, there are just few things to know
+
+=== setup.xml installation file ===
+You should have a setup.xml file in the folder of your module. It should have this format
+
+{{{
+
+<?xml version="1.0" ?>
+<module>
+	<name>guestbook</name>
+	<date>20/06/2008</date>
+	<author>hery</author>
+	<email>hery@serasera.org</email>
+	<url>http://hery.serasera.org</url>
+	<copyright>GNU/GPL License</copyright>
+	<version>1.0</version>
+	<description>Guestbook module</description>
+	<install>
+		<query>CREATE TABLE....</filename>
+		<query>INSERT INTO...</filename>
+	</install>
+	<uninstall>
+		<query>DROP TABLE....</filename>
+	</uninstall>
+</module>
+}}}
