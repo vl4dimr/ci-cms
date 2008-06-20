@@ -6,7 +6,7 @@
 		{
 
 			parent::Controller();
-			
+			//$this->output->enable_profiler(true);
 			$this->load->library('administration');
 			
 			$this->template['module'] = "admin";
@@ -87,6 +87,54 @@
 			redirect('admin/module');
 		}
 
+		function move($direction = null, $module = null)
+		{
+			if (is_null($module) || is_null($direction))
+			{
+				redirect('admin/module');
+			}
+
+			$move = ($direction == 'up') ? -1 : 1;
+			$this->db->where(array('name' => $module, 'ordering >=' => 100));
+			$this->db->set('ordering', 'ordering+'.$move, FALSE);
+			$this->db->update('modules');
+			
+			$this->db->where(array('name' => $module, 'ordering >=' => 100));
+			$query = $this->db->get('modules');
+			$row = $query->row();
+			$new_ordering = $row->ordering;
+
+
+			if ( $move > 0 )
+			{
+				$this->db->set('ordering', 'ordering-1', FALSE);
+				$this->db->where(array('ordering <=' => $new_ordering, 'name <>' => $module));
+				$this->db->update('modules');
+			}
+			else
+			{
+				$this->db->set('ordering', 'ordering+1', FALSE);
+				$this->db->where(array('ordering >=' => $new_ordering, 'name <>' => $module));
+				$this->db->update('modules');			
+			}
+			//reordinate
+			$i = 101;
+			$this->db->order_by('ordering');
+			$this->db->where(array('ordering >=' => 100) );
+			$query = $this->db->get('modules');
+			if ($rows = $query->result())
+			{
+				foreach ($rows as $row)
+				{
+					$this->db->set('ordering', $i);
+					$this->db->where('name', $row->name);
+					$this->db->update('modules');
+					$i++;
+				}
+			}
+			
+			redirect('admin/module');
+		}
 
 		function uninstall($module = null)
 		{
@@ -128,7 +176,7 @@
 					$data['description'] = isset($xmlarray['module']['#']['description'][0]['#']) ? trim($xmlarray['module']['#']['description'][0]['#']): '';
 					$data['version'] = isset($xmlarray['module']['@']['version']) ? trim($xmlarray['module']['@']['version']) : '';
 					$data['status'] = 0;
-					$data['ordering'] = 100;
+					$data['ordering'] = 1000;
 					if (file_exists(APPPATH.'modules/'.$module.'/controllers/admin.php'))
 					{
 						$data['with_admin'] = 1;
