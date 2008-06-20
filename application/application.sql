@@ -196,7 +196,7 @@ INSERT INTO `ci_users` VALUES (1, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4d
 -- 
 -- Struttura della tabella `ci_modules`
 -- 
-
+DROP TABLE IF EXISTS `ci_modules`;
 CREATE TABLE `ci_modules` (
   `id` int(11) NOT NULL auto_increment,
   `name` varchar(100) NOT NULL default '',
