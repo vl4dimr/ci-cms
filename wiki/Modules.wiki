@@ -1,4 +1,5 @@
 #summary Module creation and installation
+#labels Phase-Implementation
 
 = Introduction =
 
@@ -56,3 +57,16 @@ You should have a setup.xml file in the folder of your module. It should have th
 	</uninstall>
 </module>
 }}}
+
+*explanation*
+
+*name:* name of the module
+*date:* creation date
+*author:*
+*email:*
+*url:*
+*copyright:*
+*version:*
+*description:* Module description
+*install:* Set of installation queries that will be applied into the database
+*uninstall:* Set of uninstallation queries that will be applied during uninstallation
