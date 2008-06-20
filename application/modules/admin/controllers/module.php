@@ -170,13 +170,21 @@
 				$this->load->helper('xml');
 				$xmldata = join('', file(APPPATH.'modules/'.$module.'/setup.xml'));
 				$xmlarray = xmlize($xmldata);
-				if (isset($xmlarray['module']['@']['name']) && $xmlarray['module']['@']['name'] == $module)
+				if (isset($xmlarray['module']['#']['name'][0]['#']) && trim($xmlarray['module']['#']['name'][0]['#']) == $module)
 				{
-					$data['name'] = trim($xmlarray['module']['@']['name']);
+					$data['name'] = trim($xmlarray['module']['#']['name'][0]['#']);
 					$data['description'] = isset($xmlarray['module']['#']['description'][0]['#']) ? trim($xmlarray['module']['#']['description'][0]['#']): '';
 					$data['version'] = isset($xmlarray['module']['@']['version']) ? trim($xmlarray['module']['@']['version']) : '';
 					$data['status'] = 0;
 					$data['ordering'] = 1000;
+					$info['date'] = $xmlarray['module']['#']['date'][0]['#'];
+					$info['author'] = $xmlarray['module']['#']['author'][0]['#'];
+					$info['email'] = $xmlarray['module']['#']['email'][0]['#'];
+					$info['url'] = $xmlarray['module']['#']['url'][0]['#'];
+					$info['copyright'] = $xmlarray['module']['#']['copyright'][0]['#'];
+					
+					$data['info'] = serialize($info);
+					
 					if (file_exists(APPPATH.'modules/'.$module.'/controllers/admin.php'))
 					{
 						$data['with_admin'] = 1;
