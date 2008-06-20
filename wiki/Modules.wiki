@@ -33,7 +33,7 @@ After you download a module (BE SURE THAT YOU DOWNLOAD IT FROM A SECURE SOURCE) 
 
 If you want to create your own module, there are just few things to know
 
-=== setup.xml installation file ===
+=== 1. setup.xml installation file ===
 You should have a setup.xml file in the folder of your module. It should have this format
 
 {{{
@@ -70,3 +70,33 @@ You should have a setup.xml file in the folder of your module. It should have th
   * *description:* Module description
   * *install:* Set of installation queries that will be applied into the database
   * *uninstall:* Set of uninstallation queries that will be applied during uninstallation
+
+   === 2. File structure ===
+This is how should be structured your module directory and files
+
+Let's say your module is called _example_
+
+{{{
+ APPPATH
+    |__modules
+          |__ example
+                 |__ controllers
+                 |       |__ admin.php (backend page: optional)
+                 |       |__ index.php (front-end page of the module)
+                 |       |__ ... (other files)
+                 |
+                 |__ models
+                 |       |__ example_model.php (your model file)
+                 |                         
+                 |__ views
+                 |       |__ partials (partial folder: if any)
+                 |       |      |__ example_partial_test.php
+                 |       | 
+                 |       |__ admin.php (backend view) 
+                 |       |__ index.php (backend view)
+                 |
+                 |__ example_partials.php
+                 |__ example_partials_available.php
+                 |__ setup.xml
+
+}}}
