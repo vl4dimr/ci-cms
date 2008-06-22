@@ -15,6 +15,7 @@
 			
 		}
 		
+		
 		function index()
 		{
 			if ( $this->uri->segment(1) )

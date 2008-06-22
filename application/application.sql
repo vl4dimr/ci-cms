@@ -103,10 +103,12 @@ CREATE TABLE `ci_pages` (
   `meta_keywords` varchar(255) default NULL,
   `meta_description` varchar(255) default NULL,
   `body` text NOT NULL,
+  `lang` varchar(5) NOT NULL default 'en',
+  `weight` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`),
   KEY `uri` (`uri`),
   KEY `active` (`active`)
-) ENGINE=MyISAM;
+) ENGINE=MyISAM DEFAULT;
 
 -- 
 -- Dump dei dati per la tabella `ci_pages`

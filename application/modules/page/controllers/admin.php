@@ -63,11 +63,11 @@
 						);
 						
 				$this->db->insert('pages', $data);
-				$id = $this->db->insert_id();	
+					
 					
 				$this->session->set_flashdata('notification', 'Page "'.$this->input->post("title").'" has been created, continue editing here');	
 				
-				redirect('admin/page/edit/'.$id);
+				redirect('admin/page');
 			}
 			else
 			{
@@ -95,7 +95,7 @@
 				
 				$this->session->set_flashdata('notification', 'Page "'.$this->input->post("title").'" has been saved ...');
 				
-				redirect('admin/page/edit/'.$this->input->post('id'));
+				redirect('admin/page');
 			}
 			
 			$this->template['pages'] = $this->pages->list_pages();

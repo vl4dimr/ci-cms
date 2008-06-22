@@ -4,7 +4,7 @@
 <!-- [Main] end -->
 
 <!-- [Footer] start -->
-<div id="footer">
+<div id="footer"><br />Page rendered in {elapsed_time} seconds
 </div>
 <!-- [Footer] end -->
 
