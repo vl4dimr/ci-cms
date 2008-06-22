@@ -22,7 +22,7 @@ function change_parent() {
 }
 </script>
 
-<h1 id="edit">Edit page "<?=$page['title']?>"</h1>
+<h1 id="edit"><?=__("Edit page")?></h1>
 
 <form class="edit" action="<?=site_url('admin/page/edit/'.$page['id'])?>" method="post" accept-charset="utf-8">
 		
@@ -45,27 +45,32 @@ function change_parent() {
 			<label for="title">Page Title:</label>
 			<input type="text" name="title" value="<?=$page['title']?>" id="title" class="input-text" /><br />
 			
-			<label for="menu_title">Navigation Title:</label>
-			<input type="text" name="menu_title" value="<?=$page['menu_title']?>" id="menu_title" class="input-text" /><br />
-			<?php
-				$last_slash = strrpos($page['uri'], '/');
 		
-				if ($last_slash):
-					$parent_uri = substr($page['uri'], 0, $last_slash+1);
-					$individual_uri = substr($page['uri'], $last_slash+1, strlen($page['uri']));
-				else:
-					$parent_uri = '';
-					$individual_uri = $page['uri'];
-				endif;
-			?>
-			
 			<label for="uri">SEF adress:</label>
-			<input type="text" name="uri" value="<?=$individual_uri?>" id="uri" class="input-text" /><br />
+			<input type="text" name="uri" value="<?=$page['uri']?>" id="uri" class="input-text" /><br />
 			
-			<label for="parent">Page Parent</label>
-			<select name="parent" id="parent" onchange="change_parent();" class="input-select">
-				<option value=''>/</option>
-			</select><br />
+			<label for="parent_id"><?=__("Parent")?>: </label>
+			<select name="parent_id" class="input-select" />
+			<option value='0'/>
+			<?php $follow = null;
+			foreach ($this->pages->list_pages() as $parent):?>
+			<?php  
+					
+					if ($page['id'] == $parent['id'] || $follow == $parent['parent_id']) 
+					{
+						$follow = $parent['id']; 
+						continue;
+					}
+					else
+					{
+					$follow = null;
+					}
+			?>
+			<option value="<?=$parent['id']?>" <?=($page['parent_id'] == $parent['id'])?"selected":""?>><?=($parent['level'] > 0) ? "|".str_repeat("__", $parent['level']): ""?> <?=$parent['title'] ?> </option>
+			
+			<?php endforeach;?>
+			</select>
+			<br />
 			
 			<label for="status">Status</label>
 			<select name="status" id="status" class="input-select">

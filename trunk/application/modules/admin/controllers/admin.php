@@ -160,6 +160,7 @@
 							'parent_id' => $this->input->post('parent_id'),
 							'active' => $this->input->post('status'),
 							'title' => $this->input->post('title'),
+							'lang' =>  $this->input->post('title'),
 							'uri' => $this->input->post('uri')
 						);
 						
@@ -192,7 +193,8 @@
 							'parent_id' => $this->input->post('parent_id'),
 							'active' => $this->input->post('status'),
 							'title' => $this->input->post('title'),
-							'uri' => $this->input->post('uri')
+							'uri' => $this->input->post('uri'),
+							'lang' => $this->input->post('lang')
 						);
 						
 						$this->db->set($data);

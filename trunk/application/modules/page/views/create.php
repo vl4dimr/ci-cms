@@ -22,7 +22,7 @@ function change_parent() {
 }
 </script>
 
-<h1 id="edit">Create New Page</h1>
+<h1 id="edit"><?=__("Create New Page")?></h1>
 
 <form class="edit" action="<?=site_url('admin/page/create')?>" method="post" accept-charset="utf-8">
 		
@@ -47,21 +47,22 @@ function change_parent() {
 		<label for="title">Page Title:</label>
 		<input type="text" name="title" value="" id="title" class="input-text" /><br />
 		
-		<label for="menu_title">Navigation Title:</label>
-		<input type="text" name="menu_title" value="" id="menu_title" class="input-text" /><br />
+
 		
 		<label for="uri">SEF adress:</label>
 		<input type="text" name="uri" value="" id="uri" class="input-text" /><br />
-		<?php /* 
-		<label for="parent">Page Parent:</label>
-		<select name="parent" id="parent" onchange="change_parent();" class="input-select">
-			<option value="" selected="selected">/</option>
-			<option value="home/">-- Home</option>
-			<option value="about/">-- About</option>
-			<option value="about/who/">---- Who Are We</option>
-			<option value="about/history/">---- Our History</option>
-		</select><br /> --> */ ?>
 		
+		<label for="parent_id"><?=__("Parent")?>: </label>
+		<select name="parent_id" class="input-select" />
+		<option value='0'/>
+		<?php foreach ($this->pages->list_pages() as $parent):?>
+
+		<option value="<?=$parent['id']?>"><?=($parent['level'] > 0) ? "|".str_repeat("__", $parent['level']): ""?> <?=$parent['title'] ?> </option>
+		
+		<?php endforeach;?>
+		</select>
+		<br />
+			
 		<label for="status">Status:</label>
 		<select name="status" id="status" class="input-select">
 			<option value="0">Draft</option>

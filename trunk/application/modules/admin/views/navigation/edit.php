@@ -19,7 +19,7 @@
 
 
 <form class="settings" action="<?=site_url('admin/navigation/edit/' . $nav['id'])?>" method="post" accept-charset="utf-8">
-		
+		<input type='hidden' name='lang' value='<?=$this->session->userdata('lang')?>' />
 		<ul>
 			<li><input type="submit" name="submit" value="<?=__("Save")?>" class="input-submit" /></li>
 			<li><a href="<?=site_url('admin/navigation')?>" class="input-submit last"><?=__("Cancel")?></a></li>
