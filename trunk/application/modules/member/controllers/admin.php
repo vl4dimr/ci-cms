@@ -65,7 +65,7 @@
 
 		}
 		
-		function add()
+		function create()
 		{
 			$rules['username'] = "trim|required|min_length[4]|max_length[12]|xss_clean|callback__verify_username";
 			$rules['password'] = "trim|matches[passconf]|required";
@@ -92,7 +92,7 @@
 						
 			if ($this->validation->run() == FALSE)
 			{
-				$this->layout->load($this->template, 'add');
+				$this->layout->load($this->template, 'create');
 			}
 			else
 			{

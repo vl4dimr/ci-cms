@@ -2,6 +2,6 @@
 <h3><?=__("Latest Pages")?></h3>
 <ul>
 <?php foreach ($pages as $page): ?>
-	<li><a href="<?=site_url($page['uri'])?>"><?=$page['menu_title']?></a></li>
+	<li><a href="<?=site_url($page['uri'])?>"><?=(($page['title']) > 20 )? substr($page['title'], 0, 20) . '...': $page['title']?></a></li>
 <?php endforeach; ?>
 </ul>

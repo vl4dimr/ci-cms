@@ -45,7 +45,7 @@
 			<dt>Database size:</dt>
 			<dd><?=formatfilesize($this->administration->db_size())?></dd>
 			<dt>Cache size:</dt>
-			<dd><?=recursive_directory_size(APPPATH.'cache/', TRUE);?></dd>
+			<dd><?=recursive_directory_size($this->config->item('cache_path'), TRUE);?></dd>
 		</dl>
 	</div>
 	

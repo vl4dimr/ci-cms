@@ -18,7 +18,7 @@
 
 
 
-<form class="settings" action="<?=site_url('admin/member/add')?>" method="post" accept-charset="utf-8">
+<form class="settings" action="<?=site_url('admin/member/create')?>" method="post" accept-charset="utf-8">
 		
 		<ul>
 			<li><input type="submit" name="submit" value="<?=__("Save")?>" class="input-submit" /></li>

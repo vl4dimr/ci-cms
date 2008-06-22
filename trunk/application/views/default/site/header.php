@@ -8,12 +8,21 @@
 	<meta name="robots" content="index,follow" />
 	<link rel="shortcut icon" href="<?=base_url()?>application/views/default/site/images/favicon.ico" type="image/x-icon" />
 	<link rel="stylesheet" href="<?=base_url()?>application/views/default/site/style/stylesheet.css" type="text/css" media="screen" charset="utf-8" />
+	<link rel="stylesheet" href="<?=base_url()?>application/views/default/site/style/superfish.css" type="text/css" media="screen" charset="utf-8" />
 	<!--[if IE]>
 		<link rel="stylesheet" href="<?=base_url()?>application/views/default/site/style/iefix.css" type="text/css" media="screen" charset="utf-8" />
 	<![endif]-->
 	<script src="<?=base_url()?>application/views/default/site/javascript/jquery.js" type="text/javascript"></script>
 	<script src="<?=base_url()?>application/views/default/site/javascript/sitelib.js" type="text/javascript"></script>
 	<script src="<?=base_url()?>application/views/default/site/javascript/external.js" type="text/javascript"></script>
+	<script src="<?=base_url()?>application/views/default/site/javascript/superfish.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+	$("ul.nav").superfish({
+		animation : { opacity:"show", height:"show" }
+	});
+	});
+	</script>
 </head>
 
 <body>
@@ -32,11 +41,7 @@
 
 <!-- [Navigation] start -->
 <div id="navigation">
-	<ul id="nav">
-<?php foreach ($this->navigation->get() as $nav):?>
-		<li<?php if ($this->uri->segment(1) == $nav['uri']):?> class="active"<?php endif;?>><a href="<?=site_url($nav['uri'])?>" title="<?=$nav['title']?>"><?=$nav['title']?></a></li>
-<?php endforeach; ?>
-	</ul>
+<?=$this->navigation->print_menu() ?>
 	<ul id="navlogin">
 		<li><a class="toggle" href="#">Login</a></li>
 	</ul>
