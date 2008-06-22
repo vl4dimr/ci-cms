@@ -5,7 +5,7 @@
 		function Page()
 		{
 			parent::Controller();
-			$this->output->enable_profiler(true);
+			//$this->output->enable_profiler(true);
 			$this->template['module'] = "page";
 			$this->load->model('page_model', 'pages');
 		}
