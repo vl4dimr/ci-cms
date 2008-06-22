@@ -65,7 +65,6 @@ INSERT INTO `ci_languages` VALUES (3, 'fr', 'Français', 0, 1, 0);
 -- Struttura della tabella `ci_navigation`
 -- 
 
-DROP TABLE IF EXISTS `ci_navigation`;
 CREATE TABLE `ci_navigation` (
   `id` int(11) NOT NULL auto_increment,
   `parent_id` int(11) NOT NULL default '0',
@@ -73,18 +72,19 @@ CREATE TABLE `ci_navigation` (
   `weight` int(11) NOT NULL default '0',
   `title` varchar(100) NOT NULL default '',
   `uri` varchar(100) NOT NULL default '',
+  `lang` varchar(5) NOT NULL default 'en',
   PRIMARY KEY  (`id`),
   KEY `active` (`active`),
   KEY `weight` (`weight`),
   KEY `parent_id` (`parent_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM;
 
 -- 
 -- Dump dei dati per la tabella `ci_navigation`
 -- 
 
-INSERT INTO `ci_navigation` VALUES (1, 0, 1, 1, 'Home', '');
-INSERT INTO `ci_navigation` VALUES (3, 0, 1, 2, 'About', 'about');
+INSERT INTO `ci_navigation` VALUES (1, 0, 1, 1, 'Home', '', 'en');
+INSERT INTO `ci_navigation` VALUES (3, 0, 1, 2, 'About', 'about', 'en');
 
 
 -- --------------------------------------------------------
@@ -96,9 +96,9 @@ INSERT INTO `ci_navigation` VALUES (3, 0, 1, 2, 'About', 'about');
 DROP TABLE IF EXISTS `ci_pages`;
 CREATE TABLE `ci_pages` (
   `id` int(11) NOT NULL auto_increment,
+  `parent_id` int(11) NOT NULL default '0',
   `active` tinyint(1) NOT NULL default '0',
   `uri` varchar(40) NOT NULL default '',
-  `menu_title` varchar(100) NOT NULL default '',
   `title` varchar(255) NOT NULL default '',
   `meta_keywords` varchar(255) default NULL,
   `meta_description` varchar(255) default NULL,
@@ -106,7 +106,7 @@ CREATE TABLE `ci_pages` (
   PRIMARY KEY  (`id`),
   KEY `uri` (`uri`),
   KEY `active` (`active`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=MyISAM;
 
 -- 
 -- Dump dei dati per la tabella `ci_pages`

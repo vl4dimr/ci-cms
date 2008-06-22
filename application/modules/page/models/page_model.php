@@ -39,7 +39,7 @@
 		
 		function list_pages()
 		{
-			$this->db->select('id, menu_title, uri, active');
+			$this->db->select('id, title, uri, active');
 			$query = $this->db->get($this->table);
 			
 			$pages = array();
@@ -54,7 +54,7 @@
 
 		function new_pages($limit = 10)
 		{
-			$this->db->select('id, menu_title, uri, active');
+			$this->db->select('id, title, uri, active');
 			$this->db->order_by('id', 'DESC');
 			$this->db->limit($limit);
 			$query = $this->db->get($this->table);

@@ -40,7 +40,7 @@
 				<td>
 				<?php if ($module['status'] == 1 && $module['ordering'] >= 100): ?>
 				<a href="<?=site_url('admin/module/move/up/'. $module['name'])?>"><img src="<?=site_url('application/views/' . $this->system->theme . '/admin/images/moveup.gif')?>" width="16" height="16" title="<?=__("Move up")?>"/></a>
-				<a href="<?=site_url('admin/module/move/down/'. $module['name'])?>"><img src="<?=site_url('application/views/' . $this->system->theme . '/admin/images/movedown.gif')?>" width="16" height="16" title="<?=__("Move down")?>"/></a
+				<a href="<?=site_url('admin/module/move/down/'. $module['name'])?>"><img src="<?=site_url('application/views/' . $this->system->theme . '/admin/images/movedown.gif')?>" width="16" height="16" title="<?=__("Move down")?>"/></a>
 				</td>
 				<?php endif; ?>
 				<td>

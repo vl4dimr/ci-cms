@@ -5,7 +5,7 @@
 
 <ul class="manage">
 	<li><a href="<?=site_url('admin/member/settings')?>"><?=__("Settings")?></a></li>
-	<li><a href="<?=site_url('admin/member/add')?>"><?=__("Add a new user")?></a></li>
+	<li><a href="<?=site_url('admin/member/create')?>"><?=__("Add a new user")?></a></li>
 	<li><a href="<?=site_url('admin')?>" class="last"><?=__("Cancel")?></a></li>
 </ul>
 		

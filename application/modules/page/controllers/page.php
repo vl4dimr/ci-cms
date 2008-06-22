@@ -5,7 +5,7 @@
 		function Page()
 		{
 			parent::Controller();
-			
+			$this->output->enable_profiler(true);
 			$this->template['module'] = "page";
 			$this->load->model('page_model', 'pages');
 		}
@@ -42,7 +42,7 @@
 				$view = 'index';
 				
 				$this->template['breadcrumb'][] = 	array(
-														'title'	=> $this->template['page']['menu_title'],
+														'title'	=> (strlen($this->template['page']['title']) > 20 )? substr($this->template['page']['title'], 0, 20) . '...': $this->template['page']['title'],
 														'uri'	=> $this->template['page']['uri']
 													);
 				

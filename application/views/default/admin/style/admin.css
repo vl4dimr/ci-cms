@@ -356,7 +356,7 @@ div.content h1 {
 div.content h1#login {background: url("../images/login.png") no-repeat 0 1px;}
 div.content h1#dashboard {background: url("../images/dashboard.png") no-repeat 0 1px;}
 div.content h1#settings {background: url("../images/settings.png") no-repeat 0 1px; float: left;}
-div.content h1#navigation {background: url("../images/navigation.png") no-repeat 0 1px;}
+div.content h1#navigation {background: url("../images/navigation.png") no-repeat 0 1px; float:left;}
 div.content h1#blog {background: url("../images/blog.png") no-repeat 0 1px; float: left;}
 div.content h1#page {background: url("../images/manage-content.png") no-repeat 0 1px; float: left;}
 div.content h1#edit {background: url("../images/edit-page.png") no-repeat 0 1px; float: left;}
