@@ -6,16 +6,16 @@
 	<meta name="keywords" content="<?php if (!empty($meta_keywords)):?><?php echo $meta_keywords?> - <?php endif; ?><?php echo $this->system->meta_keywords;?>" />
 	<meta name="description" content="<?php if (!empty($meta_description)):?><?php echo $meta_description?> - <?php endif; ?><?php echo $this->system->meta_description;?>" />
 	<meta name="robots" content="index,follow" />
-	<link rel="shortcut icon" href="<?=base_url()?>application/views/default/site/images/favicon.ico" type="image/x-icon" />
-	<link rel="stylesheet" href="<?=base_url()?>application/views/default/site/style/stylesheet.css" type="text/css" media="screen" charset="utf-8" />
-	<link rel="stylesheet" href="<?=base_url()?>application/views/default/site/style/superfish.css" type="text/css" media="screen" charset="utf-8" />
+	<link rel="shortcut icon" href="<?=base_url()?>application/views/<?php echo $this->system->theme?>/site/images/favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" href="<?=base_url()?>application/views/<?php echo $this->system->theme?>/site/style/stylesheet.css" type="text/css" media="screen" charset="utf-8" />
+	<link rel="stylesheet" href="<?=base_url()?>application/views/<?php echo $this->system->theme?>/site/style/superfish.css" type="text/css" media="screen" charset="utf-8" />
 	<!--[if IE]>
-		<link rel="stylesheet" href="<?=base_url()?>application/views/default/site/style/iefix.css" type="text/css" media="screen" charset="utf-8" />
+		<link rel="stylesheet" href="<?=base_url()?>application/views/<?php echo $this->system->theme?>/site/style/iefix.css" type="text/css" media="screen" charset="utf-8" />
 	<![endif]-->
-	<script src="<?=base_url()?>application/views/default/site/javascript/jquery.js" type="text/javascript"></script>
-	<script src="<?=base_url()?>application/views/default/site/javascript/sitelib.js" type="text/javascript"></script>
-	<script src="<?=base_url()?>application/views/default/site/javascript/external.js" type="text/javascript"></script>
-	<script src="<?=base_url()?>application/views/default/site/javascript/superfish.js" type="text/javascript"></script>
+	<script src="<?=base_url()?>application/views/<?php echo $this->system->theme?>/site/javascript/jquery.js" type="text/javascript"></script>
+	<script src="<?=base_url()?>application/views/<?php echo $this->system->theme?>/site/javascript/sitelib.js" type="text/javascript"></script>
+	<script src="<?=base_url()?>application/views/<?php echo $this->system->theme?>/site/javascript/external.js" type="text/javascript"></script>
+	<script src="<?=base_url()?>application/views/<?php echo $this->system->theme?>/site/javascript/superfish.js" type="text/javascript"></script>
 	<script type="text/javascript">
 	$(document).ready(function(){
 	$("ul.nav").superfish({
@@ -33,7 +33,7 @@
 <!-- [Header] start -->
 <div id="header">
 	<a class="logo" href="<?=base_url()?>application/views/" title="<?=$this->system->site_name?>">
-		<img src="<?=base_url()?>application/views/default/site/images/blaze.png" alt="<?=$this->system->site_name?>" />
+		<img src="<?=base_url()?>application/views/<?php echo $this->system->theme?>/site/images/blaze.png" alt="<?=$this->system->site_name?>" />
 		<b><?=$this->system->site_name?></b>
 	</a>
 </div>
