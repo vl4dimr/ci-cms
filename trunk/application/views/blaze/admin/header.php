@@ -9,11 +9,10 @@
 	<!--[if IE]>
 		<link rel="stylesheet" href="<?=base_url()?>application/views/default/admin/style/ie.css" type="text/css" media="screen" charset="utf-8" />
 	<![endif]-->
-	
-	<script src="<?=base_url()?>application/views/default/admin/javascript/jquery-1.2.6.pack.js" type="text/javascript"></script>
-	<script src="<?=base_url()?>application/views/default/admin/javascript/jquery-ui-personalized-1.5b3.packed.js" type="text/javascript"></script>
-	<script src="<?=base_url()?>application/views/default/admin/javascript/sitelib.js" type="text/javascript"></script>
-	<?php if ($this->uri->segment(3) == ('edit' || 'create')):?>
+	<?php foreach($this->javascripts->get() as $javascript): ?>
+	<script src="<?=base_url()?>application/views/default/admin/javascript/<?=$javascript?>" type="text/javascript"></script>
+	<?php endforeach; ?>
+	<?php if ($this->uri->segment(3) == ('edit' || 'create' || 'add')):?>
 	<script src="<?=base_url()?>application/views/default/admin/javascript/tinymce/tiny_mce.js" type="text/javascript"></script>
 	<script language="javascript" type="text/javascript">
 		tinyMCE.init({
@@ -73,11 +72,14 @@
 <?php if ($this->user->logged_in): ?>
 	<ul id="adminnav">
 		<li<?php if ($module == 'admin' && $view == 'index'):?> class="active"<?php endif;?>><a href="<?=site_url('admin')?>">Dashboard</a></li>
-		<li<?php if ($view == 'settings'):?> class="active"<?php endif;?>><a href="<?=site_url('admin/settings')?>">Settings</a></li>
 		<li<?php if ($view == 'navigation/index'):?> class="active"<?php endif;?>><a href="<?=site_url('admin/navigation')?>">Navigation</a></li>
-<?php foreach ($this->administration->modules_with_admin as $admin_module): ?>
-		<li<?php if ($module == $admin_module):?> class="active"<?php endif;?>><a href="<?=site_url('admin/'.$admin_module)?>"><?=ucfirst(ereg_replace('[_-]+',' ',$admin_module))?></a></li>
+<?php if (isset($this->administration->modules)) : ?>		
+<?php foreach ($this->administration->modules as $admin_module): ?>
+	<?php if ($admin_module['status'] == 1) :?>
+		<li<?php if ($module == $admin_module['name']):?> class="active"<?php endif;?>><a href="<?=site_url('admin/'.$admin_module['name'])?>"><?=ucfirst($admin_module['name'])?></a></li>
+	<?php endif; ?>		
 <?php endforeach;?>
+<?php endif; ?>
 	</ul>	
 <?php endif; ?>
 </div>
