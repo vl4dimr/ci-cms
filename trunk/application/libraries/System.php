@@ -88,7 +88,7 @@
 					
 					if ($cache_file != 'index.html' && substr($cache_file, 0, 1) != "." && !is_dir($dir.$cache_file))
 					{
-						unlink($dir.$cache_file);
+						@unlink($dir.'/'.$cache_file);
 					}
 				}
 			}
