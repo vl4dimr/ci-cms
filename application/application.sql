@@ -130,7 +130,7 @@ CREATE TABLE `ci_sessions` (
   `user_agent` varchar(50) NOT NULL default '',
   `last_activity` int(10) unsigned NOT NULL default '0',
   PRIMARY KEY  (`session_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM ;
 
 -- 
 -- Dump dei dati per la tabella `ci_sessions`
@@ -152,7 +152,7 @@ CREATE TABLE `ci_settings` (
   `value` text NOT NULL,
   PRIMARY KEY  (`id`),
   KEY `name` (`name`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=MyISAM DEFAULT;
 
 -- 
 -- Dump dei dati per la tabella `ci_settings`
@@ -186,7 +186,7 @@ CREATE TABLE `ci_users` (
   KEY `username` (`username`),
   KEY `password` (`password`),
   KEY `status` (`status`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM;
 
 -- 
 -- Dump dei dati per la tabella `ci_users`
@@ -210,7 +210,7 @@ CREATE TABLE `ci_modules` (
   `description` text NOT NULL,
   PRIMARY KEY  (`id`),
   KEY `name` (`name`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM ;
 
 -- 
 -- Dump dei dati per la tabella `ci_modules`
@@ -219,3 +219,17 @@ CREATE TABLE `ci_modules` (
 INSERT INTO `ci_modules` VALUES (3, 'page', 1, '1.0.0', 1, 60, '', 'Page core module');
 INSERT INTO `ci_modules` VALUES (4, 'language', 1, '1.0.0', 1, 10, '', 'Language core module');
 INSERT INTO `ci_modules` VALUES (5, 'member', 1, '1.0.0', 1, 20, '', 'Member core module');   
+
+-- 
+-- Struttura della tabella `ci_admins`
+-- 
+
+DROP TABLE IF EXISTS `ci_admins`;
+CREATE TABLE `ci_admins` (
+  `id` int(11) NOT NULL auto_increment,
+  `username` varchar(100) NOT NULL default '',
+  `module` varchar(100) NOT NULL default '',
+  `level` tinyint(4) NOT NULL default '0',
+  PRIMARY KEY  (`id`),
+  KEY `username` (`username`)
+) ENGINE=MyISAM ;

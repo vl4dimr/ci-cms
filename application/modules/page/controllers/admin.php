@@ -64,7 +64,7 @@
 						
 				$this->db->insert('pages', $data);
 
-				if ($this->input->post('image')
+				if ($this->input->post('image'))
 				{
 					//there is an image attached
 					$config['upload_path'] = BASEPATH.'images/';

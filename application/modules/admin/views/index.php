@@ -6,6 +6,7 @@
 	<ul class="quickmenu">
 		<li><a href="<?=site_url('admin/settings')?>"><?=__("General settings")?></a></li>
 		<li><a href="<?=site_url('admin/module')?>"><?=__("Modules settings")?></a></li>		
+		<li><a href="<?=site_url('admin/admins')?>"><?=__("Administrators")?></a></li>		
 	</ul>
 	<div class="quickend"></div>
 
