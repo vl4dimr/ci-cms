@@ -63,7 +63,58 @@
 						);
 						
 				$this->db->insert('pages', $data);
+
+				if ($this->input->post('image')
+				{
+					//there is an image attached
+					$config['upload_path'] = BASEPATH.'images/';
+					$config['allowed_types'] = 'gif|jpg|png';
+					$config['max_size']	= '100';
+					$config['max_width']  = '1024';
+					$config['max_height']  = '768';
 					
+					$this->load->library('upload', $config);
+				
+					if ( ! $this->upload->do_upload('image'))
+					{
+						$error = array('error' => $this->upload->display_errors());
+						
+						$this->load->view('upload_form', $error);
+					}	
+					else
+					{
+						/*
+						$config['image_library'] = 'gd2';
+						$config['source_image'] = '/path/to/image/mypic.jpg';
+						$config['create_thumb'] = TRUE;
+						$config['maintain_ratio'] = TRUE;
+						$config['width'] = 75;
+						$config['height'] = 50;
+
+						$this->load->library('image_lib', $config);
+
+						$this->image_lib->resize();					
+						*/
+						$image_data = $this->upload->data();
+						/*
+						[file_name]    => mypic.jpg
+						[file_type]    => image/jpeg
+						[file_path]    => /path/to/your/upload/
+						[full_path]    => /path/to/your/upload/jpg.jpg
+						[raw_name]     => mypic
+						[orig_name]    => mypic.jpg
+						[file_ext]     => .jpg
+						[file_size]    => 22.2
+						[is_image]     => 1
+						[image_width]  => 800
+						[image_height] => 600
+						[image_type]   => jpeg
+						[image_size_str] => width="800" height="200"
+						*/
+						
+						
+					}				
+				}	
 					
 				$this->session->set_flashdata('notification', 'Page "'.$this->input->post("title").'" has been created, continue editing here');	
 				

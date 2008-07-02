@@ -69,8 +69,10 @@ function change_parent() {
 		</select><br />
 		
 		<label for="body">Page Content:</label>
-		<textarea name="body" class="input-textarea"></textarea>
+		<textarea name="body" class="input-textarea"></textarea><br />
 		
+		<label for="image"><?=__("Image")?></label>
+		<input type="file" name="image" class="input-file" /><br />
 		</div>
 		<div id="two">
 		
