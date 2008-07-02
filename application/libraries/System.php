@@ -3,18 +3,29 @@
 	class System {
 		var $version ;
 		var $revision;
+		var $modules;
 		
 		function System()
 		{
 			$this->obj =& get_instance();
-			$this->obj->config->set_item('cache_path', APPPATH . 'cache');
+			$this->obj->config->set_item('cache_path', APPPATH . 'cache/');
 			$dir = $this->obj->config->item('cache_path');
 			$this->obj->load->library('cache', array('dir' => $dir));
 			$this->get_version();
 			$this->get_settings();
+			$this->find_modules();
 			$this->start();
 		}
 		
+		function find_modules()
+		{
+			$this->obj->db->where('status', 1);
+			$this->obj->db->order_by('ordering');
+			$query = $this->obj->db->get('modules');
+			
+			$modules = array();
+			$this->modules = $query->result_array();
+		}
 		
 		function get_version()
 		{

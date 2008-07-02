@@ -41,15 +41,14 @@ function change_parent() {
 		
 		<div id="one">
 		
-		<p>To create a new page, just fill in your content below and click 'Publish'.<br />
-		If you want to save your progress without publishing the page, click 'Save as Draft' button.</p>
+		<p><?=__("To create a new page, just fill in your content below and click 'Save page'.<br />If you want to save your progress without publishing the page, Select 'Draft' status.</p>")?>
 
-		<label for="title">Page Title:</label>
+		<label for="title"><?=__("Page Title")?>:</label>
 		<input type="text" name="title" value="" id="title" class="input-text" /><br />
 		
 
 		
-		<label for="uri">SEF adress:</label>
+		<label for="uri"><?=__("SEF adress")?>:</label>
 		<input type="text" name="uri" value="" id="uri" class="input-text" /><br />
 		
 		<label for="parent_id"><?=__("Parent")?>: </label>

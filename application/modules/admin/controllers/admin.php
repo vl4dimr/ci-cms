@@ -285,9 +285,6 @@
 			{
 				
 				$this->template['themes'] = $this->layout->get_themes();
-				$this->template['available_partials'] = $this->layout->get_available_partials();
-				$this->template['available_blocks'] = $this->layout->get_available_blocks();
-				$this->template['blocks'] = $this->layout->get_blocks();
 				$this->layout->load($this->template, 'settings');
 			}
 			else
@@ -309,26 +306,7 @@
 					$this->system->clear_cache();
 				}
 				
-				$this->db->where('id >', 0);
-				$this->db->delete('blocks');
-				if ($blocks = $this->input->post('blocks'))
-				{
-					foreach( $blocks as $module => $modules )
-					{
-						foreach( $modules as $method => $area )
-						{
-							$block = 	array(
-										'theme' 		=> $this->input->post('theme'),
-										'area'		=> $area,
-										'module'		=> $module,
-										'method'		=> $method
-										);
-							$this->db->insert('blocks', $block);
-						}										
-					}
-				}
-				
-			
+		
 				redirect('admin/settings');
 			}
 		}
