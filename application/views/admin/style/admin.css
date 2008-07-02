@@ -521,9 +521,7 @@ form.login label {
 	width: 6em;
 }
 
-form.settings .input-text,
-form.edit .input-text,
-form.login .input-text {
+.input-file, .input-text {
 	border: 1px solid #C4CBD2; 
 	padding: 0.4em; 
 	font-size: 90%;
