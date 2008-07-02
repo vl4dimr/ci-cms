@@ -9,23 +9,19 @@ class Plugin {
 	
 	function Plugin ()
 	{
-		$handle = opendir(APPPATH.'modules');
-
-		if ($handle)
+		//get plugins for activated modules
+		$this->obj =& get_instance();
+		if (is_array($this->obj->system->modules))
 		{
-			while ( false !== ($module = readdir($handle)) )
+			foreach($this->obj->system->modules as $module)
 			{
-				// make sure we don't map silly dirs like .svn, or . or ..
-				
-				if (substr($module, 0, 1) != ".")
-				{
-					if ( file_exists(APPPATH.'modules/'.$module.'/'.$module.'_plugin.php') )
-					{
-						include(APPPATH.'modules/'.$module.'/'.$module.'_plugin.php');
-					}
-				}
+				$plugin_file = APPPATH.'modules/'.$module['name'].'/'.$module['name'].'_plugins.php';
+						if ( file_exists($plugin_file) )
+						{
+							include($plugin_file);
+						}
 			}
-		}		
+		}	
 		log_message('debug', "Plugin Class Initialized");
 	}
 	
