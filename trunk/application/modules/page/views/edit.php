@@ -53,7 +53,7 @@ function change_parent() {
 			<select name="parent_id" class="input-select" />
 			<option value='0'/>
 			<?php $follow = null;
-			foreach ($this->pages->list_pages() as $parent):?>
+			foreach ($pages as $parent):?>
 			<?php  
 					
 					if ($page['id'] == $parent['id'] || $follow == $parent['parent_id']) 

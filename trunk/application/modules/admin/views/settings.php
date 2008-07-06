@@ -52,7 +52,13 @@
 			
 			<label for="cache_time">Cache Time:</label>
 			<input type="text" name="cache_time" value="<?=$this->system->cache_time?>" id="cache_time" class="input-text" /><span>seconds</span><br />
-		
+
+			<label for="cache">Debug:</label>
+			<div id="cache">
+				<input <?php if ($this->system->debug == 1):?>checked="checked"<?php endif;?> type="radio" name="debug" value="1" /> On<br />
+				<input <?php if ($this->system->debug == 0):?>checked="checked"<?php endif;?> type="radio" name="debug" value="0" /> Off<br />
+			</div>
+			
 		</div>
 		<div id="two">
 			<label for="theme">Theme:</label>

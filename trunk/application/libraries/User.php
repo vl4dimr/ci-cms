@@ -6,6 +6,7 @@
 		var $logged_in = false;
 		var $username = '';
 		var $table = 'users';
+		var $level = array();
 		
 		function User()
 		{
@@ -13,8 +14,40 @@
 			
 			$this->_session_to_library();
 			$this->obj->load->library('encrypt');
+			
+			$this->_get_levels();
 		}
 		
+		function _get_levels()
+		{
+			if ($this->logged_in)
+			{
+				$this->obj->db->where('username', $this->username);
+				$query = $this->obj->db->get('admins');
+				
+				if ($rows = $query->result_array())
+				{
+					foreach($rows as $val) {
+						$admin[ $val['module'] ] = $val['level'];
+					}
+				}
+				$this->level = $admin;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		
+		function check_level($module, $level)
+		{
+			if ( $this->obj->user->level[$module] < $level)
+			{
+		
+				redirect('admin/unauthorized/'. $module . '/' . $level);
+				exit;
+			}
+		}
 		function _prep_password($password)
 		{
 			// Salt up the hash pipe

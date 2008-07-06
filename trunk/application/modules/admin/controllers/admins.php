@@ -22,7 +22,7 @@
 		
 		function index()
 		{
-			
+		
 			$this->db->order_by('module, level DESC');
 			$query = $this->db->get('admins');
 			
@@ -32,11 +32,13 @@
 		
 		function create()
 		{
+			$this->user->check_level($this->template['module'], LEVEL_ADD);
 			$this->layout->load($this->template, 'admins/create');
 		}
 		
 		function edit($id)
 		{
+			$this->user->check_level($this->template['module'], LEVEL_EDIT);
 			$this->db->where('id', $id);
 			$query = $this->db->get('admins');
 			$this->template['admin'] = $query->row_array();
@@ -45,6 +47,7 @@
 		
 		function save($id = null)
 		{
+			$this->user->check_level($this->template['module'], LEVEL_EDIT);
 			if ($this->input->post('submit'))
 			{
 				$this->db->where(array(
@@ -82,6 +85,7 @@
 		
 		function delete($id)
 		{
+			$this->user->check_level($this->template['module'], LEVEL_DEL);
 			$this->db->where('id', $id);
 			$this->db->delete('admins');
 			$this->session->set_flashdata('notification', __("User removed from administrator list"));

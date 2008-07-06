@@ -15,7 +15,7 @@
 		
 		function index()
 		{
-			
+			$this->user->check_level($this->template['module'], LEVEL_VIEW);
 			$this->load->library('simplepie');
 			$this->simplepie->set_feed_url('http://ci-cms.blogspot.com/feeds/posts/default/-/news');
 			$this->simplepie->set_cache_location(APPPATH.'cache/rss');
@@ -27,6 +27,11 @@
 			$this->layout->load($this->template, 'index');
 		}
 		
+		function unauthorized($module, $level)
+		{
+			$this->template['data']  = array('module' => $module, 'level' => $level);
+			$this->layout->load($this->template, 'unauthorized');
+		}
 		function login()
 		{
 			if ( $this->user->logged_in )
@@ -76,7 +81,7 @@
 		
 		function navigation($action = null)
 		{
-		
+			$this->user->check_level($this->template['module'], LEVEL_VIEW);
 			switch ($action) 
 			{
 				case 'move':
@@ -281,6 +286,7 @@
 		
 		function settings()
 		{
+			$this->user->check_level($this->template['module'], LEVEL_EDIT);
 			if ( !$this->input->post('submit') )
 			{
 				
@@ -290,7 +296,7 @@
 			else
 			{
 
-				$fields = array('site_name', 'meta_keywords', 'meta_description', 'cache', 'cache_time', 'theme');
+				$fields = array('site_name', 'meta_keywords', 'meta_description', 'cache', 'cache_time', 'theme', 'debug');
 				
 				
 				foreach ($fields as $field)

@@ -7,6 +7,7 @@
 			parent::Controller();
 			
 			$this->load->library('administration');
+			$this->lang = $this->session->userdata('lang');
 			
 			$this->template['module']	= 'page';
 			$this->template['admin']		= true;
@@ -14,21 +15,29 @@
 			$this->load->model('page_model', 'pages');
 			
 			$this->page_id = ( $this->uri->segment(4) ) ? $this->uri->segment(4) : NULL;
+			
 		}
 		
 		function index()
 		{
+			$this->user->check_level($this->template['module'], LEVEL_VIEW);
+			if ( !$data = $this->cache->get('pagelist'.$this->lang, 'page') )
+			{
+				$data = $this->pages->list_pages();
+				$this->cache->save('pagelist'.$this->lang, $data, 'page', 0);
+			}
 			
-			$this->template['pages'] = $this->pages->list_pages();
-			
+			$this->template['pages'] = $data;
+				
 			$this->layout->load($this->template, 'admin');
+			
 		}
 		/**
 		 * Dealing with page module settings
 		 **/
 		function settings()
 		{
-			
+			$this->user->check_level($this->template['module'], LEVEL_DEL);
 			if ($post = $this->input->post('submit') )
 			{
 				$fields = array('page_home');
@@ -50,6 +59,7 @@
 		}
 		function create()
 		{
+			$this->user->check_level($this->template['module'], LEVEL_ADD);
 			if ( $post = $this->input->post('submit') )
 			{
 				$data = array(
@@ -63,7 +73,7 @@
 						);
 						
 				$this->db->insert('pages', $data);
-
+				$this->cache->remove('pagelist'.$this->lang, 'page');
 				if ($this->input->post('image'))
 				{
 					//there is an image attached
@@ -129,6 +139,8 @@
 		
 		function edit()
 		{
+			$this->user->check_level($this->template['module'], LEVEL_EDIT);
+			
 			if ( $post = $this->input->post('submit') )
 			{
 				$data = array(
@@ -143,13 +155,19 @@
 					
 				$this->db->where('id', $this->input->post('id'));
 				$this->db->update('pages', $data);
+				$this->cache->remove('pagelist'.$this->lang, 'page');				
 				
 				$this->session->set_flashdata('notification', 'Page "'.$this->input->post("title").'" has been saved ...');
 				
 				redirect('admin/page');
 			}
-			
-			$this->template['pages'] = $this->pages->list_pages();
+
+			if ( !$data = $this->cache->get('pagelist'.$this->lang, 'page') )
+			{
+				$data = $this->pages->list_pages();
+				$this->cache->save('pagelist'.$this->lang, $data, 'page', 0);
+			}			
+			$this->template['pages'] = $data;
 			
 			$this->template['page'] = $this->pages->get_page( array('id' => $this->page_id) );
 			$this->layout->load($this->template, 'edit');
@@ -157,13 +175,14 @@
 		
 		function delete()
 		{
+			$this->user->check_level($this->template['module'], LEVEL_DEL);
 			if ( $post = $this->input->post('submit') )
 			{
 				$this->db->where('id', $this->input->post('id'));
 				$query = $this->db->delete('pages');
 				
 				$this->session->set_flashdata('notification', 'Page has been deleted.');
-				
+				$this->cache->remove('pagelist'.$this->lang, 'page'); 
 				redirect('admin/page');
 			}
 			else
