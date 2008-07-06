@@ -1,8 +1,0 @@
-- Admin manager
-- Blocks like in solaitra
-	* Block library
-	* Browse for block file for each module
-	* in that file $this->block->set('blockname', 'callback_function')
-	* in views $this->block->get('blockname', $params=array(name =>value));
-
-That means, area.1 etc should be removed.
