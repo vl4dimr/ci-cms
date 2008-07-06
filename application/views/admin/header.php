@@ -75,7 +75,7 @@
 		<li<?php if ($view == 'navigation/index'):?> class="active"<?php endif;?>><a href="<?=site_url('admin/navigation')?>">Navigation</a></li>
 <?php if (isset($this->administration->modules)) : ?>		
 <?php foreach ($this->administration->modules as $admin_module): ?>
-	<?php if ($admin_module['status'] == 1) :?>
+	<?php if ($admin_module['status'] == 1 && $admin_module['with_admin'] == 1 && isset($this->user->level[ $admin_module['name'] ]['level'])) :?>
 		<li<?php if ($module == $admin_module['name']):?> class="active"<?php endif;?>><a href="<?=site_url('admin/'.$admin_module['name'])?>"><?=ucfirst($admin_module['name'])?></a></li>
 	<?php endif; ?>		
 <?php endforeach;?>
