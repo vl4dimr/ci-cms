@@ -25,7 +25,7 @@ CREATE TABLE `ci_blocks` (
   `module` varchar(50) NOT NULL default '',
   `method` varchar(50) NOT NULL default '',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=178 ;
+) ENGINE=MyISAM;
 
 -- 
 -- Dump dei dati per la tabella `ci_blocks`
@@ -50,7 +50,7 @@ CREATE TABLE `ci_languages` (
   `default` tinyint(4) NOT NULL default '0',
   PRIMARY KEY  (`id`),
   KEY `code` (`code`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  ;
 
 -- 
 -- Dump dei dati per la tabella `ci_languages`
@@ -152,7 +152,7 @@ CREATE TABLE `ci_settings` (
   `value` text NOT NULL,
   PRIMARY KEY  (`id`),
   KEY `name` (`name`)
-) ENGINE=MyISAM DEFAULT;
+) ENGINE=MyISAM;
 
 -- 
 -- Dump dei dati per la tabella `ci_settings`
@@ -166,6 +166,7 @@ INSERT INTO `ci_settings` VALUES (5, 'cache_time', '300');
 INSERT INTO `ci_settings` VALUES (6, 'theme', 'default');
 INSERT INTO `ci_settings` VALUES (7, 'template', 'index');
 INSERT INTO `ci_settings` VALUES (8, 'page_home', 'home');
+INSERT INTO `ci_settings` VALUES (9, 'debug', '0');
 
 -- --------------------------------------------------------
 
@@ -215,10 +216,11 @@ CREATE TABLE `ci_modules` (
 -- 
 -- Dump dei dati per la tabella `ci_modules`
 -- 
-
+INSERT INTO `ci_modules` VALUES (1, 'admin', 0, '1.0.0', 1, 5, '', 'Admin core module');
+INSERT INTO `ci_modules` VALUES (2, 'module', 0, '1.0.0', 1, 20, '', 'Module core module');
 INSERT INTO `ci_modules` VALUES (3, 'page', 1, '1.0.0', 1, 60, '', 'Page core module');
 INSERT INTO `ci_modules` VALUES (4, 'language', 1, '1.0.0', 1, 10, '', 'Language core module');
-INSERT INTO `ci_modules` VALUES (5, 'member', 1, '1.0.0', 1, 20, '', 'Member core module');   
+INSERT INTO `ci_modules` VALUES (5, 'member', 1, '1.0.0', 1, 30, '', 'Member core module');   
 
 -- 
 -- Struttura della tabella `ci_admins`
@@ -233,3 +235,9 @@ CREATE TABLE `ci_admins` (
   PRIMARY KEY  (`id`),
   KEY `username` (`username`)
 ) ENGINE=MyISAM ;
+
+INSERT INTO `ci_admins` VALUES (1, 'admin', 'admin', 4);
+INSERT INTO `ci_admins` VALUES (2, 'admin', 'module', 4);
+INSERT INTO `ci_admins` VALUES (3, 'admin', 'page', 4);
+INSERT INTO `ci_admins` VALUES (4, 'admin', 'language', 4);
+INSERT INTO `ci_admins` VALUES (5, 'admin', 'member', 4);
