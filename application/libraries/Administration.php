@@ -30,15 +30,18 @@
 		
 		function check_latest_version()
 		{
-			
-			ini_set('default_socket_timeout', 1);
-			$this->latest_version = @file_get_contents("http://ci-cms.googlecode.com/svn/trunk/application/version.txt");
-			
 
-			if (!$this->latest_version)
+			if(!($data = $this->obj->cache->get('latest_version', 'dashboard')))
 			{
-				$this->latest_version = $this->obj->system->version;
+				
+				ini_set('default_socket_timeout', 1);
+				$data = @file_get_contents("http://ci-cms.googlecode.com/svn/trunk/application/version.txt");
+				if (!$data) $data = $this->obj->system->version;
+				$this->obj->cache->save('latest_version', $data, 'dashboard', 86400);
+
 			}
+		
+			$this->latest_version = $data;
 			
 		}
 		

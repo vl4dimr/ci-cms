@@ -65,6 +65,7 @@
 		
 		function list_pages($parent = 0, $level = 0)
 		{
+			
 			$this->db->where(array('parent_id' => $parent, 'lang' => $this->lang));
 			$this->db->orderby('parent_id, weight');
 			$query = $this->db->get('pages');

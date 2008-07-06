@@ -1,5 +1,16 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+
+/*
+admin levels
+*/
+define('LEVEL_NONE', 0);
+define('LEVEL_VIEW', 1);
+define('LEVEL_ADD', 2);
+define('LEVEL_EDIT', 3);
+define('LEVEL_DEL', 4);
+
+
 /*
 |--------------------------------------------------------------------------
 | File and Directory Modes
