@@ -241,3 +241,28 @@ INSERT INTO `ci_admins` VALUES (2, 'admin', 'module', 4);
 INSERT INTO `ci_admins` VALUES (3, 'admin', 'page', 4);
 INSERT INTO `ci_admins` VALUES (4, 'admin', 'language', 4);
 INSERT INTO `ci_admins` VALUES (5, 'admin', 'member', 4);
+
+CREATE TABLE IF NOT EXISTS ci_group_members (
+  id int(11) NOT NULL auto_increment,
+  g_user varchar(255) NOT NULL default '',
+  g_id varchar(20) NOT NULL default '',
+  g_from int(11) NOT NULL default '0',
+  g_to int(11) NOT NULL default '0',
+  g_date int(11) NOT NULL default '0',
+  PRIMARY KEY  (id),
+  KEY g_user (g_user,g_id)
+) TYPE=MyISAM;
+
+CREATE TABLE IF NOT EXISTS ci_groups (
+  id int(11) NOT NULL auto_increment,
+  g_id varchar(20) NOT NULL default '',
+  g_name varchar(255) NOT NULL default '',
+  g_desc text NOT NULL,
+  g_date int(11) NOT NULL default '0',
+  g_info text NOT NULL,
+  PRIMARY KEY  (id),
+  UNIQUE KEY g_id (g_id,g_name)
+) TYPE=MyISAM;
+
+INSERT INTO ci_groups (g_id, g_name, g_desc) VALUES ('0', 'Everybody', 'This is everybody who visits the site including non members');
+INSERT INTO ci_groups (g_id, g_name, g_desc) VALUES ('1', 'Members Only', 'This is everybody who is member of the site');

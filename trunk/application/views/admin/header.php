@@ -46,7 +46,7 @@
 <!-- [Header] start -->
 <div id="header">
 	<a class="logo" href="<?=site_url('admin')?>">
-		<img src="<?=base_url()?>application/views/admin/images/blaze-logo.png" alt="<?=$this->system->site_name?> | Administration" />
+		<span><?=$this->system->site_name?> | Administration</span>
 
 	</a>
 	<ul class="topnav">
