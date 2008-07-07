@@ -4,6 +4,7 @@
 - Group core module (including all/registered) or inside member core module?
 - Check all module with group access
 - File image upload in page
+- News module
 
 
 
