@@ -1,3 +1,8 @@
+== BUG ==
+! Navigation delete tsy mbola vita
+
+
+
 == Todo ==
 
 - Check all admin level in all modules

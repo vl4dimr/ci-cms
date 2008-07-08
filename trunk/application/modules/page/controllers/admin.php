@@ -65,7 +65,7 @@
 				$data = array(
 							'title'				=> $this->input->post('title'),
 							'parent_id'		=> $this->input->post('parent_id'),
-							'uri'				=> $this->input->post('uri').$this->input->post('uri'),
+							'uri'				=> $this->input->post('uri'),
 							'meta_keywords'		=> $this->input->post('meta_keywords'),
 							'meta_description'	=> $this->input->post('meta_description'),
 							'body'				=> $this->input->post('body'),

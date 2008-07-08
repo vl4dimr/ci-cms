@@ -161,11 +161,10 @@
 					if ($this->input->post('submit'))
 					{
 						$data = array(
-							'lang' => $this->lang,
+							'lang' => $this->input->post('lang'),
 							'parent_id' => $this->input->post('parent_id'),
 							'active' => $this->input->post('status'),
 							'title' => $this->input->post('title'),
-							'lang' =>  $this->input->post('title'),
 							'uri' => $this->input->post('uri')
 						);
 						
@@ -206,6 +205,7 @@
 						$this->db->update('navigation');
 						
 						$this->session->set_flashdata('notification', __("Navigation item saved"));
+						$this->cache->remove_group('navigation');
 						redirect('admin/navigation');
 					}
 					else
