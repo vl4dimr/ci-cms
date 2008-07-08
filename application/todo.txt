@@ -22,3 +22,8 @@
 	* in views $this->block->get('blockname', $params=array(name =>value));
 
 That means, area.1 etc should be removed.
+
+== Info ==
+
+Avatar
+svn+ssh://hery@svn.tuxfamily.org/svnroot/solaitra/solaitra/ci-cms/modules/avatar
