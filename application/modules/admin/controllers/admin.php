@@ -182,6 +182,22 @@
 						$this->layout->load($this->template, 'navigation/create');
 					}
 				break;
+				case 'delete':
+					$id = $this->uri->segment(4);
+					if (!isset($id))
+					{
+						$this->session->set_flashdata('notification', __("Please select a menu"));
+						redirect('admin/navigation');	
+					}
+					else
+					{
+						$this->db->where('id', $id);
+						$this->db->delete('navigation');
+						$this->session->set_flashdata('notification', __("Navigation item deleted"));
+						$this->cache->remove_group('navigation');
+						redirect('admin/navigation');
+					}
+				break;
 				case 'edit':
 					$id = $this->uri->segment(4);
 					if (!isset($id))
