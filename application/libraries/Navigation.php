@@ -77,7 +77,7 @@
 			foreach ($query->result_array() as $item)
 			{
 				$html .= '<li ' . ($item['uri'] == substr($this->obj->uri->uri_string(), 1) ? 'class="current" ' : '') . '>';
-				$html .= '<a href="'.site_url($item['uri']).'">'.$item['title'].'</a>';
+				$html .= '<a href="'. $item['uri'] .'">'.$item['title'].'</a>';
 				//colling same function where we are (recursive) to check if menu item has submenu
 				$html .= $this->_print_menu($item['id']);
 				$html .= '</li>';
