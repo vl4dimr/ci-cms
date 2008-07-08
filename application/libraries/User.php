@@ -27,8 +27,8 @@
 			if($this->logged_in){
 				$this->groups[] = 1;
 				$this->obj->db->select('g_id');
-				$this->obj->db->where("g_user = '" .$this->username ." AND (g_from <= '" . mktime() . "' OR g_from=0) AND (g_to >= '" . mktime() . "' OR g_to=0)");
-				$query = $this->obj->db->get("groups");
+				$this->obj->db->where("g_user = '" .$this->username ."' AND (g_from <= '" . mktime() . "' OR g_from=0) AND (g_to >= '" . mktime() . "' OR g_to=0)");
+				$query = $this->obj->db->get("group_members");
 				
 				if($rows = $query->result_array()){
 					foreach ($rows as $row) {
