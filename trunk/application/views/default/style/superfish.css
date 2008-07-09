@@ -50,29 +50,30 @@ ul.nav li li.sfHover ul {
 /*** ORIGINAL SKIN ***/
 .nav {
 	float:left;
-	margin-bottom:1.5em;
+	border-right:1px solid #FFFFFF;
 }
 .nav li {
-	background:#BDD2FF;
-	border-left:1px solid #fff;
-	border-top:1px solid #CFDEFF;
-	width:9.45em;
+background:#A48F74 none repeat scroll 0% 0%;
+border-left:1px solid #FFFFFF;
+line-height:1.5em;
 }
 .nav a {
-	color: #13a;
-	padding: .75em 0;
-	text-decoration:none;
-	text-indent: 2em;
+color:#FFFFFF;
+padding:0pt 10px;
+text-decoration:none;
 }
 .nav li:hover, .nav li.sfHover,
 .nav a:focus, .nav a:hover, .nav a:active {
-	background:#CFDEFF;
+	background:#FCE7B0;
+	color: #636365;
 }
 .nav li li {
-	background:#AABDE6;
+	background:#FCE7B0;
+	color: #636365;
 }
 .nav li li li {
-	background:#9AAEDB;
+	background:#FCE7B0;
+	color: #636365;
 }
 
 

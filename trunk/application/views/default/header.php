@@ -32,42 +32,25 @@
 
 <!-- [Header] start -->
 <div id="header">
-	<a class="logo" href="<?=base_url()?>application/views/" title="<?=$this->system->site_name?>">
-		<img src="<?=base_url()?>application/views/<?php echo $this->system->theme?>/images/blaze.png" alt="<?=$this->system->site_name?>" />
-		<b><?=$this->system->site_name?></b>
+	<a class="logo" href="<?=base_url()?>" title="<?=$this->system->site_name?>">
+		<span><?=$this->system->site_name?></span>
 	</a>
 </div>
 <!-- [Header] end -->
 
 <!-- [Navigation] start -->
-<div id="navigation">
+<div id="navigation1">
+	<div id="navigation2">
 <?=$this->navigation->print_menu() ?>
-	<ul id="navlogin">
-		<li><a class="toggle" href="#">Login</a></li>
-	</ul>
+	</div>
 </div>
 <!-- [Navigation] end -->
 
-<!-- [Login] start -->
-<div id="login">
-	<form class="login" action="<?=site_url('admin/login')?>" method="post" accept-charset="utf-8">
-		<fieldset>
-			<p>
-				<label for="username">Username:</label>
-				<input type='text' name='username' id='username' class="input-text" />
-				<label for="password">Password:</label>
-				<input type="password" name="password" value="" id="password" class="input-text" />
-				<input type="submit" name="submit" value="Login &raquo;" id="submit" class="input-submit" />
-			</p>
-		</fieldset>
-	</form>
-</div>
-<!-- [Login] end -->
 
 <!-- [Breadcrumbs] start -->
 <div id="breadcrumbs">
 	<span class="left">
-		<b>You are here:</b><a href="<?=base_url()?>application/views/"><?=$this->system->site_name?></a><?php foreach ($breadcrumb as $crumb): ?>&nbsp;&raquo;&nbsp;<a href="<?=site_url($crumb['uri'])?>"><?=$crumb['title']?></a><?php endforeach ?>
+		<b><?=__("You are here:")?></b><a href="<?=base_url()?>"><?=$this->system->site_name?></a><?php foreach ($breadcrumb as $crumb): ?>&nbsp;&raquo;&nbsp;<a href="<?=site_url($crumb['uri'])?>"><?=$crumb['title']?></a><?php endforeach ?>
 	</span>
 	<span class="right">Today is <?=date('d.m.Y')?></span>
 </div>
@@ -77,9 +60,13 @@
 
 <!-- [Main] start -->
 <div id="main">
+<?php if ($this->uri->uri_string() == "" || $this->system->page_home == substr($this->uri->uri_string(), 1)) :?>
 
-<div id="right-block">
-<?php echo $this->block->get('page_latest_pages', 5) ?>
+<div id="right">
+<?$this->block->get('page_latest_pages')?>
 </div>
+<div id="left">
 
+<?php else: ?>
 <div id="content">
+<?php endif; ?>
