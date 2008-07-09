@@ -13,15 +13,15 @@
 }
 
 body {
-	color: #333333;
-	background: #FFFFFF;
-	font: 0.75em Tahoma, Geneva, Helvetica, Arial, sans-serif; 
+	color: #636365;
+	background: #E8D299 none;
+	font: 0.90em Trebuchet MS, Geneva, Helvetica, Arial, sans-serif; 
 	text-align: center;
 	line-height: 150%;
 }
 
 a, a:link, a:visited {
-	color: #0080AA;
+	color: #636365;
 	text-decoration: none;
 }
 
@@ -82,23 +82,32 @@ img {
 /* --- [ Basic layout ] --- */
 
 div#base {
-	width: 960px; 
+	width: 100%; 
 	margin: 0 auto; 
 	padding: 0;
 	text-align: left; 
 	overflow: hidden;
+	background: #FFFFFF url("../images/header_bg.jpg") repeat-x 0 0;
 }
 
 div#header {
-	margin: 0;
-	height: 5.5em;
+	margin: 0pt auto;
+	height: 100px;
+	width: 920px;
+	background: url("../images/header_bg.jpg") repeat-x 0 center;
 }
 
-div#navigation {
-	margin: 0;
-	height: 2.6em;
-	background: url("../images/menu-line.gif") repeat-x 0 2.5em;	
-	clear: both;
+div#navigation1{
+	width: 100%;
+	background: #A48F74 none;
+}	
+
+div#navigation2{
+background:transparent none repeat scroll 0% 0%;
+clear:both;
+height:1.5em;
+margin:0pt auto;
+width:920px;
 }
 
 div#login {
@@ -108,35 +117,40 @@ div#login {
 }
 
 div#breadcrumbs {
-	font-size: 90%;
-	color: #666666;
-	position: static;
-	overflow: hidden;
-	clear: both;
+clear:both;
+color:#666666;
+font-size:80%;
+margin:0pt auto;
+overflow:hidden;
+position:static;
+width:920px;
 }
 
 div#main {
-	clear: both;
-	font-size: 100%;
-	position: static;
-	overflow: hidden;
-	padding: 0 20px;
+	clear:both;
+	font-size:100%;
+	margin:0pt auto;
+	overflow:hidden;
+	padding:0pt 20px;
+	position:static;
+	width:920px;
 }
 
-div#right-block {
-	position: relative;
-	overflow: hidden;
-	width: 200px;
-	float: right;
-	clear: right;
+div#right {
+	border-left:1px dashed;
+	clear:right;
+	float:right;
+	overflow:hidden;
+	padding-left:10px;
+	position:relative;
+	width:200px;
 }
 
-div#content {
+div#left {
 	position: relative;
 	overflow: hidden;
 	width: 680px;
 	padding-right: 20px;
-	background: url("../images/v-separator.png") repeat-y top right;
 	float: left;
 	clear: left;
 }
@@ -148,12 +162,12 @@ div#block-2 {
 }
 
 div#footer {
-	height: 40px;
-	line-height: 40px;
-	margin: 2em 0 0 0;
-	font-size: 90%;
-	color: #101E29;
-	background: url("../images/footer-separator.png") no-repeat top left;
+	margin: 0pt auto;
+	font-size: 80%;
+	color: #FFFFFF;
+	width: 100%;
+	background: #A4897E none;
+	text-align: center;
 }
 
 /* --- [ Header ] --- */
@@ -162,18 +176,14 @@ a.logo {
 	display: block;
 	float: left;
 	position: relative;
-	top: 20px;
-	left: 20px;
 	color: #000000;
+	height: 100px;
+	width: 350px;
+	background: url("../images/logo.jpg") no-repeat top left;
 }
 
-a.logo b {
-	text-transform: uppercase;
-	font-size: 275%;
-	padding: 0 10px;
-	font-weight: 100;
-	letter-spacing: 0.15em;
-	color: #000000;
+a.logo span {
+	visibility: hidden;
 }
 
 /* --- [ Main navigation ] --- */
@@ -237,18 +247,18 @@ div#breadcrumbs span.left {
 }
 
 div#breadcrumbs span.left b {
-	font-weight: normal;
-	margin: 0 0.5em 0 0;
+font-weight:normal;
+margin:0pt 0.5em 0pt 0pt;
 }
 
 div#breadcrumbs span.left a {
-	margin: 0 0.1em 0 0.25em;
-	padding: 0 0 1px 0;
-	border-bottom: 1px solid #BFE5F2;
+border-bottom:1px solid #000000;
+margin:0pt 0.1em 0pt 0.25em;
+padding:0pt 0pt 1px;
 }
 
 div#breadcrumbs span.left a:hover {
-	border-bottom: 1px solid #0080AA;
+	border-bottom: 1px solid #CDA699;
 }
 
 div#breadcrumbs span.right {
@@ -278,10 +288,7 @@ div#main h3 {
 	text-transform: uppercase;
 }
 
-div#main h1.blog,
-div#main h2.blog {
-	margin: 0;
-}
+
 
 div#main p {
 	margin: 0 0 1em 0;
@@ -335,46 +342,11 @@ div#main div.hsplit {
 	background: url("../images/h-separator.png") repeat-x bottom left;
 }
 
+div#content {
+	width: 100%;
+}
 /* --- [ Footer ] --- */
 
-div#footer span.left {
-	position: relative;
-	float: left;
-	left: 20px;
-}
-
-div#footer span.left a.flogo {
-	display: block;
-	color: #000000;
-}
-
-div#footer span.left a.flogo img {
-	padding: 7px 7px 0 0;
-	float: left;
-}
-
-div#footer span.left a.flogo b {
-	font-size: 90%;
-	font-weight: normal;
-	float: left;	
-	display: block;
-}
-
-div#footer span.right {
-	position: relative;
-	float: right;
-	right: 20px;
-	text-align: right;
-}
-
-div#footer span.right a {
-	padding: 0 0 1px 0;
-	border-bottom: 1px solid #BFE5F2;
-}
-
-div#footer span.right a:hover {
-	border-bottom: 1px solid #0080AA;
-}
 
 /* --- [ Forms ] --- */
 
