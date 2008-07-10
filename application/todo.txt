@@ -1,5 +1,4 @@
 == BUG ==
-! Navigation delete tsy mbola vita
 
 
 
