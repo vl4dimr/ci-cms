@@ -26,7 +26,8 @@
 		</tr>
 	</thead>
 	<tbody>
-<?// var_dump($navigation) ?>	
+<?// var_dump($navigation) ?>
+<?php if (isset($navigation)) : ?> 	
 <?php $i = 1; foreach ($navigation as $nav): ?>
 <?php if ($i % 2 != 0): $rowClass = 'odd'; else: $rowClass = 'even'; endif;?>
 		<tr class="<?=$rowClass?>">
@@ -40,6 +41,7 @@
 				<td><a href="<?=site_url('admin/navigation/delete/'.$nav['id'])?>"><?=__("Delete")?></a></td>
 		</tr>
 <?php $i++; endforeach;?>
+<?php endif; ?>
 	</tbody>
 </table>
 <?=//$pager?>

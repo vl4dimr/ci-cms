@@ -29,6 +29,7 @@
 		</tr>
 	</thead>
 	<tbody>
+<?php if ($pages) : ?>
 <?php $i = 1; foreach ($pages as $page): ?>
 <?php if ($i % 2 != 0): $rowClass = 'odd'; else: $rowClass = 'even'; endif;?>
 		<tr class="<?=$rowClass?>">
@@ -42,6 +43,7 @@
 				<td class="center"><?=$page['id']?></td>
 		</tr>
 <?php $i++; endforeach;?>
+<?php endif; ?>
 	</tbody>
 </table>
 

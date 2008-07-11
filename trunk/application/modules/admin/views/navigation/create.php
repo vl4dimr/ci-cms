@@ -42,10 +42,12 @@
 			<label for="parent_id"><?=__("Parent")?>: </label>
 			<select name="parent_id" class="input-select" />
 			<option value='0'/>
-			<?php foreach ($this->navigation->get() as $parent):?>
+			<?php if ($parents = $this->navigation->get()) : ?> 
+			<?php foreach ($parents as $parent):?>
 			<option value="<?=$parent['id']?>" ><?=($parent['level'] > 0) ? "|".str_repeat("__", $parent['level']): ""?> <?=$parent['title']?></option>
 			
 			<?php endforeach;?>
+			<?php endif;?>
 			</select>
 			<br />
 						
