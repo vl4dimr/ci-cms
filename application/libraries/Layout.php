@@ -8,7 +8,40 @@
 
 			$this->theme = $this->obj->system->theme;
 			$this->template = $this->obj->system->template;
+			$this->_login_action();
 		}
+
+		
+				
+		function _login_action()
+		{
+
+			if (!$this->obj->user->logged_in && $this->obj->input->post('username') && $this->obj->input->post('password'))
+			{
+					$username = $this->obj->input->post('username');
+					$password = $this->obj->input->post('password');
+					
+					if ($this->obj->user->login($username, $password))
+					{
+					
+						if ($this->obj->input->post('redirect')) 
+						{
+							redirect($this->obj->input->post('redirect'));
+						}					
+					}
+					else
+					{
+						if ($this->obj->input->post('redirect')) 
+						{
+							$this->obj->session->set_flashdata('redirect', $this->input->post('redirect'));
+						}
+						
+					}			
+			}
+		}
+		
+		
+
 		
 		function load($data, $view)
 		{
