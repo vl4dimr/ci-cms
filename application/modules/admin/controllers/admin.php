@@ -2,6 +2,7 @@
 	
 	class Admin extends Controller {
 		
+		var $nav;
 		function Admin()
 		{
 

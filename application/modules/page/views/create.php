@@ -54,11 +54,13 @@ function change_parent() {
 		<label for="parent_id"><?=__("Parent")?>: </label>
 		<select name="parent_id" class="input-select" />
 		<option value='0'/>
-		<?php foreach ($this->pages->list_pages() as $parent):?>
+		<?php if ($parents = $this->pages->list_pages()) : ?>
+		<?php foreach ($parents as $parent):?>
 
 		<option value="<?=$parent['id']?>"><?=($parent['level'] > 0) ? "|".str_repeat("__", $parent['level']): ""?> <?=$parent['title'] ?> </option>
 		
 		<?php endforeach;?>
+		<?php endif; ?>
 		</select>
 		<br />
 			

@@ -118,9 +118,8 @@
 		
 		function login($username, $password)
 		{
-			$this->obj->plugin->do_action('login', $username, $password);
-			
-			/*
+
+		
 			$query = $this->obj->db->get($this->table, 1);
 			
 			if ($query->num_rows() == 0)
@@ -164,7 +163,8 @@
 				
 				return false;
 			}
-			*/
+
+			
 		}
 		
 		function logout()

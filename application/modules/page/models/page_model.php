@@ -1,7 +1,7 @@
 <?php
 
 	class Page_Model extends Model {
-		
+		var $tmppages;
 		function Page_model()
 		{
 			parent::Model();
