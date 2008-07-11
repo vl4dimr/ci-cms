@@ -175,7 +175,7 @@ ul.topnav li.login {
 /* --- [ Main navigation ] --- */
 
 ul#adminnav {
-	width: 100%;
+	float: left;
 	margin: 0;
 	padding: 0 0 0 1px;
 	list-style: none;
@@ -767,4 +767,18 @@ ul#nav li a:hover {
 p.tiny {
 	font-size: 0.8em;
 	color: #666666;
+}
+
+#langbar {
+float: right;
+}
+#langbar ul{
+}
+#langbar ul li {
+	
+	display: inline;
+}
+#langbar a.active {
+	border: 2px solid white;
+	
 }
