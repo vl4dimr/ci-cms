@@ -5,17 +5,16 @@ layout
 **/
 
 body	{
-/*background: #FFFFFF url("../images/bg.gif") repeat-y center;*/
-background-color: #AAAAAA;
-text-align: center;
-padding: 0;
-margin: 0;
-font-size: 12px;
+	background: #FFFFFF url("../images/body_bg.jpg") repeat-y center;
+	font: 0.90em Trebuchet MS, Geneva, Helvetica, Arial, sans-serif; 
+	text-align: center;
+	line-height: 150%;
+	padding: 0pt;
+	margin: 0pt;
 }
 
 *, * * {
-	font-family: "Trebuchet MS", "Bitstream Vera Sans", verdana, lucida, arial, helvetica, sans-serif;
-	font-size: 12px;
+	font-family: font: 0.90em Trebuchet MS, Geneva, Helvetica, Arial, sans-serif; 
 }
 
 
@@ -24,9 +23,6 @@ font-size: 12px;
 	width: 900px;
 	margin: 0px auto;
 	background-color: #FFFFFF;
-	border-color: #000000;
-	border-style: none solid;
-	border-width: 1px;
 }
 
 #header {

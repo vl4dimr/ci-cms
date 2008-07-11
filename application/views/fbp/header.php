@@ -16,13 +16,25 @@
 	<script src="<?=base_url()?>application/views/<?php echo $this->system->theme ?>/javascript/sitelib.js" type="text/javascript"></script>
 	<script src="<?=base_url()?>application/views/<?php echo $this->system->theme ?>/javascript/external.js" type="text/javascript"></script>
 	<script src="<?=base_url()?>application/views/<?php echo $this->system->theme ?>/javascript/superfish.js" type="text/javascript"></script>
-	<script type="text/javascript">
-	$(document).ready(function(){
-	$("ul.nav").superfish({
-		animation : { opacity:"show", height:"show" }
-	});
-	});
-	</script>
+
+ 
+
+<script type="text/javascript" src="<?=base_url()?>application/views/<?php echo $this->system->theme ?>/javascript/jquery.hoverIntent.minified.js"></script> 
+<script type="text/javascript" src="<?=base_url()?>application/views/<?php echo $this->system->theme ?>/javascript/supersubs.js"></script> 
+<script type="text/javascript"> 
+ 
+    $(document).ready(function(){ 
+        $("ul.nav").supersubs({ 
+            minWidth:    12,   // minimum width of sub-menus in em units 
+            maxWidth:    27,   // maximum width of sub-menus in em units 
+            extraWidth:  1     // extra width can ensure lines don't sometimes turn over 
+                               // due to slight rounding differences and font-family 
+        }).superfish();  // call supersubs first, then superfish, so that subs are 
+                         // not display:none when measuring. Call before initialising 
+                         // containing tabs for same reason. 
+    }); 
+ 
+</script>
 </head>
 
 <body>
@@ -30,7 +42,12 @@
 <div id="wrapper" align="center">
 		<div id="header">
 			<div id="headerimage">
-			<a href="<?=base_url()?>"></a>
+			<a href="<?=base_url()?>">
+<object height="150" align="middle" width="578" id="dewslider" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000">
+<param value="sameDomain" name="allowScriptAccess"/>
+<param value="<?=base_url()?>application/views/<?php echo $this->system->theme ?>/images/dewslider.swf?xml=slider.xml" name="movie"/><param value="high" name="quality"/><param value="#ffffff" name="bgcolor"/><embed height="150" align="middle" width="578" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" allowscriptaccess="sameDomain" name="dewslider" bgcolor="#ffffff" quality="high" src="<?=base_url()?>application/views/<?php echo $this->system->theme ?>/images/dewslider.swf?xml=application/views/<?php echo $this->system->theme ?>/images/slider.xml"/>
+</object>			
+			</a>
 			</div>
 			<div id="logo">
 			<a href="<?=base_url()?>"></a>
