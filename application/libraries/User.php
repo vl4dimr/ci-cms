@@ -50,8 +50,8 @@
 					foreach($rows as $val) {
 						$admin[ $val['module'] ] = $val['level'];
 					}
+					$this->level = $admin;
 				}
-				$this->level = $admin;
 			}
 			else
 			{
@@ -118,8 +118,7 @@
 		
 		function login($username, $password)
 		{
-
-		
+			
 			$query = $this->obj->db->get($this->table, 1);
 			
 			if ($query->num_rows() == 0)
@@ -163,7 +162,6 @@
 				
 				return false;
 			}
-
 			
 		}
 		
