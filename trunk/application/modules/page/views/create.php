@@ -24,8 +24,8 @@ function change_parent() {
 
 <h1 id="edit"><?=__("Create New Page")?></h1>
 
-<form class="edit" action="<?=site_url('admin/page/create')?>" method="post" accept-charset="utf-8">
-		
+<form  enctype="multipart/form-data" class="edit" action="<?=site_url('admin/page/create')?>" method="post" accept-charset="utf-8">
+		<input type="hidden" name="lang" value="<?php echo $this->lang ?>" />
 		<ul>
 			<li><input type="submit" name="submit" value="Save page" class="input-submit" /></li>
 			<li><a href="<?=site_url('admin/page')?>" class="input-submit last">Cancel</a></li>

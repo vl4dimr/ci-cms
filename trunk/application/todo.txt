@@ -4,7 +4,7 @@
 
 == Todo ==
 
-- Check all admin level in all modules
+
 - Group core module (including all/registered) or inside member core module?
 - Check all module with group access
 - File image upload in page
@@ -15,6 +15,9 @@
 
 
 == Done ==
+
+8.42 13/07/2008
+- Check all admin level in all modules
 
 8.57 06/07/2008
 

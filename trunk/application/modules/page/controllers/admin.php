@@ -8,7 +8,7 @@
 			
 			$this->load->library('administration');
 			$this->lang = $this->session->userdata('lang');
-			
+
 			$this->template['module']	= 'page';
 			$this->template['admin']		= true;
 			
@@ -18,7 +18,7 @@
 			
 		}
 		
-		function index()
+		function index($start)
 		{
 			$this->user->check_level($this->template['module'], LEVEL_VIEW);
 			if ( !$data = $this->cache->get('pagelist'.$this->lang, 'page') )
@@ -28,7 +28,17 @@
 			}
 			
 			$this->template['pages'] = $data;
-				
+			
+			
+			$this->load->library('pagination');
+
+			$config['base_url'] = base_url() . 'admin/page/index/';
+			$config['total_rows'] = $this->pages->get_total();
+			$config['per_page'] = '20'; 
+
+			$this->pagination->initialize($config); 
+
+			$this->template['pager'] = $this->pagination->create_links();
 			$this->layout->load($this->template, 'admin');
 			
 		}
@@ -64,25 +74,31 @@
 			{
 				$data = array(
 							'title'				=> $this->input->post('title'),
-							'parent_id'		=> $this->input->post('parent_id'),
+							'parent_id'			=> $this->input->post('parent_id'),
 							'uri'				=> $this->input->post('uri'),
 							'meta_keywords'		=> $this->input->post('meta_keywords'),
 							'meta_description'	=> $this->input->post('meta_description'),
 							'body'				=> $this->input->post('body'),
-							'active'			=> $this->input->post('status')
+							'active'			=> $this->input->post('status'),
+							'lang'				=> $this->input->post('lang')
 						);
 						
 				$this->db->insert('pages', $data);
+				$id = $this->db->insert_id();
 				$this->cache->remove('pagelist'.$this->lang, 'page');
-				if ($this->input->post('image'))
+
+				
+				if (isset($_FILES['image']))
 				{
+					//var_dump($this->input->post('image'));
 					//there is an image attached
-					$config['upload_path'] = BASEPATH.'images/';
+					$config['upload_path'] = './images/o/';
 					$config['allowed_types'] = 'gif|jpg|png';
-					$config['max_size']	= '100';
+					$config['max_size']	= '500';
 					$config['max_width']  = '1024';
 					$config['max_height']  = '768';
 					
+					//var_dump($config['upload_path']);
 					$this->load->library('upload', $config);
 				
 					if ( ! $this->upload->do_upload('image'))
@@ -93,19 +109,38 @@
 					}	
 					else
 					{
-						/*
-						$config['image_library'] = 'gd2';
-						$config['source_image'] = '/path/to/image/mypic.jpg';
-						$config['create_thumb'] = TRUE;
-						$config['maintain_ratio'] = TRUE;
-						$config['width'] = 75;
-						$config['height'] = 50;
-
-						$this->load->library('image_lib', $config);
-
-						$this->image_lib->resize();					
-						*/
+						$this->load->library('image_lib');
 						$image_data = $this->upload->data();
+						
+						//var_dump($image_data);
+						
+						//resize to 150
+						$config['source_image'] = $image_data['full_path'];
+						$config['new_image'] = './images/s/';
+						$config['width'] = 150;
+						$config['height'] = 100;
+						$config['maintain_ratio'] = true;
+						$config['master_dim'] = 'width';
+						$config['create_thumb'] = FALSE;
+						$this->image_lib->initialize($config);
+						if($this->image_lib->resize())
+						{						
+					
+						
+							$config['source_image'] = $image_data['full_path'];
+							$config['new_image'] = './images/m/';
+							$config['width'] = 300;
+							$config['height'] = 200;
+							$config['maintain_ratio'] = TRUE;
+							$config['master_dim'] = 'width';
+							$config['create_thumb'] = FALSE;
+							$this->image_lib->initialize($config);
+
+							$this->image_lib->resize();
+							
+							$this->pages->attach($id, $image_data);
+						
+						}
 						/*
 						[file_name]    => mypic.jpg
 						[file_type]    => image/jpeg
@@ -150,7 +185,8 @@
 							'meta_keywords'		=> $this->input->post('meta_keywords'),
 							'meta_description'	=> $this->input->post('meta_description'),
 							'body'				=> $this->input->post('body'),
-							'active'			=> $this->input->post('status')
+							'active'			=> $this->input->post('status'),
+							'lang'			=> $this->input->post('lang')
 						);
 					
 				$this->db->where('id', $this->input->post('id'));

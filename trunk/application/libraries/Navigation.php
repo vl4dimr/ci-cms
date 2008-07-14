@@ -28,7 +28,17 @@
 			return $nav;
 		}
 		*/
-		function get($parent = 0, $level = 0) {
+		function get()
+		{
+			if (!$data = $this->obj->cache->get('navigationarray'.$this->lang, 'navigation'))
+			{
+				$data = $this->_get();
+				$this->obj->cache->save('navigationarray'.$this->lang, $data, 'navigation',0 );
+			}
+			return $data;			
+		}
+		
+		function _get($parent = 0, $level = 0) {
 			// retrieve all children of $parent
 			$this->obj->db->where(array('parent_id' => $parent, 'lang' => $this->lang, 'active' => 1));
 			$this->obj->db->orderby('parent_id, weight');
@@ -47,7 +57,7 @@
 			);
 			// call this function again to display this
 			// child's children
-				$this->get($row['id'], $level+1);
+				$this->_get($row['id'], $level+1);
 			}
 			return $this->nav;
 		} 	
@@ -87,6 +97,17 @@
 			return $html;
 		}		
 		
+		function get_menu_array()
+		{
+			if (!$data = $this->obj->cache->get('navigationarray'.$this->lang, 'navigation'))
+			{
+				$data = $this->_get_menu_array();
+				$this->obj->cache->save('navigationarray'.$this->lang, $data, 'navigation',0 );
+			}
+			return $data;		
+		}
+		
+
 	}
 
 
