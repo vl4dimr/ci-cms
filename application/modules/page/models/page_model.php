@@ -10,6 +10,14 @@
 			$this->lang = $this->session->userdata('lang');
 		}
 		
+		function get_total()
+		{
+			$this->db->where('lang', $this->lang );
+			$this->db->from('pages');
+					
+			return $this->db->count_all_results();
+			
+		}
 		function get_tree ($parent = 0, $level = 0)
 		{
 			// retrieve all children of $parent
@@ -104,7 +112,14 @@
 			}
 			
 			return $pages;
-		}		
+		}
+
+		function attach($id, $image_data)
+		{
+			$data = array('src_id' => $id, 'module' => 'page', 'file' => $image_data['file_name']);
+			$this->db->insert('images', $data);
+			return $this->db->insert_id();
+		}
 	}
 
 

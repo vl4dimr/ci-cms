@@ -8,6 +8,7 @@
 			//$this->output->enable_profiler(true);
 			$this->template['module'] = "page";
 			$this->load->model('page_model', 'pages');
+			$this->lang = $this->session->userdata('lang');
 		}
 		
 		//all available blocks
@@ -37,7 +38,7 @@
 				$built_uri = $this->system->page_home;
 			}
 			
-			if ( $this->template['page'] = $this->pages->get_page($built_uri) )
+			if ( $this->template['page'] = $this->pages->get_page(array('uri' => $built_uri, 'lang' => $this->lang)) )
 			{
 				
 				$view = 'index';

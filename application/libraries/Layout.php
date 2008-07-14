@@ -33,7 +33,7 @@
 					{
 						if ($this->obj->input->post('redirect')) 
 						{
-							$this->obj->session->set_flashdata('redirect', $this->input->post('redirect'));
+							$this->obj->session->set_flashdata('redirect', $this->obj->input->post('redirect'));
 						}
 						
 					}			

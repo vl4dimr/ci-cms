@@ -266,3 +266,12 @@ CREATE TABLE IF NOT EXISTS ci_groups (
 
 INSERT INTO ci_groups (g_id, g_name, g_desc) VALUES ('0', 'Everybody', 'This is everybody who visits the site including non members');
 INSERT INTO ci_groups (g_id, g_name, g_desc) VALUES ('1', 'Members Only', 'This is everybody who is member of the site');
+
+CREATE TABLE IF NOT EXISTS `ci_images` (
+  `id` int(11) NOT NULL auto_increment,
+  `module` varchar(100) NOT NULL default '',
+  `file` varchar(255) NOT NULL default '',
+  `src_id` int(11) NOT NULL default '0',
+  `info` text NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM;
