@@ -20,6 +20,78 @@ function change_parent() {
 	selected = document.getElementById('parent').selectedIndex;
 	document.getElementById('pre_uri').innerHTML = '/'+document.getElementById('parent').options[selected].value;
 }
+
+$(document).ready(function(){
+	$("#image")
+	.after("<img src='<?php echo site_url('application/views/admin/images/ajax_circle.gif')?>' id='loading'/><input type='button' id='upload_now' value='  <?php echo __('Upload') ?>  ' />");
+	$("#loading").hide();
+	$("#upload_now").click(function(){
+		ajaxFileUpload();
+	});
+	handleDeleteImage();
+});
+
+function handleDeleteImage() {
+	$("a.ajaximage").click(function(){
+		if (confirm("Delete image?"))
+		{
+		deleteImage(this);
+		return false;
+		} else {
+		return false;
+		}
+	});
+}
+function deleteImage(obj) {
+	var id = obj.id
+	$.get('<?php echo site_url('admin/page/ajax_delete')?>',
+		{ id: id},
+		function(data){
+			alert(data);
+		}
+	);
+	$(obj).parent().hide();
+}
+
+function ajaxFileUpload() {
+	$("#upload_now").ajaxStart(function(){
+		$("img#loading").show();
+		$(this).hide();
+	})
+	.ajaxComplete(function(){
+		$("img#loading").hide();
+		$(this).show();
+	});
+
+		$.ajaxFileUpload
+		(
+			{
+				url:'<?php echo site_url('admin/page/ajax_upload')?>',
+				secureuri:false,
+				fileElementId:'image',
+				dataType: 'json',
+				success: function (data, status)
+				{
+					if(typeof(data.error) != 'undefined')
+					{
+						if(data.error != '')
+						{
+							alert(data.error);
+						}else
+						{
+							$("#image_list").append("<div><input type='hidden' name='image_ids[]' value='"+data.id+"' /><a href='#' onclick=\"tinyMCE.execCommand('mceInsertContent',false,'<a href=\\'images/o/"+data.image+"\\'><img border=0 hspace=10 src=\\'images/m/"+data.image+"\\'></a>');return false;\">"+data.image+"</a> - <a href='#'  class=\"ajaximage\" id='"+data.id+"' ><?php echo __('Delete image')?></a></div>\n");
+							handleDeleteImage();
+						}
+					}
+				},
+				error: function (data, status, e)
+				{
+					alert(e);
+				}
+			}
+		)
+		return false;
+}
 </script>
 
 <h1 id="edit"><?=__("Create New Page")?></h1>
@@ -72,9 +144,18 @@ function change_parent() {
 		
 		<label for="body">Page Content:</label>
 		<textarea name="body" class="input-textarea"></textarea><br />
+
+		<div id='image_list'>
+		<div style="visibility: hidden">Available images:</div>
+		<?php if (isset($images)) :?>
+		<?php foreach($images as $image): ?>
+		<div><a href='#' onclick="tinyMCE.execCommand('mceInsertContent',false,'<a href=\'images/o/<?php echo $image->file ?>\'><img border='\0\' hspace=\'10\' src=\'images/m/<?php echo $image->file ?>\' /></a>');return false;"><?php echo $image->file ?></a> - <a href="<?php echo site_url('admin/page/removeimg/' . $image['id']) ?>" class="ajaxdelete" id="<?php echo $image['id'] ?>"><?php echo __("Delete image") ?></a></div>
+		<?php endforeach; ?>
+		<?php endif;?>
+		</div>
 		
 		<label for="image"><?=__("Image")?></label>
-		<input type="file" name="image" class="input-file" /><br />
+		<input type="file" name="image" class="input-file" id="image"/><br />
 		</div>
 		<div id="two">
 		
