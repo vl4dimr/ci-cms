@@ -16,7 +16,10 @@
 		
 		function index()
 		{
-			$this->user->check_level($this->template['module'], LEVEL_VIEW);
+			if (!isset($this->user->level) ||  $this->user->level == 0)
+			{
+				redirect('admin/unauthorized/admin/1');
+			}
 			$this->load->library('simplepie');
 			$this->simplepie->set_feed_url('http://ci-cms.blogspot.com/feeds/posts/default/-/news');
 			$this->simplepie->set_cache_location(APPPATH.'cache/rss');
@@ -82,7 +85,7 @@
 		
 		function navigation($action = null)
 		{
-			$this->user->check_level($this->template['module'], LEVEL_VIEW);
+			$this->user->check_level('page', LEVEL_VIEW);
 			switch ($action) 
 			{
 				case 'move':

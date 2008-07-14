@@ -18,8 +18,9 @@
 			
 		}
 		
-		function index($start)
+		function index($start = 0)
 		{
+			$per_page = 20;
 			$this->user->check_level($this->template['module'], LEVEL_VIEW);
 			if ( !$data = $this->cache->get('pagelist'.$this->lang, 'page') )
 			{
@@ -27,14 +28,17 @@
 				$this->cache->save('pagelist'.$this->lang, $data, 'page', 0);
 			}
 			
-			$this->template['pages'] = $data;
+			$this->template['pages'] = array_slice($data, $start, $per_page);
 			
 			
 			$this->load->library('pagination');
-
-			$config['base_url'] = base_url() . 'admin/page/index/';
-			$config['total_rows'] = $this->pages->get_total();
-			$config['per_page'] = '20'; 
+			
+			$config['uri_segment'] = 4;
+			$config['first_link'] = __('First');
+			$config['last_link'] = __('Last');
+			$config['base_url'] = base_url() . 'admin/page/index';
+			$config['total_rows'] = count($data);
+			$config['per_page'] = $per_page; 
 
 			$this->pagination->initialize($config); 
 
@@ -88,8 +92,9 @@
 				$this->cache->remove('pagelist'.$this->lang, 'page');
 
 				
-				if (isset($_FILES['image']))
+				if ($_FILES['image']['name'] != '')
 				{
+
 					//var_dump($this->input->post('image'));
 					//there is an image attached
 					$config['upload_path'] = './images/o/';
@@ -167,6 +172,7 @@
 			}
 			else
 			{
+				$this->javascripts->add('ajaxfileupload.js');
 				
 				$this->layout->load($this->template, 'create');
 			}
@@ -227,6 +233,106 @@
 				
 				$this->layout->load($this->template, 'delete');
 			}
+		}
+		
+		function ajax_delete()
+		{
+			echo "ok";
+		}
+		
+		function ajax_upload()
+		{
+			$image_data = array();
+			if(!empty($_FILES['image']['error']))
+			{
+				switch($_FILES['image']['error'])
+				{
+
+					case '1':
+						$error = __('The uploaded file exceeds the upload_max_filesize directive in php.ini');
+						break;
+					case '2':
+						$error = __('The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form');
+						break;
+					case '3':
+						$error = __('The uploaded file was only partially uploaded');
+						break;
+					case '4':
+						$error = __('No file was uploaded.');
+						break;
+
+					case '6':
+						$error = __('Missing a temporary folder');
+						break;
+					case '7':
+						$error = __('Failed to write file to disk');
+						break;
+					case '8':
+						$error = __('File upload stopped by extension');
+						break;
+					case '999':
+					default:
+						$error = __('No error code avaiable');
+				}
+			}
+			elseif(empty($_FILES['image']['tmp_name']) || $_FILES['image']['tmp_name'] == 'none')
+			{
+				$error = __('No file was uploaded..');
+			}
+			else 
+			{
+
+				$this->load->library('image_lib');
+				$config['upload_path'] = dirname(FCPATH) . '/images/o/';
+				$config['allowed_types'] = 'gif|jpg|png';
+				$config['max_size']	= '500';
+				$config['max_width']  = '1024';
+				$config['max_height']  = '768';
+				
+				//var_dump($config['upload_path']);
+				$this->load->library('upload', $config);			
+			
+
+				$image_data = $this->upload->data();
+				
+				var_dump($image_data);
+				
+				//resize to 150
+				$config['source_image'] = $image_data['full_path'];
+				$config['new_image'] = dirname(FCPATH) . '/images/s/';
+				$config['width'] = 150;
+				$config['height'] = 100;
+				$config['maintain_ratio'] = true;
+				$config['master_dim'] = 'width';
+				$config['create_thumb'] = FALSE;
+				$this->image_lib->initialize($config);
+				$id = '';
+				
+				if($this->image_lib->resize())
+				{						
+			
+				
+					$config['source_image'] = $image_data['full_path'];
+					$config['new_image'] = dirname(FCPATH) . '/images/m/';
+					$config['width'] = 300;
+					$config['height'] = 200;
+					$config['maintain_ratio'] = TRUE;
+					$config['master_dim'] = 'width';
+					$config['create_thumb'] = FALSE;
+					$this->image_lib->initialize($config);
+
+					$this->image_lib->resize();
+					$data = array('file' => $image_data['file_path'], 'module' => 'page');
+					$this->db->insert('images', $data);
+					$id = $this->db->insert_id();
+				}
+	
+			}
+			echo "{";
+			echo "error: '" . $error . "'";
+			echo ",\n image: '" . (isset($image_data['file_name']) ? $image_data['file_name'] : '') . "'";
+			echo ",\n id: '" . (isset($id) ? $id : '')  . "'";
+			echo "\n}";	
 		}
 		
 	}

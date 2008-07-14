@@ -242,6 +242,7 @@ INSERT INTO `ci_admins` VALUES (3, 'admin', 'page', 4);
 INSERT INTO `ci_admins` VALUES (4, 'admin', 'language', 4);
 INSERT INTO `ci_admins` VALUES (5, 'admin', 'member', 4);
 
+DROP TABLE IF EXISTS `ci_group_members`;
 CREATE TABLE IF NOT EXISTS ci_group_members (
   id int(11) NOT NULL auto_increment,
   g_user varchar(255) NOT NULL default '',
@@ -253,6 +254,7 @@ CREATE TABLE IF NOT EXISTS ci_group_members (
   KEY g_user (g_user,g_id)
 ) TYPE=MyISAM;
 
+DROP TABLE IF EXISTS `ci_groups`;
 CREATE TABLE IF NOT EXISTS ci_groups (
   id int(11) NOT NULL auto_increment,
   g_id varchar(20) NOT NULL default '',
