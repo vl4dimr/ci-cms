@@ -63,34 +63,35 @@ function ajaxFileUpload() {
 		$(this).show();
 	});
 
-		$.ajaxFileUpload
-		(
+	$.ajaxFileUpload
+	(
+		{
+			url:'<?php echo site_url('admin/page/ajax_upload')?>',
+			secureuri:false,
+			fileElementId: 'image',
+			dataType: 'json',
+			success: function (data, status)
 			{
-				url:'<?php echo site_url('admin/page/ajax_upload')?>',
-				secureuri:false,
-				fileElementId:'image',
-				dataType: 'json',
-				success: function (data, status)
+				if(typeof(data.error) != 'undefined')
 				{
-					if(typeof(data.error) != 'undefined')
+					if(data.error != '')
 					{
-						if(data.error != '')
-						{
-							alert(data.error);
-						}else
-						{
-							$("#image_list").append("<div><input type='hidden' name='image_ids[]' value='"+data.id+"' /><a href='#' onclick=\"tinyMCE.execCommand('mceInsertContent',false,'<a href=\\'images/o/"+data.image+"\\'><img border=0 hspace=10 src=\\'images/m/"+data.image+"\\'></a>');return false;\">"+data.image+"</a> - <a href='#'  class=\"ajaximage\" id='"+data.id+"' ><?php echo __('Delete image')?></a></div>\n");
-							handleDeleteImage();
-						}
+						alert(data.error);
+					}else
+					{
+						$("#image_list").append("<div><input type='hidden' name='image_ids[]' value='"+data.imageid+"' /><a href='#' onclick=\"tinyMCE.execCommand('mceInsertContent',false,'<a href=\\'images/o/"+data.image+"\\'><img border=0 hspace=10 src=\\'images/m/"+data.image+"\\'></a>');return false;\">"+data.image+"</a> - <a href='#'  class=\"ajaximage\" id='image"+data.imageid+"' ><?php echo __('Delete image')?></a></div>\n");
+						handleDeleteImage();
+						
 					}
-				},
-				error: function (data, status, e)
-				{
-					alert(e);
 				}
+			},
+			error: function (data, status, e)
+			{
+				alert(e);
 			}
-		)
-		return false;
+		}
+	)
+	return false;
 }
 </script>
 
@@ -149,7 +150,7 @@ function ajaxFileUpload() {
 		<div style="visibility: hidden">Available images:</div>
 		<?php if (isset($images)) :?>
 		<?php foreach($images as $image): ?>
-		<div><a href='#' onclick="tinyMCE.execCommand('mceInsertContent',false,'<a href=\'images/o/<?php echo $image->file ?>\'><img border='\0\' hspace=\'10\' src=\'images/m/<?php echo $image->file ?>\' /></a>');return false;"><?php echo $image->file ?></a> - <a href="<?php echo site_url('admin/page/removeimg/' . $image['id']) ?>" class="ajaxdelete" id="<?php echo $image['id'] ?>"><?php echo __("Delete image") ?></a></div>
+		<div><a href='#' onclick="tinyMCE.execCommand('mceInsertContent',false,'<a href=\'images/o/<?php echo $image->file ?>\'><img border='\0\' hspace=\'10\' src=\'images/m/<?php echo $image->file ?>\' /></a>');return false;"><?php echo $image->file ?></a> - <a href="<?php echo site_url('admin/page/removeimg/' . $image['id']) ?>" class="ajaximage" id="<?php echo $image['id'] ?>"><?php echo __("Delete image") ?></a></div>
 		<?php endforeach; ?>
 		<?php endif;?>
 		</div>

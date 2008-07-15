@@ -281,39 +281,43 @@
 			}
 			else 
 			{
-
-				$this->load->library('image_lib');
-				$config['upload_path'] = dirname(FCPATH) . '/images/o/';
+			
+			
+				$config['upload_path'] = './images/o/';
 				$config['allowed_types'] = 'gif|jpg|png';
 				$config['max_size']	= '500';
 				$config['max_width']  = '1024';
 				$config['max_height']  = '768';
 				
 				//var_dump($config['upload_path']);
-				$this->load->library('upload', $config);			
+				$this->load->library('upload', $config);	
+				
+				$this->upload->do_upload('image');
 			
 
 				$image_data = $this->upload->data();
 				
-				var_dump($image_data);
-				
+
+				$config = array();
 				//resize to 150
 				$config['source_image'] = $image_data['full_path'];
-				$config['new_image'] = dirname(FCPATH) . '/images/s/';
+				$config['new_image'] = './images/s/';
 				$config['width'] = 150;
 				$config['height'] = 100;
 				$config['maintain_ratio'] = true;
 				$config['master_dim'] = 'width';
 				$config['create_thumb'] = FALSE;
+				
+				$this->load->library('image_lib');
 				$this->image_lib->initialize($config);
 				$id = '';
 				
 				if($this->image_lib->resize())
 				{						
 			
-				
+					$config = array();
 					$config['source_image'] = $image_data['full_path'];
-					$config['new_image'] = dirname(FCPATH) . '/images/m/';
+					$config['new_image'] = './images/m/';
 					$config['width'] = 300;
 					$config['height'] = 200;
 					$config['maintain_ratio'] = TRUE;
@@ -329,9 +333,10 @@
 	
 			}
 			echo "{";
-			echo "error: '" . $error . "'";
+			echo "error: 'errer" . $error . "'";
+			//echo "error: 'error is " . $image_data['file_name'] . "'";
 			echo ",\n image: '" . (isset($image_data['file_name']) ? $image_data['file_name'] : '') . "'";
-			echo ",\n id: '" . (isset($id) ? $id : '')  . "'";
+			echo ",\n imageid: " . (isset($id) ? $id : 5)  . "";
 			echo "\n}";	
 		}
 		
