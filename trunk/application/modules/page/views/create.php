@@ -32,7 +32,7 @@ $(document).ready(function(){
 });
 
 function handleDeleteImage() {
-	$("a.ajaximage").click(function(){
+	$("a.ajaxdelete").click(function(){
 		if (confirm("Delete image?"))
 		{
 		deleteImage(this);
@@ -44,7 +44,7 @@ function handleDeleteImage() {
 }
 function deleteImage(obj) {
 	var id = obj.id
-	$.get('<?php echo site_url('admin/page/ajax_delete')?>',
+	$.post('<?php echo site_url('admin/page/ajax_delete')?>',
 		{ id: id},
 		function(data){
 			alert(data);
@@ -54,7 +54,8 @@ function deleteImage(obj) {
 }
 
 function ajaxFileUpload() {
-	$("#upload_now").ajaxStart(function(){
+	$("#upload_now")
+	.ajaxStart(function(){
 		$("img#loading").show();
 		$(this).hide();
 	})
@@ -79,7 +80,8 @@ function ajaxFileUpload() {
 						alert(data.error);
 					}else
 					{
-						$("#image_list").append("<div><input type='hidden' name='image_ids[]' value='"+data.imageid+"' /><a href='#' onclick=\"tinyMCE.execCommand('mceInsertContent',false,'<a href=\\'images/o/"+data.image+"\\'><img border=0 hspace=10 src=\\'images/m/"+data.image+"\\'></a>');return false;\">"+data.image+"</a> - <a href='#'  class=\"ajaximage\" id='image"+data.imageid+"' ><?php echo __('Delete image')?></a></div>\n");
+						$("#image_list").append("<div><input type='hidden' name='image_ids[]' value='"+data.imageid+"' /><a href='#' onclick=\"tinyMCE.execCommand('mceInsertContent',false,'<a href=\\'<?php echo site_url('images/o') ?>/"+data.image+"\\'><img border=0 align=left hspace=10 src=\\'<?php echo site_url('images/m') ?>/"+data.image+"\\'></a>');return false;\">"+data.image+"</a> - <a href='#'  class=\"ajaxdelete\" id='image"+data.imageid+"' ><?php echo __('Delete image')?></a></div>\n");
+						$("#image").val("");
 						handleDeleteImage();
 						
 					}
@@ -140,7 +142,7 @@ function ajaxFileUpload() {
 		<label for="status">Status:</label>
 		<select name="status" id="status" class="input-select">
 			<option value="0">Draft</option>
-			<option value="1">Published</option>
+			<option value="1" selected>Published</option>
 		</select><br />
 		
 		<label for="body">Page Content:</label>
@@ -148,9 +150,9 @@ function ajaxFileUpload() {
 
 		<div id='image_list'>
 		<div style="visibility: hidden">Available images:</div>
-		<?php if (isset($images)) :?>
+		<?php if ($images) : ?>
 		<?php foreach($images as $image): ?>
-		<div><a href='#' onclick="tinyMCE.execCommand('mceInsertContent',false,'<a href=\'images/o/<?php echo $image->file ?>\'><img border='\0\' hspace=\'10\' src=\'images/m/<?php echo $image->file ?>\' /></a>');return false;"><?php echo $image->file ?></a> - <a href="<?php echo site_url('admin/page/removeimg/' . $image['id']) ?>" class="ajaximage" id="<?php echo $image['id'] ?>"><?php echo __("Delete image") ?></a></div>
+		<div><input type='hidden' name='image_ids[]' value='<?php echo $image['id'] ?>' /><a href='#' onclick="tinyMCE.execCommand('mceInsertContent',false,'<a href=\'<?php echo site_url('images/o')?>/<?php echo $image['file'] ?>\'><img border=\'0\' align=\'left\' hspace=\'10\' src=\'<?php echo site_url('images/m')?>/<?php echo $image['file'] ?>\' /></a>');return false;"><?php echo $image['file'] ?></a> - <a href="<?php echo site_url('admin/page/removeimg/' . $image['id']) ?>" class="ajaxdelete" id="<?php echo $image['id'] ?>"><?php echo __("Delete image") ?></a></div>
 		<?php endforeach; ?>
 		<?php endif;?>
 		</div>
