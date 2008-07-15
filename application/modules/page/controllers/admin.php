@@ -86,9 +86,19 @@
 							'active'			=> $this->input->post('status'),
 							'lang'				=> $this->input->post('lang')
 						);
-						
+				
 				$this->db->insert('pages', $data);
 				$id = $this->db->insert_id();
+				
+				if ($image_ids = $this->input->post('image_ids'))
+				{
+					foreach($image_ids as $image_id)
+					{
+						$this->db->set('src_id', $id);
+						$this->db->where('id', $image_id);
+						$this->db->update('images');
+					}	
+				}
 				$this->cache->remove('pagelist'.$this->lang, 'page');
 
 				
@@ -173,7 +183,11 @@
 			else
 			{
 				$this->javascripts->add('ajaxfileupload.js');
+				//get pending images
+				$this->db->where('src_id', 0);
+				$query = $this->db->get('images');
 				
+				$this->template['images'] = $query->result_array();
 				$this->layout->load($this->template, 'create');
 			}
 		}
@@ -199,7 +213,103 @@
 				$this->db->update('pages', $data);
 				$this->cache->remove('pagelist'.$this->lang, 'page');				
 				
+				
+				
+			
+				if ($image_ids = $this->input->post('image_ids'))
+				{
+					foreach($image_ids as $image_id)
+					{
+						$this->db->set('src_id', $id);
+						$this->db->where('id', $image_id);
+						$this->db->update('images');
+					}	
+				}
+				$this->cache->remove('pagelist'.$this->lang, 'page');
+
+				
+				if ($_FILES['image']['name'] != '')
+				{
+
+					//var_dump($this->input->post('image'));
+					//there is an image attached
+					$config['upload_path'] = './images/o/';
+					$config['allowed_types'] = 'gif|jpg|png';
+					$config['max_size']	= '500';
+					$config['max_width']  = '1024';
+					$config['max_height']  = '768';
+					
+					//var_dump($config['upload_path']);
+					$this->load->library('upload', $config);
+				
+					if ( ! $this->upload->do_upload('image'))
+					{
+						$error = array('error' => $this->upload->display_errors());
+						
+						$this->load->view('upload_form', $error);
+					}	
+					else
+					{
+						$this->load->library('image_lib');
+						$image_data = $this->upload->data();
+						
+						//var_dump($image_data);
+						
+						//resize to 150
+						$config['source_image'] = $image_data['full_path'];
+						$config['new_image'] = './images/s/';
+						$config['width'] = 150;
+						$config['height'] = 100;
+						$config['maintain_ratio'] = true;
+						$config['master_dim'] = 'width';
+						$config['create_thumb'] = FALSE;
+						$this->image_lib->initialize($config);
+						if($this->image_lib->resize())
+						{						
+					
+						
+							$config['source_image'] = $image_data['full_path'];
+							$config['new_image'] = './images/m/';
+							$config['width'] = 300;
+							$config['height'] = 200;
+							$config['maintain_ratio'] = TRUE;
+							$config['master_dim'] = 'width';
+							$config['create_thumb'] = FALSE;
+							$this->image_lib->initialize($config);
+
+							$this->image_lib->resize();
+							
+							$this->pages->attach($this->input->post('id'), $image_data);
+						
+						}
+						/*
+						[file_name]    => mypic.jpg
+						[file_type]    => image/jpeg
+						[file_path]    => /path/to/your/upload/
+						[full_path]    => /path/to/your/upload/jpg.jpg
+						[raw_name]     => mypic
+						[orig_name]    => mypic.jpg
+						[file_ext]     => .jpg
+						[file_size]    => 22.2
+						[is_image]     => 1
+						[image_width]  => 800
+						[image_height] => 600
+						[image_type]   => jpeg
+						[image_size_str] => width="800" height="200"
+						*/
+						
+						
+					}				
+				}	
+				
+				
+				
+				
+				
+				
 				$this->session->set_flashdata('notification', 'Page "'.$this->input->post("title").'" has been saved ...');
+				
+				
 				
 				redirect('admin/page');
 			}
@@ -210,6 +320,11 @@
 				$this->cache->save('pagelist'.$this->lang, $data, 'page', 0);
 			}			
 			$this->template['pages'] = $data;
+			$this->db->where('src_id', 0);
+			$this->db->or_where('src_id', $this->page_id);
+			$query = $this->db->get('images');
+			
+			$this->template['images'] = $query->result_array();
 			
 			$this->template['page'] = $this->pages->get_page( array('id' => $this->page_id) );
 			$this->layout->load($this->template, 'edit');
@@ -222,6 +337,10 @@
 			{
 				$this->db->where('id', $this->input->post('id'));
 				$query = $this->db->delete('pages');
+				
+				$this->db->where('src_id', $this->input->post('id'));
+				$this->db->set('src_id', 0);
+				$query = $this->db->update('images');
 				
 				$this->session->set_flashdata('notification', 'Page has been deleted.');
 				$this->cache->remove('pagelist'.$this->lang, 'page'); 
@@ -237,12 +356,15 @@
 		
 		function ajax_delete()
 		{
-			echo "ok";
+			$this->db->where('id', $this->input->post('id'));
+			$this->db->delete('images');
+			echo __("The image was deleted");
 		}
 		
 		function ajax_upload()
 		{
 			$image_data = array();
+			$error = "";
 			if(!empty($_FILES['image']['error']))
 			{
 				switch($_FILES['image']['error'])
@@ -326,14 +448,15 @@
 					$this->image_lib->initialize($config);
 
 					$this->image_lib->resize();
-					$data = array('file' => $image_data['file_path'], 'module' => 'page');
+					$data = array('file' => $image_data['file_name'], 'module' => 'page');
 					$this->db->insert('images', $data);
 					$id = $this->db->insert_id();
+					
 				}
 	
 			}
 			echo "{";
-			echo "error: 'errer" . $error . "'";
+			echo "error: '" . $error . "'";
 			//echo "error: 'error is " . $image_data['file_name'] . "'";
 			echo ",\n image: '" . (isset($image_data['file_name']) ? $image_data['file_name'] : '') . "'";
 			echo ",\n imageid: " . (isset($id) ? $id : 5)  . "";
