@@ -220,7 +220,7 @@
 				{
 					foreach($image_ids as $image_id)
 					{
-						$this->db->set('src_id', $id);
+						$this->db->set('src_id', $this->input->post('id'));
 						$this->db->where('id', $image_id);
 						$this->db->update('images');
 					}	
@@ -319,6 +319,7 @@
 				$data = $this->pages->list_pages();
 				$this->cache->save('pagelist'.$this->lang, $data, 'page', 0);
 			}			
+			$this->javascripts->add('ajaxfileupload.js');
 			$this->template['pages'] = $data;
 			$this->db->where('src_id', 0);
 			$this->db->or_where('src_id', $this->page_id);

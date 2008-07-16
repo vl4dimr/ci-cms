@@ -1,5 +1,8 @@
 == BUG ==
 
+- Page ordering needed for subpages
+- Member details in memberlist
+
 
 
 == Todo ==
