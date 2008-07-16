@@ -31,9 +31,9 @@
 		<dl>
 			<dt>Currently running:</dt>
 			<dd class="bold">CI-CMS <?= $this->system->version ?></dd>
-<?php if ( $this->system->version < $this->administration->latest_version ): ?>
+<?php if ( $this->system->version < $this->latest_version ): ?>
 			<dt>Latest version:</dt>
-			<dd class="red">CI CMS <?=$this->administration->latest_version?></dd>
+			<dd class="red">CI CMS <?=$this->latest_version?></dd>
 			<dt>Get new version:</dt>
 			<dd class="bold"><a href="http://ci-cms.blogspot.com/" rel="external">Upgrade Now!</a></dd>
 <?php endif;?>
