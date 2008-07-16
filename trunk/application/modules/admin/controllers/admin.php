@@ -10,7 +10,7 @@
 			
 			$this->load->library('administration');
 			$this->lang = $this->session->userdata('lang');
-			
+			$this->check_latest_version();
 			$this->template['module'] = "admin";
 		}
 		
@@ -29,6 +29,23 @@
 			$this->template['blaze_news'] = $this->simplepie->get_items();
 			
 			$this->layout->load($this->template, 'index');
+		}
+
+		function check_latest_version()
+		{
+
+			if(!($data = $this->cache->get('latest_version', 'dashboard')))
+			{
+				
+				ini_set('default_socket_timeout', 1);
+				$data = @file_get_contents("http://ci-cms.googlecode.com/svn/trunk/application/version.txt");
+				if (!$data) $data = $this->system->version;
+				$this->cache->save('latest_version', $data, 'dashboard', 86400);
+
+			}
+		
+			$this->latest_version = $data;
+			
 		}
 		
 		function unauthorized($module, $level)
