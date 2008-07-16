@@ -100,3 +100,31 @@ Let's say your module is called _example_
                  |__ setup.xml
 
 }}}
+
+=== 3. Blocks ===
+In the file modulename_blocks.php you can add functions to set blocks that may be used in template files.
+
+The page_blocks.php in the page module is like this
+
+{{{
+$this->set('page_latest_pages', 'page_latest_pages');
+		
+function page_latest_pages($limit = 5)
+{
+	$this->obj =& get_instance();
+	
+	$this->obj->load->model('page_model');
+	$data['pages'] = $this->obj->page_model->new_pages($limit);
+	echo $this->obj->load->view('partials/newpages', $data, true);
+}
+
+}}}
+
+The *$this->set('block_name', 'function_callback')* will set the block name and return or echoes the function callback when called in template.
+
+Here, for example, to get the 10 latest pages in the templates, you should add 
+
+{{{$this->blocks->get('page_latest_pages', 10)}}}
+
+=== 4. Plugins ===
+Plugins will be used to hook the core. There will be some events that you can interact with.
