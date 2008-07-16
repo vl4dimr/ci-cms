@@ -189,12 +189,7 @@ CREATE TABLE `ci_users` (
   KEY `status` (`status`)
 ) ENGINE=MyISAM;
 
--- 
--- Dump dei dati per la tabella `ci_users`
--- 
-
-INSERT INTO `ci_users` VALUES (1, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'admin@your-site.tld', 'active', 0, 1213847506);
-       
+     
 
 -- 
 -- Struttura della tabella `ci_modules`
@@ -236,11 +231,6 @@ CREATE TABLE `ci_admins` (
   KEY `username` (`username`)
 ) ENGINE=MyISAM ;
 
-INSERT INTO `ci_admins` VALUES (1, 'admin', 'admin', 4);
-INSERT INTO `ci_admins` VALUES (2, 'admin', 'module', 4);
-INSERT INTO `ci_admins` VALUES (3, 'admin', 'page', 4);
-INSERT INTO `ci_admins` VALUES (4, 'admin', 'language', 4);
-INSERT INTO `ci_admins` VALUES (5, 'admin', 'member', 4);
 
 DROP TABLE IF EXISTS `ci_group_members`;
 CREATE TABLE IF NOT EXISTS ci_group_members (

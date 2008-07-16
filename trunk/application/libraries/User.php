@@ -42,9 +42,17 @@
 		{
 			if ($this->logged_in)
 			{
+			
+				$query = $this->obj->db->get('admins', 1);
+				
+				if ($query->num_rows() == 0)
+				{
+					$this->obj->db->insert('admins', array('username' => $this->username, 'module' => 'admin', 'level' => 4));
+				}
+			
 				$this->obj->db->where('username', $this->username);
 				$query = $this->obj->db->get('admins');
-				
+				$admin = array();
 				if ($rows = $query->result_array())
 				{
 					foreach($rows as $val) {
@@ -61,6 +69,8 @@
 		
 		function check_level($module, $level)
 		{
+		
+			
 			if ( $this->obj->user->level[$module] < $level)
 			{
 		
