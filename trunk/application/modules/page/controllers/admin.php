@@ -20,6 +20,18 @@
 		
 		function index($start = 0)
 		{
+		
+			if (!is_writable  ('./images'))
+			{
+			$this->template['notice'] = __("The <i>images</i> directory is not writable. Please fix it'");
+			}
+			elseif (!is_dir('./images/o'))
+			{
+				@mkdir('./images/o');
+				@mkdir('./images/s');
+				@mkdir('./images/m');
+			}
+			
 			$per_page = 20;
 			$this->user->check_level($this->template['module'], LEVEL_VIEW);
 			if ( !$data = $this->cache->get('pagelist'.$this->lang, 'page') )
