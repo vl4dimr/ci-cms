@@ -95,8 +95,8 @@ Let's say your module is called _example_
                  |       |__ admin.php (backend view) 
                  |       |__ index.php (backend view)
                  |
-                 |__ example_partials.php
-                 |__ example_partials_available.php
+                 |__ example_plugins.php
+                 |__ example_blocks.php
                  |__ setup.xml
 
 }}}
