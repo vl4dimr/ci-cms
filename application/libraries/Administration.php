@@ -7,8 +7,6 @@
 			$this->obj =& get_instance();
 			$this->obj->load->helper('dashboard');	
 			$this->find_modules();
-			$this->check_latest_version();
-			
 			
 			if ( !$this->obj->user->logged_in && $this->obj->uri->segment(2) != 'login' )
 			{
@@ -28,22 +26,7 @@
 			$this->modules = $query->result_array();
 		}
 		
-		function check_latest_version()
-		{
 
-			if(!($data = $this->obj->cache->get('latest_version', 'dashboard')))
-			{
-				
-				ini_set('default_socket_timeout', 1);
-				$data = @file_get_contents("http://ci-cms.googlecode.com/svn/trunk/application/version.txt");
-				if (!$data) $data = $this->obj->system->version;
-				$this->obj->cache->save('latest_version', $data, 'dashboard', 86400);
-
-			}
-		
-			$this->latest_version = $data;
-			
-		}
 		
 		function no_active_users()
 		{
