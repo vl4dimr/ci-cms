@@ -8,7 +8,7 @@
 		function System()
 		{
 			$this->obj =& get_instance();
-			$this->obj->config->set_item('cache_path', APPPATH . 'cache/');
+			$this->obj->config->set_item('cache_path', './cache/');
 			$dir = $this->obj->config->item('cache_path');
 			$this->obj->load->library('cache', array('dir' => $dir));
 			$this->get_version();

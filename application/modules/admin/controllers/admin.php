@@ -22,7 +22,7 @@
 			}
 			$this->load->library('simplepie');
 			$this->simplepie->set_feed_url('http://ci-cms.blogspot.com/feeds/posts/default/-/news');
-			$this->simplepie->set_cache_location(APPPATH.'cache/rss');
+			$this->simplepie->set_cache_location('./cache');
 			$this->simplepie->init();
 			$this->simplepie->handle_content_type();
 			
