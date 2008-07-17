@@ -10,9 +10,8 @@ A draft instruction for installation.
 When you install it under a sub-folder and you want to use .htaccess, verify that you specified the _RewriteBase_
 
 
-  * Make writable application/cache folder 
-  * Make a writable the ./images folder
+  * Make writable the folders *./images* and *./cache* 
   * You have to insert in the database the application.sql
   * Change your database configuration in database.php
   * Change your configuration in config.php
-  * Username: admin Password: admin
+  * Go to yoursite.com/login the first username and password will become administrator
