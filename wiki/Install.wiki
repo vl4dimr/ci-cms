@@ -2,8 +2,25 @@
 #labels Phase-Deploy
 
 = Introduction =
-a working example works in revision r39
-A draft instruction for installation.
+  * Download and extract
+  * Directory and file structures should be like this
+
+{{{
+
+your_root
+  |___ index.php
+  |___ .htaccess
+  |___ licence.txt
+  |___ readme.txt
+  |___ cache
+  |___ images
+  |___ application
+  |        |___ etc... 
+  |___ system
+           |___ etc...
+
+
+}}}
 
 = Details =
 
