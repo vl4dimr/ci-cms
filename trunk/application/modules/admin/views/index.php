@@ -35,7 +35,7 @@
 			<dt>Latest version:</dt>
 			<dd class="red">CI CMS <?=$this->latest_version?></dd>
 			<dt>Get new version:</dt>
-			<dd class="bold"><a href="http://ci-cms.blogspot.com/" rel="external">Upgrade Now!</a></dd>
+			<dd class="bold"><a href="http://code.google.com/p/ci-cms/downloads/list" rel="external">Upgrade Now!</a></dd>
 <?php endif;?>
 			<dt>Site name:</dt>
 			<dd><?=$this->system->site_name?></dd>
