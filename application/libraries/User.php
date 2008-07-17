@@ -71,7 +71,7 @@
 		{
 		
 			
-			if ( $this->obj->user->level[$module] < $level)
+			if ( !isset($this->obj->user->level[$module]) || $this->obj->user->level[$module] < $level)
 			{
 		
 				redirect('admin/unauthorized/'. $module . '/' . $level);
