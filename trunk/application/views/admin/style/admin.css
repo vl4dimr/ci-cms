@@ -429,6 +429,7 @@ div.row div.left dt {
 div.row div.left dd {
 	width: 40%;
 	float: right;
+	white-space: nowrap;
 }
 
 
