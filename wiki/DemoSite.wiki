@@ -1,4 +1,5 @@
 #summary A demo site for ci-cms
+#labels Featured
 
 You can use the demo at http://solaitra.tuxfamily.org
 
