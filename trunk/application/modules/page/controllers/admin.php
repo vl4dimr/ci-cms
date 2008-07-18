@@ -34,6 +34,7 @@
 			
 			$per_page = 20;
 			$this->user->check_level($this->template['module'], LEVEL_VIEW);
+			$data = array();
 			if ( !$data = $this->cache->get('pagelist'.$this->lang, 'page') )
 			{
 				$data = $this->pages->list_pages();
