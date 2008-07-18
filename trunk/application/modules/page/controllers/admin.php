@@ -34,13 +34,14 @@
 			
 			$per_page = 20;
 			$this->user->check_level($this->template['module'], LEVEL_VIEW);
-			$data = array();
+			
 			if ( !$data = $this->cache->get('pagelist'.$this->lang, 'page') )
 			{
-				$data = $this->pages->list_pages();
+				if (!$data = $this->pages->list_pages()) $data = array();
 				$this->cache->save('pagelist'.$this->lang, $data, 'page', 0);
 			}
 			
+
 			$this->template['pages'] = array_slice($data, $start, $per_page);
 			
 			
