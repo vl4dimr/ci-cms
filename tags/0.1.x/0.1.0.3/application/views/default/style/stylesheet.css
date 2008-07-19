@@ -1,0 +1,400 @@
+@charset "utf-8";
+
+/*
+* BASE BLAZE THEME v. 0.90
+* 08/03/2008
+*/
+
+/* --- [ General settings ] --- */
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	color: #636365;
+	background: #E8D299 none;
+	font: 0.90em Trebuchet MS, Geneva, Helvetica, Arial, sans-serif; 
+	text-align: center;
+	line-height: 150%;
+}
+
+a, a:link, a:visited {
+	color: #636365;
+	text-decoration: none;
+}
+
+a:hover, a:focus, a:active {
+}
+
+h1 {font-size: 130%;}
+h2 {font-size: 120%;}
+h3 {font-size: 110%;}
+h4 {font-size: 90%;}
+h5 {font-size: 80%;}
+h6 {font-size: 70%;}
+
+ul {
+	list-style: none;
+	margin: 0 0 10px 0;
+}
+
+ol {
+	margin: 0 0 10px 0;
+}
+
+table, th, td, tr, 
+ul, ol, li { 
+	font-size: 100%; 
+}
+
+img {
+	border: 0 none;
+	margin: 0;
+	padding: 0;
+}
+
+.hidden {
+	visibility: hidden;
+}
+
+.none {
+	display: none;
+}
+
+.bold {
+	font-weight: 900;
+}
+
+.red {
+	color: #990000;
+	font-weight: 900;
+}
+
+.clearfloat { 
+	margin: 0;
+	line-height: 0px;
+	font-size: 1px;
+	clear: both;
+}
+
+/* --- [ Basic layout ] --- */
+
+div#base {
+	width: 100%; 
+	margin: 0 auto; 
+	padding: 0;
+	text-align: left; 
+	overflow: hidden;
+	background: #FFFFFF url("../images/header_bg.jpg") repeat-x 0 0;
+}
+
+div#header {
+	margin: 0pt auto;
+	height: 100px;
+	width: 920px;
+	background: url("../images/header_bg.jpg") repeat-x 0 center;
+}
+
+div#navigation1{
+	width: 100%;
+	background: #A48F74 none;
+}	
+
+div#navigation2{
+background:transparent none repeat scroll 0% 0%;
+clear:both;
+height:1.5em;
+margin:0pt auto;
+width:920px;
+}
+
+div#login {
+	position: static;
+	overflow: hidden;
+	clear: both;
+}
+
+div#breadcrumbs {
+clear:both;
+color:#666666;
+font-size:80%;
+margin:0pt auto;
+overflow:hidden;
+position:static;
+width:920px;
+}
+
+div#main {
+	clear:both;
+	font-size:100%;
+	margin:0pt auto;
+	overflow:hidden;
+	padding:0pt 20px;
+	position:static;
+	width:920px;
+}
+
+div#right {
+	border-left:1px dashed;
+	clear:right;
+	float:right;
+	overflow:hidden;
+	padding-left:10px;
+	position:relative;
+	width:200px;
+}
+
+div#left {
+	position: relative;
+	overflow: hidden;
+	width: 680px;
+	padding-right: 20px;
+	float: left;
+	clear: left;
+}
+
+div#block-2 {
+	overflow: hidden;
+	float: left;
+	clear: left;
+}
+
+div#footer {
+	margin: 0pt auto;
+	font-size: 80%;
+	color: #FFFFFF;
+	width: 100%;
+	background: #A4897E none;
+	text-align: center;
+}
+
+/* --- [ Header ] --- */
+
+a.logo {
+	display: block;
+	float: left;
+	position: relative;
+	color: #000000;
+	height: 100px;
+	width: 350px;
+	background: url("../images/logo.jpg") no-repeat top left;
+}
+
+a.logo span {
+	visibility: hidden;
+}
+
+/* --- [ Main navigation ] --- */
+
+ul#nav,
+ul#navlogin {
+	margin: 0 0 0 20px;
+	padding: 1px 0 0 1px;
+	list-style: none;
+	height: 2.6em;
+	float: left;
+	background: url("../images/menu-separator.png") no-repeat 0 1px;
+}
+
+ul#navlogin {
+	margin: 0 20px 0 0;
+	float: right;
+}
+
+ul#nav li,
+ul#navlogin li {
+	font-size: 100%;
+	display: inline;
+	float: left;
+	margin: 1px 0 0 0;
+	background: url("../images/menu.png") repeat-x bottom left;
+}
+
+ul#nav li a,
+ul#navlogin li a {
+	display: block;
+	padding: 0.5em 2em 0.45em 2em;
+	margin: 0;
+	color: #666666;
+	letter-spacing: 0.05em;
+	background: url("../images/menu-separator.png") no-repeat bottom right;
+}
+
+ul#nav li a:hover,
+ul#navlogin li a:hover {
+	color: #000000;
+}
+
+ul#nav li.active a,
+ul#navlogin li.active a {
+	color: #333333;
+	font-weight: 900;
+	letter-spacing: 0.1em;
+	background: url("../images/menu-active.png") no-repeat bottom right;
+}
+
+/* --- [ Breadcrumbs ] --- */
+
+div#breadcrumbs span.left,
+div#breadcrumbs span.right {
+	margin: 1em 20px;
+}
+
+div#breadcrumbs span.left {
+	float: left;
+}
+
+div#breadcrumbs span.left b {
+font-weight:normal;
+margin:0pt 0.5em 0pt 0pt;
+}
+
+div#breadcrumbs span.left a {
+border-bottom:1px solid #000000;
+margin:0pt 0.1em 0pt 0.25em;
+padding:0pt 0pt 1px;
+}
+
+div#breadcrumbs span.left a:hover {
+	border-bottom: 1px solid #CDA699;
+}
+
+div#breadcrumbs span.right {
+	float: right;
+	text-align: right;
+}
+
+/* --- [ Content ] --- */
+
+div#main a {
+	padding: 0 0 1px 0;
+	border-bottom: 1px solid #BFE5F2;
+}
+
+div#main a:hover {
+	border-bottom: 1px solid #0080AA;
+}
+
+div#main h1,
+div#main h2 {
+	margin: 0 0 1em 0;
+	letter-spacing: 0.05em;
+}
+
+div#main h3 {
+	font-weight: 100;
+	text-transform: uppercase;
+}
+
+
+
+div#main p {
+	margin: 0 0 1em 0;
+	text-align: justify;
+}
+
+div#main p.posted {
+	font-style: italic;
+	font-size: 90%;
+	color: #666666;
+}
+
+div#main p.tags {
+	font-size: 90%;
+}
+
+div#main p.tags a {
+	margin-left: 0.75em;
+}
+
+div#main img.leftimg,
+div#main img.rightimg {
+	margin: 5px 20px 20px 0;
+	padding: 3px;
+	float: left;
+	border: 1px solid #BFE5F2;
+}
+
+div#main img.rightimg {
+	margin: 5px 0 20px 20px;
+	float: left;
+}
+
+div#main ul {
+	margin: 1em 0;
+}
+
+div#main ul li {
+	padding: 0 0 0 2em;
+	background: url("../images/list.png") no-repeat 1em 0.6em;
+}
+
+div#main div.opening,
+div#main div.extended {
+	margin-bottom: 1em;
+}
+
+div#main div.hsplit {
+	padding-bottom: 1em;
+	margin-bottom: 2em;
+	background: url("../images/h-separator.png") repeat-x bottom left;
+}
+
+div#content {
+	width: 100%;
+}
+/* --- [ Footer ] --- */
+
+
+/* --- [ Forms ] --- */
+
+form.login {
+	padding: 0; 
+	margin: 1em 20px;
+	float: right;
+}
+
+form.login fieldset {
+	width: 100%; 
+	display: block; 
+	border: none;
+	padding: 0; 
+	text-align: right;
+}
+
+form.login label {
+	margin-right: 0.5em;
+}
+
+form.login .input-text {
+	border: 1px solid #C4CBD2; 
+	color: #3C6F99;
+	padding: 0.4em 0.4em 0.4em 2.2em;
+	font-size: 90%;
+	width: 10em;
+	margin: 0 0.5em 0 0;
+}
+
+form.login #username {
+	background: url("../images/user-icon.gif") no-repeat 0.5em 0.6em;
+}
+
+form.login #password {
+	background: url("../images/key-icon.gif") no-repeat 0.5em 0.6em;
+}
+
+form.login .input-submit { 
+	font-size: 90%;
+	cursor: pointer;
+	border: 1px solid #C3CAD0;
+	background: #F1F4F8 url("../images/form-button.png") repeat-x top left;
+	padding: 0.35em 1em; 
+}
+
+/* --- [ Other styling ] --- */
+
+
+
+/* --- [ End ] --- */
