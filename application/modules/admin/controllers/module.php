@@ -174,7 +174,7 @@
 				{
 					$data['name'] = trim($xmlarray['module']['#']['name'][0]['#']);
 					$data['description'] = isset($xmlarray['module']['#']['description'][0]['#']) ? trim($xmlarray['module']['#']['description'][0]['#']): '';
-					$data['version'] = isset($xmlarray['module']['@']['version']) ? trim($xmlarray['module']['@']['version']) : '';
+					$data['version'] = isset($xmlarray['module']['#']['version'][0]['#']) ? trim($xmlarray['module']['#']['version'][0]['#']) : '';
 					$data['status'] = 0;
 					$data['ordering'] = 1000;
 					$info['date'] = $xmlarray['module']['#']['date'][0]['#'];
