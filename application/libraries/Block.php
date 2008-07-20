@@ -4,6 +4,7 @@
 
 
 class Block {
+
 	var $_blocks = array();
 
 	function Block() {
@@ -47,7 +48,7 @@ class Block {
 		do{
 			foreach( (array) current($this->_blocks[$block_name]) as $the_ )
 				if ( !is_null($the_['function']) )
-					call_user_func_array($the_['function'], $params);
+					return call_user_func_array($the_['function'], $params);
 
 		} while ( next($this->_blocks[$block_name]) );
 
