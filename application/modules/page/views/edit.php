@@ -80,7 +80,7 @@ function ajaxFileUpload() {
 						alert(data.error);
 					}else
 					{
-						$("#image_list").append("<div><input type='hidden' name='image_ids[]' value='"+data.imageid+"' /><a href='#' onclick=\"tinyMCE.execCommand('mceInsertContent',false,'<a href=\\'<?php echo site_url('images/o') ?>/"+data.image+"\\'><img align=left border=0 hspace=10 src=\\'<?php echo site_url('images/m') ?>/"+data.image+"\\'></a>');return false;\">"+data.image+"</a> - <a href='#'  class=\"ajaxdelete\" id='image"+data.imageid+"' ><?php echo __('Delete image')?></a></div>\n");
+						$("#image_list").append("<div><input type='hidden' name='image_ids[]' value='"+data.imageid+"' /><a href='#' onclick=\"tinyMCE.execCommand('mceInsertContent',false,'<a href=\\'<?php echo site_url('images/o') ?>/"+data.image+"\\'><img align=left border=0 hspace=10 src=\\'<?php echo site_url('images/m') ?>/"+data.image+"\\'></a>');return false;\">"+data.image+"</a> - <a href='#'  class=\"ajaxdelete\" id='"+data.imageid+"' ><?php echo __('Delete image')?></a></div>\n");
 						$("#image").val("");
 						handleDeleteImage();
 						

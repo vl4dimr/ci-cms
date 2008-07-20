@@ -199,6 +199,7 @@
 				$this->javascripts->add('ajaxfileupload.js');
 				//get pending images
 				$this->db->where('src_id', 0);
+				$this->db->where('module', 'page');
 				$query = $this->db->get('images');
 				
 				$this->template['images'] = $query->result_array();
