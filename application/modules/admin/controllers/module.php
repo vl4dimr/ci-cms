@@ -185,7 +185,7 @@
 					
 					$data['info'] = serialize($info);
 					
-					if (file_exists(APPPATH.'modules/'.$module.'/controllers/admin.php'))
+					if (file_exists(APPPATH.'modules/'.$module.'/controllers/admin.php') || file_exists(APPPATH.'modules/'.$module.'/controllers/admin/admin.php'))
 					{
 						$data['with_admin'] = 1;
 					}
