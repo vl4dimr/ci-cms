@@ -21,15 +21,15 @@
 		function index($start = 0)
 		{
 		
-			if (!is_writable  ('./images'))
+			if (!is_writable  ('./media/images'))
 			{
 			$this->template['notice'] = __("The <i>images</i> directory is not writable. Please fix it'");
 			}
-			elseif (!is_dir('./images/o'))
+			elseif (!is_dir('./media/images/o'))
 			{
-				@mkdir('./images/o');
-				@mkdir('./images/s');
-				@mkdir('./images/m');
+				@mkdir('./media/images/o');
+				@mkdir('./media/images/s');
+				@mkdir('./media/images/m');
 			}
 			
 			$per_page = 20;
@@ -121,7 +121,7 @@
 
 					//var_dump($this->input->post('image'));
 					//there is an image attached
-					$config['upload_path'] = './images/o/';
+					$config['upload_path'] = './media/images/o/';
 					$config['allowed_types'] = 'gif|jpg|png';
 					$config['max_size']	= '500';
 					$config['max_width']  = '1024';
@@ -145,7 +145,7 @@
 						
 						//resize to 150
 						$config['source_image'] = $image_data['full_path'];
-						$config['new_image'] = './images/s/';
+						$config['new_image'] = './media/images/s/';
 						$config['width'] = 150;
 						$config['height'] = 100;
 						$config['maintain_ratio'] = true;
@@ -157,7 +157,7 @@
 					
 						
 							$config['source_image'] = $image_data['full_path'];
-							$config['new_image'] = './images/m/';
+							$config['new_image'] = './media/images/m/';
 							$config['width'] = 300;
 							$config['height'] = 200;
 							$config['maintain_ratio'] = TRUE;
@@ -248,7 +248,7 @@
 
 					//var_dump($this->input->post('image'));
 					//there is an image attached
-					$config['upload_path'] = './images/o/';
+					$config['upload_path'] = './media/images/o/';
 					$config['allowed_types'] = 'gif|jpg|png';
 					$config['max_size']	= '500';
 					$config['max_width']  = '1024';
@@ -272,7 +272,7 @@
 						
 						//resize to 150
 						$config['source_image'] = $image_data['full_path'];
-						$config['new_image'] = './images/s/';
+						$config['new_image'] = './media/images/s/';
 						$config['width'] = 150;
 						$config['height'] = 100;
 						$config['maintain_ratio'] = true;
@@ -284,7 +284,7 @@
 					
 						
 							$config['source_image'] = $image_data['full_path'];
-							$config['new_image'] = './images/m/';
+							$config['new_image'] = './media/images/m/';
 							$config['width'] = 300;
 							$config['height'] = 200;
 							$config['maintain_ratio'] = TRUE;
@@ -421,7 +421,7 @@
 			{
 			
 			
-				$config['upload_path'] = './images/o/';
+				$config['upload_path'] = './media/images/o/';
 				$config['allowed_types'] = 'gif|jpg|png';
 				$config['max_size']	= '500';
 				$config['max_width']  = '1024';
@@ -439,7 +439,7 @@
 				$config = array();
 				//resize to 150
 				$config['source_image'] = $image_data['full_path'];
-				$config['new_image'] = './images/s/';
+				$config['new_image'] = './media/images/s/';
 				$config['width'] = 150;
 				$config['height'] = 100;
 				$config['maintain_ratio'] = true;
@@ -455,7 +455,7 @@
 			
 					$config = array();
 					$config['source_image'] = $image_data['full_path'];
-					$config['new_image'] = './images/m/';
+					$config['new_image'] = './media/images/m/';
 					$config['width'] = 300;
 					$config['height'] = 200;
 					$config['maintain_ratio'] = TRUE;
