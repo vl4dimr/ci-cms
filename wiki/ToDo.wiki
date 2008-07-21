@@ -13,7 +13,7 @@
 	- Member details in memberlist
 	- Group core module (including all/registered) or inside member core module?
 	- Check all module with group access
-	
+	- Member registration
 	- News module
 
 
