@@ -22,7 +22,7 @@
 		<tr>
 				<th width="3%" class="center">#</th>
 				<th width="27%"><?=__("Title")?></th>
-				<th width="27%"><?=__("SEF adress")?></th>
+				<th width="27%"><?=__("SEF address")?></th>
 				<th width="10%"><?=__("Page status")?></th>
 				<th width="30%" colspan="3"><?=__("Action")?></th>
 				<th width="3%" class="last center">ID</th>
