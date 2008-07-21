@@ -63,7 +63,7 @@
 <?php if ($this->uri->uri_string() == "" || $this->system->page_home == substr($this->uri->uri_string(), 1)) :?>
 
 <div id="right">
-<?$this->block->get('page_latest_pages')?>
+<?= $this->block->get('page_latest_pages')?>
 </div>
 <div id="left">
 
