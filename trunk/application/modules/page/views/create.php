@@ -123,7 +123,7 @@ function ajaxFileUpload() {
 		
 
 		
-		<label for="uri"><?=__("SEF adress")?>:</label>
+		<label for="uri"><?=__("SEF address")?>:</label>
 		<input type="text" name="uri" value="" id="uri" class="input-text" /><br />
 		
 		<label for="parent_id"><?=__("Parent")?>: </label>
