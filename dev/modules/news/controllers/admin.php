@@ -9,10 +9,10 @@
 			$this->load->library('administration');
 			$this->lang = $this->session->userdata('lang');
 
-			$this->template['module']	= 'page';
+			$this->template['module']	= 'news';
 			$this->template['admin']		= true;
 			
-			$this->load->model('page_model', 'pages');
+			$this->load->model('news_model', 'news');
 			
 			$this->page_id = ( $this->uri->segment(4) ) ? $this->uri->segment(4) : NULL;
 			
@@ -21,28 +21,18 @@
 		function index($start = 0)
 		{
 		
-			if (!is_writable  ('./media/images'))
-			{
-			$this->template['notice'] = __("The <i>images</i> directory is not writable. Please fix it'");
-			}
-			elseif (!is_dir('./media/images/o'))
-			{
-				@mkdir('./media/images/o');
-				@mkdir('./media/images/s');
-				@mkdir('./media/images/m');
-			}
 			
 			$per_page = 20;
 			$this->user->check_level($this->template['module'], LEVEL_VIEW);
 			
-			if ( !$data = $this->cache->get('pagelist'.$this->lang, 'page') )
+			if ( !$data = $this->cache->get('news'.$this->lang, 'news') )
 			{
-				if (!$data = $this->pages->list_pages()) $data = array();
-				$this->cache->save('pagelist'.$this->lang, $data, 'page', 0);
+				if (!$data = $this->news->news_list()) $data = array();
+				$this->cache->save('news'.$this->lang, $data, 'news', 0);
 			}
 			
 
-			$this->template['pages'] = array_slice($data, $start, $per_page);
+			$this->template['rows'] = array_slice($data, $start, $per_page);
 			
 			
 			$this->load->library('pagination');
@@ -50,7 +40,7 @@
 			$config['uri_segment'] = 4;
 			$config['first_link'] = __('First');
 			$config['last_link'] = __('Last');
-			$config['base_url'] = base_url() . 'admin/page/index';
+			$config['base_url'] = base_url() . 'admin/news/index';
 			$config['total_rows'] = count($data);
 			$config['per_page'] = $per_page; 
 

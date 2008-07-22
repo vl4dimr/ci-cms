@@ -7,59 +7,47 @@
 			parent::Controller();
 			//$this->output->enable_profiler(true);
 			$this->template['module'] = "news";
-			$this->load->model('page_model', 'pages');
+			$this->load->model('news_model', 'news');
 			$this->lang = $this->session->userdata('lang');
 		}
 		
 		//all available blocks
 	
-		
-		function index()
+		function read($uri = null)
 		{
-			if ( $this->uri->segment(1) )
+			if (is_null($uri))
 			{
-				$num = 1;
-				$built_uri = '';
-				
-				while ( $segment = $this->uri->segment($num))
-				{
-					$built_uri .= $segment.'/';
-					$num++;
-				}
-				
-				$new_length = strlen($built_uri) - 1;
-				$built_uri = substr($built_uri, 0, $new_length);
+				echo "Error: Choose a news";
 			}
 			else
 			{
-				$built_uri = $this->system->page_home;
+				echo "News uri " . $uri;
 			}
+		}
+		
+		
+		function index($start = null)
+		{
+			$per_page = 20;
+			$this->db->order_by('id DESC');
+			$query = $this->db->get('news', $per_page, $start);
 			
-			if ( $this->template['page'] = $this->pages->get_page(array('uri' => $built_uri, 'lang' => $this->lang)) )
-			{
-				
-				$view = 'index';
-				
-				$this->template['breadcrumb'][] = 	array(
-														'title'	=> (strlen($this->template['page']['title']) > 20 )? substr($this->template['page']['title'], 0, 20) . '...': $this->template['page']['title'],
-														'uri'	=> $this->template['page']['uri']
-													);
-				
-				$this->template['title'] = $this->template['page']['title'];
-													
-				$this->template['meta_keywords'] 	= $this->template['page']['meta_keywords'];
-				$this->template['meta_description'] = $this->template['page']['meta_description'];
-													
-			}
-			else
-			{
-				// Make sure we send a 404 header
-				
-				$this->output->set_header("HTTP/1.0 404 Not Found");
-				$view = '404';
-			}
-	
-			$this->layout->load($this->template, $view);
+			$this->template['rows'] = $query->result_array();
+			
+
+			$this->load->library('pagination');
+			
+			$config['uri_segment'] = 5;
+			$config['first_link'] = __('First');
+			$config['last_link'] = __('Last');
+			$config['base_url'] = site_url('news/');
+			$config['total_rows'] = $this->db->count_all('news');
+			$config['per_page'] = $per_page; 	
+			$this->pagination->initialize($config); 
+
+			$this->template['pager'] = $this->pagination->create_links();		
+			
+			$this->layout->load($this->template, 'index');
 		}
 	}
 

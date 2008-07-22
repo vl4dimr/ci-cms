@@ -1,5 +1,6 @@
 <?php
 
-	$route['news/:num/:num/:any'] = 'news/read/$1/$2/$3';
+	$route['news/:num'] = 'news/index/$1';
+	$route['news/:any'] = 'news/read/$1';
 
 ?>

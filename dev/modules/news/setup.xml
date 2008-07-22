@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<module>
+        <name>news</name>
+        <date>22/07/2008</date>
+        <author>hery</author>
+        <email>hery@serasera.org</email>
+        <url>http://hery.serasera.org</url>
+        <copyright>GNU/GPL License</copyright>
+        <version>1.0.0</version>
+        <description>News module</description>
+        <install>
+                <query>DROP TABLE  IF EXISTS `ci_news`;</query>
+                <query> 
+CREATE TABLE IF NOT EXISTS `ci_news` (
+`id` INT NOT NULL AUTO_INCREMENT ,
+`title` VARCHAR( 255 ) NOT NULL ,
+`uri` VARCHAR( 255 ) NOT NULL ,
+`lang` VARCHAR( 255 ) NOT NULL ,
+`body` TEXT NOT NULL ,
+`allow_comments` tinyint(1) NOT NULL DEFAULT '1',
+`comments` int(4) NOT NULL,
+`status` INT(3) NOT NULL DEFAULT '0',
+`date` INT NOT NULL ,
+PRIMARY KEY ( `id` ) ,
+INDEX ( `title` )
+);
+				</query>
+       </install>
+        <uninstall>
+                <query>DROP TABLE  IF EXISTS `ci_news`;</query>
+        </uninstall>	
+</module>
+

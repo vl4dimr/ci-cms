@@ -1,14 +1,14 @@
 <?php
 
-$this->set('page_latest_pages', 'page_latest_pages');
+$this->set('latest_news', 'news_latest_news');
 		
-function page_latest_pages($limit = 5)
+function news_latest_news($limit = 5)
 {
 	$this->obj =& get_instance();
 	
-	$this->obj->load->model('page_model');
-	$data['pages'] = $this->obj->page_model->new_pages($limit);
-	return $this->obj->load->view('blocks/newpages', $data, true);
+	$this->obj->load->model('news_model');
+	$data['rows'] = $this->obj->news_model->latest_news($limit);
+	return $this->obj->load->view('blocks/latest', $data, true);
 }
 
 ?>
