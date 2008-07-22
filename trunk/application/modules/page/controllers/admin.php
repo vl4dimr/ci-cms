@@ -93,7 +93,6 @@
 				$data = array(
 							'title'				=> $this->input->post('title'),
 							'parent_id'			=> $this->input->post('parent_id'),
-							'uri'				=> $this->input->post('uri'),
 							'meta_keywords'		=> $this->input->post('meta_keywords'),
 							'meta_description'	=> $this->input->post('meta_description'),
 							'body'				=> $this->input->post('body'),
@@ -101,6 +100,20 @@
 							'lang'				=> $this->input->post('lang')
 						);
 				
+				if ($this->input->post('uri') != '')
+				{
+					$data['uri'] = $this->input->post('uri');
+				}
+				else
+				{
+					$parent_uri = '';
+					if ($parent_id = $this->input->post('parent_id'))
+					{
+						$parent = $this->pages->get_page(array('id' => $parent_id));
+						$parent_uri = $parent['uri'] . "/";
+					}
+					$data['uri'] = $parent_uri . format_title($this->input->post('title'));
+				}
 				$this->db->insert('pages', $data);
 				$id = $this->db->insert_id();
 				
@@ -170,22 +183,7 @@
 							$this->pages->attach($id, $image_data);
 						
 						}
-						/*
-						[file_name]    => mypic.jpg
-						[file_type]    => image/jpeg
-						[file_path]    => /path/to/your/upload/
-						[full_path]    => /path/to/your/upload/jpg.jpg
-						[raw_name]     => mypic
-						[orig_name]    => mypic.jpg
-						[file_ext]     => .jpg
-						[file_size]    => 22.2
-						[is_image]     => 1
-						[image_width]  => 800
-						[image_height] => 600
-						[image_type]   => jpeg
-						[image_size_str] => width="800" height="200"
-						*/
-						
+	
 						
 					}				
 				}	
