@@ -370,6 +370,47 @@
 			}
 		}
 		
+		function tinyimagelist()
+		{
+			if ( !$rows = $this->cache->get('imagelist', 'page') )
+			{	
+				$this->db->where('module', 'page');
+				$this->db->order_by('file');
+				$query = $this->db->get('images');
+				$rows = $query->result_array();
+				$this->cache->save('imagelist', $rows, 'page', 0);
+			}		
+
+			$images = array();
+			foreach ($rows as $row)
+			{
+				$images[] = "[\"". stripslashes($row['file']) . "\", \"". site_url('media/images/m/' . $row['file']) . "\"]" ; 
+			}	
+			
+			echo "var tinyMCEImageList = new Array(";
+			echo join(", ", $images);
+			echo ");";			
+		
+		}
+		function tinypagelist()
+		{
+			if ( !$rows = $this->cache->get('pagelist'.$this->lang, 'page') )
+			{
+				if (!$rows = $this->pages->list_pages()) $rows = array();
+				$this->cache->save('pagelist'.$this->lang, $rows, 'page', 0);
+			}
+			
+			$pages = array();
+			foreach ($rows as $row)
+			{
+				$pad = str_repeat('&nbsp;&nbsp;', $row['level']);
+				$pages[] = "[\"".$pad." " . stripslashes($row['title']) . "\", \"". site_url($row['uri']) . "\"]" ; 
+			}
+			echo "var tinyMCELinkList = new Array(";
+			echo join(", ", $pages);
+			echo ");";
+		}
+		
 		function ajax_delete()
 		{
 			$this->db->where('id', $this->input->post('id'));
