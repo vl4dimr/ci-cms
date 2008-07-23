@@ -21,7 +21,7 @@
 			}
 			else
 			{
-				echo "News uri " . $uri;
+				echo "News uri " . var_dump($uri);
 			}
 		}
 		

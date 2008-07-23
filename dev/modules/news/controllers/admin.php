@@ -75,331 +75,166 @@
 				$this->layout->load($this->template, 'settings');
 			}
 		}
-		function create()
+		
+		function save()
 		{
 			$this->user->check_level($this->template['module'], LEVEL_ADD);
-			if ( $post = $this->input->post('submit') )
+		
+			$fields = array('id', 'title', 'body', 'status', 'allow_comments', 'lang');
+			$data = array();
+			
+			foreach ($fields as $field)
 			{
-				$data = array(
-							'title'				=> $this->input->post('title'),
-							'parent_id'			=> $this->input->post('parent_id'),
-							'uri'				=> $this->input->post('uri'),
-							'meta_keywords'		=> $this->input->post('meta_keywords'),
-							'meta_description'	=> $this->input->post('meta_description'),
-							'body'				=> $this->input->post('body'),
-							'active'			=> $this->input->post('status'),
-							'lang'				=> $this->input->post('lang')
-						);
-				
-				$this->db->insert('pages', $data);
-				$id = $this->db->insert_id();
-				
-				if ($image_ids = $this->input->post('image_ids'))
-				{
-					foreach($image_ids as $image_id)
-					{
-						$this->db->set('src_id', $id);
-						$this->db->where('id', $image_id);
-						$this->db->update('images');
-					}	
-				}
-				$this->cache->remove('pagelist'.$this->lang, 'page');
+				$data[$field] = $this->input->post($field);
+			}
+
+			
+			$data['uri'] = $this->news->generate_uri($this->input->post('title'));
+
 
 				
-				if ($_FILES['image']['name'] != '')
-				{
-
-					//var_dump($this->input->post('image'));
-					//there is an image attached
-					$config['upload_path'] = './media/images/o/';
-					$config['allowed_types'] = 'gif|jpg|png';
-					$config['max_size']	= '500';
-					$config['max_width']  = '1024';
-					$config['max_height']  = '768';
-					
-					//var_dump($config['upload_path']);
-					$this->load->library('upload', $config);
-				
-					if ( ! $this->upload->do_upload('image'))
-					{
-						$error = array('error' => $this->upload->display_errors());
-						
-						$this->load->view('upload_form', $error);
-					}	
-					else
-					{
-						$this->load->library('image_lib');
-						$image_data = $this->upload->data();
-						
-						//var_dump($image_data);
-						
-						//resize to 150
-						$config['source_image'] = $image_data['full_path'];
-						$config['new_image'] = './media/images/s/';
-						$config['width'] = 150;
-						$config['height'] = 100;
-						$config['maintain_ratio'] = true;
-						$config['master_dim'] = 'width';
-						$config['create_thumb'] = FALSE;
-						$this->image_lib->initialize($config);
-						if($this->image_lib->resize())
-						{						
-					
-						
-							$config['source_image'] = $image_data['full_path'];
-							$config['new_image'] = './media/images/m/';
-							$config['width'] = 300;
-							$config['height'] = 200;
-							$config['maintain_ratio'] = TRUE;
-							$config['master_dim'] = 'width';
-							$config['create_thumb'] = FALSE;
-							$this->image_lib->initialize($config);
-
-							$this->image_lib->resize();
-							
-							$this->pages->attach($id, $image_data);
-						
-						}
-						/*
-						[file_name]    => mypic.jpg
-						[file_type]    => image/jpeg
-						[file_path]    => /path/to/your/upload/
-						[full_path]    => /path/to/your/upload/jpg.jpg
-						[raw_name]     => mypic
-						[orig_name]    => mypic.jpg
-						[file_ext]     => .jpg
-						[file_size]    => 22.2
-						[is_image]     => 1
-						[image_width]  => 800
-						[image_height] => 600
-						[image_type]   => jpeg
-						[image_size_str] => width="800" height="200"
-						*/
-						
-						
-					}				
-				}	
-					
-				$this->session->set_flashdata('notification', 'Page "'.$this->input->post("title").'" has been created, continue editing here');	
-				
-				redirect('admin/page');
+			if($id = $this->input->post('id'))
+			{
+				$this->user->check_level($this->template['module'], LEVEL_EDIT);
+			
+				//update
+				$this->db->where('id', $id);
+				$this->db->update('news', $data);
 			}
 			else
 			{
-				$this->javascripts->add('ajaxfileupload.js');
-				//get pending images
-				$this->db->where('src_id', 0);
-				$this->db->where('module', 'page');
-				$query = $this->db->get('images');
-				
-				$this->template['images'] = $query->result_array();
-				$this->layout->load($this->template, 'create');
+				$data['date'] = mktime();
+				$this->db->insert('news', $data);
+				$id = $this->db->insert_id();
+				//insert
 			}
-		}
-		
-		function edit()
-		{
-			$this->user->check_level($this->template['module'], LEVEL_EDIT);
-			
-			if ( $post = $this->input->post('submit') )
+			$this->cache->remove('news'.$this->lang, 'news');
+			if ($image_ids = $this->input->post('image_ids'))
 			{
-				$data = array(
-							'title'				=> $this->input->post('title'),
-							'parent_id'		=> $this->input->post('parent_id'),
-							'uri'				=> $this->input->post('uri'),
-							'meta_keywords'		=> $this->input->post('meta_keywords'),
-							'meta_description'	=> $this->input->post('meta_description'),
-							'body'				=> $this->input->post('body'),
-							'active'			=> $this->input->post('status'),
-							'lang'			=> $this->input->post('lang')
-						);
-					
-				$this->db->where('id', $this->input->post('id'));
-				$this->db->update('pages', $data);
-				$this->cache->remove('pagelist'.$this->lang, 'page');				
+				foreach($image_ids as $image_id)
+				{
+					$this->db->set('src_id', $id);
+					$this->db->where('id', $image_id);
+					$this->db->update('images');
+				}	
+			}	
+
+			if ($_FILES['image']['name'] != '')
+			{
+
+				$config['upload_path'] = './media/images/o/';
+				$config['allowed_types'] = 'gif|jpg|png';
+				$config['max_size']	= '500';
+				$config['max_width']  = '1024';
+				$config['max_height']  = '768';
 				
-				
-				
+				//var_dump($config['upload_path']);
+				$this->load->library('upload', $config);
 			
-				if ($image_ids = $this->input->post('image_ids'))
+				if ( ! $this->upload->do_upload('image'))
 				{
-					foreach($image_ids as $image_id)
-					{
-						$this->db->set('src_id', $this->input->post('id'));
-						$this->db->where('id', $image_id);
-						$this->db->update('images');
-					}	
-				}
-				$this->cache->remove('pagelist'.$this->lang, 'page');
-
-				
-				if ($_FILES['image']['name'] != '')
-				{
-
-					//var_dump($this->input->post('image'));
-					//there is an image attached
-					$config['upload_path'] = './media/images/o/';
-					$config['allowed_types'] = 'gif|jpg|png';
-					$config['max_size']	= '500';
-					$config['max_width']  = '1024';
-					$config['max_height']  = '768';
+					$error = $this->upload->display_errors();
 					
-					//var_dump($config['upload_path']);
-					$this->load->library('upload', $config);
+				}	
+				else
+				{
+					$this->load->library('image_lib');
+					$image_data = $this->upload->data();
+					
+					//var_dump($image_data);
+					
+					//resize to 150
+					$config['source_image'] = $image_data['full_path'];
+					$config['new_image'] = './media/images/s/';
+					$config['width'] = 150;
+					$config['height'] = 100;
+					$config['maintain_ratio'] = true;
+					$config['master_dim'] = 'width';
+					$config['create_thumb'] = FALSE;
+					$this->image_lib->initialize($config);
+					if($this->image_lib->resize())
+					{						
 				
-					if ( ! $this->upload->do_upload('image'))
-					{
-						$error = array('error' => $this->upload->display_errors());
-						
-						$this->load->view('upload_form', $error);
-					}	
-					else
-					{
-						$this->load->library('image_lib');
-						$image_data = $this->upload->data();
-						
-						//var_dump($image_data);
-						
-						//resize to 150
+					
 						$config['source_image'] = $image_data['full_path'];
-						$config['new_image'] = './media/images/s/';
-						$config['width'] = 150;
-						$config['height'] = 100;
-						$config['maintain_ratio'] = true;
+						$config['new_image'] = './media/images/m/';
+						$config['width'] = 300;
+						$config['height'] = 200;
+						$config['maintain_ratio'] = TRUE;
 						$config['master_dim'] = 'width';
 						$config['create_thumb'] = FALSE;
 						$this->image_lib->initialize($config);
-						if($this->image_lib->resize())
-						{						
+
+						$this->image_lib->resize();
+						
+						$data = array('src_id' => $id, 'module' => 'news', 'file' => $image_data['file_name']);
+						$this->db->insert('images', $data);
+				
+					}
+				
 					
-						
-							$config['source_image'] = $image_data['full_path'];
-							$config['new_image'] = './media/images/m/';
-							$config['width'] = 300;
-							$config['height'] = 200;
-							$config['maintain_ratio'] = TRUE;
-							$config['master_dim'] = 'width';
-							$config['create_thumb'] = FALSE;
-							$this->image_lib->initialize($config);
-
-							$this->image_lib->resize();
-							
-							$this->pages->attach($this->input->post('id'), $image_data);
-						
-						}
-						/*
-						[file_name]    => mypic.jpg
-						[file_type]    => image/jpeg
-						[file_path]    => /path/to/your/upload/
-						[full_path]    => /path/to/your/upload/jpg.jpg
-						[raw_name]     => mypic
-						[orig_name]    => mypic.jpg
-						[file_ext]     => .jpg
-						[file_size]    => 22.2
-						[is_image]     => 1
-						[image_width]  => 800
-						[image_height] => 600
-						[image_type]   => jpeg
-						[image_size_str] => width="800" height="200"
-						*/
-						
-						
-					}				
-				}	
-				
-				
-				
-				
-				
-				
-				$this->session->set_flashdata('notification', 'Page "'.$this->input->post("title").'" has been saved ...');
-				
-				
-				
-				redirect('admin/page');
+				}				
 			}
-
-			if ( !$data = $this->cache->get('pagelist'.$this->lang, 'page') )
+			
+			
+			$this->session->set_flashdata('notification', __("News saved"));
+			redirect('admin/news');
+				
+		}
+		
+		
+		function create($id = null)
+		{
+			
+			$this->user->check_level($this->template['module'], LEVEL_ADD);
+			
+			$row = array();
+			if (!is_null($id))
 			{
-				$data = $this->pages->list_pages();
-				$this->cache->save('pagelist'.$this->lang, $data, 'page', 0);
-			}			
+				$this->user->check_level($this->template['module'], LEVEL_EDIT);
+			
+				$query = $this->db->get_where('news', array('id' => $id));
+				$row = $query->row_array();
+			}
+			$this->template['row'] = $row;
 			$this->javascripts->add('ajaxfileupload.js');
-			$this->template['pages'] = $data;
+			
 			$this->db->where('src_id', 0);
-			$this->db->or_where('src_id', $this->page_id);
+			$this->db->or_where('src_id', $id);
+			$this->db->where('module', 'news');			
+
 			$query = $this->db->get('images');
 			
 			$this->template['images'] = $query->result_array();
 			
-			$this->template['page'] = $this->pages->get_page( array('id' => $this->page_id) );
-			$this->layout->load($this->template, 'edit');
+			$this->layout->load($this->template, 'create');
 		}
 		
-		function delete()
+		
+		function delete($id, $js = 0)
 		{
 			$this->user->check_level($this->template['module'], LEVEL_DEL);
-			if ( $post = $this->input->post('submit') )
+			if ( $js > 0 )
 			{
 				$this->db->where('id', $this->input->post('id'));
-				$query = $this->db->delete('pages');
+				$query = $this->db->delete('news');
 				
 				$this->db->where('src_id', $this->input->post('id'));
 				$this->db->set('src_id', 0);
 				$query = $this->db->update('images');
 				
-				$this->session->set_flashdata('notification', 'Page has been deleted.');
-				$this->cache->remove('pagelist'.$this->lang, 'page'); 
-				redirect('admin/page');
+				$this->session->set_flashdata('notification', 'News has been deleted.');
+				$this->cache->remove('newslist'.$this->lang, 'news'); 
+				redirect('admin/news');
 			}
 			else
 			{
-				$this->template['page'] = $this->pages->get_page( array('id' => $this->page_id) );
+				$this->template['news'] = $this->news->get_news( array('id' => $this->page_id) );
 				
 				$this->layout->load($this->template, 'delete');
 			}
 		}
 		
-		function tinyimagelist()
-		{
-			if ( !$rows = $this->cache->get('imagelist', 'page') )
-			{	
-				$this->db->where('module', 'page');
-				$this->db->order_by('file');
-				$query = $this->db->get('images');
-				$rows = $query->result_array();
-				$this->cache->save('imagelist', $rows, 'page', 0);
-			}		
-
-			$images = array();
-			foreach ($rows as $row)
-			{
-				$images[] = "[\"". stripslashes($row['file']) . "\", \"". site_url('media/images/m/' . $row['file']) . "\"]" ; 
-			}	
-			
-			echo "var tinyMCEImageList = new Array(";
-			echo join(", ", $images);
-			echo ");";			
-		
-		}
-		function tinypagelist()
-		{
-			if ( !$rows = $this->cache->get('pagelist'.$this->lang, 'page') )
-			{
-				if (!$rows = $this->pages->list_pages()) $rows = array();
-				$this->cache->save('pagelist'.$this->lang, $rows, 'page', 0);
-			}
-			
-			$pages = array();
-			foreach ($rows as $row)
-			{
-				$pad = str_repeat('&nbsp;&nbsp;', $row['level']);
-				$pages[] = "[\"".$pad." " . stripslashes($row['title']) . "\", \"". site_url($row['uri']) . "\"]" ; 
-			}
-			echo "var tinyMCELinkList = new Array(";
-			echo join(", ", $pages);
-			echo ");";
-		}
 		
 		function ajax_delete()
 		{
@@ -495,7 +330,7 @@
 					$this->image_lib->initialize($config);
 
 					$this->image_lib->resize();
-					$data = array('file' => $image_data['file_name'], 'module' => 'page');
+					$data = array('file' => $image_data['file_name'], 'module' => 'news');
 					$this->db->insert('images', $data);
 					$id = $this->db->insert_id();
 					

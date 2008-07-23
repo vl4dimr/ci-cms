@@ -115,16 +115,16 @@ function ajaxFileUpload() {
 		<p><?=__("To create a news, just fill in your content below and click 'Save'.<br />If you want to save your progress without publishing it, Select 'Draft' status.</p>")?>
 
 		<label for="title"><?=__("Title")?>:</label>
-		<input type="text" name="title" value="" id="title" class="input-text" /><br />
+		<input type="text" name="title" value="<?=(isset($row['title'])?$row['title'] : "") ?>" id="title" class="input-text" /><br />
 		
 		<label for="status"><?=__("Status")?>:</label>
 		<select name="status" id="status" class="input-select">
-			<option value="0"><?=__("Draft")?></option>
-			<option value="1" selected><?=__("Published")?></option>
+			<option value="1" <?=(isset($row['status']) && $row['status'] == 1)? "selected"  : "" ?>><?=__("Published")?></option>
+			<option value="0" <?=(isset($row['status']) && $row['status'] == 0)? "selected"  : "" ?>><?=__("Draft")?></option>
 		</select><br />
 		
 		<label for="body"><?=__("Content")?>:</label>
-		<textarea name="body" class="input-textarea"></textarea><br />
+		<textarea name="body" class="input-textarea"><?=(isset($row['body'])?$row['body'] : "") ?></textarea><br />
 
 		<div id='image_list'>
 		<div style="visibility: hidden">Available images:</div>

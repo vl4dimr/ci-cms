@@ -19,6 +19,21 @@
 			
 		}
 
+		function generate_uri($title)
+		{
+			$raw_uri = format_title($title);
+			$uri = format_title($title);
+			
+			$i = 1;
+			while($this->get_news($uri))
+			{
+				$uri = $raw_uri . '-' . $i;
+				$i++;
+			}
+			
+			
+			return $uri;
+		}
 		
 		function get_news($data)
 		{
@@ -54,7 +69,7 @@
 			$this->db->orderby('id DESC');
 			$query = $this->db->get($this->table);
 			
-			if ( $query->num_rows() == 1 )
+			if ( $query->num_rows() > 0 )
 			{
 				return $query->result_array();
 			}

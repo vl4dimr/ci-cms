@@ -21,8 +21,7 @@
 	<thead>
 		<tr>
 				<th width="3%" class="center">#</th>
-				<th width="27%"><?=__("Title")?></th>
-				<th width="27%"><?=__("SEF address")?></th>
+				<th width="54%"><?=__("Title")?></th>
 				<th width="10%"><?=__("Status")?></th>
 				<th width="30%" colspan="3"><?=__("Action")?></th>
 				<th width="3%" class="last center">ID</th>
@@ -34,11 +33,10 @@
 <?php if ($i % 2 != 0): $rowClass = 'odd'; else: $rowClass = 'even'; endif;?>
 		<tr class="<?=$rowClass?>">
 				<td class="center"><?=$i?></td>
-				<td><?=($row['level'] > 0) ? "|".str_repeat("__", $row['level']): ""?> <?=(strlen($row['title']) > 20? substr($row['title'], 0,20) . '...': $row['title'])?></td>
-				<td><?=$row['uri']?></td>
+				<td><?=$row['title']?></td>
 				<td><?php if ($row['status']==1): echo __('Published'); else: echo __('Draft'); endif;?></td>
-				<td><a href="<?=site_url($row['uri'])?>" rel="external"><?=__("View")?></a></td>
-				<td><a href="<?=site_url('admin/'.$module.'/edit/'.$row['id'])?>"><?=__("Edit")?></a></td>
+				<td><a href="<?=site_url('news/'. $row['uri'])?>" rel="external"><?=__("View")?></a></td>
+				<td><a href="<?=site_url('admin/'.$module.'/create/'.$row['id'])?>"><?=__("Edit")?></a></td>
 				<td><a href="<?=site_url('admin/'.$module.'/delete/'.$row['id'])?>"><?=__("Delete")?></a></td>
 				<td class="center"><?=$row['id']?></td>
 		</tr>
