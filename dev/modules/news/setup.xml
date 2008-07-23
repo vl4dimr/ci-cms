@@ -9,7 +9,6 @@
         <version>1.0.0</version>
         <description>News module</description>
         <install>
-                <query>DROP TABLE  IF EXISTS `ci_news`;</query>
                 <query> 
 CREATE TABLE IF NOT EXISTS `ci_news` (
 `id` INT NOT NULL AUTO_INCREMENT ,
@@ -25,9 +24,28 @@ PRIMARY KEY ( `id` ) ,
 INDEX ( `title` )
 );
 				</query>
-       </install>
+                 <query> 
+CREATE TABLE `ci_news_comments` (
+  `id` int(11) NOT NULL auto_increment,
+  `news_id` int(11) NOT NULL,
+  `status` int(2) NOT NULL DEFAULT '0',
+  `date` int(11) NOT NULL,
+  `author` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `website` varchar(150) NOT NULL,
+  `body` text NOT NULL,
+  PRIMARY KEY  (`id`),
+  KEY `news_id` (`news_id`),
+  KEY `date` (`date`),
+  KEY `status` (`status`)
+);
+				</query>
+      </install>
         <uninstall>
                 <query>DROP TABLE  IF EXISTS `ci_news`;</query>
+        </uninstall>	
+        <uninstall>
+                <query>DROP TABLE  IF EXISTS `ci_news_comments`;</query>
         </uninstall>	
 </module>
 

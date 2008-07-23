@@ -62,6 +62,42 @@
 			}
 		}
 		
+		function get_comments($news_id, $limit = null, $start = null, $activeonly = 1)
+		{
+			if ($activeonly == 1)
+			{
+				$this->db->where('status', 1);
+			}
+			$this->db->where('news_id', $news_id);
+			$this->db->order_by('id');
+			
+			$query = $this->db->get('news_comments', $limit, $start);
+			if ( $query->num_rows() > 0 )
+			{
+				return $query->result_array();
+			}
+			else
+			{
+				return false;
+			}
+			
+		}
+		
+		function count_comments($news_id, $activeonly = 1)
+		{
+					if ($activeonly == 1)
+			{
+				$this->db->where('status', 1);
+			}
+			$this->db->where('news_id', $news_id);
+			$this->db->order_by('id');
+			
+			$query = $this->db->get('news_comments');
+			
+			return $query->num_rows();
+
+		}
+		
 		function news_list()
 		{
 			
