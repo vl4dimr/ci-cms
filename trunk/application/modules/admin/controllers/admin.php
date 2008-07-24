@@ -19,6 +19,12 @@
 			{
 				redirect('admin/unauthorized/admin/1');
 			}
+			
+			if($this->user->email == '')
+			{
+				$this->session->set_flashdata('notice', __("Please set your email"));
+				redirect('admin/member/edit');
+			}
 			$this->load->library('simplepie');
 			$this->simplepie->set_feed_url('http://ci-cms.blogspot.com/feeds/posts/default/-/news');
 			$this->simplepie->set_cache_location('./cache');

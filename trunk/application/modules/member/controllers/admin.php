@@ -217,10 +217,17 @@
 				}
 				else
 				{
-					$data = array(
-						'status' => $this->input->post('status'),
-						'email' => $this->input->post('email')
-						);
+					$data['email'] = $this->input->post('email');
+					if ($this->user->username != $this->input->post('username'))
+					{
+						$data['status'] = $this->input->post('status');
+					}
+					else
+					{
+						$this->session->set_userdata('email', $data['email']);
+					
+					}
+					
 					
 					if ($this->input->post('password'))
 					{
