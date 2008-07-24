@@ -9,7 +9,7 @@
  * @package   CI-CMS
  * @copyright 2008 Hery.serasera.org
  * @license   http://www.gnu.org/licenses/gpl.html
- * @version   $Id: MY_Language.php 204 2008-02-24 01:30:00Z zacharias@dynaknudsen.dk $
+ * @version   $Id$
  */
 
 if (!defined('BASEPATH')) {
