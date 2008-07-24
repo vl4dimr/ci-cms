@@ -9,7 +9,7 @@
 			parent::Controller();
 			
 			$this->load->library('administration');
-			$this->lang = $this->session->userdata('lang');
+			$this->user->lang = $this->session->userdata('lang');
 			$this->check_latest_version();
 			$this->template['module'] = "admin";
 		}
@@ -142,13 +142,13 @@
 					if ( $move > 0 )
 					{
 						$this->db->set('weight', 'weight-1', FALSE);
-						$this->db->where(array('weight <=' => $new_ordering, 'id <>' => $id, 'parent_id' => $parent_id, 'lang' => $this->lang));
+						$this->db->where(array('weight <=' => $new_ordering, 'id <>' => $id, 'parent_id' => $parent_id, 'lang' => $this->user->lang));
 						$this->db->update('navigation');
 					}
 					else
 					{
 						$this->db->set('weight', 'weight+1', FALSE);
-						$where = array('weight >=' => $new_ordering, 'id <>' => $id, 'parent_id' => $parent_id, 'lang' => $this->lang);
+						$where = array('weight >=' => $new_ordering, 'id <>' => $id, 'parent_id' => $parent_id, 'lang' => $this->user->lang);
 						
 						$this->db->where($where);
 						$this->db->update('navigation');
@@ -156,7 +156,7 @@
 					//reordinate
 					$i = 0;
 					$this->db->order_by('weight');
-					$this->db->where(array('parent_id' => $parent_id, 'lang' => $this->lang));
+					$this->db->where(array('parent_id' => $parent_id, 'lang' => $this->user->lang));
 					
 					$query = $this->db->get('navigation');
 					
@@ -274,7 +274,7 @@
 
 		function nav_get($parent = 0, $level = 0) {
 			// retrieve all children of $parent
-			$this->db->where(array('parent_id' => $parent, 'lang' => $this->lang));
+			$this->db->where(array('parent_id' => $parent, 'lang' => $this->user->lang));
 			$this->db->order_by('parent_id, weight');
 			$query = $this->db->get('navigation');
 

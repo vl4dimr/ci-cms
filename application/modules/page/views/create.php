@@ -100,7 +100,7 @@ function ajaxFileUpload() {
 <h1 id="edit"><?=__("Create New Page")?></h1>
 
 <form  enctype="multipart/form-data" class="edit" action="<?=site_url('admin/page/create')?>" method="post" accept-charset="utf-8">
-		<input type="hidden" name="lang" value="<?php echo $this->lang ?>" />
+		<input type="hidden" name="lang" value="<?php echo $this->user->lang ?>" />
 		<ul>
 			<li><input type="submit" name="submit" value="Save page" class="input-submit" /></li>
 			<li><a href="<?=site_url('admin/page')?>" class="input-submit last">Cancel</a></li>
