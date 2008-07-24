@@ -7,12 +7,11 @@
 			parent::Model();
 			
 			$this->table = 'pages';
-			$this->lang = $this->session->userdata('lang');
 		}
 		
 		function get_total()
 		{
-			$this->db->where('lang', $this->lang );
+			$this->db->where('lang', $this->session->lang );
 			$this->db->from('pages');
 					
 			return $this->db->count_all_results();
@@ -21,7 +20,7 @@
 		function get_tree ($parent = 0, $level = 0)
 		{
 			// retrieve all children of $parent
-			$this->db->where(array('parent_id' => $parent, 'lang' => $this->lang, 'active' => 1));
+			$this->db->where(array('parent_id' => $parent, 'lang' => $this->session->lang, 'active' => 1));
 			$this->db->orderby('parent_id, weight');
 			$query = $this->db->get('pages');
 			
@@ -74,7 +73,7 @@
 		function list_pages($parent = 0, $level = 0)
 		{
 			
-			$this->db->where(array('parent_id' => $parent, 'lang' => $this->lang));
+			$this->db->where(array('parent_id' => $parent, 'lang' => $this->session->lang));
 			$this->db->orderby('parent_id, weight');
 			$query = $this->db->get('pages');
 			
