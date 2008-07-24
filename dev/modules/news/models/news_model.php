@@ -116,11 +116,12 @@
 
 		function latest_news($limit = 10)
 		{
+			$this->db->where('lang', $this->user->lang);
 			$this->db->order_by('id', 'DESC');
 			$this->db->limit($limit);
 			$query = $this->db->get($this->table);
 			
-			if ( $query->num_rows() == 1 )
+			if ( $query->num_rows() > 0 )
 			{
 				return $query->result_array();
 			}

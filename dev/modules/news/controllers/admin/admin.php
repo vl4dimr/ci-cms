@@ -152,7 +152,7 @@
 					//resize to 150
 					$config['source_image'] = $image_data['full_path'];
 					$config['new_image'] = './media/images/s/';
-					$config['width'] = 150;
+					$config['width'] = 100;
 					$config['height'] = 100;
 					$config['maintain_ratio'] = true;
 					$config['master_dim'] = 'width';
@@ -326,7 +326,7 @@
 					//resize to 150
 					$config['source_image'] = $image_data['full_path'];
 					$config['new_image'] = './media/images/s/';
-					$config['width'] = 150;
+					$config['width'] = 100;
 					$config['height'] = 100;
 					$config['maintain_ratio'] = true;
 					$config['master_dim'] = 'width';
