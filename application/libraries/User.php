@@ -135,7 +135,7 @@
 			
 			if ($query->num_rows() == 0)
 			{
-				$this->register($username, $password, 'admin');
+				$this->register($username, $password, '');
 			}
 		
 			// First up, let's query the DB.
