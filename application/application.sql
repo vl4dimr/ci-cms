@@ -267,3 +267,12 @@ CREATE TABLE IF NOT EXISTS `ci_images` (
   `info` text NOT NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM;
+
+CREATE TABLE ci_captcha(
+	captcha_id bigint( 13 ) unsigned NOT NULL AUTO_INCREMENT ,
+	captcha_time int( 10 ) unsigned NOT NULL ,
+	ip_address varchar( 16 ) default '0' NOT NULL ,
+	word varchar( 20 ) NOT NULL ,
+	PRIMARY KEY ( captcha_id ) ,
+	KEY ( word )
+); 
