@@ -96,7 +96,7 @@ function ajaxFileUpload() {
 
 <form  enctype="multipart/form-data" class="edit" action="<?=site_url('admin/news/save')?>" method="post" accept-charset="utf-8">
 		<input type="hidden" name="id" value="<?=(isset($row['id'])?$row['id'] : "") ?>" />
-		<input type="hidden" name="lang" value="<?php echo $this->lang ?>" />
+		<input type="hidden" name="lang" value="<?php echo $this->user->lang ?>" />
 		<ul>
 			<li><input type="submit" name="submit" value="<?=__("Save")?>" class="input-submit" /></li>
 			<li><a href="<?=site_url('admin/news')?>" class="input-submit last"><?=__("Cancel")?></a></li>
@@ -140,8 +140,17 @@ function ajaxFileUpload() {
 		</div>
 		<div id="two">
 		
-			<label for="allow_comments"><?=__("Comments")?>:<label>
-				<input checked="checked" type="checkbox" name="allow_comments" value="<?=(isset($row['allow_comments'])?$row['allow_comments']:1)?>" id="allow_comments" /> <?=__("Allow Comments?")?>
+			<label for="allow_comments"><?=__("Allow Comments")?>:</label>
+			<select name="allow_comments" class="input-select" id="allow_comments">
+			<option value='1' <?=(($row['allow_comments']==1)?"selected":"")?>><?=__("Yes")?></option>
+			<option value='0' <?=(($row['allow_comments']==0)?"selected":"")?>><?=__("No")?></option>
+			</select><br />
+
+			<label for="notify"><?=__("Notify me for comments")?>:</label>
+			<select name="allow_comments" class="input-select" id="allow_comments">
+			<option value='1' <?=(($row['notify']==1)?"selected":"")?>><?=__("Yes")?></option>
+			<option value='0' <?=(($row['notify']==0)?"selected":"")?>><?=__("No")?></option>
+			</select><br />
 			
 		</div>
 	</form>

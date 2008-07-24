@@ -7,12 +7,11 @@
 			parent::Model();
 			
 			$this->table = 'news';
-			$this->lang = $this->session->userdata('lang');
 		}
 		
 		function get_total()
 		{
-			$this->db->where('lang', $this->lang );
+			$this->db->where('lang', $this->user->lang );
 			$this->db->from('news');
 					
 			return $this->db->count_all_results();
@@ -101,7 +100,7 @@
 		function news_list()
 		{
 			
-			$this->db->where(array('lang' => $this->lang));
+			$this->db->where(array('lang' => $this->user->lang));
 			$this->db->orderby('id DESC');
 			$query = $this->db->get($this->table);
 			

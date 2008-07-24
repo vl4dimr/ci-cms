@@ -20,12 +20,15 @@ CREATE TABLE IF NOT EXISTS `ci_news` (
 `comments` int(4) NOT NULL,
 `status` INT(3) NOT NULL DEFAULT '0',
 `date` INT NOT NULL ,
+`author`VARCHAR( 255 ) NOT NULL ,
+`email` VARCHAR( 255 ) NOT NULL ,
+`notify` TINYINT NOT NULL ,
 PRIMARY KEY ( `id` ) ,
 INDEX ( `title` )
 );
 				</query>
                  <query> 
-CREATE TABLE `ci_news_comments` (
+CREATE TABLE IF NOT EXISTS `ci_news_comments` (
   `id` int(11) NOT NULL auto_increment,
   `news_id` int(11) NOT NULL,
   `status` int(2) NOT NULL DEFAULT '0',

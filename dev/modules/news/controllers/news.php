@@ -8,11 +8,10 @@
 			//$this->output->enable_profiler(true);
 			$this->template['module'] = "news";
 
-			$this->allow_comments = isset($this->settings->allowed_file_type) ? $this->settings->allowed_file_type : 'gif|jpg|png|bmp|doc|docx|xls|mp3|swf|exe|pdf|wav';
 			$this->settings = isset($this->system->news_settings) ? unserialize($this->system->news_settings) : array();
 
 			$this->load->model('news_model', 'news');
-			$this->lang = $this->session->userdata('lang');
+			//$this->lang = $this->session->userdata('lang');
 		}
 		
 		function comment()
@@ -25,10 +24,55 @@
 			{
 				$data[$field] = $this->input->post($field);
 			}
+			if ($this->settings['approve_comments'])
+			{
+				$data['status'] = 1;
+			}
+			else
+			{
+				$news = $this->news->get_news($this->input->post('uri'));
+				
+				if ($news->email != '')
+				{
+					$this->load->library('email');
+
+					$this->email->from($news->email, $this->system->site_name );
+					$this->email->to($news->email);
+
+					$this->email->subject('[' . $this->system->site_name . '] '. __("Comment Notification"));
+					
+					$msg = __("
+Hello,
+
+A new comment has been sent to the news
+%s
+To approve it click the link below 
+%s
+
+If you don't want to receive other notification, go to
+%s
+
+and disable notification or disable comment.
+");
+					$msg = sprintf($msg, 
+							site_url('news/' . $news['uri']),
+							site_url('admin/news/comments/approve/' . $news['id']),
+							site_url('admin/news/create/' . $news['id'])
+						);
+						
+					$this->email->message($msg);
+
+					$this->email->send();
+
+					echo $this->email->print_debugger();
+				}
+			}
+			
+			$data = $this->plugin->apply_filters('comment_filter', $data);
 			
 			
 			$this->db->insert('news_comments', $data);
-			redirect('news/' . $this->input->post('uri'));
+			//redirect('news/' . $this->input->post('uri'));
 		}
 	
 		function read($uri = null)
@@ -44,6 +88,7 @@
 				{
 					//pagination for comments
 					$this->template['comments'] = $this->news->get_comments($news['id']);
+					var_dump($this->template['comments']);
 					if ($news['allow_comments'] == 1)
 					{
 						//generate captcha

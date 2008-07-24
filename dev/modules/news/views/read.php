@@ -7,7 +7,6 @@
 	}
 ?>	
 <?=$news['body']?>
-<?var_dump($comments)?>
 <?php if (!empty($comments)): ?>
 <div class="comments">
 	<h3>Comments:</h3>
