@@ -7,7 +7,7 @@
 			parent::Controller();
 			
 			$this->load->library('administration');
-			$this->session->lang = $this->session->userdata('lang');
+			$this->user->lang = $this->session->userdata('lang');
 
 			$this->template['module']	= 'page';
 			$this->template['admin']		= true;
@@ -35,10 +35,10 @@
 			$per_page = 20;
 			$this->user->check_level($this->template['module'], LEVEL_VIEW);
 			
-			if ( !$data = $this->cache->get('pagelist'.$this->session->lang, 'page') )
+			if ( !$data = $this->cache->get('pagelist'.$this->user->lang, 'page') )
 			{
 				if (!$data = $this->pages->list_pages()) $data = array();
-				$this->cache->save('pagelist'.$this->session->lang, $data, 'page', 0);
+				$this->cache->save('pagelist'.$this->user->lang, $data, 'page', 0);
 			}
 			
 
@@ -126,7 +126,7 @@
 						$this->db->update('images');
 					}	
 				}
-				$this->cache->remove('pagelist'.$this->session->lang, 'page');
+				$this->cache->remove('pagelist'.$this->user->lang, 'page');
 
 				
 				if ($_FILES['image']['name'] != '')
@@ -224,7 +224,7 @@
 					
 				$this->db->where('id', $this->input->post('id'));
 				$this->db->update('pages', $data);
-				$this->cache->remove('pagelist'.$this->session->lang, 'page');				
+				$this->cache->remove('pagelist'.$this->user->lang, 'page');				
 				
 				
 				
@@ -238,7 +238,7 @@
 						$this->db->update('images');
 					}	
 				}
-				$this->cache->remove('pagelist'.$this->session->lang, 'page');
+				$this->cache->remove('pagelist'.$this->user->lang, 'page');
 
 				
 				if ($_FILES['image']['name'] != '')
@@ -327,10 +327,10 @@
 				redirect('admin/page');
 			}
 
-			if ( !$data = $this->cache->get('pagelist'.$this->session->lang, 'page') )
+			if ( !$data = $this->cache->get('pagelist'.$this->user->lang, 'page') )
 			{
 				$data = $this->pages->list_pages();
-				$this->cache->save('pagelist'.$this->session->lang, $data, 'page', 0);
+				$this->cache->save('pagelist'.$this->user->lang, $data, 'page', 0);
 			}			
 			$this->javascripts->add('ajaxfileupload.js');
 			$this->template['pages'] = $data;
@@ -357,7 +357,7 @@
 				$query = $this->db->update('images');
 				
 				$this->session->set_flashdata('notification', 'Page has been deleted.');
-				$this->cache->remove('pagelist'.$this->session->lang, 'page'); 
+				$this->cache->remove('pagelist'.$this->user->lang, 'page'); 
 				redirect('admin/page');
 			}
 			else
@@ -392,10 +392,10 @@
 		}
 		function tinypagelist()
 		{
-			if ( !$rows = $this->cache->get('pagelist'.$this->session->lang, 'page') )
+			if ( !$rows = $this->cache->get('pagelist'.$this->user->lang, 'page') )
 			{
 				if (!$rows = $this->pages->list_pages()) $rows = array();
-				$this->cache->save('pagelist'.$this->session->lang, $rows, 'page', 0);
+				$this->cache->save('pagelist'.$this->user->lang, $rows, 'page', 0);
 			}
 			
 			$pages = array();

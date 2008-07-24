@@ -93,6 +93,7 @@
 			$this->id 				= $this->obj->session->userdata('id');
 			$this->username			= $this->obj->session->userdata('username');
 			$this->logged_in 		= $this->obj->session->userdata('logged_in');
+			$this->lang 			= $this->obj->session->userdata('lang');
 		}
 		
 		function _start_session($user)

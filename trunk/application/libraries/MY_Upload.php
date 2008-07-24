@@ -28,7 +28,6 @@ class MY_Upload extends CI_Upload
 	 */	
 	function is_allowed_filetype()
 	{
-		var_dump($this->file_ext);
 		
 		if (count($this->allowed_types) == 0 OR ! is_array($this->allowed_types))
 		{
