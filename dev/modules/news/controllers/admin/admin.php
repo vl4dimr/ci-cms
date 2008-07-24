@@ -1,7 +1,7 @@
 <?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 	class Admin extends Controller {
-		
+		var $settings = array();
 		function Admin()
 		{
 			parent::Controller();
@@ -11,6 +11,7 @@
 
 			$this->template['module']	= 'news';
 			$this->template['admin']		= true;
+			$this->settings = isset($this->system->news_settings) ? unserialize($this->system->news_settings) : array();
 			
 			$this->load->model('news_model', 'news');
 			
@@ -20,7 +21,11 @@
 		
 		function index($start = 0)
 		{
-		
+
+			if (!is_dir('./media/captcha'))
+			{
+				@mkdir('./media/captcha');
+			}		
 			
 			$per_page = 20;
 			$this->user->check_level($this->template['module'], LEVEL_VIEW);
@@ -189,6 +194,8 @@
 			$this->user->check_level($this->template['module'], LEVEL_ADD);
 			
 			$row = array();
+			$row['allow_comments'] = isset($this->settings['allow_comments'])? $this->settings['allow_comments'] : '1';
+
 			if (!is_null($id))
 			{
 				$this->user->check_level($this->template['module'], LEVEL_EDIT);
