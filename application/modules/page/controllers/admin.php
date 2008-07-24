@@ -7,7 +7,7 @@
 			parent::Controller();
 			
 			$this->load->library('administration');
-			$this->lang = $this->session->userdata('lang');
+			$this->session->lang = $this->session->userdata('lang');
 
 			$this->template['module']	= 'page';
 			$this->template['admin']		= true;
@@ -35,10 +35,10 @@
 			$per_page = 20;
 			$this->user->check_level($this->template['module'], LEVEL_VIEW);
 			
-			if ( !$data = $this->cache->get('pagelist'.$this->lang, 'page') )
+			if ( !$data = $this->cache->get('pagelist'.$this->session->lang, 'page') )
 			{
 				if (!$data = $this->pages->list_pages()) $data = array();
-				$this->cache->save('pagelist'.$this->lang, $data, 'page', 0);
+				$this->cache->save('pagelist'.$this->session->lang, $data, 'page', 0);
 			}
 			
 
@@ -126,7 +126,7 @@
 						$this->db->update('images');
 					}	
 				}
-				$this->cache->remove('pagelist'.$this->lang, 'page');
+				$this->cache->remove('pagelist'.$this->session->lang, 'page');
 
 				
 				if ($_FILES['image']['name'] != '')
@@ -224,7 +224,7 @@
 					
 				$this->db->where('id', $this->input->post('id'));
 				$this->db->update('pages', $data);
-				$this->cache->remove('pagelist'.$this->lang, 'page');				
+				$this->cache->remove('pagelist'.$this->session->lang, 'page');				
 				
 				
 				
@@ -238,7 +238,7 @@
 						$this->db->update('images');
 					}	
 				}
-				$this->cache->remove('pagelist'.$this->lang, 'page');
+				$this->cache->remove('pagelist'.$this->session->lang, 'page');
 
 				
 				if ($_FILES['image']['name'] != '')
@@ -327,10 +327,10 @@
 				redirect('admin/page');
 			}
 
-			if ( !$data = $this->cache->get('pagelist'.$this->lang, 'page') )
+			if ( !$data = $this->cache->get('pagelist'.$this->session->lang, 'page') )
 			{
 				$data = $this->pages->list_pages();
-				$this->cache->save('pagelist'.$this->lang, $data, 'page', 0);
+				$this->cache->save('pagelist'.$this->session->lang, $data, 'page', 0);
 			}			
 			$this->javascripts->add('ajaxfileupload.js');
 			$this->template['pages'] = $data;
@@ -357,7 +357,7 @@
 				$query = $this->db->update('images');
 				
 				$this->session->set_flashdata('notification', 'Page has been deleted.');
-				$this->cache->remove('pagelist'.$this->lang, 'page'); 
+				$this->cache->remove('pagelist'.$this->session->lang, 'page'); 
 				redirect('admin/page');
 			}
 			else
@@ -392,10 +392,10 @@
 		}
 		function tinypagelist()
 		{
-			if ( !$rows = $this->cache->get('pagelist'.$this->lang, 'page') )
+			if ( !$rows = $this->cache->get('pagelist'.$this->session->lang, 'page') )
 			{
 				if (!$rows = $this->pages->list_pages()) $rows = array();
-				$this->cache->save('pagelist'.$this->lang, $rows, 'page', 0);
+				$this->cache->save('pagelist'.$this->session->lang, $rows, 'page', 0);
 			}
 			
 			$pages = array();
@@ -469,46 +469,51 @@
 				//var_dump($config['upload_path']);
 				$this->load->library('upload', $config);	
 				
-				$this->upload->do_upload('image');
-			
+				if ( ! $this->upload->do_upload('image'))
+				{
+					$error = $this->upload->display_errors('', '');
+					
+				}	
+				else
+				{
 
-				$image_data = $this->upload->data();
-				
+					$image_data = $this->upload->data();
+					
 
-				$config = array();
-				//resize to 150
-				$config['source_image'] = $image_data['full_path'];
-				$config['new_image'] = './media/images/s/';
-				$config['width'] = 150;
-				$config['height'] = 100;
-				$config['maintain_ratio'] = true;
-				$config['master_dim'] = 'width';
-				$config['create_thumb'] = FALSE;
-				
-				$this->load->library('image_lib');
-				$this->image_lib->initialize($config);
-				$id = '';
-				
-				if($this->image_lib->resize())
-				{						
-			
 					$config = array();
+					//resize to 150
 					$config['source_image'] = $image_data['full_path'];
-					$config['new_image'] = './media/images/m/';
-					$config['width'] = 300;
-					$config['height'] = 200;
-					$config['maintain_ratio'] = TRUE;
+					$config['new_image'] = './media/images/s/';
+					$config['width'] = 150;
+					$config['height'] = 100;
+					$config['maintain_ratio'] = true;
 					$config['master_dim'] = 'width';
 					$config['create_thumb'] = FALSE;
-					$this->image_lib->initialize($config);
-
-					$this->image_lib->resize();
-					$data = array('file' => $image_data['file_name'], 'module' => 'page');
-					$this->db->insert('images', $data);
-					$id = $this->db->insert_id();
 					
+					$this->load->library('image_lib');
+					$this->image_lib->initialize($config);
+					$id = '';
+					
+					if($this->image_lib->resize())
+					{						
+				
+						$config = array();
+						$config['source_image'] = $image_data['full_path'];
+						$config['new_image'] = './media/images/m/';
+						$config['width'] = 300;
+						$config['height'] = 200;
+						$config['maintain_ratio'] = TRUE;
+						$config['master_dim'] = 'width';
+						$config['create_thumb'] = FALSE;
+						$this->image_lib->initialize($config);
+
+						$this->image_lib->resize();
+						$data = array('file' => $image_data['file_name'], 'module' => 'page');
+						$this->db->insert('images', $data);
+						$id = $this->db->insert_id();
+						
+					}
 				}
-	
 			}
 			echo "{";
 			echo "error: '" . $error . "'";
