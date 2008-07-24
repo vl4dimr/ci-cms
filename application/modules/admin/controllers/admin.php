@@ -9,7 +9,6 @@
 			parent::Controller();
 			
 			$this->load->library('administration');
-			$this->user->lang = $this->session->userdata('lang');
 			$this->check_latest_version();
 			$this->template['module'] = "admin";
 		}
