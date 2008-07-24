@@ -94,16 +94,17 @@
 			$this->username			= $this->obj->session->userdata('username');
 			$this->logged_in 		= $this->obj->session->userdata('logged_in');
 			$this->lang 			= $this->obj->session->userdata('lang');
+			$this->email			= $this->obj->session->userdata('email');
 		}
 		
 		function _start_session($user)
 		{
 			// $user is an object sent from function login();
 			// Let's build an array of data to put in the session.
-			
 			$data = array(
 						'id' 			=> $user->id,
 						'username' 		=> $user->username,
+						'email'		=> $user->email, 
 						'logged_in'		=> true
 					);
 					
@@ -153,6 +154,7 @@
 				// Let's save some data in their session/cookie/pocket whatever.
 				
 				$user = $query->row();
+
 				
 				$this->_start_session($user);
 				
