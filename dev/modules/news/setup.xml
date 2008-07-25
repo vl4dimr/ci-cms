@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS `ci_news_comments` (
   `email` varchar(100) NOT NULL,
   `website` varchar(150) NOT NULL,
   `body` text NOT NULL,
+  `ip` varchar(150) NOT NULL,  
   PRIMARY KEY  (`id`),
   KEY `news_id` (`news_id`),
   KEY `date` (`date`),
