@@ -13,7 +13,7 @@
 
 <hr />
 
-<?php if ($notice = $this->session->flashdata('notification')):?>
+<?php if (isset($notice) || $notice = $this->session->flashdata('notification')):?>
 <p class="notice"><?=$notice;?></p>
 <?php endif;?>
 
