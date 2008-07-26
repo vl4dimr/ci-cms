@@ -20,11 +20,6 @@
 		
 		function index($start = 0)
 		{
-
-			if (!is_dir('./media/captcha'))
-			{
-				@mkdir('./media/captcha');
-			}		
 			
 			$per_page = 20;
 			$this->user->check_level($this->template['module'], LEVEL_VIEW);

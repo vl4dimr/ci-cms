@@ -17,6 +17,33 @@
 		function comment()
 		{
 			//settings
+			$news = $this->news->get_news($this->input->post('uri'));
+			
+			if (!$this->input->post('captcha'))
+			{
+				$this->session->set_flashdata('notification', __("You must submit the security code that appears in the image"));
+				redirect('news/' . $this->input->post('uri'));
+			}
+			
+			$expiration = time()-7200; // Two hour limit
+			$this->db->where(" captcha_time < ", $expiration);
+			$this->db->delete('captcha');
+
+			// Then see if a captcha exists:
+			$this->db->where('word', $this->input->post('captcha'));
+			$this->db->where('ip_address', $this->input->ip_address());
+			$this->db->where('captcha_time >', $expiration);
+			$query = $this->db->get('captcha');
+			$row = $query->row();
+			
+
+			if ($query->num_rows() == 0)
+			{
+				var_dump($row);
+				$this->session->set_flashdata('notification', __("You must submit the security code that appears in the image"));
+				redirect('news/' . $this->input->post('uri'));
+			}
+					
 			
 			$fields = array('news_id', 'author', 'email', 'website', 'body');
 			$data = array();
@@ -25,6 +52,7 @@
 			{
 				$data[$field] = $this->input->post($field);
 			}
+			
 			if ($this->settings['approve_comments'])
 			{
 				$data['status'] = 1;
@@ -62,7 +90,6 @@ and disable notification.
 			}
 			else
 			{
-				$news = $this->news->get_news($this->input->post('uri'));
 				
 				if ($news['email'] != '')
 				{
@@ -98,14 +125,14 @@ and set to approve comments automatically.
 
 				}
 				
-				
+				$this->session->set_flashdata('notification', __("Thank you for your comment. In this site, the comments need to be approved by the administrator. Once approved, you will see it listed here."));
 			}
 			
 			$data = $this->plugin->apply_filters('comment_filter', $data);
 			
 			
 			$this->db->insert('news_comments', $data);
-			redirect('news/' . $this->input->post('uri'));
+			redirect('news/' . $this->input->post('uri'), 'refresh');
 		}
 	
 		function read($uri = null)
@@ -125,7 +152,7 @@ and set to approve comments automatically.
 					//debug
 					$rows = $this->db->get('news_comments');
 					
-					var_dump($rows->result_array());
+					//var_dump($rows->result_array());
 					if ($news['allow_comments'] == 1)
 					{
 						//generate captcha

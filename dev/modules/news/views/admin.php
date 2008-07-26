@@ -5,6 +5,7 @@
 
 <ul class="manage">
 	<li><a href="<?=site_url('admin/news/settings')?>"><?=__("Settings")?></a></li>
+	<li><a href="<?=site_url('admin/news/comments')?>"><?=__("Manage comments")?></a></li>
 	<li><a href="<?=site_url('admin/news/create')?>"><?=__("Create news")?></a></li>
 	<li><a href="<?=site_url('admin')?>" class="last"><?=__("Cancel")?></a></li>
 </ul>

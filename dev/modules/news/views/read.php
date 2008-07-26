@@ -8,14 +8,20 @@
 ?>	
 <?=$news['body']?>
 <?php if (!empty($comments)): ?>
-<div class="comments">
-	<h3>Comments:</h3>
-	<?php foreach ($comments as $comment): ?>
-	<div class="comment">
-	<h4><?php if (!empty($comment['website'])):?><a href="<?php echo $comment['website']?>"><?php endif;?><?php echo $comment['author']?><?php if (!empty($comment['website'])):?></a><?php endif;?></h4>
+<div id="comments">
+
+	<h2>Comments:</h2>
+<?php if (isset($notice) || $notice = $this->session->flashdata('notification')):?>
+<div class="notice"><?=$notice;?></div>
+<?php endif;?>
+
+	<?php $i = 1; foreach ($comments as $comment): ?>
+<?php if ($i % 2 != 0): $rowClass = 'odd'; else: $rowClass = 'even'; endif; ?>
+	<div class="<?=$rowClass?>">
+	<h4><?php if (!empty($comment['website'])):?><a href="<?php echo $comment['website']?>"><?php endif;?><?php echo $i . ". " . $comment['author']?><?php if (!empty($comment['website'])):?></a><?php endif;?></h4>
 	<p><?php echo $comment['body']?></p>
 	</div>
-	<?php endforeach; ?>
+	<?php $i++; endforeach; ?>
 	</div>
 <?php endif; ?>
 <?if ($news['allow_comments']) :?>
