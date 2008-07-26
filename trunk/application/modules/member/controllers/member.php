@@ -33,6 +33,10 @@ class Member extends Controller {
 
 		if ( $this->user->logged_in )
 		{
+			if ($redirect = $this->input->post('redirect'))
+			{
+				redirect($redirect, 'refresh');
+			}
 			redirect('member/profile');
 		}
 		else
@@ -44,20 +48,31 @@ class Member extends Controller {
 			}
 			else
 			{
-				$username = $this->input->post('username');
-				$password = $this->input->post('password');
+				if(!$username = $this->input->post('username'))
+				{
+					$this->session->set_flashdata('notification', __("Please enter your username"));
+					redirect('member/login', 'refresh');
+				}
+				
+				if(!$password = $this->input->post('password'))
+				{
+					$this->session->set_flashdata('notification', __("Please enter your password"));
+					redirect('member/login', 'refresh');
+				}
+			
 				
 				if ($this->user->login($username, $password))
 				{
 					redirect('member/profile');
 				}
 				else
-				{
-					$this->layout->load($this->template, 'login');
+				{	
+					redirect('member/login', 'refresh');
 				}
 			}
 		}
 	}
+	
 	function profile($username = null) 
 	{
 		if ( !$this->user->logged_in ) 
@@ -67,7 +82,43 @@ class Member extends Controller {
 		}
 		if ( is_null($username) )
 		{
-			echo "Izaho";
+			$this->load->library('validation');
+			$rules['password'] = "trim|matches[passconf]";
+			$rules['passconf'] = "trim";
+			$rules['email'] = "trim|required|valid_email|callback__verify_mail";	
+
+			$this->template['member'] = $this->db->get_where('users', array('username' => $this->user->username));
+			$this->validation->set_rules($rules);	
+
+			$fields['password'] = __("password");	
+			$fields['passconf'] = __("password confirmation");	
+
+			$this->validation->set_fields($fields);	
+			$this->validation->set_error_delimiters('<p style="color:#900">', '</p>');
+
+			$this->validation->set_message('required', __('The %s field is required'));
+			$this->validation->set_message('matches', __('The %s field does not match the %s field'));
+							
+						
+			if ($this->validation->run() == FALSE)
+			{
+				$this->layout->load($this->template, 'myprofile');
+			}
+			else
+			{
+				$data['status'] = $this->input->post('status');
+
+				if ($this->input->post('password'))
+				{
+					$data['password'] = $this->input->post('password');
+				}
+
+				$this->user->update($username, $data);
+				$this->session->set_flashdata('notification', __("Your profile was saved."));
+				redirect(site_url());
+			
+			}				
+		
 		}
 		else
 		{
