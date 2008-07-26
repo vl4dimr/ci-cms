@@ -197,7 +197,13 @@
 						{
 							$this->db->query( $query['#'] );
 						}
-					} 
+					}
+					
+					if (is_file(APPPATH.'modules/'.$module.'/'.$module.'_install.php'))
+					{
+						@include(APPPATH.'modules/'.$module.'/'.$module.'_install.php');
+					}
+					
 					$this->session->set_flashdata('notification', __("The module is installed. Now you need to activate it."));
 					$this->db->insert('modules', $data);
 					redirect('admin/module');

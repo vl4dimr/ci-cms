@@ -74,8 +74,17 @@
 				}
 				else
 				{
-					$username = $this->input->post('username');
-					$password = $this->input->post('password');
+					if(!$username = $this->input->post('username'))
+					{
+						$this->session->set_flashdata('notification', __("Please insert your username"));
+						redirect('admin/login');
+					}
+					
+					if(!$password = $this->input->post('password'))
+					{
+						$this->session->set_flashdata('notification', __("Please insert your password"));
+						redirect('admin/login');
+					}
 					
 					if ($this->user->login($username, $password))
 					{
@@ -217,6 +226,7 @@
 					}
 					else
 					{
+					
 						$this->db->where('id', $id);
 						$this->db->delete('navigation');
 						$this->session->set_flashdata('notification', __("Navigation item deleted"));

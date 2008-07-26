@@ -87,8 +87,27 @@
 		{
 			$this->user->check_level($this->template['module'], LEVEL_DEL);
 			$this->db->where('id', $id);
-			$this->db->delete('admins');
-			$this->session->set_flashdata('notification', __("User removed from administrator list"));
+			$query = $this->db->get('admins');
+			if ($query->num_rows == 1)
+			{
+				$row = $query->row_array();
+				
+				if ($this->user->username == $row['username']) 
+				{
+					$this->session->set_flashdata('notification', __("You cannot remove yourself from the list."));
+				}
+				else
+				{
+				
+					$this->db->where('id', $id);
+					$this->db->delete('admins');
+					$this->session->set_flashdata('notification', __("User removed from administrator list"));
+				}
+			}
+			else
+			{
+					$this->session->set_flashdata('notification', __("User not found in the list"));
+			}
 			redirect('admin/admins');
 		}
 	}
