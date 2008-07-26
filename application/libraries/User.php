@@ -158,7 +158,7 @@
 				
 				$this->_start_session($user);
 				
-				$this->obj->session->set_flashdata('user', 'Login successful...');
+				$this->obj->session->set_flashdata('notification', 'Login successful...');
 				
 				return true;
 			}
@@ -171,7 +171,7 @@
 				
 				$this->_destroy_session();
 				
-				$this->obj->session->set_flashdata('user', 'Login failed...');
+				$this->obj->session->set_flashdata('notification', 'Login failed...');
 				
 				return false;
 			}
