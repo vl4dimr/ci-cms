@@ -25,7 +25,7 @@ CREATE TABLE `ci_blocks` (
   `module` varchar(50) NOT NULL default '',
   `method` varchar(50) NOT NULL default '',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM;
+);
 
 -- 
 -- Dump dei dati per la tabella `ci_blocks`
@@ -50,7 +50,7 @@ CREATE TABLE `ci_languages` (
   `default` tinyint(4) NOT NULL default '0',
   PRIMARY KEY  (`id`),
   KEY `code` (`code`)
-) ENGINE=MyISAM  ;
+);
 
 -- 
 -- Dump dei dati per la tabella `ci_languages`
@@ -77,7 +77,7 @@ CREATE TABLE `ci_navigation` (
   KEY `active` (`active`),
   KEY `weight` (`weight`),
   KEY `parent_id` (`parent_id`)
-) ENGINE=MyISAM;
+);
 
 -- 
 -- Dump dei dati per la tabella `ci_navigation`
@@ -108,7 +108,7 @@ CREATE TABLE `ci_pages` (
   PRIMARY KEY  (`id`),
   KEY `uri` (`uri`),
   KEY `active` (`active`)
-) ENGINE=MyISAM;
+) ;
 
 -- 
 -- Dump dei dati per la tabella `ci_pages`
@@ -130,7 +130,7 @@ CREATE TABLE `ci_sessions` (
   `user_agent` varchar(50) NOT NULL default '',
   `last_activity` int(10) unsigned NOT NULL default '0',
   PRIMARY KEY  (`session_id`)
-) ENGINE=MyISAM ;
+)  ;
 
 -- 
 -- Dump dei dati per la tabella `ci_sessions`
@@ -151,8 +151,8 @@ CREATE TABLE `ci_settings` (
   `name` varchar(255) NOT NULL default '',
   `value` text NOT NULL,
   PRIMARY KEY  (`id`),
-  KEY `name` (`name`)
-) ENGINE=MyISAM;
+  UNIQUE KEY `name` (`name`)
+) ;
 
 -- 
 -- Dump dei dati per la tabella `ci_settings`
@@ -187,7 +187,7 @@ CREATE TABLE `ci_users` (
   KEY `username` (`username`),
   KEY `password` (`password`),
   KEY `status` (`status`)
-) ENGINE=MyISAM;
+) ;
 
      
 
@@ -206,7 +206,7 @@ CREATE TABLE `ci_modules` (
   `description` text NOT NULL,
   PRIMARY KEY  (`id`),
   KEY `name` (`name`)
-) ENGINE=MyISAM ;
+)  ;
 
 -- 
 -- Dump dei dati per la tabella `ci_modules`
@@ -229,7 +229,7 @@ CREATE TABLE `ci_admins` (
   `level` tinyint(4) NOT NULL default '0',
   PRIMARY KEY  (`id`),
   KEY `username` (`username`)
-) ENGINE=MyISAM ;
+)  ;
 
 
 DROP TABLE IF EXISTS `ci_group_members`;
@@ -266,7 +266,7 @@ CREATE TABLE IF NOT EXISTS `ci_images` (
   `src_id` int(11) NOT NULL default '0',
   `info` text NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM;
+) ;
 
 CREATE TABLE ci_captcha(
 	captcha_id bigint( 13 ) unsigned NOT NULL AUTO_INCREMENT ,
