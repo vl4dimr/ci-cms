@@ -33,8 +33,7 @@
 		relative_urls : false,
 		external_link_list_url : "/admin/page/tinypagelist",
 		external_image_list_url : "/admin/page/tinyimagelist",
-		pagebreak_separator : "<!-- page break -->",
-		extended_valid_elements : "a[name|href|target|title|onclick],img[class|src|border=0|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name],hr[class|width|size|noshade],font[face|size|color|style],span[class|align|style]"
+		pagebreak_separator : "<!-- page break -->"
 	});
 	</script>
 <?php endif;?>
