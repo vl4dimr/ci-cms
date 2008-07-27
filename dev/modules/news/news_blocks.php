@@ -6,19 +6,19 @@ function news_latest_news($limit = 5)
 {
 	$return = array();
 	
-	$this->obj =& get_instance();
+	$obj =& get_instance();
 	
-	$this->obj->load->helper('typography');
-	$this->obj->load->helper('text');	
+	$obj->load->helper('typography');
+	$obj->load->helper('text');	
 	
-	$this->obj->load->model('news_model');
-	if($rows = $this->obj->news_model->latest_news($limit))
+	$obj->load->model('news_model');
+	if($rows = $obj->news_model->latest_news($limit))
 	{
 		foreach ($rows as $row)
 		{
-			$this->obj->db->order_by('id DESC');
-			$this->obj->db->where(array('src_id' => $row['id'], 'module' => 'news'));
-			$query = $this->obj->db->get('images');
+			$obj->db->order_by('id DESC');
+			$obj->db->where(array('src_id' => $row['id'], 'module' => 'news'));
+			$query = $obj->db->get('images');
 			$row['image'] = $query->row_array();
 			
 			if($page_break_pos = strpos($row['body'], "<!-- page break -->"))
