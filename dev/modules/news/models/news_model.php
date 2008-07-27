@@ -17,6 +17,16 @@
 			return $this->db->count_all_results();
 			
 		}
+		
+		function get_total_published()
+		{
+			$this->db->where('lang', $this->user->lang );
+			$this->db->where('status', 1 );
+			$this->db->from('news');
+					
+			return $this->db->count_all_results();
+		
+		}
 
 		function generate_uri($title)
 		{
@@ -97,12 +107,13 @@
 
 		}
 		
-		function news_list()
+		function news_list($start = null, $limit = null)
 		{
 			
 			$this->db->where(array('lang' => $this->user->lang));
 			$this->db->orderby('id DESC');
-			$query = $this->db->get($this->table);
+			
+			$query = $this->db->get($this->table, $limit, $start);
 			
 			if ( $query->num_rows() > 0 )
 			{

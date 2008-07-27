@@ -150,7 +150,7 @@ and set to approve comments automatically.
 					$this->template['comments'] = $this->news->get_comments($news['id']);
 					
 					//debug
-					$rows = $this->db->get('news_comments');
+					
 					
 					//var_dump($rows->result_array());
 					if ($news['allow_comments'] == 1)
@@ -212,11 +212,8 @@ and set to approve comments automatically.
 		function index($start = 0)
 		{
 			$per_page = 20;
-			$this->db->order_by('id DESC');
-			$query = $this->db->get('news', $per_page, $start);
-			
-			$this->template['rows'] = $query->result_array();
-			
+
+			$this->template['rows'] = $this->news->news_list($start, $per_page);
 
 			$this->load->library('pagination');
 			
@@ -224,7 +221,7 @@ and set to approve comments automatically.
 			$config['first_link'] = __('First');
 			$config['last_link'] = __('Last');
 			$config['base_url'] = site_url('news/index/');
-			$config['total_rows'] = $this->db->count_all('news');
+			$config['total_rows'] = $this->news->get_total_published();
 			$config['per_page'] = $per_page; 	
 			$this->pagination->initialize($config); 
 

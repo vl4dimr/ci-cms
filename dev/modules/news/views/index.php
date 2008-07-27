@@ -1,5 +1,5 @@
 <h1><?=__("All news")?></h1>
-<?php if (count($rows) > 0 ) :?>
+<?php if (is_array($rows) && count($rows) > 0) :?>
 <table class="list" width='100%'>
 	<thead>
 		<tr>
