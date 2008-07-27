@@ -39,8 +39,8 @@
 				<td><?=$module['version']?></td>
 				<td>
 				<?php if ($module['status'] == 1 && $module['ordering'] >= 100): ?>
-				<a href="<?=site_url('admin/module/move/up/'. $module['name'])?>"><img src="<?=site_url('application/views/' . $this->system->theme . '/admin/images/moveup.gif')?>" width="16" height="16" title="<?=__("Move up")?>"/></a>
-				<a href="<?=site_url('admin/module/move/down/'. $module['name'])?>"><img src="<?=site_url('application/views/' . $this->system->theme . '/admin/images/movedown.gif')?>" width="16" height="16" title="<?=__("Move down")?>"/></a>
+				<a href="<?=site_url('admin/module/move/up/'. $module['name'])?>"><img src="<?=site_url('application/views/admin/images/moveup.gif')?>" width="16" height="16" title="<?=__("Move up")?>"/></a>
+				<a href="<?=site_url('admin/module/move/down/'. $module['name'])?>"><img src="<?=site_url('application/views/admin/images/movedown.gif')?>" width="16" height="16" title="<?=__("Move down")?>"/></a>
 				</td>
 				<?php endif; ?>
 				<td>
@@ -50,7 +50,7 @@
 				<a href="<?=site_url('admin/module/activate/'. $module['name'])?>"><?=__("Activate")?></a>
 				<?php endif; ?>
 				</td>
-				<td
+				<td>
 				<?php if ($module['status'] == 0  && $module['ordering'] >= 100): ?>
 				<a href="<?=site_url('admin/module/uninstall/'. $module['name'])?>"><?=__("Uninstall")?></a>
 				<?php elseif ($module['status'] == -1): ?>
