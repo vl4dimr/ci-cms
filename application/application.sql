@@ -1,15 +1,4 @@
--- phpMyAdmin SQL Dump
--- version 2.9.1.1
--- http://www.phpmyadmin.net
--- 
--- Host: localhost
--- Generato il: 03 Giu, 2008 at 02:27 PM
--- Versione MySQL: 5.0.27
--- Versione PHP: 5.2.0
--- 
--- Database: `ci`
--- 
-
+-- $Id$
 -- --------------------------------------------------------
 
 -- 
@@ -105,6 +94,7 @@ CREATE TABLE `ci_pages` (
   `body` text NOT NULL,
   `lang` varchar(5) NOT NULL default 'en',
   `weight` int(11) NOT NULL default '0',
+  `options` text NOT NULL,
   PRIMARY KEY  (`id`),
   KEY `uri` (`uri`),
   KEY `active` (`active`)
