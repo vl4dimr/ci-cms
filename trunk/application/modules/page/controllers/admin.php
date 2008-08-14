@@ -99,7 +99,10 @@
 							'active'			=> $this->input->post('status'),
 							'lang'				=> $this->input->post('lang')
 						);
-				
+				if ($this->input->post('options'))
+				{
+					$data['options'] = serialize($this->input->post('options'));
+				}
 				if ($this->input->post('uri') != '')
 				{
 					$data['uri'] = $this->input->post('uri');
@@ -205,6 +208,21 @@
 			}
 		}
 		
+		function move($direction, $id)
+		{
+
+			if (!isset($direction) || !isset($id))
+			{
+				redirect('admin/page');
+			}
+			
+			$this->pages->move($direction, $id);
+			
+			redirect('admin/page');					
+			
+					
+		}
+		
 		function edit()
 		{
 			$this->user->check_level($this->template['module'], LEVEL_EDIT);
@@ -221,6 +239,10 @@
 							'active'			=> $this->input->post('status'),
 							'lang'			=> $this->input->post('lang')
 						);
+				if ($this->input->post('options'))
+				{
+					$data['options'] = serialize($this->input->post('options'));
+				}
 					
 				$this->db->where('id', $this->input->post('id'));
 				$this->db->update('pages', $data);
@@ -295,22 +317,6 @@
 							$this->pages->attach($this->input->post('id'), $image_data);
 						
 						}
-						/*
-						[file_name]    => mypic.jpg
-						[file_type]    => image/jpeg
-						[file_path]    => /path/to/your/upload/
-						[full_path]    => /path/to/your/upload/jpg.jpg
-						[raw_name]     => mypic
-						[orig_name]    => mypic.jpg
-						[file_ext]     => .jpg
-						[file_size]    => 22.2
-						[is_image]     => 1
-						[image_width]  => 800
-						[image_height] => 600
-						[image_type]   => jpeg
-						[image_size_str] => width="800" height="200"
-						*/
-						
 						
 					}				
 				}	

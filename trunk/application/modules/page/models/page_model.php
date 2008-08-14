@@ -42,6 +42,71 @@
 			return $this->pagetree;
 		}
 		
+		function move($direction, $id)
+		{
+
+			$query = $this->db->get_where('pages', array('id' => $id));
+			
+			
+			if ($row = $query->row())
+			{
+				$parent_id = $row->parent_id;
+				
+			}
+			else
+			{
+				$parent_id = 0;
+			}
+			
+			
+			$move = ($direction == 'up') ? -1 : 1;
+			$this->db->where(array('id' => $id));
+			
+			$this->db->set('weight', 'weight+'.$move, FALSE);
+			$this->db->update('pages');
+			
+			$this->db->where(array('id' => $id));
+			$query = $this->db->get('pages');
+			$row = $query->row();
+			$new_ordering = $row->weight;
+			
+			
+			if ( $move > 0 )
+			{
+				$this->db->set('weight', 'weight-1', FALSE);
+				$this->db->where(array('weight <=' => $new_ordering, 'id <>' => $id, 'parent_id' => $parent_id, 'lang' => $this->user->lang));
+				$this->db->update('pages');
+			}
+			else
+			{
+				$this->db->set('weight', 'weight+1', FALSE);
+				$where = array('weight >=' => $new_ordering, 'id <>' => $id, 'parent_id' => $parent_id, 'lang' => $this->user->lang);
+				
+				$this->db->where($where);
+				$this->db->update('pages');
+			}
+			//reordinate
+			$i = 0;
+			$this->db->order_by('weight');
+			$this->db->where(array('parent_id' => $parent_id, 'lang' => $this->user->lang));
+			
+			$query = $this->db->get('pages');
+			
+			if ($rows = $query->result())
+			{
+				foreach ($rows as $row)
+				{
+					$this->db->set('weight', $i);
+					$this->db->where('id', $row->id);
+					$this->db->update('pages');
+					$i++;
+				}
+			}
+			//clear cache
+			$this->cache->remove('pagelist'.$this->user->lang, 'page');				
+			
+		}
+		
 		function get_page($data)
 		{
 			$this->db->select('*');
@@ -62,7 +127,9 @@
 			
 			if ( $query->num_rows() == 1 )
 			{
-				return $query->row_array();
+				$row = $query->row_array();
+				$row['options'] = unserialize($row['options']);
+				return $row;
 			}
 			else
 			{
@@ -95,7 +162,42 @@
 			}
 			return $this->tmppages;
 		}
+		
+		function get_subpages($id, $limit = null)
+		{
+			$this->db->where('parent_id', $id);
+			$query = $this->db->get('pages', $limit);
+			return $query->result_array();
+		}
 
+		function get_nextpage(&$page)
+		{
+			
+			$this->db->where('active', 1);
+			$this->db->where('parent_id', $page['parent_id']);
+			$this->db->order_by('weight');
+			
+			$query = $this->db->get('pages');
+			
+			
+			if($familypages = $query->result_array())
+			{
+				foreach($familypages as $key=>$val) {
+					if($val['id'] == $page['id']) {
+						$id = $key;
+					}
+				}
+				if(($id - 1) >= 0) {
+					// Ny mialoha
+					$page['previous_page'] = $familypages[$id - 1];
+				}
+				if ( ( $id + 1 ) < count( $familypages ) ) {
+					// Ny manaraka
+					$page['next_page'] = $familypages[$id + 1];
+				}
+			}		
+		}
+		
 		function new_pages($limit = 10)
 		{
 			$this->db->select('id, title, uri, active');

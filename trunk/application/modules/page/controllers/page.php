@@ -38,21 +38,30 @@
 				$built_uri = $this->system->page_home;
 			}
 			
-			if ( $this->template['page'] = $this->pages->get_page(array('uri' => $built_uri, 'lang' => $this->user->lang)) )
+			if ( $page = $this->pages->get_page(array('uri' => $built_uri, 'lang' => $this->user->lang)) )
 			{
 				
-				$view = 'index';
+				if ($page['active'] == 1)
+				{
 				
-				$this->template['breadcrumb'][] = 	array(
-														'title'	=> (strlen($this->template['page']['title']) > 20 )? substr($this->template['page']['title'], 0, 20) . '...': $this->template['page']['title'],
-														'uri'	=> $this->template['page']['uri']
-													);
-				
-				$this->template['title'] = $this->template['page']['title'];
-													
-				$this->template['meta_keywords'] 	= $this->template['page']['meta_keywords'];
-				$this->template['meta_description'] = $this->template['page']['meta_description'];
-													
+					$this->template['page'] = $page;
+					$view = 'index';
+					
+					$this->template['breadcrumb'][] = 	array(
+															'title'	=> (strlen($this->template['page']['title']) > 20 )? substr($this->template['page']['title'], 0, 20) . '...': $this->template['page']['title'],
+															'uri'	=> $this->template['page']['uri']
+														);
+					
+					$this->template['title'] = $this->template['page']['title'];
+														
+					$this->template['meta_keywords'] 	= $this->template['page']['meta_keywords'];
+					$this->template['meta_description'] = $this->template['page']['meta_description'];
+				}
+				else
+				{
+					$this->output->set_header("HTTP/1.0 403 Forbidden");
+					$view = '403';
+				}
 			}
 			else
 			{

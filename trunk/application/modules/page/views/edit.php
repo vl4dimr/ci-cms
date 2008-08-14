@@ -4,8 +4,9 @@
 	<h1 id="pageinfo">Page informations</h1>
 	
 	<ul id="tabs" class="quickmenu">
-		<li><a href="#one">Content</a></li>
-		<li><a href="#two">Meta data</a></li>
+		<li><a href="#one"><?=__("Content")?></a></li>
+		<li><a href="#two"><?=__("Meta data")?></a></li>
+		<li><a href="#three"><?=__("Options")?></a></li>
 	</ul>
 	<div class="quickend"></div>
 
@@ -137,7 +138,7 @@ function ajaxFileUpload() {
 					
 					if ($page['id'] == $parent['id'] || $follow == $parent['parent_id']) 
 					{
-						$follow = $parent['id']; 
+						$follow = $page['id']; 
 						continue;
 					}
 					else
@@ -182,6 +183,21 @@ function ajaxFileUpload() {
 		
 			<label for="meta_description">Page description:</label>
 			<input type="text" name="meta_description" value="<?=$page['meta_description']?>" id="meta_description" class="input-text" />
+			
+		</div>
+		<div id="three">
+		
+			<label for="options[show_subpages]"><?=__("Show subpages")?>:</label>
+			<select name="options[show_subpages]" class="input-select" id="show_subpages">
+			<option value='0' <?=((isset($page['options']['show_subpages']) && $page['options']['show_subpages']==0)?"selected":"")?>><?=__("No")?></option>
+			<option value='1' <?=((isset($page['options']['show_subpages']) && $page['options']['show_subpages']==1)?"selected":"")?>><?=__("Yes")?></option>
+			</select><br />
+
+			<label for="options[show_navigation]"><?=__("Show navigation")?>:</label>
+			<select name="options[show_navigation]" class="input-select" id="show_navigation">
+			<option value='1' <?=((isset($page['options']['show_navigation']) && $page['options']['show_navigation']==1)?"selected":"")?>><?=__("Yes")?></option>
+			<option value='0' <?=((isset($page['options']['show_navigation']) && $page['options']['show_navigation']==0)?"selected":"")?>><?=__("No")?></option>
+			</select><br />
 			
 		</div>
 	</form>
