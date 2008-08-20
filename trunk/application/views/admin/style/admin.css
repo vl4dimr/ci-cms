@@ -350,7 +350,6 @@ div.quickend {
 div.content {
 	position: static;
 	float: left;
-	overflow: hidden;
 	clear: right;
 }
 
