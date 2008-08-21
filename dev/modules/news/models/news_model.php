@@ -111,7 +111,7 @@
 		{
 			
 			$this->db->where(array('lang' => $this->user->lang));
-			$this->db->orderby('id DESC');
+			$this->db->orderby('date DESC');
 			
 			$query = $this->db->get($this->table, $limit, $start);
 			
@@ -128,7 +128,7 @@
 		function latest_news($limit = 10)
 		{
 			$this->db->where('lang', $this->user->lang);
-			$this->db->order_by('id', 'DESC');
+			$this->db->order_by('date', 'DESC');
 			$this->db->limit($limit);
 			$query = $this->db->get($this->table);
 			

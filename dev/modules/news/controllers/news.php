@@ -151,6 +151,16 @@ and set to approve comments automatically.
 					
 					//debug
 					
+					//hits
+					if ($this->session->userdata('news'.$news['id']) != $news['id'])
+					{
+						$this->session->set_userdata('news'.$news['id'], $news['id']);
+						$this->db->where('id', $news['id']);
+						$this->db->set('hit', 'hit+1', FALSE);
+						
+						$this->db->update('news');
+						$this->cache->remove('news'.$this->user->lang, 'news');
+					}
 					
 					//var_dump($rows->result_array());
 					if ($news['allow_comments'] == 1)

@@ -87,9 +87,18 @@
 				$data[$field] = $this->input->post($field);
 			}
 
-			
-			//var_dump($data);
+			if($date = $this->input->post('date')) {
+				$day = substr($date, 0,2);
+				$month = substr($date, 3, 2);
+				$year = substr($date, 6, 4);
 
+				$data['date'] = mktime(0, 0, 0, $month, $day, $year);
+			}
+			else
+			{
+				$data['date'] = mktime();
+			}
+			
 				
 			if($id = $this->input->post('id'))
 			{
@@ -101,10 +110,11 @@
 			}
 			else
 			{
+				$this->user->check_level($this->template['module'], LEVEL_ADD);
+			
 				$data['author'] = $this->user->username;
 				$data['email'] = $this->user->email;
 				$data['uri'] = $this->news->generate_uri($this->input->post('title'));
-				$data['date'] = mktime();
 				$this->db->insert('news', $data);
 				$id = $this->db->insert_id();
 				//insert
@@ -183,6 +193,16 @@
 				
 		}
 		
+		function admin_header()
+		{
+			$output = "<script language=\"javascript\" src=\"" . base_url() . "application/views/admin/javascript/datePicker/date.js\"></script>\n";
+			$output .= "<script language=\"javascript\" src=\"" . base_url() . "application/views/admin/javascript/datePicker/datePicker.js\"></script>\n";
+
+			$output .= "<link href=\"" . base_url() . "application/views/admin/javascript/datePicker/styles.css\" rel=\"stylesheet\" type=\"text/css\" />";
+			
+			echo $output;
+
+		}
 		
 		function create($id = null)
 		{
@@ -195,7 +215,8 @@
 			'notify' => 1
 			);
 			
-	
+			$this->plugin->add_action('header', array(&$this, 'admin_header'));
+
 
 			if (!is_null($id))
 			{

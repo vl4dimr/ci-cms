@@ -16,6 +16,13 @@
 <div class="content slim">
 
 <script type="text/javascript">
+
+$(document).ready(function ()
+{
+	$('input#date').datePicker({startDate:'01/01/1996'});
+});
+
+
 $(document).ready(function(){
 	$("#image")
 	.after("<img src='<?php echo site_url('application/views/admin/images/ajax_circle.gif')?>' id='loading'/><input type='button' id='upload_now' value='  <?php echo __('Upload') ?>  ' />");
@@ -139,6 +146,10 @@ function ajaxFileUpload() {
 		<input type="file" name="image" class="input-file" id="image"/><br />
 		</div>
 		<div id="two">
+		
+			<label for="date"><?=__("Date")?> (dd/mm/yyyy):</label>
+			<input type="text" name="date" value="<?=(isset($row['date'])?date("d/m/Y", $row['date']) : date("d/m/Y")) ?>" id="date" class="input-text" /><br class='clear'/>
+
 		
 			<label for="allow_comments"><?=__("Allow Comments")?>:</label>
 			<select name="allow_comments" class="input-select" id="allow_comments">

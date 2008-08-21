@@ -22,10 +22,10 @@
 	<thead>
 		<tr>
 				<th width="3%" class="center">#</th>
-				<th width="54%"><?=__("Title")?></th>
+				<th width="50%"><?=__("Title")?></th>
 				<th width="10%"><?=__("Status")?></th>
 				<th width="30%" colspan="3"><?=__("Action")?></th>
-				<th width="3%" class="last center">ID</th>
+				<th width="7%" class="last center"><?=__("Hits")?></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -39,7 +39,7 @@
 				<td><a href="<?=site_url('news/'. $row['uri'])?>" rel="external"><?=__("View")?></a></td>
 				<td><a href="<?=site_url('admin/'.$module.'/create/'.$row['id'])?>"><?=__("Edit")?></a></td>
 				<td><a href="<?=site_url('admin/'.$module.'/delete/'.$row['id'])?>"><?=__("Delete")?></a></td>
-				<td class="center"><?=$row['id']?></td>
+				<td class="center"><?=$row['hit']?></td>
 		</tr>
 <?php $i++; endforeach;?>
 <?php endif; ?>
