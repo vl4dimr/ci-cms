@@ -56,6 +56,15 @@
 														
 					$this->template['meta_keywords'] 	= $this->template['page']['meta_keywords'];
 					$this->template['meta_description'] = $this->template['page']['meta_description'];
+					//page hit
+					if ($this->session->userdata('page'.$page['id']) != $page['id'])
+					{
+						$this->session->set_userdata('page'.$page['id'], $page['id']);
+						$this->db->where('id', $page['id']);
+						$this->db->set('hit', 'hit+1', FALSE);
+						$this->db->update('pages');
+						$this->cache->remove('pagelist'.$this->user->lang, 'page');
+					}
 				}
 				else
 				{

@@ -25,8 +25,8 @@
 				<th width="27%"><?=__("SEF address")?></th>
 				<th width="5%"><?=__("Status")?></th>
 				<th width="5%"><?=__("Ordering")?></th>
-				<th width="30%" colspan="3"><?=__("Action")?></th>
-				<th width="3%" class="last center">ID</th>
+				<th width="27%" colspan="3"><?=__("Action")?></th>
+				<th width="6%" class="last center"><?=__("Hits")?></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -44,7 +44,7 @@
 				<td><a href="<?=site_url($page['uri'])?>" rel="external">View</a></td>
 				<td><a href="<?=site_url('admin/'.$module.'/edit/'.$page['id'])?>">Edit</a></td>
 				<td><a href="<?=site_url('admin/'.$module.'/delete/'.$page['id'])?>">Delete</a></td>
-				<td class="center"><?=$page['id']?></td>
+				<td class="center"><?=$page['hit']?></td>
 		</tr>
 <?php $i++; endforeach;?>
 <?php endif; ?>
