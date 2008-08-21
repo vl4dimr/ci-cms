@@ -94,6 +94,7 @@ CREATE TABLE `ci_pages` (
   `body` text NOT NULL,
   `lang` varchar(5) NOT NULL default 'en',
   `weight` int(11) NOT NULL default '0',
+  `hit` int(11) NOT NULL default '0',
   `options` text NOT NULL,
   PRIMARY KEY  (`id`),
   KEY `uri` (`uri`),

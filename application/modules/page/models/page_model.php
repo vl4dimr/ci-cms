@@ -147,15 +147,10 @@
 
 			// display each child
 			foreach ($query->result_array() as $row) {
-			// indent and display the title of this child
-			$this->tmppages[] = array(
-				'level' =>$level, 
-				'title' => $row['title'],
-				'parent_id' => $row['parent_id'],
-				'id' => $row['id'],
-				'uri' => $row['uri'],
-				'active' => $row['active']
-			);
+				// indent and display the title of this child
+				$row['level'] = $level;
+				
+				$this->tmppages[] = $row;
 			// call this function again to display this
 			// child's children
 				$this->list_pages($row['id'], $level+1);
@@ -220,6 +215,16 @@
 			$data = array('src_id' => $id, 'module' => 'page', 'file' => $image_data['file_name']);
 			$this->db->insert('images', $data);
 			return $this->db->insert_id();
+		}
+		
+		function update($id, $data)
+		{
+			if(!is_array($data))
+			{
+				return false;
+			}
+			$this->db->where('id', $id);
+			$this->db->update('pages', $data);
 		}
 	}
 
