@@ -12,6 +12,7 @@
                 <query> 
 CREATE TABLE IF NOT EXISTS `ci_news` (
 `id` INT NOT NULL AUTO_INCREMENT ,
+`cat` INT NOT NULL DEFAULT '0',
 `title` VARCHAR( 255 ) NOT NULL ,
 `uri` VARCHAR( 255 ) NOT NULL ,
 `lang` VARCHAR( 255 ) NOT NULL ,
@@ -55,7 +56,24 @@ CREATE TABLE IF NOT EXISTS ci_captcha(
 	KEY ( word )
 ); 
 				</query>
-      </install>
+				<query> 
+CREATE TABLE IF NOT EXISTS `ci_news_cat` (
+  `id` int(11) NOT NULL auto_increment,
+  `pid` int(11) NOT NULL default '0',
+  `title` varchar(255) NOT NULL default '',
+  `icon` varchar(255) NOT NULL default '',
+  `desc` text NOT NULL,
+  `date` int(11) NOT NULL default '0',
+  `username` varchar(20) NOT NULL default '',
+  `lang` char(5) NOT NULL default '',
+  `weight` int(11) NOT NULL default '0',
+  `status` int(5) NOT NULL default '1',
+  `acces` varchar(20) NOT NULL default '0',
+  PRIMARY KEY  (`id`),
+  KEY `title` (`title`)
+);
+				</query>
+     </install>
         <uninstall>
                 <query>DROP TABLE  IF EXISTS `ci_news`;</query>
         </uninstall>	

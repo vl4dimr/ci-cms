@@ -124,6 +124,18 @@ function ajaxFileUpload() {
 		<label for="title"><?=__("Title")?>:</label>
 		<input type="text" name="title" value="<?=(isset($row['title'])?$row['title'] : "") ?>" id="title" class="input-text" /><br />
 		
+		<label for="pid"><?=__("Category")?>:</label>
+		<select name='cat' id='cat' class="input-select">
+		<option value='0'></option>
+		<?php if($categories): ?>
+		<?php foreach($categories as $category) : ?>
+			<option value="<?=$category['id']?>" <?=($row['cat'] == $category['id'])?"selected":""?>> &nbsp;<?=($category['level'] > 0) ? "|".str_repeat("__", $category['level']): ""?> <?=$category['title'] ?> </option>
+		<?php endforeach; ?>
+		<?endif;?> 
+		</select><br />
+		
+		
+		
 		<label for="status"><?=__("Status")?>:</label>
 		<select name="status" id="status" class="input-select">
 			<option value="1" <?=(isset($row['status']) && $row['status'] == 1)? "selected"  : "" ?>><?=__("Published")?></option>

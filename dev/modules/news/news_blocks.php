@@ -1,6 +1,31 @@
 <?php
 
 $this->set('latest_news', 'news_latest_news');
+$this->set('get_news_bycat', 'news_get_news');
+$this->set('get_news_cat', 'news_get_cat');
+
+function news_get_cat($pid = 0)
+{
+	$return = array();
+	$obj =& get_instance();
+	$obj->load->model('news_model');
+	return $obj->news_model->get_catlist_by_pid($pid);
+	
+}
+
+function news_get_news($cat = 0)
+{
+	$return = array();
+	$obj =& get_instance();
+	$obj->load->model('news_model');
+	$cat = $obj->news_model->get_cat($cat);
+	$return['title'] = $cat['title'];
+	$return['cat'] = $cat['id'];
+	$return['news'] = $obj->news_model->get_news_list(array('cat' => $cat));
+	
+	return $return;
+	
+}
 		
 function news_latest_news($limit = 5)
 {

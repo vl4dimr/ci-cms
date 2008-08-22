@@ -79,7 +79,7 @@
 		{
 			$this->user->check_level($this->template['module'], LEVEL_ADD);
 		
-			$fields = array('id', 'title', 'body', 'status', 'allow_comments', 'lang', 'notify');
+			$fields = array('id', 'cat', 'title', 'body', 'status', 'allow_comments', 'lang', 'notify');
 			$data = array();
 			
 			foreach ($fields as $field)
@@ -212,7 +212,8 @@
 			//default values
 			$row = array(
 			'allow_comments' => isset($this->settings['allow_comments'])? $this->settings['allow_comments'] : '1',
-			'notify' => 1
+			'notify' => 1,
+			'cat' => 0
 			);
 			
 			$this->plugin->add_action('header', array(&$this, 'admin_header'));
@@ -226,6 +227,7 @@
 				$row = $query->row_array();
 			}
 			$this->template['row'] = $row;
+			$this->template['categories'] = $this->news->get_catlist();
 			$this->javascripts->add('ajaxfileupload.js');
 			
 			$this->db->where('src_id', 0);
