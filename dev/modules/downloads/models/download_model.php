@@ -23,24 +23,23 @@ class Download_model extends Model {
 			'acces'  => ''
 		);
 		
-	var $file_fields = array(
+	var $doc_fields = array(
 			'id'  => '',
 			'cat'  => '',
+			'file_id'  => '',
+			'file_link'  => '',
 			'weight'  => '',
-			'link'  => '',
-			'linktype'  => '',
 			'lang'   => '',
 			'pic'   => '',
 			'title'   => '',
 			'desc'   => '',
 			'username'   => '',
 			'keywords'   => '',
-			'submitter'  => '',
 			'date'  => '',
 			'hit'  => '',
-			'valid'   => '',
 			'acces'  => '',
-			'icon'   => ''
+			'icon'   => '',
+			'status' => '1'
 		);
 	var $_cats;
 	function Download_model()
@@ -51,35 +50,52 @@ class Download_model extends Model {
 	}
 	
 	
-	function get_file($data)
+	function get_doc($data)
 	{
+
 		if (is_array($data))
 		{
 			$this->db->where($data);
 		}
 		else
 		{
-			$this->db->where('id', $data);
+			$this->db->where('download_doc.id', $data);
+			
 		}
 
-		$query = $this->db->get('download_file');
+		$select1 = 'download_doc.' . join(', download_doc.' , array_keys($this->doc_fields));
+		$select2 = 'download_files.name, download_files.file, download_files.size';
+		$this->db->select($select1 . ', '. $select2);
+		$this->db->order_by('weight');
+		$this->db->from('download_doc');
+		$this->db->join('download_files', 'download_doc.file_id = download_files.id');
+		
+		
+		$query = $this->db->get('download_doc');
+
 		if ($query->num_rows() > 0)
 		{
-		return $query->row_array();
+			return $query->row_array();
 		}
 		else
 		{
-		return false;
+			return false;
 		}
 	}
 	
-	function get_files($cat = 0)
+	function get_docs($cat = 0, $start = null, $per_page = null)
 	{
-
+		$select1 = 'download_doc.' . join(', download_doc.' , array_keys($this->doc_fields));
+		$select2 = 'download_files.name, download_files.file, download_files.size';
+		$this->db->select($select1 . ', '. $select2);
+		$this->db->order_by('weight');
 		$this->db->where('cat', $cat);
 		$this->db->where('lang', $this->user->lang);
-
-		$query = $this->db->get('download_file');
+		$this->db->from('download_doc');
+		$this->db->join('download_files', 'download_doc.file_id = download_files.id');
+		$this->db->limit($per_page, $start);
+		
+		$query = $this->db->get();
 		if ($query->num_rows() > 0)
 		{
 			return $query->result_array();
@@ -90,12 +106,12 @@ class Download_model extends Model {
 		}
 	}
 
-	function get_totalfiles($cat = 0)
+	function get_totaldocs($cat = 0)
 	{
 
 		$this->db->where('cat', $cat);
 		$this->db->where('lang', $this->user->lang);
-		return $this->db->count_all_results('download_file');
+		return $this->db->count_all_results('download_doc');
 	}
 	
 	
@@ -213,9 +229,20 @@ class Download_model extends Model {
 		$this->db->delete('download_cat');
 	}
 	
-	function get_totalcat()
+	function delete_doc($id)
 	{
-		return $this->db->count_all('download_cat');
+		$this->db->where('id', $id);
+		$this->db->delete('download_doc');
+	}
+	
+	function get_totalcat($parent = null)
+	{
+		$this->db->where('lang', $this->user->lang);
+		if (!is_null($parent))
+		{
+			$this->db->where('pid', $parent);
+		}
+		return $this->db->count_all_results('download_cat');
 	}
 
 	function move_cat($direction, $id)
@@ -281,7 +308,141 @@ class Download_model extends Model {
 		//clear cache
 		
 	}
+
+
+	function move_doc($direction, $id, $cat = 0)
+	{
+
+		
+		$move = ($direction == 'up') ? -1 : 1;
+		$this->db->where(array('id' => $id));
+		
+		$this->db->set('weight', 'weight+'.$move, FALSE);
+		$this->db->update('download_doc');
+		
+		$this->db->where(array('id' => $id));
+		$query = $this->db->get('download_doc');
+		$row = $query->row();
+		$new_ordering = $row->weight;
+		
+		
+		if ( $move > 0 )
+		{
+			$this->db->set('weight', 'weight-1', FALSE);
+			$this->db->where(array('weight <=' => $new_ordering, 'id <>' => $id, 'cat' => $cat, 'lang' => $this->user->lang));
+			$this->db->update('download_doc');
+		}
+		else
+		{
+			$this->db->set('weight', 'weight+1', FALSE);
+			$where = array('weight >=' => $new_ordering, 'id <>' => $id, 'cat' => $cat, 'lang' => $this->user->lang);
+			
+			$this->db->where($where);
+			$this->db->update('download_doc');
+		}
+		//reordinate
+		$i = 0;
+		$this->db->order_by('weight');
+		$this->db->where(array('cat' => $cat, 'lang' => $this->user->lang));
+		
+		$query = $this->db->get('download_doc');
+		
+		if ($rows = $query->result())
+		{
+			foreach ($rows as $row)
+			{
+				$this->db->set('weight', $i);
+				$this->db->where('id', $row->id);
+				$this->db->update('download_doc');
+				$i++;
+			}
+		}
+		//clear cache
+		
+	}
 	
+	function save_doc($id)
+	{
+		foreach ($this->doc_fields as $key=>$val)
+		{
+			if ($this->input->post($key))
+			{
+				$data[$key] = $this->input->post($key);
+			}
+		}
+		
+		if ($id)
+		{
+			$this->db->where('id', $data['id']);
+			$this->db->update('download_doc', $data);
+		}
+		else
+		{
+			$data['date'] = mktime();
+			$data['username'] = $this->user->username;
+			
+			$this->db->insert('download_doc', $data);
+		}
 	
+	}
 	
+	function save_file($data)
+	{
+		$this->db->insert('download_files', $data);
+		$id = $this->db->insert_id();
+		return $id;
+	}
+
+	function get_file($data)
+	{
+		if (is_array($data))
+		{
+			$this->db->where($data);
+		}
+		else
+		{
+			$this->db->where('id', $data);
+		}
+
+		$query = $this->db->get('download_files');
+		if ($query->num_rows() > 0)
+		{
+		return $query->row_array();
+		}
+		else
+		{
+		return false;
+		}
+	}
+	
+	function delete_file($row)
+	{
+		@unlink('./media/files/' . $row['file']);
+		$this->db->where('id', $row['id']);
+		$this->db->delete('download_files');	
+	}
+	
+	function get_files($start = null, $limit = null , $order = "file")
+	{
+		$this->db->order_by($order);
+		$query = $this->db->get('download_files', $limit, $start);
+		
+		return $this->template['rows'] = $query->result_array();
+	
+	}
+	
+	function get_totalfiles()
+	{
+		return $this->db->count_all('download_files');
+	}
+	
+	function update_doc($data, $where)
+	{
+		if (!is_array($where))
+		{
+			$where = array('id' => $where);
+		}
+		
+		$this->db->update('download_doc', $data, $where);
+	}
 }

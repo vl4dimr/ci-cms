@@ -1,7 +1,7 @@
 
 <div class="leftmenu">
 
-	<h1 id="pageinfo"><?=__("Product information")?></h1>
+	<h1 id="pageinfo"><?=__("Information")?></h1>
 	
 	<ul id="tabs" class="quickmenu">
 		<li><a href="#one"><?=__("Details")?></a></li>
@@ -21,7 +21,7 @@
 		<input type="hidden" name="lang" value="<?php echo $this->user->lang ?>" />
 		<ul>
 			<li><input type="submit" name="submit" value="<?=__("Save")?>" class="input-submit" /></li>
-			<li><a href="<?=site_url('admin/downloads')?>" class="input-submit last"><?=__("Cancel")?></a></li>
+			<li><a href="<?=site_url('admin/downloads/index/' . $cat['id'])?>" class="input-submit last"><?=__("Cancel")?></a></li>
 		</ul>
 		
 		<br class="clearfloat" />
@@ -35,7 +35,7 @@
 		<div id="one">
 		
 		<label for="title"><?=__("Name")?>:</label>
-		<input type="text" name="title" value="<?=(isset($row['title'])?$row['title'] : "") ?>" id="title" class="input-text" /><br />
+		<input type="text" name="title" value="<?=$row['title']?>" id="title" class="input-text" /><br />
 	
 		<label for="pid"><?=__("Parent")?>:</label>
 		<select name='pid' id='pid' class="input-select">
@@ -53,7 +53,7 @@
 			$follow = null;
 		}
 		?>
-			<option value="<?=$parent['id']?>" <?=($row['pid'] == $parent['id'])?"selected":""?>> &nbsp;<?=($parent['level'] > 0) ? "|".str_repeat("__", $parent['level']): ""?> <?=$parent['title'] ?> </option>
+			<option value="<?=$parent['id']?>" <?=($row['pid'] == $parent['id'] || $parent['id'] == $cat['id'])?"selected":""?>> &nbsp;<?=($parent['level'] > 0) ? "|".str_repeat("__", $parent['level']): ""?> <?=$parent['title'] ?> </option>
 		<?php endforeach; ?>
 		<?endif;?> 
 		</select><br />

@@ -25,7 +25,7 @@ class Downloads extends Controller {
 		$per_page = 20;
 		
 		
-		$this->template['rows'] = $this->downloads->get_catlist_by_pid($pid, $start, $per_page);
+		$this->template['rows'] = $this->downloads->get_catlist_by_pid($pid);
 		
 		if ($pid != 0)
 		{
@@ -46,6 +46,8 @@ class Downloads extends Controller {
 		{
 			$this->template['title'] = __("Downloads");
 		}
+
+		$this->template['files'] = $this->downloads->get_docs($pid, $start, $per_page);
 		
 		$this->load->library('pagination');
 		
@@ -53,10 +55,11 @@ class Downloads extends Controller {
 		$config['first_link'] = __('First');
 		$config['last_link'] = __('Last');
 		$config['base_url'] = base_url() . 'downloads/index/' . $pid;
-		$config['total_rows'] = $this->downloads->get_totalcat();
+		$config['total_rows'] = $this->downloads->get_totalfiles($pid);
 		$config['per_page'] = $per_page; 
 
 		$this->pagination->initialize($config); 
+
 
 		$this->template['pager'] = $this->pagination->create_links();
 		$this->layout->load($this->template, 'index');

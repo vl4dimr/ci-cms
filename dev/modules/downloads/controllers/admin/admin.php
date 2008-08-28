@@ -21,7 +21,7 @@ class Admin extends Controller {
 		$this->load->model('download_model', 'downloads');
 	}
 	
-	function index($start = null)
+	function index($cat = 0, $start = null)
 	{
 		//rehefa tsisy nin nin dia lisitry ny cateogory
 		$per_page = 20;
@@ -30,21 +30,48 @@ class Admin extends Controller {
 		$this->user->check_level($this->template['module'], LEVEL_VIEW);
 		
 		
-		$this->template['rows'] = $this->downloads->get_catlist($start, $per_page);
+		$this->template['rows'] = $this->downloads->get_catlist_by_pid($cat);
 		
 		
 		$this->load->library('pagination');
+		/*
 		
-		$config['uri_segment'] = 4;
+		$config['uri_segment'] = 5;
 		$config['first_link'] = __('First');
 		$config['last_link'] = __('Last');
-		$config['base_url'] = base_url() . 'admin/downloads/index';
-		$config['total_rows'] = $this->downloads->get_totalcat();
+		$config['base_url'] = base_url() . 'admin/downloads/index/' . $cat;
+		$config['total_rows'] = $this->downloads->get_totalcat($cat);
+		$config['per_page'] = $per_page; 
+
+		$this->pagination->initialize($config); 
+		$this->template['pager'] = $this->pagination->create_links();
+		
+		*/
+		
+		$this->template['files'] = $this->downloads->get_docs($cat, $start, $per_page);
+		
+		if ($cat == 0)
+		{
+			$this->template['cat'] = array('pid' => 0, 'id' => 0, 'title' => __("Root"));
+		}
+		else
+		{
+			$this->template['cat'] = $this->downloads->get_cat($cat);
+		}
+		
+		
+		$config['uri_segment'] = 5;
+		$config['first_link'] = __('First');
+		$config['last_link'] = __('Last');
+		$config['base_url'] = base_url() . 'admin/downloads/index/' . $cat;
+		$config['total_rows'] = $this->downloads->get_totalfiles($cat);
 		$config['per_page'] = $per_page; 
 
 		$this->pagination->initialize($config); 
 
-		$this->template['pager'] = $this->pagination->create_links();
+		$this->template['pager'] = $this->pagination->create_links();		
+		
+		
 		$this->layout->load($this->template, 'admin/admin');
 	
 	}

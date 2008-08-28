@@ -30,36 +30,46 @@ class Document extends Controller {
 	
 	}
 
-	function create($id = null)
+	function create($cat = 0, $id = null)
 	{
-
+				
 		$this->template['parents'] = $this->downloads->get_catlist();
-	
-		if ($row = $this->downloads->get_cat($id))
+		$this->template['files'] = $this->downloads->get_files();
+
+		$this->template['cat'] = $cat;
+		
+		
+		if ($row = $this->downloads->get_doc($id))
 		{
 			$this->template['row'] = $row;
 		}
 		else
 		{
-			$this->template['row'] = $this->downloads->cat_fields;
+			$this->template['row'] = $this->downloads->doc_fields;
 		}
 		
-		$this->layout->load($this->template, 'admin/category_create');
+		$this->layout->load($this->template, 'admin/document_create');
 	
 	}
 	
 	function save()
 	{
+		if (!$this->input->post('file_id') && !$this->input->post('file_link'))
+		{
+			$this->session->set_flashdata('notification', __("Please specify a link or select a downloaded file."));
+			redirect('admin/downloads/document/create/' . $this->input->post('cat') . '/' . $this->input->post('id'));
+		}
 		$id = $this->input->post('id');
-		$this->downloads->save_cat($id);
+		$this->downloads->save_doc($id);
 		
-		$this->session->set_flashdata('notification', __("Category saved"));
-		redirect('admin/downloads');
+		$this->session->set_flashdata('notification', __("Document saved"));
+		redirect('admin/downloads/index/' . $this->input->post('cat'));
 		
 	}
 	
-	function move($direction, $id)
+	function move($direction, $id, $cat)
 	{
+		
 		$this->user->check_level($this->template['module'], LEVEL_EDIT);
 
 		if (!isset($direction) || !isset($id))
@@ -67,45 +77,32 @@ class Document extends Controller {
 			redirect('admin/downloads');
 		}
 		
-		$this->downloads->move_cat($direction, $id);
+		$this->downloads->move_doc($direction, $id, $cat);
 		
-		redirect('admin/downloads');					
+		redirect('admin/downloads/index/'. $cat);					
 		
 				
 	}
 	
-	function delete($id, $js = 0)
+	function delete($cat, $id, $js = 0)
 	{
 		$this->user->check_level($this->template['module'], LEVEL_DEL);
 		//cannot delete if contains files or categories
 		
-		if ($this->downloads->get_cat(array('pid'=> $id)))
-		{
-			$this->session->set_flashdata('notification', __('The category contains other categories. It cannot be removed.'));
-
-			redirect('admin/downloads');
-		}
-
-		if ($this->downloads->get_file(array('cat' => $id)))
-		{
-			$this->session->set_flashdata('notification', __('The category contains files. It cannot be removed.'));
-
-			redirect('admin/downloads');
-		}
-		
 		if ( $js > 0 )
 		{
-			$this->downloads->delete_cat($id);
+			$this->downloads->delete_doc($id);
 			
-			$this->session->set_flashdata('notification', __('The category  has been deleted.'));
+			$this->session->set_flashdata('notification', __('The document  has been deleted.'));
 
-			redirect('admin/downloads');
+			redirect('admin/downloads/index/' . $cat);
 		}
 		else
 		{
 			$this->template['id'] = $id;
+			$this->template['cat'] = $cat;
 			
-			$this->layout->load($this->template, 'admin/category_delete');
+			$this->layout->load($this->template, 'admin/document_delete');
 		}
 	}
 }	
