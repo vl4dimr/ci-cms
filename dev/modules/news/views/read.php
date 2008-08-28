@@ -26,27 +26,27 @@
 <?php endif; ?>
 <?if ($news['allow_comments']) :?>
 <div id='comment_form' class='clear'>
-<h2><?=__("Add a comment")?></h2>
+<h2><?=__("Add a comment", $this->template['module'])?></h2>
 <form action="<?=site_url('news/comment')?>" method='post'>
 <input type='hidden' name='news_id' value='<?=$news['id']?>' />
 <input  class="input-text" type='hidden' name='uri' value='<?=$news['uri']?>' />
-<label for='author'><?=__("Name:")?>[*]</label>
+<label for='author'><?=__("Name:", $this->template['module'])?>[*]</label>
 <input  class="input-text" type='text' name='author' value='' id='name' /><br />
 
-<label for='email'><?=__("Email:")?>[*]</label>
+<label for='email'><?=__("Email:", $this->template['module'])?>[*]</label>
 <input  class="input-text" type='text' name='email' value='' id='email' /><br />
 
-<label for='website'><?=__("Website:")?></label>
+<label for='website'><?=__("Website:", $this->template['module'])?></label>
 <input type='text' name='website' value='' id='website' /><br />
 
-<label for='body'><?=__("Comment")?>[*]</label>
+<label for='body'><?=__("Comment", $this->template['module'])?>[*]</label>
 <textarea  class="input-textarea" name='body' id='body' rows="10" /></textarea><br />
 
-<label><?=__("Security code:")?></label><?=$captcha?><br />
-<label for="captcha"><?=__("Confirm security code:")?></label>
+<label><?=__("Security code:", $this->template['module'])?></label><?=$captcha?><br />
+<label for="captcha"><?=__("Confirm security code:", $this->template['module'])?></label>
 <input class="input-text" type='text' name='captcha' value='' /><br />
-[*] <?=__("Required")?><br />
-<input type='submit' name='submit' class="input-submit" value="<?=__("Add comment")?>" /><br />
+[*] <?=__("Required", $this->template['module'])?><br />
+<input type='submit' name='submit' class="input-submit" value="<?=__("Add comment", $this->template['module'])?>" /><br />
 </form>
 </div>
 <? endif ;?>

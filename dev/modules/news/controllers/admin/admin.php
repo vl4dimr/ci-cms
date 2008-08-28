@@ -66,7 +66,7 @@
 						$this->system->set($field, $this->input->post($field));
 					}
 				}
-				$this->session->set_flashdata('notification', __("Settings updated"));	
+				$this->session->set_flashdata('notification', __("Settings updated", $this->template['module']));	
 				redirect('admin/page/settings');
 			}
 			else
@@ -188,7 +188,7 @@
 			}
 			
 			
-			$this->session->set_flashdata('notification', __("News saved"));
+			$this->session->set_flashdata('notification', __("News saved", $this->template['module']));
 			redirect('admin/news');
 				
 		}
@@ -271,7 +271,7 @@
 		{
 			$this->db->where('id', $this->input->post('id'));
 			$this->db->delete('images');
-			echo __("The image was deleted");
+			echo __("The image was deleted", $this->template['module']);
 		}
 		
 		function ajax_upload()

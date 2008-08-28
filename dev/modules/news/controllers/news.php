@@ -21,7 +21,7 @@
 			
 			if (!$this->input->post('captcha'))
 			{
-				$this->session->set_flashdata('notification', __("You must submit the security code that appears in the image"));
+				$this->session->set_flashdata('notification', __("You must submit the security code that appears in the image", $this->template['module']));
 				redirect('news/' . $this->input->post('uri'));
 			}
 			
@@ -40,7 +40,7 @@
 			if ($query->num_rows() == 0)
 			{
 				var_dump($row);
-				$this->session->set_flashdata('notification', __("You must submit the security code that appears in the image"));
+				$this->session->set_flashdata('notification', __("You must submit the security code that appears in the image", $this->template['module']));
 				redirect('news/' . $this->input->post('uri'));
 			}
 					
@@ -63,7 +63,7 @@
 					$this->email->from($news['email'], $this->system->site_name );
 					$this->email->to($news['email']);
 
-					$this->email->subject('[' . $this->system->site_name . '] '. __("Comment Notification"));
+					$this->email->subject('[' . $this->system->site_name . '] '. __("Comment Notification", $this->template['module']));
 					
 					$msg = __("
 Hello,
@@ -98,7 +98,7 @@ and disable notification.
 					$this->email->from($news['email'], $this->system->site_name );
 					$this->email->to($news['email']);
 
-					$this->email->subject('[' . $this->system->site_name . '] '. __("Comment to approve"));
+					$this->email->subject('[' . $this->system->site_name . '] '. __("Comment to approve", $this->template['module']));
 					
 					$msg = __("
 Hello,
@@ -125,7 +125,7 @@ and set to approve comments automatically.
 
 				}
 				
-				$this->session->set_flashdata('notification', __("Thank you for your comment. In this site, the comments need to be approved by the administrator. Once approved, you will see it listed here."));
+				$this->session->set_flashdata('notification', __("Thank you for your comment. In this site, the comments need to be approved by the administrator. Once approved, you will see it listed here.", $this->template['module']));
 			}
 			
 			$data = $this->plugin->apply_filters('comment_filter', $data);
@@ -212,7 +212,7 @@ and set to approve comments automatically.
 				}
 				else
 				{
-					$this->template['title'] = __("No news found");
+					$this->template['title'] = __("No news found", $this->template['module']);
 					$this->layout->load($this->template, '404');
 				}
 			}

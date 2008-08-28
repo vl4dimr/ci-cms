@@ -1,14 +1,14 @@
 <!-- [Content] start -->
 <div class="content wide">
 
-<h1 id="page"><?=__("News Administration")?></h1>
+<h1 id="page"><?=__("News Administration", $this->template['module'])?></h1>
 
 <ul class="manage">
-	<li><a href="<?=site_url('admin/news/settings')?>"><?=__("Settings")?></a></li>
-	<li><a href="<?=site_url('admin/news/comments')?>"><?=__("Manage comments")?></a></li>
-	<li><a href="<?=site_url('admin/news/category')?>"><?=__("Manage categories")?></a></li>
-	<li><a href="<?=site_url('admin/news/create')?>"><?=__("Create news")?></a></li>
-	<li><a href="<?=site_url('admin')?>" class="last"><?=__("Cancel")?></a></li>
+	<li><a href="<?=site_url('admin/news/settings')?>"><?=__("Settings", $this->template['module'])?></a></li>
+	<li><a href="<?=site_url('admin/news/comments')?>"><?=__("Manage comments", $this->template['module'])?></a></li>
+	<li><a href="<?=site_url('admin/news/category')?>"><?=__("Manage categories", $this->template['module'])?></a></li>
+	<li><a href="<?=site_url('admin/news/create')?>"><?=__("Create news", $this->template['module'])?></a></li>
+	<li><a href="<?=site_url('admin')?>" class="last"><?=__("Cancel", $this->template['module'])?></a></li>
 </ul>
 		
 <br class="clearfloat" />
@@ -23,10 +23,10 @@
 	<thead>
 		<tr>
 				<th width="3%" class="center">ID</th>
-				<th width="50%"><?=__("Title")?></th>
-				<th width="10%"><?=__("Status")?></th>
-				<th width="30%" colspan="3"><?=__("Action")?></th>
-				<th width="7%" class="last center"><?=__("Hits")?></th>
+				<th width="50%"><?=__("Title", $this->template['module'])?></th>
+				<th width="10%"><?=__("Status", $this->template['module'])?></th>
+				<th width="30%" colspan="3"><?=__("Action", $this->template['module'])?></th>
+				<th width="7%" class="last center"><?=__("Hits", $this->template['module'])?></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -37,9 +37,9 @@
 				<td class="center"><?=$row['id']?></td>
 				<td><?=$row['title']?></td>
 				<td><?php if ($row['status']==1): echo __('Published'); else: echo __('Draft'); endif;?></td>
-				<td><a href="<?=site_url('news/'. $row['uri'])?>" rel="external"><?=__("View")?></a></td>
-				<td><a href="<?=site_url('admin/'.$module.'/create/'.$row['id'])?>"><?=__("Edit")?></a></td>
-				<td><a href="<?=site_url('admin/'.$module.'/delete/'.$row['id'])?>"><?=__("Delete")?></a></td>
+				<td><a href="<?=site_url('news/'. $row['uri'])?>" rel="external"><?=__("View", $this->template['module'])?></a></td>
+				<td><a href="<?=site_url('admin/'.$module.'/create/'.$row['id'])?>"><?=__("Edit", $this->template['module'])?></a></td>
+				<td><a href="<?=site_url('admin/'.$module.'/delete/'.$row['id'])?>"><?=__("Delete", $this->template['module'])?></a></td>
 				<td class="center"><?=$row['hit']?></td>
 		</tr>
 <?php $i++; endforeach;?>

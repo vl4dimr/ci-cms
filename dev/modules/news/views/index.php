@@ -1,11 +1,11 @@
-<h1><?=__("All news")?></h1>
+<h1><?=__("All news", $this->template['module'])?></h1>
 <?php if (is_array($rows) && count($rows) > 0) :?>
 <table class="list" width='100%'>
 	<thead>
 		<tr>
 				<th width="3%" class="center">#</th>
-				<th width="27%"><?=__("Title")?></th>
-				<th width="70%"><?=__("Summary")?></th>
+				<th width="27%"><?=__("Title", $this->template['module'])?></th>
+				<th width="70%"><?=__("Summary", $this->template['module'])?></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -25,5 +25,5 @@ $row['summary'] = substr($row['body'], 0, $page_break_pos);
 </table>
 <?=$pager?>
 <?php else : ?>
-<?=__("No news found")?>
+<?=__("No news found", $this->template['module'])?>
 <?php endif; ?>

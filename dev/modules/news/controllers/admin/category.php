@@ -74,7 +74,7 @@ class Category extends Controller {
 		$id = $this->input->post('id');
 		$this->news->save_cat($id);
 		
-		$this->session->set_flashdata('notification', __("Category saved"));
+		$this->session->set_flashdata('notification', __("Category saved", $this->template['module']));
 		redirect('admin/news/category');
 		
 	}

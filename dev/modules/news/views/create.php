@@ -1,11 +1,11 @@
 <!-- [Left menu] start -->
 <div class="leftmenu">
 
-	<h1 id="pageinfo"><?=__("Quick links")?></h1>
+	<h1 id="pageinfo"><?=__("Quick links", $this->template['module'])?></h1>
 	
 	<ul id="tabs" class="quickmenu">
-		<li><a href="#one"><?=__("Content")?></a></li>
-		<li><a href="#two"><?=__("Options")?></a></li>
+		<li><a href="#one"><?=__("Content", $this->template['module'])?></a></li>
+		<li><a href="#two"><?=__("Options", $this->template['module'])?></a></li>
 	</ul>
 	<div class="quickend"></div>
 
@@ -99,14 +99,14 @@ function ajaxFileUpload() {
 }
 </script>
 
-<h1 id="edit"><?=(isset($row['id'])? __("Edit news"):__("Create News"))?></h1>
+<h1 id="edit"><?=(isset($row['id'])? __("Edit news", $this->template['module']):__("Create News", $this->template['module']))?></h1>
 
 <form  enctype="multipart/form-data" class="edit" action="<?=site_url('admin/news/save')?>" method="post" accept-charset="utf-8">
 		<input type="hidden" name="id" value="<?=(isset($row['id'])?$row['id'] : "") ?>" />
 		<input type="hidden" name="lang" value="<?php echo $this->user->lang ?>" />
 		<ul>
-			<li><input type="submit" name="submit" value="<?=__("Save")?>" class="input-submit" /></li>
-			<li><a href="<?=site_url('admin/news')?>" class="input-submit last"><?=__("Cancel")?></a></li>
+			<li><input type="submit" name="submit" value="<?=__("Save", $this->template['module'])?>" class="input-submit" /></li>
+			<li><a href="<?=site_url('admin/news')?>" class="input-submit last"><?=__("Cancel", $this->template['module'])?></a></li>
 		</ul>
 		
 		<br class="clearfloat" />
@@ -119,12 +119,12 @@ function ajaxFileUpload() {
 		
 		<div id="one">
 		
-		<p><?=__("To create a news, just fill in your content below and click 'Save'.<br />If you want to save your progress without publishing it, Select 'Draft' status.</p>")?>
+		<p><?=__("To create a news, just fill in your content below and click 'Save'.<br />If you want to save your progress without publishing it, Select 'Draft' status.</p>", $this->template['module'])?>
 
-		<label for="title"><?=__("Title")?>:</label>
+		<label for="title"><?=__("Title", $this->template['module'])?>:</label>
 		<input type="text" name="title" value="<?=(isset($row['title'])?$row['title'] : "") ?>" id="title" class="input-text" /><br />
 		
-		<label for="pid"><?=__("Category")?>:</label>
+		<label for="pid"><?=__("Category", $this->template['module'])?>:</label>
 		<select name='cat' id='cat' class="input-select">
 		<option value='0'></option>
 		<?php if($categories): ?>
@@ -136,43 +136,43 @@ function ajaxFileUpload() {
 		
 		
 		
-		<label for="status"><?=__("Status")?>:</label>
+		<label for="status"><?=__("Status", $this->template['module'])?>:</label>
 		<select name="status" id="status" class="input-select">
-			<option value="1" <?=(isset($row['status']) && $row['status'] == 1)? "selected"  : "" ?>><?=__("Published")?></option>
-			<option value="0" <?=(isset($row['status']) && $row['status'] == 0)? "selected"  : "" ?>><?=__("Draft")?></option>
+			<option value="1" <?=(isset($row['status']) && $row['status'] == 1)? "selected"  : "" ?>><?=__("Published", $this->template['module'])?></option>
+			<option value="0" <?=(isset($row['status']) && $row['status'] == 0)? "selected"  : "" ?>><?=__("Draft", $this->template['module'])?></option>
 		</select><br />
 		
-		<label for="body"><?=__("Content")?>:</label>
+		<label for="body"><?=__("Content", $this->template['module'])?>:</label>
 		<textarea name="body" class="input-textarea"><?=(isset($row['body'])?$row['body'] : "") ?></textarea><br />
 
 		<div id='image_list'>
 		<div style="visibility: hidden">Available images:</div>
 		<?php if ($images) : ?>
 		<?php foreach($images as $image): ?>
-		<div><input type='hidden' name='image_ids[]' value='<?php echo $image['id'] ?>' /><a href='#' onclick="tinyMCE.execCommand('mceInsertContent',false,'<a href=\'<?php echo site_url('media/images/o')?>/<?php echo $image['file'] ?>\'><img border=\'0\' align=\'left\' hspace=\'10\' src=\'<?php echo site_url('media/images/m')?>/<?php echo $image['file'] ?>\' /></a>');return false;"><?php echo $image['file'] ?></a> - <a href="<?php echo site_url('admin/news/removeimg/' . $image['id']) ?>" class="ajaxdelete" id="<?php echo $image['id'] ?>"><?php echo __("Delete image") ?></a></div>
+		<div><input type='hidden' name='image_ids[]' value='<?php echo $image['id'] ?>' /><a href='#' onclick="tinyMCE.execCommand('mceInsertContent',false,'<a href=\'<?php echo site_url('media/images/o')?>/<?php echo $image['file'] ?>\'><img border=\'0\' align=\'left\' hspace=\'10\' src=\'<?php echo site_url('media/images/m')?>/<?php echo $image['file'] ?>\' /></a>');return false;"><?php echo $image['file'] ?></a> - <a href="<?php echo site_url('admin/news/removeimg/' . $image['id']) ?>" class="ajaxdelete" id="<?php echo $image['id'] ?>"><?php echo __("Delete image", $this->template['module']) ?></a></div>
 		<?php endforeach; ?>
 		<?php endif;?>
 		</div>
 		
-		<label for="image"><?=__("Image")?></label>
+		<label for="image"><?=__("Image", $this->template['module'])?></label>
 		<input type="file" name="image" class="input-file" id="image"/><br />
 		</div>
 		<div id="two">
 		
-			<label for="date"><?=__("Date")?> (dd/mm/yyyy):</label>
+			<label for="date"><?=__("Date", $this->template['module'])?> (dd/mm/yyyy):</label>
 			<input type="text" name="date" value="<?=(isset($row['date'])?date("d/m/Y", $row['date']) : date("d/m/Y")) ?>" id="date" class="input-text" /><br class='clear'/>
 
 		
-			<label for="allow_comments"><?=__("Allow Comments")?>:</label>
+			<label for="allow_comments"><?=__("Allow Comments", $this->template['module'])?>:</label>
 			<select name="allow_comments" class="input-select" id="allow_comments">
-			<option value='1' <?=(($row['allow_comments']==1)?"selected":"")?>><?=__("Yes")?></option>
-			<option value='0' <?=(($row['allow_comments']==0)?"selected":"")?>><?=__("No")?></option>
+			<option value='1' <?=(($row['allow_comments']==1)?"selected":"")?>><?=__("Yes", $this->template['module'])?></option>
+			<option value='0' <?=(($row['allow_comments']==0)?"selected":"")?>><?=__("No", $this->template['module'])?></option>
 			</select><br />
 
-			<label for="notify"><?=__("Notify me for comments")?>:</label>
+			<label for="notify"><?=__("Notify me for comments", $this->template['module'])?>:</label>
 			<select name="allow_comments" class="input-select" id="allow_comments">
-			<option value='1' <?=(($row['notify']==1)?"selected":"")?>><?=__("Yes")?></option>
-			<option value='0' <?=(($row['notify']==0)?"selected":"")?>><?=__("No")?></option>
+			<option value='1' <?=(($row['notify']==1)?"selected":"")?>><?=__("Yes", $this->template['module'])?></option>
+			<option value='0' <?=(($row['notify']==0)?"selected":"")?>><?=__("No", $this->template['module'])?></option>
 			</select><br />
 			
 		</div>

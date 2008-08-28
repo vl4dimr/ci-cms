@@ -68,7 +68,7 @@
 			$this->db->where('id', $id);
 			$this->db->set('status', 1);
 			$this->db->update('news_comments');
-			$this->session->set_flashdata('notification', __("The comment has been approved"));
+			$this->session->set_flashdata('notification', __("The comment has been approved", $this->template['module']));
 			redirect('admin/news/comments');
 		}
 		
@@ -78,7 +78,7 @@
 			$this->db->where('id', $id);
 			$this->db->set('status', 0);
 			$this->db->update('news_comments');
-			$this->session->set_flashdata('notification', __("The comment has been suspended"));
+			$this->session->set_flashdata('notification', __("The comment has been suspended", $this->template['module']));
 			redirect('admin/news/comments');
 		}
 		

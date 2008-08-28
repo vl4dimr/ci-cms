@@ -1,0 +1,546 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Solaitra:Downloads\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-08-28 23:43+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Eugene Hery <hery@serasera.org>\n"
+"Language-Team: Hery serasera.org <hery@serasera.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: French\n"
+"X-Poedit-Country: FRANCE\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../controllers/news.php:24
+#: ../controllers/news.php:43
+msgid "You must submit the security code that appears in the image"
+msgstr ""
+
+#: ../controllers/news.php:66
+#, fuzzy
+msgid "Comment Notification"
+msgstr "Liste noire pour les commentaires"
+
+#: ../controllers/news.php:68
+#, php-format
+msgid ""
+"\n"
+"Hello,\n"
+"\n"
+"A new comment has been sent to the news\n"
+"%s\n"
+"\n"
+"\n"
+"If you don't want to receive other notification, go to\n"
+"%s\n"
+"\n"
+"and disable notification.\n"
+msgstr ""
+
+#: ../controllers/news.php:101
+#, fuzzy
+msgid "Comment to approve"
+msgstr "Un administrateur doit approuver le commentaire (qu&#8217;importe les choix ci- dessous)"
+
+#: ../controllers/news.php:103
+#, php-format
+msgid ""
+"\n"
+"Hello,\n"
+"\n"
+"A new comment has been sent to the news\n"
+"%s\n"
+"To approve it click the link below \n"
+"%s\n"
+"\n"
+"If you don't want to receive other notification, go to\n"
+"%s\n"
+"\n"
+"and set to approve comments automatically.\n"
+msgstr ""
+
+#: ../controllers/news.php:128
+msgid "Thank you for your comment. In this site, the comments need to be approved by the administrator. Once approved, you will see it listed here."
+msgstr ""
+
+#: ../controllers/news.php:215
+#: ../views/index.php:28
+#, fuzzy
+msgid "No news found"
+msgstr "Aucun blog trouv&eacute;"
+
+#: ../controllers/news.php:231
+#: ../controllers/admin/admin.php:40
+#: ../controllers/admin/category.php:41
+#: ../controllers/admin/comments.php:53
+#, fuzzy
+msgid "First"
+msgstr "Pr&eacute;noms"
+
+#: ../controllers/news.php:232
+#: ../controllers/admin/admin.php:41
+#: ../controllers/admin/category.php:42
+#: ../controllers/admin/comments.php:54
+#, fuzzy
+msgid "Last"
+msgstr "Nom"
+
+#: ../controllers/admin/admin.php:69
+#, fuzzy
+msgid "Settings updated"
+msgstr "Configuration enregistr&eacute;"
+
+#: ../controllers/admin/admin.php:191
+#, fuzzy
+msgid "News saved"
+msgstr "Options sauvegard&eacute;es."
+
+#: ../controllers/admin/admin.php:274
+#, fuzzy
+msgid "The image was deleted"
+msgstr "Champ personnalis&eacute; supprim&eacute;"
+
+#: ../controllers/admin/admin.php:287
+#, fuzzy
+msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
+msgstr "La taille du fichier exc&eacute;de la directive <code>upload_max_filesize</code> pr&eacute;sente dans le fichier <code>php.ini</code>."
+
+#: ../controllers/admin/admin.php:290
+#, fuzzy
+msgid "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form"
+msgstr "Le fichier t&eacute;l&eacute;charg&eacute; d&eacute;passe la taille maximale autoris&eacute;e (<em>MAX_FILE_SIZE</em>)"
+
+#: ../controllers/admin/admin.php:293
+#, fuzzy
+msgid "The uploaded file was only partially uploaded"
+msgstr "Le fichier a &eacute;t&eacute; partiellement t&eacute;l&eacute;charg&eacute;"
+
+#: ../controllers/admin/admin.php:296
+#, fuzzy
+msgid "No file was uploaded."
+msgstr "Aucun fichier t&eacute;l&eacute;charg&eacute;."
+
+#: ../controllers/admin/admin.php:300
+#, fuzzy
+msgid "Missing a temporary folder"
+msgstr "R&eacute;pertoire temporaire manquant."
+
+#: ../controllers/admin/admin.php:303
+#, fuzzy
+msgid "Failed to write file to disk"
+msgstr "L&#8217;&eacute;criture dans le fichier a &eacute;chou&eacute;"
+
+#: ../controllers/admin/admin.php:306
+msgid "File upload stopped by extension"
+msgstr ""
+
+#: ../controllers/admin/admin.php:310
+msgid "No error code avaiable"
+msgstr ""
+
+#: ../controllers/admin/admin.php:315
+#, fuzzy
+msgid "No file was uploaded.."
+msgstr "Aucun fichier t&eacute;l&eacute;charg&eacute;."
+
+#: ../controllers/admin/category.php:77
+#, fuzzy
+msgid "Category saved"
+msgstr "Options sauvegard&eacute;es."
+
+#: ../controllers/admin/category.php:105
+msgid "The category contains other categories. It cannot be removed."
+msgstr ""
+
+#: ../controllers/admin/category.php:112
+msgid "The category contains news. It cannot be removed."
+msgstr ""
+
+#: ../controllers/admin/category.php:121
+#, fuzzy
+msgid "The category  has been deleted."
+msgstr "D&#8217;autres utilisateurs ont &eacute;t&eacute; supprim&eacute;s."
+
+#: ../controllers/admin/comments.php:71
+#, fuzzy
+msgid "The comment has been approved"
+msgstr "Votre mot de passe a &eacute;t&eacute; chang&eacute;."
+
+#: ../controllers/admin/comments.php:81
+#, fuzzy
+msgid "The comment has been suspended"
+msgstr "Votre mot de passe a &eacute;t&eacute; chang&eacute;."
+
+#: ../controllers/admin/settings.php:43
+#, fuzzy
+msgid "Settings saved"
+msgstr "Options sauvegard&eacute;es."
+
+#: ../views/admin.php:4
+#, fuzzy
+msgid "News Administration"
+msgstr "Param&egrave;tres d&#8217;administration"
+
+#: ../views/admin.php:7
+#: ../views/comments.php:21
+#, fuzzy
+msgid "Settings"
+msgstr "Configurations"
+
+#: ../views/admin.php:8
+#, fuzzy
+msgid "Manage comments"
+msgstr "Autoriser les commentaires"
+
+#: ../views/admin.php:9
+#, fuzzy
+msgid "Manage categories"
+msgstr "Importer des Cat&eacute;gories"
+
+#: ../views/admin.php:10
+#, fuzzy
+msgid "Create news"
+msgstr "Cr&eacute;er un blog &raquo;"
+
+#: ../views/admin.php:11
+#: ../views/comments.php:22
+#: ../views/create.php:109
+#, fuzzy
+msgid "Cancel"
+msgstr "Annuler"
+
+#: ../views/admin.php:26
+#: ../views/comments.php:45
+#: ../views/create.php:124
+#: ../views/index.php:7
+#, fuzzy
+msgid "Title"
+msgstr "Titre"
+
+#: ../views/admin.php:27
+#: ../views/create.php:139
+#, fuzzy
+msgid "Status"
+msgstr "&Eacute;tat du commentaire"
+
+#: ../views/admin.php:28
+#: ../views/comments.php:49
+#, fuzzy
+msgid "Action"
+msgstr "Action"
+
+#: ../views/admin.php:29
+msgid "Hits"
+msgstr ""
+
+#: ../views/admin.php:39
+#: ../views/create.php:141
+#, fuzzy
+msgid "Published"
+msgstr "Publi&eacute;"
+
+#: ../views/admin.php:39
+#: ../views/create.php:142
+#, fuzzy
+msgid "Draft"
+msgstr "Brouillon"
+
+#: ../views/admin.php:40
+#, fuzzy
+msgid "View"
+msgstr "Afficher"
+
+#: ../views/admin.php:41
+#, fuzzy
+msgid "Edit"
+msgstr "Modifier"
+
+#: ../views/admin.php:42
+#: ../views/comments.php:68
+#: ../views/delete.php:18
+#, fuzzy
+msgid "Delete"
+msgstr "Supprimer"
+
+#: ../views/comments.php:4
+#: ../views/delete.php:4
+#, fuzzy
+msgid "Confirm delete?"
+msgstr "Supprimer le blog"
+
+#: ../views/comments.php:18
+#, fuzzy
+msgid "Comments"
+msgstr "Commentaires"
+
+#: ../views/comments.php:33
+#, fuzzy
+msgid "Show:"
+msgstr "Afficher les cat&eacute;gories"
+
+#: ../views/comments.php:35
+#, fuzzy
+msgid "All"
+msgstr "Tout"
+
+#: ../views/comments.php:36
+#, fuzzy
+msgid "Approved"
+msgstr "Approuv&eacute;"
+
+#: ../views/comments.php:37
+msgid "Suspended"
+msgstr ""
+
+#: ../views/comments.php:46
+#, fuzzy
+msgid "Author"
+msgstr "Auteur"
+
+#: ../views/comments.php:47
+#, fuzzy
+msgid "Email"
+msgstr "Email"
+
+#: ../views/comments.php:48
+#, fuzzy
+msgid "Ip"
+msgstr "IP"
+
+#: ../views/comments.php:64
+#, fuzzy
+msgid "Approve"
+msgstr "Approuver"
+
+#: ../views/comments.php:66
+msgid "Suspend"
+msgstr ""
+
+#: ../views/create.php:4
+#, fuzzy
+msgid "Quick links"
+msgstr "Importer des liens"
+
+#: ../views/create.php:7
+#: ../views/create.php:145
+#, fuzzy
+msgid "Content"
+msgstr "Contenu de la page"
+
+#: ../views/create.php:8
+msgid "Options"
+msgstr "Options"
+
+#: ../views/create.php:28
+msgid "Upload"
+msgstr "T&eacute;l&eacute;charger"
+
+#: ../views/create.php:85
+#: ../views/create.php:152
+msgid "Delete image"
+msgstr "Supprimer image"
+
+#: ../views/create.php:102
+msgid "Edit news"
+msgstr "Modifier"
+
+#: ../views/create.php:102
+msgid "Create News"
+msgstr "Cr&eacute;er Nouveau"
+
+#: ../views/create.php:108
+msgid "Save"
+msgstr "Enregistrer"
+
+#: ../views/create.php:122
+msgid "To create a news, just fill in your content below and click 'Save'.<br />If you want to save your progress without publishing it, Select 'Draft' status.</p>"
+msgstr ""
+
+#: ../views/create.php:127
+msgid "Category"
+msgstr "Cat&eacute;gorie"
+
+#: ../views/create.php:157
+msgid "Image"
+msgstr "Image"
+
+#: ../views/create.php:162
+msgid "Date"
+msgstr "Date"
+
+#: ../views/create.php:166
+msgid "Allow Comments"
+msgstr "Autoriser les commentaires"
+
+#: ../views/create.php:168
+#: ../views/create.php:174
+#: ../views/delete.php:27
+msgid "Yes"
+msgstr "Oui"
+
+#: ../views/create.php:169
+#: ../views/create.php:175
+#: ../views/delete.php:26
+msgid "No"
+msgstr "Non"
+
+#: ../views/create.php:172
+msgid "Notify me for comments"
+msgstr ""
+
+#: ../views/delete.php:22
+msgid "Confirm?"
+msgstr "Confirmer?"
+
+#: ../views/index.php:1
+msgid "All news"
+msgstr "Toutes les actualit&acute;s"
+
+#: ../views/index.php:8
+msgid "Summary"
+msgstr "R&eacute;sum&eacute;"
+
+#: ../views/read.php:29
+msgid "Add a comment"
+msgstr "Ajouter un commentaire"
+
+#: ../views/read.php:33
+msgid "Name:"
+msgstr "Nom&nbsp;:"
+
+#: ../views/read.php:36
+msgid "Email:"
+msgstr "Email:"
+
+#: ../views/read.php:39
+msgid "Website:"
+msgstr "Site web&nbsp;:"
+
+#: ../views/read.php:42
+msgid "Comment"
+msgstr "Commentaire"
+
+#: ../views/read.php:45
+msgid "Security code:"
+msgstr "Entrer le code:"
+
+#: ../views/read.php:46
+msgid "Confirm security code:"
+msgstr "Confirmer le code"
+
+#: ../views/read.php:48
+msgid "Required"
+msgstr "R&eacute;quis"
+
+#: ../views/read.php:49
+msgid "Add comment"
+msgstr "Ajouter commentaire"
+
+#: ../views/settings.php:4
+msgid "Quick menu"
+msgstr ""
+
+#: ../views/settings.php:7
+msgid "General settings"
+msgstr "Options g&eacute;n&eacute;rales"
+
+#: ../views/settings.php:8
+msgid "Comments settings"
+msgstr "Configuration commentaires"
+
+#: ../views/settings.php:22
+msgid "Save Settings"
+msgstr "Configuration enregistr&eacute;"
+
+#: ../views/settings.php:34
+msgid "Change the settings for the news module"
+msgstr ""
+
+#: ../views/settings.php:41
+msgid "Allow comments"
+msgstr "Autoriser les commentaires"
+
+#: ../views/settings.php:48
+msgid "Approve comments"
+msgstr "Approuver les commentaires"
+
+#: ../views/admin/category.php:4
+msgid "News Categories"
+msgstr "Cat&eacute;gories"
+
+#: ../views/admin/category.php:7
+msgid "Add New"
+msgstr "Cr&eacute;er nouveau"
+
+#: ../views/admin/category.php:23
+#: ../views/admin/category_create.php:37
+msgid "Name"
+msgstr "Nom"
+
+#: ../views/admin/category.php:26
+msgid "Ordering"
+msgstr "Ordre"
+
+#: ../views/admin/category.php:52
+msgid "Move up"
+msgstr "Vers le haut"
+
+#: ../views/admin/category.php:53
+msgid "Move down"
+msgstr "Vers le bas"
+
+#: ../views/admin/category_create.php:4
+msgid "Category information"
+msgstr "Information"
+
+#: ../views/admin/category_create.php:7
+msgid "Details"
+msgstr "D&eacute;tails"
+
+#: ../views/admin/category_create.php:17
+msgid "Add new category"
+msgstr "Ajouter nouvelle cat&eacute;gorie"
+
+#: ../views/admin/category_create.php:40
+msgid "Parent"
+msgstr "Parent"
+
+#: ../views/admin/category_create.php:63
+msgid "Active"
+msgstr "Actif"
+
+#: ../views/admin/category_create.php:67
+msgid "Description"
+msgstr "Description"
+
+#: ../views/admin/category_delete.php:4
+msgid "Delete category"
+msgstr "Supprimer une Cat&eacute;gorie"
+
+#: ../views/admin/category_delete.php:9
+#, fuzzy
+msgid "Do you want to delete the category?"
+msgstr "&Ecirc;tes-vous certain(e) de vouloir effacer %s&nbsp;?"
+
+#: ../views/blocks/latest.php:2
+#, fuzzy
+msgid "Latest news"
+msgstr "Derni&egrave;res Pages"
+
+#: ../views/blocks/newpages.php:2
+msgid "Latest Pages"
+msgstr "Derni&egrave;res Pages"
+
+#~ msgid "Downloads"
+#~ msgstr "T&eacute;l&eacute;chargements"
+#~ msgid "The file you're looking for couldn't be found!"
+#~ msgstr "Fichier non trouv&eacute;"
+#~ msgid "Upload File"
+#~ msgstr "Charger un fichier"
+#~ msgid "Upload files"
+#~ msgstr "Charger fichiers"
+
