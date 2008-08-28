@@ -4,8 +4,8 @@
 	<h1 id="pageinfo">Page informations</h1>
 	
 	<ul id="tabs" class="quickmenu">
-		<li><a href="#one"><span><?php echo __("General settings")?></span></a></li>
-		<li><a href="#two"><span><?php echo __("Theme settings")?></span></a></li>
+		<li><a href="#one"><span><?php echo __("General settings", $this->template['module'])?></span></a></li>
+		<li><a href="#two"><span><?php echo __("Theme settings", $this->template['module'])?></span></a></li>
 	</ul>
 	<div class="quickend"></div>
 

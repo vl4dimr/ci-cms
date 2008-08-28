@@ -1,0 +1,243 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Solaitra:Page\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-08-28 23:46+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Eugene Hery <hery@serasera.org>\n"
+"Language-Team: Hery serasera.org <hery@serasera.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: French\n"
+"X-Poedit-Country: FRANCE\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../controllers/admin.php:26
+msgid "The <i>images</i> directory is not writable. Please fix it'"
+msgstr ""
+
+#: ../controllers/admin.php:51
+msgid "First"
+msgstr "Debut"
+
+#: ../controllers/admin.php:52
+msgid "Last"
+msgstr "Dernier"
+
+#: ../controllers/admin.php:80
+#, fuzzy
+msgid "Settings updated"
+msgstr "Configuration enregistr&eacute;"
+
+#: ../controllers/admin.php:422
+#, fuzzy
+msgid "The image was deleted"
+msgstr "Champ personnalis&eacute; supprim&eacute;"
+
+#: ../controllers/admin.php:435
+#, fuzzy
+msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
+msgstr "La taille du fichier exc&eacute;de la directive <code>upload_max_filesize</code> pr&eacute;sente dans le fichier <code>php.ini</code>."
+
+#: ../controllers/admin.php:438
+#, fuzzy
+msgid "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form"
+msgstr "Le fichier t&eacute;l&eacute;charg&eacute; d&eacute;passe la taille maximale autoris&eacute;e (<em>MAX_FILE_SIZE</em>)"
+
+#: ../controllers/admin.php:441
+#, fuzzy
+msgid "The uploaded file was only partially uploaded"
+msgstr "Le fichier a &eacute;t&eacute; partiellement t&eacute;l&eacute;charg&eacute;"
+
+#: ../controllers/admin.php:444
+#, fuzzy
+msgid "No file was uploaded."
+msgstr "Aucun fichier t&eacute;l&eacute;charg&eacute;."
+
+#: ../controllers/admin.php:448
+#, fuzzy
+msgid "Missing a temporary folder"
+msgstr "R&eacute;pertoire temporaire manquant."
+
+#: ../controllers/admin.php:451
+#, fuzzy
+msgid "Failed to write file to disk"
+msgstr "L&#8217;&eacute;criture dans le fichier a &eacute;chou&eacute;"
+
+#: ../controllers/admin.php:454
+msgid "File upload stopped by extension"
+msgstr ""
+
+#: ../controllers/admin.php:458
+msgid "No error code avaiable"
+msgstr ""
+
+#: ../controllers/admin.php:463
+#, fuzzy
+msgid "No file was uploaded.."
+msgstr "Aucun fichier t&eacute;l&eacute;charg&eacute;."
+
+#: ../views/404.php:1
+msgid "Page Not Found!"
+msgstr "Page non trouv&eacute;e"
+
+#: ../views/404.php:3
+msgid "The page you're looking for couldn't be found!"
+msgstr "La page que vous avez cherch&eacute;e est introuvable"
+
+#: ../views/admin.php:7
+#: ../views/settings.php:18
+#, fuzzy
+msgid "Settings"
+msgstr "Configurations"
+
+#: ../views/admin.php:24
+#, fuzzy
+msgid "Title"
+msgstr "Titre"
+
+#: ../views/admin.php:25
+#: ../views/create.php:127
+#, fuzzy
+msgid "SEF address"
+msgstr "Adresse du blog"
+
+#: ../views/admin.php:26
+#, fuzzy
+msgid "Status"
+msgstr "&Eacute;tat du commentaire"
+
+#: ../views/admin.php:27
+msgid "Ordering"
+msgstr ""
+
+#: ../views/admin.php:28
+#, fuzzy
+msgid "Action"
+msgstr "Action"
+
+#: ../views/admin.php:29
+msgid "Hits"
+msgstr ""
+
+#: ../views/admin.php:42
+#, fuzzy
+msgid "Move up"
+msgstr "Inscription"
+
+#: ../views/admin.php:43
+msgid "Move down"
+msgstr ""
+
+#: ../views/create.php:7
+#: ../views/edit.php:7
+#, fuzzy
+msgid "Content"
+msgstr "Contenu de la page"
+
+#: ../views/create.php:8
+#: ../views/edit.php:8
+msgid "Meta data"
+msgstr ""
+
+#: ../views/create.php:9
+#: ../views/edit.php:9
+#, fuzzy
+msgid "Options"
+msgstr "Options"
+
+#: ../views/create.php:27
+#: ../views/edit.php:27
+#, fuzzy
+msgid "Upload"
+msgstr "T&eacute;l&eacute;charger"
+
+#: ../views/create.php:84
+#: ../views/create.php:156
+#: ../views/edit.php:84
+#: ../views/edit.php:170
+#, fuzzy
+msgid "Delete image"
+msgstr "Adresse de l&#8217;image&nbsp;:"
+
+#: ../views/create.php:101
+#, fuzzy
+msgid "Create New Page"
+msgstr "Cr&eacute;er une nouvelle page &raquo;"
+
+#: ../views/create.php:120
+msgid "To create a new page, just fill in your content below and click 'Save page'.<br />If you want to save your progress without publishing the page, Select 'Draft' status.</p>"
+msgstr ""
+
+#: ../views/create.php:122
+#, fuzzy
+msgid "Page Title"
+msgstr "Titre de la page"
+
+#: ../views/create.php:130
+#: ../views/edit.php:131
+#, fuzzy
+msgid "Parent"
+msgstr "parent"
+
+#: ../views/create.php:161
+#: ../views/edit.php:175
+#, fuzzy
+msgid "Image"
+msgstr "Adresse de l&#8217;image&nbsp;:"
+
+#: ../views/create.php:175
+#: ../views/edit.php:190
+#, fuzzy
+msgid "Show subpages"
+msgstr "Afficher les cat&eacute;gories"
+
+#: ../views/create.php:177
+#: ../views/create.php:183
+#: ../views/edit.php:192
+#: ../views/edit.php:199
+#, fuzzy
+msgid "No"
+msgstr "Non"
+
+#: ../views/create.php:178
+#: ../views/create.php:184
+#: ../views/edit.php:193
+#: ../views/edit.php:198
+#, fuzzy
+msgid "Yes"
+msgstr "Oui"
+
+#: ../views/create.php:181
+#: ../views/edit.php:196
+#, fuzzy
+msgid "Show navigation"
+msgstr "Navigation&nbsp;dans&nbsp;le&nbsp;blog"
+
+#: ../views/edit.php:103
+#, fuzzy
+msgid "Edit page"
+msgstr "Cr&eacute;er une page"
+
+#: ../views/settings.php:35
+#, fuzzy
+msgid "Use this page to change the settings for the page module."
+msgstr "Utiliser cette page pour changer les options du module page"
+
+#: ../views/blocks/newpages.php:2
+#, fuzzy
+msgid "Latest Pages"
+msgstr "Derni&egrave;res Pages"
+
+#~ msgid "Downloads"
+#~ msgstr "T&eacute;l&eacute;chargements"
+#~ msgid "Download Administration"
+#~ msgstr "Administration T&eacute;l&eacute;chargement"
+#~ msgid "Upload File"
+#~ msgstr "Charger un fichier"
+#~ msgid "Upload files"
+#~ msgstr "Charger fichiers"
+

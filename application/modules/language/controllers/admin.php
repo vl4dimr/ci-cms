@@ -27,7 +27,7 @@
 				$data = array('active' => $active);
 				$this->db->where('id', $id);
 				$this->db->update('languages', $data);
-				$this->session->set_flashdata('notification', __("Language updated"));
+				$this->session->set_flashdata('notification', __("Language updated", $this->template['module']));
 			}
 			redirect('admin/language');
 		}
@@ -39,7 +39,7 @@
 				
 				$this->db->where('id', $id);
 				$this->db->delete('languages');
-				$this->session->set_flashdata('notification', __("Language removed"));
+				$this->session->set_flashdata('notification', __("Language removed", $this->template['module']));
 			}
 			redirect('admin/language');
 		}		
@@ -50,7 +50,7 @@
 				$data = array('default' => 1);
 				$this->db->where('id', $id);
 				$this->db->update('languages', $data);
-				$this->session->set_flashdata('notification', __("Language updated"));
+				$this->session->set_flashdata('notification', __("Language updated", $this->template['module']));
 			}
 			redirect('admin/language');		
 		}
@@ -71,7 +71,7 @@
 						$this->system->set($field, $this->input->post($field));
 					}
 				}
-				$this->session->set_flashdata('notification', __("Settings updated"));	
+				$this->session->set_flashdata('notification', __("Settings updated", $this->template['module']));	
 				redirect('admin/page/settings');
 			}
 			else
@@ -93,7 +93,7 @@
 				$this->db->insert('languages', $data);
 				$id = $this->db->insert_id();	
 					
-				$this->session->set_flashdata('notification', __("Language added"));	
+				$this->session->set_flashdata('notification', __("Language added", $this->template['module']));	
 				
 				redirect('admin/language');
 			}
@@ -118,7 +118,7 @@
 				$this->db->where('id', $id);
 				$this->db->update('languages', $data);
 				
-				$this->session->set_flashdata('notification', __("Language updated"));
+				$this->session->set_flashdata('notification', __("Language updated", $this->template['module']));
 				
 				redirect('admin/language');
 			}

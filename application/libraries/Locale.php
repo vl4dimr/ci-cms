@@ -153,10 +153,11 @@ class Locale {
 		}
 	}
 	function load_textdomain($mofile, $domain = 'default') {
-
-		@include(APPPATH . 'libraries/gettext' . EXT);
-		@include(APPPATH . 'libraries/streams' . EXT);
-
+		
+		
+		include_once(APPPATH . 'libraries/gettext' . EXT);
+		include_once(APPPATH . 'libraries/streams' . EXT);
+		
 		if (isset($this->_l10n[$domain]))
 			
 			return;

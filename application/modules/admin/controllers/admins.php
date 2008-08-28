@@ -12,11 +12,11 @@
 			
 			$this->template['module'] = "admin";
 			$this->template['levels'] = array(
-					0 => __("No access"),
-					1 => __("Can view"),
-					2 => __("Can add"),
-					3 => __("Can edit"),
-					4 => __("Can delete")
+					0 => __("No access", $this->template['module']),
+					1 => __("Can view", $this->template['module']),
+					2 => __("Can add", $this->template['module']),
+					3 => __("Can edit", $this->template['module']),
+					4 => __("Can delete", $this->template['module'])
 					);
 		}
 		
@@ -67,18 +67,18 @@
 					'module' => $this->input->post('module'))
 					);
 					$this->db->update('admins', $data);
-					$this->session->set_flashdata('notification', __("Administrator list updated"));
+					$this->session->set_flashdata('notification', __("Administrator list updated", $this->template['module']));
 		
 				}
 				else
 				{
 					$this->db->insert('admins', $data);	
-					$this->session->set_flashdata('notification', __("Administrator added in list"));
+					$this->session->set_flashdata('notification', __("Administrator added in list", $this->template['module']));
 				}
 			}
 			else
 			{
-				$this->session->set_flashdata('notification', __("Nothing to save"));
+				$this->session->set_flashdata('notification', __("Nothing to save", $this->template['module']));
 			}
 			redirect('admin/admins');			
 		}
@@ -94,19 +94,19 @@
 				
 				if ($this->user->username == $row['username']) 
 				{
-					$this->session->set_flashdata('notification', __("You cannot remove yourself from the list."));
+					$this->session->set_flashdata('notification', __("You cannot remove yourself from the list.", $this->template['module']));
 				}
 				else
 				{
 				
 					$this->db->where('id', $id);
 					$this->db->delete('admins');
-					$this->session->set_flashdata('notification', __("User removed from administrator list"));
+					$this->session->set_flashdata('notification', __("User removed from administrator list", $this->template['module']));
 				}
 			}
 			else
 			{
-					$this->session->set_flashdata('notification', __("User not found in the list"));
+					$this->session->set_flashdata('notification', __("User not found in the list", $this->template['module']));
 			}
 			redirect('admin/admins');
 		}

@@ -1,12 +1,12 @@
 <!-- [Content] start -->
 <div class="content wide">
 
-<h1 id="page"><?=__("Member administration")?></h1>
+<h1 id="page"><?=__("Member administration", $this->template['module'])?></h1>
 
 <ul class="manage">
-	<li><a href="<?=site_url('admin/member/settings')?>"><?=__("Settings")?></a></li>
-	<li><a href="<?=site_url('admin/member/create')?>"><?=__("Add a new user")?></a></li>
-	<li><a href="<?=site_url('admin')?>" class="last"><?=__("Cancel")?></a></li>
+	<li><a href="<?=site_url('admin/member/settings')?>"><?=__("Settings", $this->template['module'])?></a></li>
+	<li><a href="<?=site_url('admin/member/create')?>"><?=__("Add a new user", $this->template['module'])?></a></li>
+	<li><a href="<?=site_url('admin')?>" class="last"><?=__("Cancel", $this->template['module'])?></a></li>
 </ul>
 		
 <br class="clearfloat" />
@@ -21,9 +21,9 @@
 	<thead>
 		<tr>
 				<th width="3%" class="center">#</th>
-				<th width="27%"><?=__("Username")?></th>
-				<th width="40%"><?=__("Email")?></th>
-				<th width="30%" colspan="3"><?=__("Action")?></th>
+				<th width="27%"><?=__("Username", $this->template['module'])?></th>
+				<th width="40%"><?=__("Email", $this->template['module'])?></th>
+				<th width="30%" colspan="3"><?=__("Action", $this->template['module'])?></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -34,9 +34,9 @@
 				<td><?=$member['username']?></td>
 				<td><?=$member['email']?></td>
 				<td>
-				<a href="<?=site_url('admin/'.$module.'/status/'. $member['username'].'/'.$member['status'])?>"><?=($member['status'] == 'active')?__("Deactivate"):__("Activate")?></a></td>
-				<td><a href="<?=site_url('admin/'.$module.'/edit/'.$member['username'])?>"><?=__("Edit")?></a></td>
-				<td><a href="<?=site_url('admin/'.$module.'/delete/'.$member['username'])?>"><?=__("Delete")?></a></td>
+				<a href="<?=site_url('admin/'.$module.'/status/'. $member['username'].'/'.$member['status'])?>"><?=($member['status'] == 'active')?__("Deactivate", $this->template['module']):__("Activate", $this->template['module'])?></a></td>
+				<td><a href="<?=site_url('admin/'.$module.'/edit/'.$member['username'])?>"><?=__("Edit", $this->template['module'])?></a></td>
+				<td><a href="<?=site_url('admin/'.$module.'/delete/'.$member['username'])?>"><?=__("Delete", $this->template['module'])?></a></td>
 		</tr>
 <?php $i++; endforeach;?>
 	</tbody>

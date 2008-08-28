@@ -1,3 +1,3 @@
-<h1>Page Not Found!</h1>
+<h1><?=__("Page Not Found!", $this->template['module'])?></h1>
 
-<p>The page you're looking for couldn't be found!</p>
+<p><?=__("The page you're looking for couldn't be found!", $this->template['module'])?></p>
