@@ -52,7 +52,7 @@ class Admin extends Controller {
 		
 		if ($cat == 0)
 		{
-			$this->template['cat'] = array('pid' => 0, 'id' => 0, 'title' => __("Root"));
+			$this->template['cat'] = array('pid' => 0, 'id' => 0, 'title' => __("Root", 'downloads'));
 		}
 		else
 		{

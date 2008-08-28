@@ -1,11 +1,11 @@
 <!-- [Content] start -->
 <div class="content wide">
 
-<h1 id="page"><?=__("Files")?></h1>
+<h1 id="page"><?=__("Files", 'downloads')?></h1>
 
 <ul class="manage">
-	<li><a href="<?=site_url('admin/downloads/document/create')?>"><?=__("New File")?></a></li>
-	<li><a href="<?=site_url('admin/downloads/category/index/' . $cat['id'])?>" class="last"><?=__("Cancel")?></a></li>
+	<li><a href="<?=site_url('admin/downloads/document/create')?>"><?=__("New File", 'downloads')?></a></li>
+	<li><a href="<?=site_url('admin/downloads/category/index/' . $cat['id'])?>" class="last"><?=__("Cancel", 'downloads')?></a></li>
 </ul>
 		
 <br class="clearfloat" />
@@ -20,11 +20,11 @@
 	<thead>
 		<tr>
 				<th width="3%" class="center">#</th>
-				<th width="27%"><?=__("Name")?></th>
-				<th width="27%"><?=__("Summary")?></th>
-				<th width="15%"><?=__("Status")?></th>
-				<th width="5%"><?=__("Ordering")?></th>
-				<th width="20%" colspan="2"><?=__("Action")?></th>
+				<th width="27%"><?=__("Name", 'downloads')?></th>
+				<th width="27%"><?=__("Summary", 'downloads')?></th>
+				<th width="15%"><?=__("Status", 'downloads')?></th>
+				<th width="5%"><?=__("Ordering", 'downloads')?></th>
+				<th width="20%" colspan="2"><?=__("Action", 'downloads')?></th>
 				<th width="3%" class="last center">ID</th>
 		</tr>
 	</thead>
@@ -49,8 +49,8 @@ else
 				<td><?=$row['summary']?></td>
 				<td><?php if ($row['status']==1): echo 'Active'; else: echo 'Suspended'; endif;?></td>
 				<td>
-				<a href="<?=site_url('admin/downloads/category/move/up/'. $row['id'])?>"><img src="<?=site_url('application/views/admin/images/moveup.gif')?>" width="16" height="16" title="<?=__("Move up")?>" alt="<?=__("Move up")?>"/></a>
-				<a href="<?=site_url('admin/downloads/category/move/down/'. $row['id'])?>"><img src="<?=site_url('application/views/admin/images/movedown.gif')?>" width="16" height="16" title="<?=__("Move down")?>" alt="<?=__("Move down")?>"/></a></td>
+				<a href="<?=site_url('admin/downloads/category/move/up/'. $row['id'])?>"><img src="<?=site_url('application/views/admin/images/moveup.gif')?>" width="16" height="16" title="<?=__("Move up", $this->template['module'])?>" alt="<?=__("Move up", 'downloads')?>"/></a>
+				<a href="<?=site_url('admin/downloads/category/move/down/'. $row['id'])?>"><img src="<?=site_url('application/views/admin/images/movedown.gif')?>" width="16" height="16" title="<?=__("Move down", $this->template['module'])?>" alt="<?=__("Move down", 'downloads')?>"/></a></td>
 				<td><a href="<?=site_url('admin/downloads/category/create/'.$row['id'])?>">Edit</a></td>
 				<td><a href="<?=site_url('admin/downloads/category/delete/'.$row['id'])?>">Delete</a></td>
 				<td class="center"><?=$row['id']?></td>

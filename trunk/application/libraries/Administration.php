@@ -6,7 +6,6 @@
 		{
 			$this->obj =& get_instance();
 			$this->obj->load->helper('dashboard');	
-			$this->find_modules();
 			
 			if ( !$this->obj->user->logged_in && $this->obj->uri->segment(2) != 'login' )
 			{
@@ -14,16 +13,6 @@
 				redirect('admin/login');
 				exit;
 			}
-		}
-		
-		function find_modules()
-		{
-			$this->obj->db->where('status', 1);
-			$this->obj->db->order_by('ordering');
-			$query = $this->obj->db->get('modules');
-			
-			$modules = array();
-			$this->modules = $query->result_array();
 		}
 		
 

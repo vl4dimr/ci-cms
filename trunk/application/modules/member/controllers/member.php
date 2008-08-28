@@ -50,13 +50,13 @@ class Member extends Controller {
 			{
 				if(!$username = $this->input->post('username'))
 				{
-					$this->session->set_flashdata('notification', __("Please enter your username"));
+					$this->session->set_flashdata('notification', __("Please enter your username", $this->template['module']));
 					redirect('member/login', 'refresh');
 				}
 				
 				if(!$password = $this->input->post('password'))
 				{
-					$this->session->set_flashdata('notification', __("Please enter your password"));
+					$this->session->set_flashdata('notification', __("Please enter your password", $this->template['module']));
 					redirect('member/login', 'refresh');
 				}
 			
@@ -90,8 +90,8 @@ class Member extends Controller {
 			$this->template['member'] = $this->db->get_where('users', array('username' => $this->user->username));
 			$this->validation->set_rules($rules);	
 
-			$fields['password'] = __("password");	
-			$fields['passconf'] = __("password confirmation");	
+			$fields['password'] = __("password", $this->template['module']);	
+			$fields['passconf'] = __("password confirmation", $this->template['module']);	
 
 			$this->validation->set_fields($fields);	
 			$this->validation->set_error_delimiters('<p style="color:#900">', '</p>');
@@ -114,7 +114,7 @@ class Member extends Controller {
 				}
 
 				$this->user->update($username, $data);
-				$this->session->set_flashdata('notification', __("Your profile was saved."));
+				$this->session->set_flashdata('notification', __("Your profile was saved.", $this->template['module']));
 				redirect(site_url());
 			
 			}				

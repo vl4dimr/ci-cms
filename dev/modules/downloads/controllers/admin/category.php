@@ -35,7 +35,7 @@ class Category extends Controller {
 
 		if ($cat == 0)
 		{
-			$this->template['cat'] = array('pid' => 0, 'id' => 0, 'title' => __("Root"));
+			$this->template['cat'] = array('pid' => 0, 'id' => 0, 'title' => __("Root", 'downloads'));
 		}
 		else
 		{
@@ -62,7 +62,7 @@ class Category extends Controller {
 		$id = $this->input->post('id');
 		$this->downloads->save_cat($id);
 		
-		$this->session->set_flashdata('notification', __("Category saved"));
+		$this->session->set_flashdata('notification', __("Category saved", 'downloads'));
 		redirect('admin/downloads/index/'. $this->input->post('pid'));
 		
 	}

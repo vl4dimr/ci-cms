@@ -1,0 +1,249 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Solaitra:Downloads\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-08-28 23:17+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Eugene Hery <hery@serasera.org>\n"
+"Language-Team: Hery serasera.org <hery@serasera.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: French\n"
+"X-Poedit-Country: FRANCE\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../controllers/admin.php:78
+#: ../controllers/admin.php:195
+#: ../controllers/group.php:67
+#: ../controllers/group.php:184
+msgid "email"
+msgstr ""
+
+#: ../controllers/admin.php:79
+#: ../controllers/group.php:68
+msgid "username"
+msgstr ""
+
+#: ../controllers/admin.php:80
+#: ../controllers/admin.php:196
+#: ../controllers/group.php:69
+#: ../controllers/group.php:185
+#: ../controllers/member.php:93
+msgid "password"
+msgstr ""
+
+#: ../controllers/admin.php:81
+#: ../controllers/admin.php:197
+#: ../controllers/group.php:70
+#: ../controllers/group.php:186
+#: ../controllers/member.php:94
+msgid "password confirmation"
+msgstr ""
+
+#: ../controllers/admin.php:87
+#: ../controllers/admin.php:202
+#: ../controllers/group.php:76
+#: ../controllers/group.php:191
+#: ../controllers/member.php:99
+#, php-format
+msgid "The %s field is required"
+msgstr ""
+
+#: ../controllers/admin.php:88
+#: ../controllers/admin.php:203
+#: ../controllers/group.php:77
+#: ../controllers/group.php:192
+#: ../controllers/member.php:100
+#, php-format
+msgid "The %s field does not match the %s field"
+msgstr ""
+
+#: ../controllers/admin.php:105
+#: ../controllers/group.php:94
+msgid "User registered"
+msgstr ""
+
+#: ../controllers/admin.php:119
+#: ../controllers/group.php:108
+msgid "The username is already in use"
+msgstr ""
+
+#: ../controllers/admin.php:137
+#: ../controllers/admin.php:244
+#: ../controllers/group.php:126
+#: ../controllers/group.php:226
+msgid "This member doesn't exist"
+msgstr ""
+
+#: ../controllers/admin.php:147
+#: ../controllers/admin.php:168
+#: ../controllers/group.php:136
+#: ../controllers/group.php:157
+msgid "Username and status required"
+msgstr ""
+
+#: ../controllers/admin.php:153
+#: ../controllers/group.php:142
+msgid "You cannot remove yourself"
+msgstr ""
+
+#: ../controllers/admin.php:159
+#: ../controllers/group.php:148
+msgid "User deleted"
+msgstr ""
+
+#: ../controllers/admin.php:181
+#: ../controllers/group.php:170
+msgid "User status updated"
+msgstr ""
+
+#: ../controllers/admin.php:238
+#: ../controllers/group.php:220
+msgid "User saved"
+msgstr ""
+
+#: ../controllers/admin.php:270
+#: ../controllers/group.php:252
+msgid "The email is already in use"
+msgstr ""
+
+#: ../controllers/member.php:53
+msgid "Please enter your username"
+msgstr ""
+
+#: ../controllers/member.php:59
+msgid "Please enter your password"
+msgstr ""
+
+#: ../controllers/member.php:117
+msgid "Your profile was saved."
+msgstr ""
+
+#: ../views/admin.php:4
+#, fuzzy
+msgid "Member administration"
+msgstr "Administration T&eacute;l&eacute;chargement"
+
+#: ../views/admin.php:7
+msgid "Settings"
+msgstr ""
+
+#: ../views/admin.php:8
+msgid "Add a new user"
+msgstr ""
+
+#: ../views/admin.php:9
+#: ../views/create.php:25
+#: ../views/edit.php:25
+msgid "Cancel"
+msgstr ""
+
+#: ../views/admin.php:24
+#: ../views/create.php:34
+#: ../views/edit.php:34
+#: ../views/login.php:20
+msgid "Username"
+msgstr ""
+
+#: ../views/admin.php:25
+#: ../views/create.php:42
+#: ../views/edit.php:43
+#: ../views/myprofile.php:16
+msgid "Email"
+msgstr ""
+
+#: ../views/admin.php:26
+msgid "Action"
+msgstr ""
+
+#: ../views/admin.php:37
+msgid "Deactivate"
+msgstr ""
+
+#: ../views/admin.php:37
+msgid "Activate"
+msgstr ""
+
+#: ../views/admin.php:38
+msgid "Edit"
+msgstr ""
+
+#: ../views/admin.php:39
+msgid "Delete"
+msgstr ""
+
+#: ../views/create.php:4
+#: ../views/edit.php:4
+msgid "Navigation"
+msgstr ""
+
+#: ../views/create.php:17
+msgid "Add a user"
+msgstr ""
+
+#: ../views/create.php:24
+#: ../views/edit.php:24
+msgid "Save"
+msgstr ""
+
+#: ../views/create.php:37
+#: ../views/edit.php:38
+#: ../views/login.php:22
+#: ../views/myprofile.php:11
+msgid "Password"
+msgstr ""
+
+#: ../views/create.php:40
+#: ../views/edit.php:41
+#: ../views/myprofile.php:14
+msgid "Confirm"
+msgstr ""
+
+#: ../views/edit.php:17
+msgid "Edit a user"
+msgstr ""
+
+#: ../views/edit.php:46
+msgid "Status"
+msgstr ""
+
+#: ../views/edit.php:48
+msgid "Active"
+msgstr ""
+
+#: ../views/edit.php:49
+msgid "Disabled"
+msgstr ""
+
+#: ../views/login.php:4
+msgid "Login"
+msgstr ""
+
+#: ../views/login.php:12
+msgid "Please enter here your login and password"
+msgstr ""
+
+#: ../views/login.php:30
+msgid "Sign up"
+msgstr ""
+
+#: ../views/login.php:32
+msgid "Lost password ?"
+msgstr ""
+
+#: ../views/myprofile.php:2
+msgid "Edit your profile"
+msgstr ""
+
+#~ msgid "Downloads"
+#~ msgstr "T&eacute;l&eacute;chargements"
+#~ msgid "The file you're looking for couldn't be found!"
+#~ msgstr "Fichier non trouv&eacute;"
+#~ msgid "Upload File"
+#~ msgstr "Charger un fichier"
+#~ msgid "Upload files"
+#~ msgstr "Charger fichiers"
+

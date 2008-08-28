@@ -1,12 +1,12 @@
 <!-- [Left menu] start -->
 <div class="leftmenu">
 
-	<h1 id="quicklaunch"><?=__("Settings")?></h1>
+	<h1 id="quicklaunch"><?=__("Settings", $this->template['module'])?></h1>
 	
 	<ul class="quickmenu">
-		<li><a href="<?=site_url('admin/settings')?>"><?=__("General settings")?></a></li>
-		<li><a href="<?=site_url('admin/module')?>"><?=__("Modules settings")?></a></li>		
-		<li><a href="<?=site_url('admin/admins')?>"><?=__("Administrators")?></a></li>		
+		<li><a href="<?=site_url('admin/settings')?>"><?=__("General settings", $this->template['module'])?></a></li>
+		<li><a href="<?=site_url('admin/module')?>"><?=__("Modules settings", $this->template['module'])?></a></li>		
+		<li><a href="<?=site_url('admin/admins')?>"><?=__("Administrators", $this->template['module'])?></a></li>		
 	</ul>
 	<div class="quickend"></div>
 
@@ -16,7 +16,7 @@
 <!-- [Content] start -->
 <div class="content slim">
 
-<h1 id="dashboard"><?=__("Unauthorized")?></h1>
+<h1 id="dashboard"><?=__("Unauthorized", $this->template['module'])?></h1>
 
 <hr />
 
@@ -24,28 +24,28 @@
 <div class="row">
 
 
-	<h2><?=__("Module")?>: <?=ucfirst($data['module'])?></h2>
+	<h2><?=__("Module", $this->template['module'])?>: <?=ucfirst($data['module'])?></h2>
 	<?php 
 	switch ($data['level'])
 	{
 		case 0:
-		$levelword = __("have access to");
+		$levelword = __("have access to", $this->template['module']);
 		break;
 		case 1:
-		$levelword = __("view in");
+		$levelword = __("view in", $this->template['module']);
 		break;
 		case 2:
-		$levelword = __("add into");
+		$levelword = __("add into", $this->template['module']);
 		break;
 		case 3:
-		$levelword = __("edit in");
+		$levelword = __("edit in", $this->template['module']);
 		break;
 		case 4:
-		$levelword = __("delete in");
+		$levelword = __("delete in", $this->template['module']);
 		break;
 	}
 	?>
-	<?=sprintf( __("Sorry, you cannot %s the %s module"), $levelword, $data['module'] )?>
+	<?=sprintf( __("Sorry, you cannot %s the %s module", $this->template['module']), $levelword, $data['module'] )?>
 
 
 	

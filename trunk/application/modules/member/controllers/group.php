@@ -64,10 +64,10 @@
 			
 			$this->validation->set_rules($rules);	
 
-			$fields['email'] = __("email");	
-			$fields['username'] = __("username");	
-			$fields['password'] = __("password");
-			$fields['passconf'] = __("password confirmation");	
+			$fields['email'] = __("email", $this->template['module']);	
+			$fields['username'] = __("username", $this->template['module']);	
+			$fields['password'] = __("password", $this->template['module']);
+			$fields['passconf'] = __("password confirmation", $this->template['module']);	
 
 			$this->validation->set_fields($fields);	
 			$this->validation->set_error_delimiters('<p style="color:#900">', '</p>');
@@ -91,7 +91,7 @@
 					$this->input->post('email')
 				);
 				
-				$this->session->set_flashdata('notification', __("User registered"));
+				$this->session->set_flashdata('notification', __("User registered", $this->template['module']));
 				redirect('admin/member/listall');
 			}
 
@@ -105,7 +105,7 @@
 			//check if email belongs to someone else
 			if ($this->member_model->exists(array('username' => $username)))
 			{
-				$this->validation->set_message('_verify_username', __("The username is already in use"));
+				$this->validation->set_message('_verify_username', __("The username is already in use", $this->template['module']));
 				return FALSE;
 			}
 
@@ -123,7 +123,7 @@
 			}
 			else 
 			{
-				$this->session->set_flashdata("notification", __("This member doesn't exist"));
+				$this->session->set_flashdata("notification", __("This member doesn't exist", $this->template['module']));
 				redirect("admin/member/listall");
 			}
 			
@@ -133,19 +133,19 @@
 		{
 			if (is_null($username))
 			{
-				$this->session->set_flashdata("notification", __("Username and status required"));
+				$this->session->set_flashdata("notification", __("Username and status required", $this->template['module']));
 				redirect("admin/member/listall");
 			}
 			
 			if ($username == $this->session->userdata("username"))
 			{
-				$this->session->set_flashdata("notification", __("You cannot remove yourself"));
+				$this->session->set_flashdata("notification", __("You cannot remove yourself", $this->template['module']));
 				redirect("admin/member/listall");
 			
 			}
 			
 			$this->db->delete('users', array('username' => $username));
-			$this->session->set_flashdata("notification", __("User deleted"));
+			$this->session->set_flashdata("notification", __("User deleted", $this->template['module']));
 			redirect("admin/member/listall");
 			
 		}
@@ -154,7 +154,7 @@
 		{
 			if (is_null($username) || is_null($fromstatus))
 			{
-				$this->session->set_flashdata("notification", __("Username and status required"));
+				$this->session->set_flashdata("notification", __("Username and status required", $this->template['module']));
 				redirect("admin/member/listall");
 			}
 			
@@ -167,7 +167,7 @@
 				$data['status'] = 'active';
 			}
 			$this->user->update($username, $data);
-			$this->session->set_flashdata("notification", __("User status updated"));
+			$this->session->set_flashdata("notification", __("User status updated", $this->template['module']));
 			redirect("admin/member/listall");
 			
 			
@@ -181,9 +181,9 @@
 			
 			$this->validation->set_rules($rules);	
 
-			$fields['email'] = __("email");	
-			$fields['password'] = __("password");	
-			$fields['passconf'] = __("password confirmation");	
+			$fields['email'] = __("email", $this->template['module']);	
+			$fields['password'] = __("password", $this->template['module']);	
+			$fields['passconf'] = __("password confirmation", $this->template['module']);	
 
 			$this->validation->set_fields($fields);	
 			$this->validation->set_error_delimiters('<p style="color:#900">', '</p>');
@@ -217,13 +217,13 @@
 					}
 
 					$this->user->update($username, $data);
-					$this->session->set_flashdata('notification', __("User saved"));
+					$this->session->set_flashdata('notification', __("User saved", $this->template['module']));
 					redirect('admin/member/listall');
 				}
 			}
 			else 
 			{
-				$this->session->set_flashdata("notification", __("This member doesn't exist"));
+				$this->session->set_flashdata("notification", __("This member doesn't exist", $this->template['module']));
 				redirect("admin/member/listall");
 			}				
 
@@ -249,7 +249,7 @@
 			//check if email belongs to someone else
 			if ($this->member_model->exists(array('email' => $email, 'username !=' => $username)))
 			{
-				$this->validation->set_message('_verify_mail', __("The email is already in use"));
+				$this->validation->set_message('_verify_mail', __("The email is already in use", $this->template['module']));
 				return FALSE;
 			}
 

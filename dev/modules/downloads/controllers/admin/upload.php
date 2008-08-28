@@ -84,7 +84,7 @@ class Upload extends Controller {
 			}				
 		}		
 
-		$this->session->set_flashdata('notification', $error . __("File saved"));
+		$this->session->set_flashdata('notification', $error . __("File saved", 'downloads'));
 		redirect('admin/downloads/upload');	
 	}
 	
@@ -99,11 +99,11 @@ class Upload extends Controller {
 			
 			$this->downloads->delete_file($row);
 		
-			echo __("The file was deleted");
+			echo __("The file was deleted", 'downloads');
 		}
 		else
 		{
-			echo __("File not found");
+			echo __("File not found", 'downloads');
 		}
 	}
 	
@@ -194,11 +194,11 @@ class Upload extends Controller {
 			
 			$this->downloads->delete_file($row);
 		
-			echo __("The file was deleted");
+			echo __("The file was deleted", 'downloads');
 		}
 		else
 		{
-			echo __("File not found");
+			echo __("File not found", 'downloads');
 		}
 	}
 	

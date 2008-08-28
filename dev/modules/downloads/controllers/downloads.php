@@ -44,7 +44,7 @@ class Downloads extends Controller {
 		}
 		else
 		{
-			$this->template['title'] = __("Downloads");
+			$this->template['title'] = __("Downloads", 'downloads');
 		}
 
 		$this->template['files'] = $this->downloads->get_docs($pid, $start, $per_page);

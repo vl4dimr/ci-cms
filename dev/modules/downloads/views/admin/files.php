@@ -88,10 +88,10 @@ function deleteFile(obj) {
 
 <div class="content wide">
 
-<h1 id="page"><?=__("Upload files")?></h1>
+<h1 id="page"><?=__("Upload files", 'downloads')?></h1>
 
 <ul class="manage">
-	<li><a href="<?=site_url('admin/downloads')?>" class="last"><?=__("Cancel")?></a></li>
+	<li><a href="<?=site_url('admin/downloads')?>" class="last"><?=__("Cancel", 'downloads')?></a></li>
 </ul>
 		
 <br class="clearfloat" />
@@ -103,7 +103,7 @@ function deleteFile(obj) {
 <?php endif;?>
 
 <form  enctype="multipart/form-data" class="edit" action="<?=site_url('admin/downloads/upload/save')?>" method="post" accept-charset="utf-8">
-		<label for="file"><?=__("File")?>: </label>
+		<label for="file"><?=__("File", 'downloads')?>: </label>
 		
 		<input type="file" name="file" class="input-file" id="file"/>
 <img src='<?php echo site_url('application/views/admin/images/ajax_circle.gif')?>' id='loading'/><input type='submit' id='upload_now' value='  <?php echo __('Upload') ?>  ' />
@@ -112,16 +112,16 @@ function deleteFile(obj) {
 		<table id="file_list" class="page-list">
 			<thead>
 				<tr>
-					<th><?=__("Date")?></th>
-					<th><?=__("File")?></th>					
-					<th><?=__("Size")?></th>					
-					<th><?=__("Action")?></th>
+					<th><?=__("Date", 'downloads')?></th>
+					<th><?=__("File", 'downloads')?></th>					
+					<th><?=__("Size", 'downloads')?></th>					
+					<th><?=__("Action", 'downloads')?></th>
 				</tr>
 			</thead>
 			<tbody>
 		<?php if (isset($rows)) : ?>
 		<?php foreach($rows as $file): ?>
-		<tr><td><?=date('d/m/Y', $file['date'])?></td><td><?=$file['file']?></td><td><?=$file['size']?></td><td><a href="<?=site_url('admin/projects/deletefile/' . $file['id']) ?>" class="deletefile" id="<?=$file['id']?>"><?=__("Delete file")?></td></tr>
+		<tr><td><?=date('d/m/Y', $file['date'])?></td><td><?=$file['file']?></td><td><?=$file['size']?></td><td><a href="<?=site_url('admin/projects/deletefile/' . $file['id']) ?>" class="deletefile" id="<?=$file['id']?>"><?=__("Delete file", 'downloads')?></td></tr>
 		<?php endforeach; ?>
 		<?php endif;?>
 		</tbody>

@@ -18,4 +18,4 @@
 	}	
 ?>
 <?=$row['desc']?>
-<a href="<?=$row['link']?>"><?=__("Download")?></a>
+<a href="<?=$row['link']?>"><?=__("Download", 'downloads')?></a>

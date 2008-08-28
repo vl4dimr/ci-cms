@@ -1,12 +1,12 @@
 <!-- [Left menu] start -->
 <div class="leftmenu">
 
-	<h1 id="quicklaunch"><?=__("Settings")?></h1>
+	<h1 id="quicklaunch"><?=__("Settings", $this->template['module'])?></h1>
 	
 	<ul class="quickmenu">
-		<li><a href="<?=site_url('admin/settings')?>"><?=__("General settings")?></a></li>
-		<li><a href="<?=site_url('admin/module')?>"><?=__("Modules settings")?></a></li>		
-		<li><a href="<?=site_url('admin/admins')?>"><?=__("Administrators")?></a></li>		
+		<li><a href="<?=site_url('admin/settings')?>"><?=__("General settings", $this->template['module'])?></a></li>
+		<li><a href="<?=site_url('admin/module')?>"><?=__("Modules settings", $this->template['module'])?></a></li>		
+		<li><a href="<?=site_url('admin/admins')?>"><?=__("Administrators", $this->template['module'])?></a></li>		
 	</ul>
 	<div class="quickend"></div>
 

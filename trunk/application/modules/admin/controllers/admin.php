@@ -22,7 +22,7 @@
 			
 			if($this->user->email == '')
 			{
-				$this->session->set_flashdata('notice', __("Please set your email"));
+				$this->session->set_flashdata('notice', __("Please set your email", $this->template['module']));
 				redirect('admin/member/edit');
 			}
 			$this->load->library('simplepie');
@@ -76,13 +76,13 @@
 				{
 					if(!$username = $this->input->post('username'))
 					{
-						$this->session->set_flashdata('notification', __("Please insert your username"));
+						$this->session->set_flashdata('notification', __("Please insert your username", $this->template['module']));
 						redirect('admin/login');
 					}
 					
 					if(!$password = $this->input->post('password'))
 					{
-						$this->session->set_flashdata('notification', __("Please insert your password"));
+						$this->session->set_flashdata('notification', __("Please insert your password", $this->template['module']));
 						redirect('admin/login');
 					}
 					
@@ -206,7 +206,7 @@
 						$this->db->set($data);
 						$this->db->insert('navigation');
 						
-						$this->session->set_flashdata('notification', __("Navigation item saved"));
+						$this->session->set_flashdata('notification', __("Navigation item saved", $this->template['module']));
 						$this->cache->remove_group('navigation');
 						redirect('admin/navigation');
 					}
@@ -221,7 +221,7 @@
 					$id = $this->uri->segment(4);
 					if (!isset($id))
 					{
-						$this->session->set_flashdata('notification', __("Please select a menu"));
+						$this->session->set_flashdata('notification', __("Please select a menu", $this->template['module']));
 						redirect('admin/navigation');	
 					}
 					else
@@ -229,7 +229,7 @@
 					
 						$this->db->where('id', $id);
 						$this->db->delete('navigation');
-						$this->session->set_flashdata('notification', __("Navigation item deleted"));
+						$this->session->set_flashdata('notification', __("Navigation item deleted", $this->template['module']));
 						$this->cache->remove_group('navigation');
 						redirect('admin/navigation');
 					}
@@ -238,7 +238,7 @@
 					$id = $this->uri->segment(4);
 					if (!isset($id))
 					{
-						$this->session->set_flashdata('notification', __("Please select a menu"));
+						$this->session->set_flashdata('notification', __("Please select a menu", $this->template['module']));
 						redirect('admin/navigation');						
 					}
 					
@@ -256,7 +256,7 @@
 						$this->db->set($data);
 						$this->db->update('navigation');
 						
-						$this->session->set_flashdata('notification', __("Navigation item saved"));
+						$this->session->set_flashdata('notification', __("Navigation item saved", $this->template['module']));
 						$this->cache->remove_group('navigation');
 						redirect('admin/navigation');
 					}
@@ -273,7 +273,7 @@
 						}
 						else
 						{
-							$this->session->set_flashdata('notification', __("Navigation item not found"));
+							$this->session->set_flashdata('notification', __("Navigation item not found", $this->template['module']));
 							redirect('admin/navigation');
 						}
 					}

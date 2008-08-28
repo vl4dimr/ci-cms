@@ -23,7 +23,7 @@
 		
 			if (!is_writable  ('./media/images'))
 			{
-			$this->template['notice'] = __("The <i>images</i> directory is not writable. Please fix it'");
+			$this->template['notice'] = __("The <i>images</i> directory is not writable. Please fix it'", $this->template['module']);
 			}
 			elseif (!is_dir('./media/images/o'))
 			{
@@ -77,7 +77,7 @@
 						$this->system->set($field, $this->input->post($field));
 					}
 				}
-				$this->session->set_flashdata('notification', __("Settings updated"));	
+				$this->session->set_flashdata('notification', __("Settings updated", $this->template['module']));	
 				redirect('admin/page/settings');
 			}
 			else
@@ -419,7 +419,7 @@
 		{
 			$this->db->where('id', $this->input->post('id'));
 			$this->db->delete('images');
-			echo __("The image was deleted");
+			echo __("The image was deleted", $this->template['module']);
 		}
 		
 		function ajax_upload()

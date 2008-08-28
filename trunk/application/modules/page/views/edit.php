@@ -4,9 +4,9 @@
 	<h1 id="pageinfo">Page informations</h1>
 	
 	<ul id="tabs" class="quickmenu">
-		<li><a href="#one"><?=__("Content")?></a></li>
-		<li><a href="#two"><?=__("Meta data")?></a></li>
-		<li><a href="#three"><?=__("Options")?></a></li>
+		<li><a href="#one"><?=__("Content", $this->template['module'])?></a></li>
+		<li><a href="#two"><?=__("Meta data", $this->template['module'])?></a></li>
+		<li><a href="#three"><?=__("Options", $this->template['module'])?></a></li>
 	</ul>
 	<div class="quickend"></div>
 
@@ -100,7 +100,7 @@ function ajaxFileUpload() {
 
 
 
-<h1 id="edit"><?=__("Edit page")?></h1>
+<h1 id="edit"><?=__("Edit page", $this->template['module'])?></h1>
 
 <form enctype="multipart/form-data" class="edit" action="<?=site_url('admin/page/edit/'.$page['id'])?>" method="post" accept-charset="utf-8">
 		<input type="hidden" name="lang" value="<?php echo $this->user->lang ?>" />
@@ -128,7 +128,7 @@ function ajaxFileUpload() {
 			<label for="uri">SEF adress:</label>
 			<input type="text" name="uri" value="<?=$page['uri']?>" id="uri" class="input-text" /><br />
 			
-			<label for="parent_id"><?=__("Parent")?>: </label>
+			<label for="parent_id"><?=__("Parent", $this->template['module'])?>: </label>
 			<select name="parent_id" class="input-select" />
 			<option value='0'/>
 			<?php $follow = null;
@@ -167,12 +167,12 @@ function ajaxFileUpload() {
 		<div style="visibility: hidden">Available images:</div>
 		<?php if ($images) : ?>
 		<?php foreach($images as $image): ?>
-		<div><?php if($image['src_id'] == 0) : ?><input type='hidden' name='image_ids[]' value='<?php echo $image['id'] ?>' /><?php endif; ?><a href='#' onclick="tinyMCE.execCommand('mceInsertContent',false,'<a href=\'<?php echo site_url('media/images/o')?>/<?php echo $image['file'] ?>\'><img border=\'0\' align=\'left\' hspace=\'10\' src=\'<?php echo site_url('media/images/m')?>/<?php echo $image['file'] ?>\' /></a>');return false;"><?php echo $image['file'] ?></a> - <a href="<?php echo site_url('admin/page/removeimg/' . $image['id']) ?>" class="ajaxdelete" id="<?php echo $image['id'] ?>"><?php echo __("Delete image") ?></a></div>
+		<div><?php if($image['src_id'] == 0) : ?><input type='hidden' name='image_ids[]' value='<?php echo $image['id'] ?>' /><?php endif; ?><a href='#' onclick="tinyMCE.execCommand('mceInsertContent',false,'<a href=\'<?php echo site_url('media/images/o')?>/<?php echo $image['file'] ?>\'><img border=\'0\' align=\'left\' hspace=\'10\' src=\'<?php echo site_url('media/images/m')?>/<?php echo $image['file'] ?>\' /></a>');return false;"><?php echo $image['file'] ?></a> - <a href="<?php echo site_url('admin/page/removeimg/' . $image['id']) ?>" class="ajaxdelete" id="<?php echo $image['id'] ?>"><?php echo __("Delete image", $this->template['module']) ?></a></div>
 		<?php endforeach; ?>
 		<?php endif;?>
 		</div>
 		
-		<label for="image"><?=__("Image")?></label>
+		<label for="image"><?=__("Image", $this->template['module'])?></label>
 		<input type="file" name="image" class="input-file" id="image"/><br />		
 		
 		</div>
@@ -187,16 +187,16 @@ function ajaxFileUpload() {
 		</div>
 		<div id="three">
 		
-			<label for="options[show_subpages]"><?=__("Show subpages")?>:</label>
+			<label for="options[show_subpages]"><?=__("Show subpages", $this->template['module'])?>:</label>
 			<select name="options[show_subpages]" class="input-select" id="show_subpages">
-			<option value='0' <?=((isset($page['options']['show_subpages']) && $page['options']['show_subpages']==0)?"selected":"")?>><?=__("No")?></option>
-			<option value='1' <?=((isset($page['options']['show_subpages']) && $page['options']['show_subpages']==1)?"selected":"")?>><?=__("Yes")?></option>
+			<option value='0' <?=((isset($page['options']['show_subpages']) && $page['options']['show_subpages']==0)?"selected":"")?>><?=__("No", $this->template['module'])?></option>
+			<option value='1' <?=((isset($page['options']['show_subpages']) && $page['options']['show_subpages']==1)?"selected":"")?>><?=__("Yes", $this->template['module'])?></option>
 			</select><br />
 
-			<label for="options[show_navigation]"><?=__("Show navigation")?>:</label>
+			<label for="options[show_navigation]"><?=__("Show navigation", $this->template['module'])?>:</label>
 			<select name="options[show_navigation]" class="input-select" id="show_navigation">
-			<option value='1' <?=((isset($page['options']['show_navigation']) && $page['options']['show_navigation']==1)?"selected":"")?>><?=__("Yes")?></option>
-			<option value='0' <?=((isset($page['options']['show_navigation']) && $page['options']['show_navigation']==0)?"selected":"")?>><?=__("No")?></option>
+			<option value='1' <?=((isset($page['options']['show_navigation']) && $page['options']['show_navigation']==1)?"selected":"")?>><?=__("Yes", $this->template['module'])?></option>
+			<option value='0' <?=((isset($page['options']['show_navigation']) && $page['options']['show_navigation']==0)?"selected":"")?>><?=__("No", $this->template['module'])?></option>
 			</select><br />
 			
 		</div>

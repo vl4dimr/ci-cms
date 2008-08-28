@@ -64,7 +64,7 @@
 			$data['view'] = $view;
 
 			//load language
-			$this->obj->locale->load_textdomain(APPPATH . 'locale/' . $this->obj->session->userdata('lang') . '.mo');
+			//$this->obj->locale->load_textdomain(APPPATH . 'locale/' . $this->obj->session->userdata('lang') . '.mo');
 								
 			
 			if ( (isset($data['admin']) && $data['admin'] == true) || $data['module'] == 'admin')

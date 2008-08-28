@@ -13,6 +13,7 @@
 		//all available blocks
 		function set () 
 		{
+
 			$lang = $this->uri->segment(1);
 			if (in_array($lang, $this->locale->codes)) 
 			{
@@ -23,6 +24,7 @@
 				$this->session->set_userdata('lang', $this->locale->default);
 			}
 			$redirect = str_replace("/" . $lang , "", $this->uri->uri_string());
+
 			redirect($redirect);
 		}
 	}

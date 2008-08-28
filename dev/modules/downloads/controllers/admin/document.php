@@ -56,13 +56,13 @@ class Document extends Controller {
 	{
 		if (!$this->input->post('file_id') && !$this->input->post('file_link'))
 		{
-			$this->session->set_flashdata('notification', __("Please specify a link or select a downloaded file."));
+			$this->session->set_flashdata('notification', __("Please specify a link or select a downloaded file.", 'downloads'));
 			redirect('admin/downloads/document/create/' . $this->input->post('cat') . '/' . $this->input->post('id'));
 		}
 		$id = $this->input->post('id');
 		$this->downloads->save_doc($id);
 		
-		$this->session->set_flashdata('notification', __("Document saved"));
+		$this->session->set_flashdata('notification', __("Document saved", 'downloads'));
 		redirect('admin/downloads/index/' . $this->input->post('cat'));
 		
 	}

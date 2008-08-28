@@ -63,13 +63,13 @@
 		{
 			if (is_null($module))
 			{
-				$this->session->set_flashdata('notification', __("Please select a module"));
+				$this->session->set_flashdata('notification', __("Please select a module", $this->template['module']));
 				redirect('admin/module');
 			}
 			$data = array('status' => 1);
 			$this->db->where(array('name'=> $module, 'ordering >=' => 100));
 			$this->db->update('modules', $data);
-			$this->session->set_flashdata('notification', __("The module is activated"));
+			$this->session->set_flashdata('notification', __("The module is activated", $this->template['module']));
 			redirect('admin/module');
 		}
 
@@ -77,13 +77,13 @@
 		{
 			if (is_null($module))
 			{
-				$this->session->set_flashdata('notification', __("Please select a module"));
+				$this->session->set_flashdata('notification', __("Please select a module", $this->template['module']));
 				redirect('admin/module');
 			}
 			$data = array('status' => 0);
 			$this->db->where(array('name'=> $module, 'ordering >=' => 100));
 			$this->db->update('modules', $data);
-			$this->session->set_flashdata('notification', __("The module is deactivated"));
+			$this->session->set_flashdata('notification', __("The module is deactivated", $this->template['module']));
 			redirect('admin/module');
 		}
 
@@ -140,13 +140,13 @@
 		{
 			if (is_null($module))
 			{
-				$this->session->set_flashdata('notification', __("Please select a module"));
+				$this->session->set_flashdata('notification', __("Please select a module", $this->template['module']));
 				redirect('admin/module');
 			}
 			
 			$this->db->where(array('name'=> $module, 'ordering >=' => 100));
 			$this->db->delete('modules');
-			$this->session->set_flashdata('notification', __("The module is uninstalled"));
+			$this->session->set_flashdata('notification', __("The module is uninstalled", $this->template['module']));
 			redirect('admin/module');
 		}
 		
@@ -154,13 +154,13 @@
 		{
 			if (is_null($module)) 
 			{
-				$this->session->set_flashdata('notification', __("Please select a module"));
+				$this->session->set_flashdata('notification', __("Please select a module", $this->template['module']));
 				redirect('admin/module');
 			}
 			
 			if ($this->_is_installed($module))
 			{
-				$this->session->set_flashdata('notification', __("The module you are trying to install is already installed"));
+				$this->session->set_flashdata('notification', __("The module you are trying to install is already installed", $this->template['module']));
 				redirect('admin/module');
 			}
 			
@@ -204,20 +204,20 @@
 						@include(APPPATH.'modules/'.$module.'/'.$module.'_install.php');
 					}
 					
-					$this->session->set_flashdata('notification', __("The module is installed. Now you need to activate it."));
+					$this->session->set_flashdata('notification', __("The module is installed. Now you need to activate it.", $this->template['module']));
 					$this->db->insert('modules', $data);
 					redirect('admin/module');
 				}
 				else
 				{
-					$this->session->set_flashdata('notification', __("The module setup file is not valid."));
+					$this->session->set_flashdata('notification', __("The module setup file is not valid.", $this->template['module']));
 					redirect('admin/module');
 				}
 			
 			}
 			else
 			{
-				$this->session->set_flashdata('notification', __("Setup file not readable."));
+				$this->session->set_flashdata('notification', __("Setup file not readable.", $this->template['module']));
 				redirect('admin/module');
 			}
 		}

@@ -15,7 +15,7 @@
 <!-- [Content] start -->
 <div class="content slim">
 
-<h1 id="settings"><?=__("Settings")?></h1>
+<h1 id="settings"><?=__("Settings", $this->template['module'])?></h1>
 
 <form class="settings" action="<?=site_url('admin/page/settings')?>" method="post" accept-charset="utf-8">
 		
@@ -32,7 +32,7 @@
 		<p class="notice"><?=$notice;?></p>
 		<?php endif;?>
 		
-		<p><?=__("Use this page to change the settings for the page module.")?></p>
+		<p><?=__("Use this page to change the settings for the page module.", $this->template['module'])?></p>
 		
 		<div id="one">
 		
