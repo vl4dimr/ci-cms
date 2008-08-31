@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<module>
+        <name>rss</name>
+        <date>28/08/2008</date>
+        <author>hery</author>
+        <email>hery@serasera.org</email>
+        <url>http://hery.serasera.org</url>
+        <copyright>GNU/GPL License</copyright>
+        <version>1.0.0</version>
+        <description>Rss module to show rss contents from other sites</description>
+</module>
+
