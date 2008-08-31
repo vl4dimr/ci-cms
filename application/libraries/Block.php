@@ -16,10 +16,10 @@ class Block {
 			{
 				//$class_name = ucfirst($module).'_Blocks';
 				$block_file = APPPATH.'modules/'.$module['name'].'/'.$module['name'].'_blocks.php';
-						if ( file_exists($block_file) )
-						{
-							include($block_file);
-						}
+				if ( file_exists($block_file) )
+				{
+					include($block_file);
+				}
 			}
 		}
 		log_message('debug', "Blog Class Initialized");
