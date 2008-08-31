@@ -7,7 +7,7 @@
 		function Navigation()
 		{
 			$this->obj =& get_instance();
-			$this->lang = $this->obj->session->userdata('lang');
+			
 		}
 		/*
 		function get()
@@ -28,19 +28,51 @@
 			return $nav;
 		}
 		*/
-		function get()
+		function get($where = null)
 		{
-			if (!$data = $this->obj->cache->get('navigationarray'.$this->lang, 'navigation'))
+			$hash = $this->obj->user->lang;
+			if (!is_null($where))
 			{
-				$data = $this->_get();
-				$this->obj->cache->save('navigationarray'.$this->lang, $data, 'navigation',0 );
+				if(is_array($where))
+				{
+					$hash .= md5(serialize($where));
+				}
+				else
+				{
+					$hash .= md5($where);
+					$where = array('id' => $where);
+				}
+			}
+			if (!$data = $this->obj->cache->get('navigationarray'.$hash, 'navigation'))
+			{
+				if (is_null($where))
+				{
+					$parent = 0;
+				}
+				else
+				{
+					$query = $this->obj->db->get_where('navigation', $where);
+					if ($query->num_rows() > 0 )
+					{
+						$row = $query->row_array();
+						$parent = $row['id'];
+					}
+					else
+					{
+						$parent = 0;
+					}
+				}
+				
+				$this->nav = array();
+				$data = $this->_get($parent);
+				$this->obj->cache->save('navigationarray'.$hash, $data, 'navigation',0 );
 			}
 			return $data;			
 		}
 		
 		function _get($parent = 0, $level = 0) {
 			// retrieve all children of $parent
-			$this->obj->db->where(array('parent_id' => $parent, 'lang' => $this->lang, 'active' => 1));
+			$this->obj->db->where(array('parent_id' => $parent, 'lang' => $this->obj->user->lang, 'active' => 1));
 			$this->obj->db->orderby('parent_id, weight');
 			$query = $this->obj->db->get('navigation');
 			
@@ -65,17 +97,17 @@
 		function print_menu()
 		{
 			
-			if (!$data = $this->obj->cache->get('navigation'.$this->lang, 'navigation'))
+			if (!$data = $this->obj->cache->get('navigation'.$this->obj->user->lang, 'navigation'))
 			{
 				$data = $this->_print_menu();
-				$this->obj->cache->save('navigation'.$this->lang, $data, 'navigation',0 );
+				$this->obj->cache->save('navigation'.$this->obj->user->lang, $data, 'navigation',0 );
 			}
 			return $data;
 		}
 		function _print_menu ($parent = 0)
 		{
 
-			$this->obj->db->where(array('parent_id' => $parent, 'lang' => $this->lang, 'active' => 1));
+			$this->obj->db->where(array('parent_id' => $parent, 'lang' => $this->obj->user->lang, 'active' => 1));
 			$this->obj->db->orderby('parent_id, weight');
 			$query = $this->obj->db->get('navigation');		
 		 	if ($query->num_rows() == 0)
@@ -99,10 +131,10 @@
 		
 		function get_menu_array()
 		{
-			if (!$data = $this->obj->cache->get('navigationarray'.$this->lang, 'navigation'))
+			if (!$data = $this->obj->cache->get('navigationarray'.$this->obj->user->lang, 'navigation'))
 			{
 				$data = $this->_get_menu_array();
-				$this->obj->cache->save('navigationarray'.$this->lang, $data, 'navigation',0 );
+				$this->obj->cache->save('navigationarray'.$this->obj->user->lang, $data, 'navigation',0 );
 			}
 			return $data;		
 		}
