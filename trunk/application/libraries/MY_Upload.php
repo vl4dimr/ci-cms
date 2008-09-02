@@ -37,9 +37,9 @@ class MY_Upload extends CI_Upload
 			 	
 		foreach ($this->allowed_types as $val)
 		{
-			if ("." . $val == $this->file_ext)
+			if ("." . strtolower($val) == strtolower($this->file_ext))
 			{
-				return TRUE;
+				return true;
 			}	
 		}
 		
