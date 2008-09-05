@@ -31,6 +31,7 @@
 		entity_encoding : "raw",
 		fix_list_elements : true,
 		relative_urls : false,
+		valid_elements : "*[*]",
 		external_link_list_url : "/admin/page/tinypagelist",
 		external_image_list_url : "/admin/page/tinyimagelist",
 		pagebreak_separator : "<!-- page break -->"
