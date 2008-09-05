@@ -33,7 +33,7 @@ class Block {
 	function get($block_name, $param = '')
 	{
 		$params = array();
-		if ( is_array($param) && 1 == count($param) && is_object($param[0]) ) // array(&$this)
+		if ( is_array($param) && 1 == count($param) ) // array(&$this)
 			$params[] =& $param[0];
 		else
 			$params[] = $param;
