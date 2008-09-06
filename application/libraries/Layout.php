@@ -63,7 +63,15 @@
 			
 			$data['view'] = $view;
 
-			//load language
+			//load language for template
+			$mofile = APPPATH . 'views/'.$this->theme.'/locale/' . $this->obj->session->userdata('lang') . '.mo' ;
+
+			if ( file_exists($mofile)) 
+			{
+
+				$this->obj->locale->load_textdomain($mofile, $this->theme);
+			}
+			
 			//$this->obj->locale->load_textdomain(APPPATH . 'locale/' . $this->obj->session->userdata('lang') . '.mo');
 								
 			
