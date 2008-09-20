@@ -10093,7 +10093,7 @@ class SimplePie_Misc
 
 		// CUSTOM: Do not attempt to call curl_version() if function has been disabled
 		$disabled_functions = ini_get('disable_functions');
-		if (($disabled_functions == '') || (is_int(stripos($disabled_functions, 'curl_version'))) ) {
+		if (($disabled_functions == '') || (is_int(strpos(strtolower($disabled_functions), 'curl_version'))) ) {
 		  return strval($curl);
 		}
 
