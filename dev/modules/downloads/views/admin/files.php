@@ -121,7 +121,7 @@ function deleteFile(obj) {
 			<tbody>
 		<?php if (isset($rows)) : ?>
 		<?php foreach($rows as $file): ?>
-		<tr><td><?=date('d/m/Y', $file['date'])?></td><td><?=$file['file']?></td><td><?=$file['size']?></td><td><a href="<?=site_url('admin/projects/deletefile/' . $file['id']) ?>" class="deletefile" id="<?=$file['id']?>"><?=__("Delete file", 'downloads')?></td></tr>
+		<tr><td><?=date('d/m/Y', $file['date'])?></td><td><a href="<?=site_url('media/files/' . $file['file'])?>"><?=$file['file']?></a></td><td><?=$file['size']?></td><td><a href="<?=site_url('admin/projects/deletefile/' . $file['id']) ?>" class="deletefile" id="<?=$file['id']?>"><?=__("Delete file", 'downloads')?></td></tr>
 		<?php endforeach; ?>
 		<?php endif;?>
 		</tbody>

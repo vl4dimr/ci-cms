@@ -65,6 +65,7 @@ class Download_model extends Model {
 
 		$select1 = 'download_doc.' . join(', download_doc.' , array_keys($this->doc_fields));
 		$select2 = 'download_files.name, download_files.file, download_files.size';
+
 		$this->db->select($select1 . ', '. $select2);
 		$this->db->order_by('weight');
 		$this->db->from('download_doc');

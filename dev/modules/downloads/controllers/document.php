@@ -44,8 +44,10 @@ class Document extends Controller {
 					$this->downloads->update_doc(array('hit' => ($row['hit'] + 1)), $row['id']);
 				}
 			
-			
+				if (function_exists('apache_request_headers'))
+				{
 			    $headers = apache_request_headers();
+				}
 
 			    // Checking if the client is validating his cache and if it is current.
 			    if (isset($headers['If-Modified-Since']) && (strtotime($headers['If-Modified-Since']) == filemtime($fn))) 
