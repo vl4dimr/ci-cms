@@ -38,7 +38,9 @@ class Media extends Controller {
 		        // Image not cached or cache outdated, we respond '200 OK' and output the image.
 		        header('Last-Modified: '.gmdate('D, d M Y H:i:s', filemtime($fn)).' GMT', true, 200);
 		        header('Content-Length: '.filesize($fn));
-		        header('Content-Type: image/gif');
+				$this->load->helper('file');
+				$mime = get_mime_by_extension($fn);
+		        header('Content-Type: $mime');
 		        print file_get_contents($fn);
 		    }
 		
