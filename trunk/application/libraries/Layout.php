@@ -85,6 +85,12 @@
 			}
 			
 			$output = $this->obj->load->view($template_path, $data, true);
+
+			
+			if ($this->obj->system->debug == 1)
+			{
+				$output .= $this->print_debug();
+			}
 			
 			$here = substr($this->obj->uri->uri_string(), 1);
 			
@@ -93,7 +99,35 @@
 			$this->obj->output->set_output($output);
 		}
 
-		
+		function print_debug()
+		{
+			$output = "
+			<div>
+			<table width='100%'>
+				<tr>
+					<th>Time</th>
+					<th>Query</th>
+				</tr>
+			";
+			
+			foreach ($this->obj->db->queries as $key => $val)
+			{
+				$val = htmlspecialchars($val, ENT_QUOTES);
+				$time = number_format($this->obj->db->query_times[$key], 4);
+			
+				$output .= "
+				<tr>
+					<td align='left'>" . $time . "</td>
+					<td align='left'>" . $val . "</td>
+				</tr>
+				";
+			}
+			$output .= "
+			</table>
+			</div>
+			";
+			return $output; 
+		}
 		function get_themes()
 		{
 			$handle = opendir(APPPATH.'views');
