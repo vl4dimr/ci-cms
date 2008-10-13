@@ -14,8 +14,7 @@
 			
 			$this->load->model('news_model', 'news');
 			
-			$this->page_id = ( $this->uri->segment(4) ) ? $this->uri->segment(4) : NULL;
-			
+	
 		}
 		
 		function index($start = 0)
@@ -39,7 +38,7 @@
 			$config['uri_segment'] = 4;
 			$config['first_link'] = __('First');
 			$config['last_link'] = __('Last');
-			$config['base_url'] = base_url() . 'admin/news/index';
+			$config['base_url'] = site_url('admin/news/index');
 			$config['total_rows'] = count($data);
 			$config['per_page'] = $per_page; 
 
@@ -247,20 +246,21 @@
 			$this->user->check_level($this->template['module'], LEVEL_DEL);
 			if ( $js > 0 )
 			{
-				$this->db->where('id', $this->input->post('id'));
+				$this->db->where('id', $id);
 				$query = $this->db->delete('news');
 				
-				$this->db->where('src_id', $this->input->post('id'));
+				$this->db->where('src_id', $id);
 				$this->db->set('src_id', 0);
 				$query = $this->db->update('images');
 				
 				$this->session->set_flashdata('notification', 'News has been deleted.');
-				$this->cache->remove('newslist'.$this->user->lang, 'news'); 
+				$this->cache->remove('news'.$this->user->lang, 'news'); 
+				
 				redirect('admin/news');
 			}
 			else
 			{
-				$this->template['news'] = $this->news->get_news( array('id' => $this->page_id) );
+				$this->template['id'] = $id;
 				
 				$this->layout->load($this->template, 'delete');
 			}

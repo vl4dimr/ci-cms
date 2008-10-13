@@ -21,9 +21,9 @@ $(document).ready(function(){
 
 <p style="margin-bottom: 2em;"><?=__("Confirm?", $this->template['module'])?>
 
-<form class="delete" action="<?=site_url('admin/news/delete/'.$id.'/1')?>" method="post">
+<form class="delete" action="<?=site_url('admin/news/comments/delete/'.$id.'/1')?>" method="post">
 	<p>
-		<input type="button" name="noway" value="<?=__("No", $this->template['module'])?>" onclick="parent.location='<?=site_url('admin/news')?>'" class="input-submit" style="margin-right: 2em;" />
+		<input type="button" name="noway" value="<?=__("No", $this->template['module'])?>" onclick="parent.location='<?=site_url('admin/news/comments')?>'" class="input-submit" style="margin-right: 2em;" />
 		<input type="submit" name="submit" value="<?=__("Yes", $this->template['module'])?>" class="input-submit" id="submit" />
 	</p>
 </form>

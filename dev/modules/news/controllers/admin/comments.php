@@ -99,7 +99,7 @@
 			else
 			{
 				$this->template['id'] = $id;
-				$this->layout->load($this->template, 'delete');
+				$this->layout->load($this->template, 'comment_delete');
 			}
 		}
 		
