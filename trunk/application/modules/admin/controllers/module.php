@@ -39,7 +39,7 @@
 				{
 					// make sure we don't map silly dirs like .svn, or . or ..
 
-					if ( (substr($module, 0, 1) != ".") && ($module != 'admin') )
+					if ( (substr($module, 0, 1) != ".") && file_exists(APPPATH.'modules/' . $module . '/setup.xml') )
 					{
 						if ( !isset($modules[$module]))
 						{
