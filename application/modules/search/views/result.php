@@ -4,7 +4,8 @@
  *
  *
  */
-  
+      $tpl_output = $search ? eregi_replace("($search)",'<span style="background-color: '.$bgcolor.'">\\1</span>', $tpl_output) : $tpl_output;
+
 
 if (!defined('BASEPATH')) exit('No direct script access allowed');
 ?>
@@ -13,10 +14,10 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 <? $i=0; foreach ($rows as $row): ?>
 <? $class = ($i %2 == 0)? "odd": "even" ?>
 <tr class="<?=$class?>">
-<td class="title"><?=$row['title']?> <?=((isset($row['date']))?"(".$row['date'].")":"")?></td>
+<td class="title"><?=((isset($row['result_link']))?"<a href='".$row['result_link']."'>":"")?><?=$row['result_title']?><?=((isset($row['result_link']))?"</a>":"")?> <?=((isset($row['result_type']))?"(".$row['result_type'].")":"")?> <?=((isset($row['result_date']))?"(".$row['result_date'].")":"")?></td>
 </tr>
 <tr class="description">
-<td><?=$row['description']?></td>
+<td><?=eregi_replace($tosearch,"<span style='background-color: yellow'>\\1</span>", $row['result_text'])?></td>
 </tr>
 <? $i++; endforeach; ?>
 </tbody>
