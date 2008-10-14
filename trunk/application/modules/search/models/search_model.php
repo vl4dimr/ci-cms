@@ -23,8 +23,7 @@ class Search_model extends Model {
 		$query = $this->db->get("search_results");
 		if ($query->num_rows() > 0)
 		{
-			$serialized = $query->row_array();
-			return unserialize($serialized);
+			return $query->row_array();
 		}
 		else
 		{
@@ -35,12 +34,13 @@ class Search_model extends Model {
 	function save_result($rows)
 	{
 		//cleaning
-		$this->db->where('s_date <=', (mktime() - 86400));
+		$this->db->where('s_date <=', (mktime() - 900));
 		$this->db->delete('search_results');
 		
 		$serialized = serialize($rows);
 		$this->db->set('s_rows', $serialized);
 		$this->db->set('s_date', mktime());
+		$this->db->set('s_tosearch', $this->session->flashdata('tosearch'));
 		$this->db->insert('search_results');
 		return $this->db->insert_id();
 	}
