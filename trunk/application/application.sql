@@ -207,6 +207,7 @@ INSERT INTO `ci_modules` VALUES (2, 'module', 0, '1.0.0', 1, 20, '', 'Module cor
 INSERT INTO `ci_modules` VALUES (3, 'page', 1, '1.0.0', 1, 60, '', 'Page core module');
 INSERT INTO `ci_modules` VALUES (4, 'language', 1, '1.0.0', 1, 10, '', 'Language core module');
 INSERT INTO `ci_modules` VALUES (5, 'member', 1, '1.0.0', 1, 30, '', 'Member core module');   
+INSERT INTO `ci_modules` VALUES (5, 'search', 0, '1.0.0', 1, 50, '', 'Search core module');   
 
 -- 
 -- Struttura della tabella `ci_admins`
@@ -233,7 +234,8 @@ CREATE TABLE IF NOT EXISTS ci_group_members (
   g_date int(11) NOT NULL default '0',
   PRIMARY KEY  (id),
   KEY g_user (g_user,g_id)
-) TYPE=MyISAM;
+);
+
 
 DROP TABLE IF EXISTS `ci_groups`;
 CREATE TABLE IF NOT EXISTS ci_groups (
@@ -245,10 +247,18 @@ CREATE TABLE IF NOT EXISTS ci_groups (
   g_info text NOT NULL,
   PRIMARY KEY  (id),
   UNIQUE KEY g_id (g_id,g_name)
-) TYPE=MyISAM;
+);
 
 INSERT INTO ci_groups (g_id, g_name, g_desc) VALUES ('0', 'Everybody', 'This is everybody who visits the site including non members');
 INSERT INTO ci_groups (g_id, g_name, g_desc) VALUES ('1', 'Members Only', 'This is everybody who is member of the site');
+
+DROP TABLE IF EXISTS `ci_search_results`;
+CREATE TABLE IF NOT EXISTS ci_search_results (
+  id int(11) NOT NULL auto_increment,
+  s_rows text NOT NULL,
+  s_date int(11) NOT NULL default '0',
+  PRIMARY KEY  (id)
+);
 
 CREATE TABLE IF NOT EXISTS `ci_images` (
   `id` int(11) NOT NULL auto_increment,
