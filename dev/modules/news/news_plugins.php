@@ -15,10 +15,10 @@ function news_search_result($rows)
 
 		$sql = "SELECT n.id result_order, c.title AS result_type, n.title AS result_title, CONCAT('" . site_url('news') . "/', uri) AS result_link, CONCAT('... ', SUBSTRING(body, LOCATE('" . $obj->db->escape_str($tosearch) . "', body) - 50 , 200), '... ') AS result_text FROM " . $obj->db->dbprefix('news') . " n " .
 		" LEFT JOIN " . $obj->db->dbprefix('news_cat') . " c ON n.cat=c.id " .
-		(count($where) > 0 ? " WHERE " . join(" AND ", $where) : "") .
+		(count($where) > 0 ? " WHERE " . join(" OR ", $where) : "") .
 		" ORDER BY result_order";
 		
-		
+
 		$query = $obj->db->query($sql);
 		
 		if ($query->num_rows() > 0 )
