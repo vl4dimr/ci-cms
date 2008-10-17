@@ -13,7 +13,7 @@ class Search_model extends Model {
 	function Search_model()
 	{
 		parent::Model();
-		
+		$this->load->helper('file');
 	}
 	
 	function get_result($id)
@@ -23,7 +23,9 @@ class Search_model extends Model {
 		$query = $this->db->get("search_results");
 		if ($query->num_rows() > 0)
 		{
-			return $query->row_array();
+			$row = $query->row_array();
+			$row['s_rows'] = read_file('./cache/search_result_'. $row['id']);
+			return $row;
 		}
 		else
 		{
@@ -34,14 +36,24 @@ class Search_model extends Model {
 	function save_result($rows)
 	{
 		//cleaning
+		
+		$query = $this->db->get_where('search_results', array('s_date <=' => (mktime() - 900)));
+		if ($query->num_rows() > 0)
+		{
+			foreach ($query->result_array() as $row)
+			{
+				@unlink('./cache/search_result_' . $row['id']);
+			}
+		}
 		$this->db->where('s_date <=', (mktime() - 900));
 		$this->db->delete('search_results');
 		
 		$serialized = serialize($rows);
-		$this->db->set('s_rows', $serialized);
 		$this->db->set('s_date', mktime());
-		$this->db->set('s_tosearch', $this->session->flashdata('tosearch'));
+		$this->db->set('s_tosearch', $this->input->post('tosearch'));
 		$this->db->insert('search_results');
-		return $this->db->insert_id();
+		$id = $this->db->insert_id();
+		write_file('./cache/search_result_' . $id, $serialized);
+		return $id;
 	}
 }
