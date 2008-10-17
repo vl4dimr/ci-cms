@@ -15,7 +15,6 @@ class Search extends Controller {
 		parent::Controller();
 		$this->template['module'] = 'search';
 		$this->load->model('search_model', 'search');
-
 	}
 	
 	
@@ -27,13 +26,11 @@ class Search extends Controller {
 	function result($search_id = null)
 	{
 		$rows = array();
-		if (!is_null($search_id) || $search_id = $this->session->flashdata('search_id'))
+		if (!is_null($search_id))
 		{
 			$result = $this->search->get_result($search_id);
 			$rows = unserialize($result['s_rows']);
 			$tosearch = $result['s_tosearch'];
-			$search_id = $result['id'];
-			$this->session->set_flashdata('search_id', $search_id);	
 		}
 		else
 		{	
@@ -41,7 +38,7 @@ class Search extends Controller {
 			
 			$rows = $this->plugin->apply_filters('search_result', $rows);
 			$search_id = $this->search->save_result($rows);
-			$tosearch = $this->session->flashdata('tosearch');
+			$tosearch = $this->input->post('tosearch');
 			$this->session->set_flashdata('search_id', $search_id);	
 		}
 		
