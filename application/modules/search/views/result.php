@@ -8,6 +8,23 @@
 
 if (!defined('BASEPATH')) exit('No direct script access allowed');
 ?>
+<h1><?=__("Search result", "search")?></h1>
+<form method='post' action="<?=site_url('search/result')?>">
+<table border='0'>
+<tr>
+<td valign='top'>
+<?=__("Text to search", "search")?>
+</td>
+<td valign='top'>
+<input type='text' name='tosearch' value='<?=$tosearch?>'>
+</td>
+</tr>
+<tr>
+<td valign='top' align='center'>
+<input type='submit' name='bouton' value='     <?=__("Search", "search")?>    '>
+</td>
+</tr>
+</table>
 <table width="100%" id="search-result">
 <tbody>
 <? $i=0; foreach ($rows as $row): ?>
