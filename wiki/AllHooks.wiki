@@ -1,0 +1,35 @@
+#hooks
+
+= ci-cms hooks =
+
+In my old cms there are some hooks that can catch events easily. I put it in ci-cms to allow modules acting with them. The hooks work like in [http://codex.wordpress.org/Plugin_API WordPress]. There are two types of hooks: actions and filters. Actions are just a function that will be run at some point, when the hook is rendered. Filters will return the modified parameters.
+
+Some hooks
+
+===Actions===
+
+
+===Filters===
+
+====search_result====
+
+Search result returns an array
+
+{{{
+$rows = array('result_link', 'result_title', 'result_type', 'result_date', 'result_text');
+}}}
+
+The elements are optionals.
+
+It means in your module, you can hook the "search_result" hook like this.
+
+in your_module_plugin.php
+{{{
+$this->add_filter('search_result', 'your_module_search_result');
+	
+function your_module_search_result($rows)
+{
+    //modify rows here
+    return $rows;
+}
+}}}
