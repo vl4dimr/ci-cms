@@ -16,7 +16,7 @@ Some hooks
 Search result returns an array
 
 {{{
-$rows = array('result_link', 'result_title', 'result_type', 'result_date', 'result_text');
+$rows = array('result_link', 'result_title', 'result_type', 'result_date', 'result_text', 'result_order');
 }}}
 
 The elements are optionals.
