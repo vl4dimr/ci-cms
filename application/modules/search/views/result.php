@@ -8,7 +8,7 @@
 
 if (!defined('BASEPATH')) exit('No direct script access allowed');
 ?>
-<h1><?=__("Search result", "search")?></h1>
+<h1><?=__("Search again", "search")?></h1>
 <form method='post' action="<?=site_url('search/result')?>">
 <table border='0'>
 <tr>
@@ -25,6 +25,8 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 </td>
 </tr>
 </table>
+<h1><?=__("Search result", "search")?></h1>
+
 <table width="100%" id="search-result">
 <tbody>
 <? $i=0; foreach ($rows as $row): ?>

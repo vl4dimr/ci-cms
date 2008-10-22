@@ -70,7 +70,7 @@ class Search extends Controller {
 			$config['num_links'] = 3;
 
 			$this->template['tosearch'] = $tosearch;
-			
+			$this->template['title'] = __("Result for:", "search") . " " . $tosearch;
 			$this->pagination->initialize($config);
 			$this->template['pager'] = $this->pagination->create_links();
 			$this->layout->load($this->template, 'result');
