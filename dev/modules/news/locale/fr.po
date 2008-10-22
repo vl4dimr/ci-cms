@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Solaitra:Downloads\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-28 23:43+0100\n"
+"POT-Creation-Date: 2008-10-19 10:08+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Eugene Hery <hery@serasera.org>\n"
 "Language-Team: Hery serasera.org <hery@serasera.org>\n"
@@ -68,13 +68,12 @@ msgid "Thank you for your comment. In this site, the comments need to be approve
 msgstr ""
 
 #: ../controllers/news.php:215
-#: ../views/index.php:28
 #, fuzzy
 msgid "No news found"
 msgstr "Aucun blog trouv&eacute;"
 
 #: ../controllers/news.php:231
-#: ../controllers/admin/admin.php:40
+#: ../controllers/admin/admin.php:39
 #: ../controllers/admin/category.php:41
 #: ../controllers/admin/comments.php:53
 #, fuzzy
@@ -82,19 +81,19 @@ msgid "First"
 msgstr "Pr&eacute;noms"
 
 #: ../controllers/news.php:232
-#: ../controllers/admin/admin.php:41
+#: ../controllers/admin/admin.php:40
 #: ../controllers/admin/category.php:42
 #: ../controllers/admin/comments.php:54
 #, fuzzy
 msgid "Last"
 msgstr "Nom"
 
-#: ../controllers/admin/admin.php:69
+#: ../controllers/admin/admin.php:68
 #, fuzzy
 msgid "Settings updated"
 msgstr "Configuration enregistr&eacute;"
 
-#: ../controllers/admin/admin.php:191
+#: ../controllers/admin/admin.php:190
 #, fuzzy
 msgid "News saved"
 msgstr "Options sauvegard&eacute;es."
@@ -216,7 +215,6 @@ msgstr "Annuler"
 #: ../views/admin.php:26
 #: ../views/comments.php:45
 #: ../views/create.php:124
-#: ../views/index.php:7
 #, fuzzy
 msgid "Title"
 msgstr "Titre"
@@ -261,13 +259,13 @@ msgstr "Modifier"
 
 #: ../views/admin.php:42
 #: ../views/comments.php:68
-#: ../views/delete.php:18
+#: ../views/comment_delete.php:18
 #, fuzzy
 msgid "Delete"
 msgstr "Supprimer"
 
 #: ../views/comments.php:4
-#: ../views/delete.php:4
+#: ../views/comment_delete.php:4
 #, fuzzy
 msgid "Confirm delete?"
 msgstr "Supprimer le blog"
@@ -319,6 +317,22 @@ msgstr "Approuver"
 #: ../views/comments.php:66
 msgid "Suspend"
 msgstr ""
+
+#: ../views/comment_delete.php:22
+msgid "Confirm?"
+msgstr "Confirmer?"
+
+#: ../views/comment_delete.php:26
+#: ../views/create.php:169
+#: ../views/create.php:175
+msgid "No"
+msgstr "Non"
+
+#: ../views/comment_delete.php:27
+#: ../views/create.php:168
+#: ../views/create.php:174
+msgid "Yes"
+msgstr "Oui"
 
 #: ../views/create.php:4
 #, fuzzy
@@ -376,31 +390,16 @@ msgstr "Date"
 msgid "Allow Comments"
 msgstr "Autoriser les commentaires"
 
-#: ../views/create.php:168
-#: ../views/create.php:174
-#: ../views/delete.php:27
-msgid "Yes"
-msgstr "Oui"
-
-#: ../views/create.php:169
-#: ../views/create.php:175
-#: ../views/delete.php:26
-msgid "No"
-msgstr "Non"
-
 #: ../views/create.php:172
 msgid "Notify me for comments"
 msgstr ""
-
-#: ../views/delete.php:22
-msgid "Confirm?"
-msgstr "Confirmer?"
 
 #: ../views/index.php:1
 msgid "All news"
 msgstr "Toutes les actualit&acute;s"
 
 #: ../views/index.php:8
+#: ../views/admin/category.php:24
 msgid "Summary"
 msgstr "R&eacute;sum&eacute;"
 
