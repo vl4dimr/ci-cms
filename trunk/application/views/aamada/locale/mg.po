@@ -1,0 +1,39 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Serasera:Theme\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-09-06 06:53+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Eugene Hery <hery@serasera.org>\n"
+"Language-Team: hery <hery@serasera.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Malagasy\n"
+"X-Poedit-Country: MADAGASCAR\n"
+"X-Poedit-KeywordsList: __\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: index.php:39
+msgid "What's news?"
+msgstr "Inona ny vaovao?"
+
+#: index.php:48
+#: index.php:58
+msgid "More"
+msgstr "Tohiny"
+
+#: index.php:69
+msgid "Forum"
+msgstr "Dinika - forum"
+
+#: index.php:93
+#: index.php:98
+msgid "Other sites"
+msgstr "Takelaka notsongaina"
+
+#: index.php:98
+msgid "Submit your site"
+msgstr "Mampidira takelaka"
+
