@@ -114,6 +114,7 @@
 		
 		function _destroy_session()
 		{
+			//pseudo distroy bcs we might still need some data
 			$data = array(
 						'id' 			=> 0,
 						'username' 		=> '',
@@ -159,6 +160,12 @@
 				$this->_start_session($user);
 				
 				$this->obj->session->set_flashdata('notification', 'Login successful...');
+				
+				if ($redirect = $this->obj->session->userdata("login_redirect"))
+				{
+					$this->obj->session->set_userdata(array("login_redirect" => ""));
+					redirect($redirect);
+				}				
 				
 				return true;
 			}
@@ -211,6 +218,21 @@
 			$query = $this->obj->db->insert($this->table, $data);
 			
 			return $this->obj->db->insert_id();
+		}
+		
+		function require_login()
+		{
+			if (!$this->logged_in)
+			{
+				//save _POST and uri
+				$data = array(
+				"login_lastpost" => $_POST,
+				"login_redirect" => substr($this->obj->uri->uri_string(), 1)
+				);
+				$this->obj->session->set_userdata($data);
+				
+				redirect("member/login");
+			}
 		}
 	}
 ?>
