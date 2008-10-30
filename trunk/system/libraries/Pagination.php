@@ -6,7 +6,7 @@
  *
  * @package		CodeIgniter
  * @author		ExpressionEngine Dev Team
- * @copyright	Copyright (c) 2006, EllisLab, Inc.
+ * @copyright	Copyright (c) 2008, EllisLab, Inc.
  * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
  * @since		Version 1.0
@@ -50,6 +50,8 @@ class CI_Pagination {
 	var $prev_tag_close		= '';
 	var $num_tag_open		= '&nbsp;';
 	var $num_tag_close		= '';
+	var $page_query_string	= FALSE;
+	var $query_string_segment = 'per_page';
 
 	/**
 	 * Constructor
@@ -86,7 +88,7 @@ class CI_Pagination {
 				{
 					$this->$key = $val;
 				}
-			}		
+			}
 		}
 	}
 	
@@ -116,13 +118,27 @@ class CI_Pagination {
 		}
 
 		// Determine the current page number.		
-		$CI =& get_instance();	
-		if ($CI->uri->segment($this->uri_segment) != 0)
+		$CI =& get_instance();
+		
+		if ($CI->config->item('enable_query_strings') === TRUE OR $this->page_query_string === TRUE)
 		{
-			$this->cur_page = $CI->uri->segment($this->uri_segment);
-			
-			// Prep the current page - no funny business!
-			$this->cur_page = (int) $this->cur_page;
+			if ($CI->input->get($this->query_string_segment) != 0)
+			{
+				$this->cur_page = $CI->input->get($this->query_string_segment);
+				
+				// Prep the current page - no funny business!
+				$this->cur_page = (int) $this->cur_page;
+			}
+		}
+		else
+		{
+			if ($CI->uri->segment($this->uri_segment) != 0)
+			{
+				$this->cur_page = $CI->uri->segment($this->uri_segment);
+				
+				// Prep the current page - no funny business!
+				$this->cur_page = (int) $this->cur_page;
+			}
 		}
 
 		$this->num_links = (int)$this->num_links;
@@ -152,14 +168,22 @@ class CI_Pagination {
 		$start = (($this->cur_page - $this->num_links) > 0) ? $this->cur_page - ($this->num_links - 1) : 1;
 		$end   = (($this->cur_page + $this->num_links) < $num_pages) ? $this->cur_page + $this->num_links : $num_pages;
 
-		// Add a trailing slash to the base URL if needed
-		$this->base_url = rtrim($this->base_url, '/') .'/';
+		// Is pagination being used over GET or POST?  If get, add a per_page query
+		// string. If post, add a trailing slash to the base URL if needed
+		if ($CI->config->item('enable_query_strings') === TRUE OR $this->page_query_string === TRUE)
+		{
+			$this->base_url = rtrim($this->base_url).'&amp;'.$this->query_string_segment.'=';
+		}
+		else
+		{
+			$this->base_url = rtrim($this->base_url, '/') .'/';
+		}
 
   		// And here we go...
 		$output = '';
 
 		// Render the "First" link
-		if  ($this->cur_page > $this->num_links)
+		if  ($this->cur_page > ($this->num_links + 1))
 		{
 			$output .= $this->first_tag_open.'<a href="'.$this->base_url.'">'.$this->first_link.'</a>'.$this->first_tag_close;
 		}

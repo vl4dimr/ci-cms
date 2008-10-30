@@ -6,7 +6,7 @@
  *
  * @package		CodeIgniter
  * @author		ExpressionEngine Dev Team
- * @copyright	Copyright (c) 2006, EllisLab, Inc.
+ * @copyright	Copyright (c) 2008, EllisLab, Inc.
  * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
  * @since		Version 1.0
@@ -108,12 +108,13 @@ class CI_Language {
 	 * Fetch a single line of text from the language array
 	 *
 	 * @access	public
-	 * @param	string	the language line
+	 * @param	string	$line 	the language line
 	 * @return	string
 	 */
 	function line($line = '')
 	{
-		return ($line == '' OR ! isset($this->language[$line])) ? FALSE : $this->language[$line];
+		$line = ($line == '' OR ! isset($this->language[$line])) ? FALSE : $this->language[$line];
+		return $line;
 	}
 
 }
