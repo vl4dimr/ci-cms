@@ -6,7 +6,7 @@
  *
  * @package		CodeIgniter
  * @author		ExpressionEngine Dev Team
- * @copyright	Copyright (c) 2006, EllisLab, Inc.
+ * @copyright	Copyright (c) 2008, EllisLab, Inc.
  * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
  * @since		Version 1.0
@@ -36,9 +36,6 @@ class CI_Log {
 	 * Constructor
 	 *
 	 * @access	public
-	 * @param	string	the log file path
-	 * @param	string	the error threshold
-	 * @param	string	the date formatting codes
 	 */
 	function CI_Log()
 	{
