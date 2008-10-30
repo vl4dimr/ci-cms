@@ -115,20 +115,14 @@ INSERT INTO `ci_pages` (`id`, `active`, `uri`, `title`, `meta_keywords`, `meta_d
 -- 
 
 DROP TABLE IF EXISTS `ci_sessions`;
-CREATE TABLE `ci_sessions` (
-  `session_id` varchar(40) NOT NULL default '0',
-  `ip_address` varchar(16) NOT NULL default '0',
-  `user_agent` varchar(50) NOT NULL default '',
-  `last_activity` int(10) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`session_id`)
-)  ;
-
--- 
--- Dump dei dati per la tabella `ci_sessions`
--- 
-
-INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`) VALUES 
-('13a3f21c0de44a8134f67e721b9c0ccb', '127.0.0.1', 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1;', 1212495759);
+CREATE TABLE IF NOT EXISTS  `ci_sessions` (
+	session_id varchar(40) DEFAULT '0' NOT NULL,
+	ip_address varchar(16) DEFAULT '0' NOT NULL,
+	user_agent varchar(50) NOT NULL,
+	last_activity int(10) unsigned DEFAULT 0 NOT NULL,
+	user_data text NOT NULL,
+	PRIMARY KEY (session_id)
+);
 
 -- --------------------------------------------------------
 
@@ -270,7 +264,7 @@ CREATE TABLE IF NOT EXISTS `ci_images` (
   PRIMARY KEY  (`id`)
 ) ;
 
-CREATE TABLE ci_captcha(
+CREATE TABLE IF NOT EXISTS ci_captcha(
 	captcha_id bigint( 13 ) unsigned NOT NULL AUTO_INCREMENT ,
 	captcha_time int( 10 ) unsigned NOT NULL ,
 	ip_address varchar( 16 ) default '0' NOT NULL ,
