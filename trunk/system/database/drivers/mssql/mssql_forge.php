@@ -6,7 +6,7 @@
  *
  * @package		CodeIgniter
  * @author		ExpressionEngine Dev Team
- * @copyright	Copyright (c) 2008, EllisLab, Inc.
+ * @copyright	Copyright (c) 2006, EllisLab, Inc.
  * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
  * @since		Version 1.0
@@ -60,7 +60,7 @@ class CI_DB_mssql_forge extends CI_DB_forge {
 	 */
 	function _drop_table($table)
 	{
-		return "DROP TABLE ".$this->db->_escape_identifiers($table);
+		return "DROP TABLE ".$this->db->_escape_table($table);
 	}
 
 	// --------------------------------------------------------------------
@@ -85,7 +85,7 @@ class CI_DB_mssql_forge extends CI_DB_forge {
 			$sql .= 'IF NOT EXISTS ';
 		}
 		
-		$sql .= $this->db->_escape_identifiers($table)." (";
+		$sql .= $this->db->_escape_table($table)." (";
 		$current_field_count = 0;
 
 		foreach ($fields as $field=>$attributes)
@@ -147,24 +147,16 @@ class CI_DB_mssql_forge extends CI_DB_forge {
 			$primary_keys = $this->db->_protect_identifiers($primary_keys);
 			$sql .= ",\n\tPRIMARY KEY (" . implode(', ', $primary_keys) . ")";
 		}
-		
+
 		if (is_array($keys) && count($keys) > 0)
 		{
+			$keys = $this->db->_protect_identifiers($keys);
 			foreach ($keys as $key)
 			{
-				if (is_array($key))
-				{
-					$key = $this->db->_protect_identifiers($key);	
-				}
-				else
-				{
-					$key = array($this->db->_protect_identifiers($key));
-				}
-				
-				$sql .= ",\n\tFOREIGN KEY (" . implode(', ', $key) . ")";
+				$sql .= ",\n\tFOREIGN KEY ($key)";
 			}
 		}
-		
+
 		$sql .= "\n)";
 
 		return $sql;
