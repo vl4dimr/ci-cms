@@ -6,7 +6,7 @@
  *
  * @package		CodeIgniter
  * @author		ExpressionEngine Dev Team
- * @copyright	Copyright (c) 2008, EllisLab, Inc.
+ * @copyright	Copyright (c) 2006, EllisLab, Inc.
  * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
  * @since		Version 1.0
@@ -29,11 +29,6 @@
  * @link		http://codeigniter.com/user_guide/database/
  */
 class CI_DB_mysqli_driver extends CI_DB {
-
-	var $dbdriver = 'mysqli';
-	
-	// The character used for escaping
-	var $_escape_char = '`';
 
 	/**
 	 * The syntax to count rows is slightly different across different
@@ -60,7 +55,7 @@ class CI_DB_mysqli_driver extends CI_DB {
 	 */	
 	function db_connect()
 	{
-		return @mysqli_connect($this->hostname, $this->username, $this->password, $this->database, $this->port);
+		return @mysqli_connect($this->hostname, $this->username, $this->password);
 	}
 
 	// --------------------------------------------------------------------
@@ -94,12 +89,12 @@ class CI_DB_mysqli_driver extends CI_DB {
 	/**
 	 * Set client character set
 	 *
-	 * @access	private
+	 * @access	public
 	 * @param	string
 	 * @param	string
 	 * @return	resource
 	 */
-	function _db_set_charset($charset, $collation)
+	function db_set_charset($charset, $collation)
 	{
 		return @mysqli_query($this->conn_id, "SET NAMES '".$this->escape_str($charset)."' COLLATE '".$this->escape_str($collation)."'");
 	}
@@ -309,8 +304,8 @@ class CI_DB_mysqli_driver extends CI_DB {
 	{
 		if ($table == '')
 			return '0';
-		
-		$query = $this->query($this->_count_string . $this->_protect_identifiers('numrows'). " FROM " . $this->_protect_identifiers($table, TRUE, NULL, FALSE));
+	
+		$query = $this->query($this->_count_string . $this->_protect_identifiers('numrows'). " FROM " . $this->_protect_identifiers($this->dbprefix.$table));
 		
 		if ($query->num_rows() == 0)
 			return '0';
@@ -332,7 +327,7 @@ class CI_DB_mysqli_driver extends CI_DB {
 	 */
 	function _list_tables($prefix_limit = FALSE)
 	{
-		$sql = "SHOW TABLES FROM ".$this->_escape_char.$this->database.$this->_escape_char;	
+		$sql = "SHOW TABLES FROM `".$this->database."`";	
 		
 		if ($prefix_limit !== FALSE AND $this->dbprefix != '')
 		{
@@ -355,7 +350,7 @@ class CI_DB_mysqli_driver extends CI_DB {
 	 */
 	function _list_columns($table = '')
 	{
-		return "SHOW COLUMNS FROM ".$table;
+		return "SHOW COLUMNS FROM ".$this->_escape_table($table);
 	}
 
 	// --------------------------------------------------------------------
@@ -371,7 +366,7 @@ class CI_DB_mysqli_driver extends CI_DB {
 	 */
 	function _field_data($table)
 	{
-		return "SELECT * FROM ".$table." LIMIT 1";
+		return "SELECT * FROM ".$this->_escape_table($table)." LIMIT 1";
 	}
 
 	// --------------------------------------------------------------------
@@ -399,36 +394,87 @@ class CI_DB_mysqli_driver extends CI_DB {
 	{
 		return mysqli_errno($this->conn_id);
 	}
-
+	
 	// --------------------------------------------------------------------
 
 	/**
-	 * Escape the SQL Identifiers
+	 * Escape Table Name
 	 *
-	 * This function escapes column and table names
+	 * This function adds backticks if the table name has a period
+	 * in it. Some DBs will get cranky unless periods are escaped
 	 *
 	 * @access	private
-	 * @param	string
+	 * @param	string	the table name
 	 * @return	string
 	 */
-	function _escape_identifiers($item)
+	function _escape_table($table)
 	{
-		if ($this->_escape_char == '')
+		if (strpos($table, '.') !== FALSE)
 		{
-			return $item;
+			$table = '`' . str_replace('.', '`.`', $table) . '`';
 		}
-	
-		if (strpos($item, '.') !== FALSE)
+		
+		return $table;
+	}
+		
+	// --------------------------------------------------------------------
+
+	/**
+	 * Protect Identifiers
+	 *
+	 * This function adds backticks if appropriate based on db type
+	 *
+	 * @access	private
+	 * @param	mixed	the item to escape
+	 * @param	boolean	only affect the first word
+	 * @return	mixed	the item with backticks
+	 */
+	function _protect_identifiers($item, $first_word_only = FALSE)
+	{
+		if (is_array($item))
 		{
-			$str = $this->_escape_char.str_replace('.', $this->_escape_char.'.'.$this->_escape_char, $item).$this->_escape_char;			
+			$escaped_array = array();
+
+			foreach($item as $k=>$v)
+			{
+				$escaped_array[$this->_protect_identifiers($k)] = $this->_protect_identifiers($v, $first_word_only);
+			}
+
+			return $escaped_array;
+		}	
+
+		// This function may get "item1 item2" as a string, and so
+		// we may need "`item1` `item2`" and not "`item1 item2`"
+		if (ctype_alnum($item) === FALSE)
+		{
+			if (strpos($item, '.') !== FALSE)
+			{
+				$aliased_tables = implode(".",$this->ar_aliased_tables).'.';
+				$table_name =  substr($item, 0, strpos($item, '.')+1);
+				$item = (strpos($aliased_tables, $table_name) !== FALSE) ? $item = $item : $this->dbprefix.$item;
+			}
+
+			// This function may get "field >= 1", and need it to return "`field` >= 1"
+			$lbound = ($first_word_only === TRUE) ? '' : '|\s|\(';
+
+			$item = preg_replace('/(^'.$lbound.')([\w\d\-\_]+?)(\s|\)|$)/iS', '$1`$2`$3', $item);
 		}
 		else
 		{
-			$str = $this->_escape_char.$item.$this->_escape_char;
+			return "`{$item}`";
 		}
+
+		$exceptions = array('AS', '/', '-', '%', '+', '*', 'OR', 'IS');
 		
-		// remove duplicates if the user already included the escape
-		return preg_replace('/['.$this->_escape_char.']+/', $this->_escape_char, $str);
+		foreach ($exceptions as $exception)
+		{
+		
+			if (stristr($item, " `{$exception}` ") !== FALSE)
+			{
+				$item = preg_replace('/ `('.preg_quote($exception).')` /i', ' $1 ', $item);
+			}
+		}
+		return $item;
 	}
 			
 	// --------------------------------------------------------------------
@@ -468,7 +514,7 @@ class CI_DB_mysqli_driver extends CI_DB {
 	 */
 	function _insert($table, $keys, $values)
 	{	
-		return "INSERT INTO ".$table." (".implode(', ', $keys).") VALUES (".implode(', ', $values).")";
+		return "INSERT INTO ".$this->_escape_table($table)." (".implode(', ', $keys).") VALUES (".implode(', ', $values).")";
 	}
 	
 	// --------------------------------------------------------------------
@@ -497,10 +543,8 @@ class CI_DB_mysqli_driver extends CI_DB {
 		
 		$orderby = (count($orderby) >= 1)?' ORDER BY '.implode(", ", $orderby):'';
 	
-		$sql = "UPDATE ".$table." SET ".implode(', ', $valstr);
-		
+		$sql = "UPDATE ".$this->_escape_table($table)." SET ".implode(', ', $valstr);
 		$sql .= ($where != '' AND count($where) >=1) ? " WHERE ".implode(" ", $where) : '';
-		
 		$sql .= $orderby.$limit;
 		
 		return $sql;
@@ -522,7 +566,7 @@ class CI_DB_mysqli_driver extends CI_DB {
 	 */	
 	function _truncate($table)
 	{
-		return "TRUNCATE ".$table;
+		return "TRUNCATE ".$this->_escape_table($table);
 	}
 	
 	// --------------------------------------------------------------------
