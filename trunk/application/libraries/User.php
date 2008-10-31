@@ -226,7 +226,7 @@
 			{
 				//save _POST and uri
 				$data = array(
-				"login_lastpost" => $_POST,
+				"last_post" => $_POST,
 				"login_redirect" => substr($this->obj->uri->uri_string(), 1)
 				);
 				$this->obj->session->set_userdata($data);
