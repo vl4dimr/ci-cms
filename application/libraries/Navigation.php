@@ -85,7 +85,10 @@
 				'title' => $row['title'],
 				'parent_id' => $row['parent_id'],
 				'id' => $row['id'],
-				'uri' => $row['uri']
+				'uri' => ((substr($row['uri'], 0, 7) == "http://") ||
+						  (substr($row['uri'], 0, 8) == "https://") ||
+						  (substr($row['uri'], 0, 6) == "ftp://") ||
+						  (substr($row['uri'], 0, 7) == "mailto:"))? $row['uri']: site_url($row['uri'])
 			);
 			// call this function again to display this
 			// child's children
