@@ -28,7 +28,6 @@
 		theme_advanced_statusbar_location : "bottom",
 		theme_advanced_resizing : true,
 		tab_focus : ':prev,:next',
-		entity_encoding : "raw",
 		fix_list_elements : true,
 		relative_urls : false,
 		valid_elements : "*[*]",
