@@ -6,7 +6,7 @@
  *
  * @package		CodeIgniter
  * @author		ExpressionEngine Dev Team
- * @copyright	Copyright (c) 2008, EllisLab, Inc.
+ * @copyright	Copyright (c) 2006, EllisLab, Inc.
  * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
  * @since		Version 1.0
@@ -140,14 +140,6 @@ class CI_Input {
 		$_POST = $this->_clean_input_data($_POST);
 		
 		// Clean $_COOKIE Data
-		// Also get rid of specially treated cookies that might be set by a server
-		// or silly application, that are of no use to a CI application anyway
-		// but that when present will trip our 'Disallowed Key Characters' alarm
-		// http://www.ietf.org/rfc/rfc2109.txt
-		// note that the key names below are single quoted strings, and are not PHP variables
-		unset($_COOKIE['$Version']);
-		unset($_COOKIE['$Path']);
-		unset($_COOKIE['$Domain']);
 		$_COOKIE = $this->_clean_input_data($_COOKIE);
 
 		log_message('debug', "Global POST and COOKIE data sanitized");
@@ -404,7 +396,7 @@ class CI_Input {
 			return FALSE;
 		}
 		// IP can not start with 0
-		if ($ip_segments[0][0] == '0')
+		if (substr($ip_segments[0], 0, 1) == '0')
 		{
 			return FALSE;
 		}
@@ -413,7 +405,7 @@ class CI_Input {
 		{
 			// IP segments must be digits and can not be 
 			// longer than 3 digits or greater then 255
-			if ($segment == '' OR preg_match("/[^0-9]/", $segment) OR $segment > 255 OR strlen($segment) > 3)
+			if (preg_match("/[^0-9]/", $segment) OR $segment > 255 OR strlen($segment) > 3)
 			{
 				return FALSE;
 			}
@@ -497,14 +489,14 @@ class CI_Input {
 	 * XSS Clean
 	 *
 	 * Sanitizes data so that Cross Site Scripting Hacks can be
-	 * prevented.  This function does a fair amount of work but
+	 * prevented.  This function does a fair amount of work but
 	 * it is extremely thorough, designed to prevent even the
-	 * most obscure XSS attempts.  Nothing is ever 100% foolproof,
+	 * most obscure XSS attempts.  Nothing is ever 100% foolproof,
 	 * of course, but I haven't been able to get anything passed
 	 * the filter.
 	 *
 	 * Note: This function should only be used to deal with data
-	 * upon submission.  It's not something that should
+	 * upon submission.  It's not something that should
 	 * be used for general runtime processing.
 	 *
 	 * This function was based in part on some code and ideas I
@@ -555,7 +547,7 @@ class CI_Input {
 		 * the conversion of entities to ASCII later.
 		 *
 		 */
-		$str = preg_replace('#(&\#?[0-9a-z]{2,})[\x00-\x20]*;?#i', "\\1;", $str);
+		$str = preg_replace('#(&\#?[0-9a-z]+)[\x00-\x20]*;?#i', "\\1;", $str);
 
 		/*
 		 * Validate UTF16 two byte encoding (x00) 
@@ -688,12 +680,12 @@ class CI_Input {
 	
 			if (preg_match("/<a/i", $str))
 			{
-				$str = preg_replace_callback("#<a\s+([^>]*?)(>|$)#si", array($this, '_js_link_removal'), $str);
+				$str = preg_replace_callback("#<a\s*([^>]*?)(>|$)#si", array($this, '_js_link_removal'), $str);
 			}
 	
 			if (preg_match("/<img/i", $str))
 			{
-				$str = preg_replace_callback("#<img\s+([^>]*?)(\s?/?>|$)#si", array($this, '_js_img_removal'), $str);
+				$str = preg_replace_callback("#<img\s*([^>]*?)(>|$)#si", array($this, '_js_img_removal'), $str);
 			}
 	
 			if (preg_match("/script/i", $str) OR preg_match("/xss/i", $str))
@@ -713,7 +705,7 @@ class CI_Input {
 		 * but it's unlikely to be a problem.
 		 *
 		 */
-		$event_handlers = array('[^a-z_\-]on\w*','xmlns');
+		$event_handlers = array('on\w*','xmlns');
 
 		if ($is_image === TRUE)
 		{
@@ -723,9 +715,9 @@ class CI_Input {
 			 */
 			unset($event_handlers[array_search('xmlns', $event_handlers)]);
 		}
-
-		$str = preg_replace("#<([^><]+?)(".implode('|', $event_handlers).")(\s*=\s*[^><]*)([><]*)#i", "<\\1\\4", $str);
-
+		
+		$str = preg_replace("#<([^><]+)(".implode('|', $event_handlers).")(\s*=\s*[^><]*)([><]*)#i", "<\\1\\4", $str);
+		
 		/*
 		 * Sanitize naughty HTML elements
 		 *
@@ -736,7 +728,7 @@ class CI_Input {
 		 * Becomes: &lt;blink&gt;
 		 *
 		 */
-		$naughty = 'alert|applet|audio|basefont|base|behavior|bgsound|blink|body|embed|expression|form|frameset|frame|head|html|ilayer|iframe|input|isindex|layer|link|meta|object|plaintext|style|script|textarea|title|video|xml|xss';
+		$naughty = 'alert|applet|audio|basefont|base|behavior|bgsound|blink|body|embed|expression|form|frameset|frame|head|html|ilayer|iframe|input|layer|link|meta|object|plaintext|style|script|textarea|title|video|xml|xss';
 		$str = preg_replace_callback('#<(/*\s*)('.$naughty.')([^><]*)([><]*)#is', array($this, '_sanitize_naughty_html'), $str);
 
 		/*
@@ -836,14 +828,14 @@ class CI_Input {
 		
 		if ( ! isset($non_displayables))
 		{
-			// every control character except newline (dec 10), carriage return (dec 13), and horizontal tab (dec 09),
+			// every control character except newline (10), carriage return (13), and horizontal tab (09),
+			// both as a URL encoded character (::shakes fist at IE and WebKit::), and the actual character
 			$non_displayables = array(
-										'/%0[0-8bcef]/',			// url encoded 00-08, 11, 12, 14, 15
-										'/%1[0-9a-f]/',				// url encoded 16-31
-										'/[\x00-\x08]/',			// 00-08
-										'/\x0b/', '/\x0c/',			// 11, 12
-										'/[\x0e-\x1f]/'				// 14-31
-									);
+										'/%0[0-8]/', '/[\x00-\x08]/',			// 00-08
+										'/%11/', '/\x0b/', '/%12/', '/\x0c/',	// 11, 12
+										'/%1[4-9]/', '/%2[0-9]/', '/%3[0-1]/',	// url encoded 14-31
+										'/[\x0e-\x1f]/');						// 14-31
+			
 		}
 
 		do
@@ -962,7 +954,7 @@ class CI_Input {
 	 */
 	function _html_entity_decode_callback($match)
 	{
-		$CFG =& load_class('Config');
+		global $CFG;
 		$charset = $CFG->item('charset');
 
 		return $this->_html_entity_decode($match[0], strtoupper($charset));
