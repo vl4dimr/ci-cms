@@ -13,4 +13,8 @@ function __($text, $domain = 'default') {
 	return $CI->locale->tr($text, $domain);
 }
 
+function _e($text, $domain = 'default') {
+	echo __($text, $domain);
+}
+
 ?>
