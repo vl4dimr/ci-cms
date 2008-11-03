@@ -72,6 +72,13 @@ class Member extends Controller {
 			}
 		}
 	}
+
+	function unauthorized($module, $level)
+	{
+		$this->template['data']  = array('module' => $module, 'level' => $level);
+		$this->layout->load($this->template, 'unauthorized');
+	}
+	
 	
 	function profile($username = null) 
 	{
