@@ -6,7 +6,7 @@
  *
  * @package		CodeIgniter
  * @author		ExpressionEngine Dev Team
- * @copyright	Copyright (c) 2008, EllisLab, Inc.
+ * @copyright	Copyright (c) 2006, EllisLab, Inc.
  * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
  * @since		Version 1.0
@@ -66,8 +66,7 @@ class Controller extends CI_Base {
 							'benchmark'	=> 'Benchmark',
 							'uri'		=> 'URI',
 							'output'	=> 'Output',
-							'lang'		=> 'Language',
-							'router'	=> 'Router'
+							'lang'		=> 'Language'
 							);
 		
 		foreach ($classes as $var => $class)
@@ -88,12 +87,12 @@ class Controller extends CI_Base {
 			
 			// sync up the objects since PHP4 was working from a copy
 			foreach (array_keys(get_object_vars($this)) as $attribute)
-			{
-				if (is_object($this->$attribute))
-				{
-					$this->load->$attribute =& $this->$attribute;
-				}
-			}
+            {
+                if (is_object($this->$attribute))
+                {
+                    $this->load->$attribute =& $this->$attribute;
+                }
+            }
 		}
 	}
 	
