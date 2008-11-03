@@ -47,7 +47,9 @@
 	?>
 	<?=sprintf( __("Sorry, you cannot %s the %s module", $this->template['module']), $levelword, $data['module'] )?>
 
-
+	<p>
+	<a href="<?php echo site_url( $this->session->userdata("last_uri") ) ?>"><?php _e("Go back", $this->template['module']) ?></a>
+	</p>
 	
 </div>
 
