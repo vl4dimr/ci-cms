@@ -70,12 +70,19 @@
 		function check_level($module, $level)
 		{
 		
-			
 			if ( !isset($this->obj->user->level[$module]) || $this->obj->user->level[$module] < $level)
 			{
-		
-				redirect('admin/unauthorized/'. $module . '/' . $level);
-				exit;
+				if ($this->obj->uri->segment(1) == "admin" || $this->obj->uri->segment(2) == "admin")
+				{
+			
+					redirect('admin/unauthorized/'. $module . '/' . $level);
+					exit;
+				}
+				else
+				{
+					redirect('member/unauthorized/'. $module . '/' . $level);
+					exit;
+				}
 			}
 		}
 		function _prep_password($password)
