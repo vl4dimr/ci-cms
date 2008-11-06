@@ -40,7 +40,10 @@
 			$this->obj->db->where('status', 1);
 			$this->obj->db->order_by('ordering');
 			$query = $this->obj->db->get('modules');
-			$this->modules = $query->result_array();
+			foreach ($query->result_array() as $row)
+			{
+				$this->modules[ $row['name'] ] = $row;
+			}
 		}
 		
 		function get_version()
