@@ -55,6 +55,8 @@
 				<a href="<?=site_url('admin/module/uninstall/'. $module['name'])?>"><?=__("Uninstall", $this->template['module'])?></a>
 				<?php elseif ($module['status'] == -1): ?>
 				<a href="<?=site_url('admin/module/install/'. $module['name'])?>"><?=__("Install", $this->template['module'])?></a>
+				<?php else: ?>
+				<a href="<?=site_url('admin/module/update/'. $module['name'])?>"><?=__("Update", $this->template['module'])?></a>
 				<?php endif; ?>
 				</td>
 		</tr>

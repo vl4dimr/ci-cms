@@ -150,6 +150,13 @@
 			if (is_readable(APPPATH.'modules/'.$module.'/' . $module .'_update.php'))
 			{
 				include( APPPATH.'modules/'.$module.'/' . $module .'_update.php' );
+				$this->session->set_flashdata('notification', __("No change made", $this->template['module']));
+				redirect('admin/module');		
+			}
+			else
+			{
+				$this->session->set_flashdata('notification', __("No update available", $this->template['module']));
+				redirect('admin/module');		
 			}
 			
 		}
