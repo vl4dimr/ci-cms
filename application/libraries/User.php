@@ -58,6 +58,19 @@
 					foreach($rows as $val) {
 						$admin[ $val['module'] ] = $val['level'];
 					}
+
+					if (is_array($this->obj->system->modules))
+					{
+						foreach($this->obj->system->modules as $module)
+						{	
+							if (!isset($admin[ $module['name'] ]))
+							{
+								$admin[ $module['name'] ] = 0;
+							}
+						}
+					}
+
+
 					$this->level = $admin;
 				}
 			}
