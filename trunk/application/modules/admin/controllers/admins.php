@@ -23,7 +23,7 @@
 		function index()
 		{
 		
-			$this->db->order_by('module, level DESC');
+			$this->db->order_by('module ASC, level DESC');
 			$query = $this->db->get('admins');
 			
 			$this->template['admins'] = $query->result_array();

@@ -135,7 +135,25 @@
 			
 			redirect('admin/module');
 		}
-
+		
+		/*
+		this is to update the module table 
+		it just includes the file <module>_update.php in each module dir
+		*/
+		function update($module = null)
+		{
+			if (is_null($module))
+			{
+				$this->session->set_flashdata('notification', __("Please select a module", $this->template['module']));
+				redirect('admin/module');
+			}
+			if (is_readable(APPPATH.'modules/'.$module.'/' . $module .'_update.php'))
+			{
+				include( APPPATH.'modules/'.$module.'/' . $module .'_update.php' );
+			}
+			
+		}
+		
 		function uninstall($module = null)
 		{
 			if (is_null($module))
