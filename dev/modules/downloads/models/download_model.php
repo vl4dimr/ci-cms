@@ -45,8 +45,6 @@ class Download_model extends Model {
 	function Download_model()
 	{
 		parent::Model();
-		
-		$this->table = 'pages';
 	}
 	
 	
