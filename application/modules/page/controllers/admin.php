@@ -91,10 +91,10 @@
 			if ( $post = $this->input->post('submit') )
 			{
 				$data = array(
-							'title'				=> $this->input->post('title'),
-							'parent_id'			=> $this->input->post('parent_id'),
-							'meta_keywords'		=> $this->input->post('meta_keywords'),
-							'meta_description'	=> $this->input->post('meta_description'),
+							'title'				=> strip_tags($this->input->post('title')),
+							'parent_id'			=> strip_tags($this->input->post('parent_id')),
+							'meta_keywords'		=> strip_tags($this->input->post('meta_keywords')),
+							'meta_description'	=> strip_tags($this->input->post('meta_description')),
 							'body'				=> $this->input->post('body'),
 							'active'			=> $this->input->post('status'),
 							'lang'				=> $this->input->post('lang')
