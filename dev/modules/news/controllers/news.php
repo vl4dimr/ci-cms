@@ -39,7 +39,7 @@
 
 			if ($query->num_rows() == 0)
 			{
-				var_dump($row);
+
 				$this->session->set_flashdata('notification', __("You must submit the security code that appears in the image", $this->template['module']));
 				redirect('news/' . $this->input->post('uri'));
 			}
