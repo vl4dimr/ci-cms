@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Solaitra:Downloads\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-10-19 10:08+0100\n"
-"PO-Revision-Date: 2008-11-14 18:31+0100\n"
-"Last-Translator: hery <heriniaina.eugene@gmail.com>\n"
+"PO-Revision-Date: 2008-11-14 23:58+0100\n"
+"Last-Translator: Eugene Hery <hery@serasera.org>\n"
 "Language-Team: Hery serasera.org <hery@serasera.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,12 +18,11 @@ msgstr ""
 #: ../controllers/news.php:24
 #: ../controllers/news.php:43
 msgid "You must submit the security code that appears in the image"
-msgstr ""
+msgstr "Devi inserire il codice anti-spam"
 
 #: ../controllers/news.php:66
-#, fuzzy
 msgid "Comment Notification"
-msgstr "Liste noire pour les commentaires"
+msgstr "Notifica dei commenti"
 
 #: ../controllers/news.php:68
 #, php-format
@@ -40,11 +39,21 @@ msgid ""
 "\n"
 "and disable notification.\n"
 msgstr ""
+"\n"
+"Salve,\n"
+"\n"
+"C'è un nuovo commento nella notizia \n"
+"%s\n"
+"\n"
+"\n"
+"Se non vuoi ricevere questo tipo di notifica, vai su\n"
+"%s\n"
+"\n"
+"e disattivare.\n"
 
 #: ../controllers/news.php:101
-#, fuzzy
 msgid "Comment to approve"
-msgstr "Retour en haut"
+msgstr "Commenti da approvare"
 
 #: ../controllers/news.php:103
 #, php-format
@@ -62,47 +71,53 @@ msgid ""
 "\n"
 "and set to approve comments automatically.\n"
 msgstr ""
+"\n"
+"Salve,\n"
+"\n"
+"C'è un nuovo commento inviato sulla notizia\n"
+"%s\n"
+"Per approvarlo, clicca sul link \n"
+"%s\n"
+"\n"
+"Se non vuoi più ricevere questa notifica, vai su\n"
+"%s\n"
+"\n"
+"E modificare la notifica.\n"
 
 #: ../controllers/news.php:128
 msgid "Thank you for your comment. In this site, the comments need to be approved by the administrator. Once approved, you will see it listed here."
-msgstr ""
+msgstr "Grazie per il commento. In questo sito, i commenti devono essere approvati dall'amministratore. Quando sar&agrave; accettato, sar&agrave; visto qu&igrave;"
 
 #: ../controllers/news.php:215
 #: ../views/index.php:28
-#, fuzzy
 msgid "No news found"
-msgstr "Aucun sujet trouv&eacute;"
+msgstr "Nessuna notizia trovata"
 
 #: ../controllers/news.php:231
 #: ../controllers/admin/admin.php:39
 #: ../controllers/admin/category.php:41
 #: ../controllers/admin/comments.php:53
-#, fuzzy
 msgid "First"
-msgstr "Pr&eacute;noms"
+msgstr "Primo"
 
 #: ../controllers/news.php:232
 #: ../controllers/admin/admin.php:40
 #: ../controllers/admin/category.php:42
 #: ../controllers/admin/comments.php:54
-#, fuzzy
 msgid "Last"
-msgstr "Dernier message"
+msgstr "Ultimo"
 
 #: ../controllers/admin/admin.php:68
-#, fuzzy
 msgid "Settings updated"
-msgstr "Configuration enregistr&eacute;e"
+msgstr "Impostazioni salvate"
 
 #: ../controllers/admin/admin.php:190
-#, fuzzy
 msgid "News saved"
-msgstr "L'image n'a pas &eacute;t&eacute; enregistr&eacute;e"
+msgstr "Notizia salvata"
 
 #: ../controllers/admin/admin.php:274
-#, fuzzy
 msgid "The image was deleted"
-msgstr "L'image a &eacute;t&eacute; supprim&eacute;e"
+msgstr "E' stata cancellata l'immagine"
 
 #: ../controllers/admin/admin.php:287
 #, fuzzy
@@ -148,63 +163,53 @@ msgid "No file was uploaded.."
 msgstr "L'image n'a pas &eacute;t&eacute; charg&eacute;e"
 
 #: ../controllers/admin/category.php:77
-#, fuzzy
 msgid "Category saved"
-msgstr "L'image n'a pas &eacute;t&eacute; enregistr&eacute;e"
+msgstr "Categoria salvata"
 
 #: ../controllers/admin/category.php:105
 msgid "The category contains other categories. It cannot be removed."
-msgstr ""
+msgstr "La categoria contiene altre categorie. Non si pu&ograve; cancellare."
 
 #: ../controllers/admin/category.php:112
 msgid "The category contains news. It cannot be removed."
-msgstr ""
+msgstr "La categoria contiene notizie. Non si pu&ograve; cancellare."
 
 #: ../controllers/admin/category.php:121
-#, fuzzy
 msgid "The category  has been deleted."
-msgstr "Le titre a &eacute;t&eacute; supprim&eacute;"
+msgstr "La categoria &egrave; stata cancellata"
 
 #: ../controllers/admin/comments.php:71
-#, fuzzy
 msgid "The comment has been approved"
-msgstr "Le sujet a &eacute;t&eacute; modifi&eacute;"
+msgstr "Il commento &egrave; stato approvato"
 
 #: ../controllers/admin/comments.php:81
-#, fuzzy
 msgid "The comment has been suspended"
-msgstr "Le sujet a &eacute;t&eacute; modifi&eacute;"
+msgstr "Il commento &egrave; stato sospeso"
 
 #: ../controllers/admin/settings.php:43
-#, fuzzy
 msgid "Settings saved"
-msgstr "L'image n'a pas &eacute;t&eacute; enregistr&eacute;e"
+msgstr "Impostatione Salvata"
 
 #: ../views/admin.php:4
-#, fuzzy
 msgid "News Administration"
-msgstr "Param&egrave;tres d&#8217;administration"
+msgstr "Gestione Notizie"
 
 #: ../views/admin.php:7
 #: ../views/comments.php:21
-#, fuzzy
 msgid "Settings"
-msgstr "Configurations"
+msgstr "Impostazioni"
 
 #: ../views/admin.php:8
-#, fuzzy
 msgid "Manage comments"
-msgstr "Autoriser les commentaires"
+msgstr "Gestire commenti"
 
 #: ../views/admin.php:9
-#, fuzzy
 msgid "Manage categories"
-msgstr "Importer des Cat&eacute;gories"
+msgstr "Gestire categorie"
 
 #: ../views/admin.php:10
-#, fuzzy
 msgid "Create news"
-msgstr "Cr&eacute;er un blog &raquo;"
+msgstr "Crea notizia"
 
 #: ../views/admin.php:11
 #: ../views/comments.php:22
@@ -212,122 +217,104 @@ msgstr "Cr&eacute;er un blog &raquo;"
 #: ../views/settings.php:23
 #: ../views/admin/category.php:8
 #: ../views/admin/category_create.php:24
-#, fuzzy
 msgid "Cancel"
-msgstr "Annuler"
+msgstr "Annulla"
 
 #: ../views/admin.php:26
 #: ../views/comments.php:45
 #: ../views/create.php:124
 #: ../views/index.php:7
-#, fuzzy
 msgid "Title"
-msgstr "Titre"
+msgstr "Titolo"
 
 #: ../views/admin.php:27
 #: ../views/create.php:139
 #: ../views/admin/category.php:25
 #: ../views/admin/category_create.php:61
-#, fuzzy
 msgid "Status"
-msgstr "&Eacute;tat du commentaire"
+msgstr "Stato"
 
 #: ../views/admin.php:28
 #: ../views/comments.php:49
 #: ../views/admin/category.php:27
-#, fuzzy
 msgid "Action"
-msgstr "Action"
+msgstr "Azioni"
 
 #: ../views/admin.php:29
 msgid "Hits"
-msgstr ""
+msgstr "Visiti"
 
 #: ../views/admin.php:39
 #: ../views/create.php:141
-#, fuzzy
 msgid "Published"
-msgstr "Publi&eacute;"
+msgstr "Pubblicato"
 
 #: ../views/admin.php:39
 #: ../views/create.php:142
-#, fuzzy
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "Bozza"
 
 #: ../views/admin.php:40
-#, fuzzy
 msgid "View"
-msgstr "Afficher"
+msgstr "Visualizza"
 
 #: ../views/admin.php:41
-#, fuzzy
 msgid "Edit"
-msgstr "Modifier"
+msgstr "Modifica"
 
 #: ../views/admin.php:42
 #: ../views/comments.php:68
 #: ../views/comment_delete.php:18
 #: ../views/delete.php:18
-#, fuzzy
 msgid "Delete"
-msgstr "Supprimer"
+msgstr "Cancella"
 
 #: ../views/comments.php:4
 #: ../views/comment_delete.php:4
 #: ../views/delete.php:4
-#, fuzzy
 msgid "Confirm delete?"
-msgstr "Supprimer un titre"
+msgstr "Confirmare?"
 
 #: ../views/comments.php:18
-#, fuzzy
 msgid "Comments"
-msgstr "Commentaires"
+msgstr "Commenti"
 
 #: ../views/comments.php:33
-#, fuzzy
 msgid "Show:"
-msgstr "Afficher le menu?"
+msgstr "Visualizza:"
 
 #: ../views/comments.php:35
-#, fuzzy
 msgid "All"
-msgstr "Tout"
+msgstr "Tutti"
 
 #: ../views/comments.php:36
-#, fuzzy
 msgid "Approved"
-msgstr "Approuv&eacute;"
+msgstr "Accettato"
 
 #: ../views/comments.php:37
 #: ../views/admin/category_create.php:64
 msgid "Suspended"
-msgstr ""
+msgstr "Sospeso"
 
 #: ../views/comments.php:46
-#, fuzzy
 msgid "Author"
-msgstr "Auteur"
+msgstr "Autore"
 
 #: ../views/comments.php:47
-#, fuzzy
 msgid "Email"
 msgstr "Email"
 
 #: ../views/comments.php:48
-#, fuzzy
 msgid "Ip"
 msgstr "IP"
 
 #: ../views/comments.php:64
-#, fuzzy
 msgid "Approve"
-msgstr "Approuver"
+msgstr "Accetta"
 
 #: ../views/comments.php:66
 msgid "Suspend"
-msgstr ""
+msgstr "Sospendere"
 
 #: ../views/comment_delete.php:22
 #: ../views/delete.php:22
@@ -355,15 +342,13 @@ msgid "Yes"
 msgstr "S%igrave;"
 
 #: ../views/create.php:4
-#, fuzzy
 msgid "Quick links"
-msgstr "Importer des liens"
+msgstr "Links"
 
 #: ../views/create.php:7
 #: ../views/create.php:145
-#, fuzzy
 msgid "Content"
-msgstr "Contenu de la page"
+msgstr "Contenuto"
 
 #: ../views/create.php:8
 #: ../views/admin/category_create.php:8
@@ -394,7 +379,7 @@ msgstr "Salva"
 
 #: ../views/create.php:122
 msgid "To create a news, just fill in your content below and click 'Save'.<br />If you want to save your progress without publishing it, Select 'Draft' status.</p>"
-msgstr ""
+msgstr "Per creare una notizia, riempi il modulo qu&igrave; sotto e clicca su 'Salva'."
 
 #: ../views/create.php:127
 msgid "Category"
@@ -414,7 +399,7 @@ msgstr "Attiva commenti"
 
 #: ../views/create.php:172
 msgid "Notify me for comments"
-msgstr ""
+msgstr "Notifica per i commenti"
 
 #: ../views/index.php:1
 msgid "All news"
@@ -479,7 +464,7 @@ msgstr "Salvare modifica"
 
 #: ../views/settings.php:34
 msgid "Change the settings for the news module"
-msgstr ""
+msgstr "Cambiare impostazioni per il modulo di notizie"
 
 #: ../views/settings.php:41
 msgid "Allow comments"
