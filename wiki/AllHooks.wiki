@@ -11,6 +11,14 @@ Some hooks
 
 ===Filters===
 
+====member_signup_pre_form====
+
+Text to put before the signup form. It is included in form so other fields can be put here.
+
+====member_signup_post_form====
+
+Like members_signup_pre_form but this is under the fields, just about the submit button.
+
 ====search_result====
 
 Search result returns an array
