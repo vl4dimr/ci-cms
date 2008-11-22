@@ -60,7 +60,7 @@
 		}
 		function login()
 		{
-			if ( $this->user->logged_in )
+			if ( $this->user->logged_in && !$this->input->post('submit') )
 			{
 
 				redirect('admin');
