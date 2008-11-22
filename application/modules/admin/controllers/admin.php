@@ -339,16 +339,22 @@
 		function settings()
 		{
 			$this->user->check_level($this->template['module'], LEVEL_EDIT);
+			$fields = array('site_name', 'meta_keywords', 'meta_description', 'cache', 'cache_time', 'theme', 'debug', 'admin_email');
 			if ( !$this->input->post('submit') )
 			{
-				
+				foreach ($fields as $field)
+				{
+					if (!isset($this->system->$field))
+					{
+						$this->system->$field = '';
+					}
+				}
 				$this->template['themes'] = $this->layout->get_themes();
 				$this->layout->load($this->template, 'settings');
 			}
 			else
 			{
 
-				$fields = array('site_name', 'meta_keywords', 'meta_description', 'cache', 'cache_time', 'theme', 'debug');
 				
 				
 				foreach ($fields as $field)

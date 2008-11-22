@@ -14,7 +14,7 @@
 		
 		function index()
 		{
-			
+			$this->load->helper('xml');
 			$this->db->order_by('ordering');
 			$query = $this->db->get('modules');
 			
@@ -50,7 +50,19 @@
 								'version' => null
 							);
 						}
+						else
+						{
+							//get physical version from xml for eventual update
+							
+							$xmldata = join('', file(APPPATH.'modules/'.$module.'/setup.xml'));
+							$xmlarray = xmlize($xmldata);
+							if (isset($xmlarray['module']['#']['name'][0]['#']) && trim($xmlarray['module']['#']['name'][0]['#']) == $module)
+							{
+
+								$modules[$module]['nversion'] = isset($xmlarray['module']['#']['version'][0]['#']) ? trim($xmlarray['module']['#']['version'][0]['#']) : '';							}
+						}
 					}
+					
 				}
 			}
 			
@@ -231,6 +243,7 @@
 					
 					$this->session->set_flashdata('notification', __("The module is installed. Now you need to activate it.", $this->template['module']));
 					$this->db->insert('modules', $data);
+					
 					redirect('admin/module');
 				}
 				else

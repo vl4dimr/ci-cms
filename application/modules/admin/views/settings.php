@@ -43,6 +43,9 @@
 		
 			<label for="description">META description:</label>
 			<input type="text" name="meta_description" value="<?=$this->system->meta_description?>" id="meta_description" class="input-text" /><br />
+
+			<label for="admin_email">Admin email:</label>
+			<input type="text" name="admin_email" value="<?=$this->system->admin_email?>" id="admin_email" class="input-text" /><br />
 			
 			<label for="cache">Output Cache:</label>
 			<div id="cache">
