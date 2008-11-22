@@ -151,6 +151,8 @@
 		
 		function login($username, $password)
 		{
+			//destroy previous sesson
+			$this->_destroy_session();
 			
 			$query = $this->obj->db->get($this->table, 1);
 			

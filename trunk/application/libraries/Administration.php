@@ -13,6 +13,14 @@
 				redirect('admin/login');
 				exit;
 			}
+			//check if at least admin of one module
+			if ($this->obj->user->logged_in && count($this->obj->user->level) == 0 )
+			{
+				$this->obj->session->set_flashdata('notification', __("That username is not an admin.", "admin"));
+				$this->obj->user->logout();
+				redirect('admin/login');
+				exit;
+			}			
 		}
 		
 
