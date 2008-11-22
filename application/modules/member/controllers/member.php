@@ -196,8 +196,8 @@ class Member extends Controller {
 			$rules['password'] = "trim|matches[passconf]";
 			$rules['passconf'] = "trim";
 			$rules['email'] = "trim|required|valid_email|callback_verify_mail";	
-
-			$this->template['member'] = $this->db->get_where('users', array('username' => $this->user->username));
+			
+			$this->template['member'] = $this->user->get_user(array('username' => $this->user->username));
 			$this->validation->set_rules($rules);	
 
 			$fields['password'] = __("password", $this->template['module']);	
@@ -225,7 +225,15 @@ class Member extends Controller {
 
 				$this->user->update($username, $data);
 				$this->session->set_flashdata('notification', __("Your profile was saved.", $this->template['module']));
-				redirect(site_url());
+				if ($redirect = $this->obj->session->userdata("login_redirect"))
+				{
+					$this->obj->session->set_userdata(array("login_redirect" => ""));
+					redirect($redirect);
+				}
+				else
+				{
+					redirect('');
+				}
 			
 			}				
 		

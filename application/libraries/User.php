@@ -256,5 +256,42 @@
 				redirect("member/login");
 			}
 		}
+		
+		function get_user($where)
+		{
+			if (!is_array($where))
+			{
+				$where = array('id', $where);
+			}
+		
+			$query = $this->obj->db->get_where('users', $where);
+			if ($query->num_rows() > 0 )
+			{
+				return $query->row_array();
+			}
+			else
+			{
+				return false;
+			}
+		}
+		
+		function get_users($where)
+		{
+			if (!is_array($where))
+			{
+				$where = array('id', $where);
+			}
+		
+			$query = $this->obj->db->get_where('users', $where);
+			if ($query->num_rows() > 0 )
+			{
+				return $query->result_array();
+			}
+			else
+			{
+				return false;
+			}
+		}
+
 	}
 ?>
