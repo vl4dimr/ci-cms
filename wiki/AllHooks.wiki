@@ -11,6 +11,12 @@ Some hooks
 
 ===Filters===
 
+====member_profile_pre_form====
+Text to put before all the fields for profile
+
+====member_profile_post_form====
+Text to put before after the fields for profile
+
 ====member_signup_pre_form====
 
 Text to put before the signup form. It is included in form so other fields can be put here.
