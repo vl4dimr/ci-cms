@@ -56,7 +56,9 @@
 				<?php elseif ($module['status'] == -1): ?>
 				<a href="<?=site_url('admin/module/install/'. $module['name'])?>"><?=__("Install", $this->template['module'])?></a>
 				<?php else: ?>
-				<a href="<?=site_url('admin/module/update/'. $module['name'])?>"><?=__("Update", $this->template['module'])?></a>
+					<?php if (isset($module['nversion']) && $module['nversion'] > $module['version']) : ?>
+					<a href="<?=site_url('admin/module/update/'. $module['name'])?>"><span style='color: #FF0000'><?=__("Update", $this->template['module'])?></span></a>
+					<?php endif; ?>
 				<?php endif; ?>
 				</td>
 		</tr>
