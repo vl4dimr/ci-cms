@@ -76,19 +76,7 @@ class Member_model extends Model {
 	 * @param	mixed	parameters
 	 * @return	void
 	 */
-	function create($username, $email, $password, $timezone = 'UP1', $role = 5) {				
-		$data = array(
-			'username' 	=> $username,
-			'email'		=> $email,
-			'password'	=> $password,
-			'role' 		=> $role,
-			'joined'	=> time(),
-			'timezone'	=> $timezone,
-			'post_count'=> 0
-		);		
-		$this->db->insert('users', $data);
-	}
-	
+
 	// ------------------------------------------------------------------------
 	
 	/**

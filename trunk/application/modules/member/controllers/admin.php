@@ -225,7 +225,10 @@
 					else
 					{
 						$this->session->set_userdata('email', $data['email']);
-					
+						if (!isset($this->system->admin_email))
+						{
+							$this->system->set('admin_email', $data['email']);
+						}
 					}
 					
 					
