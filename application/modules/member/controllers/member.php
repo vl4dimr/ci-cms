@@ -27,6 +27,7 @@ class Member extends Controller {
 	function logout()
 	{
 		$this->user->logout();
+		$this->session->set_flashdata('notification',__("You are now logged out.", "africa"));
 		redirect('member/login');
 	}
 	
@@ -192,6 +193,7 @@ class Member extends Controller {
 		}
 		if ( is_null($username) )
 		{
+			$username = $this->user->username;
 			$this->load->library('validation');
 			$rules['password'] = "trim|matches[passconf]";
 			$rules['passconf'] = "trim";
@@ -216,18 +218,16 @@ class Member extends Controller {
 			}
 			else
 			{
-				$data['status'] = $this->input->post('status');
-
 				if ($this->input->post('password'))
 				{
 					$data['password'] = $this->input->post('password');
 				}
-
 				$this->user->update($username, $data);
+				
 				$this->session->set_flashdata('notification', __("Your profile was saved.", $this->template['module']));
-				if ($redirect = $this->obj->session->userdata("login_redirect"))
+				if ($redirect = $this->session->userdata("login_redirect"))
 				{
-					$this->obj->session->set_userdata(array("login_redirect" => ""));
+					$this->session->set_userdata(array("login_redirect" => ""));
 					redirect($redirect);
 				}
 				else
@@ -261,5 +261,75 @@ class Member extends Controller {
 		return $key;
 	}		
 	
+	function adino($code = null)
+	{
+		if (is_null($code))
+		{
+			if ($this->user->logged_in)
+			{
+				redirect('member/profile');
+			}
+			
+			
+			$this->load->library('validation');
+			$rules['email'] = "trim|required|valid_email|email_not_found";	
+			
+			$this->validation->set_rules($rules);	
+			$this->validation->set_error_delimiters('<p style="color:#900">', '</p>');
+			$fields['email'] = __("email", $this->template['module']);	
+
+			$this->validation->set_fields($fields);	
+
+			$this->validation->set_message('required', __('The %s field is required'));
+			$this->validation->set_message('valid_email', __('The address %s is not a valid email'));
+			$this->validation->set_message('email_not_found', __('The address %s is not found in our database. Try another address.'));
+			
+			if ($this->validation->run() == FALSE)
+			{
+				$this->layout->load($this->template, 'adino');
+				return;
+			}
+
+			$user = $this->user->get_user(array('email' => $this->input->post('email')));
+			$key = $this->keygen();
+			$this->load->library('email');
+			//send password
+			$this->email->from($this->system->admin_email, $this->system->site_name);
+			$this->email->to($user['email']);
+			$this->email->subject(sprintf(__("Create a new password: %s", "member"), $this->system->site_name));
+			$this->email->message(sprintf(__("Hello %s,\n\nYou said you forgot your password for %s. Since we do not keep passwords in clear, you have to create one. Click the link below to create a new password.\n\n%s\n\nThank you.\nThe administrator"), $this->input->post('username'), $this->system->site_name, site_url('member/adino/' . $key), "member"));
+
+			$this->email->send();
+			
+			$this->user->update($user['username'], array('activation' => $key));
+			$this->template['message'] = sprintf(__("We have sent to %s the instruction on how to create a new password. Please check your email.", "member"), $user['email']);
+			$this->layout->load($this->template, 'adino_result');
+		}
+		else
+		{
+		//verify code
+			if ($user = $this->user->get_user(array('activation' => $code)))
+			{
+				if ($this->input->post('newpass') && ($this->input->post('newpass') == $this->input->post('rnewpass')))
+				{
+					$this->user->update($user['username'], array('activation' => '', 'password' => $this->input->post('newpass')));
+					$this->session->set_flashdata('notification', __("Your password is now changed. You can login with your username and the new password.", "member"));
+					redirect('member/login');
+				}
+				else
+				{
+
+					$this->template['row'] = $user;
+					$this->layout->load($this->template, 'adino_activate');
+				}
+			}
+			else
+			{
+				$this->template['message'] = __("The activation link is not valid. Please check again your email and verify the link. If you are sure the link was right then contact the administrator.");
+				$this->layout->load($this->template, 'adino_result');
+			
+			}
+		}
+	}
 	
 }

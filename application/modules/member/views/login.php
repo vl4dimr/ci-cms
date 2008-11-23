@@ -29,7 +29,7 @@
 		{
 			echo "<p><a href='" . site_url('member/signup') . "'>" . __("Sign up", $this->template['module']) . "</a></p>";
 		}
-		echo "<p><a href='" . site_url('member/lostpass') . "'>" . __("Lost password ?", $this->template['module']) . "</a></p>";
+		echo "<p><a href='" . site_url('member/adino') . "'>" . __("Lost password ?", $this->template['module']) . "</a></p>";
 	?>
 </form>
 
