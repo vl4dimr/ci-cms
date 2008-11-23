@@ -11,6 +11,12 @@ Some hooks
 
 ===Filters===
 
+====member_profile_quick_menu====
+This should return an array to show a quick menu in the member profile form
+{{{
+$qm = array("Menu item" => "http://menu.link.com");
+}}}
+
 ====member_profile_pre_form====
 Text to put before all the fields for profile
 
