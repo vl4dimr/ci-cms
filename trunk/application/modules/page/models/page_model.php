@@ -161,6 +161,7 @@
 		function get_subpages($id, $limit = null)
 		{
 			$this->db->where('parent_id', $id);
+			$this->db->where('lang', $this->user->lang);
 			$query = $this->db->get('pages', $limit);
 			return $query->result_array();
 		}
@@ -170,6 +171,7 @@
 			
 			$this->db->where('active', 1);
 			$this->db->where('parent_id', $page['parent_id']);
+			$this->db->where('lang', $this->user->lang);
 			$this->db->order_by('weight');
 			
 			$query = $this->db->get('pages');
