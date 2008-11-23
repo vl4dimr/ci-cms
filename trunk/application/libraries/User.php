@@ -18,6 +18,15 @@
 			
 			$this->_get_levels();
 			$this->_get_groups();
+			$this->_update_fields();
+		}
+		
+		function _update_fields()
+		{	
+			if ($this->logged_in)
+			{
+				$this->update($this->username, array('activation' => '', 'lastvisit' => mktime()));
+			}
 		}
 			
 		function _get_groups()
