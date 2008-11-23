@@ -5,8 +5,8 @@
 
 <ul class="manage">
 	<li><a href="<?=site_url('admin/page/settings')?>"><?=__("Settings", $this->template['module'])?></a></li>
-	<li><a href="<?=site_url('admin/page/create')?>">Create new Page</a></li>
-	<li><a href="<?=site_url('admin')?>" class="last">Cancel</a></li>
+	<li><a href="<?=site_url('admin/page/create')?>"><?php _e("Create new Page", $this->template['module'])?></a></li>
+	<li><a href="<?=site_url('admin')?>" class="last"><?php _e("Cancel", $this->template['module'])?></a></li>
 </ul>
 		
 <br class="clearfloat" />

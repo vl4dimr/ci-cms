@@ -24,7 +24,7 @@ function change_parent() {
 
 $(document).ready(function(){
 	$("#image")
-	.after("<img src='<?php echo site_url('application/views/admin/images/ajax_circle.gif')?>' id='loading'/><input type='button' id='upload_now' value='  <?php echo __('Upload') ?>  ' />");
+	.after("<img src='<?php echo site_url('application/views/admin/images/ajax_circle.gif')?>' id='loading'/><input type='button' id='upload_now' value='  <?php echo __('Upload', $this->template['module']) ?>  ' />");
 	$("#loading").hide();
 	$("#upload_now").click(function(){
 		ajaxFileUpload();
@@ -81,7 +81,7 @@ function ajaxFileUpload() {
 						alert(data.error);
 					}else
 					{
-						$("#image_list").append("<div><input type='hidden' name='image_ids[]' value='"+data.imageid+"' /><a href='#' onclick=\"tinyMCE.execCommand('mceInsertContent',false,'<a href=\\'<?php echo site_url('media/images/o') ?>/"+data.image+"\\'><img border=0 align=left hspace=10 src=\\'<?php echo site_url('media/images/m') ?>/"+data.image+"\\'></a>');return false;\">"+data.image+"</a> - <a href='#'  class=\"ajaxdelete\" id='"+data.imageid+"' ><?php echo __('Delete image')?></a></div>\n");
+						$("#image_list").append("<div><input type='hidden' name='image_ids[]' value='"+data.imageid+"' /><a href='#' onclick=\"tinyMCE.execCommand('mceInsertContent',false,'<a href=\\'<?php echo site_url('media/images/o') ?>/"+data.image+"\\'><img border=0 align=left hspace=10 src=\\'<?php echo site_url('media/images/m') ?>/"+data.image+"\\'></a>');return false;\">"+data.image+"</a> - <a href='#'  class=\"ajaxdelete\" id='"+data.imageid+"' ><?php echo __('Delete image', $this->template['module'])?></a></div>\n");
 						$("#image").val("");
 						handleDeleteImage();
 						
@@ -117,7 +117,7 @@ function ajaxFileUpload() {
 		
 		<div id="one">
 		
-		<p><?=__("To create a new page, just fill in your content below and click 'Save page'.<br />If you want to save your progress without publishing the page, Select 'Draft' status.</p>", $this->template['module'])?>
+		<p><?=__("To create a new page, just fill in your content below and click 'Save page'.<br />If you want to save your progress without publishing the page, Select 'Draft' status.", $this->template['module'])?></p>
 
 		<label for="title"><?=__("Page Title", $this->template['module'])?>:</label>
 		<input type="text" name="title" value="" id="title" class="input-text" /><br />
