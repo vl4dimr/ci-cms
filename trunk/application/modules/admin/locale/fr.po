@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Solaitra:Downloads\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-28 23:17+0100\n"
+"POT-Creation-Date: 2008-11-23 18:31+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Eugene Hery <hery@serasera.org>\n"
 "Language-Team: Hery serasera.org <hery@serasera.org>\n"
@@ -14,6 +14,16 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
+
+#: ../admin_plugins.php:12
+#, fuzzy
+msgid "Admin interface"
+msgstr "Administration T&eacute;l&eacute;chargement"
+
+#: ../admin_update.php:19
+#, php-format
+msgid "Admin module updated to %s"
+msgstr ""
 
 #: ../controllers/admin.php:25
 msgid "Please set your email"
@@ -89,38 +99,47 @@ msgstr ""
 msgid "User not found in the list"
 msgstr ""
 
-#: ../controllers/module.php:66
-#: ../controllers/module.php:80
-#: ../controllers/module.php:143
-#: ../controllers/module.php:157
+#: ../controllers/module.php:78
+#: ../controllers/module.php:92
+#: ../controllers/module.php:159
+#: ../controllers/module.php:180
+#: ../controllers/module.php:194
 msgid "Please select a module"
 msgstr ""
 
-#: ../controllers/module.php:72
+#: ../controllers/module.php:84
 msgid "The module is activated"
 msgstr ""
 
-#: ../controllers/module.php:86
+#: ../controllers/module.php:98
 msgid "The module is deactivated"
 msgstr ""
 
-#: ../controllers/module.php:149
+#: ../controllers/module.php:165
+msgid "No change made"
+msgstr ""
+
+#: ../controllers/module.php:170
+msgid "No update available"
+msgstr ""
+
+#: ../controllers/module.php:186
 msgid "The module is uninstalled"
 msgstr ""
 
-#: ../controllers/module.php:163
+#: ../controllers/module.php:200
 msgid "The module you are trying to install is already installed"
 msgstr ""
 
-#: ../controllers/module.php:207
+#: ../controllers/module.php:244
 msgid "The module is installed. Now you need to activate it."
 msgstr ""
 
-#: ../controllers/module.php:213
+#: ../controllers/module.php:251
 msgid "The module setup file is not valid."
 msgstr ""
 
-#: ../controllers/module.php:220
+#: ../controllers/module.php:258
 msgid "Setup file not readable."
 msgstr ""
 
@@ -186,10 +205,13 @@ msgstr ""
 msgid "Sorry, you cannot %s the %s module"
 msgstr ""
 
+#: ../views/unauthorized.php:51
+msgid "Go back"
+msgstr ""
+
 #: ../views/admins/create.php:4
 #: ../views/admins/edit.php:4
 #: ../views/navigation/create.php:4
-#: ../views/navigation/edit.php:4
 msgid "Navigation"
 msgstr ""
 
@@ -202,7 +224,6 @@ msgstr "Administration T&eacute;l&eacute;chargement"
 #: ../views/admins/create.php:21
 #: ../views/admins/edit.php:22
 #: ../views/navigation/create.php:24
-#: ../views/navigation/edit.php:24
 msgid "Save"
 msgstr ""
 
@@ -212,7 +233,6 @@ msgstr ""
 #: ../views/module/index.php:9
 #: ../views/navigation/admin.php:8
 #: ../views/navigation/create.php:25
-#: ../views/navigation/edit.php:25
 msgid "Cancel"
 msgstr ""
 
@@ -303,6 +323,10 @@ msgstr ""
 msgid "Install"
 msgstr ""
 
+#: ../views/module/index.php:60
+msgid "Update"
+msgstr ""
+
 #: ../views/navigation/admin.php:4
 #, fuzzy
 msgid "Navigation administration"
@@ -318,12 +342,10 @@ msgstr ""
 
 #: ../views/navigation/admin.php:24
 #: ../views/navigation/create.php:38
-#: ../views/navigation/edit.php:38
 msgid "Target"
 msgstr ""
 
 #: ../views/navigation/create.php:7
-#: ../views/navigation/edit.php:7
 msgid "Navigation item"
 msgstr ""
 
@@ -332,27 +354,22 @@ msgid "Create an item"
 msgstr ""
 
 #: ../views/navigation/create.php:34
-#: ../views/navigation/edit.php:34
 msgid "Title"
 msgstr ""
 
 #: ../views/navigation/create.php:42
-#: ../views/navigation/edit.php:42
 msgid "Parent"
 msgstr ""
 
 #: ../views/navigation/create.php:55
-#: ../views/navigation/edit.php:66
 msgid "Status"
 msgstr ""
 
 #: ../views/navigation/create.php:57
-#: ../views/navigation/edit.php:68
 msgid "Active"
 msgstr ""
 
 #: ../views/navigation/create.php:58
-#: ../views/navigation/edit.php:69
 msgid "Disabled"
 msgstr ""
 
