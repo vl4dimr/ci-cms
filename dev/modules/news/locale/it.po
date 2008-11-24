@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Solaitra:Downloads\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-19 10:08+0100\n"
-"PO-Revision-Date: 2008-11-14 23:58+0100\n"
+"POT-Creation-Date: 2008-11-23 18:31+0100\n"
+"PO-Revision-Date: 2008-11-24 23:32+0100\n"
 "Last-Translator: Eugene Hery <hery@serasera.org>\n"
 "Language-Team: Hery serasera.org <hery@serasera.org>\n"
 "MIME-Version: 1.0\n"
@@ -89,7 +89,6 @@ msgid "Thank you for your comment. In this site, the comments need to be approve
 msgstr "Grazie per il commento. In questo sito, i commenti devono essere approvati dall'amministratore. Quando sar&agrave; accettato, sar&agrave; visto qu&igrave;"
 
 #: ../controllers/news.php:215
-#: ../views/index.php:28
 msgid "No news found"
 msgstr "Nessuna notizia trovata"
 
@@ -120,47 +119,40 @@ msgid "The image was deleted"
 msgstr "E' stata cancellata l'immagine"
 
 #: ../controllers/admin/admin.php:287
-#, fuzzy
 msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
-msgstr "La taille du fichier exc&eacute;de la directive <code>upload_max_filesize</code> pr&eacute;sente dans le fichier <code>php.ini</code>."
+msgstr "Il file da caricare è troppo grande"
 
 #: ../controllers/admin/admin.php:290
-#, fuzzy
 msgid "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form"
-msgstr "Le fichier t&eacute;l&eacute;charg&eacute; d&eacute;passe la taille maximale autoris&eacute;e (<em>MAX_FILE_SIZE</em>)"
+msgstr "Il file da caricare è troppo grande"
 
 #: ../controllers/admin/admin.php:293
-#, fuzzy
 msgid "The uploaded file was only partially uploaded"
-msgstr "Le fichier a &eacute;t&eacute; partiellement t&eacute;l&eacute;charg&eacute;"
+msgstr "Il file non è stato caricato completamente"
 
 #: ../controllers/admin/admin.php:296
-#, fuzzy
 msgid "No file was uploaded."
-msgstr "L'image n'a pas &eacute;t&eacute; charg&eacute;e"
+msgstr "Il file non è stato caricato"
 
 #: ../controllers/admin/admin.php:300
-#, fuzzy
 msgid "Missing a temporary folder"
-msgstr "R&eacute;pertoire temporaire manquant."
+msgstr "La cartella temporanea non esiste"
 
 #: ../controllers/admin/admin.php:303
-#, fuzzy
 msgid "Failed to write file to disk"
-msgstr "L&#8217;&eacute;criture dans le fichier a &eacute;chou&eacute;"
+msgstr "Non si riesce a scrivere il file nel disco"
 
 #: ../controllers/admin/admin.php:306
 msgid "File upload stopped by extension"
-msgstr ""
+msgstr "Caricamento fermato"
 
 #: ../controllers/admin/admin.php:310
 msgid "No error code avaiable"
-msgstr ""
+msgstr "Nessun codice di errore valide"
 
 #: ../controllers/admin/admin.php:315
-#, fuzzy
 msgid "No file was uploaded.."
-msgstr "L'image n'a pas &eacute;t&eacute; charg&eacute;e"
+msgstr "Il file non è stato caricato"
 
 #: ../controllers/admin/category.php:77
 msgid "Category saved"
@@ -214,29 +206,22 @@ msgstr "Crea notizia"
 #: ../views/admin.php:11
 #: ../views/comments.php:22
 #: ../views/create.php:109
-#: ../views/settings.php:23
-#: ../views/admin/category.php:8
-#: ../views/admin/category_create.php:24
 msgid "Cancel"
 msgstr "Annulla"
 
 #: ../views/admin.php:26
 #: ../views/comments.php:45
 #: ../views/create.php:124
-#: ../views/index.php:7
 msgid "Title"
 msgstr "Titolo"
 
 #: ../views/admin.php:27
 #: ../views/create.php:139
-#: ../views/admin/category.php:25
-#: ../views/admin/category_create.php:61
 msgid "Status"
 msgstr "Stato"
 
 #: ../views/admin.php:28
 #: ../views/comments.php:49
-#: ../views/admin/category.php:27
 msgid "Action"
 msgstr "Azioni"
 
@@ -265,13 +250,11 @@ msgstr "Modifica"
 #: ../views/admin.php:42
 #: ../views/comments.php:68
 #: ../views/comment_delete.php:18
-#: ../views/delete.php:18
 msgid "Delete"
 msgstr "Cancella"
 
 #: ../views/comments.php:4
 #: ../views/comment_delete.php:4
-#: ../views/delete.php:4
 msgid "Confirm delete?"
 msgstr "Confirmare?"
 
@@ -292,7 +275,6 @@ msgid "Approved"
 msgstr "Accettato"
 
 #: ../views/comments.php:37
-#: ../views/admin/category_create.php:64
 msgid "Suspended"
 msgstr "Sospeso"
 
@@ -317,27 +299,18 @@ msgid "Suspend"
 msgstr "Sospendere"
 
 #: ../views/comment_delete.php:22
-#: ../views/delete.php:22
 msgid "Confirm?"
 msgstr "Confermare?"
 
 #: ../views/comment_delete.php:26
 #: ../views/create.php:169
 #: ../views/create.php:175
-#: ../views/delete.php:26
-#: ../views/settings.php:44
-#: ../views/settings.php:51
-#: ../views/admin/category_delete.php:13
 msgid "No"
 msgstr "No"
 
 #: ../views/comment_delete.php:27
 #: ../views/create.php:168
 #: ../views/create.php:174
-#: ../views/delete.php:27
-#: ../views/settings.php:43
-#: ../views/settings.php:50
-#: ../views/admin/category_delete.php:14
 msgid "Yes"
 msgstr "S%igrave;"
 
@@ -351,7 +324,6 @@ msgid "Content"
 msgstr "Contenuto"
 
 #: ../views/create.php:8
-#: ../views/admin/category_create.php:8
 msgid "Options"
 msgstr "Impostazione"
 
@@ -373,7 +345,6 @@ msgid "Create News"
 msgstr "Creare Notizia"
 
 #: ../views/create.php:108
-#: ../views/admin/category_create.php:23
 msgid "Save"
 msgstr "Salva"
 
