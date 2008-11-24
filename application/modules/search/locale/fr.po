@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Solaitra:Search\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-19 08:37+0100\n"
+"POT-Creation-Date: 2008-11-23 18:31+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Eugene Hery <hery@serasera.org>\n"
 "Language-Team: Hery serasera.org <hery@serasera.org>\n"
@@ -28,8 +28,9 @@ msgid "No result found"
 msgstr "Aucun resultat trouv&eacute;"
 
 #: ../views/result.php:11
-msgid "Search result"
-msgstr "R&eacute;sultat de la recherche"
+#, fuzzy
+msgid "Search again"
+msgstr "Recherche"
 
 #: ../views/result.php:16
 #: ../views/search_form.php:16
@@ -40,6 +41,10 @@ msgstr "Texte à chercher"
 #: ../views/search_form.php:24
 msgid "Search"
 msgstr "Recherche"
+
+#: ../views/result.php:28
+msgid "Search result"
+msgstr "R&eacute;sultat de la recherche"
 
 #: ../views/search_form.php:11
 msgid "Search text"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Serasera:Theme\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-06 06:53+0100\n"
+"POT-Creation-Date: 2008-11-23 18:32+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Eugene Hery <hery@serasera.org>\n"
 "Language-Team: hery <hery@serasera.org>\n"
@@ -15,25 +15,33 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: index.php:39
-msgid "What's news?"
-msgstr "Inona ny vaovao?"
+#: header.php:47
+msgid "Please fix, no active language"
+msgstr ""
 
-#: index.php:48
-#: index.php:58
+#: index.php:13
+#: index.php:18
+msgid "Search"
+msgstr ""
+
+#: index.php:16
+msgid "Text to search"
+msgstr ""
+
+#: index.php:26
+msgid "News"
+msgstr ""
+
+#: index.php:33
 msgid "More"
 msgstr "Tohiny"
 
-#: index.php:69
-msgid "Forum"
-msgstr "Dinika - forum"
-
-#: index.php:93
-#: index.php:98
-msgid "Other sites"
-msgstr "Takelaka notsongaina"
-
-#: index.php:98
-msgid "Submit your site"
-msgstr "Mampidira takelaka"
+#~ msgid "What's news?"
+#~ msgstr "Inona ny vaovao?"
+#~ msgid "Forum"
+#~ msgstr "Dinika - forum"
+#~ msgid "Other sites"
+#~ msgstr "Takelaka notsongaina"
+#~ msgid "Submit your site"
+#~ msgstr "Mampidira takelaka"
 
