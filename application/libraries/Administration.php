@@ -1,4 +1,11 @@
-<?php
+<?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+ * @version $Id$
+ * @package solaitra
+ * @copyright Copyright (C) 2005 - 2008 Tsiky dia Ampy. All rights reserved.
+ * @license GNU/GPL, see LICENSE.php
+ */
 
 	class Administration {
 		

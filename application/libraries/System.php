@@ -1,4 +1,11 @@
-<?php
+<?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+ * @version $Id$
+ * @package solaitra
+ * @copyright Copyright (C) 2005 - 2008 Tsiky dia Ampy. All rights reserved.
+ * @license GNU/GPL, see LICENSE.php
+ */
 
 	class System {
 		var $version ;
@@ -11,8 +18,8 @@
 			$this->obj->config->set_item('cache_path', './cache/');
 			$dir = $this->obj->config->item('cache_path');
 			$this->obj->load->library('cache', array('dir' => $dir));
-			$this->get_version();
 			$this->get_settings();
+			$this->check_update();
 			$this->find_modules();
 			$this->load_locales();
 			$this->start();
@@ -46,9 +53,16 @@
 			}
 		}
 		
-		function get_version()
+		function check_update()
 		{
-			$this->version = @file_get_contents(APPPATH . "version.txt");
+			
+			$fversion = @file_get_contents(APPPATH . "version.txt");
+			
+			if (isset($fversion) && $fversion > $this->version)
+			{
+				include (APPPATH . "update.php");
+			}
+			
 			/*
 			if ( $revision = @file_get_contents("http://ci-cms.googlecode.com/svn/") )
 			{
@@ -65,6 +79,11 @@
 			{
 				$this->obj->output->cache($this->cache_time);
 			}
+			
+			
+			
+			//update
+			
 		}
 		
 		function get_settings()
