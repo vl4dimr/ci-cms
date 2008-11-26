@@ -168,6 +168,7 @@ CREATE TABLE `ci_users` (
   `status` enum('active','disabled') NOT NULL default 'active',
   `lastvisit` int(11) NOT NULL default '0',
   `registered` int(11) NOT NULL default '0',
+  `activation` varchar(100) NOT NULL default '',
   PRIMARY KEY  (`id`),
   KEY `username` (`username`),
   KEY `password` (`password`),
@@ -196,7 +197,7 @@ CREATE TABLE `ci_modules` (
 -- 
 -- Dump dei dati per la tabella `ci_modules`
 -- 
-INSERT INTO `ci_modules` VALUES (1, 'admin', 0, '1.0.0', 1, 5, '', 'Admin core module');
+INSERT INTO `ci_modules` VALUES (1, 'admin', 0, '1.0.1', 1, 5, '', 'Admin core module');
 INSERT INTO `ci_modules` VALUES (2, 'module', 0, '1.0.0', 1, 20, '', 'Module core module');
 INSERT INTO `ci_modules` VALUES (3, 'page', 1, '1.0.0', 1, 60, '', 'Page core module');
 INSERT INTO `ci_modules` VALUES (4, 'language', 1, '1.0.0', 1, 10, '', 'Language core module');
