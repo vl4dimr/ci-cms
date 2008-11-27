@@ -22,7 +22,7 @@
 			
 			if($this->user->email == '')
 			{
-				$this->session->set_flashdata('notice', __("Please set your email", $this->template['module']));
+				$this->session->set_flashdata('notification', __("Please set your email", $this->template['module']));
 				redirect('admin/member/edit');
 			}
 			$this->load->library('simplepie');
@@ -370,6 +370,7 @@
 					$this->system->clear_cache();
 				}
 				
+				$this->session->set_flashdata("notification", __("Settings saved successfully.", "admin"));
 		
 				redirect('admin/settings');
 			}
