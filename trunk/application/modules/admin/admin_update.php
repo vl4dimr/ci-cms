@@ -10,12 +10,14 @@ $version = "1.0.1";
 
 if ($this->system->modules[$module]['version'] < $version)
 {
-
+	/*
 	$this->load->dbforge();
 	$fields = array(
 		'activation' => array('type' => 'varchar', 'constraint' => '100', 'default' => '')
 	);
+	
 	$this->dbforge->add_column('users', $fields);
+	*/
 	$this->session->set_flashdata("notification", sprintf(__("Admin module updated to %s"), $version)) ;
 	
 	$data = array('version' => $version);

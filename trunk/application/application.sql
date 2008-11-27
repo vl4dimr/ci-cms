@@ -152,6 +152,7 @@ INSERT INTO `ci_settings` VALUES (6, 'theme', 'default');
 INSERT INTO `ci_settings` VALUES (7, 'template', 'index');
 INSERT INTO `ci_settings` VALUES (8, 'page_home', 'home');
 INSERT INTO `ci_settings` VALUES (9, 'debug', '0');
+INSERT INTO `ci_settings` VALUES (10, 'version', '0.2.0.1');
 
 -- --------------------------------------------------------
 
