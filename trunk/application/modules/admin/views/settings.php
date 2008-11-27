@@ -31,7 +31,7 @@
 		<p class="notice"><?=$notice;?></p>
 		<?php endif;?>
 		
-		<p>Use this page to change the global settings for your site.</p>
+		<p><?php echo __("Use this page to change the global settings for your site.", "admin") ?></p>
 		
 		<div id="one">
 		
