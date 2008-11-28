@@ -8,9 +8,9 @@ Some hooks
 
 ===Actions===
 ====page_save====
-_passing $this->input_
+_passing $id : the saved page id_
 
-Tiggered when saving a page. You can then play with the input->post()
+Tiggered when saving a page. You can then play with the page id
 
 ===Filters===
 
