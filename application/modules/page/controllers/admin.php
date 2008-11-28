@@ -190,7 +190,9 @@
 						
 					}				
 				}	
-					
+				
+				$this->plugin->do_action('page_save', $id);
+				
 				$this->session->set_flashdata('notification', 'Page "'.$this->input->post("title").'" has been created, continue editing here');	
 				
 				redirect('admin/page');
