@@ -171,6 +171,7 @@
 			
 			$this->db->where('active', 1);
 			$this->db->where('parent_id', $page['parent_id']);
+			$this->db->where('parent_id <> ', '0');
 			$this->db->where('lang', $this->user->lang);
 			$this->db->order_by('weight');
 			
