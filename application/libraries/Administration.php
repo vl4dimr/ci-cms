@@ -13,6 +13,7 @@
 		{
 			$this->obj =& get_instance();
 			$this->obj->load->helper('dashboard');	
+			$this->obj->load->helper('text');	
 			
 			if ( !$this->obj->user->logged_in && $this->obj->uri->segment(2) != 'login' )
 			{
