@@ -11,6 +11,13 @@ Some hooks
 
 ===Filters===
 
+====page_custom_fields====
+_type = string_
+
+This will show inside the second tab of page create
+
+You can add other fields, like tags etc.
+
 ====member_profile_quick_menu====
 This should return an array to show a quick menu in the member profile form
 {{{
