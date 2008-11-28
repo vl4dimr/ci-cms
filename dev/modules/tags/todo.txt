@@ -1,0 +1,6 @@
+- Thumbnail size
+32, 48, 64, 72, 144, 160
+- Normal size
+200, 288, 320, 400, 512, 576, 640, 720, 800
+
+imgmax query parameter value

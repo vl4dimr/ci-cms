@@ -1,0 +1,603 @@
+
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns='http://www.w3.org/2005/Atom' xmlns:openSearch='http://a9.com/-/spec/opensearchrss/1.0/' xmlns:exif='http://schemas.google.com/photos/exif/2007' xmlns:geo='http://www.w3.org/2003/01/geo/wgs84_pos#' xmlns:gml='http://www.opengis.net/gml' xmlns:georss='http://www.georss.org/georss' xmlns:photo='http://www.pheed.com/pheed/' xmlns:media='http://search.yahoo.com/mrss/' xmlns:batch='http://schemas.google.com/gdata/batch' xmlns:gphoto='http://schemas.google.com/photos/2007'>
+<id>http://picasaweb.google.com/data/feed/api/user/heriniaina.eugene/albumid/5084979558321995569
+</id>
+<updated>2008-09-01T10:39:54.000Z
+</updated>
+<category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/photos/2007#album'/>
+<title type='text'>20070708 Anzio
+</title>
+<subtitle type='text'>
+</subtitle>
+<rights type='text'>public
+</rights>
+<icon>http://lh3.ggpht.com/_F0evlAPl4tw/RpF594fnvzE/AAAAAAAAAIw/KnOSMYSFgEs/s160-c/20070708Anzio.jpg
+</icon>
+<link rel='http://schemas.google.com/g/2005#feed' type='application/atom+xml' href='http://picasaweb.google.com/data/feed/api/user/heriniaina.eugene/albumid/5084979558321995569'/>
+<link rel='http://schemas.google.com/g/2005#post' type='application/atom+xml' href='http://picasaweb.google.com/data/feed/api/user/heriniaina.eugene/albumid/5084979558321995569?tok=jrVxL2horx_sUu7FL5OlQeMpvyo'/>
+<link rel='alternate' type='text/html' href='http://picasaweb.google.com/heriniaina.eugene/20070708Anzio'/>
+<link rel='http://schemas.google.com/photos/2007#slideshow' type='application/x-shockwave-flash' href='http://picasaweb.google.com/s/c/bin/slideshow.swf?host=picasaweb.google.com&amp;RGB=0x000000&amp;feed=http%3A%2F%2Fpicasaweb.google.com%2Fdata%2Ffeed%2Fapi%2Fuser%2Fheriniaina.eugene%2Falbumid%2F5084979558321995569%3Falt%3Drss'/>
+<link rel='http://schemas.google.com/photos/2007#report' type='text/html' href='http://picasaweb.google.com/lh/reportAbuse?uname=heriniaina.eugene&amp;aid=5084979558321995569'/>
+<link rel='http://schemas.google.com/acl/2007#accessControlList' type='application/atom+xml' href='http://picasaweb.google.com/data/feed/api/user/heriniaina.eugene/albumid/5084979558321995569/acl'/>
+<link rel='self' type='application/atom+xml' href='http://picasaweb.google.com/data/feed/api/user/heriniaina.eugene/albumid/5084979558321995569?start-index=1&amp;max-results=1000&amp;imgmax=640&amp;thumbsize=144'/>
+<author>
+<name>Hery
+</name>
+<uri>http://picasaweb.google.com/heriniaina.eugene
+</uri>
+</author>
+<generator version='1.00' uri='http://picasaweb.google.com/'>Picasaweb
+</generator>
+<openSearch:totalResults>7
+</openSearch:totalResults>
+<openSearch:startIndex>1
+</openSearch:startIndex>
+<openSearch:itemsPerPage>1000
+</openSearch:itemsPerPage>
+<gphoto:id>5084979558321995569
+</gphoto:id>
+<gphoto:name>20070708Anzio
+</gphoto:name>
+<gphoto:location>Anzio
+</gphoto:location>
+<gphoto:access>public
+</gphoto:access>
+<gphoto:timestamp>1183912819000
+</gphoto:timestamp>
+<gphoto:numphotos>7
+</gphoto:numphotos>
+<gphoto:numphotosremaining>493
+</gphoto:numphotosremaining>
+<gphoto:bytesUsed>2060482
+</gphoto:bytesUsed>
+<gphoto:user>heriniaina.eugene
+</gphoto:user>
+<gphoto:nickname>Hery
+</gphoto:nickname>
+<gphoto:commentingEnabled>true
+</gphoto:commentingEnabled>
+<gphoto:commentCount>0
+</gphoto:commentCount>
+<georss:where>
+<gml:Point>
+<gml:pos>41.447947 12.629052
+</gml:pos>
+</gml:Point>
+<gml:Envelope>
+<gml:lowerCorner>41.396919 12.5827824
+</gml:lowerCorner>
+<gml:upperCorner>41.4989749 12.6753216
+</gml:upperCorner>
+</gml:Envelope>
+</georss:where>
+<gphoto:allowPrints>true
+</gphoto:allowPrints>
+<gphoto:allowDownloads>true
+</gphoto:allowDownloads>
+<entry>
+<id>http://picasaweb.google.com/data/entry/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979614156570434
+</id>
+<published>2007-07-08T23:57:56.000Z
+</published>
+<updated>2007-07-08T23:57:56.000Z
+</updated>
+<category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/photos/2007#photo'/>
+<title type='text'>IMGP7320.JPG
+</title>
+<summary type='text'>
+</summary>
+<content type='image/jpeg' src='http://lh5.ggpht.com/_F0evlAPl4tw/RpF6BIfnv0I/AAAAAAAAAH8/9xadp9cb5FI/s640/IMGP7320.JPG'/>
+<link rel='http://schemas.google.com/g/2005#feed' type='application/atom+xml' href='http://picasaweb.google.com/data/feed/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979614156570434'/>
+<link rel='alternate' type='text/html' href='http://picasaweb.google.com/lh/photo/DVIbPuTMl3otoiTywXUGow'/>
+<link rel='self' type='application/atom+xml' href='http://picasaweb.google.com/data/entry/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979614156570434'/>
+<link rel='edit' type='application/atom+xml' href='http://picasaweb.google.com/data/entry/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979614156570434/1183939076608239?tok=eTH4OrAW4GtcfkAVUQyugqgaCL4'/>
+<link rel='edit-media' type='image/jpeg' href='http://picasaweb.google.com/data/media/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979614156570434/1183939076608239?tok=pO-ngAxyo07_fIE0hlZJa_7JTDw'/>
+<link rel='media-edit' type='image/jpeg' href='http://picasaweb.google.com/data/media/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979614156570434/1183939076608239?tok=pO-ngAxyo07_fIE0hlZJa_7JTDw'/>
+<link rel='http://schemas.google.com/photos/2007#report' type='text/html' href='http://picasaweb.google.com/lh/reportAbuse?uname=heriniaina.eugene&amp;aid=5084979558321995569&amp;iid=5084979614156570434'/>
+<gphoto:id>5084979614156570434
+</gphoto:id>
+<gphoto:version>1183939076608239
+</gphoto:version>
+<gphoto:position>6.7558886E8
+</gphoto:position>
+<gphoto:albumid>5084979558321995569
+</gphoto:albumid>
+<gphoto:width>768
+</gphoto:width>
+<gphoto:height>1024
+</gphoto:height>
+<gphoto:size>286955
+</gphoto:size>
+<gphoto:client>
+</gphoto:client>
+<gphoto:checksum>9423f40e
+</gphoto:checksum>
+<gphoto:timestamp>1183939076000
+</gphoto:timestamp>
+<exif:tags>
+<exif:fstop>4.8
+</exif:fstop>
+<exif:make>Asahi Optical Co.,Ltd. 
+</exif:make>
+<exif:model>PENTAX Optio330RS
+</exif:model>
+<exif:exposure>0.0025
+</exif:exposure>
+<exif:flash>false
+</exif:flash>
+<exif:focallength>22.8
+</exif:focallength>
+<exif:time>1183924562000
+</exif:time>
+<exif:imageUniqueID>5edd43590cdc40992e42dad4253e1021
+</exif:imageUniqueID>
+</exif:tags>
+<gphoto:commentingEnabled>true
+</gphoto:commentingEnabled>
+<gphoto:commentCount>0
+</gphoto:commentCount>
+<media:group>
+<media:title type='plain'>IMGP7320.JPG
+</media:title>
+<media:description type='plain'>
+</media:description>
+<media:keywords>
+</media:keywords>
+<media:content url='http://lh5.ggpht.com/_F0evlAPl4tw/RpF6BIfnv0I/AAAAAAAAAH8/9xadp9cb5FI/s640/IMGP7320.JPG' height='640' width='480' type='image/jpeg' medium='image'/>
+<media:thumbnail url='http://lh5.ggpht.com/_F0evlAPl4tw/RpF6BIfnv0I/AAAAAAAAAH8/9xadp9cb5FI/s144/IMGP7320.JPG' height='144' width='108'/>
+<media:credit>Hery
+</media:credit>
+</media:group>
+</entry>
+<entry>
+<id>http://picasaweb.google.com/data/entry/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979657106243410
+</id>
+<published>2007-07-08T23:58:06.000Z
+</published>
+<updated>2008-09-01T10:39:54.000Z
+</updated>
+<category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/photos/2007#photo'/>
+<title type='text'>IMGP7322.JPG
+</title>
+<summary type='text'>
+</summary>
+<content type='image/jpeg' src='http://lh3.ggpht.com/_F0evlAPl4tw/RpF6Dofnv1I/AAAAAAAAAIE/8LzphIWFnNo/s640/IMGP7322.JPG'/>
+<link rel='http://schemas.google.com/g/2005#feed' type='application/atom+xml' href='http://picasaweb.google.com/data/feed/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979657106243410'/>
+<link rel='alternate' type='text/html' href='http://picasaweb.google.com/lh/photo/8a4Wdt-3CUfEfVonG32thw'/>
+<link rel='self' type='application/atom+xml' href='http://picasaweb.google.com/data/entry/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979657106243410'/>
+<link rel='edit' type='application/atom+xml' href='http://picasaweb.google.com/data/entry/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979657106243410/1220265594077000?tok=6lPhymsxTjHtk9BzXxFiLH3UNP4'/>
+<link rel='edit-media' type='image/jpeg' href='http://picasaweb.google.com/data/media/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979657106243410/1220265594077000?tok=b7hRpI2hrLforPwQ9D4XzDcYV88'/>
+<link rel='media-edit' type='image/jpeg' href='http://picasaweb.google.com/data/media/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979657106243410/1220265594077000?tok=b7hRpI2hrLforPwQ9D4XzDcYV88'/>
+<link rel='http://schemas.google.com/photos/2007#report' type='text/html' href='http://picasaweb.google.com/lh/reportAbuse?uname=heriniaina.eugene&amp;aid=5084979558321995569&amp;iid=5084979657106243410'/>
+<gphoto:id>5084979657106243410
+</gphoto:id>
+<gphoto:version>1220265594077000
+</gphoto:version>
+<gphoto:position>6.7559661E8
+</gphoto:position>
+<gphoto:albumid>5084979558321995569
+</gphoto:albumid>
+<gphoto:width>768
+</gphoto:width>
+<gphoto:height>1024
+</gphoto:height>
+<gphoto:size>289710
+</gphoto:size>
+<gphoto:client>
+</gphoto:client>
+<gphoto:checksum>a91177e7
+</gphoto:checksum>
+<gphoto:timestamp>1183939086000
+</gphoto:timestamp>
+<exif:tags>
+<exif:fstop>3.8
+</exif:fstop>
+<exif:make>Asahi Optical Co.,Ltd. 
+</exif:make>
+<exif:model>PENTAX Optio330RS
+</exif:model>
+<exif:exposure>0.0010
+</exif:exposure>
+<exif:flash>false
+</exif:flash>
+<exif:focallength>15.2
+</exif:focallength>
+<exif:time>1183924590000
+</exif:time>
+<exif:imageUniqueID>ec8d03907f8958d9c68bac1255d53fb9
+</exif:imageUniqueID>
+</exif:tags>
+<gphoto:commentingEnabled>true
+</gphoto:commentingEnabled>
+<gphoto:commentCount>2
+</gphoto:commentCount>
+<media:group>
+<media:title type='plain'>IMGP7322.JPG
+</media:title>
+<media:description type='plain'>
+</media:description>
+<media:keywords>
+</media:keywords>
+<media:content url='http://lh3.ggpht.com/_F0evlAPl4tw/RpF6Dofnv1I/AAAAAAAAAIE/8LzphIWFnNo/s640/IMGP7322.JPG' height='640' width='480' type='image/jpeg' medium='image'/>
+<media:thumbnail url='http://lh3.ggpht.com/_F0evlAPl4tw/RpF6Dofnv1I/AAAAAAAAAIE/8LzphIWFnNo/s144/IMGP7322.JPG' height='144' width='108'/>
+<media:credit>Hery
+</media:credit>
+</media:group>
+</entry>
+<entry>
+<id>http://picasaweb.google.com/data/entry/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979730120687458
+</id>
+<published>2007-07-08T23:58:23.000Z
+</published>
+<updated>2007-07-08T23:58:23.000Z
+</updated>
+<category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/photos/2007#photo'/>
+<title type='text'>IMGP7319.JPG
+</title>
+<summary type='text'>
+</summary>
+<content type='image/jpeg' src='http://lh4.ggpht.com/_F0evlAPl4tw/RpF6H4fnv2I/AAAAAAAAAIM/PkKK-5IzK0I/s640/IMGP7319.JPG'/>
+<link rel='http://schemas.google.com/g/2005#feed' type='application/atom+xml' href='http://picasaweb.google.com/data/feed/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979730120687458'/>
+<link rel='alternate' type='text/html' href='http://picasaweb.google.com/lh/photo/sOEVf7X22ojk78pn0PvRnQ'/>
+<link rel='self' type='application/atom+xml' href='http://picasaweb.google.com/data/entry/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979730120687458'/>
+<link rel='edit' type='application/atom+xml' href='http://picasaweb.google.com/data/entry/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979730120687458/1183939103853632?tok=saQj-Pjp3pKCXgzNNOXTWOdJLNI'/>
+<link rel='edit-media' type='image/jpeg' href='http://picasaweb.google.com/data/media/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979730120687458/1183939103853632?tok=uJXpyj6lTGoboeyRWBAKwWgE76U'/>
+<link rel='media-edit' type='image/jpeg' href='http://picasaweb.google.com/data/media/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979730120687458/1183939103853632?tok=uJXpyj6lTGoboeyRWBAKwWgE76U'/>
+<link rel='http://schemas.google.com/photos/2007#report' type='text/html' href='http://picasaweb.google.com/lh/reportAbuse?uname=heriniaina.eugene&amp;aid=5084979558321995569&amp;iid=5084979730120687458'/>
+<gphoto:id>5084979730120687458
+</gphoto:id>
+<gphoto:version>1183939103853632
+</gphoto:version>
+<gphoto:position>6.7561594E8
+</gphoto:position>
+<gphoto:albumid>5084979558321995569
+</gphoto:albumid>
+<gphoto:width>768
+</gphoto:width>
+<gphoto:height>1024
+</gphoto:height>
+<gphoto:size>290962
+</gphoto:size>
+<gphoto:client>
+</gphoto:client>
+<gphoto:checksum>942872f3
+</gphoto:checksum>
+<gphoto:timestamp>1183939103000
+</gphoto:timestamp>
+<exif:tags>
+<exif:fstop>4.8
+</exif:fstop>
+<exif:make>Asahi Optical Co.,Ltd. 
+</exif:make>
+<exif:model>PENTAX Optio330RS
+</exif:model>
+<exif:exposure>0.0025
+</exif:exposure>
+<exif:flash>false
+</exif:flash>
+<exif:focallength>22.8
+</exif:focallength>
+<exif:time>1183924555000
+</exif:time>
+<exif:imageUniqueID>0073e46fc5e89d151964264987dffb50
+</exif:imageUniqueID>
+</exif:tags>
+<gphoto:commentingEnabled>true
+</gphoto:commentingEnabled>
+<gphoto:commentCount>0
+</gphoto:commentCount>
+<media:group>
+<media:title type='plain'>IMGP7319.JPG
+</media:title>
+<media:description type='plain'>
+</media:description>
+<media:keywords>
+</media:keywords>
+<media:content url='http://lh4.ggpht.com/_F0evlAPl4tw/RpF6H4fnv2I/AAAAAAAAAIM/PkKK-5IzK0I/s640/IMGP7319.JPG' height='640' width='480' type='image/jpeg' medium='image'/>
+<media:thumbnail url='http://lh4.ggpht.com/_F0evlAPl4tw/RpF6H4fnv2I/AAAAAAAAAIM/PkKK-5IzK0I/s144/IMGP7319.JPG' height='144' width='108'/>
+<media:credit>Hery
+</media:credit>
+</media:group>
+</entry>
+<entry>
+<id>http://picasaweb.google.com/data/entry/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979768775393138
+</id>
+<published>2007-07-08T23:58:31.000Z
+</published>
+<updated>2007-07-08T23:58:31.000Z
+</updated>
+<category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/photos/2007#photo'/>
+<title type='text'>IMGP7319.JPG
+</title>
+<summary type='text'>
+</summary>
+<content type='image/jpeg' src='http://lh5.ggpht.com/_F0evlAPl4tw/RpF6KIfnv3I/AAAAAAAAAIU/LnRUjBJzwpk/s640/IMGP7319.JPG'/>
+<link rel='http://schemas.google.com/g/2005#feed' type='application/atom+xml' href='http://picasaweb.google.com/data/feed/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979768775393138'/>
+<link rel='alternate' type='text/html' href='http://picasaweb.google.com/lh/photo/YwQAIOBTHLXYItmagGwGyQ'/>
+<link rel='self' type='application/atom+xml' href='http://picasaweb.google.com/data/entry/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979768775393138'/>
+<link rel='edit' type='application/atom+xml' href='http://picasaweb.google.com/data/entry/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979768775393138/1183939111970027?tok=oPrTPfHirsVD-mdWWhL-cmu91X4'/>
+<link rel='edit-media' type='image/jpeg' href='http://picasaweb.google.com/data/media/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979768775393138/1183939111970027?tok=B-h02NNdDByALMSxtMxCwEP3tbo'/>
+<link rel='media-edit' type='image/jpeg' href='http://picasaweb.google.com/data/media/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979768775393138/1183939111970027?tok=B-h02NNdDByALMSxtMxCwEP3tbo'/>
+<link rel='http://schemas.google.com/photos/2007#report' type='text/html' href='http://picasaweb.google.com/lh/reportAbuse?uname=heriniaina.eugene&amp;aid=5084979558321995569&amp;iid=5084979768775393138'/>
+<gphoto:id>5084979768775393138
+</gphoto:id>
+<gphoto:version>1183939111970027
+</gphoto:version>
+<gphoto:position>6.7562208E8
+</gphoto:position>
+<gphoto:albumid>5084979558321995569
+</gphoto:albumid>
+<gphoto:width>768
+</gphoto:width>
+<gphoto:height>1024
+</gphoto:height>
+<gphoto:size>290962
+</gphoto:size>
+<gphoto:client>
+</gphoto:client>
+<gphoto:checksum>942872f3
+</gphoto:checksum>
+<gphoto:timestamp>1183939111000
+</gphoto:timestamp>
+<exif:tags>
+<exif:fstop>4.8
+</exif:fstop>
+<exif:make>Asahi Optical Co.,Ltd. 
+</exif:make>
+<exif:model>PENTAX Optio330RS
+</exif:model>
+<exif:exposure>0.0025
+</exif:exposure>
+<exif:flash>false
+</exif:flash>
+<exif:focallength>22.8
+</exif:focallength>
+<exif:time>1183924555000
+</exif:time>
+<exif:imageUniqueID>0073e46fc5e89d151964264987dffb50
+</exif:imageUniqueID>
+</exif:tags>
+<gphoto:commentingEnabled>true
+</gphoto:commentingEnabled>
+<gphoto:commentCount>0
+</gphoto:commentCount>
+<media:group>
+<media:title type='plain'>IMGP7319.JPG
+</media:title>
+<media:description type='plain'>
+</media:description>
+<media:keywords>
+</media:keywords>
+<media:content url='http://lh5.ggpht.com/_F0evlAPl4tw/RpF6KIfnv3I/AAAAAAAAAIU/LnRUjBJzwpk/s640/IMGP7319.JPG' height='640' width='480' type='image/jpeg' medium='image'/>
+<media:thumbnail url='http://lh5.ggpht.com/_F0evlAPl4tw/RpF6KIfnv3I/AAAAAAAAAIU/LnRUjBJzwpk/s144/IMGP7319.JPG' height='144' width='108'/>
+<media:credit>Hery
+</media:credit>
+</media:group>
+</entry>
+<entry>
+<id>http://picasaweb.google.com/data/entry/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979803135131522
+</id>
+<published>2007-07-08T23:58:39.000Z
+</published>
+<updated>2007-07-08T23:58:39.000Z
+</updated>
+<category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/photos/2007#photo'/>
+<title type='text'>IMGP7305.JPG
+</title>
+<summary type='text'>
+</summary>
+<content type='image/jpeg' src='http://lh5.ggpht.com/_F0evlAPl4tw/RpF6MIfnv4I/AAAAAAAAAIc/nIH_m-I1QHU/s640/IMGP7305.JPG'/>
+<link rel='http://schemas.google.com/g/2005#feed' type='application/atom+xml' href='http://picasaweb.google.com/data/feed/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979803135131522'/>
+<link rel='alternate' type='text/html' href='http://picasaweb.google.com/lh/photo/SmiESpbxwYFxmlUomUKQFQ'/>
+<link rel='self' type='application/atom+xml' href='http://picasaweb.google.com/data/entry/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979803135131522'/>
+<link rel='edit' type='application/atom+xml' href='http://picasaweb.google.com/data/entry/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979803135131522/1183939119955246?tok=gjLVjuI3DImCHeYcsE1jmZfJTTo'/>
+<link rel='edit-media' type='image/jpeg' href='http://picasaweb.google.com/data/media/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979803135131522/1183939119955246?tok=P6Sdj9oLRvBMLVrPXuprIKa3-XM'/>
+<link rel='media-edit' type='image/jpeg' href='http://picasaweb.google.com/data/media/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979803135131522/1183939119955246?tok=P6Sdj9oLRvBMLVrPXuprIKa3-XM'/>
+<link rel='http://schemas.google.com/photos/2007#report' type='text/html' href='http://picasaweb.google.com/lh/reportAbuse?uname=heriniaina.eugene&amp;aid=5084979558321995569&amp;iid=5084979803135131522'/>
+<gphoto:id>5084979803135131522
+</gphoto:id>
+<gphoto:version>1183939119955246
+</gphoto:version>
+<gphoto:position>6.7563014E8
+</gphoto:position>
+<gphoto:albumid>5084979558321995569
+</gphoto:albumid>
+<gphoto:width>768
+</gphoto:width>
+<gphoto:height>1024
+</gphoto:height>
+<gphoto:size>301856
+</gphoto:size>
+<gphoto:client>
+</gphoto:client>
+<gphoto:checksum>5cdb4f1e
+</gphoto:checksum>
+<gphoto:timestamp>1183939119000
+</gphoto:timestamp>
+<exif:tags>
+<exif:fstop>2.6
+</exif:fstop>
+<exif:make>Asahi Optical Co.,Ltd. 
+</exif:make>
+<exif:model>PENTAX Optio330RS
+</exif:model>
+<exif:exposure>0.003125
+</exif:exposure>
+<exif:flash>false
+</exif:flash>
+<exif:focallength>7.6
+</exif:focallength>
+<exif:time>1183920062000
+</exif:time>
+<exif:imageUniqueID>a1ad2f9973702a06bfaa98c77eb684fb
+</exif:imageUniqueID>
+</exif:tags>
+<gphoto:commentingEnabled>true
+</gphoto:commentingEnabled>
+<gphoto:commentCount>0
+</gphoto:commentCount>
+<media:group>
+<media:title type='plain'>IMGP7305.JPG
+</media:title>
+<media:description type='plain'>
+</media:description>
+<media:keywords>
+</media:keywords>
+<media:content url='http://lh5.ggpht.com/_F0evlAPl4tw/RpF6MIfnv4I/AAAAAAAAAIc/nIH_m-I1QHU/s640/IMGP7305.JPG' height='640' width='480' type='image/jpeg' medium='image'/>
+<media:thumbnail url='http://lh5.ggpht.com/_F0evlAPl4tw/RpF6MIfnv4I/AAAAAAAAAIc/nIH_m-I1QHU/s144/IMGP7305.JPG' height='144' width='108'/>
+<media:credit>Hery
+</media:credit>
+</media:group>
+</entry>
+<entry>
+<id>http://picasaweb.google.com/data/entry/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979837494869906
+</id>
+<published>2007-07-08T23:58:48.000Z
+</published>
+<updated>2007-07-08T23:58:48.000Z
+</updated>
+<category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/photos/2007#photo'/>
+<title type='text'>IMGP7317.JPG
+</title>
+<summary type='text'>
+</summary>
+<content type='image/jpeg' src='http://lh5.ggpht.com/_F0evlAPl4tw/RpF6OIfnv5I/AAAAAAAAAIk/H5tLEUFyAGc/s640/IMGP7317.JPG'/>
+<link rel='http://schemas.google.com/g/2005#feed' type='application/atom+xml' href='http://picasaweb.google.com/data/feed/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979837494869906'/>
+<link rel='alternate' type='text/html' href='http://picasaweb.google.com/lh/photo/X5wtkaiIIOznpQyWOE1QKg'/>
+<link rel='self' type='application/atom+xml' href='http://picasaweb.google.com/data/entry/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979837494869906'/>
+<link rel='edit' type='application/atom+xml' href='http://picasaweb.google.com/data/entry/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979837494869906/1183939128017231?tok=ilQN2kBO-8_4fKc4LGpisvAzeho'/>
+<link rel='edit-media' type='image/jpeg' href='http://picasaweb.google.com/data/media/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979837494869906/1183939128017231?tok=-Y-Mic-KygJ_YOaaN-AXznC_6lM'/>
+<link rel='media-edit' type='image/jpeg' href='http://picasaweb.google.com/data/media/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979837494869906/1183939128017231?tok=-Y-Mic-KygJ_YOaaN-AXznC_6lM'/>
+<link rel='http://schemas.google.com/photos/2007#report' type='text/html' href='http://picasaweb.google.com/lh/reportAbuse?uname=heriniaina.eugene&amp;aid=5084979558321995569&amp;iid=5084979837494869906'/>
+<gphoto:id>5084979837494869906
+</gphoto:id>
+<gphoto:version>1183939128017231
+</gphoto:version>
+<gphoto:position>6.7563821E8
+</gphoto:position>
+<gphoto:albumid>5084979558321995569
+</gphoto:albumid>
+<gphoto:width>768
+</gphoto:width>
+<gphoto:height>1024
+</gphoto:height>
+<gphoto:size>302286
+</gphoto:size>
+<gphoto:client>
+</gphoto:client>
+<gphoto:checksum>94236f69
+</gphoto:checksum>
+<gphoto:timestamp>1183939128000
+</gphoto:timestamp>
+<exif:tags>
+<exif:fstop>5.0
+</exif:fstop>
+<exif:make>Asahi Optical Co.,Ltd. 
+</exif:make>
+<exif:model>PENTAX Optio330RS
+</exif:model>
+<exif:exposure>0.0025
+</exif:exposure>
+<exif:flash>false
+</exif:flash>
+<exif:focallength>7.6
+</exif:focallength>
+<exif:time>1183923655000
+</exif:time>
+<exif:imageUniqueID>c8f181bda1ebc4ce781405d750cbfc9f
+</exif:imageUniqueID>
+</exif:tags>
+<gphoto:commentingEnabled>true
+</gphoto:commentingEnabled>
+<gphoto:commentCount>0
+</gphoto:commentCount>
+<media:group>
+<media:title type='plain'>IMGP7317.JPG
+</media:title>
+<media:description type='plain'>
+</media:description>
+<media:keywords>
+</media:keywords>
+<media:content url='http://lh5.ggpht.com/_F0evlAPl4tw/RpF6OIfnv5I/AAAAAAAAAIk/H5tLEUFyAGc/s640/IMGP7317.JPG' height='640' width='480' type='image/jpeg' medium='image'/>
+<media:thumbnail url='http://lh5.ggpht.com/_F0evlAPl4tw/RpF6OIfnv5I/AAAAAAAAAIk/H5tLEUFyAGc/s144/IMGP7317.JPG' height='144' width='108'/>
+<media:credit>Hery
+</media:credit>
+</media:group>
+</entry>
+<entry>
+<id>http://picasaweb.google.com/data/entry/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979871854608290
+</id>
+<published>2007-07-08T23:58:56.000Z
+</published>
+<updated>2007-07-08T23:58:56.000Z
+</updated>
+<category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/photos/2007#photo'/>
+<title type='text'>IMGP7316.JPG
+</title>
+<summary type='text'>
+</summary>
+<content type='image/jpeg' src='http://lh5.ggpht.com/_F0evlAPl4tw/RpF6QIfnv6I/AAAAAAAAAIs/UVdpKUpRmWs/s640/IMGP7316.JPG'/>
+<link rel='http://schemas.google.com/g/2005#feed' type='application/atom+xml' href='http://picasaweb.google.com/data/feed/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979871854608290'/>
+<link rel='alternate' type='text/html' href='http://picasaweb.google.com/lh/photo/NTL5iaJqHBRnS7nYXIpErQ'/>
+<link rel='self' type='application/atom+xml' href='http://picasaweb.google.com/data/entry/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979871854608290'/>
+<link rel='edit' type='application/atom+xml' href='http://picasaweb.google.com/data/entry/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979871854608290/1183939136007529?tok=p8qiYUUoOzuFDUvyNEsrnUrngWo'/>
+<link rel='edit-media' type='image/jpeg' href='http://picasaweb.google.com/data/media/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979871854608290/1183939136007529?tok=t-XxK16i-uLA2l6IiqptHdEqEzw'/>
+<link rel='media-edit' type='image/jpeg' href='http://picasaweb.google.com/data/media/api/user/heriniaina.eugene/albumid/5084979558321995569/photoid/5084979871854608290/1183939136007529?tok=t-XxK16i-uLA2l6IiqptHdEqEzw'/>
+<link rel='http://schemas.google.com/photos/2007#report' type='text/html' href='http://picasaweb.google.com/lh/reportAbuse?uname=heriniaina.eugene&amp;aid=5084979558321995569&amp;iid=5084979871854608290'/>
+<gphoto:id>5084979871854608290
+</gphoto:id>
+<gphoto:version>1183939136007529
+</gphoto:version>
+<gphoto:position>6.7564621E8
+</gphoto:position>
+<gphoto:albumid>5084979558321995569
+</gphoto:albumid>
+<gphoto:width>768
+</gphoto:width>
+<gphoto:height>1024
+</gphoto:height>
+<gphoto:size>297751
+</gphoto:size>
+<gphoto:client>
+</gphoto:client>
+<gphoto:checksum>877569f2
+</gphoto:checksum>
+<gphoto:timestamp>1183939135000
+</gphoto:timestamp>
+<exif:tags>
+<exif:fstop>5.0
+</exif:fstop>
+<exif:make>Asahi Optical Co.,Ltd. 
+</exif:make>
+<exif:model>PENTAX Optio330RS
+</exif:model>
+<exif:exposure>0.0025
+</exif:exposure>
+<exif:flash>false
+</exif:flash>
+<exif:focallength>7.6
+</exif:focallength>
+<exif:time>1183923640000
+</exif:time>
+<exif:imageUniqueID>925562ef2b9a6297e854dae66f894822
+</exif:imageUniqueID>
+</exif:tags>
+<gphoto:commentingEnabled>true
+</gphoto:commentingEnabled>
+<gphoto:commentCount>0
+</gphoto:commentCount>
+<media:group>
+<media:title type='plain'>IMGP7316.JPG
+</media:title>
+<media:description type='plain'>
+</media:description>
+<media:keywords>
+</media:keywords>
+<media:content url='http://lh5.ggpht.com/_F0evlAPl4tw/RpF6QIfnv6I/AAAAAAAAAIs/UVdpKUpRmWs/s640/IMGP7316.JPG' height='640' width='480' type='image/jpeg' medium='image'/>
+<media:thumbnail url='http://lh5.ggpht.com/_F0evlAPl4tw/RpF6QIfnv6I/AAAAAAAAAIs/UVdpKUpRmWs/s144/IMGP7316.JPG' height='144' width='108'/>
+<media:credit>Hery
+</media:credit>
+</media:group>
+</entry>
+</feed>
