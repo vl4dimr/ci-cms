@@ -7,7 +7,10 @@ In my old cms there are some hooks that can catch events easily. I put it in ci-
 Some hooks
 
 ===Actions===
+====page_save====
+_passing $this->input_
 
+Tiggered when saving a page. You can then play with the input->post()
 
 ===Filters===
 
