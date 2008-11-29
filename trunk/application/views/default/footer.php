@@ -1,14 +1,15 @@
-<br class="clearfloat" />
-
-</div></div>
-<!-- [Main] end -->
-
-<!-- [Footer] start -->
+			</td>
+			</tr>
+		</tbody>
+		</table>
+<div class='clear'>&nbsp;</div>
+</div>
 <div id="footer">
-<p>Powered by <a href="http://code.google.com/p/ci-cms/">ci-cms <?=$this->system->version?></a><br />Page rendered in {elapsed_time} seconds</p>
+<div id="footer-inner">
+Concept and Design &copy; Serasera.org: <a href="http://hery.serasera.org">Eugene Hery</a> <img src="http://serasera.org/images/seraserapowered.gif" width="80" height="15" /> Tel +39 338 744 2412 (Italie)
+<br />Page rendered in {elapsed_time} seconds</p>
 </div>
-<!-- [Footer] end -->
-</div>
-<!-- [Base] end -->
+</div><!-- [Base] end -->
+
 </body>
 </html>

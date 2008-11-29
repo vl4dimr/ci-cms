@@ -6,67 +6,60 @@
 	<meta name="keywords" content="<?php if (!empty($meta_keywords)):?><?php echo $meta_keywords?> - <?php endif; ?><?php echo $this->system->meta_keywords;?>" />
 	<meta name="description" content="<?php if (!empty($meta_description)):?><?php echo $meta_description?> - <?php endif; ?><?php echo $this->system->meta_description;?>" />
 	<meta name="robots" content="index,follow" />
-	<link rel="shortcut icon" href="<?=base_url()?>application/views/<?php echo $this->system->theme?>/images/favicon.ico" type="image/x-icon" />
-	<link rel="stylesheet" href="<?=base_url()?>application/views/<?php echo $this->system->theme?>/style/stylesheet.css" type="text/css" media="screen" charset="utf-8" />
-	<link rel="stylesheet" href="<?=base_url()?>application/views/<?php echo $this->system->theme?>/style/superfish.css" type="text/css" media="screen" charset="utf-8" />
+	<link rel="shortcut icon" href="<?=base_url()?>application/views/<?php echo $this->system->theme ?>/images/favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" href="<?=base_url()?>application/views/<?php echo $this->system->theme ?>/style/stylesheet.css" type="text/css" media="screen" charset="utf-8" />
 	<!--[if IE]>
-		<link rel="stylesheet" href="<?=base_url()?>application/views/<?php echo $this->system->theme?>/style/iefix.css" type="text/css" media="screen" charset="utf-8" />
+		<link rel="stylesheet" href="<?=base_url()?>application/views/<?php echo $this->system->theme ?>/style/iefix.css" type="text/css" media="screen" charset="utf-8" />
 	<![endif]-->
-	<script src="<?=base_url()?>application/views/<?php echo $this->system->theme?>/javascript/jquery.js" type="text/javascript"></script>
-	<script src="<?=base_url()?>application/views/<?php echo $this->system->theme?>/javascript/sitelib.js" type="text/javascript"></script>
-	<script src="<?=base_url()?>application/views/<?php echo $this->system->theme?>/javascript/external.js" type="text/javascript"></script>
-	<script src="<?=base_url()?>application/views/<?php echo $this->system->theme?>/javascript/superfish.js" type="text/javascript"></script>
-	<script type="text/javascript">
-	$(document).ready(function(){
-	$("ul.nav").superfish({
-		animation : { opacity:"show", height:"show" }
-	});
-	});
-	</script>
+	<script src="<?=base_url()?>application/views/<?php echo $this->system->theme ?>/javascript/jquery.js" type="text/javascript"></script>
+	<script src="<?=base_url()?>application/views/<?php echo $this->system->theme ?>/javascript/sitelib.js" type="text/javascript"></script>
+	<script src="<?=base_url()?>application/views/<?php echo $this->system->theme ?>/javascript/external.js" type="text/javascript"></script>
+
+<?php $this->plugin->do_action('header');?>
 </head>
 
 <body>
 
-<!-- [Base] start -->
-<div id="base">
-
-<!-- [Header] start -->
-<div id="header">
-	<a class="logo" href="<?=base_url()?>" title="<?=$this->system->site_name?>">
-		<span><?=$this->system->site_name?></span>
-	</a>
-</div>
-<!-- [Header] end -->
-
-<!-- [Navigation] start -->
-<div id="navigation1">
-	<div id="navigation2">
-<?=$this->navigation->print_menu() ?>
-	</div>
-</div>
-<!-- [Navigation] end -->
-
-
-<!-- [Breadcrumbs] start -->
-<div id="breadcrumbs">
-	<span class="left">
-		<b><?=__("You are here:")?></b><a href="<?=base_url()?>"><?=$this->system->site_name?></a><?php foreach ($breadcrumb as $crumb): ?>&nbsp;&raquo;&nbsp;<a href="<?=site_url($crumb['uri'])?>"><?=$crumb['title']?></a><?php endforeach ?>
-	</span>
-	<span class="right">Today is <?=date('d.m.Y')?></span>
-</div>
-<!-- [Breadcrumbs] end -->
-
-<br class="clearfloat none" />
-
-<!-- [Main] start -->
-<div id="main">
-<?php if ($this->uri->uri_string() == "" || $this->system->page_home == substr($this->uri->uri_string(), 1)) :?>
-
-<div id="right">
-<?= $this->block->get('page_latest_pages')?>
-</div>
-<div id="left">
-
-<?php else: ?>
-<div id="content">
-<?php endif; ?>
+<div id="wrapper" align="center">
+		<div id="header">
+			<div id="logo">
+			<a href="<?=base_url()?>"></a>
+			</div>
+			<div id="topmenu">
+			<!-- left -->
+			<?php if ($navs = $this->navigation->get()) :?>
+			<table cellspacing="1">
+				<tr>
+			<?php $i=1; foreach ($navs as $nav) : ?>
+					<td align="center" class="<?php if($i == 1): ?>first<?php endif;?>"><a href="<?php echo $nav['uri']?>" class="menu_<?=$i?>"/><?=$nav['title']?></a></td>
+			<?php $i++; endforeach; ?>
+			<?php endif; ?>
+				<td align="center">
+				<?php 
+				if ( $this->user->logged_in ):
+					echo "<a href='" . site_url('member/profile') . "'>" . __("My profile", "default") . "</a>";
+					echo "<td align='center'>";
+					echo "<a href='" . site_url('member/logout') . "'>" . __("Sign out", "default") . "</a>";
+					
+				else:
+					echo "<a href='" . site_url('member/login') . "'>" . __("Sign in", "default") . "</a>";
+				endif;
+				?>
+				</td>
+				<td align="right" valign="middle" class="last">
+				<div id="langbar">
+					<?php if ($languages = $this->locale->get_active()) :?>
+					<ul>
+					<?php foreach ($languages as $language): ?>
+						<li><a href='<?php echo site_url( $language['code']) ?>' <?php echo ($this->session->userdata('lang') == $language['code']) ? "class='active'" : ""?> ><img src="<?=base_url()?>application/views/admin/images/flags/<?php echo $language['code']?>.gif" alt="<?php echo $language['name'] ?>" border="0" width="20" height="14"></a></li>
+					<?php endforeach;?>
+					</ul>
+					<?php else : ?>
+					<span style="color: white; font-weight: bold"><?php echo __("Please fix, no active language")?></span>
+					<?php endif; ?>
+				</div>
+				</td>
+				</tr>
+			</table>
+			</div>
+		</div>
