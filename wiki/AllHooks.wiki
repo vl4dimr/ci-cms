@@ -7,6 +7,16 @@ In my old cms there are some hooks that can catch events easily. I put it in ci-
 Some hooks
 
 ===Actions===
+====news_save====
+_passing $id : the saved news id_
+
+Tiggered when saving or updating a news.
+
+====news_delete====
+_passing $id : the id of the deleted news_
+
+Tiggered when deleting an article.
+
 ====page_save====
 _passing $id : the saved page id_
 
@@ -17,6 +27,10 @@ _passing $id : the id of the deleted page_
 
 Tiggered when deleting a page.
 ===Filters===
+
+====news_custom_fields====
+_type = string_
+
 
 ====page_custom_fields====
 _type = string_
