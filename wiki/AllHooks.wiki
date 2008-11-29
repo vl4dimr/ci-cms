@@ -12,6 +12,10 @@ _passing $id : the saved page id_
 
 Tiggered when saving a page. You can then play with the page id
 
+====page_delete====
+_passing $id : the id of the deleted page_
+
+Tiggered when deleting a page.
 ===Filters===
 
 ====page_custom_fields====
