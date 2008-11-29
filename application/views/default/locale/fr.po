@@ -1,0 +1,68 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: CI-CMS:Africa-Theme\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-11-23 18:36+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Eugene Hery <hery@serasera.org>\n"
+"Language-Team: hery <hery@serasera.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: French\n"
+"X-Poedit-Country: FRANCE\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: header.php:40
+msgid "My profile"
+msgstr "Mon profile"
+
+#: header.php:42
+msgid "Sign out"
+msgstr "Déconnecter"
+
+#: header.php:45
+msgid "Sign in"
+msgstr "Identification"
+
+#: header.php:58
+msgid "Please fix, no active language"
+msgstr "Il n'y a pas de langue active"
+
+#: index.php:12
+msgid "Latest inserted"
+msgstr "Derniers liens insérés"
+
+#: index.php:26
+msgid "Submit a site"
+msgstr "Insérer un site"
+
+#: index.php:28
+msgid "Do you have a site about Africa, or is there a site about Africa that you know interesting but not yet here?"
+msgstr "Vous avez un site sur l'Afrique, ou il y a un site intéressant qui parle de l'Afrique que vous voulez partager ici?"
+
+#: index.php:31
+msgid "Submit your site here"
+msgstr "Insérer un site ici"
+
+#: index.php:41
+msgid "Categories"
+msgstr "Catégories"
+
+#: index.php:53
+msgid "News"
+msgstr "Actualités"
+
+#: index.php:60
+msgid "More"
+msgstr "Suite"
+
+#~ msgid "What's news?"
+#~ msgstr "Inona ny vaovao?"
+#~ msgid "Forum"
+#~ msgstr "Dinika - forum"
+#~ msgid "Other sites"
+#~ msgstr "Takelaka notsongaina"
+
