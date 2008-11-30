@@ -251,6 +251,7 @@
 				$this->cache->remove('pagelist'.$this->user->lang, 'page');				
 				
 				
+				$this->plugin->do_action('page_save', $this->input->post('id'));
 				
 			
 				if ($image_ids = $this->input->post('image_ids'))
@@ -366,6 +367,7 @@
 				
 				$this->session->set_flashdata('notification', 'Page has been deleted.');
 				$this->cache->remove('pagelist'.$this->user->lang, 'page'); 
+				$this->plugin->do_action('page_delete', $this->input->post('id'));
 				redirect('admin/page');
 			}
 			else
