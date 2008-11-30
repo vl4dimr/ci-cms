@@ -1,24 +1,12 @@
 <!-- [Content] start -->
-<h1><?php echo __("All albums", "palbum") ?></h1>
-<?php if (isset($this->user->level['palbum']) && $this->user->level['palbum'] >= LEVEL_ADD): ?>
-<div class="toolbar">
-<a href="<?php echo site_url('palbum/refresh') ?>"><?php _e("Refresh", "palbum") ?></a>
-</div>
-<?php endif;?>
+<h1><?php echo __("Tags", $this->template['module']) ?></h1>
+<div id="tags">
+<?php if ($tags): ?>
+<?php  $i = 1; foreach ($tags as $tag) : ?>
 
-<div id="palbum">
-<?php  foreach ($albums as $album) : ?>
-<div class="container">
-<div class="image">
-<a href="<?php echo site_url('palbum/index/' . $album['id'] ) ?>"><img src="<?php echo $album['thumbnail'] ?>" height="<?php echo $album['height'] ?>" width="<?php echo $album['width'] ?>" border="0"/></a>
-</div>
-<div class="title">
-<a href="<?php echo site_url('palbum/index/' . $album['id'] ) ?>"><?php echo $album['title'] ?></a>
-</div>
-<div class="control">
-<?php echo "<a href='http://picasaweb.google.com/" . $userid . "/" . $album['name'] . "#slideshow' target='_blank'>" . __("Slideshow", "palbum") . "</a> <br/>"; ?>
-</div>
-</div>
-<?php endforeach; ?>
+<a style="font-size: <?php echo $tag['size'] ?>%" href="<?php echo site_url('tags/' . $tag['tag']) ?>"><?php echo $tag['tag'] ?></a> (<?php echo $tag['ctag']?>)
+<?php if ($i < count($tags)): ?>, <?php endif;?>
+<?php $i++; endforeach; ?>
+<?php endif ; ?>
 </div>
 <!-- [Content] end -->

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Solaitra:Downloads\n"
+"Project-Id-Version: Solaitra:Tags\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-23 18:43+0100\n"
+"POT-Creation-Date: 2008-11-30 01:29+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Eugene Hery <hery@serasera.org>\n"
 "Language-Team: Hery serasera.org <hery@serasera.org>\n"
@@ -15,316 +15,237 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../annuaire_plugins.php:14
-msgid "Add a link"
-msgstr "Ajouter un lien"
+#: ../tags_plugins.php:67
+#: ../tags_plugins.php:105
+msgid "Tags:"
+msgstr "Balises:"
 
-#: ../controllers/annuaire.php:40
-#: ../controllers/admin/admin.php:55
-#: ../controllers/admin/category.php:38
-msgid "Root"
-msgstr "Racine"
+#: ../tags_plugins.php:69
+#: ../tags_plugins.php:107
+msgid "Enter tags separated by comma"
+msgstr "Insérer les balises (tags) séparés de virgule"
 
-#: ../controllers/annuaire.php:49
-#: ../controllers/admin/admin.php:64
+#: ../controllers/admin/admin.php:34
 msgid "First"
 msgstr "Premier"
 
-#: ../controllers/annuaire.php:50
-#: ../controllers/admin/admin.php:65
+#: ../controllers/admin/admin.php:35
 msgid "Last"
 msgstr "Dernier"
 
-#: ../controllers/link.php:85
-#: ../controllers/admin/link.php:63
-msgid "You didn't specify a link"
-msgstr "Vous n'avez pas saisi de lien"
-
-#: ../controllers/link.php:90
-#: ../controllers/admin/link.php:68
-msgid "You didn't specify the title"
-msgstr "Vous n'avez pas saisi de titre"
-
-#: ../controllers/link.php:97
-#: ../controllers/admin/link.php:75
-msgid "The format of the url is not valid. It should start with http://"
-msgstr "Le format du lien n'est pas valide. Le lien doit commencer avec http://"
-
-#: ../controllers/link.php:116
-#: ../controllers/admin/link.php:94
-msgid "link saved"
-msgstr "Lien enregistré"
-
-#: ../controllers/link.php:130
-#: ../controllers/admin/link.php:108
-msgid "The link  has been deleted."
-msgstr "Le lien a été supprimé"
-
-#: ../controllers/admin/category.php:69
-msgid "Category saved"
-msgstr "Categorie enregistrée"
-
-#: ../controllers/admin/category.php:97
-msgid "The category contains other categories. It cannot be removed."
-msgstr "La catégorie contient d'autres catégories. On ne peut pas l'effacer."
-
-#: ../controllers/admin/category.php:104
-msgid "The category contains links. It cannot be removed."
-msgstr "La catégorie contien des liens. On le peut pas l'effacer."
-
-#: ../controllers/admin/category.php:113
-msgid "The category  has been deleted."
-msgstr "La catégorie a été supprimée"
-
-#: ../controllers/admin/settings.php:44
+#: ../controllers/admin/admin.php:54
+#: ../controllers/admin/settings.php:51
 msgid "Settings saved"
 msgstr "Options sauvegard&eacute;es."
 
-#: ../views/404.php:3
-msgid "The file you're looking for couldn't be found!"
-msgstr "Fichier non trouv&eacute;"
+#: ../controllers/admin/admin.php:67
+msgid "The tag has been deleted from all elements."
+msgstr "La balise a été supprimée"
 
-#: ../views/index.php:4
-msgid "Add link in this category"
-msgstr "Ajouger lien dans cette catégorie"
+#: ../views/index.php:2
+msgid "Tags"
+msgstr "Balises"
 
-#: ../views/index.php:20
-msgid "Categories in"
-msgstr "Catégories dans"
+#: ../views/tag.php:2
+msgid "Tag:"
+msgstr "Balise :"
 
-#: ../views/index.php:31
-msgid "Links in"
-msgstr "Liens dans"
+#: ../views/tag.php:7
+#, php-format
+msgid "All contents with tag %s"
+msgstr "Tous les éléments avec la balise %s"
 
-#: ../views/index.php:47
-msgid "Hit:"
-msgstr "Visite :"
+#: ../views/tag.php:14
+#, php-format
+msgid "No element found with the tag %s"
+msgstr "Il n'y a pas d'éléments disponible avec la balise %s"
 
-#: ../views/link_create.php:2
-msgid "Add new link"
-msgstr "Ajouter le lien"
+#: ../views/admin/delete.php:4
+msgid "Delete tag"
+msgstr "Supprimer la balise"
 
-#: ../views/link_create.php:12
-msgid "Title"
-msgstr "Titre"
+#: ../views/admin/delete.php:9
+msgid "Do you want to delete the tag?"
+msgstr "&Ecirc;tes-vous certain(e) de vouloir l' effacer?"
 
-#: ../views/link_create.php:15
-msgid "Link"
-msgstr "Lien"
-
-#: ../views/link_create.php:19
-msgid "Category"
-msgstr "Cat&eacute;gorie"
-
-#: ../views/link_create.php:30
-msgid "Description"
-msgstr "Description"
-
-#: ../views/link_create.php:34
-msgid "Save"
-msgstr "Enregistrer"
-
-#: ../views/link_create.php:35
-msgid "Cancel"
-msgstr "Annuler"
-
-#: ../views/link_delete.php:2
-msgid "Delete link"
-msgstr "Effacer un lien"
-
-#: ../views/link_delete.php:7
-msgid "Do you want to delete the link?"
-msgstr "&Ecirc;tes-vous certain(e) de vouloir effacer le lien?"
-
-#: ../views/link_delete.php:11
+#: ../views/admin/delete.php:13
 msgid "No"
 msgstr "Non"
 
-#: ../views/link_delete.php:12
+#: ../views/admin/delete.php:14
 msgid "Yes"
 msgstr "Oui"
 
-#: ../views/show.php:11
-msgid "Link:"
-msgstr "Lien :"
+#: ../views/admin/tags.php:4
+msgid "Tags Administration"
+msgstr "Gérer les balises"
 
-#: ../views/show.php:12
-msgid "Hits:"
-msgstr "Visites :"
-
-#: ../views/admin/admin.php:4
-msgid "Links Administration"
-msgstr "Param&egrave;tres d&#8217;administration"
-
-#: ../views/admin/admin.php:7
-#: ../views/admin/settings.php:19
+#: ../views/admin/tags.php:7
 msgid "Settings"
 msgstr "Configurations"
 
-#: ../views/admin/admin.php:8
-msgid "New Link"
-msgstr "Ajouter un lien"
+#: ../views/admin/tags.php:8
+msgid "Cancel"
+msgstr "Annuler"
 
-#: ../views/admin/admin.php:9
-msgid "New Category"
-msgstr "Ajouter une Cat&eacute;gorie"
+#: ../views/admin/tags.php:23
+msgid "Tag"
+msgstr "Balise"
 
-#: ../views/admin/admin.php:29
-#: ../views/admin/category.php:24
-msgid "Summary"
-msgstr "R&eacute;sum&eacute;"
+#: ../views/admin/tags.php:24
+msgid "Link"
+msgstr "Lien"
 
-#: ../views/admin/admin.php:30
-#: ../views/admin/category.php:26
-msgid "Ordering"
-msgstr "Ordre"
-
-#: ../views/admin/admin.php:31
-#: ../views/admin/admin.php:74
-#: ../views/admin/category.php:27
-#: ../views/admin/files.php:118
+#: ../views/admin/tags.php:25
 msgid "Action"
 msgstr "Action"
 
-#: ../views/admin/admin.php:54
-#: ../views/admin/category.php:52
-msgid "Move up"
-msgstr "Vers le haut"
+#: ../views/admin/tags.php:26
+msgid "Count"
+msgstr "Nombre"
 
-#: ../views/admin/admin.php:55
-#: ../views/admin/category.php:53
-msgid "Move down"
-msgstr "Vers le bas"
-
-#: ../views/admin/admin.php:75
-msgid "Hit"
-msgstr "Visites"
-
-#: ../views/admin/admin.php:86
-msgid "Edit"
-msgstr "Modifier"
-
-#: ../views/admin/admin.php:87
+#: ../views/admin/tags.php:38
 msgid "Delete"
 msgstr "Supprimer"
 
-#: ../views/admin/category.php:4
+#~ msgid "Quick menu"
+#~ msgstr "Menu rapide"
+#~ msgid "General settings"
+#~ msgstr "Configurations générales"
+#~ msgid "Save Settings"
+#~ msgstr "Enregistrer configurations"
+#~ msgid "Change the settings for the module"
+#~ msgstr "Changer la configuration du module"
+
 #, fuzzy
-msgid "Files"
-msgstr "Voir les fichiers"
+#~ msgid "Thumbnail width"
+#~ msgstr "Chemin vers miniature invalide"
 
-#: ../views/admin/category.php:7
 #, fuzzy
-msgid "New File"
-msgstr "Nouvelle adresse email"
+#~ msgid "Photo display width"
+#~ msgstr "Nom affich&eacute; sur le site"
+#~ msgid "Add a link"
+#~ msgstr "Ajouter un lien"
+#~ msgid "Root"
+#~ msgstr "Racine"
+#~ msgid "You didn't specify a link"
+#~ msgstr "Vous n'avez pas saisi de lien"
+#~ msgid "You didn't specify the title"
+#~ msgstr "Vous n'avez pas saisi de titre"
+#~ msgid "The format of the url is not valid. It should start with http://"
+#~ msgstr ""
+#~ "Le format du lien n'est pas valide. Le lien doit commencer avec http://"
+#~ msgid "link saved"
+#~ msgstr "Lien enregistré"
+#~ msgid "The link  has been deleted."
+#~ msgstr "Le lien a été supprimé"
+#~ msgid "Category saved"
+#~ msgstr "Categorie enregistrée"
+#~ msgid "The category contains other categories. It cannot be removed."
+#~ msgstr ""
+#~ "La catégorie contient d'autres catégories. On ne peut pas l'effacer."
+#~ msgid "The category contains links. It cannot be removed."
+#~ msgstr "La catégorie contien des liens. On le peut pas l'effacer."
+#~ msgid "The file you're looking for couldn't be found!"
+#~ msgstr "Fichier non trouv&eacute;"
+#~ msgid "Add link in this category"
+#~ msgstr "Ajouger lien dans cette catégorie"
+#~ msgid "Categories in"
+#~ msgstr "Catégories dans"
+#~ msgid "Links in"
+#~ msgstr "Liens dans"
+#~ msgid "Hit:"
+#~ msgstr "Visite :"
+#~ msgid "Add new link"
+#~ msgstr "Ajouter le lien"
+#~ msgid "Title"
+#~ msgstr "Titre"
+#~ msgid "Category"
+#~ msgstr "Cat&eacute;gorie"
+#~ msgid "Description"
+#~ msgstr "Description"
+#~ msgid "Save"
+#~ msgstr "Enregistrer"
+#~ msgid "Delete link"
+#~ msgstr "Effacer un lien"
+#~ msgid "Do you want to delete the link?"
+#~ msgstr "&Ecirc;tes-vous certain(e) de vouloir effacer le lien?"
+#~ msgid "Link:"
+#~ msgstr "Lien :"
+#~ msgid "Hits:"
+#~ msgstr "Visites :"
+#~ msgid "New Link"
+#~ msgstr "Ajouter un lien"
+#~ msgid "New Category"
+#~ msgstr "Ajouter une Cat&eacute;gorie"
+#~ msgid "Summary"
+#~ msgstr "R&eacute;sum&eacute;"
+#~ msgid "Ordering"
+#~ msgstr "Ordre"
+#~ msgid "Move up"
+#~ msgstr "Vers le haut"
+#~ msgid "Move down"
+#~ msgstr "Vers le bas"
+#~ msgid "Hit"
+#~ msgstr "Visites"
+#~ msgid "Edit"
+#~ msgstr "Modifier"
 
-#: ../views/admin/category.php:23
-#: ../views/admin/category_create.php:37
-msgid "Name"
-msgstr "Nom"
-
-#: ../views/admin/category.php:25
 #, fuzzy
-msgid "Status"
-msgstr "&Eacute;tat"
+#~ msgid "Files"
+#~ msgstr "Voir les fichiers"
 
-#: ../views/admin/category_create.php:4
-#: ../views/admin/link_create.php:4
-msgid "Information"
-msgstr "Information"
-
-#: ../views/admin/category_create.php:7
-#: ../views/admin/link_create.php:7
-msgid "Details"
-msgstr "Détails"
-
-#: ../views/admin/category_create.php:8
-msgid "Options"
-msgstr "Options"
-
-#: ../views/admin/category_create.php:17
-msgid "Add new category"
-msgstr "Ajouter cat&eacute;gorie"
-
-#: ../views/admin/category_create.php:40
-msgid "Parent"
-msgstr "Parent"
-
-#: ../views/admin/category_delete.php:4
-msgid "Delete category"
-msgstr "Supprimer Cat&eacute;gorie"
-
-#: ../views/admin/category_delete.php:9
-msgid "Do you want to delete the category?"
-msgstr "&Ecirc;tes-vous certain(e) de vouloir effacer ce catégorie?"
-
-#: ../views/admin/files.php:49
-#: ../views/admin/files.php:124
 #, fuzzy
-msgid "Delete file"
-msgstr "Supprimer le blog"
+#~ msgid "New File"
+#~ msgstr "Nouvelle adresse email"
+#~ msgid "Name"
+#~ msgstr "Nom"
 
-#: ../views/admin/files.php:91
-msgid "Upload files"
-msgstr "Charger fichiers"
-
-#: ../views/admin/files.php:106
-#: ../views/admin/files.php:116
 #, fuzzy
-msgid "File"
-msgstr "T&eacute;l&eacute;charger le fichier d'export"
+#~ msgid "Status"
+#~ msgstr "&Eacute;tat"
+#~ msgid "Information"
+#~ msgstr "Information"
+#~ msgid "Details"
+#~ msgstr "Détails"
+#~ msgid "Options"
+#~ msgstr "Options"
+#~ msgid "Add new category"
+#~ msgstr "Ajouter cat&eacute;gorie"
+#~ msgid "Parent"
+#~ msgstr "Parent"
+#~ msgid "Delete category"
+#~ msgstr "Supprimer Cat&eacute;gorie"
 
-#: ../views/admin/files.php:109
 #, fuzzy
-msgid "Upload"
-msgstr "T&eacute;l&eacute;charger"
+#~ msgid "Delete file"
+#~ msgstr "Supprimer le blog"
+#~ msgid "Upload files"
+#~ msgstr "Charger fichiers"
 
-#: ../views/admin/files.php:115
 #, fuzzy
-msgid "Date"
-msgstr "rencard"
+#~ msgid "File"
+#~ msgstr "T&eacute;l&eacute;charger le fichier d'export"
 
-#: ../views/admin/files.php:117
-msgid "Size"
-msgstr "Taille"
+#, fuzzy
+#~ msgid "Upload"
+#~ msgstr "T&eacute;l&eacute;charger"
 
-#: ../views/admin/link_delete.php:4
-msgid "Delete document"
-msgstr "Supprimer le document"
-
-#: ../views/admin/settings.php:4
-msgid "Quick menu"
-msgstr "Menu rapide"
-
-#: ../views/admin/settings.php:7
-msgid "General settings"
-msgstr "Configurations générales"
-
-#: ../views/admin/settings.php:23
-msgid "Save Settings"
-msgstr "Enregistrer configurations"
-
-#: ../views/admin/settings.php:35
-msgid "Change the settings for the module"
-msgstr "Changer la configuration du module"
-
-#: ../views/admin/settings.php:40
-msgid "Webthumb API key"
-msgstr "Clé API"
-
-#: ../views/admin/settings.php:42
-#, php-format
-msgid "Go to %s to get your Webthumb API key"
-msgstr "Veuillez aller sur %s pour avoir votre API key"
-
-#: ../views/admin/settings.php:45
-msgid "Root name"
-msgstr "Nom de la racine"
-
-#: ../views/admin/settings.php:49
-msgid "Welcome text"
-msgstr "Texte d'accueil"
-
+#, fuzzy
+#~ msgid "Date"
+#~ msgstr "rencard"
+#~ msgid "Size"
+#~ msgstr "Taille"
+#~ msgid "Delete document"
+#~ msgstr "Supprimer le document"
+#~ msgid "Webthumb API key"
+#~ msgstr "Clé API"
+#~ msgid "Go to %s to get your Webthumb API key"
+#~ msgstr "Veuillez aller sur %s pour avoir votre API key"
+#~ msgid "Root name"
+#~ msgstr "Nom de la racine"
+#~ msgid "Welcome text"
+#~ msgstr "Texte d'accueil"
 #~ msgid "Downloads"
 #~ msgstr "T&eacute;l&eacute;chargements"
 #~ msgid "Upload File"

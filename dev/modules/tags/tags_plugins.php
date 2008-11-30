@@ -1,54 +1,139 @@
 <?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 
-$this->add_filter('page_custom_fields', 'tag_fields');
-$this->add_action('page_save', 'tag_save');
+$this->add_filter('page_custom_fields', 'tag_page_fields', 10, 2);
+$this->add_action('page_save', 'tag_page_save');
+$this->add_action('page_delete', 'tag_page_delete');
 
-function tag_fields($string)
+$this->add_filter('news_custom_fields', 'tag_news_fields', 10, 2);
+$this->add_action('news_save', 'tag_news_save');
+$this->add_action('news_delete', 'tag_news_delete');
+
+function tag_news_save($id)
 {
+	$obj =& get_instance();
+	$obj->load->model('tags_model', 'tag');
+	if ($tagitem = $obj->input->post('tags'))
+	{
+		$news = $obj->news->get_news(array('id' => $id));
+		$tags = explode(",", $tagitem);
+
+		$obj->tag->delete(array('srcid' => $id, 'module' => 'news'));
+		foreach ($tags as $tag)
+		{
+			$data = array(
+				'url' => 'news/' . $news['uri'], 
+				'title' => $news['title'],
+				'lang' => $news['lang'],
+				'srcid' => $news['id'],
+				'tag' => trim($tag),
+				'module' => 'news',
+				'summary' => substr(strip_tags($news['body']), 0, 200)
+				);
+			$obj->tag->save_tag($data);
+		}
+	}
+}
+
+function tag_news_delete($id)
+{
+	$obj =& get_instance();
+	$obj->load->model('tags_model', 'tag');
+	
+	$obj->tag->delete(array('srcid' => $id, 'module' => 'news'));
+
+}
+
+function tag_news_fields($string, $id = null)
+{
+	$tag_string = "";
+	if (!is_null($id))
+	{
+		$obj =& get_instance();
+		$news = $obj->news->get_news(array('id' => $id));
+	
+		$obj->load->model('tags_model', 'tag');
+		if($tags = $obj->tag->get_tags(array('srcid' => $news['id'], 'module' => 'news')))
+		{
+			foreach ($tags as $tag)
+			{
+				$tag_string .= $tag['tag'] . ", ";
+			}
+			$tag_string = substr($tag_string, 0, strlen($tag_string) - 2); //remove the ,
+		}
+	}
+	
 	$output = "
 <label for=\"tags\">" . __("Tags:", "tags") . "</label>
-<input type=\"text\" name=\"tags\" value=\"\" id=\"tags\" class=\"input-text\" /><br />
+<input type=\"text\" name=\"tags\" value=\"" . $tag_string . "\" id=\"tags\" class=\"input-text\" /><br />
 " . __("Enter tags separated by comma", "tags") . "<br />";
 	
 	return $output;
 }
 
-function tag_save($input)
+
+function tag_page_delete($id)
 {
 	$obj =& get_instance();
+	$obj->load->model('tags_model', 'tag');
+	
+	$obj->tag->delete(array('srcid' => $id, 'module' => 'page'));
+
+}
+
+
+function tag_page_fields($string, $id = null)
+{
+	$tag_string = "";
+	if (!is_null($id))
+	{
+		$obj =& get_instance();
+		$page = $obj->pages->get_page(array('id' => $id));
+	
+		$obj->load->model('tags_model', 'tag');
+		if($tags = $obj->tag->get_tags(array('srcid' => $page['id'], 'module' => 'page')))
+		{
+			foreach ($tags as $tag)
+			{
+				$tag_string .= $tag['tag'] . ", ";
+			}
+			$tag_string = substr($tag_string, 0, strlen($tag_string) - 2); //remove the ,
+		}
+	}
+	
+	$output = "
+<label for=\"tags\">" . __("Tags:", "tags") . "</label>
+<input type=\"text\" name=\"tags\" value=\"" . $tag_string . "\" id=\"tags\" class=\"input-text\" /><br />
+" . __("Enter tags separated by comma", "tags") . "<br />";
+	
+	return $output;
+}
+
+function tag_page_save($id)
+{
+	$obj =& get_instance();
+	$obj->load->model('tags_model', 'tag');
 	if ($tagitem = $obj->input->post('tags'))
 	{
+		$page = $obj->pages->get_page(array('id' => $id));
 		$tags = explode(",", $tagitem);
 
-		if ($obj->input->post('uri') != '')
-		{
-			$uri = $obj->input->post('uri');
-		}
-		else
-		{
-			$parent_uri = '';
-			if ($parent_id = $obj->input->post('parent_id'))
-			{
-				$parent = $obj->pages->get_page(array('id' => $parent_id));
-				$parent_uri = $parent['uri'] . "/";
-			}
-			$uri = $parent_uri . format_title($obj->input->post('title'));
-		}		
+		$obj->tag->delete(array('srcid' => $id, 'module' => 'page'));
 		
 		foreach ($tags as $tag)
 		{
 			$data = array(
-				'url' => $uri, 
-				'title' => $obj->input->post('title'),
-				'lang' => $obj->input->post('lang'),
-				'srcid' => 
-				
+				'url' => $page['uri'], 
+				'title' => $page['title'],
+				'lang' => $page['lang'],
+				'srcid' => $page['id'],
+				'tag' => trim($tag),
+				'module' => 'page',
+				'summary' => substr(strip_tags($page['body']), 0, 200)
 				);
 			$obj->tag->save_tag($data);
 		}
 	}
-	exit();
 }
 
 ?>
