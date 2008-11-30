@@ -1,6 +1,6 @@
 <?php
 /*
- * $Id: annuaire_model.php 1083 2008-11-23 09:31:10Z hery $
+ * $Id$
  *
  *
  */
