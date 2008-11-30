@@ -118,6 +118,8 @@
 				$id = $this->db->insert_id();
 				//insert
 			}
+			
+			$this->plugin->do_action('news_save', $id);
 			$this->cache->remove('news'.$this->user->lang, 'news');
 			if ($image_ids = $this->input->post('image_ids'))
 			{
@@ -255,7 +257,7 @@
 				
 				$this->session->set_flashdata('notification', 'News has been deleted.');
 				$this->cache->remove('news'.$this->user->lang, 'news'); 
-				
+				$this->plugin->do_action('news_delete', $id);
 				redirect('admin/news');
 			}
 			else
