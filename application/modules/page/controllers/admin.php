@@ -99,6 +99,8 @@
 							'active'			=> $this->input->post('status'),
 							'lang'				=> $this->input->post('lang')
 						);
+				
+				$data['date'] = mktime();
 				if ($this->input->post('options'))
 				{
 					$data['options'] = serialize($this->input->post('options'));

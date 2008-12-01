@@ -1,7 +1,7 @@
 <?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 //get the new module version from xml file.
-$module = 'admin';
+$module = 'page';
 
 //update to 1.0.1
 $version = "1.0.1";
@@ -10,15 +10,15 @@ $version = "1.0.1";
 
 if ($this->system->modules[$module]['version'] < $version)
 {
-	/*
+	
 	$this->load->dbforge();
 	$fields = array(
-		'activation' => array('type' => 'varchar', 'constraint' => '100', 'default' => '')
+		'date' => array('type' => 'int', 'default' => mktime())
 	);
 	
-	$this->dbforge->add_column('users', $fields);
-	*/
-	$this->session->set_flashdata("notification", sprintf(__("Admin module updated to %s"), $version)) ;
+	$this->dbforge->add_column('pages', $fields);
+	
+	$this->session->set_flashdata("notification", sprintf(__("Page module updated to %s", $module), $version)) ;
 	
 	$data = array('version' => $version);
 	$this->db->where(array('name'=> $module));
