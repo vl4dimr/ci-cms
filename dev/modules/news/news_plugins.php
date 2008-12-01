@@ -1,6 +1,26 @@
 <?php
 
 $this->add_filter('search_result', 'news_search_result');
+$this->add_filter('feed_content', 'news_feed_content');
+
+function news_feed_content($data)
+{
+	$obj =& get_instance();
+	
+	$obj->load->model('news_model');
+	
+	$rows = $obj->news_model->latest_news();
+	
+	$contents = array();
+	foreach ($rows as $key => $row)
+	{
+		$contents[$key]['title'] = $row['title'];
+		$contents[$key]['url'] = site_url( 'news/' . $row['uri']);
+		$contents[$key]['body'] = $row['body'];
+		$contents[$key]['date'] = (isset($row['date'])) ? $row['date'] : '';
+	}
+	return array_merge($data, $contents);
+}
 	
 function news_search_result($rows)
 {

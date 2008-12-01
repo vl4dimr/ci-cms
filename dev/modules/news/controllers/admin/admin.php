@@ -91,7 +91,7 @@
 				$month = substr($date, 3, 2);
 				$year = substr($date, 6, 4);
 
-				$data['date'] = mktime(0, 0, 0, $month, $day, $year);
+				$data['date'] = mktime(date("H"), date("i"), date("s"), $month, $day, $year);
 			}
 			else
 			{
