@@ -28,6 +28,18 @@ _passing $id : the id of the deleted page_
 Tiggered when deleting a page.
 ===Filters===
 
+====feed_content====
+
+$content 
+a list of array containing something like this
+
+{{{
+$contents[$key]['title'] = $row['title'];
+$contents[$key]['url'] = site_url($row['uri']);
+$contents[$key]['body'] = $row['body'];
+$contents[$key]['date'] = (isset($row['date'])) ? $row['date'] : '';
+}}}
+
 ====news_custom_fields====
 _type = string_
 
