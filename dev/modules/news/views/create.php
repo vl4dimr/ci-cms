@@ -119,7 +119,7 @@ function ajaxFileUpload() {
 		
 		<div id="one">
 		
-		<p><?php echo __("To create a news, just fill in your content below and click 'Save'.<br />If you want to save your progress without publishing it, Select 'Draft' status.</p>", $this->template['module'])?>
+		<p><?php echo __("To create a news, just fill in your content below and click 'Save'.<br />If you want to save your progress without publishing it, Select 'Draft' status.", $this->template['module'])?></p>
 
 		<label for="title"><?php echo __("Title", $this->template['module'])?>:</label>
 		<input type="text" name="title" value="<?php echo (isset($row['title'])?$row['title'] : "") ?>" id="title" class="input-text" /><br />
