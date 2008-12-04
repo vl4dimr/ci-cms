@@ -134,7 +134,7 @@ class Member extends Controller {
 			$this->email->send();
 			
 			
-			$this->session->set_flashdata('notification', nl2br(__("Thank you for registering with this site.\n\nPlease check your email %s and get there your password, then turn back to log in.", $this->template['module'])));
+			$this->session->set_flashdata('notification', nl2br(sprintf(__("Thank you for registering with this site.\n\nPlease check your email %s and get there your password, then turn back to log in.", $this->template['module']), "<b>" . $this->input->post('email') . "</b>")));
 			redirect('member/login');
 		}
 
