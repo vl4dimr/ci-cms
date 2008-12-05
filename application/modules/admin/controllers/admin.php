@@ -116,7 +116,7 @@
 		
 		function navigation($action = null)
 		{
-			$this->user->check_level($this->template['module'], LEVEL_VIEW);
+			$this->user->check_level('page', LEVEL_VIEW);
 			switch ($action) 
 			{
 				case 'move':
