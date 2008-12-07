@@ -1,16 +1,16 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Solaitra:Downloads\n"
+"Project-Id-Version: Solaitra:Member\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-06 16:45+0100\n"
+"POT-Creation-Date: 2008-12-06 16:58+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Eugene Hery <hery@serasera.org>\n"
-"Language-Team: Hery serasera.org <hery@serasera.org>\n"
+"Language-Team: Hery Serasera.org <hery@serasera.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: French\n"
-"X-Poedit-Country: FRANCE\n"
+"X-Poedit-Language: Malagasy\n"
+"X-Poedit-Country: MADAGASCAR\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
@@ -22,13 +22,13 @@ msgstr ""
 #: ../controllers/member.php:90
 #: ../controllers/member.php:279
 msgid "email"
-msgstr "Email"
+msgstr "adiresy email"
 
 #: ../controllers/admin.php:79
 #: ../controllers/group.php:68
 #: ../controllers/member.php:91
 msgid "username"
-msgstr "Login"
+msgstr "solonanarana"
 
 #: ../controllers/admin.php:80
 #: ../controllers/admin.php:196
@@ -36,7 +36,7 @@ msgstr "Login"
 #: ../controllers/group.php:185
 #: ../controllers/member.php:205
 msgid "password"
-msgstr "Mot de passe"
+msgstr "tenimiafina"
 
 #: ../controllers/admin.php:81
 #: ../controllers/admin.php:197
@@ -45,7 +45,7 @@ msgstr "Mot de passe"
 #: ../controllers/member.php:92
 #: ../controllers/member.php:206
 msgid "password confirmation"
-msgstr "Confirmation mot de passe"
+msgstr "fanamarinana tenimiafina"
 
 #: ../controllers/admin.php:87
 #: ../controllers/admin.php:202
@@ -56,7 +56,7 @@ msgstr "Confirmation mot de passe"
 #: ../controllers/member.php:283
 #, php-format
 msgid "The %s field is required"
-msgstr "Le champ %s est obligatoire"
+msgstr "Ilaina ny %s"
 
 #: ../controllers/admin.php:88
 #: ../controllers/admin.php:203
@@ -66,75 +66,75 @@ msgstr "Le champ %s est obligatoire"
 #: ../controllers/member.php:212
 #, php-format
 msgid "The %s field does not match the %s field"
-msgstr "Le champ %s est différent de %s"
+msgstr "Tsy mitovy amin'ny %s ny %s napetrakao"
 
 #: ../controllers/admin.php:105
 #: ../controllers/group.php:94
 msgid "User registered"
-msgstr "Utilisateur enregistré"
+msgstr "Tafiditra ny mpiambana"
 
 #: ../controllers/admin.php:119
 #: ../controllers/group.php:108
 #: ../controllers/member.php:151
 msgid "The username is already in use"
-msgstr "D&eacute;sol&eacute;, ce nom d'identification est d&eacute;j&agrave; utilis&eacute;e!"
+msgstr "Efa misy mampiasa ny solonanarana"
 
 #: ../controllers/admin.php:137
 #: ../controllers/admin.php:247
 #: ../controllers/group.php:126
 #: ../controllers/group.php:226
 msgid "This member doesn't exist"
-msgstr ""
+msgstr "Tsy ao io mpikambana io"
 
 #: ../controllers/admin.php:147
 #: ../controllers/admin.php:168
 #: ../controllers/group.php:136
 #: ../controllers/group.php:157
 msgid "Username and status required"
-msgstr "Le nom d'identification et le status est nécessaire"
+msgstr "Ilaina ny solonanarana sy ny status"
 
 #: ../controllers/admin.php:153
 #: ../controllers/group.php:142
 msgid "You cannot remove yourself"
-msgstr "Vous ne pouvez pas supprimer vous-même"
+msgstr "Tsy afaka manala ny tenanao ianao"
 
 #: ../controllers/admin.php:159
 #: ../controllers/group.php:148
 msgid "User deleted"
-msgstr "Membre supprim&eacute;"
+msgstr "Voafafa ny mpiakambana"
 
 #: ../controllers/admin.php:181
 #: ../controllers/group.php:170
 msgid "User status updated"
-msgstr "Status mis &agrave; jour"
+msgstr "Voaova ny mombamomba ny mpikambana"
 
 #: ../controllers/admin.php:241
 #: ../controllers/group.php:220
 msgid "User saved"
-msgstr "Membre sauvegard&eacute;es."
+msgstr "Voatahiry ny mpikambana"
 
 #: ../controllers/admin.php:273
 #: ../controllers/group.php:252
 #: ../controllers/member.php:174
 msgid "The email is already in use"
-msgstr "D&eacute;sol&eacute;, cette adresse mail est d&eacute;j&agrave; utilis&eacute;e!"
+msgstr "Efa misy mampiasa ny adiresy email"
 
 #: ../controllers/member.php:30
 msgid "You are now logged out."
-msgstr ""
+msgstr "Tafavoaka soa amantsara ianao"
 
 #: ../controllers/member.php:56
 msgid "Please enter your username"
-msgstr "Merci de renseigner l'identifiant."
+msgstr "Ampidiro ny solonanarana azafady"
 
 #: ../controllers/member.php:62
 msgid "Please enter your password"
-msgstr "Veuillez insérer  le mot de passe."
+msgstr "Ampidiro ny tenimiafina azafady"
 
 #: ../controllers/member.php:123
 #, php-format
 msgid "Your password for %s"
-msgstr "Votre mot de passe pour %s"
+msgstr "%s tenimiafina"
 
 #: ../controllers/member.php:124
 #, php-format
@@ -150,11 +150,21 @@ msgid ""
 "Thank you.\n"
 "The administrator"
 msgstr ""
+"Salama %s,\n"
+"\n"
+"Misaotra anao nisoratra anarana ato amin'ny %s.\n"
+"Manomboka izao dia afaka miditra ao amin'ny takelaka ianao miaraka amin'ireto andinindininy ireto.\n"
+"\n"
+"Solonanarana: %s\n"
+"Tenimiafina: %s\n"
+"\n"
+"Misaotra anao.\n"
+"Ny mpandrindra"
 
 #: ../controllers/member.php:131
 #, php-format
 msgid "New member for %s"
-msgstr "Nouveau membre pour %s"
+msgstr "Mpikambana vaovao %s"
 
 #: ../controllers/member.php:132
 #, php-format
@@ -169,6 +179,15 @@ msgid ""
 "Thank you.\n"
 "The administrator"
 msgstr ""
+"Miarahaba ny mpandrindra,\n"
+"\n"
+"Nisy mpikambana vaovao niditra tao amin'ny takelaka. Ireto ny mombamomba azy.\n"
+"\n"
+"Solonanarana: %s\n"
+"Adiresy email: %s\n"
+"IP: %s\n"
+"Misaotra. \n"
+"Ny mpandrindra"
 
 #: ../controllers/member.php:137
 #, php-format
@@ -177,25 +196,28 @@ msgid ""
 "\n"
 "Please check your email %s and get there your password, then turn back to log in."
 msgstr ""
+"Misaotra anao nisoratra anarana eto amin'ny takelaka.\n"
+"\n"
+"Mba jereo azafady ny adiresy %s ary jereo any ny tenimiafina dia miverena miditra."
 
 #: ../controllers/member.php:227
 msgid "Your profile was saved."
-msgstr "Votre profil est enregistré"
+msgstr "Voatahiry ny mombamomba anao"
 
 #: ../controllers/member.php:284
 #, php-format
 msgid "The address %s is not a valid email"
-msgstr "Votre adresse email %s n'est pas valide"
+msgstr "Tsy adiresy ara-dalana ny %s napetrakao"
 
 #: ../controllers/member.php:285
 #, php-format
 msgid "The address %s is not found in our database. Try another address."
-msgstr ""
+msgstr "Tsy hita ao amin'ny lisitra ny adiresy %s izay napetrakao. Manandrama adiresy hafa."
 
 #: ../controllers/member.php:299
 #, php-format
 msgid "Create a new password: %s"
-msgstr "Créer un nouveau mot de passe: %s"
+msgstr "Manova tenimiafina: %s"
 
 #: ../controllers/member.php:300
 #, php-format
@@ -209,30 +231,38 @@ msgid ""
 "Thank you.\n"
 "The administrator"
 msgstr ""
+"Miarahaba an'i %s,\n"
+"\n"
+"Nolazainao hoe adino ny tenimiafinao hidirana amin'ny %s. Koa satria tsy mitahiry tenimiafina izahay dia mila mamorona vaovao ianao. Tsindrio ny rohy eto ambany hamoronana tenimiafina vaovao.\n"
+"\n"
+"%s\n"
+"\n"
+"Misaotra anao.\n"
+"Ny mpandrindra"
 
 #: ../controllers/member.php:305
 #, php-format
 msgid "We have sent to %s the instruction on how to create a new password. Please check your email."
-msgstr ""
+msgstr "Nalefanay amin'ny adiresy %s ny fomba hatao hahazoana mamorona tenimiafina vaovao. Jereo io ny hafatra amin'io adiresy io azafady."
 
 #: ../controllers/member.php:316
 msgid "Your password is now changed. You can login with your username and the new password."
-msgstr ""
+msgstr "Voaova ny tenimiafina. Afaka miditra amin'ny solonanarana sy tenimiafina vaovao ianao manomboka izao."
 
 #: ../controllers/member.php:328
 msgid "The activation link is not valid. Please check again your email and verify the link. If you are sure the link was right then contact the administrator."
-msgstr ""
+msgstr "Tsy ara-dalàna io rohy napetrakao io. Jereo tsara ny rohy izay nalefanay tany amin'ny email izay voarainao. Raha tsy mety mihitsy dia ilazao ny mpandrindra ny takelaka."
 
 #: ../views/adino.php:1
 #: ../views/adino_activate.php:1
 #: ../views/adino_result.php:1
 msgid "Lost password"
-msgstr "Mot de passe perdu?"
+msgstr "Adino ny tenimiafina"
 
 #: ../views/adino.php:12
 #: ../views/adino_activate.php:8
 msgid "To create a new password, please enter your email."
-msgstr "Pour pouvoir cr&eacute;er un nouveau mot de passe, ins&eacute;rer votre adresse email."
+msgstr "Mba  hahafahanao mamorona tenimiafina vaovao dia ampidiro ny adiresy email."
 
 #: ../views/adino.php:15
 #: ../views/admin.php:25
@@ -241,7 +271,7 @@ msgstr "Pour pouvoir cr&eacute;er un nouveau mot de passe, ins&eacute;rer votre 
 #: ../views/myprofile.php:37
 #: ../views/signup.php:19
 msgid "Email"
-msgstr "Email"
+msgstr "Adiresy email"
 
 #: ../views/adino.php:18
 #: ../views/adino_activate.php:16
@@ -249,7 +279,7 @@ msgstr "Email"
 #: ../views/edit.php:24
 #: ../views/myprofile.php:45
 msgid "Save"
-msgstr "Enregistrer"
+msgstr "Tehirizo"
 
 #: ../views/adino.php:19
 #: ../views/adino_activate.php:17
@@ -259,7 +289,7 @@ msgstr "Enregistrer"
 #: ../views/myprofile.php:46
 #: ../views/signup.php:31
 msgid "Cancel"
-msgstr "Annuler"
+msgstr "Aoka ihany"
 
 #: ../views/adino_activate.php:11
 #: ../views/create.php:37
@@ -267,31 +297,31 @@ msgstr "Annuler"
 #: ../views/login.php:22
 #: ../views/myprofile.php:32
 msgid "Password"
-msgstr "Mot de passe"
+msgstr "Tenimiafina"
 
 #: ../views/adino_activate.php:14
 #: ../views/create.php:40
 #: ../views/edit.php:41
 #: ../views/myprofile.php:35
 msgid "Confirm"
-msgstr "Confirmer"
+msgstr "Hamarino"
 
 #: ../views/adino_result.php:6
 #: ../views/unauthorized.php:25
 msgid "Go back"
-msgstr "Revenir en arri&egrave;re"
+msgstr "Miverena"
 
 #: ../views/admin.php:4
 msgid "Member administration"
-msgstr "Param&egrave;tres d&#8217;administration"
+msgstr "Fandrindrana ny mpikambana"
 
 #: ../views/admin.php:7
 msgid "Settings"
-msgstr "Configurations"
+msgstr "Safidy"
 
 #: ../views/admin.php:8
 msgid "Add a new user"
-msgstr "Ajouter un utilisateur"
+msgstr "Mpikambana vaovao"
 
 #: ../views/admin.php:24
 #: ../views/create.php:34
@@ -299,137 +329,192 @@ msgstr "Ajouter un utilisateur"
 #: ../views/login.php:20
 #: ../views/signup.php:15
 msgid "Username"
-msgstr "Login"
+msgstr "Solonanarana"
 
 #: ../views/admin.php:26
 msgid "Action"
-msgstr "Action"
+msgstr "Asa"
 
 #: ../views/admin.php:37
 msgid "Deactivate"
-msgstr "D&eacute;sactiver"
+msgstr "Deactivate"
 
 #: ../views/admin.php:37
 msgid "Activate"
-msgstr "Activer"
+msgstr "Activate"
 
 #: ../views/admin.php:38
 msgid "Edit"
-msgstr "Modifier"
+msgstr "Ahitsio"
 
 #: ../views/admin.php:39
 msgid "Delete"
-msgstr "Supprimer"
+msgstr "Fafao"
 
 #: ../views/create.php:4
 #: ../views/edit.php:4
 msgid "Navigation"
-msgstr "Navigation"
+msgstr "Menu"
 
 #: ../views/create.php:17
 msgid "Add a user"
-msgstr "Ajouter Utilisateur"
+msgstr "Hampiditra mpikambana"
 
 #: ../views/edit.php:17
 msgid "Edit a user"
-msgstr "Modifier l&#8217;utilisateur"
+msgstr "Hanitsy mpikambana"
 
 #: ../views/edit.php:46
 msgid "Status"
-msgstr "&Eacute;tat"
+msgstr "Toetra"
 
 #: ../views/edit.php:48
 msgid "Active"
-msgstr "Actif"
+msgstr "Mandeha"
 
 #: ../views/edit.php:49
 msgid "Disabled"
-msgstr "D&eacute;sactiv&eacute;e"
+msgstr "Tsy tafiditra"
 
 #: ../views/login.php:4
 msgid "Login"
-msgstr "Login"
+msgstr "Fidirana"
 
 #: ../views/login.php:12
 msgid "Please enter here your login and password"
-msgstr "Merci de saisir votre identifiant et mot de passe."
+msgstr "Ampidiro eto ny solonanarana sy tenimiafina"
 
 #: ../views/login.php:30
 #: ../views/signup.php:1
 msgid "Sign up"
-msgstr "Inscription"
+msgstr "Hisoratra anarana"
 
 #: ../views/login.php:32
 msgid "Lost password ?"
-msgstr "Mot de passe perdu?"
+msgstr "Adino ny tenimiafina?"
 
 #: ../views/myprofile.php:4
 msgid "Quick menu"
-msgstr "Menu rapide"
+msgstr "Quick menu"
 
 #: ../views/myprofile.php:13
 msgid "Edit your profile"
-msgstr "Votre profil et options personnelles"
+msgstr "Ny mombamomba anao"
 
 #: ../views/myprofile.php:28
 msgid "You can change your profile here, if you want."
-msgstr ""
+msgstr "Azonao ovaina eto ny mombamomba anao raha tianao."
 
 #: ../views/signup.php:10
 msgid "Please fill the form below and click on Register"
-msgstr ""
+msgstr "Fenoy azafady ny "
 
 #: ../views/signup.php:22
 msgid "Confirm email"
-msgstr "Confirmer email"
+msgstr "Hamarino ny adiresy"
 
 #: ../views/signup.php:27
 msgid "Fields marked with * are required"
-msgstr ""
+msgstr "Ilaina fenoina izay voamarika amin'ny *"
 
 #: ../views/signup.php:30
 msgid "Register"
-msgstr "Inscription"
+msgstr "Hisoratra anarana"
 
 #: ../views/unauthorized.php:1
 msgid "Unauthorized"
-msgstr ""
+msgstr "Tsy mahazo alalana"
 
 #: ../views/unauthorized.php:2
 msgid "Module"
-msgstr ""
+msgstr "Module"
 
 #: ../views/unauthorized.php:7
 msgid "have access to"
-msgstr "a accès à"
+msgstr "mahazo alalana mba"
 
 #: ../views/unauthorized.php:10
 msgid "view in"
-msgstr "voir dans"
+msgstr "hijery"
 
 #: ../views/unauthorized.php:13
 msgid "add into"
-msgstr "ajouter dans"
+msgstr "mampiditra"
 
 #: ../views/unauthorized.php:16
 msgid "edit in"
-msgstr "modifier dans"
+msgstr "manova"
 
 #: ../views/unauthorized.php:19
 msgid "delete in"
-msgstr "supprimer dans"
+msgstr "hamafa"
 
 #: ../views/unauthorized.php:23
 #, php-format
 msgid "Sorry, you cannot %s the %s module"
-msgstr "D&eacute;sol&eacute; vous ne pouvez pas %s le module %s"
+msgstr "Azafady, tsy %s mba %s ny module"
 
-#~ msgid "Downloads"
-#~ msgstr "T&eacute;l&eacute;chargements"
-#~ msgid "The file you're looking for couldn't be found!"
-#~ msgstr "Fichier non trouv&eacute;"
-#~ msgid "Upload File"
-#~ msgstr "Charger un fichier"
-#~ msgid "Upload files"
-#~ msgstr "Charger fichiers"
+#, fuzzy
+#~ msgid "Tags:"
+#~ msgstr "Balises:"
+
+#, fuzzy
+#~ msgid "Enter tags separated by comma"
+#~ msgstr "Insérer les balises (tags) séparés de virgule"
+
+#, fuzzy
+#~ msgid "First"
+#~ msgstr "Premier"
+
+#, fuzzy
+#~ msgid "Last"
+#~ msgstr "Dernier"
+
+#, fuzzy
+#~ msgid "Settings saved"
+#~ msgstr "Options sauvegard&eacute;es."
+
+#, fuzzy
+#~ msgid "The tag has been deleted from all elements."
+#~ msgstr "La balise a été supprimée"
+
+#, fuzzy
+#~ msgid "Tags"
+#~ msgstr "Balises"
+
+#, fuzzy
+#~ msgid "Tag:"
+#~ msgstr "Balise :"
+
+#, fuzzy
+#~ msgid "All contents with tag %s"
+#~ msgstr "Tous les éléments avec la balise %s"
+
+#, fuzzy
+#~ msgid "No element found with the tag %s"
+#~ msgstr "Il n'y a pas d'éléments disponible avec la balise %s"
+
+#, fuzzy
+#~ msgid "Delete tag"
+#~ msgstr "Supprimer la balise"
+
+#, fuzzy
+#~ msgid "Do you want to delete the tag?"
+#~ msgstr "&Ecirc;tes-vous certain(e) de vouloir l' effacer?"
+
+#, fuzzy
+#~ msgid "No"
+#~ msgstr "Non"
+
+#, fuzzy
+#~ msgid "Yes"
+#~ msgstr "Oui"
+
+#, fuzzy
+#~ msgid "Tag"
+#~ msgstr "Balise"
+
+#, fuzzy
+#~ msgid "Count"
+#~ msgstr "Nombre"
 
