@@ -1,4 +1,8 @@
-<?php $qm = array(); $qm = $this->plugin->apply_filters('member_profile_quick_menu', $qm); ?>
+<?php 
+$qm = array(
+__("Log out", $this->template['module']), site_url('member/logout')
+); 
+$qm = $this->plugin->apply_filters('member_profile_quick_menu', $qm); ?>
 <?php if (count($qm) > 0 ) : ?>
 <div id="quick-menu">
 <h1><?php _e("Quick menu") ?></h1>
