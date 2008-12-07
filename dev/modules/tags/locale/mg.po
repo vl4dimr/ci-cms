@@ -1,0 +1,130 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Solaitra:Member\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-12-06 16:57+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Eugene Hery <hery@serasera.org>\n"
+"Language-Team: Hery Serasera.org <hery@serasera.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Malagasy\n"
+"X-Poedit-Country: MADAGASCAR\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../tags_plugins.php:67
+#: ../tags_plugins.php:105
+#, fuzzy
+msgid "Tags:"
+msgstr "Balises:"
+
+#: ../tags_plugins.php:69
+#: ../tags_plugins.php:107
+#, fuzzy
+msgid "Enter tags separated by comma"
+msgstr "Insérer les balises (tags) séparés de virgule"
+
+#: ../controllers/admin/admin.php:34
+#, fuzzy
+msgid "First"
+msgstr "Premier"
+
+#: ../controllers/admin/admin.php:35
+#, fuzzy
+msgid "Last"
+msgstr "Dernier"
+
+#: ../controllers/admin/admin.php:54
+#: ../controllers/admin/settings.php:51
+#, fuzzy
+msgid "Settings saved"
+msgstr "Options sauvegard&eacute;es."
+
+#: ../controllers/admin/admin.php:67
+#, fuzzy
+msgid "The tag has been deleted from all elements."
+msgstr "La balise a été supprimée"
+
+#: ../views/index.php:2
+#, fuzzy
+msgid "Tags"
+msgstr "Balises"
+
+#: ../views/tag.php:2
+#, fuzzy
+msgid "Tag:"
+msgstr "Balise :"
+
+#: ../views/tag.php:7
+#, fuzzy, php-format
+msgid "All contents with tag %s"
+msgstr "Tous les éléments avec la balise %s"
+
+#: ../views/tag.php:14
+#, fuzzy, php-format
+msgid "No element found with the tag %s"
+msgstr "Il n'y a pas d'éléments disponible avec la balise %s"
+
+#: ../views/admin/delete.php:4
+#, fuzzy
+msgid "Delete tag"
+msgstr "Supprimer la balise"
+
+#: ../views/admin/delete.php:9
+#, fuzzy
+msgid "Do you want to delete the tag?"
+msgstr "&Ecirc;tes-vous certain(e) de vouloir l' effacer?"
+
+#: ../views/admin/delete.php:13
+#, fuzzy
+msgid "No"
+msgstr "Non"
+
+#: ../views/admin/delete.php:14
+#, fuzzy
+msgid "Yes"
+msgstr "Oui"
+
+#: ../views/admin/tags.php:4
+#, fuzzy
+msgid "Tags Administration"
+msgstr "Gérer les balises"
+
+#: ../views/admin/tags.php:7
+#, fuzzy
+msgid "Settings"
+msgstr "Configurations"
+
+#: ../views/admin/tags.php:8
+#, fuzzy
+msgid "Cancel"
+msgstr "Aoka ihany"
+
+#: ../views/admin/tags.php:23
+#, fuzzy
+msgid "Tag"
+msgstr "Balise"
+
+#: ../views/admin/tags.php:24
+#, fuzzy
+msgid "Link"
+msgstr "Lien"
+
+#: ../views/admin/tags.php:25
+#, fuzzy
+msgid "Action"
+msgstr "Action"
+
+#: ../views/admin/tags.php:26
+#, fuzzy
+msgid "Count"
+msgstr "Nombre"
+
+#: ../views/admin/tags.php:38
+#, fuzzy
+msgid "Delete"
+msgstr "Supprimer"
+
