@@ -78,6 +78,10 @@ class Member extends Controller {
 	
 	function signup()
 	{
+		if ($this->user->logged_in)
+		{
+			redirect('member/profile');
+		}
 		$this->load->library('validation');	
 		
 		$rules['username'] = "trim|required|min_length[4]|max_length[12]|xss_clean|callback_verify_username";
