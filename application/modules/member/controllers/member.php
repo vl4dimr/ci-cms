@@ -301,7 +301,7 @@ class Member extends Controller {
 			$this->email->from($this->system->admin_email, $this->system->site_name);
 			$this->email->to($user['email']);
 			$this->email->subject(sprintf(__("Create a new password: %s", "member"), $this->system->site_name));
-			$this->email->message(sprintf(__("Hello %s,\n\nYou said you forgot your password for %s. Since we do not keep passwords in clear, you have to create one. Click the link below to create a new password.\n\n%s\n\nThank you.\nThe administrator"), $this->input->post('username'), $this->system->site_name, site_url('member/adino/' . $key), "member"));
+			$this->email->message(sprintf(__("Hello %s,\n\nYou said you forgot your password for %s. Since we do not keep passwords in clear, you have to create one. Click the link below to create a new password.\n\n%s\n\nThank you.\nThe administrator"), $this->input->post('username'), $this->system->site_name, site_url($this->user->lang . '/member/adino/' . $key), "member"));
 
 			$this->email->send();
 			
