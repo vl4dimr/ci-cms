@@ -1,6 +1,6 @@
 <?php 
 $qm = array(
-__("Log out", $this->template['module']), site_url('member/logout')
+__("Log out", $this->template['module']) => site_url('member/logout')
 ); 
 $qm = $this->plugin->apply_filters('member_profile_quick_menu', $qm); ?>
 <?php if (count($qm) > 0 ) : ?>
@@ -38,8 +38,6 @@ $qm = $this->plugin->apply_filters('member_profile_quick_menu', $qm); ?>
 
 			<label for="passconf"><?=__("Confirm", $this->template['module'])?>:</label>
 			<input type="password" name="passconf" value="" id="" class="input-text" /><br />			
-			<label for="email"><?=__("Email", $this->template['module'])?>:</label>
-			<input type="text" name="email" value="<?php echo $member['email']?>" id="email" class="input-text" /><br />
 			
 			<?php 
 			
