@@ -24,6 +24,43 @@ class Member_model extends Model {
 		$query = $this->db->get('users');
 		return $query->result_array();
 	}
+
+
+	function get_users($where = array(), $params = array())
+	{
+	
+		$default_params = array
+		(
+			'order_by' => 'title',
+			'limit' => 5,
+			'start' => null,
+			'limit' => null
+		);
+		
+		foreach ($default_params as $key => $value)
+		{
+			$params[$key] = (isset($params[$key]))? $params[$key]: $default_params[$key];
+		}
+	
+		$this->db->order_by($params['order_by']);
+		$this->db->limit($params['limit'], $params['start']);
+	
+		if (!is_array($where))
+		{
+			$where = array('id', $where);
+		}
+
+		$query = $this->db->or_like($where);
+		$query = $this->db->get('users');
+		if ($query->num_rows() > 0 )
+		{
+			return $query->result_array();
+		}
+		else
+		{
+			return false;
+		}
+	}	
 	
 	// ------------------------------------------------------------------------
 	

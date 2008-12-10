@@ -33,16 +33,18 @@
 			
 		}
 		
-		function listall() 
+		function listall($debut = 0, $limit = 20, $order = 'id') 
 		{
-			$debut = $this->uri->segment(4);
-			$limit = $this->uri->segment(5);
-			$this->template['members'] = $this->member_model->get_list();
+			if ($filter = $this->input->post('filter'))
+			{
+				$where = array('username' => $filter, 'email' => $filter);
+			}
+			$this->template['members'] = $this->member_model->get_users(array(), array('limit' => $limit, 'start' => $debut, 'order_by' => $order));
 			$this->load->library('pagination');
 
-			$config['base_url'] = base_url() . 'member/listall/';
+			$config['base_url'] = site_url('admin/member/listall/');
 			$config['total_rows'] = $this->member_model->member_total;
-			$config['per_page'] = '20'; 
+			$config['per_page'] = $limit; 
 
 			$this->pagination->initialize($config); 
 

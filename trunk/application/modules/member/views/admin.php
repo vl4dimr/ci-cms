@@ -16,7 +16,20 @@
 <?php if (isset($notice) || $notice = $this->session->flashdata('notification')):?>
 <p class="notice"><?=$notice;?></p>
 <?php endif;?>
-
+<table>
+<form action="<?php echo site_url($this->uri->uri_string()) ?>" method="post">
+<tr>
+<td>
+</td>
+<td>
+<input type="text" class="input-text" name="filter" value="<?php echo $this->input->post('filter') ?>" />
+</td>
+<td>
+<input type="submit" class="input-submit" name="submit" value="<?php echo __("Search", $this->template['module'] ) ?>" />
+</td>
+</tr>
+</form>
+</table>
 <table class="page-list">
 	<thead>
 		<tr>
