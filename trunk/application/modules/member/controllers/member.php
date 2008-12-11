@@ -155,6 +155,13 @@ class Member extends Controller {
 			$this->validation->set_message('verify_username', __("The username is already in use", $this->template['module']));
 			return FALSE;
 		}
+		
+		if ( !ereg("^[[:alnum:]]+$", $username))
+		{
+			$this->validation->set_message('verify_username', __("The username format is not valid, please use alphanumeric characters.", $this->template['module']));
+			return FALSE;
+		}
+		
 
 	}
 
