@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Solaitra:Downloads\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-12-06 16:45+0100\n"
-"PO-Revision-Date: \n"
-"Last-Translator: Eugene Hery <hery@serasera.org>\n"
+"PO-Revision-Date: 2008-12-10 10:53+0100\n"
+"Last-Translator: hery <heriniaina.eugene@gmail.com>\n"
 "Language-Team: Hery serasera.org <hery@serasera.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -15,107 +15,107 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../controllers/admin.php:78
-#: ../controllers/admin.php:195
+#: ../controllers/admin.php:80
+#: ../controllers/admin.php:197
 #: ../controllers/group.php:67
 #: ../controllers/group.php:184
-#: ../controllers/member.php:90
-#: ../controllers/member.php:279
+#: ../controllers/member.php:94
+#: ../controllers/member.php:290
 msgid "email"
 msgstr "Email"
 
-#: ../controllers/admin.php:79
+#: ../controllers/admin.php:81
 #: ../controllers/group.php:68
-#: ../controllers/member.php:91
+#: ../controllers/member.php:95
 msgid "username"
 msgstr "Login"
 
-#: ../controllers/admin.php:80
-#: ../controllers/admin.php:196
+#: ../controllers/admin.php:82
+#: ../controllers/admin.php:198
 #: ../controllers/group.php:69
 #: ../controllers/group.php:185
-#: ../controllers/member.php:205
+#: ../controllers/member.php:216
 msgid "password"
 msgstr "Mot de passe"
 
-#: ../controllers/admin.php:81
-#: ../controllers/admin.php:197
+#: ../controllers/admin.php:83
+#: ../controllers/admin.php:199
 #: ../controllers/group.php:70
 #: ../controllers/group.php:186
-#: ../controllers/member.php:92
-#: ../controllers/member.php:206
+#: ../controllers/member.php:96
+#: ../controllers/member.php:217
 msgid "password confirmation"
 msgstr "Confirmation mot de passe"
 
-#: ../controllers/admin.php:87
-#: ../controllers/admin.php:202
+#: ../controllers/admin.php:89
+#: ../controllers/admin.php:204
 #: ../controllers/group.php:76
 #: ../controllers/group.php:191
-#: ../controllers/member.php:98
-#: ../controllers/member.php:211
-#: ../controllers/member.php:283
+#: ../controllers/member.php:102
+#: ../controllers/member.php:222
+#: ../controllers/member.php:294
 #, php-format
 msgid "The %s field is required"
 msgstr "Le champ %s est obligatoire"
 
-#: ../controllers/admin.php:88
-#: ../controllers/admin.php:203
+#: ../controllers/admin.php:90
+#: ../controllers/admin.php:205
 #: ../controllers/group.php:77
 #: ../controllers/group.php:192
-#: ../controllers/member.php:99
-#: ../controllers/member.php:212
+#: ../controllers/member.php:103
+#: ../controllers/member.php:223
 #, php-format
 msgid "The %s field does not match the %s field"
 msgstr "Le champ %s est différent de %s"
 
-#: ../controllers/admin.php:105
+#: ../controllers/admin.php:107
 #: ../controllers/group.php:94
 msgid "User registered"
 msgstr "Utilisateur enregistré"
 
-#: ../controllers/admin.php:119
+#: ../controllers/admin.php:121
 #: ../controllers/group.php:108
-#: ../controllers/member.php:151
+#: ../controllers/member.php:155
 msgid "The username is already in use"
 msgstr "D&eacute;sol&eacute;, ce nom d'identification est d&eacute;j&agrave; utilis&eacute;e!"
 
-#: ../controllers/admin.php:137
-#: ../controllers/admin.php:247
+#: ../controllers/admin.php:139
+#: ../controllers/admin.php:249
 #: ../controllers/group.php:126
 #: ../controllers/group.php:226
 msgid "This member doesn't exist"
 msgstr ""
 
-#: ../controllers/admin.php:147
-#: ../controllers/admin.php:168
+#: ../controllers/admin.php:149
+#: ../controllers/admin.php:170
 #: ../controllers/group.php:136
 #: ../controllers/group.php:157
 msgid "Username and status required"
 msgstr "Le nom d'identification et le status est nécessaire"
 
-#: ../controllers/admin.php:153
+#: ../controllers/admin.php:155
 #: ../controllers/group.php:142
 msgid "You cannot remove yourself"
 msgstr "Vous ne pouvez pas supprimer vous-même"
 
-#: ../controllers/admin.php:159
+#: ../controllers/admin.php:161
 #: ../controllers/group.php:148
 msgid "User deleted"
 msgstr "Membre supprim&eacute;"
 
-#: ../controllers/admin.php:181
+#: ../controllers/admin.php:183
 #: ../controllers/group.php:170
 msgid "User status updated"
 msgstr "Status mis &agrave; jour"
 
-#: ../controllers/admin.php:241
+#: ../controllers/admin.php:243
 #: ../controllers/group.php:220
 msgid "User saved"
 msgstr "Membre sauvegard&eacute;es."
 
-#: ../controllers/admin.php:273
+#: ../controllers/admin.php:275
 #: ../controllers/group.php:252
-#: ../controllers/member.php:174
+#: ../controllers/member.php:185
 msgid "The email is already in use"
 msgstr "D&eacute;sol&eacute;, cette adresse mail est d&eacute;j&agrave; utilis&eacute;e!"
 
@@ -131,12 +131,12 @@ msgstr "Merci de renseigner l'identifiant."
 msgid "Please enter your password"
 msgstr "Veuillez insérer  le mot de passe."
 
-#: ../controllers/member.php:123
+#: ../controllers/member.php:127
 #, php-format
 msgid "Your password for %s"
 msgstr "Votre mot de passe pour %s"
 
-#: ../controllers/member.php:124
+#: ../controllers/member.php:128
 #, php-format
 msgid ""
 "Hello %s,\n"
@@ -151,12 +151,12 @@ msgid ""
 "The administrator"
 msgstr ""
 
-#: ../controllers/member.php:131
+#: ../controllers/member.php:135
 #, php-format
 msgid "New member for %s"
 msgstr "Nouveau membre pour %s"
 
-#: ../controllers/member.php:132
+#: ../controllers/member.php:136
 #, php-format
 msgid ""
 "Hello admin,\n"
@@ -170,7 +170,7 @@ msgid ""
 "The administrator"
 msgstr ""
 
-#: ../controllers/member.php:137
+#: ../controllers/member.php:141
 #, php-format
 msgid ""
 "Thank you for registering with this site.\n"
@@ -178,26 +178,30 @@ msgid ""
 "Please check your email %s and get there your password, then turn back to log in."
 msgstr ""
 
-#: ../controllers/member.php:227
+#: ../controllers/member.php:161
+msgid "The username format is not valid, please use alphanumeric characters."
+msgstr "Le format du nom d'identification n'est pas valide. Veuillez utiliser seulement des chiffres et des lettres."
+
+#: ../controllers/member.php:238
 msgid "Your profile was saved."
 msgstr "Votre profil est enregistré"
 
-#: ../controllers/member.php:284
+#: ../controllers/member.php:295
 #, php-format
 msgid "The address %s is not a valid email"
 msgstr "Votre adresse email %s n'est pas valide"
 
-#: ../controllers/member.php:285
+#: ../controllers/member.php:296
 #, php-format
 msgid "The address %s is not found in our database. Try another address."
 msgstr ""
 
-#: ../controllers/member.php:299
+#: ../controllers/member.php:310
 #, php-format
 msgid "Create a new password: %s"
 msgstr "Créer un nouveau mot de passe: %s"
 
-#: ../controllers/member.php:300
+#: ../controllers/member.php:311
 #, php-format
 msgid ""
 "Hello %s,\n"
@@ -210,16 +214,16 @@ msgid ""
 "The administrator"
 msgstr ""
 
-#: ../controllers/member.php:305
+#: ../controllers/member.php:316
 #, php-format
 msgid "We have sent to %s the instruction on how to create a new password. Please check your email."
 msgstr ""
 
-#: ../controllers/member.php:316
+#: ../controllers/member.php:327
 msgid "Your password is now changed. You can login with your username and the new password."
 msgstr ""
 
-#: ../controllers/member.php:328
+#: ../controllers/member.php:339
 msgid "The activation link is not valid. Please check again your email and verify the link. If you are sure the link was right then contact the administrator."
 msgstr ""
 
@@ -235,10 +239,9 @@ msgid "To create a new password, please enter your email."
 msgstr "Pour pouvoir cr&eacute;er un nouveau mot de passe, ins&eacute;rer votre adresse email."
 
 #: ../views/adino.php:15
-#: ../views/admin.php:25
+#: ../views/admin.php:38
 #: ../views/create.php:42
 #: ../views/edit.php:43
-#: ../views/myprofile.php:37
 #: ../views/signup.php:19
 msgid "Email"
 msgstr "Email"
@@ -247,7 +250,7 @@ msgstr "Email"
 #: ../views/adino_activate.php:16
 #: ../views/create.php:24
 #: ../views/edit.php:24
-#: ../views/myprofile.php:45
+#: ../views/myprofile.php:47
 msgid "Save"
 msgstr "Enregistrer"
 
@@ -256,7 +259,7 @@ msgstr "Enregistrer"
 #: ../views/admin.php:9
 #: ../views/create.php:25
 #: ../views/edit.php:25
-#: ../views/myprofile.php:46
+#: ../views/myprofile.php:48
 #: ../views/signup.php:31
 msgid "Cancel"
 msgstr "Annuler"
@@ -265,14 +268,14 @@ msgstr "Annuler"
 #: ../views/create.php:37
 #: ../views/edit.php:38
 #: ../views/login.php:22
-#: ../views/myprofile.php:32
+#: ../views/myprofile.php:36
 msgid "Password"
 msgstr "Mot de passe"
 
 #: ../views/adino_activate.php:14
 #: ../views/create.php:40
 #: ../views/edit.php:41
-#: ../views/myprofile.php:35
+#: ../views/myprofile.php:39
 msgid "Confirm"
 msgstr "Confirmer"
 
@@ -293,7 +296,11 @@ msgstr "Configurations"
 msgid "Add a new user"
 msgstr "Ajouter un utilisateur"
 
-#: ../views/admin.php:24
+#: ../views/admin.php:28
+msgid "Search"
+msgstr "Chercher"
+
+#: ../views/admin.php:37
 #: ../views/create.php:34
 #: ../views/edit.php:34
 #: ../views/login.php:20
@@ -301,23 +308,23 @@ msgstr "Ajouter un utilisateur"
 msgid "Username"
 msgstr "Login"
 
-#: ../views/admin.php:26
+#: ../views/admin.php:39
 msgid "Action"
 msgstr "Action"
 
-#: ../views/admin.php:37
+#: ../views/admin.php:50
 msgid "Deactivate"
 msgstr "D&eacute;sactiver"
 
-#: ../views/admin.php:37
+#: ../views/admin.php:50
 msgid "Activate"
 msgstr "Activer"
 
-#: ../views/admin.php:38
+#: ../views/admin.php:51
 msgid "Edit"
 msgstr "Modifier"
 
-#: ../views/admin.php:39
+#: ../views/admin.php:52
 msgid "Delete"
 msgstr "Supprimer"
 
@@ -363,15 +370,19 @@ msgstr "Inscription"
 msgid "Lost password ?"
 msgstr "Mot de passe perdu?"
 
-#: ../views/myprofile.php:4
+#: ../views/myprofile.php:3
+msgid "Log out"
+msgstr "D&eacute;connecter"
+
+#: ../views/myprofile.php:8
 msgid "Quick menu"
 msgstr "Menu rapide"
 
-#: ../views/myprofile.php:13
+#: ../views/myprofile.php:17
 msgid "Edit your profile"
 msgstr "Votre profil et options personnelles"
 
-#: ../views/myprofile.php:28
+#: ../views/myprofile.php:32
 msgid "You can change your profile here, if you want."
 msgstr ""
 
@@ -423,13 +434,4 @@ msgstr "supprimer dans"
 #, php-format
 msgid "Sorry, you cannot %s the %s module"
 msgstr "D&eacute;sol&eacute; vous ne pouvez pas %s le module %s"
-
-#~ msgid "Downloads"
-#~ msgstr "T&eacute;l&eacute;chargements"
-#~ msgid "The file you're looking for couldn't be found!"
-#~ msgstr "Fichier non trouv&eacute;"
-#~ msgid "Upload File"
-#~ msgstr "Charger un fichier"
-#~ msgid "Upload files"
-#~ msgstr "Charger fichiers"
 
