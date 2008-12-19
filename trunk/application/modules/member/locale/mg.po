@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Solaitra:Member\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-12-06 16:58+0100\n"
-"PO-Revision-Date: 2008-12-10 10:52+0100\n"
+"PO-Revision-Date: 2008-12-18 09:49+0100\n"
 "Last-Translator: hery <heriniaina.eugene@gmail.com>\n"
 "Language-Team: Hery Serasera.org <hery@serasera.org>\n"
 "MIME-Version: 1.0\n"
@@ -15,8 +15,8 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../controllers/admin.php:80
-#: ../controllers/admin.php:197
+#: ../controllers/admin.php:81
+#: ../controllers/admin.php:198
 #: ../controllers/group.php:67
 #: ../controllers/group.php:184
 #: ../controllers/member.php:94
@@ -24,22 +24,22 @@ msgstr ""
 msgid "email"
 msgstr "adiresy email"
 
-#: ../controllers/admin.php:81
+#: ../controllers/admin.php:82
 #: ../controllers/group.php:68
 #: ../controllers/member.php:95
 msgid "username"
 msgstr "solonanarana"
 
-#: ../controllers/admin.php:82
-#: ../controllers/admin.php:198
+#: ../controllers/admin.php:83
+#: ../controllers/admin.php:199
 #: ../controllers/group.php:69
 #: ../controllers/group.php:185
 #: ../controllers/member.php:216
 msgid "password"
 msgstr "tenimiafina"
 
-#: ../controllers/admin.php:83
-#: ../controllers/admin.php:199
+#: ../controllers/admin.php:84
+#: ../controllers/admin.php:200
 #: ../controllers/group.php:70
 #: ../controllers/group.php:186
 #: ../controllers/member.php:96
@@ -47,8 +47,8 @@ msgstr "tenimiafina"
 msgid "password confirmation"
 msgstr "fanamarinana tenimiafina"
 
-#: ../controllers/admin.php:89
-#: ../controllers/admin.php:204
+#: ../controllers/admin.php:90
+#: ../controllers/admin.php:205
 #: ../controllers/group.php:76
 #: ../controllers/group.php:191
 #: ../controllers/member.php:102
@@ -58,8 +58,8 @@ msgstr "fanamarinana tenimiafina"
 msgid "The %s field is required"
 msgstr "Ilaina ny %s"
 
-#: ../controllers/admin.php:90
-#: ../controllers/admin.php:205
+#: ../controllers/admin.php:91
+#: ../controllers/admin.php:206
 #: ../controllers/group.php:77
 #: ../controllers/group.php:192
 #: ../controllers/member.php:103
@@ -68,52 +68,52 @@ msgstr "Ilaina ny %s"
 msgid "The %s field does not match the %s field"
 msgstr "Tsy mitovy amin'ny %s ny %s napetrakao"
 
-#: ../controllers/admin.php:107
+#: ../controllers/admin.php:108
 #: ../controllers/group.php:94
 msgid "User registered"
 msgstr "Tafiditra ny mpiambana"
 
-#: ../controllers/admin.php:121
+#: ../controllers/admin.php:122
 #: ../controllers/group.php:108
 #: ../controllers/member.php:155
 msgid "The username is already in use"
 msgstr "Efa misy mampiasa ny solonanarana"
 
-#: ../controllers/admin.php:139
-#: ../controllers/admin.php:249
+#: ../controllers/admin.php:140
+#: ../controllers/admin.php:250
 #: ../controllers/group.php:126
 #: ../controllers/group.php:226
 msgid "This member doesn't exist"
 msgstr "Tsy ao io mpikambana io"
 
-#: ../controllers/admin.php:149
-#: ../controllers/admin.php:170
+#: ../controllers/admin.php:150
+#: ../controllers/admin.php:171
 #: ../controllers/group.php:136
 #: ../controllers/group.php:157
 msgid "Username and status required"
 msgstr "Ilaina ny solonanarana sy ny status"
 
-#: ../controllers/admin.php:155
+#: ../controllers/admin.php:156
 #: ../controllers/group.php:142
 msgid "You cannot remove yourself"
 msgstr "Tsy afaka manala ny tenanao ianao"
 
-#: ../controllers/admin.php:161
+#: ../controllers/admin.php:162
 #: ../controllers/group.php:148
 msgid "User deleted"
 msgstr "Voafafa ny mpiakambana"
 
-#: ../controllers/admin.php:183
+#: ../controllers/admin.php:184
 #: ../controllers/group.php:170
 msgid "User status updated"
 msgstr "Voaova ny mombamomba ny mpikambana"
 
-#: ../controllers/admin.php:243
+#: ../controllers/admin.php:244
 #: ../controllers/group.php:220
 msgid "User saved"
 msgstr "Voatahiry ny mpikambana"
 
-#: ../controllers/admin.php:275
+#: ../controllers/admin.php:276
 #: ../controllers/group.php:252
 #: ../controllers/member.php:185
 msgid "The email is already in use"
@@ -406,7 +406,7 @@ msgstr "Hivoaka"
 
 #: ../views/myprofile.php:8
 msgid "Quick menu"
-msgstr "Quick menu"
+msgstr "Rohy ilaina"
 
 #: ../views/myprofile.php:17
 msgid "Edit your profile"
@@ -422,7 +422,7 @@ msgstr "Fenoy azafady ny "
 
 #: ../views/signup.php:22
 msgid "Confirm email"
-msgstr "Hamarino ny adiresy"
+msgstr "Soraty indray ny adiresy"
 
 #: ../views/signup.php:27
 msgid "Fields marked with * are required"
