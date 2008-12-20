@@ -125,7 +125,7 @@ class Member extends Controller {
 			$this->email->from($this->system->admin_email, $this->system->site_name);
 			$this->email->to($this->input->post('email'));
 			$this->email->subject(sprintf(__("Your password for %s", "member"), $this->system->site_name));
-			$this->email->message(sprintf(__("Hello %s,\n\nThank you for registering to %s.\nNow you can enter in the site with these information.\n\nUsername: %s\nPassword: %s\n\nThank you.\nThe administrator"), $this->input->post('username'), $this->system->site_name, $this->input->post('username'), $password), "member");
+			$this->email->message(sprintf(__("Hello %s,\n\nThank you for registering to %s.\nNow you can enter in the site with these information.\n\nUsername: %s\nPassword: %s\n\nThank you.\nThe administrator", "member"), $this->input->post('username'), $this->system->site_name, $this->input->post('username'), $password));
 
 			$this->email->send();
 			//notify admin
@@ -133,7 +133,7 @@ class Member extends Controller {
 			$this->email->from($this->system->admin_email, $this->system->site_name);
 			$this->email->to($this->system->admin_email);
 			$this->email->subject(sprintf(__("New member for %s", "member"), $this->system->site_name));
-			$this->email->message(sprintf(__("Hello admin,\n\nA new member has just registere into your site. These are the submitted information.\n\nUsername: %s\nEmail: %s\nIP: %s\nThank you.\nThe administrator"), $this->input->post('username'), $this->input->post('email'), $this->input->ip_address()), "member");
+			$this->email->message(sprintf(__("Hello admin,\n\nA new member has just registere into your site. These are the submitted information.\n\nUsername: %s\nEmail: %s\nIP: %s\nThank you.\nThe administrator", "member"), $this->input->post('username'), $this->input->post('email'), $this->input->ip_address()));
 
 			$this->email->send();
 			
