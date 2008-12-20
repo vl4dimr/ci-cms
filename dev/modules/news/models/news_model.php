@@ -69,6 +69,7 @@
 			{
 				$data['lang'] = $this->user->lang;
 			}
+			$this->db->order_by('cat, ordering, date DESC');
 			$this->db->where($data);
 			$query = $this->db->get($this->table);
 			if ( $query->num_rows() > 0 )
@@ -96,6 +97,7 @@
 				$this->db->where('uri', $data);
 			}
 			
+			$this->db->order_by('cat, ordering, date DESC');
 			$query = $this->db->get($this->table, 1);
 			
 			if ( $query->num_rows() == 1 )
@@ -148,7 +150,7 @@
 		{
 			
 			$this->db->where(array('lang' => $this->user->lang));
-			$this->db->orderby('date DESC');
+			$this->db->order_by('cat, ordering, date DESC');
 			
 			$query = $this->db->get($this->table, $limit, $start);
 			
@@ -165,7 +167,7 @@
 		function latest_news($limit = 10)
 		{
 			$this->db->where('lang', $this->user->lang);
-			$this->db->order_by('date', 'DESC');
+			$this->db->order_by('cat, ordering, date DESC');
 			$this->db->limit($limit);
 			$query = $this->db->get($this->table);
 			
@@ -370,8 +372,71 @@
 		
 	}
 			
+	function move($direction, $id)
+	{
+
+		$query = $this->db->get_where('news', array('id' => $id));
+		
+		
+		if ($row = $query->row())
+		{
+			$cat = $row->cat;
+			
+		}
+		else
+		{
+			$cat = 0;
+		}
+		
+		
+		$move = ($direction == 'up') ? -1 : 1;
+		$this->db->where(array('id' => $id));
+		
+		$this->db->set('ordering', 'ordering+'.$move, FALSE);
+		$this->db->update('news');
+		
+		$this->db->where(array('id' => $id));
+		$query = $this->db->get('news');
+		$row = $query->row();
+		$new_ordering = $row->ordering;
+		
+		
+		if ( $move > 0 )
+		{
+			$this->db->set('ordering', 'ordering-1', FALSE);
+			$this->db->where(array('ordering <=' => $new_ordering, 'id <>' => $id, 'cat' => $cat, 'lang' => $this->user->lang));
+			$this->db->update('news');
+		}
+		else
+		{
+			$this->db->set('ordering', 'ordering+1', FALSE);
+			$where = array('ordering >=' => $new_ordering, 'id <>' => $id, 'cat' => $cat, 'lang' => $this->user->lang);
+			
+			$this->db->where($where);
+			$this->db->update('news');
+		}
+		//reordinate
+		$i = 0;
+		$this->db->order_by('ordering');
+		$this->db->where(array('cat' => $cat, 'lang' => $this->user->lang));
+		
+		$query = $this->db->get('news');
+		
+		if ($rows = $query->result())
+		{
+			foreach ($rows as $row)
+			{
+				$this->db->set('ordering', $i);
+				$this->db->where('id', $row->id);
+				$this->db->update('news');
+				$i++;
+			}
+		}
+		//clear cache
 		
 	}
+		
+}
 
 
 ?>

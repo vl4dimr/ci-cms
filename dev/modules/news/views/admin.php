@@ -23,7 +23,8 @@
 	<thead>
 		<tr>
 				<th width="3%" class="center">ID</th>
-				<th width="50%"><?=__("Title", $this->template['module'])?></th>
+				<th width="40%"><?=__("Title", $this->template['module'])?></th>
+				<th width="10%"><?=__("Ordering", $this->template['module'])?></th>
 				<th width="10%"><?=__("Status", $this->template['module'])?></th>
 				<th width="30%" colspan="3"><?=__("Action", $this->template['module'])?></th>
 				<th width="7%" class="last center"><?=__("Hits", $this->template['module'])?></th>
@@ -36,6 +37,8 @@
 		<tr class="<?=$rowClass?>">
 				<td class="center"><?=$row['id']?></td>
 				<td><?=$row['title']?></td>
+				<td><a href="<?=site_url('admin/news/move/up/'. $row['id'])?>"><img src="<?=site_url('application/views/admin/images/moveup.gif')?>" width="16" height="16" title="<?=__("Move up", $this->template['module'])?>" alt="<?=__("Move up", $this->template['module'])?>"/></a>
+				<a href="<?=site_url('admin/news/move/down/'. $row['id'])?>"><img src="<?=site_url('application/views/admin/images/movedown.gif')?>" width="16" height="16" title="<?=__("Move down", $this->template['module'])?>" alt="<?=__("Move down", $this->template['module'])?>"/></a></td>
 				<td><?php if ($row['status']==1): echo __('Published'); else: echo __('Draft'); endif;?></td>
 				<td><a href="<?=site_url('news/'. $row['uri'])?>" rel="external"><?=__("View", $this->template['module'])?></a></td>
 				<td><a href="<?=site_url('admin/'.$module.'/create/'.$row['id'])?>"><?=__("Edit", $this->template['module'])?></a></td>
