@@ -398,6 +398,7 @@
 		$this->db->where(array('id' => $id));
 		$query = $this->db->get('news');
 		$row = $query->row();
+	
 		$new_ordering = $row->ordering;
 		
 		

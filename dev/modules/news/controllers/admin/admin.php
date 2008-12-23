@@ -205,6 +205,22 @@
 
 		}
 		
+		
+		function move($direction, $id)
+		{
+			$this->user->check_level($this->template['module'], LEVEL_EDIT);
+
+			if (!isset($direction) || !isset($id))
+			{
+				redirect('admin/news');
+			}
+			
+			$this->news->move($direction, $id);
+			
+			redirect('admin/news');					
+			
+		}
+		
 		function create($id = null)
 		{
 
