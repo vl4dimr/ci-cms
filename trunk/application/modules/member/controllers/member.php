@@ -27,7 +27,7 @@ class Member extends Controller {
 	function logout()
 	{
 		$this->user->logout();
-		$this->session->set_flashdata('notification',__("You are now logged out.", "africa"));
+		$this->session->set_flashdata('notification',__("You are now logged out.", $this->template['module']));
 		redirect('member/login');
 	}
 	
@@ -99,9 +99,9 @@ class Member extends Controller {
 		$this->validation->set_error_delimiters('<p style="color:#900">', '</p>');
 
 		//$this->validation->set_message('min_length', __('The %s field is required'));
-		$this->validation->set_message('required', __('The %s field is required'));
-		$this->validation->set_message('matches', __('The %s field does not match the %s field'));
-		$this->validation->set_message('valid_email', 'The email address you entered is not valid.');			
+		$this->validation->set_message('required', __('The %s field is required', $this->template['module']));
+		$this->validation->set_message('matches', __('The %s field does not match the %s field', $this->template['module']));
+		$this->validation->set_message('valid_email', __('The email address you entered is not valid.', $this->template['module']));			
 						
 
 					
@@ -124,16 +124,16 @@ class Member extends Controller {
 			//send password
 			$this->email->from($this->system->admin_email, $this->system->site_name);
 			$this->email->to($this->input->post('email'));
-			$this->email->subject(sprintf(__("Your password for %s", "member"), $this->system->site_name));
-			$this->email->message(sprintf(__("Hello %s,\n\nThank you for registering to %s.\nNow you can enter in the site with these information.\n\nUsername: %s\nPassword: %s\n\nThank you.\nThe administrator", "member"), $this->input->post('username'), $this->system->site_name, $this->input->post('username'), $password));
+			$this->email->subject(sprintf(__("Your password for %s", $this->template['module']), $this->system->site_name));
+			$this->email->message(sprintf(__("Hello %s,\n\nThank you for registering to %s.\nNow you can enter in the site with these information.\n\nUsername: %s\nPassword: %s\n\nThank you.\nThe administrator", $this->template['module']), $this->input->post('username'), $this->system->site_name, $this->input->post('username'), $password));
 
 			$this->email->send();
 			//notify admin
 			
 			$this->email->from($this->system->admin_email, $this->system->site_name);
 			$this->email->to($this->system->admin_email);
-			$this->email->subject(sprintf(__("New member for %s", "member"), $this->system->site_name));
-			$this->email->message(sprintf(__("Hello admin,\n\nA new member has just registere into your site. These are the submitted information.\n\nUsername: %s\nEmail: %s\nIP: %s\nThank you.\nThe administrator", "member"), $this->input->post('username'), $this->input->post('email'), $this->input->ip_address()));
+			$this->email->subject(sprintf(__("New member for %s", $this->template['module']), $this->system->site_name));
+			$this->email->message(sprintf(__("Hello admin,\n\nA new member has just registere into your site. These are the submitted information.\n\nUsername: %s\nEmail: %s\nIP: %s\nThank you.\nThe administrator", $this->template['module']), $this->input->post('username'), $this->input->post('email'), $this->input->ip_address()));
 
 			$this->email->send();
 			
@@ -208,7 +208,6 @@ class Member extends Controller {
 			$this->load->library('validation');
 			$rules['password'] = "trim|matches[passconf]";
 			$rules['passconf'] = "trim";
-			$rules['email'] = "trim|required|valid_email|callback_verify_mail";	
 			
 			$this->template['member'] = $this->user->get_user(array('username' => $this->user->username));
 			$this->validation->set_rules($rules);	
@@ -219,8 +218,8 @@ class Member extends Controller {
 			$this->validation->set_fields($fields);	
 			$this->validation->set_error_delimiters('<p style="color:#900">', '</p>');
 
-			$this->validation->set_message('required', __('The %s field is required'));
-			$this->validation->set_message('matches', __('The %s field does not match the %s field'));
+			$this->validation->set_message('required', __('The %s field is required', $this->template['module']));
+			$this->validation->set_message('matches', __('The %s field does not match the %s field', $this->template['module']));
 							
 						
 			if ($this->validation->run() == FALSE)
@@ -243,7 +242,7 @@ class Member extends Controller {
 				}
 				else
 				{
-					redirect('');
+					redirect('member/profile');
 				}
 			
 			}				
@@ -291,9 +290,9 @@ class Member extends Controller {
 
 			$this->validation->set_fields($fields);	
 
-			$this->validation->set_message('required', __('The %s field is required'));
-			$this->validation->set_message('valid_email', __('The address %s is not a valid email'));
-			$this->validation->set_message('email_not_found', __('The address %s is not found in our database. Try another address.'));
+			$this->validation->set_message('required', __('The %s field is required', $this->template['module']));
+			$this->validation->set_message('valid_email', __('The address %s is not a valid email', $this->template['module']));
+			$this->validation->set_message('email_not_found', __('The address %s is not found in our database. Try another address.', $this->template['module']));
 			
 			if ($this->validation->run() == FALSE)
 			{
@@ -307,13 +306,13 @@ class Member extends Controller {
 			//send password
 			$this->email->from($this->system->admin_email, $this->system->site_name);
 			$this->email->to($user['email']);
-			$this->email->subject(sprintf(__("Create a new password: %s", "member"), $this->system->site_name));
-			$this->email->message(sprintf(__("Hello %s,\n\nYou said you forgot your password for %s. Since we do not keep passwords in clear, you have to create one. Click the link below to create a new password.\n\n%s\n\nThank you.\nThe administrator"), $this->input->post('username'), $this->system->site_name, site_url($this->user->lang . '/member/adino/' . $key), "member"));
+			$this->email->subject(sprintf(__("Create a new password: %s", $this->template['module']), $this->system->site_name));
+			$this->email->message(sprintf(__("Hello %s,\n\nYou said you forgot your password for %s. Since we do not keep passwords in clear, you have to create one. Click the link below to create a new password.\n\n%s\n\nThank you.\nThe administrator", $this->template['module']), $this->input->post('username'), $this->system->site_name, site_url($this->user->lang . '/member/adino/' . $key)));
 
 			$this->email->send();
 			
 			$this->user->update($user['username'], array('activation' => $key));
-			$this->template['message'] = sprintf(__("We have sent to %s the instruction on how to create a new password. Please check your email.", "member"), $user['email']);
+			$this->template['message'] = sprintf(__("We have sent to %s the instruction on how to create a new password. Please check your email.", $this->template['module']), $user['email']);
 			$this->layout->load($this->template, 'adino_result');
 		}
 		else
@@ -324,7 +323,7 @@ class Member extends Controller {
 				if ($this->input->post('newpass') && ($this->input->post('newpass') == $this->input->post('rnewpass')))
 				{
 					$this->user->update($user['username'], array('activation' => '', 'password' => $this->input->post('newpass')));
-					$this->session->set_flashdata('notification', __("Your password is now changed. You can login with your username and the new password.", "member"));
+					$this->session->set_flashdata('notification', __("Your password is now changed. You can login with your username and the new password.", $this->template['module']));
 					redirect('member/login');
 				}
 				else
@@ -336,7 +335,7 @@ class Member extends Controller {
 			}
 			else
 			{
-				$this->template['message'] = __("The activation link is not valid. Please check again your email and verify the link. If you are sure the link was right then contact the administrator.");
+				$this->template['message'] = __("The activation link is not valid. Please check again your email and verify the link. If you are sure the link was right then contact the administrator.", $this->template['module']);
 				$this->layout->load($this->template, 'adino_result');
 			
 			}
