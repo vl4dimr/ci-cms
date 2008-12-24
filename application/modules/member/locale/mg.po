@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Solaitra:Member\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-12-06 16:58+0100\n"
-"PO-Revision-Date: 2008-12-18 09:49+0100\n"
+"PO-Revision-Date: 2008-12-24 12:17+0100\n"
 "Last-Translator: hery <heriniaina.eugene@gmail.com>\n"
 "Language-Team: Hery Serasera.org <hery@serasera.org>\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: ../controllers/group.php:67
 #: ../controllers/group.php:184
 #: ../controllers/member.php:94
-#: ../controllers/member.php:290
+#: ../controllers/member.php:289
 msgid "email"
 msgstr "adiresy email"
 
@@ -34,7 +34,7 @@ msgstr "solonanarana"
 #: ../controllers/admin.php:199
 #: ../controllers/group.php:69
 #: ../controllers/group.php:185
-#: ../controllers/member.php:216
+#: ../controllers/member.php:215
 msgid "password"
 msgstr "tenimiafina"
 
@@ -43,7 +43,7 @@ msgstr "tenimiafina"
 #: ../controllers/group.php:70
 #: ../controllers/group.php:186
 #: ../controllers/member.php:96
-#: ../controllers/member.php:217
+#: ../controllers/member.php:216
 msgid "password confirmation"
 msgstr "fanamarinana tenimiafina"
 
@@ -52,8 +52,8 @@ msgstr "fanamarinana tenimiafina"
 #: ../controllers/group.php:76
 #: ../controllers/group.php:191
 #: ../controllers/member.php:102
-#: ../controllers/member.php:222
-#: ../controllers/member.php:294
+#: ../controllers/member.php:221
+#: ../controllers/member.php:293
 #, php-format
 msgid "The %s field is required"
 msgstr "Ilaina ny %s"
@@ -63,7 +63,7 @@ msgstr "Ilaina ny %s"
 #: ../controllers/group.php:77
 #: ../controllers/group.php:192
 #: ../controllers/member.php:103
-#: ../controllers/member.php:223
+#: ../controllers/member.php:222
 #, php-format
 msgid "The %s field does not match the %s field"
 msgstr "Tsy mitovy amin'ny %s ny %s napetrakao"
@@ -130,6 +130,10 @@ msgstr "Ampidiro ny solonanarana azafady"
 #: ../controllers/member.php:62
 msgid "Please enter your password"
 msgstr "Ampidiro ny tenimiafina azafady"
+
+#: ../controllers/member.php:104
+msgid "The email address you entered is not valid."
+msgstr "Tsy ara-dal&agrave;na ny adiresy napetrakao."
 
 #: ../controllers/member.php:127
 #, php-format
@@ -204,26 +208,26 @@ msgstr ""
 msgid "The username format is not valid, please use alphanumeric characters."
 msgstr "Tsy aradal&agrave;na ny endriky ny solonanarana. Litera sy marika ihany no azo ampiasaina, tsy azo asiana soratra hafa."
 
-#: ../controllers/member.php:238
+#: ../controllers/member.php:237
 msgid "Your profile was saved."
 msgstr "Voatahiry ny mombamomba anao"
 
-#: ../controllers/member.php:295
+#: ../controllers/member.php:294
 #, php-format
 msgid "The address %s is not a valid email"
 msgstr "Tsy adiresy ara-dalana ny %s napetrakao"
 
-#: ../controllers/member.php:296
+#: ../controllers/member.php:295
 #, php-format
 msgid "The address %s is not found in our database. Try another address."
 msgstr "Tsy hita ao amin'ny lisitra ny adiresy %s izay napetrakao. Manandrama adiresy hafa."
 
-#: ../controllers/member.php:310
+#: ../controllers/member.php:309
 #, php-format
 msgid "Create a new password: %s"
 msgstr "Manova tenimiafina: %s"
 
-#: ../controllers/member.php:311
+#: ../controllers/member.php:310
 #, php-format
 msgid ""
 "Hello %s,\n"
@@ -244,16 +248,16 @@ msgstr ""
 "Misaotra anao.\n"
 "Ny mpandrindra"
 
-#: ../controllers/member.php:316
+#: ../controllers/member.php:315
 #, php-format
 msgid "We have sent to %s the instruction on how to create a new password. Please check your email."
 msgstr "Nalefanay amin'ny adiresy %s ny fomba hatao hahazoana mamorona tenimiafina vaovao. Jereo io ny hafatra amin'io adiresy io azafady."
 
-#: ../controllers/member.php:327
+#: ../controllers/member.php:326
 msgid "Your password is now changed. You can login with your username and the new password."
 msgstr "Voaova ny tenimiafina. Afaka miditra amin'ny solonanarana sy tenimiafina vaovao ianao manomboka izao."
 
-#: ../controllers/member.php:339
+#: ../controllers/member.php:338
 msgid "The activation link is not valid. Please check again your email and verify the link. If you are sure the link was right then contact the administrator."
 msgstr "Tsy ara-dalàna io rohy napetrakao io. Jereo tsara ny rohy izay nalefanay tany amin'ny email izay voarainao. Raha tsy mety mihitsy dia ilazao ny mpandrindra ny takelaka."
 
