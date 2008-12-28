@@ -434,7 +434,7 @@
 			}
 		}
 		//clear cache
-		
+		$this->cache->remove('news'.$this->user->lang, 'news');
 	}
 		
 }
