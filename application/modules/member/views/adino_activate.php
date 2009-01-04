@@ -2,7 +2,7 @@
 
 
 
-<form class="settings" action="<?=site_url('member/adino')?>" method="post" accept-charset="utf-8">
+<form class="settings" action="" method="post" accept-charset="utf-8">
 
 		
 			<?php echo __("To create a new password, please enter your email.", $this->template['module']);
