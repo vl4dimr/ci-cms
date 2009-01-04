@@ -271,6 +271,9 @@ class Member extends Controller {
 		return $key;
 	}		
 	
+	
+
+	
 	function adino($code = null)
 	{
 		if (is_null($code))
@@ -282,7 +285,7 @@ class Member extends Controller {
 			
 			
 			$this->load->library('validation');
-			$rules['email'] = "trim|required|valid_email|email_not_found";	
+			$rules['email'] = "trim|required|valid_email|callback_email_not_found";	
 			
 			$this->validation->set_rules($rules);	
 			$this->validation->set_error_delimiters('<p style="color:#900">', '</p>');
@@ -292,28 +295,31 @@ class Member extends Controller {
 
 			$this->validation->set_message('required', __('The %s field is required', $this->template['module']));
 			$this->validation->set_message('valid_email', __('The address %s is not a valid email', $this->template['module']));
-			$this->validation->set_message('email_not_found', __('The address %s is not found in our database. Try another address.', $this->template['module']));
 			
 			if ($this->validation->run() == FALSE)
 			{
 				$this->layout->load($this->template, 'adino');
-				return;
+				
 			}
+			else
+			{
 
-			$user = $this->user->get_user(array('email' => $this->input->post('email')));
-			$key = $this->keygen();
-			$this->load->library('email');
-			//send password
-			$this->email->from($this->system->admin_email, $this->system->site_name);
-			$this->email->to($user['email']);
-			$this->email->subject(sprintf(__("Create a new password: %s", $this->template['module']), $this->system->site_name));
-			$this->email->message(sprintf(__("Hello %s,\n\nYou said you forgot your password for %s. Since we do not keep passwords in clear, you have to create one. Click the link below to create a new password.\n\n%s\n\nThank you.\nThe administrator", $this->template['module']), $this->input->post('username'), $this->system->site_name, site_url($this->user->lang . '/member/adino/' . $key)));
+				$user = $this->user->get_user(array('email' => $this->input->post('email')));
+				
+				$key = $this->keygen();
+				$this->load->library('email');
+				//send password
+				$this->email->from($this->system->admin_email, $this->system->site_name);
+				$this->email->to($user['email']);
+				$this->email->subject(sprintf(__("Create a new password: %s", $this->template['module']), $this->system->site_name));
+				$this->email->message(sprintf(__("Hello %s,\n\nYou said you forgot your password for %s. Since we do not keep passwords in clear, you have to create one. Click the link below to create a new password.\n\n%s\n\nThank you.\nThe administrator", $this->template['module']), $user['username'], $this->system->site_name, site_url($this->user->lang . '/member/adino/' . $key)));
 
-			$this->email->send();
-			
-			$this->user->update($user['username'], array('activation' => $key));
-			$this->template['message'] = sprintf(__("We have sent to %s the instruction on how to create a new password. Please check your email.", $this->template['module']), $user['email']);
-			$this->layout->load($this->template, 'adino_result');
+				$this->email->send();
+				
+				$this->user->update($user['username'], array('activation' => $key));
+				$this->template['message'] = sprintf(__("We have sent to %s the instruction on how to create a new password. Please check your email.", $this->template['module']), $user['email']);
+				$this->layout->load($this->template, 'adino_result');
+			}
 		}
 		else
 		{
@@ -341,5 +347,17 @@ class Member extends Controller {
 			}
 		}
 	}
+
+	function email_not_found($email)
+	{
+
+		//check if email belongs to someone else
+		if (!$this->member_model->exists(array('email' => $email)))
+		{
+			$this->validation->set_message('email_not_found', __('The address %s is not found in our database. Try another address.', $this->template['module']));
+			
+			return FALSE;
+		}
 	
+	}	
 }
