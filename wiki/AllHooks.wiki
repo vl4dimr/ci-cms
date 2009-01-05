@@ -51,6 +51,44 @@ This will show inside the second tab of page create
 
 You can add other fields, like tags etc.
 
+example
+{{{
+
+// the parameters just mean that priority is 10 and allowed fields are 2 which is 
+// $string and $id
+
+$this->add_filter('page_custom_fields', 'tag_page_fields', 10, 2);
+
+
+function tag_page_fields($string, $id = null)
+{
+	$tag_string = "";
+	if (!is_null($id))
+	{
+		$obj =& get_instance();
+		$page = $obj->pages->get_page(array('id' => $id));
+	
+		$obj->load->model('tags_model', 'tag');
+		if($tags = $obj->tag->get_tags(array('srcid' => $page['id'], 'module' => 'page')))
+		{
+			foreach ($tags as $tag)
+			{
+				$tag_string .= $tag['tag'] . ", ";
+			}
+			$tag_string = substr($tag_string, 0, strlen($tag_string) - 2); //remove the ,
+		}
+	}
+	
+	$output = "
+<label for=\"tags\">" . __("Tags:", "tags") . "</label>
+<input type=\"text\" name=\"tags\" value=\"" . $tag_string . "\" id=\"tags\" class=\"input-text\" /><br />
+" . __("Enter tags separated by comma", "tags") . "<br />";
+	
+	return $output;
+}
+
+}}}
+
 ====member_profile_quick_menu====
 This should return an array to show a quick menu in the member profile form
 {{{
