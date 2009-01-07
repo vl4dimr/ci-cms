@@ -5,10 +5,10 @@
 <form class="settings" action="" method="post" accept-charset="utf-8">
 
 		
-			<?php echo __("To create a new password, please enter your email.", $this->template['module']);
+			<?php echo __("Now, create a new password.", $this->template['module']);
 			?>
 			<br />
-			<label for="newpass"><?=__("Password", $this->template['module'])?>:</label>
+			<label for="newpass"><?=__("New password", $this->template['module'])?>:</label>
 			<input type="password" name="newpass" value="" id="newpass" class="input-text" /><br />
 
 			<label for="rnewpass"><?=__("Confirm", $this->template['module'])?>:</label>
