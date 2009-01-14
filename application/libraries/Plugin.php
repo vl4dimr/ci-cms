@@ -6,6 +6,7 @@
 class Plugin {
 	var $_filter = array();
 	var $_action = array();
+	var $obj;
 	
 	function Plugin ()
 	{
