@@ -11,6 +11,7 @@
 		var $version ;
 		var $revision;
 		var $modules;
+		var $obj;
 		
 		function System()
 		{
@@ -44,13 +45,19 @@
 		
 		function find_modules()
 		{
-			$this->obj->db->where('status', 1);
-			$this->obj->db->order_by('ordering');
-			$query = $this->obj->db->get('modules');
-			foreach ($query->result_array() as $row)
+			if ( !$modules = $this->obj->cache->get('modulelist', 'system') )
 			{
-				$this->modules[ $row['name'] ] = $row;
+				$this->obj->db->where('status', 1);
+				$this->obj->db->order_by('ordering');
+				$query = $this->obj->db->get('modules');
+				foreach ($query->result_array() as $row)
+				{
+					$modules[ $row['name'] ] = $row;
+				}
+				$this->obj->cache->save('modulelist', $modules, 'system', 0);
 			}
+			
+			$this->modules = $modules;
 		}
 		
 		function check_update()
