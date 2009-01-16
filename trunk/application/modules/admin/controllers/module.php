@@ -81,6 +81,7 @@
 			$data = array('status' => 1);
 			$this->db->where(array('name'=> $module, 'ordering >=' => 100));
 			$this->db->update('modules', $data);
+			$this->cache->remove('modulelist', 'system');	
 			$this->session->set_flashdata('notification', __("The module is activated", $this->template['module']));
 			redirect('admin/module');
 		}
@@ -95,6 +96,7 @@
 			$data = array('status' => 0);
 			$this->db->where(array('name'=> $module, 'ordering >=' => 100));
 			$this->db->update('modules', $data);
+			$this->cache->remove('modulelist', 'system');
 			$this->session->set_flashdata('notification', __("The module is deactivated", $this->template['module']));
 			redirect('admin/module');
 		}
@@ -110,6 +112,7 @@
 			$this->db->where(array('name' => $module, 'ordering >=' => 100));
 			$this->db->set('ordering', 'ordering+'.$move, FALSE);
 			$this->db->update('modules');
+			
 			
 			$this->db->where(array('name' => $module, 'ordering >=' => 100));
 			$query = $this->db->get('modules');
@@ -144,6 +147,7 @@
 					$i++;
 				}
 			}
+			$this->cache->remove('modulelist', 'system');
 			
 			redirect('admin/module');
 		}
@@ -161,6 +165,7 @@
 			}
 			if (is_readable(APPPATH.'modules/'.$module.'/' . $module .'_update.php'))
 			{
+				$this->cache->remove('modulelist', 'system');
 				include( APPPATH.'modules/'.$module.'/' . $module .'_update.php' );
 				$this->session->set_flashdata('notification', __("No change made", $this->template['module']));
 				redirect('admin/module');		
@@ -183,6 +188,7 @@
 			
 			$this->db->where(array('name'=> $module, 'ordering >=' => 100));
 			$this->db->delete('modules');
+			$this->cache->remove('modulelist', 'system');
 			$this->session->set_flashdata('notification', __("The module is uninstalled", $this->template['module']));
 			redirect('admin/module');
 		}
@@ -243,7 +249,7 @@
 					
 					$this->session->set_flashdata('notification', __("The module is installed. Now you need to activate it.", $this->template['module']));
 					$this->db->insert('modules', $data);
-					
+					$this->cache->remove('modulelist', 'system');
 					redirect('admin/module');
 				}
 				else
