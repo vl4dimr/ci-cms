@@ -18,6 +18,7 @@
 					3 => __("Can edit", $this->template['module']),
 					4 => __("Can delete", $this->template['module'])
 					);
+			$this->user->check_level($this->template['module'], LEVEL_EDIT);
 		}
 		
 		function index()

@@ -10,6 +10,7 @@
 			$this->load->library('administration');
 			
 			$this->template['module'] = "admin";
+			$this->user->check_level($this->template['module'], LEVEL_EDIT);
 		}
 		
 		function index()
