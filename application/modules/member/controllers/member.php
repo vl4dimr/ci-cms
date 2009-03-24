@@ -36,6 +36,7 @@ class Member extends Controller {
 
 		if ( $this->user->logged_in )
 		{
+			$this->session->set_flashdata('notification', __("You are now logged in", $this->template['module']));
 			if ($redirect = $this->input->post('redirect'))
 			{
 				redirect($redirect, 'refresh');
@@ -70,6 +71,7 @@ class Member extends Controller {
 				}
 				else
 				{	
+					$this->session->set_flashdata('notification', __("Login error. Please verify your username and your password.", $this->template['module']));
 					redirect('member/login', 'refresh');
 				}
 			}
