@@ -145,17 +145,32 @@ function ajaxFileUpload() {
 		<label for="body"><?php echo __("Content", $this->template['module'])?>:</label>
 		<textarea name="body" class="input-textarea"><?php echo (isset($row['body'])?$row['body'] : "") ?></textarea><br />
 
-		<div id='image_list'>
-		<div style="visibility: hidden">Available images:</div>
-		<?php if ($images) : ?>
-		<?php foreach($images as $image): ?>
-		<div><input type='hidden' name='image_ids[]' value='<?php echo $image['id'] ?>' /><a href='#' onclick="tinyMCE.execCommand('mceInsertContent',false,'<a href=\'<?php echo site_url('media/images/o')?>/<?php echo $image['file'] ?>\'><img border=\'0\' align=\'left\' hspace=\'10\' src=\'<?php echo site_url('media/images/m')?>/<?php echo $image['file'] ?>\' /></a>');return false;"><?php echo $image['file'] ?></a> - <a href="<?php echo site_url('admin/news/removeimg/' . $image['id']) ?>" class="ajaxdelete" id="<?php echo $image['id'] ?>"><?php echo __("Delete image", $this->template['module']) ?></a></div>
-		<?php endforeach; ?>
-		<?php endif;?>
-		</div>
-		
 		<label for="image"><?php echo __("Image", $this->template['module'])?></label>
 		<input type="file" name="image" class="input-file" id="image"/><br />
+		
+		<div id='image_list'>
+		<div style="visibility: hidden">Available images:</div>
+		<table id="file_list" class="page-list">
+			<thead>
+				<tr>
+					<th><?=__("Name", $this->template['module'])?></th>
+					<th><?=__("Ordering", $this->template['module'])?></th>					
+					<th><?=__("Action", $this->template['module'])?></th>
+				</tr>
+			</thead>
+			<tbody>
+
+		<?php if ($images) : ?>
+		<?php foreach($images as $image): ?>
+		<tr>
+		<td><input type='hidden' name='image_ids[]' value='<?php echo $image['id'] ?>' /><a href='#' onclick="tinyMCE.execCommand('mceInsertContent',false,'<a href=\'<?php echo site_url('media/images/o')?>/<?php echo $image['file'] ?>\'><img border=\'0\' align=\'left\' hspace=\'10\' src=\'<?php echo site_url('media/images/m')?>/<?php echo $image['file'] ?>\' /></a>');return false;"><?php echo $image['file'] ?></a></td>
+		<td><a href="<?php echo site_url('admin/news/removeimg/' . $image['id']) ?>" class="ajaxdelete" id="<?php echo $image['id'] ?>"><?php echo __("Delete image", $this->template['module']) ?></a></td></tr>
+		<?php endforeach; ?>
+		<?php endif;?>
+		</tbody>
+		</table>
+		</div>
+		
 		</div>
 		<div id="two">
 		

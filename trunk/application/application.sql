@@ -200,7 +200,7 @@ CREATE TABLE `ci_modules` (
 -- 
 INSERT INTO `ci_modules` VALUES (1, 'admin', 0, '1.0.1', 1, 5, '', 'Admin core module');
 INSERT INTO `ci_modules` VALUES (2, 'module', 0, '1.0.0', 1, 20, '', 'Module core module');
-INSERT INTO `ci_modules` VALUES (3, 'page', 1, '1.0.0', 1, 60, '', 'Page core module');
+INSERT INTO `ci_modules` VALUES (3, 'page', 1, '1.0.2', 1, 60, '', 'Page core module');
 INSERT INTO `ci_modules` VALUES (4, 'language', 1, '1.0.0', 1, 10, '', 'Language core module');
 INSERT INTO `ci_modules` VALUES (5, 'member', 1, '1.0.0', 1, 30, '', 'Member core module');   
 INSERT INTO `ci_modules` VALUES (6, 'search', 0, '1.0.0', 1, 50, '', 'Search core module');   
@@ -262,6 +262,7 @@ CREATE TABLE IF NOT EXISTS `ci_images` (
   `module` varchar(100) NOT NULL default '',
   `file` varchar(255) NOT NULL default '',
   `src_id` int(11) NOT NULL default '0',
+  `ordering` tinyint(4) NOT NULL default '0',
   `info` text NOT NULL,
   PRIMARY KEY  (`id`)
 ) ;

@@ -12,7 +12,7 @@
  */
  $this->obj->load->dbforge();
  //update to 0.2.0.0
-if ($this->version < '0.2.0.1')
+if ($this->version < '0.2.0.0')
 {
  
 	@mkdir('./media/images');
