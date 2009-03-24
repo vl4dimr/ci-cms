@@ -49,6 +49,7 @@
 
 		function _get_levels()
 		{
+			$admin = array();
 			if ($this->logged_in)
 			{
 			
@@ -61,32 +62,27 @@
 			
 				$this->obj->db->where('username', $this->username);
 				$query = $this->obj->db->get('admins');
-				$admin = array();
 				if ($rows = $query->result_array())
 				{
 					foreach($rows as $val) {
 						$admin[ $val['module'] ] = $val['level'];
 					}
-
-					if (is_array($this->obj->system->modules))
-					{
-						foreach($this->obj->system->modules as $module)
-						{	
-							if (!isset($admin[ $module['name'] ]))
-							{
-								$admin[ $module['name'] ] = 0;
-							}
-						}
-					}
-
-
-					$this->level = $admin;
 				}
 			}
-			else
+			
+			if (is_array($this->obj->system->modules))
 			{
-				return false;
+				foreach($this->obj->system->modules as $module)
+				{	
+					if (!isset($admin[ $module['name'] ]))
+					{
+						$admin[ $module['name'] ] = 0;
+					}
+				}
 			}
+
+
+			$this->level = $admin;
 		}
 		
 		function check_level($module, $level)

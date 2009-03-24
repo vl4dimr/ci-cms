@@ -6,6 +6,7 @@
 class Block {
 
 	var $_blocks = array();
+	var $obj;
 
 	function Block() {
 		//get blocks for activated modules
