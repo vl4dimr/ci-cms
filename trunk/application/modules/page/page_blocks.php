@@ -21,4 +21,14 @@ function page_subpages($id, $limit = 5)
 	return  $obj->page_model->get_subpages($id);
 }
 
+$this->set('page_item', 'page_item');
+
+function page_item($where = array())
+{
+	$obj =& get_instance();
+	
+	$obj->load->model('page_model');
+	return  $obj->page_model->get_page($where);
+}
+
 ?>
