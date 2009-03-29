@@ -214,8 +214,11 @@
 		
 		function logout()
 		{
+			//keep last_uri
+			$last_uri = $this->obj->session->userdata("last_uri");
 			$this->_destroy_session();
-			$this->obj->session->set_flashdata('user', 'You are now logged out');
+			$this->obj->session->set_userdata(array('last_uri' => $last_uri));
+			$this->obj->session->set_flashdata('notification', 'You are now logged out');
 		}
 		
 		function update($username, $data)
@@ -298,5 +301,35 @@
 			}
 		}
 
+		function get_user_number($where = array(), $params = array())
+		{
+			
+			$this->obj->db->select("COUNT(id) total");
+			$this->obj->db->where($where);
+			$this->obj->db->from("users");
+			
+			$query = $this->obj->db->get();
+			if ($query->num_rows() > 0)
+			{
+				$row = $query->row_array();
+				return $row['total'];
+			}
+			else
+			{
+				return 0;
+			}
+		}
+		
+		function delete_user($where, $limit = 1)
+		{
+			if (!is_array($where))
+			{
+				$where = array('id', $where);
+			}
+			$this->obj->db->where($where);
+			$this->obj->db->limit($limit);
+			$this->obj->db->delete("users");
+		}
+	}
 	}
 ?>
