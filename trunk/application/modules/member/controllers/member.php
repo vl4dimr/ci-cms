@@ -86,9 +86,9 @@ class Member extends Controller {
 		}
 		$this->load->library('validation');	
 		
-		$rules['username'] = "trim|required|min_length[4]|max_length[12]|xss_clean|callback_verify_username";
+		$rules['username'] = "trim|required|min_length[4]|max_length[12]|xss_clean|callback__verify_username";
 		$rules['remail'] = "trim";
-		$rules['email'] = "trim|required|matches[remail]|valid_email|callback_verify_mail";	
+		$rules['email'] = "trim|required|matches[remail]|valid_email|callback__verify_mail";	
 
 		
 		$this->validation->set_rules($rules);	
@@ -114,7 +114,7 @@ class Member extends Controller {
 		else
 		{
 			//generate key
-			$password = $this->keygen();
+			$password = $this->_keygen();
 			
 			$id = $this->user->register(
 				$this->input->post('username'),
@@ -146,7 +146,7 @@ class Member extends Controller {
 
 	}
 	
-	function verify_username($data)
+	function _verify_username($data)
 	{
 
 		$username = $this->input->post('username');
@@ -174,7 +174,7 @@ class Member extends Controller {
 	 * @param	string
 	 * @return	bool
 	 */
-	function verify_mail($data)
+	function _verify_mail($data)
 	{
 
 		$email = $this->input->post('email');
@@ -184,7 +184,7 @@ class Member extends Controller {
 		//check if email belongs to someone else
 		if ($this->member_model->exists(array('email' => $email, 'username !=' => $username)))
 		{
-			$this->validation->set_message('verify_mail', __("The email is already in use", $this->template['module']));
+			$this->validation->set_message('_verify_mail', __("The email is already in use", $this->template['module']));
 			return FALSE;
 		}
 
@@ -256,7 +256,7 @@ class Member extends Controller {
 		}
 	}
 	
-	function keygen()
+	function _keygen()
 	{
 		$size = 3;
 		$key = "";
@@ -287,7 +287,7 @@ class Member extends Controller {
 			
 			
 			$this->load->library('validation');
-			$rules['email'] = "trim|required|valid_email|callback_email_not_found";	
+			$rules['email'] = "trim|required|valid_email|callback__email_not_found";	
 			
 			$this->validation->set_rules($rules);	
 			$this->validation->set_error_delimiters('<p style="color:#900">', '</p>');
@@ -308,7 +308,7 @@ class Member extends Controller {
 
 				$user = $this->user->get_user(array('email' => $this->input->post('email')));
 				
-				$key = $this->keygen();
+				$key = $this->_keygen();
 				$this->load->library('email');
 				//send password
 				$this->email->from($this->system->admin_email, $this->system->site_name);
@@ -350,7 +350,7 @@ class Member extends Controller {
 		}
 	}
 
-	function email_not_found($email)
+	function _email_not_found($email)
 	{
 
 		//check if email belongs to someone else
@@ -362,4 +362,80 @@ class Member extends Controller {
 		}
 	
 	}	
+	
+	function change_mail()
+	{
+		
+		$this->user->require_login();
+		
+		$this->template['title'] = __("Change your email", "member") ;
+		$this->load->library('validation');	
+		
+		$rules['remail'] = "trim";
+		$rules['email'] = "trim|required|matches[remail]|valid_email|callback__verify_mail";	
+
+		
+		$this->validation->set_rules($rules);	
+
+		$fields['email'] = __("Email", $this->template['module']);	
+		$fields['remail'] = __("Email confirmation", $this->template['module']);	
+
+
+		$this->validation->set_fields($fields);	
+		$this->validation->set_error_delimiters('<p style="color:#900">', '</p>');
+
+		//$this->validation->set_message('min_length', __('The %s field is required'));
+		$this->validation->set_message('required', __('The %s field is required', $this->template['module']));
+		$this->validation->set_message('matches', __('The %s field does not match the %s field', $this->template['module']));
+		$this->validation->set_message('valid_email', __('The email address you entered is not valid.', $this->template['module']));			
+						
+
+					
+		if ($this->validation->run() == FALSE)
+		{
+			
+			$this->layout->load($this->template, 'change_mail');
+		}
+		else
+		{	
+			$hash = $this->_keygen();
+			$this->load->helper('file');
+			write_file('cache/' . $hash, $this->input->post('email'));
+
+			$this->load->library('email');
+			//send password
+			$this->email->from($this->system->admin_email, $this->system->site_name);
+			$this->email->to($this->input->post('email'));
+			$this->email->subject(sprintf(__("Email change confirmation", $this->template['module']), $this->system->site_name));
+			$this->email->message(sprintf(__("Hello %s,\n\nYou asked to change your email for %s.\n Please click the link below to confirm that this email belongs to you. \n\n%s\n\nThank you.\nThe administrator", $this->template['module']), $this->user->username, $this->system->site_name, site_url('member/verify/' . $hash)));
+
+			$this->email->send();
+			
+
+			$this->session->set_flashdata('notification', sprintf(__("Please, check your new email %s, We sent a link to verify that it belongs to you.", $this->template['module']), $this->input->post('email')));
+			redirect('member/profile');
+		}
+	}
+	
+	function verify($hash = "null")
+	{
+		$this->user->require_login();
+		$this->load->helper('file');
+		
+		if (is_file('cache/' . $hash))
+		{
+			$email = read_file('cache/' . $hash);
+			$this->user->update($this->user->username, array('email' => $email));
+			@unlink('cache/' . $hash);
+			$this->session->set_flashdata('notification', __("Your email is now changed. ", $this->template['module']));
+			redirect('member/profile');
+		}
+		else
+		{
+			$this->session->set_flashdata('notification', __("The link is not valid. Please check your email to verify. ", $this->template['module']));
+			
+		}	
+	}
+	
+	
 }

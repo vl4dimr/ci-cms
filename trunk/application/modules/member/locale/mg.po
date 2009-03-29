@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Solaitra:Member\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-04 22:27+0100\n"
-"PO-Revision-Date: 2009-01-07 16:22+0100\n"
-"Last-Translator: hery <heriniaina.eugene@gmail.com>\n"
+"POT-Creation-Date: 2009-03-29 22:33+0100\n"
+"PO-Revision-Date: 2009-03-29 22:33+0100\n"
+"Last-Translator: Eugene Hery <hery@serasera.org>\n"
 "Language-Team: Hery Serasera.org <hery@serasera.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,14 +19,14 @@ msgstr ""
 #: ../controllers/admin.php:198
 #: ../controllers/group.php:67
 #: ../controllers/group.php:184
-#: ../controllers/member.php:94
-#: ../controllers/member.php:292
+#: ../controllers/member.php:96
+#: ../controllers/member.php:294
 msgid "email"
 msgstr "adiresy email"
 
 #: ../controllers/admin.php:82
 #: ../controllers/group.php:68
-#: ../controllers/member.php:95
+#: ../controllers/member.php:97
 msgid "username"
 msgstr "solonanarana"
 
@@ -34,7 +34,7 @@ msgstr "solonanarana"
 #: ../controllers/admin.php:199
 #: ../controllers/group.php:69
 #: ../controllers/group.php:185
-#: ../controllers/member.php:215
+#: ../controllers/member.php:217
 msgid "password"
 msgstr "tenimiafina"
 
@@ -42,8 +42,8 @@ msgstr "tenimiafina"
 #: ../controllers/admin.php:200
 #: ../controllers/group.php:70
 #: ../controllers/group.php:186
-#: ../controllers/member.php:96
-#: ../controllers/member.php:216
+#: ../controllers/member.php:98
+#: ../controllers/member.php:218
 msgid "password confirmation"
 msgstr "fanamarinana tenimiafina"
 
@@ -51,9 +51,10 @@ msgstr "fanamarinana tenimiafina"
 #: ../controllers/admin.php:205
 #: ../controllers/group.php:76
 #: ../controllers/group.php:191
-#: ../controllers/member.php:102
-#: ../controllers/member.php:221
-#: ../controllers/member.php:296
+#: ../controllers/member.php:104
+#: ../controllers/member.php:223
+#: ../controllers/member.php:298
+#: ../controllers/member.php:388
 #, php-format
 msgid "The %s field is required"
 msgstr "Ilaina ny %s"
@@ -62,8 +63,9 @@ msgstr "Ilaina ny %s"
 #: ../controllers/admin.php:206
 #: ../controllers/group.php:77
 #: ../controllers/group.php:192
-#: ../controllers/member.php:103
-#: ../controllers/member.php:222
+#: ../controllers/member.php:105
+#: ../controllers/member.php:224
+#: ../controllers/member.php:389
 #, php-format
 msgid "The %s field does not match the %s field"
 msgstr "Tsy mitovy amin'ny %s ny %s napetrakao"
@@ -75,7 +77,7 @@ msgstr "Tafiditra ny mpiambana"
 
 #: ../controllers/admin.php:122
 #: ../controllers/group.php:108
-#: ../controllers/member.php:155
+#: ../controllers/member.php:157
 msgid "The username is already in use"
 msgstr "Efa misy mampiasa ny solonanarana"
 
@@ -115,7 +117,7 @@ msgstr "Voatahiry ny mpikambana"
 
 #: ../controllers/admin.php:276
 #: ../controllers/group.php:252
-#: ../controllers/member.php:185
+#: ../controllers/member.php:187
 msgid "The email is already in use"
 msgstr "Efa misy mampiasa ny adiresy email"
 
@@ -123,24 +125,33 @@ msgstr "Efa misy mampiasa ny adiresy email"
 msgid "You are now logged out."
 msgstr "Tafavoaka soa amantsara ianao"
 
-#: ../controllers/member.php:56
+#: ../controllers/member.php:39
+msgid "You are now logged in"
+msgstr "Tafiditra soa amantsara ianao"
+
+#: ../controllers/member.php:57
 msgid "Please enter your username"
 msgstr "Ampidiro ny solonanarana azafady"
 
-#: ../controllers/member.php:62
+#: ../controllers/member.php:63
 msgid "Please enter your password"
 msgstr "Ampidiro ny tenimiafina azafady"
 
-#: ../controllers/member.php:104
+#: ../controllers/member.php:74
+msgid "Login error. Please verify your username and your password."
+msgstr "Hadisoana. Hamarino ny solonanarana sy ny tenimiafina."
+
+#: ../controllers/member.php:106
+#: ../controllers/member.php:390
 msgid "The email address you entered is not valid."
 msgstr "Tsy adiresy ara-dalana ny adiresy napetrakao"
 
-#: ../controllers/member.php:127
+#: ../controllers/member.php:129
 #, php-format
 msgid "Your password for %s"
 msgstr "%s tenimiafina"
 
-#: ../controllers/member.php:128
+#: ../controllers/member.php:130
 #, php-format
 msgid ""
 "Hello %s,\n"
@@ -165,12 +176,12 @@ msgstr ""
 "Misaotra anao.\n"
 "Ny mpandrindra"
 
-#: ../controllers/member.php:135
+#: ../controllers/member.php:137
 #, php-format
 msgid "New member for %s"
 msgstr "Mpikambana vaovao %s"
 
-#: ../controllers/member.php:136
+#: ../controllers/member.php:138
 #, php-format
 msgid ""
 "Hello admin,\n"
@@ -193,7 +204,7 @@ msgstr ""
 "Misaotra. \n"
 "Ny mpandrindra"
 
-#: ../controllers/member.php:141
+#: ../controllers/member.php:143
 #, php-format
 msgid ""
 "Thank you for registering with this site.\n"
@@ -204,25 +215,25 @@ msgstr ""
 "\n"
 "Mba jereo azafady ny adiresy %s ary jereo any ny tenimiafina dia miverena miditra."
 
-#: ../controllers/member.php:161
+#: ../controllers/member.php:163
 msgid "The username format is not valid, please use alphanumeric characters."
 msgstr "Tsy aradal&agrave;na ny endriky ny solonanarana. Litera sy marika ihany no azo ampiasaina, tsy azo asiana soratra hafa."
 
-#: ../controllers/member.php:237
+#: ../controllers/member.php:239
 msgid "Your profile was saved."
 msgstr "Voatahiry ny mombamomba anao"
 
-#: ../controllers/member.php:297
+#: ../controllers/member.php:299
 #, php-format
 msgid "The address %s is not a valid email"
 msgstr "Tsy adiresy ara-dalana ny %s napetrakao"
 
-#: ../controllers/member.php:314
+#: ../controllers/member.php:316
 #, php-format
 msgid "Create a new password: %s"
 msgstr "Manova tenimiafina: %s"
 
-#: ../controllers/member.php:315
+#: ../controllers/member.php:317
 #, php-format
 msgid ""
 "Hello %s,\n"
@@ -243,23 +254,79 @@ msgstr ""
 "Misaotra anao.\n"
 "Ny mpandrindra"
 
-#: ../controllers/member.php:320
+#: ../controllers/member.php:322
 #, php-format
 msgid "We have sent to %s the instruction on how to create a new password. Please check your email."
 msgstr "Nalefanay amin'ny adiresy %s ny fomba hatao hahazoana mamorona tenimiafina vaovao. Jereo io ny hafatra amin'io adiresy io azafady."
 
-#: ../controllers/member.php:332
+#: ../controllers/member.php:334
 msgid "Your password is now changed. You can login with your username and the new password."
 msgstr "Voaova ny tenimiafina. Afaka miditra amin'ny solonanarana sy tenimiafina vaovao ianao manomboka izao."
 
-#: ../controllers/member.php:344
+#: ../controllers/member.php:346
 msgid "The activation link is not valid. Please check again your email and verify the link. If you are sure the link was right then contact the administrator."
 msgstr "Tsy ara-dalàna io rohy napetrakao io. Jereo tsara ny rohy izay nalefanay tany amin'ny email izay voarainao. Raha tsy mety mihitsy dia ilazao ny mpandrindra ny takelaka."
 
-#: ../controllers/member.php:357
+#: ../controllers/member.php:359
 #, php-format
 msgid "The address %s is not found in our database. Try another address."
 msgstr "Tsy hita ao amin'ny lisitra ny adiresy %s izay napetrakao. Manandrama adiresy hafa."
+
+#: ../controllers/member.php:371
+msgid "Change your email"
+msgstr "Hanova adiresy imailaka"
+
+#: ../controllers/member.php:380
+#: ../views/adino.php:16
+#: ../views/admin.php:38
+#: ../views/create.php:42
+#: ../views/edit.php:43
+msgid "Email"
+msgstr "Adiresy email"
+
+#: ../controllers/member.php:381
+msgid "Email confirmation"
+msgstr "Fanamarinana adiresy"
+
+#: ../controllers/member.php:409
+msgid "Email change confirmation"
+msgstr "Fanamarinana fanovana adiresy"
+
+#: ../controllers/member.php:410
+#, php-format
+msgid ""
+"Hello %s,\n"
+"\n"
+"You asked to change your email for %s.\n"
+" Please click the link below to confirm that this email belongs to you. \n"
+"\n"
+"%s\n"
+"\n"
+"Thank you.\n"
+"The administrator"
+msgstr ""
+"Miarahaba an'i %s,\n"
+"\n"
+"Nangataka hanova adiresy email ianao ao amin'ny %s.\n"
+"Tsindrio ny rohy eto ambany azafady hanamarinana fa anao marina io adiresy io.\n"
+"\n"
+"%s\n"
+"\n"
+"Misaotra anao.\n"
+"Ny mpandrindra"
+
+#: ../controllers/member.php:415
+#, php-format
+msgid "Please, check your new email %s, We sent a link to verify that it belongs to you."
+msgstr "Jereo azafady ny adiresinao %s, nandefasanay hafatra any hanamarinana fa anao marina ny adiresy."
+
+#: ../controllers/member.php:429
+msgid "Your email is now changed. "
+msgstr "Voaova ny adiresinao."
+
+#: ../controllers/member.php:434
+msgid "The link is not valid. Please check your email to verify. "
+msgstr "Tsy ara-dal&agrave;na io rohy napetrakao io. Jereo indray azafady ilay hafatra nalefanay."
 
 #: ../views/adino.php:1
 #: ../views/adino_activate.php:1
@@ -271,14 +338,6 @@ msgstr "Adino ny tenimiafina"
 msgid "To create a new password, please enter your email."
 msgstr "Mba  hahafahanao mamorona tenimiafina vaovao dia ampidiro ny adiresy email."
 
-#: ../views/adino.php:16
-#: ../views/admin.php:38
-#: ../views/create.php:42
-#: ../views/edit.php:43
-#: ../views/signup.php:19
-msgid "Email"
-msgstr "Adiresy email"
-
 #: ../views/adino.php:19
 msgid "Submit"
 msgstr "Alefaso"
@@ -286,10 +345,10 @@ msgstr "Alefaso"
 #: ../views/adino.php:20
 #: ../views/adino_activate.php:17
 #: ../views/admin.php:9
+#: ../views/change_mail.php:18
 #: ../views/create.php:25
 #: ../views/edit.php:25
-#: ../views/myprofile.php:48
-#: ../views/signup.php:31
+#: ../views/myprofile.php:49
 msgid "Cancel"
 msgstr "Aoka ihany"
 
@@ -302,21 +361,22 @@ msgid "New password"
 msgstr "Tenimiafina vaovao"
 
 #: ../views/adino_activate.php:14
+#: ../views/change_mail.php:15
 #: ../views/create.php:40
 #: ../views/edit.php:41
-#: ../views/myprofile.php:39
+#: ../views/myprofile.php:40
 msgid "Confirm"
 msgstr "Hamarino"
 
 #: ../views/adino_activate.php:16
+#: ../views/change_mail.php:17
 #: ../views/create.php:24
 #: ../views/edit.php:24
-#: ../views/myprofile.php:47
+#: ../views/myprofile.php:48
 msgid "Save"
 msgstr "Tehirizo"
 
 #: ../views/adino_result.php:6
-#: ../views/unauthorized.php:25
 msgid "Go back"
 msgstr "Miverena"
 
@@ -340,7 +400,6 @@ msgstr "Tadiavo"
 #: ../views/create.php:34
 #: ../views/edit.php:34
 #: ../views/login.php:20
-#: ../views/signup.php:15
 msgid "Username"
 msgstr "Solonanarana"
 
@@ -364,6 +423,18 @@ msgstr "Ahitsio"
 msgid "Delete"
 msgstr "Fafao"
 
+#: ../views/change_mail.php:8
+msgid "Please submit your new email."
+msgstr "Ampidiro ny adiresy vaovao."
+
+#: ../views/change_mail.php:10
+msgid "You will receive a confirmation in your new email."
+msgstr "Handray hafatra fanamarinana amin'ilay adiresy vaovao ianao."
+
+#: ../views/change_mail.php:12
+msgid "New email"
+msgstr "Adiresy vaovao"
+
 #: ../views/create.php:4
 #: ../views/edit.php:4
 msgid "Navigation"
@@ -376,7 +447,7 @@ msgstr "Hampiditra mpikambana"
 #: ../views/create.php:37
 #: ../views/edit.php:38
 #: ../views/login.php:22
-#: ../views/myprofile.php:36
+#: ../views/myprofile.php:37
 msgid "Password"
 msgstr "Tenimiafina"
 
@@ -405,7 +476,6 @@ msgid "Please enter here your login and password"
 msgstr "Ampidiro eto ny solonanarana sy tenimiafina"
 
 #: ../views/login.php:30
-#: ../views/signup.php:1
 msgid "Sign up"
 msgstr "Hisoratra anarana"
 
@@ -417,15 +487,19 @@ msgstr "Adino ny tenimiafina?"
 msgid "Log out"
 msgstr "Hivoaka"
 
-#: ../views/myprofile.php:8
+#: ../views/myprofile.php:4
+msgid "Change email"
+msgstr "Hanova adiresy"
+
+#: ../views/myprofile.php:9
 msgid "Quick menu"
 msgstr "Rohy ilaina"
 
-#: ../views/myprofile.php:17
+#: ../views/myprofile.php:18
 msgid "Edit your profile"
 msgstr "Ny mombamomba anao"
 
-#: ../views/myprofile.php:32
+#: ../views/myprofile.php:33
 msgid "You can change your profile here, if you want."
 msgstr "Azonao ovaina eto ny mombamomba anao raha tianao."
 
