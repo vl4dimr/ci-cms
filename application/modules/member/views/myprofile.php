@@ -1,6 +1,7 @@
 <?php 
 $qm = array(
-__("Log out", $this->template['module']) => site_url('member/logout')
+__("Log out", $this->template['module']) => site_url('member/logout'),
+__("Change email", $this->template['module']) => site_url('member/change_mail')
 ); 
 $qm = $this->plugin->apply_filters('member_profile_quick_menu', $qm); ?>
 <?php if (count($qm) > 0 ) : ?>
