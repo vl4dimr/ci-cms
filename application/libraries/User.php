@@ -330,6 +330,6 @@
 			$this->obj->db->limit($limit);
 			$this->obj->db->delete("users");
 		}
-	}
+	
 	}
 ?>
