@@ -1,0 +1,1 @@
+<login><status><?php echo $status ?></status><message><?php echo htmlentities($message) ?></message></login>
