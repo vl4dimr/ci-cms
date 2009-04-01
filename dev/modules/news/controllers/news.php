@@ -26,7 +26,7 @@
 			}
 			
 			$expiration = time()-7200; // Two hour limit
-			$this->db->where(" captcha_time < ", $expiration);
+			$this->db->where("captcha_time <", $expiration);
 			$this->db->delete('captcha');
 
 			// Then see if a captcha exists:
