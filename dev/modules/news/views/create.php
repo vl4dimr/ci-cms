@@ -99,6 +99,7 @@ function ajaxFileUpload() {
 }
 </script>
 
+
 <h1 id="edit"><?php echo (isset($row['id'])? __("Edit news", $this->template['module']):__("Create News", $this->template['module']))?></h1>
 
 <form  enctype="multipart/form-data" class="edit" action="<?php echo site_url('admin/news/save')?>" method="post" accept-charset="utf-8">
@@ -172,7 +173,7 @@ function ajaxFileUpload() {
 		</div>
 		
 		</div>
-		<div id="two">
+<div id="two">
 		
 			<label for="date"><?php echo __("Date", $this->template['module'])?> (dd/mm/yyyy):</label>
 			<input type="text" name="date" value="<?php echo (isset($row['date'])?date("d/m/Y", $row['date']) : date("d/m/Y")) ?>" id="date" class="input-text" /><br class='clear'/>
@@ -210,3 +211,5 @@ function ajaxFileUpload() {
 </script>	
 </div>
 <!-- [Content] end -->
+
+

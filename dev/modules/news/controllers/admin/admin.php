@@ -223,7 +223,6 @@
 		
 		function create($id = null)
 		{
-
 			$this->user->check_level($this->template['module'], LEVEL_ADD);
 					
 			//default values
@@ -256,6 +255,7 @@
 			$this->template['images'] = $query->result_array();
 			
 			$this->layout->load($this->template, 'create');
+
 		}
 		
 		
@@ -404,4 +404,3 @@
 		
 	}
 
-?>
