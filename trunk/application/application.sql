@@ -96,6 +96,7 @@ CREATE TABLE `ci_pages` (
   `weight` int(11) NOT NULL default '0',
   `hit` int(11) NOT NULL default '0',
   `options` text NOT NULL,
+  `date` INT NOT NULL ,
   PRIMARY KEY  (`id`),
   KEY `uri` (`uri`),
   KEY `active` (`active`)
