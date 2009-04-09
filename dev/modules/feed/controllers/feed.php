@@ -15,6 +15,7 @@ class Feed extends Controller
     
     function index()
     {
+
         $data['encoding'] = 'utf-8';
         $data['feed_name'] = $this->system->site_name;
         $data['feed_url'] = base_url();
