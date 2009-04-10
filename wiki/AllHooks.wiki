@@ -43,6 +43,21 @@ $contents[$key]['date'] = (isset($row['date'])) ? $row['date'] : '';
 ====news_custom_fields====
 _type = string_
 
+====news_pre_content====
+_type = string_
+
+Goes before news content. Just after the title
+
+====news_content====
+_type = string_
+
+the news content itself
+====news_post_content====
+_type = string_
+
+Goes just after news content
+
+
 
 ====page_custom_fields====
 _type = string_
