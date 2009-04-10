@@ -52,7 +52,7 @@ function deleteImage(obj) {
 			alert(data);
 		}
 	);
-	$(obj).parent().hide();
+	$(obj).parent().parent().hide();
 }
 
 function ajaxFileUpload() {
@@ -82,7 +82,7 @@ function ajaxFileUpload() {
 						alert(data.error);
 					}else
 					{
-						$("#image_list").append("<div><input type='hidden' name='image_ids[]' value='"+data.imageid+"' /><a href='#' onclick=\"tinyMCE.execCommand('mceInsertContent',false,'<a href=\\'<?php echo site_url('media/images/o') ?>/"+data.image+"\\'><img border=0 align=left hspace=10 src=\\'<?php echo site_url('media/images/m') ?>/"+data.image+"\\'></a>');return false;\">"+data.image+"</a> - <a href='#'  class=\"ajaxdelete\" id='"+data.imageid+"' ><?php echo __('Delete image')?></a></div>\n");
+						$("#image_list tbody").append("<tr><td><input type='hidden' name='image_ids[]' value='"+data.imageid+"' /><a href='#' onclick=\"tinyMCE.execCommand('mceInsertContent',false,'<a href=\\'<?php echo site_url('media/images/o') ?>/"+data.image+"\\'><img border=0 align=left hspace=10 src=\\'<?php echo site_url('media/images/m') ?>/"+data.image+"\\'></a>');return false;\">"+data.image+"</a></td><td>order</td><td><a href='#' class='ajaxdelete' id='"+data.imageid+"'><?php echo __('Delete image') ?></a></td></tr>");
 						$("#image").val("");
 						handleDeleteImage();
 						
@@ -149,9 +149,8 @@ function ajaxFileUpload() {
 		<label for="image"><?php echo __("Image", $this->template['module'])?></label>
 		<input type="file" name="image" class="input-file" id="image"/><br />
 		
-		<div id='image_list'>
 		<div style="visibility: hidden">Available images:</div>
-		<table id="file_list" class="page-list">
+		<table id="image_list" class="page-list">
 			<thead>
 				<tr>
 					<th><?=__("Name", $this->template['module'])?></th>
@@ -165,6 +164,7 @@ function ajaxFileUpload() {
 		<?php foreach($images as $image): ?>
 		<tr>
 		<td><input type='hidden' name='image_ids[]' value='<?php echo $image['id'] ?>' /><a href='#' onclick="tinyMCE.execCommand('mceInsertContent',false,'<a href=\'<?php echo site_url('media/images/o')?>/<?php echo $image['file'] ?>\'><img border=\'0\' align=\'left\' hspace=\'10\' src=\'<?php echo site_url('media/images/m')?>/<?php echo $image['file'] ?>\' /></a>');return false;"><?php echo $image['file'] ?></a></td>
+		<td></td>
 		<td><a href="<?php echo site_url('admin/news/removeimg/' . $image['id']) ?>" class="ajaxdelete" id="<?php echo $image['id'] ?>"><?php echo __("Delete image", $this->template['module']) ?></a></td></tr>
 		<?php endforeach; ?>
 		<?php endif;?>
