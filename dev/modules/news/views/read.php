@@ -1,12 +1,22 @@
 
 <h1><?=$news['title']?></h1>
+<?php 
+	$pre_content = "";
+	echo $this->plugin->apply_filters("news_pre_content", $pre_content);
+?>
 <?php
 	if($page_break_pos = strpos($news['body'], "<!-- page break -->"))
 	{
 		$news['body'] = substr($news['body'], $page_break_pos + 19);
 	}
 ?>	
-<?=$news['body']?>
+<?php echo $this->plugin->apply_filters("news_content", $news['body']) ?>
+
+<?php 
+	$post_content = "";
+	echo $this->plugin->apply_filters("news_post_content", $post_content);
+?>
+
 <?php if (!empty($comments)): ?>
 <div id="comments">
 
