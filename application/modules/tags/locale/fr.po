@@ -1,0 +1,253 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Solaitra:Tags\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-11-30 01:29+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Eugene Hery <hery@serasera.org>\n"
+"Language-Team: Hery serasera.org <hery@serasera.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: French\n"
+"X-Poedit-Country: FRANCE\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../tags_plugins.php:67
+#: ../tags_plugins.php:105
+msgid "Tags:"
+msgstr "Balises:"
+
+#: ../tags_plugins.php:69
+#: ../tags_plugins.php:107
+msgid "Enter tags separated by comma"
+msgstr "Insérer les balises (tags) séparés de virgule"
+
+#: ../controllers/admin/admin.php:34
+msgid "First"
+msgstr "Premier"
+
+#: ../controllers/admin/admin.php:35
+msgid "Last"
+msgstr "Dernier"
+
+#: ../controllers/admin/admin.php:54
+#: ../controllers/admin/settings.php:51
+msgid "Settings saved"
+msgstr "Options sauvegard&eacute;es."
+
+#: ../controllers/admin/admin.php:67
+msgid "The tag has been deleted from all elements."
+msgstr "La balise a été supprimée"
+
+#: ../views/index.php:2
+msgid "Tags"
+msgstr "Balises"
+
+#: ../views/tag.php:2
+msgid "Tag:"
+msgstr "Balise :"
+
+#: ../views/tag.php:7
+#, php-format
+msgid "All contents with tag %s"
+msgstr "Tous les éléments avec la balise %s"
+
+#: ../views/tag.php:14
+#, php-format
+msgid "No element found with the tag %s"
+msgstr "Il n'y a pas d'éléments disponible avec la balise %s"
+
+#: ../views/admin/delete.php:4
+msgid "Delete tag"
+msgstr "Supprimer la balise"
+
+#: ../views/admin/delete.php:9
+msgid "Do you want to delete the tag?"
+msgstr "&Ecirc;tes-vous certain(e) de vouloir l' effacer?"
+
+#: ../views/admin/delete.php:13
+msgid "No"
+msgstr "Non"
+
+#: ../views/admin/delete.php:14
+msgid "Yes"
+msgstr "Oui"
+
+#: ../views/admin/tags.php:4
+msgid "Tags Administration"
+msgstr "Gérer les balises"
+
+#: ../views/admin/tags.php:7
+msgid "Settings"
+msgstr "Configurations"
+
+#: ../views/admin/tags.php:8
+msgid "Cancel"
+msgstr "Annuler"
+
+#: ../views/admin/tags.php:23
+msgid "Tag"
+msgstr "Balise"
+
+#: ../views/admin/tags.php:24
+msgid "Link"
+msgstr "Lien"
+
+#: ../views/admin/tags.php:25
+msgid "Action"
+msgstr "Action"
+
+#: ../views/admin/tags.php:26
+msgid "Count"
+msgstr "Nombre"
+
+#: ../views/admin/tags.php:38
+msgid "Delete"
+msgstr "Supprimer"
+
+#~ msgid "Quick menu"
+#~ msgstr "Menu rapide"
+#~ msgid "General settings"
+#~ msgstr "Configurations générales"
+#~ msgid "Save Settings"
+#~ msgstr "Enregistrer configurations"
+#~ msgid "Change the settings for the module"
+#~ msgstr "Changer la configuration du module"
+
+#, fuzzy
+#~ msgid "Thumbnail width"
+#~ msgstr "Chemin vers miniature invalide"
+
+#, fuzzy
+#~ msgid "Photo display width"
+#~ msgstr "Nom affich&eacute; sur le site"
+#~ msgid "Add a link"
+#~ msgstr "Ajouter un lien"
+#~ msgid "Root"
+#~ msgstr "Racine"
+#~ msgid "You didn't specify a link"
+#~ msgstr "Vous n'avez pas saisi de lien"
+#~ msgid "You didn't specify the title"
+#~ msgstr "Vous n'avez pas saisi de titre"
+#~ msgid "The format of the url is not valid. It should start with http://"
+#~ msgstr ""
+#~ "Le format du lien n'est pas valide. Le lien doit commencer avec http://"
+#~ msgid "link saved"
+#~ msgstr "Lien enregistré"
+#~ msgid "The link  has been deleted."
+#~ msgstr "Le lien a été supprimé"
+#~ msgid "Category saved"
+#~ msgstr "Categorie enregistrée"
+#~ msgid "The category contains other categories. It cannot be removed."
+#~ msgstr ""
+#~ "La catégorie contient d'autres catégories. On ne peut pas l'effacer."
+#~ msgid "The category contains links. It cannot be removed."
+#~ msgstr "La catégorie contien des liens. On le peut pas l'effacer."
+#~ msgid "The file you're looking for couldn't be found!"
+#~ msgstr "Fichier non trouv&eacute;"
+#~ msgid "Add link in this category"
+#~ msgstr "Ajouger lien dans cette catégorie"
+#~ msgid "Categories in"
+#~ msgstr "Catégories dans"
+#~ msgid "Links in"
+#~ msgstr "Liens dans"
+#~ msgid "Hit:"
+#~ msgstr "Visite :"
+#~ msgid "Add new link"
+#~ msgstr "Ajouter le lien"
+#~ msgid "Title"
+#~ msgstr "Titre"
+#~ msgid "Category"
+#~ msgstr "Cat&eacute;gorie"
+#~ msgid "Description"
+#~ msgstr "Description"
+#~ msgid "Save"
+#~ msgstr "Enregistrer"
+#~ msgid "Delete link"
+#~ msgstr "Effacer un lien"
+#~ msgid "Do you want to delete the link?"
+#~ msgstr "&Ecirc;tes-vous certain(e) de vouloir effacer le lien?"
+#~ msgid "Link:"
+#~ msgstr "Lien :"
+#~ msgid "Hits:"
+#~ msgstr "Visites :"
+#~ msgid "New Link"
+#~ msgstr "Ajouter un lien"
+#~ msgid "New Category"
+#~ msgstr "Ajouter une Cat&eacute;gorie"
+#~ msgid "Summary"
+#~ msgstr "R&eacute;sum&eacute;"
+#~ msgid "Ordering"
+#~ msgstr "Ordre"
+#~ msgid "Move up"
+#~ msgstr "Vers le haut"
+#~ msgid "Move down"
+#~ msgstr "Vers le bas"
+#~ msgid "Hit"
+#~ msgstr "Visites"
+#~ msgid "Edit"
+#~ msgstr "Modifier"
+
+#, fuzzy
+#~ msgid "Files"
+#~ msgstr "Voir les fichiers"
+
+#, fuzzy
+#~ msgid "New File"
+#~ msgstr "Nouvelle adresse email"
+#~ msgid "Name"
+#~ msgstr "Nom"
+
+#, fuzzy
+#~ msgid "Status"
+#~ msgstr "&Eacute;tat"
+#~ msgid "Information"
+#~ msgstr "Information"
+#~ msgid "Details"
+#~ msgstr "Détails"
+#~ msgid "Options"
+#~ msgstr "Options"
+#~ msgid "Add new category"
+#~ msgstr "Ajouter cat&eacute;gorie"
+#~ msgid "Parent"
+#~ msgstr "Parent"
+#~ msgid "Delete category"
+#~ msgstr "Supprimer Cat&eacute;gorie"
+
+#, fuzzy
+#~ msgid "Delete file"
+#~ msgstr "Supprimer le blog"
+#~ msgid "Upload files"
+#~ msgstr "Charger fichiers"
+
+#, fuzzy
+#~ msgid "File"
+#~ msgstr "T&eacute;l&eacute;charger le fichier d'export"
+
+#, fuzzy
+#~ msgid "Upload"
+#~ msgstr "T&eacute;l&eacute;charger"
+
+#, fuzzy
+#~ msgid "Date"
+#~ msgstr "rencard"
+#~ msgid "Size"
+#~ msgstr "Taille"
+#~ msgid "Delete document"
+#~ msgstr "Supprimer le document"
+#~ msgid "Webthumb API key"
+#~ msgstr "Clé API"
+#~ msgid "Go to %s to get your Webthumb API key"
+#~ msgstr "Veuillez aller sur %s pour avoir votre API key"
+#~ msgid "Root name"
+#~ msgstr "Nom de la racine"
+#~ msgid "Welcome text"
+#~ msgstr "Texte d'accueil"
+#~ msgid "Downloads"
+#~ msgstr "T&eacute;l&eacute;chargements"
+#~ msgid "Upload File"
+#~ msgstr "Charger un fichier"
+
