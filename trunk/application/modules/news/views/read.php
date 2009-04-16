@@ -1,7 +1,9 @@
 
 <h1><?=$news['title']?></h1>
 <?php 
-	$pre_content = "";
+	$pre_content = "<div class='meta'><div class='author'>" . __("Submitted by:", "news") . " " . $news['author'] . "</div>";
+	$pre_content .= "<div class='date'>" . __("On:", "news") . " " . date("d/m/Y", $news['date']) . "</div>";
+	$pre_content .= "<div class='category'>" . __("In:", "news") . " " . $news['category'] . "</div></div>";
 	echo $this->plugin->apply_filters("news_pre_content", $pre_content);
 ?>
 <?php
