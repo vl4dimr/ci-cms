@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Solaitra:Downloads\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-11-23 18:31+0100\n"
-"PO-Revision-Date: \n"
-"Last-Translator: Eugene Hery <hery@serasera.org>\n"
+"PO-Revision-Date: 2009-04-16 10:43+0100\n"
+"Last-Translator: hery <heriniaina.eugene@gmail.com>\n"
 "Language-Team: Hery serasera.org <hery@serasera.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -14,6 +14,11 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
+
+#: ../news_update.php:21
+#, php-format
+msgid "News module updated to %s"
+msgstr "Le module a &eacute;t&eacute; mise &agrave; jour &agrave; la version %s"
 
 #: ../controllers/news.php:24
 #: ../controllers/news.php:43
@@ -89,6 +94,7 @@ msgid "Thank you for your comment. In this site, the comments need to be approve
 msgstr "Merci pour votre commentaire. Dans ce site, les commentaires attendent l'approbation de l'administrateur. Une fois accepté, vous les verrez ici."
 
 #: ../controllers/news.php:215
+#: ../views/index.php:18
 msgid "No news found"
 msgstr "Aucun article trouv&eacute;"
 
@@ -110,47 +116,47 @@ msgstr "Fin"
 msgid "Settings updated"
 msgstr "Configuration enregistr&eacute;"
 
-#: ../controllers/admin/admin.php:190
+#: ../controllers/admin/admin.php:192
 msgid "News saved"
 msgstr "Article sauvegard&eacute;"
 
-#: ../controllers/admin/admin.php:274
+#: ../controllers/admin/admin.php:292
 msgid "The image was deleted"
 msgstr "L'image a été supprimée"
 
-#: ../controllers/admin/admin.php:287
+#: ../controllers/admin/admin.php:305
 msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
 msgstr "La taille du fichier exc&eacute;de la directive <code>upload_max_filesize</code> pr&eacute;sente dans le fichier <code>php.ini</code>."
 
-#: ../controllers/admin/admin.php:290
+#: ../controllers/admin/admin.php:308
 msgid "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form"
 msgstr "Le fichier t&eacute;l&eacute;charg&eacute; d&eacute;passe la taille maximale autoris&eacute;e (<em>MAX_FILE_SIZE</em>)"
 
-#: ../controllers/admin/admin.php:293
+#: ../controllers/admin/admin.php:311
 msgid "The uploaded file was only partially uploaded"
 msgstr "Le fichier a &eacute;t&eacute; partiellement t&eacute;l&eacute;charg&eacute;"
 
-#: ../controllers/admin/admin.php:296
+#: ../controllers/admin/admin.php:314
 msgid "No file was uploaded."
 msgstr "Aucun fichier t&eacute;l&eacute;charg&eacute;."
 
-#: ../controllers/admin/admin.php:300
+#: ../controllers/admin/admin.php:318
 msgid "Missing a temporary folder"
 msgstr "R&eacute;pertoire temporaire manquant."
 
-#: ../controllers/admin/admin.php:303
+#: ../controllers/admin/admin.php:321
 msgid "Failed to write file to disk"
 msgstr "L&#8217;&eacute;criture dans le fichier a &eacute;chou&eacute;"
 
-#: ../controllers/admin/admin.php:306
+#: ../controllers/admin/admin.php:324
 msgid "File upload stopped by extension"
 msgstr "Chargement de fichier arreté"
 
-#: ../controllers/admin/admin.php:310
+#: ../controllers/admin/admin.php:328
 msgid "No error code avaiable"
 msgstr "Pas de code erreur disponible"
 
-#: ../controllers/admin/admin.php:315
+#: ../controllers/admin/admin.php:333
 msgid "No file was uploaded.."
 msgstr "Aucun fichier t&eacute;l&eacute;charg&eacute;."
 
@@ -205,56 +211,81 @@ msgstr "Cr&eacute;er actualité"
 
 #: ../views/admin.php:11
 #: ../views/comments.php:22
-#: ../views/create.php:109
+#: ../views/create.php:110
+#: ../views/settings.php:23
+#: ../views/admin/category.php:8
+#: ../views/admin/category_create.php:24
 msgid "Cancel"
 msgstr "Annuler"
 
 #: ../views/admin.php:26
 #: ../views/comments.php:45
-#: ../views/create.php:124
+#: ../views/create.php:125
 msgid "Title"
 msgstr "Titre"
 
 #: ../views/admin.php:27
-#: ../views/create.php:139
+#: ../views/create.php:157
+#: ../views/admin/category.php:26
+msgid "Ordering"
+msgstr "Ordre"
+
+#: ../views/admin.php:28
+#: ../views/create.php:140
+#: ../views/admin/category.php:25
+#: ../views/admin/category_create.php:61
 msgid "Status"
 msgstr "&Eacute;tat"
 
-#: ../views/admin.php:28
+#: ../views/admin.php:29
 #: ../views/comments.php:49
+#: ../views/create.php:158
+#: ../views/admin/category.php:27
 msgid "Action"
 msgstr "Action"
 
-#: ../views/admin.php:29
+#: ../views/admin.php:30
 msgid "Hits"
 msgstr "Visites"
 
-#: ../views/admin.php:39
-#: ../views/create.php:141
+#: ../views/admin.php:40
+#: ../views/admin/category.php:52
+msgid "Move up"
+msgstr "Vers le haut"
+
+#: ../views/admin.php:41
+#: ../views/admin/category.php:53
+msgid "Move down"
+msgstr "Vers le bas"
+
+#: ../views/admin.php:42
+#: ../views/create.php:142
 msgid "Published"
 msgstr "Publi&eacute;"
 
-#: ../views/admin.php:39
-#: ../views/create.php:142
+#: ../views/admin.php:42
+#: ../views/create.php:143
 msgid "Draft"
 msgstr "Brouillon"
 
-#: ../views/admin.php:40
+#: ../views/admin.php:43
 msgid "View"
 msgstr "Afficher"
 
-#: ../views/admin.php:41
+#: ../views/admin.php:44
 msgid "Edit"
 msgstr "Modifier"
 
-#: ../views/admin.php:42
+#: ../views/admin.php:45
 #: ../views/comments.php:68
 #: ../views/comment_delete.php:18
+#: ../views/delete.php:18
 msgid "Delete"
 msgstr "Supprimer"
 
 #: ../views/comments.php:4
 #: ../views/comment_delete.php:4
+#: ../views/delete.php:4
 msgid "Confirm delete?"
 msgstr "Confirmer la suppression?"
 
@@ -275,6 +306,7 @@ msgid "Approved"
 msgstr "Approuv&eacute;"
 
 #: ../views/comments.php:37
+#: ../views/admin/category_create.php:64
 msgid "Suspended"
 msgstr "Suspendu"
 
@@ -299,18 +331,27 @@ msgid "Suspend"
 msgstr "Suspendre"
 
 #: ../views/comment_delete.php:22
+#: ../views/delete.php:22
 msgid "Confirm?"
 msgstr "Confirmer?"
 
 #: ../views/comment_delete.php:26
-#: ../views/create.php:169
-#: ../views/create.php:175
+#: ../views/create.php:185
+#: ../views/create.php:191
+#: ../views/delete.php:26
+#: ../views/settings.php:44
+#: ../views/settings.php:51
+#: ../views/admin/category_delete.php:13
 msgid "No"
 msgstr "Non"
 
 #: ../views/comment_delete.php:27
-#: ../views/create.php:168
-#: ../views/create.php:174
+#: ../views/create.php:184
+#: ../views/create.php:190
+#: ../views/delete.php:27
+#: ../views/settings.php:43
+#: ../views/settings.php:50
+#: ../views/admin/category_delete.php:14
 msgid "Yes"
 msgstr "Oui"
 
@@ -319,11 +360,12 @@ msgid "Quick links"
 msgstr "Liens rapides"
 
 #: ../views/create.php:7
-#: ../views/create.php:145
+#: ../views/create.php:146
 msgid "Content"
 msgstr "Contenu"
 
 #: ../views/create.php:8
+#: ../views/admin/category_create.php:8
 msgid "Options"
 msgstr "Options"
 
@@ -332,43 +374,50 @@ msgid "Upload"
 msgstr "T&eacute;l&eacute;charger"
 
 #: ../views/create.php:85
-#: ../views/create.php:152
+#: ../views/create.php:168
 msgid "Delete image"
 msgstr "Supprimer image"
 
-#: ../views/create.php:102
+#: ../views/create.php:103
 msgid "Edit news"
 msgstr "Modifier"
 
-#: ../views/create.php:102
+#: ../views/create.php:103
 msgid "Create News"
 msgstr "Cr&eacute;er Nouveau"
 
-#: ../views/create.php:108
+#: ../views/create.php:109
+#: ../views/admin/category_create.php:23
 msgid "Save"
 msgstr "Enregistrer"
 
-#: ../views/create.php:122
-msgid "To create a news, just fill in your content below and click 'Save'.<br />If you want to save your progress without publishing it, Select 'Draft' status.</p>"
+#: ../views/create.php:123
+msgid "To create a news, just fill in your content below and click 'Save'.<br />If you want to save your progress without publishing it, Select 'Draft' status."
 msgstr "Pour créer un article, compléter le contenu et cliquer sur 'Enregistrer'. <br />Si vous ne voulez pas que l'article apparaissent directement, selectionner 'Brouillon'."
 
-#: ../views/create.php:127
+#: ../views/create.php:128
 msgid "Category"
 msgstr "Cat&eacute;gorie"
 
-#: ../views/create.php:157
+#: ../views/create.php:149
 msgid "Image"
 msgstr "Image"
 
-#: ../views/create.php:162
+#: ../views/create.php:156
+#: ../views/admin/category.php:23
+#: ../views/admin/category_create.php:37
+msgid "Name"
+msgstr "Nom"
+
+#: ../views/create.php:178
 msgid "Date"
 msgstr "Date"
 
-#: ../views/create.php:166
+#: ../views/create.php:182
 msgid "Allow Comments"
 msgstr "Autoriser les commentaires"
 
-#: ../views/create.php:172
+#: ../views/create.php:188
 msgid "Notify me for comments"
 msgstr "Notifie pour les commentaires"
 
@@ -376,44 +425,55 @@ msgstr "Notifie pour les commentaires"
 msgid "All news"
 msgstr "Toutes les actualit&acute;s"
 
-#: ../views/index.php:8
-#: ../views/admin/category.php:24
-msgid "Summary"
-msgstr "R&eacute;sum&eacute;"
+#: ../views/index.php:11
+msgid "More"
+msgstr "Plus"
 
-#: ../views/read.php:29
+#: ../views/read.php:4
+msgid "Submitted by:"
+msgstr "Ajout&eacute; par :"
+
+#: ../views/read.php:5
+msgid "On:"
+msgstr "Le :"
+
+#: ../views/read.php:6
+msgid "In:"
+msgstr "Dans :"
+
+#: ../views/read.php:41
 msgid "Add a comment"
 msgstr "Ajouter un commentaire"
 
-#: ../views/read.php:33
+#: ../views/read.php:45
 msgid "Name:"
 msgstr "Nom&nbsp;:"
 
-#: ../views/read.php:36
+#: ../views/read.php:48
 msgid "Email:"
 msgstr "Email:"
 
-#: ../views/read.php:39
+#: ../views/read.php:51
 msgid "Website:"
 msgstr "Site web&nbsp;:"
 
-#: ../views/read.php:42
+#: ../views/read.php:54
 msgid "Comment"
 msgstr "Commentaire"
 
-#: ../views/read.php:45
+#: ../views/read.php:57
 msgid "Security code:"
 msgstr "Entrer le code:"
 
-#: ../views/read.php:46
+#: ../views/read.php:58
 msgid "Confirm security code:"
 msgstr "Confirmer le code"
 
-#: ../views/read.php:48
+#: ../views/read.php:60
 msgid "Required"
 msgstr "R&eacute;quis"
 
-#: ../views/read.php:49
+#: ../views/read.php:61
 msgid "Add comment"
 msgstr "Ajouter commentaire"
 
@@ -453,22 +513,9 @@ msgstr "Cat&eacute;gories"
 msgid "Add New"
 msgstr "Cr&eacute;er nouveau"
 
-#: ../views/admin/category.php:23
-#: ../views/admin/category_create.php:37
-msgid "Name"
-msgstr "Nom"
-
-#: ../views/admin/category.php:26
-msgid "Ordering"
-msgstr "Ordre"
-
-#: ../views/admin/category.php:52
-msgid "Move up"
-msgstr "Vers le haut"
-
-#: ../views/admin/category.php:53
-msgid "Move down"
-msgstr "Vers le bas"
+#: ../views/admin/category.php:24
+msgid "Summary"
+msgstr "R&eacute;sum&eacute;"
 
 #: ../views/admin/category_create.php:4
 msgid "Category information"
@@ -509,13 +556,4 @@ msgstr "Derni&egrave;res actualiés"
 #: ../views/blocks/newpages.php:2
 msgid "Latest Pages"
 msgstr "Derni&egrave;res Pages"
-
-#~ msgid "Downloads"
-#~ msgstr "T&eacute;l&eacute;chargements"
-#~ msgid "The file you're looking for couldn't be found!"
-#~ msgstr "Fichier non trouv&eacute;"
-#~ msgid "Upload File"
-#~ msgstr "Charger un fichier"
-#~ msgid "Upload files"
-#~ msgstr "Charger fichiers"
 

@@ -84,6 +84,9 @@
 		}
 		function get_news($data)
 		{
+			$this->db->select("news.*, news_cat.title as category");
+			$this->db->from("news");
+			$this->db->join("news_cat", "news.cat = news_cat.id");
 			
 			if ( is_array($data) )
 			{
@@ -97,8 +100,8 @@
 				$this->db->where('uri', $data);
 			}
 			
-			$this->db->order_by('cat, ordering, date DESC');
-			$query = $this->db->get($this->table, 1);
+			$this->db->order_by('news.cat, news.ordering, news.date DESC');
+			$query = $this->db->get();
 			
 			if ( $query->num_rows() == 1 )
 			{
@@ -167,7 +170,7 @@
 		function latest_news($limit = 10)
 		{
 			$this->db->where('lang', $this->user->lang);
-			$this->db->order_by('cat, ordering, date DESC');
+			$this->db->order_by('date DESC');
 			$this->db->limit($limit);
 			$query = $this->db->get($this->table);
 			
