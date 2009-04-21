@@ -365,10 +365,8 @@ form.login label {
 
 .input-file, .input-text {
 	border: 1px solid #C4CBD2; 
-	padding: 0.4em; 
+	padding: 3px; 
 	font-size: 90%;
-	width: 16em;
-	margin: 1em 1em 0 0;
 }
 
 form.edit .input-textarea {
