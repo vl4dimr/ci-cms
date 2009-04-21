@@ -8,7 +8,7 @@
 
 			$this->theme = $this->obj->system->theme;
 			$this->template = $this->obj->system->template;
-			$this->_login_action();
+			//$this->_login_action();
 		}
 
 		
@@ -40,8 +40,6 @@
 			}
 		}
 		
-		
-
 		
 		function load($data, $view)
 		{
