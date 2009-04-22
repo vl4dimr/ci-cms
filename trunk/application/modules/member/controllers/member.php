@@ -156,13 +156,13 @@ class Member extends Controller {
 		//check if email belongs to someone else
 		if ($this->member_model->exists(array('username' => $username)))
 		{
-			$this->validation->set_message('verify_username', __("The username is already in use", $this->template['module']));
+			$this->validation->set_message('_verify_username', __("The username is already in use", $this->template['module']));
 			return FALSE;
 		}
 		
 		if ( !ereg("^[[:alnum:]]+$", $username))
 		{
-			$this->validation->set_message('verify_username', __("The username format is not valid, please use alphanumeric characters.", $this->template['module']));
+			$this->validation->set_message('_verify_username', __("The username format is not valid, please use alphanumeric characters.", $this->template['module']));
 			return FALSE;
 		}
 		
