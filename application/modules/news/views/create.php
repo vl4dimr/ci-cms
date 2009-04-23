@@ -99,10 +99,10 @@ function ajaxFileUpload() {
 }
 </script>
 
+<form  enctype="multipart/form-data" class="edit" action="<?php echo site_url('admin/news/save')?>" method="post" accept-charset="utf-8">
 
 <h1 id="edit"><?php echo (isset($row['id'])? __("Edit news", $this->template['module']):__("Create News", $this->template['module']))?></h1>
 
-<form  enctype="multipart/form-data" class="edit" action="<?php echo site_url('admin/news/save')?>" method="post" accept-charset="utf-8">
 		<input type="hidden" name="id" value="<?php echo (isset($row['id'])?$row['id'] : "") ?>" />
 		<input type="hidden" name="lang" value="<?php echo $this->user->lang ?>" />
 		<ul>
@@ -173,7 +173,7 @@ function ajaxFileUpload() {
 		</div>
 		
 		</div>
-<div id="two">
+<div id="two" class="content slim">
 		
 			<label for="date"><?php echo __("Date", $this->template['module'])?> (dd/mm/yyyy):</label>
 			<input type="text" name="date" value="<?php echo (isset($row['date'])?date("d/m/Y", $row['date']) : date("d/m/Y")) ?>" id="date" class="input-text" /><br class='clear'/>
@@ -195,13 +195,12 @@ function ajaxFileUpload() {
 			<?php
 			$custom_fields = "";
 			
-			echo $this->plugin->apply_filters("news_custom_fields", $custom_fields, $row['id']);
+			echo $this->plugin->apply_filters("news_custom_fields", $custom_fields, isset($row['id']) ? $row['id'] : 0);
 
 			?>
 			
 			
 		</div>
-	</form>
 <script>
 
   $(document).ready(function(){
@@ -209,7 +208,9 @@ function ajaxFileUpload() {
   });
 
 </script>	
+	</form>
 </div>
 <!-- [Content] end -->
-
-
+<?php
+			//echo "teto" . __LINE__;exit();
+?>
