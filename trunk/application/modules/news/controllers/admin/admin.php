@@ -2,6 +2,7 @@
 
 	class Admin extends Controller {
 		var $settings = array();
+		var $template = array();
 		function Admin()
 		{
 			parent::Controller();
@@ -223,6 +224,7 @@
 		
 		function create($id = null)
 		{
+		
 			$this->user->check_level($this->template['module'], LEVEL_ADD);
 					
 			//default values
@@ -253,9 +255,11 @@
 			$query = $this->db->get('images');
 			
 			$this->template['images'] = $query->result_array();
-			
-			$this->layout->load($this->template, 'create');
 
+			
+
+			$this->layout->load($this->template, 'create');
+			return;
 		}
 		
 		
