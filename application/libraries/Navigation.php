@@ -31,10 +31,12 @@
 		function get($where = null)
 		{
 			$hash = $this->obj->user->lang;
+			
 			if (!is_null($where))
 			{
 				if(is_array($where))
 				{
+					$where['lang'] = $this->obj->user->lang;
 					$hash .= md5(serialize($where));
 				}
 				else
