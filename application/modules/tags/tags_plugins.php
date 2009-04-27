@@ -50,7 +50,7 @@ function tag_news_fields($string, $id = null)
 	if (!is_null($id))
 	{
 		$obj =& get_instance();
-		$news = $obj->news->get_news(array('id' => $id));
+		$news = $obj->news->get_news(array('news.id' => $id));
 	
 		$obj->load->model('tags_model', 'tag');
 		if($tags = $obj->tag->get_tags(array('srcid' => $news['id'], 'module' => 'news')))

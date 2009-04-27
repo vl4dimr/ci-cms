@@ -24,9 +24,14 @@
 			$per_page = 20;
 			$this->user->check_level($this->template['module'], LEVEL_VIEW);
 			
+			$params['start'] = $start;
+			$params['limit'] = $per_page;
+			$params['where'] = array('lang' => $this->user->lang);
+			$params['order_by'] = "id DESC";
+			
 			if ( !$data = $this->cache->get('news'.$this->user->lang, 'news') )
 			{
-				if (!$data = $this->news->news_list()) $data = array();
+				if (!$data = $this->news->get_list($params)) $data = array();
 				$this->cache->save('news'.$this->user->lang, $data, 'news', 0);
 			}
 			
