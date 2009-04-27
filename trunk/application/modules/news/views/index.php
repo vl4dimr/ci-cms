@@ -9,10 +9,10 @@ $row['summary'] = substr($row['body'], 0, $page_break_pos);
 <div class="<?=$rowClass?>">
 <h2><?=$i?> <?=$row['title']?></h2>
 <?=(strlen(strip_tags($row['summary'])) >= 300 ? substr(strip_tags($row['summary']), 0,300) . '...': strip_tags($row['summary']))?> <a href="<?=site_url('news/' . $row['uri'])?>">(<?php echo  __("More", $this->template['module']) ?>...)</a>
+</div>
 <?php $i++; endforeach;?>
 <div class="pager">
 <?=$pager?>
-</div>
 </div>
 <?php else : ?>
 <?=__("No news found", $this->template['module'])?>

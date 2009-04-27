@@ -137,7 +137,6 @@ and set to approve comments automatically.
 	
 		function read($uri = null)
 		{
-			
 			if (is_null($uri))
 			{
 				redirect('news/list');
@@ -222,8 +221,12 @@ and set to approve comments automatically.
 		function index($start = 0)
 		{
 			$per_page = 20;
-
-			$this->template['rows'] = $this->news->news_list($start, $per_page);
+			
+			$params['limit'] = $per_page;
+			$params['start'] = $start;
+			$params['where'] = array('lang' => $this->user->lang);
+			
+			$this->template['rows'] = $this->news->get_list($params);
 
 			$this->load->library('pagination');
 			

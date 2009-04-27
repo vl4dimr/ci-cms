@@ -84,9 +84,10 @@
 		}
 		function get_news($data)
 		{
+			
 			$this->db->select("news.*, news_cat.title as category");
 			$this->db->from("news");
-			$this->db->join("news_cat", "news.cat = news_cat.id");
+			$this->db->join("news_cat", "news.cat = news_cat.id", "left");
 			
 			if ( is_array($data) )
 			{
@@ -102,6 +103,7 @@
 			
 			$this->db->order_by('news.cat, news.ordering, news.date DESC');
 			$query = $this->db->get();
+			
 			
 			if ( $query->num_rows() == 1 )
 			{
@@ -149,8 +151,40 @@
 
 		}
 		
-		function news_list($start = null, $limit = null)
+		function get_list($params = array())
 		{
+
+			$default_params = array
+			(
+				'order_by' => 'id DESC',
+				'limit' => 20,
+				'start' => null,
+				'where' => array()
+			);
+			
+			foreach ($default_params as $key => $value)
+			{
+				$params[$key] = (isset($params[$key]))? $params[$key]: $default_params[$key];
+			}
+			
+			$this->db->where($params['where']);
+			$this->db->order_by($params['order_by']);
+			$this->db->limit($params['limit'], $params['start']);
+			$query = $this->db->get($this->table);
+			if ( $query->num_rows() > 0 )
+			{
+				return $query->result_array();
+			}
+			else
+			{
+				return false;
+			}
+			
+		}
+			
+		function news_list($start =  null, $limit = null)
+		{
+			
 			
 			$this->db->where(array('lang' => $this->user->lang));
 			$this->db->order_by('cat, ordering, date DESC');
