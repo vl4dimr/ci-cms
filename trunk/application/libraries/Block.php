@@ -31,14 +31,10 @@ class Block {
 		$this->_blocks[$block_name][$priority][serialize($call_back)] = array('function' => $call_back);
 	}
 	
-	function get($block_name, $param = '')
-	{
+	function get($block_name)
+	{	
 		$params = array();
-		if ( is_array($param) && 1 == count($param) ) // array(&$this)
-			$params[] =& $param[0];
-		else
-			$params[] = $param;
-		for ( $a = 2; $a < func_num_args(); $a++ )
+		for ( $a = 1; $a < func_num_args(); $a++ )
 			$params[] = func_get_arg($a);
 
 		$this->merge_blocks($block_name);
