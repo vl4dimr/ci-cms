@@ -158,7 +158,7 @@
 			(
 				'order_by' => 'id DESC',
 				'limit' => 20,
-				'start' => null,
+				'start' => 0,
 				'where' => array()
 			);
 			
@@ -173,7 +173,26 @@
 			$query = $this->db->get($this->table);
 			if ( $query->num_rows() > 0 )
 			{
-				return $query->result_array();
+				
+				foreach ($query->result_array() as $row)
+				{
+					$this->db->order_by('id DESC');
+					$this->db->where(array('src_id' => $row['id'], 'module' => 'news'));
+					$query2 = $this->db->get('images');
+					$row['image'] = $query2->row_array();
+					
+					if($page_break_pos = strpos($row['body'], "<!-- page break -->"))
+					{
+						$row['summary'] = character_limiter(strip_tags(substr($row['body'], 0, $page_break_pos), 200));
+					}
+					else
+					{
+						$row['summary'] = character_limiter(strip_tags($row['body']), 200);
+					}
+
+					$return[] = $row;
+				}
+				return $return;
 			}
 			else
 			{
