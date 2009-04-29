@@ -226,18 +226,20 @@ and set to approve comments automatically.
 			$params['start'] = $start;
 			$params['where'] = array('lang' => $this->user->lang);
 			
-			$this->template['rows'] = $this->news->get_list($params);
 
 			$this->load->library('pagination');
 			
 			$config['uri_segment'] = 3;
 			$config['first_link'] = __('First');
 			$config['last_link'] = __('Last');
-			$config['base_url'] = site_url('news/index/');
+			$config['base_url'] = site_url('news/list');
 			$config['total_rows'] = $this->news->get_total_published();
 			$config['per_page'] = $per_page; 	
 			$this->pagination->initialize($config); 
 
+			$this->template['rows'] = $this->news->get_list($params);
+			$this->template['start'] = $start;
+			$this->template['total_rows'] = $config['total_rows'];
 			$this->template['pager'] = $this->pagination->create_links();		
 			
 			$this->layout->load($this->template, 'index');

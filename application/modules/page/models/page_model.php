@@ -109,6 +109,7 @@
 		
 		function get_page($data)
 		{
+
 			$this->db->select('*');
 			
 			if ( is_array($data) )
