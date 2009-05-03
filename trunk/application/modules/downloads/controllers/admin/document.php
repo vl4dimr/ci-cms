@@ -39,7 +39,7 @@ class Document extends Controller {
 		$this->template['cat'] = $cat;
 		
 		
-		if ($row = $this->downloads->get_doc($id))
+		if (!is_null($id) && $row = $this->downloads->get_doc($id))
 		{
 			$this->template['row'] = $row;
 		}
