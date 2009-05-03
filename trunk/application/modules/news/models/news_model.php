@@ -223,7 +223,7 @@
 		function latest_news($limit = 10)
 		{
 			$this->db->where('lang', $this->user->lang);
-			$this->db->order_by('date DESC');
+			$this->db->order_by('id DESC');
 			$this->db->limit($limit);
 			$query = $this->db->get($this->table);
 			
@@ -492,7 +492,63 @@
 		//clear cache
 		$this->cache->remove('news'.$this->user->lang, 'news');
 	}
+	
+	function save()
+	{
+		$this->user->check_level($this->template['module'], LEVEL_ADD);
+
+
 		
+
+		
+		$fields = array('id', 'cat', 'title', 'body', 'status', 'allow_comments', 'lang', 'notify');
+		$data = array();
+		
+		foreach ($fields as $field)
+		{
+			$data[$field] = $this->input->post($field);
+		}
+
+		if($date = $this->input->post('date')) {
+			$day = substr($date, 0,2);
+			$month = substr($date, 3, 2);
+			$year = substr($date, 6, 4);
+
+			$data['date'] = mktime(date("H"), date("i"), date("s"), $month, $day, $year);
+		}
+		else
+		{
+			$data['date'] = mktime();
+		}
+		
+			
+		if($id = $this->input->post('id'))
+		{
+			//fixing missing uri
+			/*
+			$news = $this->news->get_news(array('news.id' => $id));
+			
+			if (!$news['uri']) ($data['uri'] = $this->news->generate_uri($this->input->post('title')));
+			*/
+			$this->user->check_level($this->template['module'], LEVEL_EDIT);
+		
+			//update
+			$this->db->where('id', $id);
+			$this->db->update('news', $data);
+		}
+		else
+		{
+			$this->user->check_level($this->template['module'], LEVEL_ADD);
+		
+			$data['author'] = $this->user->username;
+			$data['email'] = $this->user->email;
+			$data['uri'] = $this->news->generate_uri($this->input->post('title'));
+			$this->db->insert('news', $data);
+			$id = $this->db->insert_id();
+			//insert
+		}	
+		return $id;
+	}
 }
 
 
