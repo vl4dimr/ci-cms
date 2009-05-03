@@ -15,7 +15,7 @@ function tag_news_save($id)
 	$obj->load->model('tags_model', 'tag');
 	if ($tagitem = $obj->input->post('tags'))
 	{
-		$news = $obj->news->get_news(array('id' => $id));
+		$news = $obj->news->get_news(array('news.id' => $id));
 		$tags = explode(",", $tagitem);
 
 		$obj->tag->delete(array('srcid' => $id, 'module' => 'news'));
