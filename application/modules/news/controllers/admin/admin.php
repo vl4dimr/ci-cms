@@ -82,49 +82,20 @@
 		
 		function save()
 		{
-			$this->user->check_level($this->template['module'], LEVEL_ADD);
-		
-			$fields = array('id', 'cat', 'title', 'body', 'status', 'allow_comments', 'lang', 'notify');
-			$data = array();
 			
-			foreach ($fields as $field)
-			{
-				$data[$field] = $this->input->post($field);
-			}
+			$this->load->library('form_validation');
 
-			if($date = $this->input->post('date')) {
-				$day = substr($date, 0,2);
-				$month = substr($date, 3, 2);
-				$year = substr($date, 6, 4);
+			$this->form_validation->set_rules('title', __("Title", $this->template['module']), 'required');
 
-				$data['date'] = mktime(date("H"), date("i"), date("s"), $month, $day, $year);
-			}
-			else
+			$this->form_validation->set_message('required', __("The %s field can not be empty", $this->template['module']));
+			
+			if ($this->form_validation->run() == FALSE)
 			{
-				$data['date'] = mktime();
-			}
-			
-				
-			if($id = $this->input->post('id'))
-			{
-				$this->user->check_level($this->template['module'], LEVEL_EDIT);
-			
-				//update
-				$this->db->where('id', $id);
-				$this->db->update('news', $data);
-			}
-			else
-			{
-				$this->user->check_level($this->template['module'], LEVEL_ADD);
-			
-				$data['author'] = $this->user->username;
-				$data['email'] = $this->user->email;
-				$data['uri'] = $this->news->generate_uri($this->input->post('title'));
-				$this->db->insert('news', $data);
-				$id = $this->db->insert_id();
-				//insert
-			}
-			
+				$this->create($this->input->post('id'));
+				return;
+			}		
+
+			$id = $this->news->save();
 			$this->plugin->do_action('news_save', $id);
 			$this->cache->remove('news'.$this->user->lang, 'news');
 			if ($image_ids = $this->input->post('image_ids'))
@@ -231,6 +202,10 @@
 		{
 		
 			$this->user->check_level($this->template['module'], LEVEL_ADD);
+			$this->load->library('form_validation');
+			$this->form_validation->set_rules('title', __("Title", $this->template['module']), 'required');
+
+			$this->form_validation->set_message('required', __("The %s field can not be empty", $this->template['module']));
 					
 			//default values
 			$row = array(
