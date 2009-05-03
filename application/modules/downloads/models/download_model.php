@@ -70,7 +70,7 @@ class Download_model extends Model {
 		$this->db->join('download_files', 'download_doc.file_id = download_files.id');
 		
 		
-		$query = $this->db->get('download_doc');
+		$query = $this->db->get();
 
 		if ($query->num_rows() > 0)
 		{
