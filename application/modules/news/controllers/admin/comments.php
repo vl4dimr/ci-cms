@@ -22,7 +22,7 @@
 			$this->user->check_level($this->template['module'], LEVEL_VIEW);
 			
 			//filter
-			$status = '';
+			$status = '1';
 			if ($this->input->post('status') == '0')
 			{
 				$this->db->where('status', 0);
