@@ -65,7 +65,7 @@
 
 					$this->email->subject('[' . $this->system->site_name . '] '. __("Comment Notification", $this->template['module']));
 					
-					$msg = __("
+					$smsg = __("
 Hello,
 
 A new comment has been sent to the news
@@ -77,7 +77,7 @@ If you don't want to receive other notification, go to
 
 and disable notification.
 ");
-					$msg = sprintf($msg, 
+					$msg = sprintf($smsg, 
 							site_url('news/' . $news['uri']),
 							site_url('admin/news/create/' . $news['id'])
 						);
@@ -85,8 +85,40 @@ and disable notification.
 					$this->email->message($msg);
 
 					$this->email->send();
+					
+					//notify admin
 				
 				}
+
+				if ($this->settings['notify_admin'])
+				{
+					$this->load->library('email');
+
+					$this->email->from($news['email'], $this->system->site_name );
+					$this->email->to($news['email']);
+
+					$this->email->subject('[' . $this->system->site_name . '] '. __("Comment Notification", $this->template['module']));
+					$msg = __("
+Hello,
+
+A new comment has been sent to the news
+%s
+
+
+If you don't want to receive other notification, go to
+%s
+
+and disable notification.
+", "news");
+					$msg = sprintf($msg,
+							site_url('news/' . $news['uri']),
+							site_url('admin/news/settings#two')
+						);
+					$this->email->to($this->system->admin_email);
+					$this->email->message($msg);
+					$this->email->send();
+				}
+				
 			}
 			else
 			{
@@ -112,7 +144,7 @@ If you don't want to receive other notification, go to
 %s
 
 and set to approve comments automatically.
-");
+", "news");
 					$msg = sprintf($msg, 
 							site_url('news/' . $news['uri']),
 							site_url('admin/news/comments/approve/' . $news['id']),

@@ -50,6 +50,13 @@
 			<option value='1' <?=(($settings['approve_comments']==1)?"selected":"")?>><?=__("Yes", $this->template['module'])?></option>
 			<option value='0' <?=(($settings['approve_comments']==0)?"selected":"")?>><?=__("No", $this->template['module'])?></option>
 			</select>
+			<br />
+			
+			<label for="settings[notify_admin]"><?=__("Nodify admin", $this->template['module'])?></label>
+			<select name="settings[notify_admin]" class="input-select">
+			<option value='1' <?=(($settings['notify_admin']==1)?"selected":"")?>><?=__("Yes", $this->template['module'])?></option>
+			<option value='0' <?=(($settings['notify_admin']==0)?"selected":"")?>><?=__("No", $this->template['module'])?></option>
+			</select>
 			
 			
 		</div>

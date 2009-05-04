@@ -56,7 +56,7 @@ $(document).ready(function(){
 <?php if ($i % 2 != 0): $rowClass = 'odd'; else: $rowClass = 'even'; endif;?>
 		<tr class="<?=$rowClass?>" <?=($row['status']==0)?"style='color: #AAAAAA'":""?>>
 				<td class="center"><?=$i?></td>
-				<td><?=(word_limiter($row['body'], 4))?></td>
+				<td><a href="<?php echo site_url()?>" target="_blank"><?=(word_limiter($row['body'], 4))?></a></td>
 				<td><?=$row['author']?></td>
 				<td><?=$row['email']?></td>
 				<td><?=$row['ip']?></td>

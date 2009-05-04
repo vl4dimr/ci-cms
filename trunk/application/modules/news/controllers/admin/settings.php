@@ -13,6 +13,7 @@ class Settings extends Controller {
 		$this->fields = array(
 			'allow_comments' => 1,
 			'approve_comments' => 1,
+			'notify_admin' => 0
 			);
 		$this->load->library('administration');
 		$this->lang = $this->session->userdata('lang');
