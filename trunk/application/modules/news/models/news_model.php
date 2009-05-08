@@ -101,7 +101,10 @@
 				$this->db->where('uri', $data);
 			}
 			
-			$this->db->order_by('news.cat, news.ordering, news.date DESC');
+			$this->db->order_by('news.cat');
+			$this->db->order_by('news.ordering');
+			$this->db->order_by('news.date', 'DESC');
+
 			$query = $this->db->get();
 			
 			
