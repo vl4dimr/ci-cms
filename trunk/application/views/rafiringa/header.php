@@ -56,6 +56,19 @@
 	<?php $i++; endforeach; ?>
 	<?php endif; ?>
 	</ul>
+
+
 	
+	</div>
+	<div id="langbar">
+		<?php if ($languages = $this->locale->get_active()) :?>
+		<ul>
+		<?php foreach ($languages as $language): ?>
+			<li><a href='<?php echo site_url( $language['code']) ?>' <?php echo ($this->session->userdata('lang') == $language['code']) ? "class='active'" : ""?> ><img src="<?=base_url()?>application/views/admin/images/flags/<?php echo $language['code']?>.gif" alt="<?php echo $language['name'] ?>" border="0" width="20" height="14"></a></li>
+		<?php endforeach;?>
+		</ul>
+		<?php else : ?>
+		<span style="color: white; font-weight: bold"><?php echo __("Please fix, no active language")?></span>
+		<?php endif; ?>
 	</div>
 	
