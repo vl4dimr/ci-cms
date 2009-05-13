@@ -256,16 +256,16 @@ and set to approve comments automatically.
 			
 			$params['limit'] = $per_page;
 			$params['start'] = $start;
-			$params['where'] = array('lang' => $this->user->lang);
+			$params['where'] = array('news.lang' => $this->user->lang);
 			
-
+			
 			$this->load->library('pagination');
 			
 			$config['uri_segment'] = 3;
 			$config['first_link'] = __('First');
 			$config['last_link'] = __('Last');
 			$config['base_url'] = site_url('news/list');
-			$config['total_rows'] = $this->news->get_total_published();
+			$config['total_rows'] = $this->news->get_total_published($params);
 			$config['per_page'] = $per_page; 	
 			$this->pagination->initialize($config); 
 

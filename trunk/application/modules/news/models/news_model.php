@@ -33,9 +33,9 @@
 			
 		}
 		
-		function get_total_published()
+		function get_total_published($params)
 		{
-			$this->db->where('lang', $this->user->lang );
+			$this->db->where($params['where'] );
 			$this->db->where('status', 1 );
 			$this->db->from('news');
 					
@@ -169,11 +169,13 @@
 			{
 				$params[$key] = (isset($params[$key]))? $params[$key]: $default_params[$key];
 			}
-			
+			$this->db->select('news_cat.title as category, news.*');
 			$this->db->where($params['where']);
 			$this->db->order_by($params['order_by']);
 			$this->db->limit($params['limit'], $params['start']);
-			$query = $this->db->get($this->table);
+			$this->db->from('news');
+			$this->db->join('news_cat', 'news_cat.id = news.cat', 'left');
+			$query = $this->db->get();
 			if ( $query->num_rows() > 0 )
 			{
 				
@@ -555,4 +557,3 @@
 }
 
 
-?>
