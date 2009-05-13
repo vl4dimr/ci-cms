@@ -9,13 +9,13 @@ function news_feed_content($data)
 	
 	$obj->load->model('news_model');
 	
-	$rows = $obj->news_model->latest_news();
+	$rows = $obj->news_model->get_list(array('limit' => 10, 'where' => array('news.lang <>' => '0')));
 	
 	$contents = array();
 	foreach ($rows as $key => $row)
 	{
 		$contents[$key]['title'] = $row['title'];
-		$contents[$key]['url'] = site_url( 'news/' . $row['uri']);
+		$contents[$key]['url'] = site_url( $row['lang'] . '/news/' . $row['uri']);
 		$contents[$key]['body'] = $row['body'];
 		$contents[$key]['date'] = (isset($row['date'])) ? $row['date'] : '';
 	}

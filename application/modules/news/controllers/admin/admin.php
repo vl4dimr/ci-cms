@@ -26,7 +26,7 @@
 			
 			$params['start'] = $start;
 			$params['limit'] = $per_page;
-			$params['where'] = array('lang' => $this->user->lang);
+			$params['where'] = array('news.lang' => $this->user->lang);
 			$params['order_by'] = "id DESC";
 			
 			if ( !$data = $this->cache->get('news'.$this->user->lang, 'news') )
