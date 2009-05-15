@@ -113,7 +113,8 @@ function ajaxFileUpload() {
 		<br class="clearfloat" />
 
 		<hr />
-
+		<?php echo validation_errors(); ?>
+		
 		<?php if ($notice = $this->session->flashdata('notification')):?>
 		<p class="notice"><?php echo $notice;?></p>
 		<?php endif;?>
