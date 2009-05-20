@@ -18,6 +18,10 @@ body, table, td, div, p, input	{
 	color: #333333;
 }
 
+img {
+border: none;
+}
+
 a { text-decoration: none; color: #C24242}
 
 h2 {
@@ -329,37 +333,6 @@ form.homelogin #password, form.homelogin #username {
 	margin: 0;
 }	
 
-#rss a {
-	color: #FFFFFF;
-}
-#rss h1 {
-	background:#72898C none repeat scroll 0 0;
-	border-color: #EEEEEE;
-	border-style:none none solid;
-	border-width:0 0 1px;
-	color:#FFFFFF;
-	font-size:12px;
-	left:-10px;
-	margin:0;
-	padding:5px 0 5px 10px;
-	position:relative;
-	top:-10px;
-	width:100%;
-}	
-	
-
-#rss  img {
-	float: left;
-	width: 80px;
-	margin: 0 5px 5px 0;
-	background: #EEEEEE;
-	border: 1px solid #FFFFFF;
-	padding: 3px;
-}
-
-#rss .metadata {
-clear: both;
-}
 
 #spotlight-out {
 	width: 100%;
@@ -378,7 +351,7 @@ form.homelogin #password {
 	background: url("../images/key-icon.gif") no-repeat 0.5em 0.6em;
 }
 
-#newsbox, #search, #skycraper, #menu, #spotlight-in, #main, #copyright {
+div.box-gris, #newsbox, #search, #skycraper, #menu, #spotlight-in, #main, #copyright {
 border: 1px solid #CCCCCC;
 margin: 5px 0;
 background: #FFFFFF;
@@ -423,7 +396,7 @@ table.list td {
 }
 
 
-div#usermenu h2, div#menu h2, #left h1, #right-bar h1 {
+div.box-gris h1, div#usermenu h2, div#menu h2, #left h1, #right-bar h1 {
 	padding: 5px;
 	background: #EEEEEE none;
 	color: #009900;
