@@ -29,8 +29,7 @@ class Member extends Controller {
 		$this->user->logout();
 		
 		$this->session->set_flashdata('notification',__("You are now logged out.", $this->template['module']));
-		$last_uri = $this->session->userdata('last_uri');
-		redirect($last_uri);
+		redirect($this->input->server('HTTP_REFERER'));
 	}
 	
 	function login()
