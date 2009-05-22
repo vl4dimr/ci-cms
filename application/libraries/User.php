@@ -192,7 +192,12 @@
 				{
 					$this->obj->session->set_userdata(array("login_redirect" => ""));
 					redirect($redirect);
-				}				
+				}
+				elseif ($this->obj->input->post('redirect'))
+				{
+					header("Location: $this->obj->input->post('redirect')");
+					exit();
+				}
 				
 				return true;
 			}
