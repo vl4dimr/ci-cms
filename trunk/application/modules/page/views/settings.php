@@ -36,10 +36,24 @@
 		
 		<div id="one">
 		
-			<label for="site_name">Homepage:</label>
+			<label for="site_name"><?php _e("Homepage:", "page") ?></label>
 			<input type="text" name="page_home" value="<?=isset($this->system->page_home)?$this->system->page_home:"home"?>" id="page_home" class="input-text" /><br />
 		
-		</div>
+<label for="page_approve_comments"><?=__("Approve comments", $this->template['module'])?></label>
+			<select name="page_approve_comments" class="input-select">
+			<option value='1' <?=(($this->system->page_approve_comments==1)?"selected":"")?>><?=__("Yes", $this->template['module'])?></option>
+			<option value='0' <?=(($this->system->page_approve_comments==0)?"selected":"")?>><?=__("No", $this->template['module'])?></option>
+			</select>
+			<br />
+
+<label for="page_notify_admin"><?=__("Notify admin for comments", $this->template['module'])?></label>
+			<select name="page_notify_admin" class="input-select">
+			<option value='1' <?=(($this->system->page_notify_admin==1)?"selected":"")?>><?=__("Yes", $this->template['module'])?></option>
+			<option value='0' <?=(($this->system->page_notify_admin==0)?"selected":"")?>><?=__("No", $this->template['module'])?></option>
+			</select>
+			<br />
+
+</div>
 	</form>
 <script>
 
