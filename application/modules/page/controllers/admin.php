@@ -68,7 +68,7 @@
 			$this->user->check_level($this->template['module'], LEVEL_DEL);
 			if ($post = $this->input->post('submit') )
 			{
-				$fields = array('page_home');
+				$fields = array('page_home', 'page_approve_comments', 'page_notify_admin');
 				
 				foreach ($fields as $field)
 				{
