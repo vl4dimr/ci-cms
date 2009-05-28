@@ -38,11 +38,27 @@ class Member extends Controller {
 		if ( $this->user->logged_in )
 		{
 			$this->session->set_flashdata('notification', __("You are now logged in", $this->template['module']));
-			if ($redirect = $this->input->post('redirect'))
+			
+			if ($redirect = $this->session->userdata("login_redirect"))
 			{
-				redirect($redirect, 'refresh');
+				$this->session->set_userdata(array("login_redirect" => ""));
+				redirect($redirect);
+				return;
 			}
-			redirect('member/profile');
+			elseif ($redirect = $this->input->post('redirect'))
+			{
+				$this->output->set_header("Location: " . $this->input->post('redirect'));
+				return;
+			}
+			elseif ($redirect = $this->session->userdata("last_uri"))
+			{
+				redirect($redirect);
+				return;
+			}
+			else
+			{
+				redirect('');
+			}
 		}
 		else
 		{
@@ -68,7 +84,16 @@ class Member extends Controller {
 				
 				if ($this->user->login($username, $password))
 				{
-					redirect('member/profile');
+					if ($redirect = $this->session->userdata("login_redirect"))
+					{
+						$this->session->set_userdata(array("login_redirect" => ""));
+						redirect($redirect);
+					}
+					elseif ($redirect = $this->input->post('redirect'))
+					{
+						$this->output->set_header("Location: " . $redirect);
+						return;
+					}
 				}
 				else
 				{	

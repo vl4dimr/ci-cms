@@ -43,7 +43,10 @@
 			$this->template['members'] = $this->member_model->get_users($where, array('limit' => $limit, 'start' => $debut, 'order_by' => $order));
 			$this->load->library('pagination');
 
-			$config['base_url'] = site_url('admin/member/listall/');
+			$config['uri_segment'] = 4;
+			$config['first_link'] = __('First', 'vetso');
+			$config['last_link'] = __('Last', 'vetso');
+			$config['base_url'] = site_url('admin/member/listall');
 			$config['total_rows'] = $this->member_model->member_total;
 			$config['per_page'] = $limit; 
 
