@@ -49,6 +49,6 @@
 <?php endif; ?>
 	</tbody>
 </table>
-<?=$pager?>
+<?php echo $pager?>
 </div>
 <!-- [Content] end -->
