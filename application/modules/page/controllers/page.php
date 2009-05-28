@@ -51,6 +51,7 @@
 			$data = array();
 			$data['page_id'] = $page['id'];
 			$data['ip'] = $this->input->ip_address();
+			$data['date'] = mktime();
 			foreach ($fields as $field)
 			{
 				$data[$field] = $this->input->post($field);
@@ -59,7 +60,7 @@
 			if ($this->system->page_approve_comments && $this->system->page_approve_comments = 1)
 			{
 				$data['status'] = 1;
-				if ($page['option']['notify'] == 1 && $page['email'])
+				if (isset($page['option']['notify']) && $page['option']['notify'] == 1 && $page['email'])
 				{
 					$this->load->library('email');
 
@@ -93,7 +94,7 @@ and disable notification.
 				
 				}
 
-				if ($this->system->page_notify_admin && $this->system->page_notify_admin == 1)
+				if (isset($this->system->page_notify_admin) && $this->system->page_notify_admin == 1)
 				{
 					$this->load->library('email');
 
@@ -167,6 +168,7 @@ and set to approve comments automatically.
 			
 			
 			$this->db->insert('page_comments', $data);
+			
 			redirect( $this->input->post('uri'), 'refresh');
 		}
 		
@@ -196,7 +198,8 @@ and set to approve comments automatically.
 				
 				if ($page['active'] == 1)
 				{
-				
+					
+					$this->template['comments'] = $this->pages->get_comments(array('where' => array('page_id' => $page['id'], 'status' => 1), 'order_by' => 'id'));
 					$this->template['page'] = $page;
 					$view = 'index';
 					
@@ -218,6 +221,49 @@ and set to approve comments automatically.
 						$this->db->update('pages');
 						$this->cache->remove('pagelist'.$this->user->lang, 'page');
 					}
+					
+					if (isset($page['options']['allow_comments']) && $page['options']['allow_comments'] == 1)
+					{
+						//generate captcha
+			
+						$pool = '0123456789';
+
+						$str = '';
+						for ($i = 0; $i < 6; $i++)
+						{
+							$str .= substr($pool, mt_rand(0, strlen($pool) -1), 1);
+						}
+						
+						$word = $str;
+			
+			
+						$this->load->plugin('captcha');
+						$vals = array(
+							'img_path'	 => './media/captcha/',
+							'img_url'	 => site_url('media/captcha'). '/',
+							'font_path'	 => APPPATH . 'modules/news/fonts/Fatboy_Slim.ttf',
+							'img_width'	 => 150,
+							'img_height' => 30,
+							'expiration' => 1800,
+							'word' => $word
+						);
+		
+						$cap = create_captcha($vals);
+						
+						$data = array(
+							'captcha_id'	=> '',
+							'captcha_time'	=> $cap['time'],
+							'ip_address'	=> $this->input->ip_address(),
+							'word'			=> $cap['word']
+						);
+
+						$this->db->insert('captcha', $data);
+						
+						
+						$this->template['captcha'] = $cap['image'];
+					
+					}
+					
 				}
 				else
 				{

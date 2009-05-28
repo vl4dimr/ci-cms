@@ -204,6 +204,19 @@ function ajaxFileUpload() {
 			<option value='1' <?php echo ((isset($page['options']['show_navigation']) && $page['options']['show_navigation']==1)?"selected":"")?>><?php _e("Yes", $this->template['module'])?></option>
 			<option value='0' <?php echo ((isset($page['options']['show_navigation']) && $page['options']['show_navigation']==0)?"selected":"")?>><?php _e("No", $this->template['module'])?></option>
 			</select><br />
+
+
+			<label for="options[allow_comments]"><?php echo __("Allow comments", $module)?>:</label>
+			<select name="options[allow_comments]" class="input-select" id="allow_comments">
+			<option value='0' <?php echo ((isset($page['options']['allow_comments']) && $page['options']['allow_comments']==0)?"selected":"")?>><?php echo __("No", $module)?></option>
+			<option value='1' <?php echo ((isset($page['options']['allow_comments']) && $page['options']['allow_comments']==1)?"selected":"")?>><?php echo __("Yes", $module)?></option>
+			</select><br />
+
+			<label for="options[notify]"><?php echo __("Notify for comment", $module)?>:</label>
+			<select name="options[notify]" class="input-select" id="notify">
+			<option value='0' <?php echo ((isset($page['options']['notify']) && $page['options']['notify']==0)?"selected":"")?>><?php echo __("No", $module)?></option>
+			<option value='1' <?php echo ((isset($page['options']['notify']) && $page['options']['notify']==1)?"selected":"")?>><?php echo __("Yes", $module)?></option>
+			</select><br />
 			
 		</div>
 	</form>
