@@ -29,14 +29,10 @@
 			$params['where'] = array('news.lang' => $this->user->lang);
 			$params['order_by'] = "id DESC";
 			
-			if ( !$data = $this->cache->get('news'.$this->user->lang, 'news') )
-			{
-				if (!$data = $this->news->get_list($params)) $data = array();
-				$this->cache->save('news'.$this->user->lang, $data, 'news', 0);
-			}
+			$data = $this->news->get_list($params);
 			
 
-			$this->template['rows'] = array_slice($data, $start, $per_page);
+			$this->template['rows'] = $data;
 			
 			
 			$this->load->library('pagination');
@@ -45,7 +41,7 @@
 			$config['first_link'] = __('First');
 			$config['last_link'] = __('Last');
 			$config['base_url'] = site_url('admin/news/index');
-			$config['total_rows'] = count($data);
+			$config['total_rows'] = $this->news->get_total();
 			$config['per_page'] = $per_page; 
 
 			$this->pagination->initialize($config); 
