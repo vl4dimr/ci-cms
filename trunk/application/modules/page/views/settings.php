@@ -41,15 +41,15 @@
 		
 <label for="page_approve_comments"><?=__("Approve comments", $this->template['module'])?></label>
 			<select name="page_approve_comments" class="input-select">
-			<option value='1' <?=(($this->system->page_approve_comments==1)?"selected":"")?>><?=__("Yes", $this->template['module'])?></option>
-			<option value='0' <?=(($this->system->page_approve_comments==0)?"selected":"")?>><?=__("No", $this->template['module'])?></option>
+			<option value='1' <?=((isset($this->system->page_approve_comments) && $this->system->page_approve_comments==1)?"selected":"")?>><?=__("Yes", $this->template['module'])?></option>
+			<option value='0' <?=((isset($this->system->page_approve_comments) && $this->system->page_approve_comments==0)?"selected":"")?>><?=__("No", $this->template['module'])?></option>
 			</select>
 			<br />
 
 <label for="page_notify_admin"><?=__("Notify admin for comments", $this->template['module'])?></label>
 			<select name="page_notify_admin" class="input-select">
-			<option value='1' <?=(($this->system->page_notify_admin==1)?"selected":"")?>><?=__("Yes", $this->template['module'])?></option>
-			<option value='0' <?=(($this->system->page_notify_admin==0)?"selected":"")?>><?=__("No", $this->template['module'])?></option>
+			<option value='1' <?=((isset($this->system->page_notify_admin) && $this->system->page_notify_admin==1)?"selected":"")?>><?=__("Yes", $this->template['module'])?></option>
+			<option value='0' <?=((isset($this->system->page_notify_admin) && $this->system->page_notify_admin==0)?"selected":"")?>><?=__("No", $this->template['module'])?></option>
 			</select>
 			<br />
 

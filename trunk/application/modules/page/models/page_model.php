@@ -232,6 +232,40 @@
 			$this->db->where('id', $id);
 			$this->db->update('pages', $data);
 		}
+		
+		function get_comments($params = array())
+		{
+			$default_params = array
+			(
+				'order_by' => 'id DESC',
+				'limit' => null,
+				'start' => null,
+				'where' => array()
+			);
+			
+			foreach ($default_params as $key => $value)
+			{
+				$params[$key] = (isset($params[$key]))? $params[$key]: $default_params[$key];
+			}
+			if ($params['where'])
+			{
+				$this->db->where($params['where']);
+			}
+			$this->db->order_by($params['order_by']);
+			
+			$query = $this->db->get('page_comments', $params['limit'], $params['start']);
+			
+			if ( $query->num_rows() > 0 )
+			{
+				return $query->result_array();
+			}
+			else
+			{
+				return false;
+			}
+			
+		}
+		
 	}
 
 
