@@ -96,11 +96,14 @@ CREATE TABLE `ci_pages` (
   `weight` int(11) NOT NULL default '0',
   `hit` int(11) NOT NULL default '0',
   `options` text NOT NULL,
+  `email` varchar(255) NOT NULL default '',
   `date` INT NOT NULL ,
   PRIMARY KEY  (`id`),
   KEY `uri` (`uri`),
   KEY `active` (`active`)
 ) ;
+
+
 
 -- 
 -- Dump dei dati per la tabella `ci_pages`
@@ -110,7 +113,21 @@ INSERT INTO `ci_pages` (`id`, `active`, `uri`, `title`, `meta_keywords`, `meta_d
 (1, 1, 'home', 'What is a Content Management System?', 'Blaze, CMS', 'Welcome to the Blaze CMS site ...', '<p>A content management system (CMS) is a program used to create a framework for the content of a Web site. CMSes are deployed primarily for interactive use by a potentially large number of contributors. For example, the software for the website Wikipedia is based on a wiki, which is a particular type of content management system. As used in this article, Content Management means Web Content Management. Other related forms of content management are listed below.<br /><br />The content managed includes computer files, image media, audio files, electronic documents and web content. The idea behind a CMS is to make these files available inter-office, as well as over the web. A CMS would most often be used as an archive as well. Many companies use a CMS to store files in a non-proprietary form. Companies use a CMS to share files with ease, as most systems use server-based software, even further broadening file availability. As shown below, many CMSs include a feature for Web Content, and some have a feature for a "workflow process".<br /><br />"Workflow" is the idea of moving an electronic document along for either approval, or for adding content. Some CMSs will easily facilitate this process with email notification, and automated routing. This is ideally a collaborative creation of documents. A CMS facilitates the organization, control, and publication of a large body of documents and other content, such as images and multimedia resources.<br /><br />A Web content management system is a CMS with additional features to ease the tasks required to publish web content to web sites.</p>');
 
 -- --------------------------------------------------------
-
+CREATE TABLE IF NOT EXISTS `ci_page_comments` (
+  `id` int(11) NOT NULL auto_increment,
+  `page_id` int(11) NOT NULL,
+  `status` int(2) NOT NULL DEFAULT '0',
+  `date` int(11) NOT NULL,
+  `author` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `website` varchar(150) NOT NULL,
+  `body` text NOT NULL,
+  `ip` varchar(150) NOT NULL,  
+  PRIMARY KEY  (`id`),
+  KEY `page_id` (`page_id`),
+  KEY `date` (`date`),
+  KEY `status` (`status`)
+);
 -- 
 -- Struttura della tabella `ci_sessions`
 -- 
@@ -201,7 +218,7 @@ CREATE TABLE `ci_modules` (
 -- 
 INSERT INTO `ci_modules` VALUES (1, 'admin', 0, '1.0.1', 1, 5, '', 'Admin core module');
 INSERT INTO `ci_modules` VALUES (2, 'module', 0, '1.0.0', 1, 20, '', 'Module core module');
-INSERT INTO `ci_modules` VALUES (3, 'page', 1, '1.0.2', 1, 60, '', 'Page core module');
+INSERT INTO `ci_modules` VALUES (3, 'page', 1, '1.0.3', 1, 60, '', 'Page core module');
 INSERT INTO `ci_modules` VALUES (4, 'language', 1, '1.0.0', 1, 10, '', 'Language core module');
 INSERT INTO `ci_modules` VALUES (5, 'member', 1, '1.0.0', 1, 30, '', 'Member core module');   
 INSERT INTO `ci_modules` VALUES (6, 'search', 0, '1.0.0', 1, 50, '', 'Search core module');   
