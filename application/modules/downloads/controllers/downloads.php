@@ -66,26 +66,4 @@ class Downloads extends Controller {
 	
 	}
 	
-	function images($file)
-	{
-		if(file_exists(APPPATH . 'modules/downloads/images/' . $file))
-		{
-		
-		$fn = APPPATH . 'modules/downloads/images/' . $file;
-	    $headers = apache_request_headers();
-
-	    // Checking if the client is validating his cache and if it is current.
-	    if (isset($headers['If-Modified-Since']) && (strtotime($headers['If-Modified-Since']) == filemtime($fn))) {
-	        // Client's cache IS current, so we just respond '304 Not Modified'.
-	        header('Last-Modified: '.gmdate('D, d M Y H:i:s', filemtime($fn)).' GMT', true, 304);
-	    } else {
-	        // Image not cached or cache outdated, we respond '200 OK' and output the image.
-	        header('Last-Modified: '.gmdate('D, d M Y H:i:s', filemtime($fn)).' GMT', true, 200);
-	        header('Content-Length: '.filesize($fn));
-	        header('Content-Type: image/gif');
-	        print file_get_contents($fn);
-	    }
-		
-		}
-	}
 }	

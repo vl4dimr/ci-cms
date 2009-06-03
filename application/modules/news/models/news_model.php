@@ -162,6 +162,7 @@
 				'order_by' => 'id DESC',
 				'limit' => 20,
 				'start' => 0,
+				'having' => array(),
 				'where' => array()
 			);
 			
@@ -171,6 +172,7 @@
 			}
 			$this->db->select('news_cat.title as category, news.*');
 			$this->db->where($params['where']);
+			$this->db->having($params['having']);
 			$this->db->order_by($params['order_by']);
 			$this->db->limit($params['limit'], $params['start']);
 			$this->db->from('news');
