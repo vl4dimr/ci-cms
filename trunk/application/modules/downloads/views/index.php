@@ -15,8 +15,8 @@ else
 	$row['summary'] = $row['desc'];
 }
 ?>		
-<img src="<?=site_url('downloads/images/dir.gif')?>" >
-<a href="<?=site_url('downloads/index/' . $row['id'])?>"><?=(strlen($row['title']) > 20? substr($row['title'], 0,20) . '...': $row['title'])?></a><br />
+<img src="<?=site_url('media/images/downloads/dir.gif')?>" >
+<a href="<?=site_url('downloads/index/' . $row['id'])?>"><?=strip_tags($row['title'])?></a><br />
 				<?=$row['summary']?>
 
 <?php endforeach;?>
@@ -46,8 +46,8 @@ else
 	$row['link'] = site_url('downloads/document/get/' . $row['file']);
 }
 ?>		
-<img src="<?=site_url('downloads/images/' . $row['ext'] . '.gif')?>" >
-<a href="<?=$row['link']?>"><?=(strlen($row['title']) > 20? substr($row['title'], 0,20) . '...': $row['title'])?></a><br />
+<img src="<?=site_url('media/images/downloads/' . $row['ext'] . '.gif')?>" >
+<a href="<?=$row['link']?>"><?=$row['title']?></a><br />
 				<?=$row['summary']?>
 
 <?php endforeach;?>
