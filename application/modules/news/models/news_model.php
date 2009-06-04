@@ -528,6 +528,15 @@
 			$data['date'] = mktime();
 		}
 		
+		// if uri is provided
+		if ($this->input->post('uri'))
+		{
+			$data['uri'] = $this->input->post('uri');
+		}
+		else
+		{
+			$data['uri'] = $this->news->generate_uri($this->input->post('title'));
+		}
 			
 		if($id = $this->input->post('id'))
 		{
@@ -549,7 +558,6 @@
 		
 			$data['author'] = $this->user->username;
 			$data['email'] = $this->user->email;
-			$data['uri'] = $this->news->generate_uri($this->input->post('title'));
 			$this->db->insert('news', $data);
 			$id = $this->db->insert_id();
 			//insert
