@@ -125,6 +125,11 @@ function ajaxFileUpload() {
 
 		<label for="title"><?php echo __("Title", $this->template['module'])?>:</label>
 		<input type="text" name="title" value="<?php echo (isset($row['title'])?$row['title'] : "") ?>" id="title" class="input-text" /><br />
+
+		<label for="uri"><?php echo __("SEF Address", $this->template['module'])?>:</label>
+		<input type="text" name="uri" value="<?php echo (isset($row['uri'])?$row['uri'] : "") ?>" id="uri" class="input-text" /><br />
+		<?php _e("You can leave the SEF Address blank unless you want to specify your own") ?><br />
+
 		
 		<label for="pid"><?php echo __("Category", $this->template['module'])?>:</label>
 		<select name='cat' id='cat' class="input-select">
