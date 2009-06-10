@@ -25,6 +25,23 @@
 </form>	
 				</div>
 
+		<?php if ($row = $this->block->get('page_item', array('uri' => 'sary'))) :?>
+		<div id="flickr" class="box-gris">
+		<h1><?php echo __("Photo album", 'rafiringa')?></h1>
+		<?php 		
+		if($page_break_pos = strpos($row['body'], "<!-- page break -->"))
+		{
+			$row['summary'] = substr($row['body'], 0, $page_break_pos);
+		}
+		echo $row['summary'] ; ?>
+		<div style="clear: both; text-align: right">
+		<?php echo anchor($row['uri'], __("more", "rafiringa")) ?>
+		</div>
+		</div>
+		<?php endif; ?>
+		
+			<?php 
+			/** flickr
 		<?php if ($rows = $this->block->get('rss_block', array('url' => 'http://api.flickr.com/services/feeds/photos_public.gne?tags=rafiringa', 'limit' => 10))) :?>
 		<div id="flickr" class="box-gris">
 		<h1><?php echo __("Photo album", 'rafiringa')?></h1>
@@ -43,6 +60,8 @@
 		</div>
 		<?php endif; ?>
 			
+			**/
+			?>
 <?php if ($rows = $this->block->get('latest_news', 10)) :?>
 <div id='newsbox' class="box-gris">
 <h1><?php echo __("News", 'rafiringa')?></h1>
