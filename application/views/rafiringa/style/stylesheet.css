@@ -421,3 +421,8 @@ clear: both;
 text-align: center;
 background-color: #EEEEEE;
 }
+
+#flickr img {
+width: 60px;
+height: 60px;
+}
