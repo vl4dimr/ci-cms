@@ -11,7 +11,8 @@ function rss_block($params = array())
 	$default_params = array
 	(
 		'url' => 'http://ci-cms.blogspot.com/feeds/posts/default/-/news',
-		'limit' => 5
+		'limit' => 5,
+		'duration' => 1800
 	);
 	
 	foreach ($default_params as $key => $value)
@@ -20,6 +21,7 @@ function rss_block($params = array())
 	}
 	$obj =& get_instance();
 	$obj->load->library('simplepie');
+	$obj->simplepie->set_cache_duration($params['duration']);
 	$obj->simplepie->set_feed_url($params['url']);
 	$obj->simplepie->set_cache_location('./cache');
 	$obj->simplepie->init();
