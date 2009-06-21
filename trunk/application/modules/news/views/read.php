@@ -49,7 +49,7 @@
 <input  class="input-text" type='text' name='email' value='' id='email' /><br />
 
 <label for='website'><?=__("Website:", $this->template['module'])?></label>
-<input type='text' name='website' value='' id='website' /><br />
+<input  class="input-text" type='text' name='website' value='' id='website' /><br />
 
 <label for='body'><?=__("Comment", $this->template['module'])?>[*]</label>
 <textarea  class="input-textarea" name='body' id='body' rows="10" /></textarea><br />
