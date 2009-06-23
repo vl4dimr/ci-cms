@@ -58,6 +58,8 @@ _type = string_
 Goes just after news content
 
 
+====page_item====
+This is the page item (as array) before it is sent to the view. So that you can then modify it's content etc.
 
 ====page_custom_fields====
 _type = string_
