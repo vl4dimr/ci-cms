@@ -1,0 +1,43 @@
+<?xml version="1.0" ?>
+<module>
+        <name>gallery</name>
+        <date>02/10/2008</date>
+        <author>Randall Morgan</author>
+        <email>rmorgan@professionalsoftwaresolutions.com</email>        
+		<url>http://www.professionalsoftwaresolutions.com</url>        
+		<copyright>GNU/GPL License</copyright>        
+		<version>0.9.0</version>        
+		<description>Photo Gallery module</description>        
+		<install>                
+		    <query>
+			CREATE TABLE `ci_gallery_images` (
+			  `id` int(11) NOT NULL auto_increment,
+			  `gallery_cat_id` int(11) NOT NULL default '1',
+			  `name` varchar(50) NOT NULL,
+			  `caption` varchar(255) NOT NULL,
+			  `file` varchar(255) NOT NULL,
+			  `ordering` int(11) NOT NULL default '1',
+			  `default` tinyint(1) NOT NULL default '0',
+			  PRIMARY KEY  (`id`)
+			) TYPE=MyISAM  AUTO_INCREMENT=0;
+			</query>                
+			<query>
+			CREATE TABLE `ci_gallery_categories` (
+			  `id` int(11) NOT NULL auto_increment,
+			  `name` varchar(50) NOT NULL,
+			  `description` varchar(255) NOT NULL,
+			  PRIMARY KEY  (`id`),
+			  KEY `name` (`name`)
+			) TYPE=InnoDB  COMMENT='This table holds the categories used for the image gallery' AUTO_INCREMENT=0;
+		    </query>
+			<query>
+				INSERT INTO `ci_modules` (`name`, `with_admin`, `version`, `status`, `ordering`, `info`, `description`)
+				VALUES ('gallery', '1', '0.90', '1', '101', '', 'Photo Gallery Module');
+			</query>
+		</install>        
+		<uninstall>                
+		    <query>DROP TABLE IF EXISTS `ci_gallery_images`;</query>
+			<query>DROP TABLE IF EXISTS `ci_gallery_categories`;</query> 
+			<query>DELETE FROM `ci_modules` WHERE 'name' = 'gallery';</query>       
+		</uninstall>
+</module>

@@ -1,0 +1,21 @@
+/*************************************************
+ * Gallery MOdule Notes
+ *
+ * Requires JQuery 1.3 or Later
+ *
+ *************************************************
+ */
+ 
+ The gallery module uses the jquery live() method
+ and therefore requires jquery 1.3 or later. The
+ live() method is needed for proper operation of
+ the ajax calls. Without the live method the ajax
+ binding is lost after the first subpage load. 
+ 
+ This can be solved two ways. The first is to use
+ the $().live() method and the second is to rebind 
+ the the ajax load() method. The first method was 
+ used as it was more stright forward and required 
+ less code and less headaches to get up and working.
+ 
+ 
