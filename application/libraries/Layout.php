@@ -87,7 +87,7 @@
 			
 			if ($this->obj->system->debug == 1)
 			{
-				$output .= $this->print_debug();
+				$this->obj->output->enable_profiler(true);
 			}
 			
 			$here = substr($this->obj->uri->uri_string(), 1);
