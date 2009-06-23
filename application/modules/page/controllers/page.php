@@ -195,7 +195,7 @@ and set to approve comments automatically.
 			
 			if ( $page = $this->pages->get_page(array('uri' => $built_uri, 'lang' => $this->user->lang)) )
 			{
-				$page = $this->plugin->apply_filters('page_object', $page);
+				$page = $this->plugin->apply_filters('page_item', $page);
 
 				if ($page['active'] == 1)
 				{
