@@ -6,7 +6,7 @@
 		$page['body'] = substr($page['body'], $page_break_pos + 19);
 	}
 ?>	
-<?=$page['body']?>
+<?php echo $page['body']?>
 
 
 
