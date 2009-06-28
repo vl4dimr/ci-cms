@@ -18,7 +18,7 @@
 			$this->user->check_level($this->template['module'], LEVEL_DEL);
 			if ($post = $this->input->post('submit') )
 			{
-				$fields = array('flickr_api_key', 'flickr_api_secret', 'flickr_user_name');
+				$fields = array('flickr_api_key', 'flickr_api_secret', 'flickr_user_name', 'flickr_col_num');
 				
 				foreach ($fields as $field)
 				{

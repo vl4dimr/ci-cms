@@ -45,6 +45,8 @@
 			<label for="flickr_user_name"><?php _e("Flickr Screen Name:", "flickr") ?></label>
 			<input type="text" name="flickr_user_name" value="<?=isset($this->flickr->flickr_user_name)?$this->flickr->flickr_user_name:""?>" id="flickr_user_name" class="input-text" /><br /><a href="http://www.flickr.com/account/prefs/screenname/"><?php echo __("Get it here", "flickr") ?></a><br />
 			
+			<label for="flickr_col_num"><?php _e("Set column numbers:", "flickr") ?></label>
+			<input type="text" name="flickr_col_num" value="<?=isset($this->flickr->flickr_col_num)?$this->flickr->flickr_col_num:"2"?>" id="flickr_col_num" class="input-text" /><br />
 			
 </div>
 	</form>
