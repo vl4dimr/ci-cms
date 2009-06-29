@@ -133,7 +133,7 @@ function ajaxFileUpload() {
 		<?php if ($parents = $this->pages->list_pages()) : ?>
 		<?php foreach ($parents as $parent):?>
 
-		<option value="<?php echo $parent['id']?>" <?php (($parent['id'] == $parent_id)? " selected ": "") ?> ><?php echo ($parent['level'] > 0) ? "|".str_repeat("__", $parent['level']): ""?> <?php echo $parent['title'] ?> </option>
+		<option value="<?php echo $parent['id']?>" <?php echo (($parent['id'] == $parent_id)? " selected ": "") ?> ><?php echo ($parent['level'] > 0) ? "|".str_repeat("__", $parent['level']): ""?> <?php echo $parent['title'] ?> </option>
 		
 		<?php endforeach;?>
 		<?php endif; ?>
