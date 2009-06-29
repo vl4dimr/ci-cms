@@ -85,7 +85,7 @@
 				$this->layout->load($this->template, 'settings');
 			}
 		}
-		function create()
+		function create($parent_id = 0)
 		{
 			$this->user->check_level($this->template['module'], LEVEL_ADD);
 			if ( $post = $this->input->post('submit') )
@@ -208,6 +208,7 @@
 				$query = $this->db->get('images');
 				
 				$this->template['images'] = $query->result_array();
+				$this->template['parent_id'] = $parent_id;
 				$this->layout->load($this->template, 'create');
 			}
 		}

@@ -1,5 +1,16 @@
 
 <h1><?=$page['title']?></h1>
+<?php if ($this->user->level['page'] >= LEVEL_ADD) : ?>
+<div class="admin-box">
+<?php ecoh anchor('admin/page/create/' . $page['id'], __("Add subpage", "page")) ?>
+<?php if ($this->user->level['page'] >= LEVEL_EDIT) : ?>
+ | <?php echo anchor('admin/page/edit/' . $page['id'], __("Edit", "page")) ?>
+<?php endif; ?>
+<?php if ($this->user->level['page'] >= LEVEL_DEL) : ?>
+ | <?php echo anchor('admin/page/delete/' . $page['id'], __("Delete", "page")) ?>
+<?php endif; ?>
+</div>
+<?php endif; ?>
 <?php
 	if($page_break_pos = strpos($page['body'], "<!-- page break -->"))
 	{
