@@ -24,6 +24,7 @@ function rss_block($params = array())
 	$obj->simplepie->set_cache_duration($params['duration']);
 	$obj->simplepie->set_feed_url($params['url']);
 	$obj->simplepie->set_cache_location('./cache');
+	$obj->simplepie->enable_order_by_date(false);
 	$obj->simplepie->init();
 	$obj->simplepie->handle_content_type();
 	return $obj->simplepie->get_items(0, $params['limit']);
