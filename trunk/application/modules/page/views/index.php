@@ -2,7 +2,7 @@
 <h1><?=$page['title']?></h1>
 <?php if ($this->user->level['page'] >= LEVEL_ADD) : ?>
 <div class="admin-box">
-<?php ecoh anchor('admin/page/create/' . $page['id'], __("Add subpage", "page")) ?>
+<?php echo anchor('admin/page/create/' . $page['id'], __("Add subpage", "page")) ?>
 <?php if ($this->user->level['page'] >= LEVEL_EDIT) : ?>
  | <?php echo anchor('admin/page/edit/' . $page['id'], __("Edit", "page")) ?>
 <?php endif; ?>
