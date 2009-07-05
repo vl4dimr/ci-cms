@@ -24,6 +24,13 @@ class Member extends Controller {
 		
 	}
 	
+	function _member_signup_header()
+	{
+		echo '<script src="' .  base_url() . 'application/views/' . $this->system->theme . '/javascript/jquery.validate.pack.js" type="text/javascript"></script>';
+		
+
+	}
+	
 	function logout()
 	{
 		$this->user->logout();
@@ -135,6 +142,8 @@ class Member extends Controller {
 					
 		if ($this->validation->run() == FALSE)
 		{
+			$this->plugin->add_action('header', array(&$this, '_member_signup_header'));
+			
 			$this->layout->load($this->template, 'signup');
 		}
 		else

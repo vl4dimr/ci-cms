@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Solaitra:Member\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-02 10:45+0100\n"
-"PO-Revision-Date: 2009-06-02 10:46+0100\n"
+"POT-Creation-Date: 2009-07-05 15:07+0100\n"
+"PO-Revision-Date: 2009-07-05 15:09+0100\n"
 "Last-Translator: Eugene Hery <hery@serasera.org>\n"
 "Language-Team: Hery Serasera.org <hery@serasera.org>\n"
 "MIME-Version: 1.0\n"
@@ -17,24 +17,24 @@ msgstr ""
 
 #: ../controllers/admin.php:47
 msgid "First"
-msgstr ""
+msgstr "Voalohany"
 
 #: ../controllers/admin.php:48
 msgid "Last"
-msgstr ""
+msgstr "Farany"
 
 #: ../controllers/admin.php:84
 #: ../controllers/admin.php:201
 #: ../controllers/group.php:67
 #: ../controllers/group.php:184
-#: ../controllers/member.php:122
-#: ../controllers/member.php:320
+#: ../controllers/member.php:129
+#: ../controllers/member.php:329
 msgid "email"
 msgstr "adiresy email"
 
 #: ../controllers/admin.php:85
 #: ../controllers/group.php:68
-#: ../controllers/member.php:123
+#: ../controllers/member.php:130
 msgid "username"
 msgstr "solonanarana"
 
@@ -42,7 +42,7 @@ msgstr "solonanarana"
 #: ../controllers/admin.php:202
 #: ../controllers/group.php:69
 #: ../controllers/group.php:185
-#: ../controllers/member.php:243
+#: ../controllers/member.php:252
 msgid "password"
 msgstr "tenimiafina"
 
@@ -50,8 +50,8 @@ msgstr "tenimiafina"
 #: ../controllers/admin.php:203
 #: ../controllers/group.php:70
 #: ../controllers/group.php:186
-#: ../controllers/member.php:124
-#: ../controllers/member.php:244
+#: ../controllers/member.php:131
+#: ../controllers/member.php:253
 msgid "password confirmation"
 msgstr "fanamarinana tenimiafina"
 
@@ -59,10 +59,10 @@ msgstr "fanamarinana tenimiafina"
 #: ../controllers/admin.php:208
 #: ../controllers/group.php:76
 #: ../controllers/group.php:191
-#: ../controllers/member.php:130
-#: ../controllers/member.php:249
-#: ../controllers/member.php:324
-#: ../controllers/member.php:414
+#: ../controllers/member.php:137
+#: ../controllers/member.php:258
+#: ../controllers/member.php:333
+#: ../controllers/member.php:423
 #, php-format
 msgid "The %s field is required"
 msgstr "Ilaina ny %s"
@@ -71,9 +71,9 @@ msgstr "Ilaina ny %s"
 #: ../controllers/admin.php:209
 #: ../controllers/group.php:77
 #: ../controllers/group.php:192
-#: ../controllers/member.php:131
-#: ../controllers/member.php:250
-#: ../controllers/member.php:415
+#: ../controllers/member.php:138
+#: ../controllers/member.php:259
+#: ../controllers/member.php:424
 #, php-format
 msgid "The %s field does not match the %s field"
 msgstr "Tsy mitovy amin'ny %s ny %s napetrakao"
@@ -85,7 +85,7 @@ msgstr "Tafiditra ny mpiambana"
 
 #: ../controllers/admin.php:125
 #: ../controllers/group.php:108
-#: ../controllers/member.php:183
+#: ../controllers/member.php:192
 msgid "The username is already in use"
 msgstr "Efa misy mampiasa ny solonanarana"
 
@@ -125,62 +125,58 @@ msgstr "Voatahiry ny mpikambana"
 
 #: ../controllers/admin.php:279
 #: ../controllers/group.php:252
-#: ../controllers/member.php:213
+#: ../controllers/member.php:222
 msgid "The email is already in use"
 msgstr "Efa misy mampiasa ny adiresy email"
 
 #: ../controllers/ajax.php:25
-#, fuzzy
 msgid "Username is required"
 msgstr "Ilaina ny solonanarana sy ny status"
 
 #: ../controllers/ajax.php:34
-#: ../controllers/member.php:80
+#: ../controllers/member.php:87
 msgid "Please enter your password"
 msgstr "Ampidiro ny tenimiafina azafady"
 
 #: ../controllers/ajax.php:44
-#, fuzzy
 msgid "Logged in:"
-msgstr "Fidirana"
+msgstr "Tafiditra :"
 
 #: ../controllers/ajax.php:45
-#, fuzzy
 msgid "Sign out"
-msgstr "Hisoratra anarana"
+msgstr "Hivoaka"
 
 #: ../controllers/ajax.php:53
-#, fuzzy
 msgid "Login error. Please verify your username "
-msgstr "Hadisoana. Hamarino ny solonanarana sy ny tenimiafina."
+msgstr "Hadisoana. Hamarino ny solonanarana."
 
-#: ../controllers/member.php:31
+#: ../controllers/member.php:38
 msgid "You are now logged out."
 msgstr "Tafavoaka soa amantsara ianao"
 
-#: ../controllers/member.php:40
+#: ../controllers/member.php:47
 msgid "You are now logged in"
 msgstr "Tafiditra soa amantsara ianao"
 
-#: ../controllers/member.php:74
+#: ../controllers/member.php:81
 msgid "Please enter your username"
 msgstr "Ampidiro ny solonanarana azafady"
 
-#: ../controllers/member.php:100
+#: ../controllers/member.php:107
 msgid "Login error. Please verify your username and your password."
 msgstr "Hadisoana. Hamarino ny solonanarana sy ny tenimiafina."
 
-#: ../controllers/member.php:132
-#: ../controllers/member.php:416
+#: ../controllers/member.php:139
+#: ../controllers/member.php:425
 msgid "The email address you entered is not valid."
 msgstr "Tsy adiresy ara-dalana ny adiresy napetrakao"
 
-#: ../controllers/member.php:155
+#: ../controllers/member.php:164
 #, php-format
 msgid "Your password for %s"
 msgstr "%s tenimiafina"
 
-#: ../controllers/member.php:156
+#: ../controllers/member.php:165
 #, php-format
 msgid ""
 "Hello %s,\n"
@@ -205,12 +201,12 @@ msgstr ""
 "Misaotra anao.\n"
 "Ny mpandrindra"
 
-#: ../controllers/member.php:163
+#: ../controllers/member.php:172
 #, php-format
 msgid "New member for %s"
 msgstr "Mpikambana vaovao %s"
 
-#: ../controllers/member.php:164
+#: ../controllers/member.php:173
 #, php-format
 msgid ""
 "Hello admin,\n"
@@ -233,7 +229,7 @@ msgstr ""
 "Misaotra. \n"
 "Ny mpandrindra"
 
-#: ../controllers/member.php:169
+#: ../controllers/member.php:178
 #, php-format
 msgid ""
 "Thank you for registering with this site.\n"
@@ -244,25 +240,25 @@ msgstr ""
 "\n"
 "Mba jereo azafady ny adiresy %s ary jereo any ny tenimiafina dia miverena miditra."
 
-#: ../controllers/member.php:189
+#: ../controllers/member.php:198
 msgid "The username format is not valid, please use alphanumeric characters."
 msgstr "Tsy aradal&agrave;na ny endriky ny solonanarana. Litera sy marika ihany no azo ampiasaina, tsy azo asiana soratra hafa."
 
-#: ../controllers/member.php:265
+#: ../controllers/member.php:274
 msgid "Your profile was saved."
 msgstr "Voatahiry ny mombamomba anao"
 
-#: ../controllers/member.php:325
+#: ../controllers/member.php:334
 #, php-format
 msgid "The address %s is not a valid email"
 msgstr "Tsy adiresy ara-dalana ny %s napetrakao"
 
-#: ../controllers/member.php:342
+#: ../controllers/member.php:351
 #, php-format
 msgid "Create a new password: %s"
 msgstr "Manova tenimiafina: %s"
 
-#: ../controllers/member.php:343
+#: ../controllers/member.php:352
 #, php-format
 msgid ""
 "Hello %s,\n"
@@ -283,29 +279,29 @@ msgstr ""
 "Misaotra anao.\n"
 "Ny mpandrindra"
 
-#: ../controllers/member.php:348
+#: ../controllers/member.php:357
 #, php-format
 msgid "We have sent to %s the instruction on how to create a new password. Please check your email."
 msgstr "Nalefanay amin'ny adiresy %s ny fomba hatao hahazoana mamorona tenimiafina vaovao. Jereo io ny hafatra amin'io adiresy io azafady."
 
-#: ../controllers/member.php:360
+#: ../controllers/member.php:369
 msgid "Your password is now changed. You can login with your username and the new password."
 msgstr "Voaova ny tenimiafina. Afaka miditra amin'ny solonanarana sy tenimiafina vaovao ianao manomboka izao."
 
-#: ../controllers/member.php:372
+#: ../controllers/member.php:381
 msgid "The activation link is not valid. Please check again your email and verify the link. If you are sure the link was right then contact the administrator."
 msgstr "Tsy ara-dalàna io rohy napetrakao io. Jereo tsara ny rohy izay nalefanay tany amin'ny email izay voarainao. Raha tsy mety mihitsy dia ilazao ny mpandrindra ny takelaka."
 
-#: ../controllers/member.php:385
+#: ../controllers/member.php:394
 #, php-format
 msgid "The address %s is not found in our database. Try another address."
 msgstr "Tsy hita ao amin'ny lisitra ny adiresy %s izay napetrakao. Manandrama adiresy hafa."
 
-#: ../controllers/member.php:397
+#: ../controllers/member.php:406
 msgid "Change your email"
 msgstr "Hanova adiresy imailaka"
 
-#: ../controllers/member.php:406
+#: ../controllers/member.php:415
 #: ../views/adino.php:16
 #: ../views/admin.php:38
 #: ../views/create.php:42
@@ -313,15 +309,15 @@ msgstr "Hanova adiresy imailaka"
 msgid "Email"
 msgstr "Adiresy email"
 
-#: ../controllers/member.php:407
+#: ../controllers/member.php:416
 msgid "Email confirmation"
 msgstr "Fanamarinana adiresy"
 
-#: ../controllers/member.php:435
+#: ../controllers/member.php:444
 msgid "Email change confirmation"
 msgstr "Fanamarinana fanovana adiresy"
 
-#: ../controllers/member.php:436
+#: ../controllers/member.php:445
 #, php-format
 msgid ""
 "Hello %s,\n"
@@ -344,16 +340,16 @@ msgstr ""
 "Misaotra anao.\n"
 "Ny mpandrindra"
 
-#: ../controllers/member.php:441
+#: ../controllers/member.php:450
 #, php-format
 msgid "Please, check your new email %s, We sent a link to verify that it belongs to you."
 msgstr "Jereo azafady ny adiresinao %s, nandefasanay hafatra any hanamarinana fa anao marina ny adiresy."
 
-#: ../controllers/member.php:456
+#: ../controllers/member.php:465
 msgid "Your email is now changed. "
 msgstr "Voaova ny adiresinao."
 
-#: ../controllers/member.php:461
+#: ../controllers/member.php:470
 msgid "The link is not valid. Please check your email to verify. "
 msgstr "Tsy ara-dal&agrave;na io rohy napetrakao io. Jereo indray azafady ilay hafatra nalefanay."
 
@@ -542,6 +538,33 @@ msgstr "Ilaina fenoina izay voamarika amin'ny *"
 #: ../views/signup.php:30
 msgid "Register"
 msgstr "Hisoratra anarana"
+
+#: ../views/signup.php:64
+msgid "Enter a username"
+msgstr "Ampidiro ny solonanarana"
+
+#: ../views/signup.php:65
+#: ../views/signup.php:75
+msgid "Enter at least {0} characters"
+msgstr "Mampidira farafaharatsiny litera {0}"
+
+#: ../views/signup.php:66
+#: ../views/signup.php:71
+msgid "{0} is already in use"
+msgstr "Efa misy mampiasa ny {0}"
+
+#: ../views/signup.php:69
+#: ../views/signup.php:70
+msgid "Please enter a valid email address"
+msgstr "Tsy ara-dalàna ny adiresy"
+
+#: ../views/signup.php:74
+msgid "Repeat your email"
+msgstr "Avereno ny email"
+
+#: ../views/signup.php:76
+msgid "Enter the same email as above"
+msgstr "Avereno ampidirina ny adiresy etsy ambony"
 
 #: ../views/unauthorized.php:1
 msgid "Unauthorized"
