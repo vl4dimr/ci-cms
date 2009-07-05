@@ -58,5 +58,54 @@ class Ajax extends Controller {
 		}
 
 	}
+	
+	function exists($field)
+	{
+		if (is_null($field))
+		{
+			echo "false";
+		}
+		switch($field)
+		{
+			case 'username':
+				if(! $username = $this->input->post('username'))
+				{
+					echo "false";
+					return;
+				}
+			
+				$this->load->model('member_model', 'member');
+				if ($this->member->exists(array('username' => $username)))
+				{
+					echo "false";
+					return;
+				}
+				else
+				{
+					echo "true";
+				}
+			
+			break;
+			case 'email':
+				if(! $email = $this->input->post('email'))
+				{
+					echo "false";
+					return;
+				}
+			
+				$this->load->model('member_model', 'member');
+				if ($this->member->exists(array('email' => $email)))
+				{
+					echo "false";
+					return;
+				}
+				else
+				{
+					echo "true";
+				}
+			
+			break;
+		}
+	}
 
 }	
