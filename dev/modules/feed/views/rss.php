@@ -25,11 +25,11 @@ echo '<?xml version="1.0" encoding="utf-8"?>' . "
     
         <item>
 
-          <title><?php echo htmlentities($item['title']); ?></title>
+          <title><?php echo $item['title']; ?></title>
           <link><?php echo $item['url'] ?></link>
           <guid><?php echo $item['url'] ?></guid>
 
-          <description><?php echo htmlentities($item['body']) ?></description>
+          <description><![CDATA[<?php echo $item['body'] ?>]]></description>
       <pubDate><?php echo date ('r', $item['date']);?></pubDate>
         </item>
 

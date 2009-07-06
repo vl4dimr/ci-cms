@@ -22,7 +22,8 @@ class Feed extends Controller
         $data['page_description'] = $this->system->meta_description;
         $data['page_language'] = $this->user->lang;
         $data['creator_email'] = (isset($this->system->admin_email))? $this->system->admin_email : "";
-		
+		$this->load->helper('xml');
+
 		//get page first
 		$contents = array();
 		
