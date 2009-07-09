@@ -11,7 +11,7 @@
 	<!--[if IE]>
 		<link rel="stylesheet" href="<?=base_url()?>application/views/<?php echo $this->system->theme ?>/style/iefix.css" type="text/css" media="screen" charset="utf-8" />
 	<![endif]-->
-	<script src="<?=base_url()?>application/views/<?php echo $this->system->theme ?>/javascript/jquery.js" type="text/javascript"></script>
+	<script src="<?=base_url()?>application/views/<?php echo $this->system->theme ?>/javascript/jquery-1.3.2.min.js" type="text/javascript"></script>
 	<script src="<?=base_url()?>application/views/<?php echo $this->system->theme ?>/javascript/sitelib.js" type="text/javascript"></script>
 	<script src="<?=base_url()?>application/views/<?php echo $this->system->theme ?>/javascript/external.js" type="text/javascript"></script>
 
