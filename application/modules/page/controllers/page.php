@@ -204,10 +204,21 @@ and set to approve comments automatically.
 					$this->template['page'] = $page;
 					$view = 'index';
 					
-					$this->template['breadcrumb'][] = 	array(
-															'title'	=> (strlen($this->template['page']['title']) > 20 )? substr($this->template['page']['title'], 0, 20) . '...': $this->template['page']['title'],
-															'uri'	=> $this->template['page']['uri']
-														);
+					if($parent = $this->pages->get_page(array('id' => $page['parent_id'])))
+					{
+						$this->template['breadcrumb'][] = 	array(
+						'title'	=> (strlen($parent['title']) > 20 )? substr($parent['title'], 0, 20) . '...': $parent['title'],
+						'uri'	=> $parent['uri']
+						);
+					}
+					
+					if ($page['uri'] != $this->system->page_home)
+					{
+						$this->template['breadcrumb'][] = 	array(
+						'title'	=> (strlen($page['title']) > 20 )? substr($page['title'], 0, 20) . '...': $page['title'],
+						'uri'	=> $page['uri']
+						);
+					}
 					
 					$this->template['title'] = $this->template['page']['title'];
 														
