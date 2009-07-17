@@ -16,6 +16,10 @@
 		function System()
 		{
 			$this->obj =& get_instance();
+			if ($this->obj->uri->segment(1) == "install")
+			{
+				return;
+			}
 			$this->obj->config->set_item('cache_path', './cache/');
 			$dir = $this->obj->config->item('cache_path');
 			$this->obj->load->library('cache', array('dir' => $dir));
