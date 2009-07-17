@@ -69,7 +69,9 @@ if ($handle)
 $route['default_controller'] = "page";
 $route['scaffolding_trigger'] = "";
 $route['admin'.'(/.*)?'] = 'admin$1';
-$route['(.*)'] = "page/index/$1";
-//var_dump($route);
+if (!isset($route['(.*)']))
+{
+//in case a module want to get it all
+	$route['(.*)'] = "page/index/$1";
+}
 
-?>
