@@ -1,0 +1,2 @@
+- Upload path tsy valide
+- Rehefa mi-install dia tsy installé ny tables

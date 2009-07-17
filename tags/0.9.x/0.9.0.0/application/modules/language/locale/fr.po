@@ -1,0 +1,141 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Solaitra:Downloads\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-11-23 18:31+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Eugene Hery <hery@serasera.org>\n"
+"Language-Team: Hery serasera.org <hery@serasera.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: French\n"
+"X-Poedit-Country: FRANCE\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../controllers/admin.php:30
+#: ../controllers/admin.php:53
+#: ../controllers/admin.php:121
+msgid "Language updated"
+msgstr ""
+
+#: ../controllers/admin.php:42
+msgid "Language removed"
+msgstr ""
+
+#: ../controllers/admin.php:74
+msgid "Settings updated"
+msgstr ""
+
+#: ../controllers/admin.php:96
+msgid "Language added"
+msgstr ""
+
+#: ../views/add.php:14
+#: ../views/admin.php:8
+msgid "Add new language"
+msgstr ""
+
+#: ../views/add.php:19
+#: ../views/edit.php:19
+msgid "Save"
+msgstr ""
+
+#: ../views/add.php:33
+#: ../views/edit.php:33
+msgid "Create a new language here"
+msgstr ""
+
+#: ../views/add.php:35
+#: ../views/admin.php:24
+#: ../views/edit.php:35
+msgid "Code"
+msgstr ""
+
+#: ../views/add.php:38
+#: ../views/admin.php:25
+#: ../views/edit.php:38
+msgid "Name"
+msgstr ""
+
+#: ../views/add.php:41
+#: ../views/admin.php:26
+msgid "Ordering"
+msgstr ""
+
+#: ../views/add.php:47
+#: ../views/admin.php:28
+msgid "Active"
+msgstr ""
+
+#: ../views/add.php:49
+#: ../views/admin.php:41
+msgid "No"
+msgstr ""
+
+#: ../views/add.php:50
+#: ../views/admin.php:40
+#: ../views/admin.php:41
+msgid "Yes"
+msgstr ""
+
+#: ../views/admin.php:4
+#, fuzzy
+msgid "Language administration"
+msgstr "Administration T&eacute;l&eacute;chargement"
+
+#: ../views/admin.php:7
+msgid "Settings"
+msgstr ""
+
+#: ../views/admin.php:9
+msgid "Cancel"
+msgstr ""
+
+#: ../views/admin.php:27
+msgid "Default"
+msgstr ""
+
+#: ../views/admin.php:29
+msgid "Action"
+msgstr ""
+
+#: ../views/admin.php:40
+msgid "Make default"
+msgstr ""
+
+#: ../views/admin.php:42
+msgid "Deactivate"
+msgstr ""
+
+#: ../views/admin.php:42
+msgid "Activate"
+msgstr ""
+
+#: ../views/admin.php:43
+msgid "Delete"
+msgstr ""
+
+#: ../views/admin.php:44
+msgid "Edit"
+msgstr ""
+
+#: ../views/edit.php:14
+msgid "Edit language"
+msgstr ""
+
+#: ../views/partials/language_links.php:1
+msgid "Language list"
+msgstr ""
+
+#~ msgid "Downloads"
+#~ msgstr "T&eacute;l&eacute;chargements"
+#~ msgid "The file you're looking for couldn't be found!"
+#~ msgstr "Fichier non trouv&eacute;"
+#~ msgid "Upload File"
+#~ msgstr "Charger un fichier"
+#~ msgid "Upload files"
+#~ msgstr "Charger fichiers"
+
