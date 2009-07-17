@@ -1,0 +1,110 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Solaitra:Tags\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-11-30 01:35+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Eugene Hery <hery@serasera.org>\n"
+"Language-Team: Hery <hery@serasera.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Italian\n"
+"X-Poedit-Country: ITALY\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../tags_plugins.php:67
+#: ../tags_plugins.php:105
+msgid "Tags:"
+msgstr "Tag:"
+
+#: ../tags_plugins.php:69
+#: ../tags_plugins.php:107
+msgid "Enter tags separated by comma"
+msgstr "Inserire tags separati da virgola"
+
+#: ../controllers/admin/admin.php:34
+msgid "First"
+msgstr "Primo"
+
+#: ../controllers/admin/admin.php:35
+msgid "Last"
+msgstr "Ultimo"
+
+#: ../controllers/admin/admin.php:54
+#: ../controllers/admin/settings.php:51
+msgid "Settings saved"
+msgstr "Impostatione Salvata"
+
+#: ../controllers/admin/admin.php:67
+msgid "The tag has been deleted from all elements."
+msgstr "Il tag è stato cancellato"
+
+#: ../views/index.php:2
+msgid "Tags"
+msgstr "Tags"
+
+#: ../views/tag.php:2
+msgid "Tag:"
+msgstr "Tag:"
+
+#: ../views/tag.php:7
+#, php-format
+msgid "All contents with tag %s"
+msgstr "Tutti i contenuti col tag %s"
+
+#: ../views/tag.php:14
+#, php-format
+msgid "No element found with the tag %s"
+msgstr "Nessun elemento trovato col tag %s"
+
+#: ../views/admin/delete.php:4
+msgid "Delete tag"
+msgstr "Cancella tag"
+
+#: ../views/admin/delete.php:9
+msgid "Do you want to delete the tag?"
+msgstr "Vuoi cancellare il tag?"
+
+#: ../views/admin/delete.php:13
+msgid "No"
+msgstr "No"
+
+#: ../views/admin/delete.php:14
+msgid "Yes"
+msgstr "S%igrave;"
+
+#: ../views/admin/tags.php:4
+msgid "Tags Administration"
+msgstr "Gestisci tags"
+
+#: ../views/admin/tags.php:7
+msgid "Settings"
+msgstr "Impostazioni"
+
+#: ../views/admin/tags.php:8
+msgid "Cancel"
+msgstr "Annulla"
+
+#: ../views/admin/tags.php:23
+msgid "Tag"
+msgstr "Tag"
+
+#: ../views/admin/tags.php:24
+msgid "Link"
+msgstr "Link"
+
+#: ../views/admin/tags.php:25
+msgid "Action"
+msgstr "Azioni"
+
+#: ../views/admin/tags.php:26
+msgid "Count"
+msgstr "Numeri"
+
+#: ../views/admin/tags.php:38
+msgid "Delete"
+msgstr "Cancella"
+
