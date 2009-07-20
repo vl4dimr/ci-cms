@@ -28,13 +28,14 @@ echo '<?xml version="1.0" encoding="utf-8"?>' . "
           <title><?php echo $item['title']; ?></title>
           <link><?php echo $item['url'] ?></link>
           <guid><?php echo $item['url'] ?></guid>
-		  <?php if(isset($item['author']) : ?>
+		  <?php if(isset($item['author'])) : ?>
           <author><?php echo $item['author'] ?></author>
 		  <?php endif; ?>
           <description><![CDATA[<?php echo $item['body'] ?>]]></description>
       <pubDate><?php echo date ('r', $item['date']);?></pubDate>
 	  	<?php if(isset($item['img'])) :?>
 			<enclosure url="<?php echo $item['img'] ?>" length="" type="image/jpeg"/>
+			<media:thumbnail xmlns:media='http://search.yahoo.com/mrss/' url='<?php echo $item['img'] ?>' height='100' width='100'/>
 		<?php endif; ?>
         </item>
 
