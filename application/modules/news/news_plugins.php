@@ -17,7 +17,14 @@ function news_feed_content($data)
 		$contents[$key]['title'] = $row['title'];
 		$contents[$key]['url'] = site_url( $row['lang'] . '/news/' . $row['uri']);
 		$contents[$key]['body'] = $row['body'];
+		if (isset($row['image']['file']))
+		{
+			$contents[$key]['img'] = site_url('media/images/s/' . $row['image']['file']);
+		}
+
 		$contents[$key]['date'] = (isset($row['date'])) ? $row['date'] : '';
+		$contents[$key]['author'] = $row['author'];
+
 	}
 	return array_merge($data, $contents);
 }
