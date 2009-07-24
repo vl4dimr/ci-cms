@@ -1,4 +1,8 @@
+<?php if (isset($category['title'])) : ?>
+<h1><?=sprintf(__("News in %s", $this->template['module']), $category['title'])?></h1>
+<?php else: ?>
 <h1><?=__("All news", $this->template['module'])?></h1>
+<?php endif; ?>
 <?php if (is_array($rows) && count($rows) > 0) :?>
 <?php $i = $total_rows; foreach($rows as $row):?>
 <?php if ($i % 2 != 0): $rowClass = 'odd'; else: $rowClass = 'even'; endif;?>
