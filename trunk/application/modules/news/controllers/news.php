@@ -262,8 +262,8 @@ and set to approve comments automatically.
 			$this->load->library('pagination');
 			
 			$config['uri_segment'] = 3;
-			$config['first_link'] = __('First');
-			$config['last_link'] = __('Last');
+			$config['first_link'] = __('First', 'news');
+			$config['last_link'] = __('Last', 'news');
 			$config['base_url'] = site_url('news/list');
 			$config['total_rows'] = $this->news->get_total_published($params);
 			$config['per_page'] = $per_page; 	
@@ -275,6 +275,45 @@ and set to approve comments automatically.
 			$this->template['pager'] = $this->pagination->create_links();		
 			
 			$this->layout->load($this->template, 'index');
+		}
+		
+		function cat ($uri = null, $start = 0)
+		{
+
+			if (is_null($uri))
+			{
+			// cat list
+			}
+			else
+			{
+			$cat = $this->news->get_cat(array('uri' => $uri));
+			
+			$per_page = 20;
+			
+			$params['limit'] = $per_page;
+			$params['start'] = $start;
+			$params['where'] = array('news.lang' => $this->user->lang, 'cat' => $cat['id']);
+			
+			
+			$this->load->library('pagination');
+			
+			$config['uri_segment'] = 4;
+			$config['first_link'] = __('First', 'news');
+			$config['last_link'] = __('Last', 'news');
+			$config['base_url'] = site_url('news/cat/' . $uri);
+			$config['total_rows'] = $this->news->get_total_published($params);
+			$config['per_page'] = $per_page; 	
+			$this->pagination->initialize($config); 
+
+			$this->template['rows'] = $this->news->get_list($params);
+			$this->template['start'] = $start;
+			$this->template['total_rows'] = $config['total_rows'];
+			$this->template['pager'] = $this->pagination->create_links();
+			$this->template['category'] = $cat;
+			
+			$this->layout->load($this->template, 'index');
+			
+			}
 		}
 	}
 

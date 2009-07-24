@@ -14,7 +14,8 @@
 				'lang'  => '',
 				'weight'  => '',
 				'status'  => '',
-				'acces'  => ''
+				'acces'  => '',
+				'uri' => ''
 			);
 		
 		function News_Model()
@@ -59,6 +60,23 @@
 			return $uri;
 		}
 		
+		function generate_cat_uri($title)
+		{
+			$raw_uri = format_title($title);
+			$uri = format_title($title);
+			
+			$i = 1;
+			while($this->get_cat(array('uri' => $uri)))
+			{
+				$uri = $raw_uri . '-' . $i;
+				$i++;
+			}
+			
+			
+			return $uri;
+		
+		}
+		
 		function get_news_list($data = null)
 		{
 			if (is_null($data))
@@ -98,7 +116,7 @@
 			}
 			else
 			{
-				$this->db->where('uri', $data);
+				$this->db->where('news.uri', $data);
 			}
 			
 			$this->db->order_by('news.cat');
@@ -270,6 +288,7 @@
 		{
 			$data['date'] = mktime();
 			$data['username'] = $this->user->username;
+			$data['uri'] = $this->generate_cat_uri($data['title']);
 			
 			$this->db->insert('news_cat', $data);
 		}

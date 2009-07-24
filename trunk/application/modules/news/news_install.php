@@ -22,6 +22,6 @@ $this->db->query("CREATE TABLE IF NOT EXISTS " . $this->db->dbprefix('news_comme
 
 $this->db->query("CREATE TABLE IF NOT EXISTS " . $this->db->dbprefix('captcha') . " ( captcha_id bigint( 13 ) unsigned NOT NULL AUTO_INCREMENT , captcha_time int( 10 ) unsigned NOT NULL , ip_address varchar( 16 ) default '0' NOT NULL , word varchar( 20 ) NOT NULL , PRIMARY KEY ( captcha_id ) , KEY ( word ) )");
 
-$this->db->query("CREATE TABLE IF NOT EXISTS " . $this->db->dbprefix('news_cat') . "  ( `id` int(11) NOT NULL auto_increment, `pid` int(11) NOT NULL default '0', `title` varchar(255) NOT NULL default '', `icon` varchar(255) NOT NULL default '', `desc` text NOT NULL, `date` int(11) NOT NULL default '0', `username` varchar(20) NOT NULL default '', `lang` char(5) NOT NULL default '', `weight` int(11) NOT NULL default '0', `status` int(5) NOT NULL default '1', `acces` varchar(20) NOT NULL default '0', PRIMARY KEY  (`id`), KEY `title` (`title`) )");
+$this->db->query("CREATE TABLE IF NOT EXISTS " . $this->db->dbprefix('news_cat') . "  ( `id` int(11) NOT NULL auto_increment, `pid` int(11) NOT NULL default '0', `title` varchar(255) NOT NULL default '', `icon` varchar(255) NOT NULL default '', `desc` text NOT NULL, `date` int(11) NOT NULL default '0', `username` varchar(20) NOT NULL default '', `lang` char(5) NOT NULL default '', `weight` int(11) NOT NULL default '0', `status` int(5) NOT NULL default '1', `acces` varchar(20) NOT NULL default '0', `uri` varchar(100) NOT NULL default '',PRIMARY KEY  (`id`), KEY `title` (`title`) )");
 
 
