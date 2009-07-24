@@ -26,8 +26,8 @@ if ($this->system->modules[$module]['version'] < $version)
 	redirect("admin/module");
 }
 
-//update to 1.2..0
-$version = "1.2.0";
+//update to 1.2.1
+$version = "1.2.1";
 
 //compare it with the installed module version 
 
@@ -41,17 +41,6 @@ if ($this->system->modules[$module]['version'] < $version)
 	
 	$this->dbforge->add_column('news_cat', $fields);
 	
-	$this->session->set_flashdata("notification", sprintf(__("News module updated to %s", $module), $version)) ;
-	
-	$data = array('version' => $version);
-	$this->db->where(array('name'=> $module));
-	$this->db->update('modules', $data);
-	redirect("admin/module");
-}
-
-$version = "1.2.1";
-if ($this->system->modules[$module]['version'] < $version)
-{
 	$this->load->model('news_model', 'news');
 	if($rows = $this->news->get_catlist())
 	{
@@ -64,4 +53,13 @@ if ($this->system->modules[$module]['version'] < $version)
 
 		}
 	}	
+	
+	
+	$this->session->set_flashdata("notification", sprintf(__("News module updated to %s", $module), $version)) ;
+	
+	$data = array('version' => $version);
+	$this->db->where(array('name'=> $module));
+	$this->db->update('modules', $data);
+	redirect("admin/module");
 }
+

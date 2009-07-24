@@ -103,7 +103,7 @@
 		function get_news($data)
 		{
 			
-			$this->db->select("news.*, news_cat.title as category");
+			$this->db->select("news.*, news_cat.title as category, news_cat.uri as cat_uri");
 			$this->db->from("news");
 			$this->db->join("news_cat", "news.cat = news_cat.id", "left");
 			
