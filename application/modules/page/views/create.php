@@ -125,7 +125,7 @@ function ajaxFileUpload() {
 
 		
 		<label for="uri"><?php echo __("SEF address", $module)?>:</label>
-		<input type="text" name="uri" value="" id="uri" class="input-text" /><br />
+		<input type="text" name="uri" value="<?php if (isset($uri)) echo $uri ?>" id="uri" class="input-text" /><br />
 		
 		<label for="parent_id"><?php _e("Parent", $module)?>: </label>
 		<select name="parent_id" class="input-select" />
