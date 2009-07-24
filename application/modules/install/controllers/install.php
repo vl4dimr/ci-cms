@@ -553,7 +553,7 @@ class Install extends Controller
 		$this->dbforge->add_key('name');
 		$this->dbforge->create_table('modules', TRUE);
 		
-		$this->db->query("INSERT INTO " . $this->db->dbprefix('modules') . " (id, name, with_admin, version, status, ordering, info, description) VALUES (1, 'admin', 0, '1.0.1', 1, 5, '', 'Admin core module'), (2, 'module', 0, '1.0.0', 1, 20, '', 'Module core module'), (3, 'page', 1, '1.0.3', 1, 60, '', 'Page core module'), (4, 'language', 1, '1.0.0', 1, 10, '', 'Language core module'), (5, 'member', 1, '1.0.0', 1, 30, '', 'Member core module'), (6, 'search', 0, '1.0.0', 1, 50, '', 'Search core module'), (7, 'news', 1, '1.1.0', 1, 101, '', 'News module')");
+		$this->db->query("INSERT INTO " . $this->db->dbprefix('modules') . " (id, name, with_admin, version, status, ordering, info, description) VALUES (1, 'admin', 0, '1.0.1', 1, 5, '', 'Admin core module'), (2, 'module', 0, '1.0.0', 1, 20, '', 'Module core module'), (3, 'page', 1, '1.0.3', 1, 60, '', 'Page core module'), (4, 'language', 1, '1.0.0', 1, 10, '', 'Language core module'), (5, 'member', 1, '1.0.0', 1, 30, '', 'Member core module'), (6, 'search', 0, '1.0.0', 1, 50, '', 'Search core module'), (7, 'news', 1, '1.2.1', 1, 101, '', 'News module')");
 		
 
 		$this->db->query("CREATE TABLE IF NOT EXISTS " . $this->db->dbprefix('admins' ) . " ( `id` int(11) NOT NULL auto_increment, `username` varchar(100) NOT NULL default '', `module` varchar(100) NOT NULL default '', `level` tinyint(4) NOT NULL default '0', PRIMARY KEY (`id`), KEY `username` (`username`) ) ");
@@ -586,7 +586,7 @@ class Install extends Controller
 
 		$this->db->query("CREATE TABLE IF NOT EXISTS " . $this->db->dbprefix('captcha') . " ( captcha_id bigint( 13 ) unsigned NOT NULL AUTO_INCREMENT , captcha_time int( 10 ) unsigned NOT NULL , ip_address varchar( 16 ) default '0' NOT NULL , word varchar( 20 ) NOT NULL , PRIMARY KEY ( captcha_id ) , KEY ( word ) )");
 
-		$this->db->query("CREATE TABLE IF NOT EXISTS " . $this->db->dbprefix('news_cat') . "  ( `id` int(11) NOT NULL auto_increment, `pid` int(11) NOT NULL default '0', `title` varchar(255) NOT NULL default '', `icon` varchar(255) NOT NULL default '', `desc` text NOT NULL, `date` int(11) NOT NULL default '0', `username` varchar(20) NOT NULL default '', `lang` char(5) NOT NULL default '', `weight` int(11) NOT NULL default '0', `status` int(5) NOT NULL default '1', `acces` varchar(20) NOT NULL default '0', PRIMARY KEY  (`id`), KEY `title` (`title`) )");
+		$this->db->query("CREATE TABLE IF NOT EXISTS " . $this->db->dbprefix('news_cat') . "  ( `id` int(11) NOT NULL auto_increment, `pid` int(11) NOT NULL default '0', `title` varchar(255) NOT NULL default '', `icon` varchar(255) NOT NULL default '', `desc` text NOT NULL, `date` int(11) NOT NULL default '0', `username` varchar(20) NOT NULL default '', `lang` char(5) NOT NULL default '', `weight` int(11) NOT NULL default '0', `status` int(5) NOT NULL default '1', `acces` varchar(20) NOT NULL default '0', `uri` varchar(100) NOT NULL default '', PRIMARY KEY  (`id`), KEY `title` (`title`) )");
 		
 		$data = array('title' => 'Your first news', 'uri' => 'your-first-news-en', 'lang' => 'en', 'body' => 'This news is supposed to be in English but I leave it in English now', 'status' => 1, 'date' => mktime());
 		$this->db->insert('news', $data);
