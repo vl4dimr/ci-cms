@@ -36,7 +36,11 @@
 		
 		<label for="title"><?=__("Name", $this->template['module'])?>:</label>
 		<input type="text" name="title" value="<?=(isset($row['title'])?$row['title'] : "") ?>" id="title" class="input-text" /><br />
-	
+
+		<label for="title"><?=__("Uri", $this->template['module'])?>:</label>
+		<input type="text" name="uri" value="<?=(isset($row['uri'])?$row['uri'] : "") ?>" id="uri" class="input-text" /><br />
+
+		
 		<label for="pid"><?=__("Parent", $this->template['module'])?>:</label>
 		<select name='pid' id='pid' class="input-select">
 		<option value=''></option>
