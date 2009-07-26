@@ -12,7 +12,7 @@
 <?php 
 	$pre_content = "<div class='meta'><div class='author'>" . __("Submitted by:", "news") . " " . $news['author'] . "</div>";
 	$pre_content .= "<div class='date'>" . __("On:", "news") . " " . date("d/m/Y", $news['date']) . "</div>";
-	$pre_content .= "<div class='category'>" . __("In:", "news") . " " . anchor('cat/' . $news['cat_uri'], $news['category']) . "</div></div>";
+	$pre_content .= "<div class='category'>" . __("In:", "news") . " " . anchor('news/cat/' . $news['cat_uri'], (($news['category'])?$news['category']:__("No category", "news"))) . "</div></div>";
 	echo $this->plugin->apply_filters("news_pre_content", $pre_content);
 ?>
 <?php

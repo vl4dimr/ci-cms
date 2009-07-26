@@ -188,7 +188,7 @@
 			{
 				$params[$key] = (isset($params[$key]))? $params[$key]: $default_params[$key];
 			}
-			$this->db->select('news_cat.title as category, news.*');
+			$this->db->select('news_cat.title as category, news_cat.uri as cat_uri, news.*');
 			$this->db->where($params['where']);
 			$this->db->having($params['having']);
 			$this->db->order_by($params['order_by']);
@@ -288,7 +288,10 @@
 		{
 			$data['date'] = mktime();
 			$data['username'] = $this->user->username;
-			$data['uri'] = $this->generate_cat_uri($data['title']);
+			if(!$data['uri'])
+			{
+				$data['uri'] = $this->generate_cat_uri($data['title']);
+			}
 			
 			$this->db->insert('news_cat', $data);
 		}
