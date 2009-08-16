@@ -24,20 +24,24 @@ class Feed extends Controller
         $data['creator_email'] = (isset($this->system->admin_email))? $this->system->admin_email : "";
 		$this->load->helper('xml');
 
-		//get page first
+		//get page first if allowed
+		
 		$contents = array();
 		
-		$this->db->where('lang', $this->user->lang);
-		$query = $this->db->get('pages');
-		if ($query->num_rows() > 0 )
+		if (isset($this->system->page_publish_feed) && $this->system->page_publish_feed == 1)
 		{
-			$rows = $query->result_array();
-			foreach ($rows as $key => $row)
+			$this->db->where('lang', $this->user->lang);
+			$query = $this->db->get('pages');
+			if ($query->num_rows() > 0 )
 			{
-				$contents[$key]['title'] = $row['title'];
-				$contents[$key]['url'] = site_url($row['uri']);
-				$contents[$key]['body'] = $row['body'];
-				$contents[$key]['date'] = (isset($row['date'])) ? $row['date'] : '';
+				$rows = $query->result_array();
+				foreach ($rows as $key => $row)
+				{
+					$contents[$key]['title'] = $row['title'];
+					$contents[$key]['url'] = site_url($row['uri']);
+					$contents[$key]['body'] = $row['body'];
+					$contents[$key]['date'] = (isset($row['date'])) ? $row['date'] : '';
+				}
 			}
 		}
         //now get other contents
