@@ -9,6 +9,8 @@
 			parent::Controller();
 			
 			$this->load->library('administration');
+			$this->system->version = @file_get_contents(APPPATH . "version.txt");
+
 			$this->check_latest_version();
 			$this->template['module'] = "admin";
 		}
