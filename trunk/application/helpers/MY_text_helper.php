@@ -1,6 +1,8 @@
 <?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
 
+
 //i seguenti codice sno da wordpress
+/*
 function format_title($title) {
     $title = strip_tags($title);
     // Preserve escaped octets.
@@ -27,7 +29,12 @@ function format_title($title) {
 
      return $title;
 }
+*/
 
+function format_title($title)
+{
+	return url_title($title, 'dash', TRUE);
+}
 
  function remove_accents($string) {
     if (seems_utf8($string)) {
