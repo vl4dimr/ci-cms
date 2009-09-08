@@ -13,12 +13,19 @@ function page_latest_pages($limit = 5)
 
 $this->set('page_subpages', 'page_subpages');
 		
-function page_subpages($id, $limit = 5)
+function page_subpages($where, $limit = 5)
 {
+
 	$obj =& get_instance();
 	
 	$obj->load->model('page_model');
-	return  $obj->page_model->get_subpages($id);
+	if (is_array($where))
+	{
+		$page = $obj->page_model->get_page($where);
+		return  $obj->page_model->get_subpages($page['id']);
+	}
+	
+	return  $obj->page_model->get_subpages($where);
 }
 
 $this->set('page_item', 'page_item');
