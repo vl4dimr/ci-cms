@@ -90,7 +90,7 @@ and disable notification.
 				
 				}
 
-				if ($this->settings['notify_admin'])
+				if (isset($this->settings['notify_admin']) && $this->settings['notify_admin'] === true)
 				{
 					$this->load->library('email');
 
