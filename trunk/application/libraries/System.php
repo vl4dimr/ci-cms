@@ -86,10 +86,15 @@
 		
 		function start()
 		{
+			/*
 			if ($this->cache && !$this->obj->user->logged_in && $this->obj->uri->segment(1) != 'admin')
 			{
 				$this->obj->output->cache($this->cache_time);
 			}
+			
+			it is better to do the caching in every module. 
+			eg. if cache is activated, then all page item should be cached for cache_time
+			*/
 			
 			
 			
