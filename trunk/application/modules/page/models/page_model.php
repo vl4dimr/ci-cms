@@ -266,6 +266,21 @@
 			
 		}
 		
+		function get_images($page_id)
+		{
+			$this->db->where(array('src_id' => $page_id, 'module' => 'page'));
+			$uqery = $this->db->get('images');
+			if ( $query->num_rows() > 0 )
+			{
+				return $query->result_array();
+			}
+			else
+			{
+				return false;
+			}
+			
+		}
+		
 	}
 
 
