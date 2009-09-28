@@ -38,4 +38,10 @@ function page_item($where = array())
 	return  $obj->page_model->get_page($where);
 }
 
+function page_images($page_id)
+{
+	$obj =& get_instance();
+	$obj->load->model('page_model');
+	return $obj->page_model->get_images($page_id);
+}
 ?>

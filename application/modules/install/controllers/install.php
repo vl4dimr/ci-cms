@@ -561,7 +561,7 @@ class Install extends Controller
 		
 		$this->db->query("CREATE TABLE IF NOT EXISTS " . $this->db->dbprefix('group_members') . " ( id int(11) NOT NULL auto_increment, g_user varchar(255) NOT NULL default '', g_id varchar(20) NOT NULL default '', g_from int(11) NOT NULL default '0', g_to int(11) NOT NULL default '0', g_date int(11) NOT NULL default '0', PRIMARY KEY (id), KEY g_user (g_user,g_id) )");
 		
-		$this->db->query("CREATE TABLE IF NOT EXISTS " . $this->db->dbprefix('groups') . " ( id int(11) NOT NULL auto_increment, g_id varchar(20) NOT NULL default '', g_name varchar(255) NOT NULL default '', g_desc text NOT NULL, g_date int(11) NOT NULL default '0', g_info text NOT NULL, PRIMARY KEY (id), UNIQUE KEY g_id (g_id,g_name) )");
+		$this->db->query("CREATE TABLE IF NOT EXISTS " . $this->db->dbprefix('groups') . " ( id int(11) NOT NULL auto_increment, g_id varchar(20) NOT NULL default '', g_owner varchar(20) NOT NULL default '', g_name varchar(255) NOT NULL default '', g_desc text NOT NULL, g_date int(11) NOT NULL default '0', g_info text NOT NULL, PRIMARY KEY (id), UNIQUE KEY g_id (g_id,g_name) )");
 		
 		$this->db->query("INSERT INTO " . $this->db->dbprefix('groups') . " (g_id, g_name, g_desc) VALUES ('0', 'Everybody', 'This is everybody who visits the site including non members')");
 
