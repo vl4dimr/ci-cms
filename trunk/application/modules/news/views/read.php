@@ -62,10 +62,11 @@
 
 <label for='body'><?=__("Comment", $module)?>[*]</label>
 <textarea  class="input-textarea" name='body' id='body' rows="10" /></textarea><br />
-
-<label><?=__("Security code:", $module)?></label><?=$captcha?><br />
-<label for="captcha"><?=__("Confirm security code:", $module)?></label>
-<input class="input-text" type='text' name='captcha' value='' /><br />
+<?php 
+$tmp = '';
+$tmp = $this->plugin->apply_filters('news_comment_form', $tmp);
+echo $tmp;
+?>
 [*] <?=__("Required", $module)?><br />
 <input type='submit' name='submit' class="input-submit" value="<?=__("Add comment", $module)?>" /><br />
 </form>
