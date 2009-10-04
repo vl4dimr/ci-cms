@@ -19,31 +19,7 @@
 			//settings
 			$news = $this->news->get_news($this->input->post('uri'));
 			
-			if (!$this->input->post('captcha'))
-			{
-				$this->session->set_flashdata('notification', __("You must submit the security code that appears in the image", $this->template['module']));
-				redirect('news/' . $this->input->post('uri'));
-			}
-			
-			$expiration = time()-7200; // Two hour limit
-			$this->db->where("captcha_time <", $expiration);
-			$this->db->delete('captcha');
-
-			// Then see if a captcha exists:
-			$this->db->where('word', $this->input->post('captcha'));
-			$this->db->where('ip_address', $this->input->ip_address());
-			$this->db->where('captcha_time >', $expiration);
-			$query = $this->db->get('captcha');
-			$row = $query->row();
-			
-
-			if ($query->num_rows() == 0)
-			{
-
-				$this->session->set_flashdata('notification', __("You must submit the security code that appears in the image", $this->template['module']));
-				redirect('news/' . $this->input->post('uri'));
-			}
-					
+			$this->plugin->do_action('news_save_comment');
 			
 			$fields = array('news_id', 'author', 'email', 'website', 'body');
 			$data = array();
@@ -194,47 +170,6 @@ and set to approve comments automatically.
 					}
 					
 					//var_dump($rows->result_array());
-					if ($news['allow_comments'] == 1)
-					{
-						//generate captcha
-			
-						$pool = '0123456789';
-
-						$str = '';
-						for ($i = 0; $i < 6; $i++)
-						{
-							$str .= substr($pool, mt_rand(0, strlen($pool) -1), 1);
-						}
-						
-						$word = $str;
-			
-			
-						$this->load->plugin('captcha');
-						$vals = array(
-							'img_path'	 => './media/captcha/',
-							'img_url'	 => site_url('media/captcha'). '/',
-							'font_path'	 => APPPATH . 'modules/news/fonts/Fatboy_Slim.ttf',
-							'img_width'	 => 150,
-							'img_height' => 30,
-							'expiration' => 1800,
-							'word' => $word
-						);
-		
-						$cap = create_captcha($vals);
-						
-						$data = array(
-							'captcha_id'	=> '',
-							'captcha_time'	=> $cap['time'],
-							'ip_address'	=> $this->input->ip_address(),
-							'word'			=> $cap['word']
-						);
-
-						$this->db->insert('captcha', $data);
-						
-						
-						$this->template['captcha'] = $cap['image'];
-					
-					}
 					
 					$this->template['title'] = $news['title'];
 					$this->template['news'] = $news;

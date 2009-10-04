@@ -2,6 +2,87 @@
 
 $this->add_filter('search_result', 'news_search_result');
 $this->add_filter('feed_content', 'news_feed_content');
+$this->add_action('news_save_comment', 'news_news_save_comment');
+
+function news_news_save_comment()
+{
+	
+	$obj =& get_instance();
+	
+	if (!$obj->input->post('captcha'))
+	{
+		$obj->session->set_flashdata('notification', __("You must submit the security code that appears in the image", $obj->template['module']));
+		redirect('news/' . $obj->input->post('uri'));
+	}
+	
+	$expiration = time()-7200; // Two hour limit
+	$obj->db->where("captcha_time <", $expiration);
+	$obj->db->delete('captcha');
+
+	// Then see if a captcha exists:
+	$obj->db->where('word', $obj->input->post('captcha'));
+	$obj->db->where('ip_address', $obj->input->ip_address());
+	$obj->db->where('captcha_time >', $expiration);
+	$query = $obj->db->get('captcha');
+	$row = $query->row();
+	
+
+	if ($query->num_rows() == 0)
+	{
+
+		$obj->session->set_flashdata('notification', __("You must submit the security code that appears in the image", $obj->template['module']));
+		redirect('news/' . $obj->input->post('uri'));
+	}
+
+}
+
+$this->add_filter('news_comment_form', 'news_news_comment_form');
+
+function news_news_comment_form($msg)
+{
+	$obj =& get_instance();
+	
+	$pool = '0123456789';
+
+	$str = '';
+	for ($i = 0; $i < 6; $i++)
+	{
+		$str .= substr($pool, mt_rand(0, strlen($pool) -1), 1);
+	}
+	
+	$word = $str;
+
+
+	$obj->load->plugin('captcha');
+	$vals = array(
+		'img_path'	 => './media/captcha/',
+		'img_url'	 => base_url() .'media/captcha/',
+		'font_path'	 => APPPATH . 'modules/news/fonts/Fatboy_Slim.ttf',
+		'img_width'	 => 150,
+		'img_height' => 30,
+		'expiration' => 1800,
+		'word' => $word
+	);
+
+	$cap = create_captcha($vals);
+	
+	$data = array(
+		'captcha_id'	=> '',
+		'captcha_time'	=> $cap['time'],
+		'ip_address'	=> $obj->input->ip_address(),
+		'word'			=> $cap['word']
+	);
+
+	$obj->db->insert('captcha', $data);
+	
+	$msg .= "
+	<label>" . __("Security code:", 'news') . "</label>" . $cap['image'] . "<br />
+	<label for=\"captcha\">" . __("Confirm security code:", 'news') . "</label>
+	<input class=\"input-text\" type='text' name='captcha' value='' /><br />";
+	
+	return $msg;
+
+}
 
 function news_feed_content($data)
 {
