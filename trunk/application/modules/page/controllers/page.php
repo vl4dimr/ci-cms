@@ -21,41 +21,51 @@
 			//settings
 			$page = $this->pages->get_page($this->input->post('uri'));
 			
-			if (!$this->input->post('captcha'))
+			if (!$this->user->logged_in && !$this->input->post('captcha'))
 			{
 				$this->session->set_flashdata('notification', __("You must submit the security code that appears in the image", $this->template['module']));
 				redirect($this->input->post('uri'));
 			}
 			
-			$expiration = time()-7200; // Two hour limit
-			$this->db->where("captcha_time <", $expiration);
-			$this->db->delete('captcha');
-
-			// Then see if a captcha exists:
-			$this->db->where('word', $this->input->post('captcha'));
-			$this->db->where('ip_address', $this->input->ip_address());
-			$this->db->where('captcha_time >', $expiration);
-			$query = $this->db->get('captcha');
-			$row = $query->row();
-			
-
-			if ($query->num_rows() == 0)
+			if(!$this->user->logged_in)
 			{
+				$expiration = time()-7200; // Two hour limit
+				$this->db->where("captcha_time <", $expiration);
+				$this->db->delete('captcha');
 
-				$this->session->set_flashdata('notification', __("You must submit the security code that appears in the image", $this->template['module']));
-				redirect($this->input->post('uri'));
+				// Then see if a captcha exists:
+				$this->db->where('word', $this->input->post('captcha'));
+				$this->db->where('ip_address', $this->input->ip_address());
+				$this->db->where('captcha_time >', $expiration);
+				$query = $this->db->get('captcha');
+				$row = $query->row();
+				
+
+				if ($query->num_rows() == 0)
+				{
+
+					$this->session->set_flashdata('notification', __("You must submit the security code that appears in the image", $this->template['module']));
+					redirect($this->input->post('uri'));
+				}
+				$fields = array('author', 'email', 'website');
+				$data = array();
+				foreach ($fields as $field)
+				{
+					$data[$field] = $this->input->post($field);
+				}
 			}
-					
-			
-			$fields = array('author', 'email', 'website', 'body');
-			$data = array();
+			else
+			{
+				$data = array();
+				$data['author'] = $this->user->username;
+				$data['email'] = $this->user->email;
+				
+			}
+			$data['body'] = $this->input->post('body');
 			$data['page_id'] = $page['id'];
 			$data['ip'] = $this->input->ip_address();
 			$data['date'] = mktime();
-			foreach ($fields as $field)
-			{
-				$data[$field] = $this->input->post($field);
-			}
+			
 			
 			if ($this->system->page_approve_comments && $this->system->page_approve_comments = 1)
 			{
@@ -236,43 +246,46 @@ and set to approve comments automatically.
 					
 					if (isset($page['options']['allow_comments']) && $page['options']['allow_comments'] == 1)
 					{
-						//generate captcha
-			
-						$pool = '0123456789';
-
-						$str = '';
-						for ($i = 0; $i < 6; $i++)
+						if(!$this->user->logged_in)
 						{
-							$str .= substr($pool, mt_rand(0, strlen($pool) -1), 1);
-						}
-						
-						$word = $str;
-			
-			
-						$this->load->plugin('captcha');
-						$vals = array(
-							'img_path'	 => './media/captcha/',
-							'img_url'	 => site_url('media/captcha'). '/',
-							'font_path'	 => APPPATH . 'modules/news/fonts/Fatboy_Slim.ttf',
-							'img_width'	 => 150,
-							'img_height' => 30,
-							'expiration' => 1800,
-							'word' => $word
-						);
-		
-						$cap = create_captcha($vals);
-						
-						$data = array(
-							'captcha_id'	=> '',
-							'captcha_time'	=> $cap['time'],
-							'ip_address'	=> $this->input->ip_address(),
-							'word'			=> $cap['word']
-						);
+							//generate captcha
+							
+							$pool = '0123456789';
 
-						$this->db->insert('captcha', $data);
-						
-						
-						$this->template['captcha'] = $cap['image'];
+							$str = '';
+							for ($i = 0; $i < 6; $i++)
+							{
+								$str .= substr($pool, mt_rand(0, strlen($pool) -1), 1);
+							}
+							
+							$word = $str;
+				
+				
+							$this->load->plugin('captcha');
+							$vals = array(
+								'img_path'	 => './media/captcha/',
+								'img_url'	 => site_url('media/captcha'). '/',
+								'font_path'	 => APPPATH . 'modules/news/fonts/Fatboy_Slim.ttf',
+								'img_width'	 => 150,
+								'img_height' => 30,
+								'expiration' => 1800,
+								'word' => $word
+							);
+			
+							$cap = create_captcha($vals);
+							
+							$data = array(
+								'captcha_id'	=> '',
+								'captcha_time'	=> $cap['time'],
+								'ip_address'	=> $this->input->ip_address(),
+								'word'			=> $cap['word']
+							);
+
+							$this->db->insert('captcha', $data);
+							
+							
+							$this->template['captcha'] = $cap['image'];
+						}
 					
 					}
 					

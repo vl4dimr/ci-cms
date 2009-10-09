@@ -125,3 +125,20 @@ if ($this->system->modules[$module]['version'] < $version)
 	redirect("admin/module");
 	
 }
+
+//update to 1.0.4
+$version = "1.0.4";
+
+// captcha only if not logged in
+
+if ($this->system->modules[$module]['version'] < $version)
+{
+
+	$this->session->set_flashdata("notification", sprintf(__("Page module updated to %s", $module), $version)) ;
+	
+	$data = array('version' => $version);
+	$this->db->where(array('name'=> $module));
+	$this->db->update('modules', $data);
+	redirect("admin/module");
+	
+}
