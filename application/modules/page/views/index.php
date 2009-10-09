@@ -77,6 +77,9 @@
 <input type='hidden' name='id' value='<?=$page['id']?>' />
 <input  class="input-text" type='hidden' name='uri' value='<?=$page['uri']?>' />
 <label for='author'><?=__("Name:", $this->template['module'])?>[*]</label>
+<?php if($this->user->logged_in): ?>
+<?php echo $this->user->username; ?> <br />
+<?php else: ?>
 <input  class="input-text" type='text' name='author' value='' id='name' /><br />
 
 <label for='email'><?=__("Email:", $this->template['module'])?>[*]</label>
@@ -84,13 +87,14 @@
 
 <label for='website'><?=__("Website:", $this->template['module'])?></label>
 <input type='text' name='website' value='' id='website' /><br />
-
+<?php endif; ?>
 <label for='body'><?=__("Comment", $this->template['module'])?>[*]</label>
 <textarea  class="input-textarea" name='body' id='body' rows="10" /></textarea><br />
-
+<?php if(!$this->user->logged_in) : ?>
 <label><?=__("Security code:", $this->template['module'])?></label><?=$captcha?><br />
 <label for="captcha"><?=__("Confirm security code:", $this->template['module'])?></label>
 <input class="input-text" type='text' name='captcha' value='' /><br />
+<?php endif; ?>
 [*] <?=__("Required", $this->template['module'])?><br />
 <input type='submit' name='submit' class="input-submit" value="<?=__("Add comment", $this->template['module'])?>" /><br />
 </form>
