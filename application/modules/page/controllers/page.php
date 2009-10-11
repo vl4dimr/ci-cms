@@ -53,6 +53,9 @@
 				{
 					$data[$field] = $this->input->post($field);
 				}
+				
+				//since we don't know if registered or not
+				$data['author'] .= " (" . __("guest", "namana") . ")";
 			}
 			else
 			{
