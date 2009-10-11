@@ -13,21 +13,7 @@
 		echo $this->plugin->apply_filters('login_pre_form', $msg);
 		?>
 		</p>
-<?php 
-if ($this->session->flashdata('redirect'))
-{
-	$redirect = $this->session->flashdata('redirect');
-}
-elseif ($this->input->server('HTTP_REFERER'))
-{
-	$redirect = $this->input->server('HTTP_REFERER');
-}
-else
-{
-	$redirect = "";
-}
-?>
-<input type='hidden' name='redirect' value='<?=$redirect;?>' />
+		<input type='hidden' name='redirect' value='<?php echo substr($this->uri->uri_string(), 1) ?>' />
 		
 		<label for="username"><?=__("Username", $this->template['module'])?>:</label>
 		<input type='text' name='username' id='username' class="input-text" /><br />

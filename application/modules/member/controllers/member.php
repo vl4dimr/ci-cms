@@ -45,26 +45,18 @@ class Member extends Controller {
 		if ( $this->user->logged_in )
 		{
 			$this->session->set_flashdata('notification', __("You are now logged in", $this->template['module']));
+			$redirect = $this->input->post('redirect');
 			
-			if ($redirect = $this->session->userdata("login_redirect"))
+			if ($redirect && (strpos($redirect, 'member/login') === false))
 			{
-				$this->session->set_userdata(array("login_redirect" => ""));
-				redirect($redirect);
-				return;
-			}
-			elseif ($redirect = $this->input->post('redirect'))
-			{
-				$this->output->set_header("Location: " . $this->input->post('redirect'));
-				return;
-			}
-			elseif ($redirect = $this->session->userdata("last_uri"))
-			{
+				$redirect = str_replace(site_url(), '', $redirect); 
 				redirect($redirect);
 				return;
 			}
 			else
 			{
-				redirect('');
+				redirect ($this->system->page_home, 'refresh');
+				return;
 			}
 		}
 		else
@@ -91,14 +83,16 @@ class Member extends Controller {
 				
 				if ($this->user->login($username, $password))
 				{
-					if ($redirect = $this->session->userdata("login_redirect"))
+					$redirect = $this->input->post('redirect');
+					if ($redirect && (strpos($redirect, 'member/login') === false))
 					{
-						$this->session->set_userdata(array("login_redirect" => ""));
-						redirect($redirect);
+						$redirect = str_replace(site_url(''), '', $redirect); 
+						redirect ($redirect, 'refresh');
+						return;
 					}
-					elseif ($redirect = $this->input->post('redirect'))
+					else
 					{
-						$this->output->set_header("Location: " . $redirect);
+						redirect ($this->system->page_home, 'refresh');
 						return;
 					}
 				}
