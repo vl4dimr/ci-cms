@@ -360,8 +360,8 @@ class Member extends Controller {
 				if ($this->input->post('newpass') && ($this->input->post('newpass') == $this->input->post('rnewpass')))
 				{
 					$this->user->update($user['username'], array('activation' => '', 'password' => $this->input->post('newpass')));
-					$this->session->set_flashdata('notification', __("Your password is now changed. You can login with your username and the new password.", $this->template['module']));
-					redirect('member/login');
+					$this->template['message'] = __("Your password is now changed. You can login with your username and the new password.", $this->template['module']);
+					$this->layout->load($this->template, 'adino_result');
 				}
 				else
 				{
@@ -385,7 +385,7 @@ class Member extends Controller {
 		//check if email belongs to someone else
 		if (!$this->member_model->exists(array('email' => $email)))
 		{
-			$this->validation->set_message('email_not_found', __('The address %s is not found in our database. Try another address.', $this->template['module']));
+			$this->validation->set_message('_email_not_found', __('The address %s is not found in our database. Try another address.', $this->template['module']));
 			
 			return FALSE;
 		}
