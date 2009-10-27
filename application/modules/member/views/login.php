@@ -13,7 +13,7 @@
 		echo $this->plugin->apply_filters('login_pre_form', $msg);
 		?>
 		</p>
-		<input type='hidden' name='redirect' value='<?php echo substr($this->uri->uri_string(), 1) ?>' />
+		<input type='hidden' name='redirect' value='<?php if(isset($redirect)) echo $redirect ?>' />
 		
 		<label for="username"><?=__("Username", $this->template['module'])?>:</label>
 		<input type='text' name='username' id='username' class="input-text" /><br />
