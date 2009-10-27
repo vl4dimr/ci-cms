@@ -30,6 +30,7 @@
 </tr>
 </form>
 </table>
+<?php if($members) : ?>
 <table class="page-list">
 	<thead>
 		<tr>
@@ -54,6 +55,10 @@
 <?php $i++; endforeach;?>
 	</tbody>
 </table>
+<?php else: ?>
+
+<?php echo __("No member found", $module) ?>
+<?php endif ; ?>
 <?=$pager?>
 </div>
 <!-- [Content] end -->

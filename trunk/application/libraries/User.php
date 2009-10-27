@@ -12,14 +12,14 @@
 		function User()
 		{
 			$this->obj =& get_instance();
-			
-			$this->_session_to_library();
 			$this->obj->load->library('encrypt');
 			
+			$this->_session_to_library();
 			$this->_get_levels();
 			$this->_get_groups();
 			$this->_update_fields();
 		}
+		
 		
 		function _update_fields()
 		{	
@@ -28,20 +28,22 @@
 				$this->update($this->username, array('activation' => '', 'lastvisit' => mktime()));
 			}
 		}
-			
+
 		function _get_groups()
 		{
-			$this->groups[] = 0;
+			$this->groups[] = '0';
 
 			if($this->logged_in){
-				$this->groups[] = 1;
+				$this->groups[] = '1';
 				$this->obj->db->select('g_id');
-				$this->obj->db->where("g_user = '" .$this->username ."' AND (g_from <= '" . mktime() . "' OR g_from=0) AND (g_to >= '" . mktime() . "' OR g_to=0)");
+				$this->obj->db->where('g_user', $this->username);
+				$this->obj->db->where("(g_from <= '" . mktime() . "' OR g_from=0)");
+				$this->obj->db->where("(g_to >= '" . mktime() . "' OR g_to=0)");
 				$query = $this->obj->db->get("group_members");
 				
 				if($rows = $query->result_array()){
 					foreach ($rows as $row) {
-						$this->groups[] = $row->g_id;
+						$this->groups[] = $row['g_id'];
 					}
 				}
 			}		
@@ -69,7 +71,7 @@
 					}
 				}
 			}
-			
+
 			if (is_array($this->obj->system->modules))
 			{
 				foreach($this->obj->system->modules as $module)
@@ -87,7 +89,7 @@
 		
 		function check_level($module, $level)
 		{
-		
+
 			if ( !isset($this->obj->user->level[$module]) || $this->obj->user->level[$module] < $level)
 			{
 				if ($this->obj->uri->segment(1) == "admin" || $this->obj->uri->segment(2) == "admin")
@@ -103,6 +105,7 @@
 				}
 			}
 		}
+
 		function _prep_password($password)
 		{
 			// Salt up the hash pipe
@@ -126,6 +129,7 @@
 		{
 			// $user is an object sent from function login();
 			// Let's build an array of data to put in the session.
+			
 			$data = array(
 						'id' 			=> $user->id,
 						'username' 		=> $user->username,
@@ -139,7 +143,6 @@
 		
 		function _destroy_session()
 		{
-			//pseudo distroy bcs we might still need some data
 			$data = array(
 						'id' 			=> 0,
 						'username' 		=> '',
@@ -156,15 +159,10 @@
 		
 		function login($username, $password)
 		{
+			
 			//destroy previous sesson
 			$this->_destroy_session();
-			
-			$query = $this->obj->db->get($this->table, 1);
-			
-			if ($query->num_rows() == 0)
-			{
-				$this->register($username, $password, '');
-			}
+			//First check from the table
 		
 			// First up, let's query the DB.
 			// Prep the password to make sure we get a match.
@@ -185,37 +183,22 @@
 
 				
 				$this->_start_session($user);
-				
-				$this->obj->session->set_flashdata('notification', 'Login successful...');
-				
-				if ($redirect = $this->obj->session->userdata("login_redirect"))
-				{
-					$this->obj->session->set_userdata(array("login_redirect" => ""));
-					redirect($redirect);
-				}
-				elseif ($this->obj->input->post('redirect'))
-				{
-					header("Location: " . $this->obj->input->post('redirect'));
-					exit();
-				}
-				
+
 				return true;
 			}
 			else
 			{
-				// Login failed...
-				
 				// Couldn't find the user,
 				// Let's destroy everything just to make sure.
 				
 				$this->_destroy_session();
-				
-				$this->obj->session->set_flashdata('notification', 'Login failed...');
-				
+
 				return false;
 			}
 			
 		}
+		
+	
 		
 		function logout()
 		{
@@ -223,25 +206,27 @@
 			$last_uri = $this->obj->session->userdata("last_uri");
 			$this->_destroy_session();
 			$this->obj->session->set_userdata(array('last_uri' => $last_uri));
-			$this->obj->session->set_flashdata('notification', 'You are now logged out');
 		}
 		
 		function update($username, $data)
 		{
+			
 			//encrypt password
+			
 			if (isset($data['password']))
 			{
 				$data['password'] = $this->_prep_password($data['password']);
 			}
+			
 			$this->obj->db->where('username', $username);
-			$this->obj->db->update($this->table, $data);
+			$this->obj->db->set($data);
+			$this->obj->db->update($this->table);
 			
 		}
 		
 		function register($username, $password, $email)
 		{
 			// $user is an array...
-			
 			$data	= 	array(
 							'username'	=> $username,
 							'password'	=> $this->_prep_password($password),
@@ -251,10 +236,10 @@
 						);
 			
 			$query = $this->obj->db->insert($this->table, $data);
-			
+			$this->obj->plugin->do_action('user_registered', $data);
 			return $this->obj->db->insert_id();
 		}
-		
+
 		function require_login()
 		{
 			if (!$this->logged_in)
@@ -262,7 +247,7 @@
 				//save _POST and uri
 				$data = array(
 				"last_post" => $_POST,
-				"login_redirect" => substr($this->obj->uri->uri_string(), 1)
+				"redirect" => substr($this->obj->uri->uri_string(), 1)
 				);
 				$this->obj->session->set_userdata($data);
 				
@@ -335,6 +320,139 @@
 			$this->obj->db->limit($limit);
 			$this->obj->db->delete("users");
 		}
-	
-	}
+		
+		function get_user_list($params = array())
+		{
+			$default_params = array
+			(
+				'order_by' => 'id',
+				'limit' => null,
+				'start' => null,
+				'where' => null,
+				'like' => null,
+			);
+			foreach ($default_params as $key => $value)
+			{
+				$params[$key] = (isset($params[$key]))? $params[$key]: $default_params[$key];
+			}
+			if (!is_null($params['like']))
+			{
+				$this->obj->db->like($params['like']);
+			}
+			$this->obj->db->order_by($params['order_by']);
+			if (!is_null($params['where']))
+			{
+				$this->obj->db->where($params['where']);
+			}
+			$this->obj->db->limit($params['limit'], $params['start']);
+		
+			$query = $this->obj->db->get('users');
+			if ($query->num_rows() > 0 )
+			{
+				return $query->result_array();
+			}
+			else
+			{
+				return false;
+			}
+		}
+
+		function get_group_list($params = array())
+		{
+			$default_params = array
+			(
+				'order_by' => 'id',
+				'limit' => null,
+				'start' => null,
+				'where' => array('g_owner' => $this->username),
+				'like' => null,
+			);
+			
+			foreach ($default_params as $key => $value)
+			{
+				$params[$key] = (isset($params[$key]))? $params[$key]: $default_params[$key];
+			}
+			if (!is_null($params['like']))
+			{
+				$this->obj->db->like($params['like']);
+			}
+			if (!is_null($params['where']))
+			{
+				$this->obj->db->where($params['where']);
+			}
+			$this->obj->db->or_where(array('g_id' => '0'));
+			$this->obj->db->or_where(array('g_id' => '1'));
+			$this->obj->db->order_by($params['order_by']);
+			$this->obj->db->limit($params['limit'], $params['start']);
+			
+			$query = $this->obj->db->get('groups');
+
+			if($query->num_rows() > 0)
+			{
+				return $query->result_array();
+			}
+			else
+			{
+				return false;
+			}
+			
+		}
+		
+		function is_online($username)
+		{
+			$this->obj->db->like(array('user_data' => 's:8:"username";s:' . strlen($username) . ':"' . $username . '"'));
+			$this->obj->db->order_by('last_activity DESC');
+			$query = $this->obj->db->get('sessions');
+			if($query->num_rows() > 0)
+			{
+				$row = $query->row_array();
+				$user_data = unserialize($row['user_data']);
+
+				
+				if ($user_data['logged_in'] && ($row['last_activity'] > mktime() - 600))
+				{
+
+					return true;
+				}
+				else
+				{	
+					return false;
+				}
+			}
+			else
+			{
+				return false;
+			}
+		}
+		
+		function get_online()
+		{
+			$this->obj->db->like(array('user_data' =>'"logged_in";s:1:"1"'));
+			$this->obj->db->order_by('last_activity DESC');
+			$query = $this->obj->db->get('sessions');
+			if($query->num_rows() > 0)
+			{
+				$return = array();
+				foreach($query->result_array() as $row)
+				{
+					$user_data = unserialize($row['user_data']);
+
+					if ($user_data['logged_in'] ) //&& ($row['last_activity'] > mktime() - 600))
+					{
+						if(!isset($return[ $user_data['username']]))
+						{
+							$return[$user_data['username']] = array('username' => $user_data['username'], 'lastvisit' => $row['last_activity']);
+						}
+					}
+				}
+				return $return;
+			}
+			else
+			{
+				return false;
+			}
+			
+		}
+
+	}	
 ?>
