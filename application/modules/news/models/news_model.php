@@ -87,17 +87,8 @@
 			{
 				$data['lang'] = $this->user->lang;
 			}
-			$this->db->order_by('cat, ordering, date DESC');
-			$this->db->where($data);
-			$query = $this->db->get($this->table);
-			if ( $query->num_rows() > 0 )
-			{
-				return $query->result_array();
-			}
-			else
-			{
-				return false;
-			}
+			$params = array('order_by' => 'cat, ordering, date DESC', 'where' => $data);
+			return $this->get_list($params);
 			
 		}
 		function get_news($data)
@@ -174,92 +165,76 @@
 		
 		function get_list($params = array())
 		{
-
-			$default_params = array
-			(
-				'order_by' => 'id DESC',
-				'limit' => 20,
-				'start' => 0,
-				'having' => array(),
-				'where' => array()
-			);
-			
-			foreach ($default_params as $key => $value)
+			$hash = md5(serialize($params));
+			if(!$result = $this->cache->get('get_news_list' . $hash, 'news_list'))
 			{
-				$params[$key] = (isset($params[$key]))? $params[$key]: $default_params[$key];
-			}
-			$this->db->select('news_cat.title as category, news_cat.uri as cat_uri, news.*');
-			$this->db->where($params['where']);
-			$this->db->having($params['having']);
-			$this->db->order_by($params['order_by']);
-			$this->db->limit($params['limit'], $params['start']);
-			$this->db->from('news');
-			$this->db->join('news_cat', 'news_cat.id = news.cat', 'left');
-			$query = $this->db->get();
-			if ( $query->num_rows() > 0 )
-			{
+				$default_params = array
+				(
+					'order_by' => 'id DESC',
+					'limit' => 20,
+					'start' => 0,
+					'having' => array(),
+					'where' => array()
+				);
 				
-				foreach ($query->result_array() as $row)
+				foreach ($default_params as $key => $value)
 				{
-					$this->db->order_by('id DESC');
-					$this->db->where(array('src_id' => $row['id'], 'module' => 'news'));
-					$query2 = $this->db->get('images');
-					$row['image'] = $query2->row_array();
-					
-					if($page_break_pos = strpos($row['body'], "<!-- page break -->"))
-					{
-						$row['summary'] = character_limiter(strip_tags(substr($row['body'], 0, $page_break_pos), 200));
-					}
-					else
-					{
-						$row['summary'] = character_limiter(strip_tags($row['body']), 200);
-					}
-
-					$return[] = $row;
+					$params[$key] = (isset($params[$key]))? $params[$key]: $default_params[$key];
 				}
-				return $return;
+				$this->db->select('news_cat.title as category, news_cat.uri as cat_uri, news.*');
+				$this->db->where($params['where']);
+				$this->db->having($params['having']);
+				$this->db->order_by($params['order_by']);
+				$this->db->limit($params['limit'], $params['start']);
+				$this->db->from('news');
+				$this->db->join('news_cat', 'news_cat.id = news.cat', 'left');
+				$query = $this->db->get();
+				if ( $query->num_rows() > 0 )
+				{
+					
+					foreach ($query->result_array() as $row)
+					{
+						$this->db->order_by('id DESC');
+						$this->db->where(array('src_id' => $row['id'], 'module' => 'news'));
+						$query2 = $this->db->get('images');
+						$row['image'] = $query2->row_array();
+						
+						if($page_break_pos = strpos($row['body'], "<!-- page break -->"))
+						{
+							$row['summary'] = substr($row['body'], 0, $page_break_pos);
+						}
+						else
+						{
+							$row['summary'] = character_limiter(strip_tags($row['body']), 200);
+						}
+
+						$return[] = $row;
+					}
+					$result = $return;
+				}
+				else
+				{
+					$result = false;
+				}
+				
+				$this->cache->save('get_news_list' . $hash, $result, 'news_list', null);
+				
 			}
-			else
-			{
-				return false;
-			}
-			
+			return $result;
 		}
-			
+		
+		
 		function news_list($start =  null, $limit = null)
 		{
 			
-			
-			$this->db->where(array('lang' => $this->user->lang));
-			$this->db->order_by('cat, ordering, date DESC');
-			
-			$query = $this->db->get($this->table, $limit, $start);
-			
-			if ( $query->num_rows() > 0 )
-			{
-				return $query->result_array();
-			}
-			else
-			{
-				return false;
-			}
+			$params = array('where' => array('lang' => $this->user->lang), 'order_by' => 'cat, ordering, date DESC', 'limit' => $limit, 'start' => $start);
+			return $this->get_list($params);
 		}
 
 		function latest_news($limit = 10)
 		{
-			$this->db->where('lang', $this->user->lang);
-			$this->db->order_by('id DESC');
-			$this->db->limit($limit);
-			$query = $this->db->get($this->table);
-			
-			if ( $query->num_rows() > 0 )
-			{
-				return $query->result_array();
-			}
-			else
-			{
-				return false;
-			}
+			$params = array('where' => array('lang' => $this->user->lang), 'order_by' => 'id DESC', 'limit' => $limit);
+			return $this->get_list($params);
 		}
 
 		function attach($id, $image_data)
@@ -520,6 +495,8 @@
 		}
 		//clear cache
 		$this->cache->remove('news'.$this->user->lang, 'news');
+		$this->cache->remove_group('news_list');
+		
 	}
 	
 	function save()
@@ -584,6 +561,7 @@
 			$id = $this->db->insert_id();
 			//insert
 		}	
+		$this->cache->remove_group('news_list');
 		return $id;
 	}
 }
