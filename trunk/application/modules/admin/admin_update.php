@@ -28,11 +28,26 @@ if ($this->system->modules[$module]['version'] < $version)
 
 $version = "1.1.0";
 
-//compare it with the installed module version 
+//Group owner
 
 if ($this->system->modules[$module]['version'] < $version)
 {
 	$this->db->query("ALTER TABLE " . $this->db->dbprefix('groups') . " ADD `g_owner` VARCHAR( 255 ) NOT NULL DEFAULT '" . $this->user->username . "'") ;
+	$this->session->set_flashdata("notification", sprintf(__("Admin module updated to %s"), $version)) ;
+	
+	$data = array('version' => $version);
+	$this->db->where(array('name'=> $module));
+	$this->db->update('modules', $data);
+	redirect("admin/module");
+}
+
+$version = "1.2.0";
+
+//adding is online in user table
+
+if ($this->system->modules[$module]['version'] < $version)
+{
+	$this->db->query("ALTER TABLE " . $this->db->dbprefix('users') . " ADD `online` INT( 1 ) NOT NULL DEFAULT 0") ;
 	$this->session->set_flashdata("notification", sprintf(__("Admin module updated to %s"), $version)) ;
 	
 	$data = array('version' => $version);
