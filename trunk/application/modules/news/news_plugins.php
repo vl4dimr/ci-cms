@@ -9,6 +9,10 @@ function news_news_save_comment()
 	
 	$obj =& get_instance();
 	
+	if($obj->user->logged_in)
+	{
+		return;
+	}
 	if (!$obj->input->post('captcha'))
 	{
 		$obj->session->set_flashdata('notification', __("You must submit the security code that appears in the image", $obj->template['module']));
@@ -41,6 +45,8 @@ $this->add_filter('news_comment_form', 'news_news_comment_form');
 function news_news_comment_form($msg)
 {
 	$obj =& get_instance();
+	if(!$obj->user->logged_in)
+	{
 	
 	$pool = '0123456789';
 
@@ -79,7 +85,7 @@ function news_news_comment_form($msg)
 	<label>" . __("Security code:", 'news') . "</label>" . $cap['image'] . "<br />
 	<label for=\"captcha\">" . __("Confirm security code:", 'news') . "</label>
 	<input class=\"input-text\" type='text' name='captcha' value='' /><br />";
-	
+	}
 	return $msg;
 
 }

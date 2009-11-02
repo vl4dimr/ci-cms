@@ -52,14 +52,18 @@
 <input type='hidden' name='news_id' value='<?=$news['id']?>' />
 <input  class="input-text" type='hidden' name='uri' value='<?=$news['uri']?>' />
 <label for='author'><?=__("Name:", $module)?>[*]</label>
+<?php if ($this->user->logged_in) : ?>
+<input type='hidden' name='author' value="<?php echo $this->user->username ?>" /> <?php echo $this->user->username ?><br />
+<?php else: ?>
 <input  class="input-text" type='text' name='author' value='' id='name' /><br />
-
+<?php endif; ?>
 <label for='email'><?=__("Email:", $module)?>[*]</label>
+<?php if ($this->user->logged_in) : ?>
+<input type='hidden' name='email' value="<?php echo $this->user->email ?>" /> <?php echo $this->user->email ?><br />
+<?php else: ?>
+
 <input  class="input-text" type='text' name='email' value='' id='email' /><br />
-
-<label for='website'><?=__("Website:", $module)?></label>
-<input  class="input-text" type='text' name='website' value='' id='website' /><br />
-
+<?php endif; ?>
 <label for='body'><?=__("Comment", $module)?>[*]</label>
 <textarea  class="input-textarea" name='body' id='body' rows="10" /></textarea><br />
 <?php 
