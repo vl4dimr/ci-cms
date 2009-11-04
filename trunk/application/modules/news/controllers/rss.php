@@ -34,17 +34,20 @@
 				
 				foreach ($rows as $key => $row)
 				{
-					$contents[$key]['title'] =  xml_convert($row['title']);
-					$contents[$key]['url'] = site_url('news/' . $row['uri']);
-					$contents[$key]['body'] = htmlentities($row['body']);
+					$contents[$key]['title'] =  $row['title'];
+					$contents[$key]['url'] = site_url($row['lang']  . '/news/' . $row['uri']);
+					$contents[$key]['body'] = $row['body'];
 					$contents[$key]['date'] = (isset($row['date'])) ? $row['date'] : '';
+					$contents[$key]['author'] = $row['author'];
+					if (isset($row['image']['file']))
+					{
+						$contents[$key]['img'] = base_url(). 'media/images/s/' . $row['image']['file'];
+					}
 				}
 				$data['contents'] = $contents;
-				//$this->output->set_header("Content-Type: application/rss+xml");
+				header("Content-Type: application/rss+xml");
 				
-				$output =  $this->load->view('rss', $data, true);
-				echo $output;
-				//$this->output->set_output($output);
+				$this->load->view('rss', $data);
 			}
 		}
 		
@@ -68,9 +71,10 @@
 			else
 			{
 				$cat = $this->news->get_cat(array('uri' => $uri));
-				$params['where'] = array('news.lang' => $this->user->lang, 'cat' => $cat['id']);
+				$params['where']['cat'] = $cat['id'];
 				$category = $cat;
 			}
+			
 			if( $rows = $this->news->get_list($params))
 			{
 			
@@ -84,17 +88,20 @@
 				
 				foreach ($rows as $key => $row)
 				{
-					$contents[$key]['title'] =  xml_convert($row['title']);
-					$contents[$key]['url'] = site_url('tononkalo/' . $row['uri']);
-					$contents[$key]['body'] = htmlentities($row['vetso']);
-					$contents[$key]['date'] = (isset($row['daty'])) ? $row['daty'] : '';
+					$contents[$key]['title'] =  $row['title'];
+					$contents[$key]['url'] = site_url($row['lang'] . '/news/' . $row['uri']);
+					$contents[$key]['body'] = $row['body'];
+					$contents[$key]['date'] = (isset($row['date'])) ? $row['date'] : '';
+					$contents[$key]['author'] = $row['author'];
+					if (isset($row['image']['file']))
+					{
+						$contents[$key]['img'] = base_url(). 'media/images/s/' . $row['image']['file'];
+					}
 				}
 				$data['contents'] = $contents;
-				$this->output->set_header("Content-Type: application/rss+xml");
+				header("Content-Type: application/rss+xml");
 				
-				$output =  $this->load->view('rss', $data, true);
-
-				$this->output->set_output($output);
+				$this->load->view('rss', $data);
 
 			}
 			
