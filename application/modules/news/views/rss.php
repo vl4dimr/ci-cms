@@ -25,12 +25,18 @@ echo '<?xml version="1.0" encoding="utf-8"?>' . "
     
         <item>
 
-          <title><?php echo htmlentities($item['title']); ?></title>
+          <title><?php echo $item['title']; ?></title>
           <link><?php echo $item['url'] ?></link>
           <guid><?php echo $item['url'] ?></guid>
-
-          <description><![CDATA[<?php echo nl2br($item['body']) ?>]]></description>
+		  <?php if(isset($item['author'])) : ?>
+          <author><?php echo $item['author'] ?></author>
+		  <?php endif; ?>
+          <description><![CDATA[<?php echo $item['body'] ?>]]></description>
       <pubDate><?php echo date ('r', $item['date']);?></pubDate>
+	  	<?php if(isset($item['img'])) :?>
+			<enclosure url="<?php echo $item['img'] ?>" length="" type="image/jpeg"/>
+			<media:thumbnail xmlns:media='http://search.yahoo.com/mrss/' url='<?php echo $item['img'] ?>' height='100' width='100'/>
+		<?php endif; ?>
         </item>
 
         
