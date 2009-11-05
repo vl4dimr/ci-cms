@@ -80,3 +80,45 @@ if ($this->system->modules[$module]['version'] < $version)
 	redirect("admin/module");
 }
 
+
+//update to 1.3.0
+$version = "1.3.0";
+
+// tags moved to news
+
+if ($this->system->modules[$module]['version'] < $version)
+{
+
+$fields = array(
+	'id' => array(
+			 'type' => 'INT',
+			 'constraint' => 5,
+			 'unsigned' => TRUE,
+			 'auto_increment' => TRUE
+	  ),
+	'tag' => array(
+			 'type' => 'VARCHAR',
+			 'constraint' => '255',
+	  ),
+	'uri' => array(
+			 'type' => 'VARCHAR',
+			 'constraint' => '255',
+	  ),
+	'news_id' => array(
+			 'type' => 'INT',
+			 'constraint' => '5',
+	  )
+);
+$this->load->dbforge();
+$this->dbforge->add_field($fields); 
+$this->dbforge->add_key('id', TRUE);
+$this->dbforge->add_key('tag');
+$this->dbforge->create_table('news_tags', TRUE);
+
+	$this->session->set_flashdata("notification", sprintf(__("News module updated to %s", $module), $version)) ;
+	
+	$data = array('version' => $version);
+	$this->db->where(array('name'=> $module));
+	$this->db->update('modules', $data);
+	redirect("admin/module");
+}

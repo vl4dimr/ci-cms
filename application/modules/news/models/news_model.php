@@ -119,7 +119,16 @@
 			
 			if ( $query->num_rows() > 0 )
 			{
-				return $query->row_array();
+				$row = $query->row_array();
+				$this->db->where('news_id', $row['id']);
+				$this->db->order_by('tag');
+				$query = $this->db->get('news_tags');
+				if ($query->num_rows() > 0)
+				{
+					$row['tags'] = $query->result_array();
+				}
+				return $vetso;
+			
 			}
 			else
 			{
@@ -536,7 +545,9 @@
 		{
 			$data['uri'] = $this->news->generate_uri($this->input->post('title'));
 		}
-			
+	
+
+	
 		if($id = $this->input->post('id'))
 		{
 			//fixing missing uri
@@ -561,9 +572,60 @@
 			$id = $this->db->insert_id();
 			//insert
 		}	
+		
+		//tags
+		if($this->input->post('id'))
+		{
+			$this->db->delete('news_tags', array('news_id' => $id));
+		}
+		if($tags = $this->input->post('tags'))
+		{
+			foreach($tags as $tag)
+			{
+				if($tag)
+				{
+				$datatag = array('news_id' => $id, 'tag' => $tag, 'uri' => format_title($tag));
+				$this->db->insert('news_tags', $datatag);
+				}
+			}
+		}
 		$this->cache->remove_group('news_list');
 		return $id;
 	}
+
+	function get_tags($params = array())
+	{
+		$default_params = array
+		(
+			'order_by' => 'tag',
+			'limit' => null,
+			'start' => null,
+			'where' => array()
+		);
+		
+		foreach ($default_params as $key => $value)
+		{
+			$params[$key] = (isset($params[$key]))? $params[$key]: $default_params[$key];
+		}
+		
+		$this->db->where($params['where']);
+		$this->db->limit($params['limit'], $params['start']);
+		
+		$this->db->select('count(tag) as cnt, news_tags.*');
+		$this->db->group_by("tag");
+		$this->db->order_by($params['order_by']);
+		$query = $this->db->get("news_tags");
+		if ($query->num_rows() == 0 )
+		{
+			return false;
+		}
+		else
+		{
+			return $query->result_array();
+		}
+		
+	}
+	
 }
 
 

@@ -219,6 +219,7 @@
 			}
 			$this->template['row'] = $row;
 			$this->template['categories'] = $this->news->get_catlist();
+			$this->template['tags'] = $this->news->get_tags(array('limit' => 50, 'order_by' => 'cnt DESC' ));
 			$this->javascripts->add('ajaxfileupload.js');
 			
 			$this->db->where('src_id', 0);

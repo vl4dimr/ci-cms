@@ -5,7 +5,8 @@
 	
 	<ul id="tabs" class="quickmenu">
 		<li><a href="#one"><?php echo __("Content", $this->template['module'])?></a></li>
-		<li><a href="#two"><?php echo __("Options", $this->template['module'])?></a></li>
+		<li><a href="#two"><?php echo __("Tags", $this->template['module'])?></a></li>
+		<li><a href="#three"><?php echo __("Options", $this->template['module'])?></a></li>
 	</ul>
 	<div class="quickend"></div>
 
@@ -180,6 +181,37 @@ function ajaxFileUpload() {
 		
 		</div>
 <div id="two" class="content slim">
+		<label for="tags"><?php echo __("Tags", $module) ?></label>
+		<?php
+		$rowtags = array();
+		if (isset($row['tags']))
+		{
+			foreach ($row['tags'] as $rowtag)
+			{
+				if (isset($rowtag['tag']))
+				{
+					$rowtags[] = $rowtag['tag'];
+				}
+			}
+		
+		}
+		?>
+		<?php if($tags && !empty($tags)) : ?>
+		<table border=0><tr>
+		<?php $col = 1; foreach ($tags as $tag): ?>
+		<td valign='top'><input class="input-checkbox" type='checkbox' name='tags[]' value="<?php echo $tag['tag'] ?>" <?php echo (in_array($tag['tag'], $rowtags)? "checked" : "") ?> ><?php echo $tag['tag'] ?></td>
+      
+		<?php if($col % 4 == 0): ?>
+      	</tr><tr>
+		<?php endif; ?>
+		
+		<?php $col++; endforeach; ?>
+		</tr></table><br />
+		<?php endif; ?>
+		<?php echo __("New tag", $module) ?> : <input type="text" name="tags[]" class="input-text"/><br />
+
+</div>
+<div id="three" class="content slim">
 		
 			<label for="date"><?php echo __("Date", $this->template['module'])?> (dd/mm/yyyy):</label>
 			<input type="text" name="date" value="<?php echo (isset($row['date'])?date("d/m/Y", $row['date']) : date("d/m/Y")) ?>" id="date" class="input-text" /><br class='clear'/>
