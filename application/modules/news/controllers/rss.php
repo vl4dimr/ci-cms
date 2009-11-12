@@ -59,6 +59,7 @@
 			
 			$params['limit'] = $per_page;
 			
+			
 			if(!is_null($lang))
 			{
 				$params['where']['news.lang'] = $lang;
@@ -70,7 +71,7 @@
 			}
 			else
 			{
-				$cat = $this->news->get_cat(array('uri' => $uri));
+				$cat = $this->news->get_cat(array('uri' => $uri, 'lang' => $lang));
 				$params['where']['cat'] = $cat['id'];
 				$category = $cat;
 			}
