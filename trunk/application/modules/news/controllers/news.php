@@ -229,7 +229,8 @@ and set to approve comments automatically.
 			}
 			else
 			{
-				$cat = $this->news->get_cat(array('uri' => $uri));
+				$cat = $this->news->get_cat(array('uri' => $uri, 'lang' => $this->user->lang));
+
 				$params['where'] = array('news.lang' => $this->user->lang, 'cat' => $cat['id']);
 				$this->template['category'] = $cat;
 				$config['uri_segment'] = 4;
@@ -246,6 +247,7 @@ and set to approve comments automatically.
 			$this->pagination->initialize($config); 
 
 			$this->template['rows'] = $this->news->get_list($params);
+
 			$this->template['start'] = $start;
 			$this->template['total_rows'] = $config['total_rows'];
 			$this->template['pager'] = $this->pagination->create_links();
