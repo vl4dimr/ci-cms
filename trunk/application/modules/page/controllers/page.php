@@ -309,6 +309,20 @@ and set to approve comments automatically.
 	
 			$this->layout->load($this->template, $view);
 		}
+		
+		function body($uri)
+		{
+
+			$data['uri'] = $uri;
+			//if(!is_null($lang)) $data['lang'] = $lang;
+			if ( $page = $this->pages->get_page($data))
+			{
+				echo $page['body'];
+				exit;
+			}
+		}
+		
+		
 	}
 
 ?>
