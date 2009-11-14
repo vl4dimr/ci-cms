@@ -127,7 +127,7 @@
 				{
 					$row['tags'] = $query->result_array();
 				}
-				return $vetso;
+				return $row;
 			
 			}
 			else
@@ -550,6 +550,7 @@
 	
 		if($id = $this->input->post('id'))
 		{
+
 			//fixing missing uri
 			/*
 			$news = $this->news->get_news(array('news.id' => $id));

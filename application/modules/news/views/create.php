@@ -219,14 +219,14 @@ function ajaxFileUpload() {
 		
 			<label for="allow_comments"><?php echo __("Allow Comments", $this->template['module'])?>:</label>
 			<select name="allow_comments" class="input-select" id="allow_comments">
-			<option value='1' <?php echo (($row['allow_comments']==1)?"selected":"")?>><?php echo __("Yes", $this->template['module'])?></option>
-			<option value='0' <?php echo (($row['allow_comments']==0)?"selected":"")?>><?php echo __("No", $this->template['module'])?></option>
+			<option value='1' <?php echo (($row['allow_comments']=='1')?"selected":"")?>><?php echo __("Yes", $this->template['module'])?></option>
+			<option value='0' <?php echo (($row['allow_comments']=='0')?"selected":"")?>><?php echo __("No", $this->template['module'])?></option>
 			</select><br />
 
 			<label for="notify"><?php echo __("Notify me for comments", $this->template['module'])?>:</label>
-			<select name="allow_comments" class="input-select" id="allow_comments">
-			<option value='1' <?php echo (($row['notify']==1)?"selected":"")?>><?php echo __("Yes", $this->template['module'])?></option>
-			<option value='0' <?php echo (($row['notify']==0)?"selected":"")?>><?php echo __("No", $this->template['module'])?></option>
+			<select name="notify" class="input-select" id="notify">
+			<option value='1' <?php echo (($row['notify']=='1')?"selected":"")?>><?php echo __("Yes", $this->template['module'])?></option>
+			<option value='0' <?php echo (($row['notify']=='0')?"selected":"")?>><?php echo __("No", $this->template['module'])?></option>
 			</select><br />
 
 

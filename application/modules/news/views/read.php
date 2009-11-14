@@ -28,6 +28,9 @@
 	echo $this->plugin->apply_filters("news_post_content", $post_content);
 ?>
 
+<div class="back">
+<a href="javascript:history.back()"><?php echo __("Go back", $module) ?></a>
+</div>
 <?php if (!empty($comments)): ?>
 <div id="comments">
 
