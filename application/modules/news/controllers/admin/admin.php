@@ -216,6 +216,7 @@
 			
 				$query = $this->db->get_where('news', array('id' => $id));
 				$row = $query->row_array();
+				$row['tags'] =  $this->news->get_tags(array('where' => array('news_id' => $id),'limit' => 50, 'order_by' => 'cnt DESC' ));
 			}
 			$this->template['row'] = $row;
 			$this->template['categories'] = $this->news->get_catlist();

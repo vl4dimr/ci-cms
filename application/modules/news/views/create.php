@@ -184,7 +184,8 @@ function ajaxFileUpload() {
 		<label for="tags"><?php echo __("Tags", $module) ?></label>
 		<?php
 		$rowtags = array();
-		if (isset($row['tags']))
+
+		if (isset($row['tags']) && !empty($row['tags']))
 		{
 			foreach ($row['tags'] as $rowtag)
 			{
@@ -196,7 +197,7 @@ function ajaxFileUpload() {
 		
 		}
 		?>
-		<?php if($tags && !empty($tags)) : ?>
+		<?php if(isset($tags) && !empty($tags)) : ?>
 		<table border=0><tr>
 		<?php $col = 1; foreach ($tags as $tag): ?>
 		<td valign='top'><input class="input-checkbox" type='checkbox' name='tags[]' value="<?php echo $tag['tag'] ?>" <?php echo (in_array($tag['tag'], $rowtags)? "checked" : "") ?> ><?php echo $tag['tag'] ?></td>
