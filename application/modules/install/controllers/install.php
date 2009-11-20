@@ -235,8 +235,8 @@ class Install extends Controller
 		
 		if($query->num_rows() == 0)
 		{
-			
-			if($username = $this->input->post('username') && $password = $this->input->post('password') && $email = $this->input->post('email'))
+
+			if(($username = $this->input->post('username')) && ($password = $this->input->post('password')) && ($email = $this->input->post('email')))
 			{
 			$this->load->library('encrypt');
 			$data	= 	array(
