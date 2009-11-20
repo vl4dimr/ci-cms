@@ -89,7 +89,9 @@ class Install extends Controller
 		$this->dbforge->add_key('code');
 		$this->dbforge->create_table('languages', TRUE);
 		
-		if(!$this->db->get('languages'))
+		$query = $this->db->get('languages');
+		
+		if($query->num_rows() == 0)
 		{
 		$this->db->query("INSERT INTO " . $this->db->dbprefix('languages') . " (id, code, name, ordering, active, default) VALUES (1, 'en', 'English', 1, 1, 1), (2, 'fr', 'Fran&ccedil;ais', 2, 1, 0),  (3, 'it', 'Italiano', 3, 1, 0)");
 		}
@@ -140,7 +142,9 @@ class Install extends Controller
 		$this->dbforge->add_key('parent_id');
 		$this->dbforge->create_table('navigation', TRUE);
 		
-		if(!$this->db->get('navigation'))
+		$query = $this->db->get('navigation');
+		
+		if($query->num_rows() == 0)
 		{
 			$this->db->query("INSERT INTO " . $this->db->dbprefix('navigation') . " (id, parent_id, title, uri, lang) VALUES (19, 0, 'leftmenu', '', 'en), (1, 19, 'Menu', '', 'en),  ( 1, 19, 'Menu', '', 'en'), ( 2, 1, 'Home', 'home', 'en'), ( 3, 1, 'About', 'about', 'en'), ( 20, 0, 'leftmenu', '', 'fr'), ( 4, 20, 'Menu', '', 'fr'), ( 5, 4, 'Accueil', 'accueil', 'fr'), ( 6, 4, 'A propos', 'a-propos', 'fr'), ( 21, 0, 'leftmenu', '', 'it'), ( 7, 21, 'Menu', '', 'it'), ( 8, 7, 'Home', 'home', 'it'), ( 9, 7, 'About', 'about', 'it'), ( 10, 0, 'topmenu', '', 'en'), ( 11, 10, 'Contact us', 'contact-us', 'en'), ( 12, 10, 'Google', 'http://google.com', 'en'), ( 13, 0, 'topmenu', '', 'fr'), ( 14, 13, 'Contact us', 'contact-us', 'fr'), ( 15, 13, 'Google', 'http://google.com', 'fr'), ( 16, 0, 'topmenu', '', 'it'), ( 17, 16, 'Contact us', 'contact-us', 'it'), ( 18, 16, 'Google', 'http://google.com', 'it') ");
 		}
@@ -205,8 +209,9 @@ class Install extends Controller
 		
 		echo "<p>Step 2 completed.</p>";
 		
+		$query = $this->db->get('users');
 		
-		if(!$this->db->get('users'))
+		if($query->num_rows() == 0)
 		{
 			echo "<p> Now we need some information for the super admin.</p><form method='post' action='" . site_url('install/step3') . "'>
 			<label for='username' style='width: 150px; font-weight: bold;'>Username : </label><input type='text' name='username' value='admin' style='width: 200px'/><br />
@@ -226,8 +231,10 @@ class Install extends Controller
 	function step3()
 	{
 			
+		$query = $this->db->get('users');
 		
-		if(!$this->db->get('users'))
+		if($query->num_rows() == 0)
+		{
 			
 			if($username = $this->input->post('username') && $password = $this->input->post('password') && $email = $this->input->post('email'))
 			{
@@ -265,7 +272,11 @@ class Install extends Controller
 			</form>";
 				return;
 			}
-	
+		}
+		else
+		{
+			echo "<p>Step 3 completed, " . anchor('install/step4', 'Click here to continue') . "</p>";
+		}
 	
 	}
 	
@@ -350,7 +361,9 @@ class Install extends Controller
 		$this->dbforge->create_table('pages', TRUE);
 
 
-		if(!$this->db->get('pages'))
+		$query = $this->db->get('pages');
+		
+		if($query->num_rows() == 0)
 		{
 		$data = array('title' => 'This is just a test', 'uri' => 'home', 'lang' => 'en', 'body' => '<p>This is how it looks in <b>English</b>. To modify this text go to  <i>admin/pages</i>', 'options' => 'a:4:{s:13:"show_subpages";s:1:"1";s:15:"show_navigation";s:1:"1";s:14:"allow_comments";s:1:"0";s:6:"notify";s:1:"0";}');
 		$this->db->insert('pages', $data);
@@ -486,7 +499,9 @@ class Install extends Controller
 		$this->dbforge->add_key('name');
 		$this->dbforge->create_table('settings', TRUE);
 		
-		if(!$this->db->get('settings'))
+		$query = $this->db->get('settings');
+		
+		if($query->num_rows() == 0)
 		{
 		$data = array('name' => 'site_name', 'value' => 'CI-CMS');
 		$this->db->insert('settings', $data);
@@ -562,7 +577,9 @@ class Install extends Controller
 		$this->dbforge->add_key('name');
 		$this->dbforge->create_table('modules', TRUE);
 		
-		if(!$this->db->get('modules'))
+		$query = $this->db->get('modules');
+		
+		if($query->num_rows() == 0)
 		{
 		$this->db->query("INSERT INTO " . $this->db->dbprefix('modules') . " (id, name, with_admin, version, status, ordering, info, description) VALUES (1, 'admin', 0, '1.2.0', 1, 5, '', 'Admin core module'), (2, 'module', 0, '1.0.0', 1, 20, '', 'Module core module'), (3, 'page', 1, '1.0.3', 1, 60, '', 'Page core module'), (4, 'language', 1, '1.0.0', 1, 10, '', 'Language core module'), (5, 'member', 1, '1.0.0', 1, 30, '', 'Member core module'), (6, 'search', 0, '1.0.0', 1, 50, '', 'Search core module'), (7, 'news', 1, '1.2.1', 1, 101, '', 'News module')");
 		
@@ -598,7 +615,9 @@ class Install extends Controller
 
 		$this->db->query("CREATE TABLE IF NOT EXISTS " . $this->db->dbprefix('news_cat') . "  ( `id` int(11) NOT NULL auto_increment, `pid` int(11) NOT NULL default '0', `title` varchar(255) NOT NULL default '', `icon` varchar(255) NOT NULL default '', `desc` text NOT NULL, `date` int(11) NOT NULL default '0', `username` varchar(20) NOT NULL default '', `lang` char(5) NOT NULL default '', `weight` int(11) NOT NULL default '0', `status` int(5) NOT NULL default '1', `acces` varchar(20) NOT NULL default '0', `uri` varchar(100) NOT NULL default '', PRIMARY KEY  (`id`), KEY `title` (`title`) )");
 		
-		if(!$this->db->get('news'))
+		$query = $this->db->get('news');
+		
+		if($query->num_rows() == 0)
 		{
 		$data = array('title' => 'Your first news', 'uri' => 'your-first-news-en', 'lang' => 'en', 'body' => 'This news is supposed to be in English but I leave it in English now', 'status' => 1, 'date' => mktime());
 		$this->db->insert('news', $data);
