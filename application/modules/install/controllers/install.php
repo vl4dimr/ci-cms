@@ -233,7 +233,7 @@ class Install extends Controller
 			{
 			$data	= 	array(
 							'username'	=> $username,
-							'password'	=> $this->encrypt->sha1($password.$this->config->item('encryption_key'));
+							'password'	=> $this->encrypt->sha1($password.$this->config->item('encryption_key')),
 							'email'		=> $email,
 							'status'	=> 'active',
 							'registered'=> mktime()
