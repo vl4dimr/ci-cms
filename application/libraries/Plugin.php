@@ -19,7 +19,9 @@ class Plugin {
 				$plugin_file = APPPATH.'modules/'.$module['name'].'/'.$module['name'].'_plugins.php';
 						if ( file_exists($plugin_file) )
 						{
+							$this->obj->benchmark->mark($module['name'] . '_start'); 
 							include($plugin_file);
+							$this->obj->benchmark->mark($module['name'] . '_end'); 
 						}
 			}
 		}	

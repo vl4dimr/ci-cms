@@ -24,7 +24,7 @@
 			$dir = $this->obj->config->item('cache_path');
 			$this->obj->load->library('cache', array('dir' => $dir));
 			$this->get_settings();
-			$this->check_update();
+			//$this->check_update();
 			$this->find_modules();
 			$this->load_locales();
 			$this->start();
@@ -104,10 +104,16 @@
 		
 		function get_settings()
 		{
-			$query = $this->obj->db->get('settings');
-			if ($query->num_rows() > 0)
+			if(!$settings = $this->obj->cache->get('settings', 'settings'))
 			{
-			   foreach ($query->result() as $row)
+				$query = $this->obj->db->get('settings');
+				$settings = $query->result();
+				$this->obj->cache->save('settings', $settings, 'settings', 0);
+			}
+			
+			if (!empty($settings))
+			{
+			   foreach ($settings as $row)
 			   {
 			      $this->{$row->name} = $row->value;
 			   }
@@ -120,11 +126,13 @@
 			if (!isset($this->$name)) {
 				$this->$name = $value;
 				$this->obj->db->insert('settings', array('name' => $name, 'value' => $value));
+				$this->obj->cache->remove('settings', 'settings');
 			}
 			elseif ($this->$name != $value) 
 			{
 				$this->$name = $value;
 				$this->obj->db->update('settings', array('value' => $value), "name = '$name'");
+				$this->obj->cache->remove('settings', 'settings');
 			}
 		}
 		
