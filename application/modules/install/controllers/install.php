@@ -50,6 +50,8 @@ class Install extends Controller
 	
 		$this->load->dbforge();	
 
+		
+		
 		$fields = array(
 			'id' => array(
 					 'type' => 'INT',
@@ -198,17 +200,126 @@ class Install extends Controller
 		$data = array('id' => 18, 'parent_id' => 16, 'title' => 'Google', 'uri' => 'http://google.com', 'lang' => 'it');
 		$this->db->insert('navigation', $data);
 		
+		//users
+  		$fields = array(
+			'id' => array(
+					 'type' => 'INT',
+					 'constraint' => 11,
+					 'unsigned' => TRUE,
+					 'auto_increment' => TRUE
+			  ),
+			 'username' => array(
+				'type' => 'VARCHAR',
+				'constraint' => 50,
+				'default' => ''
+			 ),
+			 'password' => array(
+				'type' => 'VARCHAR',
+				'constraint' => 50,
+				'default' => ''
+			 ),
+			 'email' => array(
+				'type' => 'VARCHAR',
+				'constraint' => 255,
+				'default' => ''
+			 ),
+			 'status' => array(
+				'type' => 'VARCHAR',
+				'constraint' => 10,
+				'default' => 'active'
+			),
+			 'lastvisit' => array(
+				'type' => 'INT',
+				'constraint' => 11,
+				'default' => 0
+			),
+			 'registered' => array(
+				'type' => 'INT',
+				'constraint' => 11,
+				'default' => 0
+			),
+			 'online' => array(
+				'type' => 'INT',
+				'constraint' => 1,
+				'default' => 0
+			),
+			 'activation' => array(
+				'type' => 'VARCHAR',
+				'constraint' => 255,
+				'default' => ''
+			 )
+		);
+		$this->dbforge->add_field($fields); 
+		$this->dbforge->add_key('id', TRUE);
+		$this->dbforge->add_key('username');
+		$this->dbforge->add_key('status');
+		$this->dbforge->create_table('users', TRUE);
 		
 		
-		echo "<p>Step 2 completed. " . anchor('install/step3', 'Click here to continue') . "</p>";
+		echo "<p>Step 2 completed.</p>";
+		
+		$this->load->library('user');
+		if($this->get_user_number() == 0)
+		{
+			echo "<p> Now we need some information for the super admin.</p><form method='post' action='" . site_url('install/step3') . "'>
+			<label for='username' style='width: 150px; font-weight: bold;'>Username : </label><input type='text' name='username' value='admin' style='width: 200px'/><br />
+			<label for='password' style='width: 150px; font-weight: bold;'>Password : </label><input type='password' name='password' value='' style='width: 200px'/><br />
+			<label for='email' style='width: 150px; font-weight: bold;'>Email : </label><input type='text' name='email' value='' style='width: 200px'/><br />
+			<input type='submit' value='  Continue... ' />
+			</form>";
+		}
+		else
+		{
+			echo "<p>Step 3 not needed, " . anchor('install/step4', 'Click here to continue') . "</p>";
+		}
 
 	
 	}
 	
 	function step3()
 	{
-		$this->load->dbforge();	
+			
+		$this->load->library('user');
+		if($this->get_user_number() == 0)
+			
+			if($username = $this->input->post('username') && $password = $this->input->post('password') && $email = $this->input->post('email'))
+			{
+				$this->load->library('user');
+				$this->user->register($username, $password, $email);
+
+				$this->db->query("CREATE TABLE IF NOT EXISTS " . $this->db->dbprefix('admins' ) . " ( `id` int(11) NOT NULL auto_increment, `username` varchar(100) NOT NULL default '', `module` varchar(100) NOT NULL default '', `level` tinyint(4) NOT NULL default '0', PRIMARY KEY (`id`), KEY `username` (`username`) ) ");
+				
+				$this->db->insert('admins', array('username' => $username, 'module' => 'admin', 'level' => 4));
+				$this->db->insert('admins', array('username' => $username, 'module' => 'page', 'level' => 4));
+				$this->db->insert('admins', array('username' => $username, 'module' => 'module', 'level' => 4));
+				$this->db->insert('admins', array('username' => $username, 'module' => 'news', 'level' => 4));
+				$this->db->insert('admins', array('username' => $username, 'module' => 'member', 'level' => 4));
+				$this->db->insert('admins', array('username' => $username, 'module' => 'language', 'level' => 4));
+				
+				
+				
+				
+				
+				echo "<p>Step 3 completed, " . anchor('install/step4', 'Click here to continue') . "</p>";
+				
+			}
+			else
+			{
+			echo "<p> Please fill all fields.</p><form method='post' action='" . site_url('install/step3') . "'>
+			<label for='username' style='width: 150px; font-weight: bold;'>Username : </label><input type='text' name='username' value='" . $this->input->post('username') . "' style='width: 200px'/><br />
+			<label for='password' style='width: 150px; font-weight: bold;'>Password : </label><input type='password' name='password' value='" . $this->input->post('password') . "' style='width: 200px'/><br />
+			<label for='email' style='width: 150px; font-weight: bold;'>Email : </label><input type='text' name='email' value='" . $this->input->post('username') . "' style='width: 200px'/><br />
+			<input type='submit' value='  Try again... ' />
+			</form>";
+				return;
+			}
 	
+	
+	}
+	
+	function step4()
+	{
+		$this->load->dbforge();	
   		$fields = array(
 			'id' => array(
 					 'type' => 'INT',
@@ -398,14 +509,6 @@ class Install extends Controller
 		$this->dbforge->add_field($fields); 
 		$this->dbforge->add_key('session_id', TRUE);
 		$this->dbforge->create_table('sessions', TRUE);
-
-		echo "<p>Step 3 completed. " . anchor('install/step4', 'Click here to continue') . "</p>";
-	
-	}
-	
-	function step4()
-	{
-		$this->load->dbforge();	
 		//settings
   		$fields = array(
 			'id' => array(
@@ -458,61 +561,6 @@ class Install extends Controller
 		$this->db->insert('settings', $data);
 		
 
-		//users
-  		$fields = array(
-			'id' => array(
-					 'type' => 'INT',
-					 'constraint' => 11,
-					 'unsigned' => TRUE,
-					 'auto_increment' => TRUE
-			  ),
-			 'username' => array(
-				'type' => 'VARCHAR',
-				'constraint' => 50,
-				'default' => ''
-			 ),
-			 'password' => array(
-				'type' => 'VARCHAR',
-				'constraint' => 50,
-				'default' => ''
-			 ),
-			 'email' => array(
-				'type' => 'VARCHAR',
-				'constraint' => 255,
-				'default' => ''
-			 ),
-			 'status' => array(
-				'type' => 'VARCHAR',
-				'constraint' => 10,
-				'default' => 'active'
-			),
-			 'lastvisit' => array(
-				'type' => 'INT',
-				'constraint' => 11,
-				'default' => 0
-			),
-			 'registered' => array(
-				'type' => 'INT',
-				'constraint' => 11,
-				'default' => 0
-			),
-			 'online' => array(
-				'type' => 'INT',
-				'constraint' => 1,
-				'default' => 0
-			),
-			 'activation' => array(
-				'type' => 'VARCHAR',
-				'constraint' => 255,
-				'default' => ''
-			 )
-		);
-		$this->dbforge->add_field($fields); 
-		$this->dbforge->add_key('id', TRUE);
-		$this->dbforge->add_key('username');
-		$this->dbforge->add_key('status');
-		$this->dbforge->create_table('users', TRUE);
-		
 		//modules
   		$fields = array(
 			'id' => array(
@@ -561,7 +609,6 @@ class Install extends Controller
 		$this->db->query("INSERT INTO " . $this->db->dbprefix('modules') . " (id, name, with_admin, version, status, ordering, info, description) VALUES (1, 'admin', 0, '1.2.0', 1, 5, '', 'Admin core module'), (2, 'module', 0, '1.0.0', 1, 20, '', 'Module core module'), (3, 'page', 1, '1.0.3', 1, 60, '', 'Page core module'), (4, 'language', 1, '1.0.0', 1, 10, '', 'Language core module'), (5, 'member', 1, '1.0.0', 1, 30, '', 'Member core module'), (6, 'search', 0, '1.0.0', 1, 50, '', 'Search core module'), (7, 'news', 1, '1.2.1', 1, 101, '', 'News module')");
 		
 
-		$this->db->query("CREATE TABLE IF NOT EXISTS " . $this->db->dbprefix('admins' ) . " ( `id` int(11) NOT NULL auto_increment, `username` varchar(100) NOT NULL default '', `module` varchar(100) NOT NULL default '', `level` tinyint(4) NOT NULL default '0', PRIMARY KEY (`id`), KEY `username` (`username`) ) ");
 
 		
 		$this->db->query("CREATE TABLE IF NOT EXISTS " . $this->db->dbprefix('group_members') . " ( id int(11) NOT NULL auto_increment, g_user varchar(255) NOT NULL default '', g_id varchar(20) NOT NULL default '', g_from int(11) NOT NULL default '0', g_to int(11) NOT NULL default '0', g_date int(11) NOT NULL default '0', PRIMARY KEY (id), KEY g_user (g_user,g_id) )");
