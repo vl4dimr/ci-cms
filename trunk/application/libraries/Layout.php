@@ -85,7 +85,7 @@
 			$output = $this->obj->load->view($template_path, $data, true);
 
 			
-			if ($this->obj->system->debug == 1)
+			if ($this->obj->system->debug == 1 && $this->obj->user->level['admin'] > 0)
 			{
 				$this->obj->output->enable_profiler(true);
 			}

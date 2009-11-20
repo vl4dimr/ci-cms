@@ -19,7 +19,9 @@ class Block {
 				$block_file = APPPATH.'modules/'.$module['name'].'/'.$module['name'].'_blocks.php';
 				if ( file_exists($block_file) )
 				{
+					$this->obj->benchmark->mark($module['name'] . 'block_start'); 
 					include($block_file);
+					$this->obj->benchmark->mark($module['name'] . 'block_end'); 
 				}
 			}
 		}
