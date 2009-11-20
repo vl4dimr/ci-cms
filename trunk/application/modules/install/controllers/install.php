@@ -205,8 +205,8 @@ class Install extends Controller
 		
 		echo "<p>Step 2 completed.</p>";
 		
-		$this->load->library('user');
-		if($this->get_user_number() == 0)
+		
+		if(!$this->db->get('users'))
 		{
 			echo "<p> Now we need some information for the super admin.</p><form method='post' action='" . site_url('install/step3') . "'>
 			<label for='username' style='width: 150px; font-weight: bold;'>Username : </label><input type='text' name='username' value='admin' style='width: 200px'/><br />
@@ -226,14 +226,19 @@ class Install extends Controller
 	function step3()
 	{
 			
-		$this->load->library('user');
-		if($this->get_user_number() == 0)
+		
+		if(!$this->db->get('users'))
 			
 			if($username = $this->input->post('username') && $password = $this->input->post('password') && $email = $this->input->post('email'))
 			{
-				$this->load->library('user');
-				$this->user->register($username, $password, $email);
-
+			$data	= 	array(
+							'username'	=> $username,
+							'password'	=> $this->encrypt->sha1($password.$this->config->item('encryption_key'));
+							'email'		=> $email,
+							'status'	=> 'active',
+							'registered'=> mktime()
+						);
+			$this->db->insert('users', $data);
 				$this->db->query("CREATE TABLE IF NOT EXISTS " . $this->db->dbprefix('admins' ) . " ( `id` int(11) NOT NULL auto_increment, `username` varchar(100) NOT NULL default '', `module` varchar(100) NOT NULL default '', `level` tinyint(4) NOT NULL default '0', PRIMARY KEY (`id`), KEY `username` (`username`) ) ");
 				
 				$this->db->insert('admins', array('username' => $username, 'module' => 'admin', 'level' => 4));
