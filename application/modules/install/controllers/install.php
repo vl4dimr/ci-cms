@@ -238,6 +238,7 @@ class Install extends Controller
 			
 			if($username = $this->input->post('username') && $password = $this->input->post('password') && $email = $this->input->post('email'))
 			{
+			$this->obj->load->library('encrypt');
 			$data	= 	array(
 							'username'	=> $username,
 							'password'	=> $this->encrypt->sha1($password.$this->config->item('encryption_key')),
