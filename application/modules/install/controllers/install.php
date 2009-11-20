@@ -89,15 +89,10 @@ class Install extends Controller
 		$this->dbforge->add_key('code');
 		$this->dbforge->create_table('languages', TRUE);
 		
-		$data = array('code' => 'en', 'name' => 'English');
-		$this->db->insert('languages', $data);
-		$data = array('code' => 'it', 'name' => 'Italiano');
-		$this->db->insert('languages', $data);
-		$data = array('code' => 'fr', 'name' => 'Français');
-		$this->db->insert('languages', $data);
-		$data = array('code' => 'mg', 'name' => 'Malagasy');
-		$this->db->insert('languages', $data);
-		
+		if(!$this->db->get('languages'))
+		{
+		$this->db->query("INSERT INTO " . $this->db->dbprefix('languages') . " (id, code, name, ordering, active, default) VALUES (1, 'en', 'English', 1, 1, 1), (2, 'fr', 'Fran&ccedil;ais', 2, 1, 0),  (3, 'it', 'Italiano', 3, 1, 0)");
+		}
 		
 
   
@@ -145,60 +140,12 @@ class Install extends Controller
 		$this->dbforge->add_key('parent_id');
 		$this->dbforge->create_table('navigation', TRUE);
 		
-		$data = array('id' => 19, 'parent_id' => 0, 'title' => 'leftmenu', 'uri' => '', 'lang' => 'en');
-		$this->db->insert('navigation', $data);
+		if(!$this->db->get('navigation'))
+		{
+			$this->db->query("INSERT INTO " . $this->db->dbprefix('navigation') . " (id, parent_id, title, uri, lang) VALUES (19, 0, 'leftmenu', '', 'en), (1, 19, 'Menu', '', 'en),  ( 1, 19, 'Menu', '', 'en'), ( 2, 1, 'Home', 'home', 'en'), ( 3, 1, 'About', 'about', 'en'), ( 20, 0, 'leftmenu', '', 'fr'), ( 4, 20, 'Menu', '', 'fr'), ( 5, 4, 'Accueil', 'accueil', 'fr'), ( 6, 4, 'A propos', 'a-propos', 'fr'), ( 21, 0, 'leftmenu', '', 'it'), ( 7, 21, 'Menu', '', 'it'), ( 8, 7, 'Home', 'home', 'it'), ( 9, 7, 'About', 'about', 'it'), ( 10, 0, 'topmenu', '', 'en'), ( 11, 10, 'Contact us', 'contact-us', 'en'), ( 12, 10, 'Google', 'http://google.com', 'en'), ( 13, 0, 'topmenu', '', 'fr'), ( 14, 13, 'Contact us', 'contact-us', 'fr'), ( 15, 13, 'Google', 'http://google.com', 'fr'), ( 16, 0, 'topmenu', '', 'it'), ( 17, 16, 'Contact us', 'contact-us', 'it'), ( 18, 16, 'Google', 'http://google.com', 'it') ");
+		}
 
-		$data = array('id' => 1, 'parent_id' => 19, 'title' => 'Menu', 'uri' => '', 'lang' => 'en');
-		$this->db->insert('navigation', $data);
 
-		$data = array('id' => 2, 'parent_id' => 1, 'title' => 'Home', 'uri' => 'home', 'lang' => 'en');
-		$this->db->insert('navigation', $data);
-
-		$data = array('id' => 3, 'parent_id' => 1, 'title' => 'About', 'uri' => 'about', 'lang' => 'en');
-		$this->db->insert('navigation', $data);
-
-		$data = array('id' => 20, 'parent_id' => 0, 'title' => 'leftmenu', 'uri' => '', 'lang' => 'fr');
-		$this->db->insert('navigation', $data);
-		$data = array('id' => 4, 'parent_id' => 20, 'title' => 'Menu', 'uri' => '', 'lang' => 'fr');
-		$this->db->insert('navigation', $data);
-
-		$data = array('id' => 5, 'parent_id' => 4, 'title' => 'Accueil', 'uri' => 'accueil', 'lang' => 'fr');
-		$this->db->insert('navigation', $data);
-
-		$data = array('id' => 6, 'parent_id' => 4, 'title' => 'A propos', 'uri' => 'a-propos', 'lang' => 'fr');
-		$this->db->insert('navigation', $data);
-
-		$data = array('id' => 21, 'parent_id' => 0, 'title' => 'leftmenu', 'uri' => '', 'lang' => 'it');
-		$this->db->insert('navigation', $data);
-		$data = array('id' => 7, 'parent_id' => 21, 'title' => 'Menu', 'uri' => '', 'lang' => 'it');
-		$this->db->insert('navigation', $data);
-
-		$data = array('id' => 8, 'parent_id' => 7, 'title' => 'Home', 'uri' => 'home', 'lang' => 'it');
-		$this->db->insert('navigation', $data);
-
-		$data = array('id' => 9, 'parent_id' => 7, 'title' => 'About', 'uri' => 'about', 'lang' => 'it');
-		$this->db->insert('navigation', $data);
-
-		$data = array('id' => 10, 'parent_id' => 0, 'title' => 'topmenu', 'uri' => '', 'lang' => 'en');
-		$this->db->insert('navigation', $data);
-		$data = array('id' => 11, 'parent_id' => 10, 'title' => 'Contact us', 'uri' => 'contact-us', 'lang' => 'en');
-		$this->db->insert('navigation', $data);
-		$data = array('id' => 12, 'parent_id' => 10, 'title' => 'Google', 'uri' => 'http://google.com', 'lang' => 'en');
-		$this->db->insert('navigation', $data);
-		
-		$data = array('id' => 13, 'parent_id' => 0, 'title' => 'topmenu', 'uri' => '', 'lang' => 'fr');
-		$this->db->insert('navigation', $data);
-		$data = array('id' => 14, 'parent_id' => 13, 'title' => 'Contact us', 'uri' => 'contact-us', 'lang' => 'fr');
-		$this->db->insert('navigation', $data);
-		$data = array('id' => 15, 'parent_id' => 13, 'title' => 'Google', 'uri' => 'http://google.com', 'lang' => 'fr');
-		$this->db->insert('navigation', $data);
-		
-		$data = array('id' => 16, 'parent_id' => 0, 'title' => 'topmenu', 'uri' => '', 'lang' => 'it');
-		$this->db->insert('navigation', $data);
-		$data = array('id' => 17, 'parent_id' => 16, 'title' => 'Contact us', 'uri' => 'contact-us', 'lang' => 'it');
-		$this->db->insert('navigation', $data);
-		$data = array('id' => 18, 'parent_id' => 16, 'title' => 'Google', 'uri' => 'http://google.com', 'lang' => 'it');
-		$this->db->insert('navigation', $data);
 		
 		//users
   		$fields = array(
@@ -398,6 +345,8 @@ class Install extends Controller
 		$this->dbforge->create_table('pages', TRUE);
 
 
+		if(!$this->db->get('pages'))
+		{
 		$data = array('title' => 'This is just a test', 'uri' => 'home', 'lang' => 'en', 'body' => '<p>This is how it looks in <b>English</b>. To modify this text go to  <i>admin/pages</i>', 'options' => 'a:4:{s:13:"show_subpages";s:1:"1";s:15:"show_navigation";s:1:"1";s:14:"allow_comments";s:1:"0";s:6:"notify";s:1:"0";}');
 		$this->db->insert('pages', $data);
 		$data = array('title' => 'About page', 'uri' => 'about', 'lang' => 'en', 'body' => '<p>About this site..</p>', 'options' => 'a:4:{s:13:"show_subpages";s:1:"1";s:15:"show_navigation";s:1:"1";s:14:"allow_comments";s:1:"0";s:6:"notify";s:1:"0";}');
@@ -413,7 +362,7 @@ class Install extends Controller
 		$data = array('title' => 'About page', 'uri' => 'about', 'lang' => 'it', 'body' => '<p>About this site..</p>', 'options' => 'a:4:{s:13:"show_subpages";s:1:"1";s:15:"show_navigation";s:1:"1";s:14:"allow_comments";s:1:"0";s:6:"notify";s:1:"0";}');
 		$this->db->insert('pages', $data);
 		
-
+		}
 		//page comments
   		$fields = array(
 			'id' => array(
@@ -532,6 +481,8 @@ class Install extends Controller
 		$this->dbforge->add_key('name');
 		$this->dbforge->create_table('settings', TRUE);
 		
+		if(!$this->db->get('settings'))
+		{
 		$data = array('name' => 'site_name', 'value' => 'CI-CMS');
 		$this->db->insert('settings', $data);
 		
@@ -560,7 +511,7 @@ class Install extends Controller
 		$data = array('name' => 'news_settings', 'value' => serialize(array('allow_comments' => 1,'approve_comments' => 1)));
 		$this->db->insert('settings', $data);
 		
-
+		}
 		//modules
   		$fields = array(
 			'id' => array(
@@ -606,6 +557,8 @@ class Install extends Controller
 		$this->dbforge->add_key('name');
 		$this->dbforge->create_table('modules', TRUE);
 		
+		if(!$this->db->get('modules'))
+		{
 		$this->db->query("INSERT INTO " . $this->db->dbprefix('modules') . " (id, name, with_admin, version, status, ordering, info, description) VALUES (1, 'admin', 0, '1.2.0', 1, 5, '', 'Admin core module'), (2, 'module', 0, '1.0.0', 1, 20, '', 'Module core module'), (3, 'page', 1, '1.0.3', 1, 60, '', 'Page core module'), (4, 'language', 1, '1.0.0', 1, 10, '', 'Language core module'), (5, 'member', 1, '1.0.0', 1, 30, '', 'Member core module'), (6, 'search', 0, '1.0.0', 1, 50, '', 'Search core module'), (7, 'news', 1, '1.2.1', 1, 101, '', 'News module')");
 		
 
@@ -624,7 +577,7 @@ class Install extends Controller
 		$this->db->query("CREATE TABLE IF NOT EXISTS " . $this->db->dbprefix('images') . " ( `id` int(11) NOT NULL auto_increment, `module` varchar(100) NOT NULL default '', `file` varchar(255) NOT NULL default '', `src_id` int(11) NOT NULL default '0', `ordering` tinyint(4) NOT NULL default '0', `info` text NOT NULL, PRIMARY KEY (`id`) )") ;
 		
 		$this->db->query("CREATE TABLE IF NOT EXISTS " . $this->db->dbprefix('captcha') . " (	captcha_id bigint( 13 ) unsigned NOT NULL AUTO_INCREMENT , 	captcha_time int( 10 ) unsigned NOT NULL , 	ip_address varchar( 16 ) default '0' NOT NULL , 	word varchar( 20 ) NOT NULL , 	PRIMARY KEY ( captcha_id ) , 	KEY ( word ) )");
- 		
+ 		}
 		echo "<p>Step 4 completed. " . anchor('install/step5', 'Click here to continue') . "</p>";
 		
 	}
@@ -640,13 +593,15 @@ class Install extends Controller
 
 		$this->db->query("CREATE TABLE IF NOT EXISTS " . $this->db->dbprefix('news_cat') . "  ( `id` int(11) NOT NULL auto_increment, `pid` int(11) NOT NULL default '0', `title` varchar(255) NOT NULL default '', `icon` varchar(255) NOT NULL default '', `desc` text NOT NULL, `date` int(11) NOT NULL default '0', `username` varchar(20) NOT NULL default '', `lang` char(5) NOT NULL default '', `weight` int(11) NOT NULL default '0', `status` int(5) NOT NULL default '1', `acces` varchar(20) NOT NULL default '0', `uri` varchar(100) NOT NULL default '', PRIMARY KEY  (`id`), KEY `title` (`title`) )");
 		
+		if(!$this->db->get('news'))
+		{
 		$data = array('title' => 'Your first news', 'uri' => 'your-first-news-en', 'lang' => 'en', 'body' => 'This news is supposed to be in English but I leave it in English now', 'status' => 1, 'date' => mktime());
 		$this->db->insert('news', $data);
 		$data = array('title' => 'Your first news', 'uri' => 'your-first-news-fr', 'lang' => 'fr', 'body' => 'This news is supposed to be in French but I leave it in English now', 'status' => 1, 'date' => mktime());
 		$this->db->insert('news', $data);
 		$data = array('title' => 'Your first news', 'uri' => 'your-first-news-it', 'lang' => 'it', 'body' => 'This news is supposed to be in Italian but I leave it in English now', 'status' => 1, 'date' => mktime());
 		$this->db->insert('news', $data);
-
+		}
 		echo "<p>Step 5 completed. " . anchor('install/step6', 'Click here to continue') . "</p>";
 		
 	}
