@@ -243,12 +243,7 @@
 			$this->user->check_level($this->template['module'], LEVEL_DEL);
 			if ( $js > 0 )
 			{
-				$this->db->where('id', $id);
-				$query = $this->db->delete('news');
-				
-				$this->db->where('src_id', $id);
-				$this->db->set('src_id', 0);
-				$query = $this->db->update('images');
+				$this->news->delete($id);
 				
 				$this->session->set_flashdata('notification', 'News has been deleted.');
 				$this->cache->remove('news'.$this->user->lang, 'news'); 

@@ -174,22 +174,22 @@
 		
 		function get_list($params = array())
 		{
+			$default_params = array
+			(
+				'order_by' => 'id DESC',
+				'limit' => 20,
+				'start' => 0,
+				'having' => array(),
+				'where' => array()
+			);
+			
+			foreach ($default_params as $key => $value)
+			{
+				$params[$key] = (isset($params[$key]))? $params[$key]: $default_params[$key];
+			}
 			$hash = md5(serialize($params));
 			if(!$result = $this->cache->get('get_news_list' . $hash, 'news_list'))
 			{
-				$default_params = array
-				(
-					'order_by' => 'id DESC',
-					'limit' => 20,
-					'start' => 0,
-					'having' => array(),
-					'where' => array()
-				);
-				
-				foreach ($default_params as $key => $value)
-				{
-					$params[$key] = (isset($params[$key]))? $params[$key]: $default_params[$key];
-				}
 				$this->db->select('news_cat.title as category, news_cat.uri as cat_uri, news.*');
 				$this->db->where($params['where']);
 				$this->db->having($params['having']);
@@ -226,32 +226,43 @@
 					$result = false;
 				}
 				
-				$this->cache->save('get_news_list' . $hash, $result, 'news_list', null);
+				$this->cache->save('get_news_list' . $hash, $result, 'news_list', 0);
 				
 			}
 			return $result;
 		}
 		
 		
-		function news_list($start =  null, $limit = null)
-		{
-			
-			$params = array('where' => array('lang' => $this->user->lang), 'order_by' => 'cat, ordering, date DESC', 'limit' => $limit, 'start' => $start);
-			return $this->get_list($params);
-		}
+	function news_list($start =  null, $limit = null)
+	{
+		
+		$params = array('where' => array('lang' => $this->user->lang), 'order_by' => 'cat, ordering, date DESC', 'limit' => $limit, 'start' => $start);
+		return $this->get_list($params);
+	}
 
-		function latest_news($limit = 10)
-		{
-			$params = array('where' => array('lang' => $this->user->lang), 'order_by' => 'id DESC', 'limit' => $limit);
-			return $this->get_list($params);
-		}
+	function delete($id)
+	{
+		$this->db->where('id', $id);
+		$query = $this->db->delete('news');
+		
+		$this->db->where('src_id', $id);
+		$this->db->set('src_id', 0);
+		$query = $this->db->update('images');
+		$this->cache->remove_group('news_list');
+	}
+	
+	function latest_news($limit = 10)
+	{
+		$params = array('where' => array('lang' => $this->user->lang), 'order_by' => 'id DESC', 'limit' => $limit);
+		return $this->get_list($params);
+	}
 
-		function attach($id, $image_data)
-		{
-			$data = array('src_id' => $id, 'module' => 'news', 'file' => $image_data['file_name']);
-			$this->db->insert('images', $data);
-			return $this->db->insert_id();
-		}
+	function attach($id, $image_data)
+	{
+		$data = array('src_id' => $id, 'module' => 'news', 'file' => $image_data['file_name']);
+		$this->db->insert('images', $data);
+		return $this->db->insert_id();
+	}
 		
 		
 	function save_cat($id = false)
@@ -627,6 +638,97 @@
 		
 	}
 	
+	function get_news_by_tag($params = array())
+	{
+		$default_params = array
+		(
+			'order_by' => 'news.ordering, news.id',
+			'limit' => null,
+			'start' => null,
+			'where' => array()
+		);
+		
+		foreach ($default_params as $key => $value)
+		{
+			$params[$key] = (isset($params[$key]))? $params[$key]: $default_params[$key];
+		}
+		
+		$hash = md5(serialize($params));
+		if(!$result = $this->cache->get('get_news_by_tag' . $hash, 'news_list'))
+		{
+			$this->db->where($params['where']);
+			$this->db->limit($params['limit'], $params['start']);
+			$this->db->order_by($params['order_by']);
+
+			$this->db->select('news_tags.uri, news_tags.tag, news.*');
+			$this->db->from('news_tags');
+			$this->db->join('news', 'news_tags.news_id=news.id',  'left');
+			
+			
+			$query = $this->db->get();
+
+
+			if ($query->num_rows() > 0)
+			{
+				foreach ($query->result_array() as $row)
+				{
+					$this->db->order_by('id DESC');
+					$this->db->where(array('src_id' => $row['id'], 'module' => 'news'));
+					$query2 = $this->db->get('images');
+					$row['image'] = $query2->row_array();
+					
+					if($page_break_pos = strpos($row['body'], "<!-- page break -->"))
+					{
+						$row['summary'] = substr($row['body'], 0, $page_break_pos);
+					}
+					else
+					{
+						$row['summary'] = character_limiter(strip_tags($row['body']), 200);
+					}
+
+					$return[] = $row;
+				}
+				$result = $return;
+			}
+			else
+			{
+				$result = false;
+			}
+			$this->cache->save('get_news_by_tag', $result, 'news_list', 0 );
+		}
+		return $result;
+	}
+	
+	function get_total_news_by_tag($params = array())
+	{
+		$default_params = array
+		(
+			'order_by' => 'news.ordering, news.id',
+			'start' => null,
+			'where' => array()
+		);
+		
+		foreach ($default_params as $key => $value)
+		{
+			$params[$key] = (isset($params[$key]))? $params[$key]: $default_params[$key];
+		}
+		$hash = md5(serialize($params));
+		if(!$result = $this->cache->get('get_total_news_by_tag' . $hash, 'news_list'))
+		{
+			$this->db->where($params['where']);
+			$this->db->order_by($params['order_by']);
+
+			$this->db->select(' count(' . $this->db->dbprefix('news') . '.id) as cnt');
+			$this->db->from('news');
+			$this->db->join('news_tags', 'news_tags.news_id=news.id',  'left');
+			$query = $this->db->get();
+			
+			$row = $query->row_array();
+			$result = $row['cnt'];
+			$this->cache->save('get_total_news_by_tag', $result, 'news_list', 0 );
+		}
+		return $result;
+	}
 }
 
 

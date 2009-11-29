@@ -93,7 +93,7 @@ class Install extends Controller
 		
 		if($query->num_rows() == 0)
 		{
-		$this->db->query("INSERT INTO " . $this->db->dbprefix('languages') . " (id, code, name, ordering, active, default) VALUES (1, 'en', 'English', 1, 1, 1), (2, 'fr', 'Fran&ccedil;ais', 2, 1, 0),  (3, 'it', 'Italiano', 3, 1, 0)");
+		$this->db->query("INSERT INTO " . $this->db->dbprefix('languages') . " (`id`, `code`, `name`, `ordering`, `active`, `default`) VALUES (1, 'en', 'English', 1, 1, 1), (2, 'fr', 'Fran&ccedil;ais', 2, 1, 0),  (3, 'it', 'Italiano', 3, 1, 0)");
 		}
 		
 
@@ -146,7 +146,7 @@ class Install extends Controller
 		
 		if($query->num_rows() == 0)
 		{
-			$this->db->query("INSERT INTO " . $this->db->dbprefix('navigation') . " (id, parent_id, title, uri, lang) VALUES (19, 0, 'leftmenu', '', 'en), (1, 19, 'Menu', '', 'en),  ( 1, 19, 'Menu', '', 'en'), ( 2, 1, 'Home', 'home', 'en'), ( 3, 1, 'About', 'about', 'en'), ( 20, 0, 'leftmenu', '', 'fr'), ( 4, 20, 'Menu', '', 'fr'), ( 5, 4, 'Accueil', 'accueil', 'fr'), ( 6, 4, 'A propos', 'a-propos', 'fr'), ( 21, 0, 'leftmenu', '', 'it'), ( 7, 21, 'Menu', '', 'it'), ( 8, 7, 'Home', 'home', 'it'), ( 9, 7, 'About', 'about', 'it'), ( 10, 0, 'topmenu', '', 'en'), ( 11, 10, 'Contact us', 'contact-us', 'en'), ( 12, 10, 'Google', 'http://google.com', 'en'), ( 13, 0, 'topmenu', '', 'fr'), ( 14, 13, 'Contact us', 'contact-us', 'fr'), ( 15, 13, 'Google', 'http://google.com', 'fr'), ( 16, 0, 'topmenu', '', 'it'), ( 17, 16, 'Contact us', 'contact-us', 'it'), ( 18, 16, 'Google', 'http://google.com', 'it') ");
+			$this->db->query("INSERT IGNORE INTO " . $this->db->dbprefix('navigation') . " (id, parent_id, title, uri, lang) VALUES (19, 0, 'leftmenu', '', 'en'), (1, 19, 'Menu', '', 'en'),  ( 1, 19, 'Menu', '', 'en'), ( 2, 1, 'Home', 'home', 'en'), ( 3, 1, 'About', 'about', 'en'), ( 20, 0, 'leftmenu', '', 'fr'), ( 4, 20, 'Menu', '', 'fr'), ( 5, 4, 'Accueil', 'accueil', 'fr'), ( 6, 4, 'A propos', 'a-propos', 'fr'), ( 21, 0, 'leftmenu', '', 'it'), ( 7, 21, 'Menu', '', 'it'), ( 8, 7, 'Home', 'home', 'it'), ( 9, 7, 'About', 'about', 'it'), ( 10, 0, 'topmenu', '', 'en'), ( 11, 10, 'Contact us', 'contact-us', 'en'), ( 12, 10, 'Google', 'http://google.com', 'en'), ( 13, 0, 'topmenu', '', 'fr'), ( 14, 13, 'Contact us', 'contact-us', 'fr'), ( 15, 13, 'Google', 'http://google.com', 'fr'), ( 16, 0, 'topmenu', '', 'it'), ( 17, 16, 'Contact us', 'contact-us', 'it'), ( 18, 16, 'Google', 'http://google.com', 'it') ");
 		}
 
 
