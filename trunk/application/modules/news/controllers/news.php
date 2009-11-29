@@ -208,6 +208,8 @@ and set to approve comments automatically.
 			$this->template['start'] = $start;
 			$this->template['total_rows'] = $config['total_rows'];
 			$this->template['pager'] = $this->pagination->create_links();		
+
+			$this->template['title'] = __("All news", $this->template['module']);
 			
 			$this->layout->load($this->template, 'index');
 		}
@@ -251,10 +253,61 @@ and set to approve comments automatically.
 			$this->template['start'] = $start;
 			$this->template['total_rows'] = $config['total_rows'];
 			$this->template['pager'] = $this->pagination->create_links();
+			$this->template['title'] = sprintf(__("News in %s", $this->template['module']), $cat['title']);
+
 			
 			$this->layout->load($this->template, 'index');
 			
 		}
+	
+		function tag ($tag = null, $start = 0)
+		{
+			
+			
+			$per_page = 20;
+			
+			
+			
+			if(is_null($tag))
+			{
+				$this->template['title'] = __("Tag list", "news");
+				$this->template['rows'] = $this->news->get_tags();
+				$this->layout->load($this->template, 'tag_list');
+				return;
+			}
+			else
+			{
+				$this->template['title'] = sprintf(__("News tagged with %s ", "news"), $tag);
+				$per_page = 20;
+				
+				$params['limit'] = $per_page;
+				$params['start'] = $start;
+				$params['where'] = array('news.lang' => $this->user->lang);
+				$params['where']['news_tags.uri'] = $tag;
+				$params['order_by'] = 'news.id DESC';
+				
+				
+				$this->load->library('pagination');
+				
+				$config['uri_segment'] = 4;
+				$config['first_link'] = __('First', 'news');
+				$config['last_link'] = __('Last', 'news');
+				$config['base_url'] = site_url('news/tag/' . $tag);
+				$config['total_rows'] = $this->news->get_total_news_by_tag($params);
+				$config['per_page'] = $per_page; 	
+				$this->pagination->initialize($config); 
+
+				$this->template['rows'] = $this->news->get_news_by_tag($params);
+				$this->template['start'] = $start;
+				$this->template['total_rows'] = $config['total_rows'];
+				$this->template['pager'] = $this->pagination->create_links();		
+			
+				$this->layout->load($this->template, 'index');
+			}
+		}		
+	
+	
+	
 	}
 
 ?>
