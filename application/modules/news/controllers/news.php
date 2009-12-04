@@ -253,7 +253,14 @@ and set to approve comments automatically.
 			$this->template['start'] = $start;
 			$this->template['total_rows'] = $config['total_rows'];
 			$this->template['pager'] = $this->pagination->create_links();
-			$this->template['title'] = sprintf(__("News in %s", $this->template['module']), $cat['title']);
+			if(isset($cat))
+			{
+				$this->template['title'] = sprintf(__("News in %s", $this->template['module']), $cat['title']);
+			}
+			else
+			{
+				$this->template['title'] = __("Other news", $this->template['module']);			
+			}
 
 			
 			$this->layout->load($this->template, 'index');
