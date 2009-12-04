@@ -280,7 +280,30 @@
 			}
 			
 		}
+	
+		function update_image($id, $data)
+		{
+			$this->db->set($data);
+			$this->db->where('id', $id);
+			$this->db->update('images');		
+		}
 		
+		function save($data)
+		{
+			$this->db->insert('pages', $data);
+			return $this->db->insert_id();
+			
+		}
+		
+		function delete($id)
+		{
+			$this->db->where('id', $id);
+			$query = $this->db->delete('pages');
+		}
+		
+
+		$this->db->where('id', $this->input->post('id'));
+
 	}
 
 

@@ -119,16 +119,19 @@
 					}
 					$data['uri'] = $parent_uri . format_title($this->input->post('title'));
 				}
-				$this->db->insert('pages', $data);
-				$id = $this->db->insert_id();
+				
+								
+				$id = $this->page->save($data);
+				
+				
+				
 				
 				if ($image_ids = $this->input->post('image_ids'))
 				{
 					foreach($image_ids as $image_id)
 					{
-						$this->db->set('src_id', $id);
-						$this->db->where('id', $image_id);
-						$this->db->update('images');
+						$data = array('src_id' => $id);
+						$this->page->update_image($image_id, $data);
 					}	
 				}
 				$this->cache->remove('pagelist'.$this->user->lang, 'page');
@@ -203,11 +206,8 @@
 			{
 				$this->javascripts->add('ajaxfileupload.js');
 				//get pending images
-				$this->db->where('src_id', 0);
-				$this->db->where('module', 'page');
-				$query = $this->db->get('images');
 				
-				$this->template['images'] = $query->result_array();
+				$this->template['images'] = $this->page->get_images(0);
 				$this->template['parent_id'] = $parent_id;
 				$this->template['uri'] = $uri;
 				$this->layout->load($this->template, 'create');
@@ -249,9 +249,8 @@
 				{
 					$data['options'] = serialize($this->input->post('options'));
 				}
-					
-				$this->db->where('id', $this->input->post('id'));
-				$this->db->update('pages', $data);
+				
+				$this->page->update($this->input->post('id'), $data);
 				$this->cache->remove('pagelist'.$this->user->lang, 'page');				
 				
 				
@@ -262,9 +261,8 @@
 				{
 					foreach($image_ids as $image_id)
 					{
-						$this->db->set('src_id', $this->input->post('id'));
-						$this->db->where('id', $image_id);
-						$this->db->update('images');
+						$data = array('src_id' => $this->input->post('id'));
+						$this->page->update_image($image_id, $data);
 					}	
 				}
 				$this->cache->remove('pagelist'.$this->user->lang, 'page');
@@ -347,11 +345,8 @@
 			}			
 			$this->javascripts->add('ajaxfileupload.js');
 			$this->template['pages'] = $data;
-			$this->db->where('src_id', 0);
-			$this->db->or_where('src_id', $this->page_id);
-			$query = $this->db->get('images');
 			
-			$this->template['images'] = $query->result_array();
+			$this->template['images'] = $this->page->get_images(0);
 			
 			$this->template['page'] = $this->pages->get_page( array('id' => $this->page_id) );
 			$this->layout->load($this->template, 'edit');
@@ -362,13 +357,12 @@
 			$this->user->check_level($this->template['module'], LEVEL_DEL);
 			if ( $post = $this->input->post('submit') )
 			{
-				$this->db->where('id', $this->input->post('id'));
-				$query = $this->db->delete('pages');
+				$this->page->delete($this->input->post('id'));
 				
 				$this->db->where('src_id', $this->input->post('id'));
 				$this->db->set('src_id', 0);
 				$query = $this->db->update('images');
-				
+
 				$this->session->set_flashdata('notification', 'Page has been deleted.');
 				$this->cache->remove('pagelist'.$this->user->lang, 'page'); 
 				$this->plugin->do_action('page_delete', $this->input->post('id'));
