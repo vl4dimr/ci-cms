@@ -43,9 +43,10 @@ class Ajax extends Controller {
 		{
 			$data['message'] = __("Logged in:", $this->template['module']) . " " . $username;
 			$data['message'] .= "<br /><a href='" . site_url('member/logout') . "'>" . __("Sign out", $this->template['module']) . "</a>"; 
+		
 			$data['status'] = 1;
 			
-			$this->plugin->apply_filters('logged_in_message', $data);
+			$data = $this->plugin->apply_filters('logged_in_message', $data);
 			$this->output->set_header("Content-type: text/xml");
 			$this->load->view('ajax', $data);
 			return;
