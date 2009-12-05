@@ -34,14 +34,20 @@ function page_item($where = array())
 {
 	$obj =& get_instance();
 	
-	$obj->load->model('page_model');
-	return  $obj->page_model->get_page($where);
+	$hash = md5(serialize($where));
+	if(!$result = $obj->cache->get('page_item_' . $hash, 'page_list'))
+	{
+		$obj->load->model('page_model');
+		$result = $obj->page_model->get_page($where);
+		$obj->cache->save('page_item_' . $hash, $result, 'page_list', 0);
+	}
+	return $result; 
 }
 
 function page_images($page_id)
 {
 	$obj =& get_instance();
 	$obj->load->model('page_model');
-	return $obj->page_model->get_images($page_id);
+	return $obj->page_model->get_images(array('where' => array('src_id' => $page_id)));
 }
 ?>

@@ -207,7 +207,7 @@
 				$this->javascripts->add('ajaxfileupload.js');
 				//get pending images
 				
-				$this->template['images'] = $this->page->get_images(0);
+				$this->template['images'] = $this->page->get_images(array('where' => array('src_id' => 0)));
 				$this->template['parent_id'] = $parent_id;
 				$this->template['uri'] = $uri;
 				$this->layout->load($this->template, 'create');
@@ -346,7 +346,7 @@
 			$this->javascripts->add('ajaxfileupload.js');
 			$this->template['pages'] = $data;
 			
-			$this->template['images'] = $this->page->get_images(0);
+			$this->template['images'] = $this->page->get_images(array('where' => array('src_id' => 0)));
 			
 			$this->template['page'] = $this->pages->get_page( array('id' => $this->page_id) );
 			$this->layout->load($this->template, 'edit');
@@ -359,9 +359,7 @@
 			{
 				$this->page->delete($this->input->post('id'));
 				
-				$this->db->where('src_id', $this->input->post('id'));
-				$this->db->set('src_id', 0);
-				$query = $this->db->update('images');
+				$this->page->update_images(array('src_id' => $this->input->post('id')), array('src_id' => 0));
 
 				$this->session->set_flashdata('notification', 'Page has been deleted.');
 				$this->cache->remove('pagelist'.$this->user->lang, 'page'); 
@@ -378,14 +376,11 @@
 		
 		function tinyimagelist()
 		{
-			if ( !$rows = $this->cache->get('imagelist', 'page') )
-			{	
-				$this->db->where('module', 'page');
-				$this->db->order_by('file');
-				$query = $this->db->get('images');
-				$rows = $query->result_array();
-				$this->cache->save('imagelist', $rows, 'page', 0);
-			}		
+			$params = array(
+			'where' => array('module' => 'page'),
+			'order_by' => 'file',
+			);
+			$rows = $this->page->get_images($params)
 
 			$images = array();
 			foreach ($rows as $row)
@@ -419,8 +414,8 @@
 		
 		function ajax_delete()
 		{
-			$this->db->where('id', $this->input->post('id'));
-			$this->db->delete('images');
+
+			$this->page->delete_image($this->input->post('id'));
 			echo __("The image was deleted", $this->template['module']);
 		}
 		
@@ -517,8 +512,7 @@
 
 						$this->image_lib->resize();
 						$data = array('file' => $image_data['file_name'], 'module' => 'page');
-						$this->db->insert('images', $data);
-						$id = $this->db->insert_id();
+						$id = $this->page->save_image($data);
 						
 					}
 				}
