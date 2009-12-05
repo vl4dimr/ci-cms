@@ -64,6 +64,7 @@
 			
 			$this->db->set('weight', 'weight+'.$move, FALSE);
 			$this->db->update('pages');
+
 			
 			$this->db->where(array('id' => $id));
 			$query = $this->db->get('pages');
@@ -103,6 +104,7 @@
 				}
 			}
 			//clear cache
+			$this->cache->remove_group('page_list');
 			$this->cache->remove('pagelist'.$this->user->lang, 'page');				
 			
 		}
@@ -220,6 +222,7 @@
 		{
 			$data = array('src_id' => $id, 'module' => 'page', 'file' => $image_data['file_name']);
 			$this->db->insert('images', $data);
+			$this->cache->remove_group('image_list');
 			return $this->db->insert_id();
 		}
 		
@@ -231,6 +234,7 @@
 			}
 			$this->db->where('id', $id);
 			$this->db->update('pages', $data);
+			$this->cache->remove_group('page_list');
 		}
 		
 		function get_comments($params = array())
@@ -268,29 +272,65 @@
 		
 		function get_images($page_id)
 		{
-			$this->db->where(array('src_id' => $page_id, 'module' => 'page'));
-			$uqery = $this->db->get('images');
-			if ( $query->num_rows() > 0 )
+			$default_params = array
+			(
+				'order_by' => 'file',
+				'limit' => 20,
+				'start' => 0,
+				'where' => null,
+			);
+			
+			foreach ($default_params as $key => $value)
 			{
-				return $query->result_array();
-			}
-			else
-			{
-				return false;
+				$params[$key] = (isset($params[$key]))? $params[$key]: $default_params[$key];
 			}
 			
+			$hash = md5(serialize($params));
+			if(!$result = $this->cache->get('get_images'. $hash, 'image_list'))
+			{
+			
+				if (!is_null($params['like']))
+				{
+					$this->db->like($params['like']);
+				}
+				if (!is_null($params['where']))
+				{
+					$this->db->where($params['where']);
+				}
+				
+				$this->db->limit($params['limit'], $params['start']);
+
+				$this->db->order_by($params['order_by']);
+
+				$this->db->from('images');
+
+				$query = $this->db->get();
+
+				if ($query->num_rows() == 0 )
+				{
+					$result = false;
+				}
+				else
+				{
+					$result = $query->result_array();
+				}
+				$this->cache->save('get_images'. $hash, $result, 'image_list', 0);
+			}
+			return $result;
 		}
 	
 		function update_image($id, $data)
 		{
 			$this->db->set($data);
 			$this->db->where('id', $id);
-			$this->db->update('images');		
+			$this->db->update('images');
+			$this->cache->remove_group('image_list');
 		}
 		
 		function save($data)
 		{
 			$this->db->insert('pages', $data);
+			$this->cache->remove_group('page_list');
 			return $this->db->insert_id();
 			
 		}
@@ -299,11 +339,36 @@
 		{
 			$this->db->where('id', $id);
 			$query = $this->db->delete('pages');
+			$this->cache->remove_group('page_list');
 		}
 		
+		function delete_image($id)
+		{
+			$this->db->where('id', $id);
+			$query = $this->db->delete('images');
+			$this->cache->remove_group('image_list');
+		}
 
-		$this->db->where('id', $this->input->post('id'));
+		/*
+		* updating many images
+		*/
+		
+		function update_images($where = array(), $data = array())
+		{
+			
+			$this->db->where($where);
+			$this->db->set($data);
+			$this->db->update('images');
+			$this->cache->remove_group('image_list');
+		}
 
+		function save_image($data)
+		{
+			$this->db->insert('images', $data);
+			$this->cache->remove_group('image_list');
+			return $this->db->insert_id();
+			
+		}
 	}
 
 
