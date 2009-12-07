@@ -121,7 +121,7 @@
 				}
 				
 								
-				$id = $this->page->save($data);
+				$id = $this->pages->save($data);
 				
 				
 				
@@ -131,7 +131,7 @@
 					foreach($image_ids as $image_id)
 					{
 						$data = array('src_id' => $id);
-						$this->page->update_image($image_id, $data);
+						$this->pages->update_image($image_id, $data);
 					}	
 				}
 				$this->cache->remove('pagelist'.$this->user->lang, 'page');
@@ -207,7 +207,7 @@
 				$this->javascripts->add('ajaxfileupload.js');
 				//get pending images
 				
-				$this->template['images'] = $this->page->get_images(array('where' => array('src_id' => 0)));
+				$this->template['images'] = $this->pages->get_images(array('where' => array('src_id' => 0)));
 				$this->template['parent_id'] = $parent_id;
 				$this->template['uri'] = $uri;
 				$this->layout->load($this->template, 'create');
@@ -250,7 +250,7 @@
 					$data['options'] = serialize($this->input->post('options'));
 				}
 				
-				$this->page->update($this->input->post('id'), $data);
+				$this->pages->update($this->input->post('id'), $data);
 				$this->cache->remove('pagelist'.$this->user->lang, 'page');				
 				
 				
@@ -262,7 +262,7 @@
 					foreach($image_ids as $image_id)
 					{
 						$data = array('src_id' => $this->input->post('id'));
-						$this->page->update_image($image_id, $data);
+						$this->pages->update_image($image_id, $data);
 					}	
 				}
 				$this->cache->remove('pagelist'.$this->user->lang, 'page');
@@ -346,7 +346,7 @@
 			$this->javascripts->add('ajaxfileupload.js');
 			$this->template['pages'] = $data;
 			
-			$this->template['images'] = $this->page->get_images(array('where' => array('src_id' => 0)));
+			$this->template['images'] = $this->pages->get_images(array('where' => array('src_id' => 0)));
 			
 			$this->template['page'] = $this->pages->get_page( array('id' => $this->page_id) );
 			$this->layout->load($this->template, 'edit');
@@ -357,9 +357,9 @@
 			$this->user->check_level($this->template['module'], LEVEL_DEL);
 			if ( $post = $this->input->post('submit') )
 			{
-				$this->page->delete($this->input->post('id'));
+				$this->pages->delete($this->input->post('id'));
 				
-				$this->page->update_images(array('src_id' => $this->input->post('id')), array('src_id' => 0));
+				$this->pages->update_images(array('src_id' => $this->input->post('id')), array('src_id' => 0));
 
 				$this->session->set_flashdata('notification', 'Page has been deleted.');
 				$this->cache->remove('pagelist'.$this->user->lang, 'page'); 
@@ -380,7 +380,7 @@
 			'where' => array('module' => 'page'),
 			'order_by' => 'file',
 			);
-			$rows = $this->page->get_images($params)
+			$rows = $this->pages->get_images($params);
 
 			$images = array();
 			foreach ($rows as $row)
@@ -415,7 +415,7 @@
 		function ajax_delete()
 		{
 
-			$this->page->delete_image($this->input->post('id'));
+			$this->pages->delete_image($this->input->post('id'));
 			echo __("The image was deleted", $this->template['module']);
 		}
 		
@@ -512,7 +512,7 @@
 
 						$this->image_lib->resize();
 						$data = array('file' => $image_data['file_name'], 'module' => 'page');
-						$id = $this->page->save_image($data);
+						$id = $this->pages->save_image($data);
 						
 					}
 				}

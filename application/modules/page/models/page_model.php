@@ -278,6 +278,7 @@
 				'limit' => 20,
 				'start' => 0,
 				'where' => null,
+				'like' => null
 			);
 			
 			foreach ($default_params as $key => $value)
