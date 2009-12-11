@@ -232,11 +232,8 @@ class Member extends Controller {
 	
 	function profile($username = null) 
 	{
-		if ( !$this->user->logged_in ) 
-		{
-			redirect('member/login');
-			return;
-		}
+		$this->user->require_login();
+		
 		if ( is_null($username) )
 		{
 			$username = $this->user->username;
