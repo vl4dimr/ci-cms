@@ -25,7 +25,7 @@
 		{	
 			if ($this->logged_in)
 			{
-				$this->update($this->username, array('activation' => '', 'lastvisit' => mktime()));
+				$this->update($this->username, array('activation' => '', 'lastvisit' => mktime(), 'online' => 1));
 			}
 		}
 
@@ -54,13 +54,7 @@
 			$admin = array();
 			if ($this->logged_in)
 			{
-			
-				$query = $this->obj->db->get('admins', 1);
 				
-				if ($query->num_rows() == 0)
-				{
-					$this->obj->db->insert('admins', array('username' => $this->username, 'module' => 'admin', 'level' => 4));
-				}
 			
 				$this->obj->db->where('username', $this->username);
 				$query = $this->obj->db->get('admins');
@@ -183,29 +177,37 @@
 
 				
 				$this->_start_session($user);
-
+				
+				$this->obj->session->set_flashdata('notification', 'Login successful...');
+				
 				return true;
 			}
 			else
 			{
+				// Login from database failed...
+				//check from other plugins
+				// to be done
+				
 				// Couldn't find the user,
 				// Let's destroy everything just to make sure.
-				
+					
 				$this->_destroy_session();
-
+				
+				$this->obj->session->set_flashdata('notification', 'Login failed...');
+				
 				return false;
 			}
 			
 		}
 		
-	
-		
 		function logout()
 		{
 			//keep last_uri
+			$this->update($this->username, array('online' => 0));
 			$last_uri = $this->obj->session->userdata("last_uri");
 			$this->_destroy_session();
 			$this->obj->session->set_userdata(array('last_uri' => $last_uri));
+			$this->obj->session->set_flashdata('notification', 'You are now logged out');
 		}
 		
 		function update($username, $data)
@@ -250,6 +252,7 @@
 				"redirect" => substr($this->obj->uri->uri_string(), 1)
 				);
 				$this->obj->session->set_userdata($data);
+				
 				
 				redirect("member/login");
 			}
@@ -400,24 +403,12 @@
 		
 		function is_online($username)
 		{
-			$this->obj->db->like(array('user_data' => 's:8:"username";s:' . strlen($username) . ':"' . $username . '"'));
-			$this->obj->db->order_by('last_activity DESC');
-			$query = $this->obj->db->get('sessions');
+			$this->obj->db->where(array('username' => $username, 'lastvisit >' => mktime() - 600, 'online' => 1 ));
+			$this->obj->db->order_by('lastvisit DESC');
+			$query = $this->obj->db->get('users');
 			if($query->num_rows() > 0)
 			{
-				$row = $query->row_array();
-				$user_data = unserialize($row['user_data']);
-
-				
-				if ($user_data['logged_in'] && ($row['last_activity'] > mktime() - 600))
-				{
-
-					return true;
-				}
-				else
-				{	
-					return false;
-				}
+				return true;
 			}
 			else
 			{
@@ -427,25 +418,12 @@
 		
 		function get_online()
 		{
-			$this->obj->db->like(array('user_data' =>'"logged_in";s:1:"1"'));
-			$this->obj->db->order_by('last_activity DESC');
-			$query = $this->obj->db->get('sessions');
+			$this->obj->db->where(array('lastvisit >' => mktime() - 600, 'online' => 1 ));
+			$this->obj->db->order_by('lastvisit DESC');
+			$query = $this->obj->db->get('users');
 			if($query->num_rows() > 0)
 			{
-				$return = array();
-				foreach($query->result_array() as $row)
-				{
-					$user_data = unserialize($row['user_data']);
-
-					if ($user_data['logged_in'] ) //&& ($row['last_activity'] > mktime() - 600))
-					{
-						if(!isset($return[ $user_data['username']]))
-						{
-							$return[$user_data['username']] = array('username' => $user_data['username'], 'lastvisit' => $row['last_activity']);
-						}
-					}
-				}
-				return $return;
+				return $query->result_array();
 			}
 			else
 			{
@@ -455,4 +433,3 @@
 		}
 
 	}	
-?>
