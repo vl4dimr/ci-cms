@@ -126,6 +126,10 @@ Text to put before the signup form. It is included in form so other fields can b
 
 Like members_signup_pre_form but this is under the fields, just about the submit button.
 
+====member_registered_msg====
+
+When a member is registered, he receives a message with his password. After that, there is a space where a customized message can be added.
+
 ====search_result====
 
 Search result returns an array
