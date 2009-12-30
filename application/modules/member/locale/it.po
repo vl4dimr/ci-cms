@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Solaitra:Downloads\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-31 00:46+0100\n"
-"PO-Revision-Date: 2009-05-31 01:09+0100\n"
+"POT-Creation-Date: 2009-12-30 21:52+0100\n"
+"PO-Revision-Date: 2009-12-30 21:52+0100\n"
 "Last-Translator: Eugene Hery <hery@serasera.org>\n"
 "Language-Team: Hery serasera.org <hery@serasera.org>\n"
 "MIME-Version: 1.0\n"
@@ -27,14 +27,14 @@ msgstr "Ultimo"
 #: ../controllers/admin.php:201
 #: ../controllers/group.php:67
 #: ../controllers/group.php:184
-#: ../controllers/member.php:122
-#: ../controllers/member.php:320
+#: ../controllers/member.php:127
+#: ../controllers/member.php:329
 msgid "email"
 msgstr "email"
 
 #: ../controllers/admin.php:85
 #: ../controllers/group.php:68
-#: ../controllers/member.php:123
+#: ../controllers/member.php:128
 msgid "username"
 msgstr "nome utente"
 
@@ -42,7 +42,7 @@ msgstr "nome utente"
 #: ../controllers/admin.php:202
 #: ../controllers/group.php:69
 #: ../controllers/group.php:185
-#: ../controllers/member.php:243
+#: ../controllers/member.php:252
 msgid "password"
 msgstr "password"
 
@@ -50,8 +50,8 @@ msgstr "password"
 #: ../controllers/admin.php:203
 #: ../controllers/group.php:70
 #: ../controllers/group.php:186
-#: ../controllers/member.php:124
-#: ../controllers/member.php:244
+#: ../controllers/member.php:129
+#: ../controllers/member.php:253
 msgid "password confirmation"
 msgstr "conferma password"
 
@@ -59,10 +59,10 @@ msgstr "conferma password"
 #: ../controllers/admin.php:208
 #: ../controllers/group.php:76
 #: ../controllers/group.php:191
-#: ../controllers/member.php:130
-#: ../controllers/member.php:249
-#: ../controllers/member.php:324
-#: ../controllers/member.php:414
+#: ../controllers/member.php:135
+#: ../controllers/member.php:258
+#: ../controllers/member.php:333
+#: ../controllers/member.php:423
 #, php-format
 msgid "The %s field is required"
 msgstr "Il campo %s è obligatorio"
@@ -71,9 +71,9 @@ msgstr "Il campo %s è obligatorio"
 #: ../controllers/admin.php:209
 #: ../controllers/group.php:77
 #: ../controllers/group.php:192
-#: ../controllers/member.php:131
-#: ../controllers/member.php:250
-#: ../controllers/member.php:415
+#: ../controllers/member.php:136
+#: ../controllers/member.php:259
+#: ../controllers/member.php:424
 #, php-format
 msgid "The %s field does not match the %s field"
 msgstr "Le champ %s est différent de %s"
@@ -85,7 +85,7 @@ msgstr "Utilisateur enregistré"
 
 #: ../controllers/admin.php:125
 #: ../controllers/group.php:108
-#: ../controllers/member.php:183
+#: ../controllers/member.php:195
 msgid "The username is already in use"
 msgstr "D&eacute;sol&eacute;, ce nom d'identification est d&eacute;j&agrave; utilis&eacute;e!"
 
@@ -125,7 +125,7 @@ msgstr "Membre sauvegard&eacute;es."
 
 #: ../controllers/admin.php:279
 #: ../controllers/group.php:252
-#: ../controllers/member.php:213
+#: ../controllers/member.php:225
 msgid "The email is already in use"
 msgstr "D&eacute;sol&eacute;, cette adresse mail est d&eacute;j&agrave; utilis&eacute;e!"
 
@@ -134,7 +134,7 @@ msgid "Username is required"
 msgstr "Il nome utente è obligatorio"
 
 #: ../controllers/ajax.php:34
-#: ../controllers/member.php:80
+#: ../controllers/member.php:83
 msgid "Please enter your password"
 msgstr "Veuillez insérer  le mot de passe."
 
@@ -146,38 +146,38 @@ msgstr "Connesso:"
 msgid "Sign out"
 msgstr "Exit"
 
-#: ../controllers/ajax.php:53
+#: ../controllers/ajax.php:56
 msgid "Login error. Please verify your username "
 msgstr "Errore d'identificazione. Verifica il tuo nome utente"
 
-#: ../controllers/member.php:31
+#: ../controllers/member.php:38
 msgid "You are now logged out."
 msgstr "Vous &ecirc;tes maintant d&eacute;connect&eacute;"
 
-#: ../controllers/member.php:40
+#: ../controllers/member.php:47
 msgid "You are now logged in"
 msgstr "Vous &ecirc;tes maintenant connect&eacute;"
 
-#: ../controllers/member.php:74
+#: ../controllers/member.php:77
 msgid "Please enter your username"
 msgstr "Merci de renseigner l'identifiant."
 
-#: ../controllers/member.php:100
+#: ../controllers/member.php:105
 msgid "Login error. Please verify your username and your password."
 msgstr "Connexion &eacute;chou&eacute;e. Merci de saisir de nouveau votre identifiant et mot de passe."
 
-#: ../controllers/member.php:132
-#: ../controllers/member.php:416
+#: ../controllers/member.php:137
+#: ../controllers/member.php:425
 msgid "The email address you entered is not valid."
 msgstr "L'adresse que vous avez ins&eacute;r&eacute;e n'est pas valide. Veuillez essayer."
 
-#: ../controllers/member.php:155
+#: ../controllers/member.php:162
 #, php-format
 msgid "Your password for %s"
 msgstr "La tua password per %s"
 
-#: ../controllers/member.php:156
-#, php-format
+#: ../controllers/member.php:165
+#, fuzzy, php-format
 msgid ""
 "Hello %s,\n"
 "\n"
@@ -187,8 +187,6 @@ msgid ""
 "Username: %s\n"
 "Password: %s\n"
 "\n"
-"Thank you.\n"
-"The administrator"
 msgstr ""
 "Ciao %s,\n"
 "\n"
@@ -201,12 +199,19 @@ msgstr ""
 "Grazie.\n"
 "L'amministratore del sito"
 
-#: ../controllers/member.php:163
+#: ../controllers/member.php:167
+msgid ""
+"\n"
+"Thank you.\n"
+"The administrator"
+msgstr ""
+
+#: ../controllers/member.php:175
 #, php-format
 msgid "New member for %s"
 msgstr "Nouveau membre pour %s"
 
-#: ../controllers/member.php:164
+#: ../controllers/member.php:176
 #, php-format
 msgid ""
 "Hello admin,\n"
@@ -220,7 +225,7 @@ msgid ""
 "The administrator"
 msgstr ""
 
-#: ../controllers/member.php:169
+#: ../controllers/member.php:181
 #, php-format
 msgid ""
 "Thank you for registering with this site.\n"
@@ -231,25 +236,25 @@ msgstr ""
 "\n"
 "Verifica il tuo email %s dove abbiamo mandato la tua password."
 
-#: ../controllers/member.php:189
+#: ../controllers/member.php:201
 msgid "The username format is not valid, please use alphanumeric characters."
 msgstr "Le format du nom d'identification n'est pas valide. Veuillez utiliser seulement des chiffres et des lettres."
 
-#: ../controllers/member.php:265
+#: ../controllers/member.php:274
 msgid "Your profile was saved."
 msgstr "Votre profil est enregistré"
 
-#: ../controllers/member.php:325
+#: ../controllers/member.php:334
 #, php-format
 msgid "The address %s is not a valid email"
 msgstr "Votre adresse email %s n'est pas valide"
 
-#: ../controllers/member.php:342
+#: ../controllers/member.php:351
 #, php-format
 msgid "Create a new password: %s"
 msgstr "Creare una nuova password: %s"
 
-#: ../controllers/member.php:343
+#: ../controllers/member.php:352
 #, php-format
 msgid ""
 "Hello %s,\n"
@@ -270,45 +275,45 @@ msgstr ""
 "Grazie.\n"
 "L'Amministratore"
 
-#: ../controllers/member.php:348
+#: ../controllers/member.php:357
 #, php-format
 msgid "We have sent to %s the instruction on how to create a new password. Please check your email."
 msgstr "Abbiamo inviato a %s l'istruzione su come creare una nuova password. Vai a leggere il tuo email."
 
-#: ../controllers/member.php:360
+#: ../controllers/member.php:369
 msgid "Your password is now changed. You can login with your username and the new password."
 msgstr "La tua password è stata cambiata. Puoi entrare adesso con quella."
 
-#: ../controllers/member.php:372
+#: ../controllers/member.php:381
 msgid "The activation link is not valid. Please check again your email and verify the link. If you are sure the link was right then contact the administrator."
 msgstr "Il link che hai inserito non è valido. Verifica di nuovo nel tuo email il link giusto. Se c'è un errore, contattare l'amministratore del sito."
 
-#: ../controllers/member.php:385
+#: ../controllers/member.php:394
 #, php-format
 msgid "The address %s is not found in our database. Try another address."
 msgstr ""
 
-#: ../controllers/member.php:397
+#: ../controllers/member.php:406
 msgid "Change your email"
 msgstr "Cambiare emial"
 
-#: ../controllers/member.php:406
+#: ../controllers/member.php:415
 #: ../views/adino.php:16
-#: ../views/admin.php:38
+#: ../views/admin.php:39
 #: ../views/create.php:42
 #: ../views/edit.php:43
 msgid "Email"
 msgstr "Email"
 
-#: ../controllers/member.php:407
+#: ../controllers/member.php:416
 msgid "Email confirmation"
 msgstr "Ripetere"
 
-#: ../controllers/member.php:435
+#: ../controllers/member.php:444
 msgid "Email change confirmation"
 msgstr "Conferma il cambio d'indirizzo"
 
-#: ../controllers/member.php:436
+#: ../controllers/member.php:445
 #, php-format
 msgid ""
 "Hello %s,\n"
@@ -322,16 +327,16 @@ msgid ""
 "The administrator"
 msgstr ""
 
-#: ../controllers/member.php:441
+#: ../controllers/member.php:450
 #, php-format
 msgid "Please, check your new email %s, We sent a link to verify that it belongs to you."
 msgstr ""
 
-#: ../controllers/member.php:456
+#: ../controllers/member.php:465
 msgid "Your email is now changed. "
 msgstr "Il tuo indirizzo email è stato cambiato"
 
-#: ../controllers/member.php:461
+#: ../controllers/member.php:470
 msgid "The link is not valid. Please check your email to verify. "
 msgstr ""
 
@@ -400,31 +405,36 @@ msgstr "Ajouter un utilisateur"
 msgid "Search"
 msgstr "Chercher"
 
-#: ../views/admin.php:37
+#: ../views/admin.php:38
 #: ../views/create.php:34
 #: ../views/edit.php:34
 msgid "Username"
 msgstr "Login"
 
-#: ../views/admin.php:39
+#: ../views/admin.php:40
 msgid "Action"
 msgstr "Action"
 
-#: ../views/admin.php:50
+#: ../views/admin.php:51
 msgid "Deactivate"
 msgstr "D&eacute;sactiver"
 
-#: ../views/admin.php:50
+#: ../views/admin.php:51
 msgid "Activate"
 msgstr "Activer"
 
-#: ../views/admin.php:51
+#: ../views/admin.php:52
 msgid "Edit"
 msgstr "Modifier"
 
-#: ../views/admin.php:52
+#: ../views/admin.php:53
 msgid "Delete"
 msgstr "Supprimer"
+
+#: ../views/admin.php:60
+#, fuzzy
+msgid "No member found"
+msgstr "Nessuna notizia trovata"
 
 #: ../views/change_mail.php:8
 msgid "Please submit your new email."
@@ -476,12 +486,12 @@ msgstr "Login"
 msgid "Please enter here your login and password"
 msgstr "Merci de saisir votre identifiant et mot de passe."
 
-#: ../views/login.php:42
+#: ../views/login.php:28
 #: ../views/signup.php:1
 msgid "Sign up"
 msgstr "Inscription"
 
-#: ../views/login.php:44
+#: ../views/login.php:30
 msgid "Lost password ?"
 msgstr "Dimenticato tutto?"
 
@@ -520,6 +530,36 @@ msgstr ""
 #: ../views/signup.php:30
 msgid "Register"
 msgstr "Inscription"
+
+#: ../views/signup.php:64
+#, fuzzy
+msgid "Enter a username"
+msgstr "nome utente"
+
+#: ../views/signup.php:65
+#: ../views/signup.php:75
+msgid "Enter at least {0} characters"
+msgstr ""
+
+#: ../views/signup.php:66
+#: ../views/signup.php:71
+#, fuzzy
+msgid "{0} is already in use"
+msgstr "D&eacute;sol&eacute;, cette adresse mail est d&eacute;j&agrave; utilis&eacute;e!"
+
+#: ../views/signup.php:69
+#: ../views/signup.php:70
+msgid "Please enter a valid email address"
+msgstr ""
+
+#: ../views/signup.php:74
+#, fuzzy
+msgid "Repeat your email"
+msgstr "Cambiare emial"
+
+#: ../views/signup.php:76
+msgid "Enter the same email as above"
+msgstr ""
 
 #: ../views/unauthorized.php:1
 msgid "Unauthorized"

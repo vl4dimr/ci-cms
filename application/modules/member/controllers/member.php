@@ -160,7 +160,13 @@ class Member extends Controller {
 			$this->email->from($this->system->admin_email, $this->system->site_name);
 			$this->email->to($this->input->post('email'));
 			$this->email->subject(sprintf(__("Your password for %s", $this->template['module']), $this->system->site_name));
-			$this->email->message(sprintf(__("Hello %s,\n\nThank you for registering to %s.\nNow you can enter in the site with these information.\n\nUsername: %s\nPassword: %s\n\nThank you.\nThe administrator", $this->template['module']), $this->input->post('username'), $this->system->site_name, $this->input->post('username'), $password));
+			$customized_message = "";
+			$customized_message = $this->plugin->apply_filters('member_registered_msg', $customized_message);
+			$message = sprintf(__("Hello %s,\n\nThank you for registering to %s.\nNow you can enter in the site with these information.\n\nUsername: %s\nPassword: %s\n\n", $this->template['module']), $this->input->post('username'), $this->system->site_name, $this->input->post('username'), $password);
+			$message .= $customized_message;
+			$message .= "\n\n";
+			$message .= __("\nThank you.\nThe administrator", $this->template['module']);
+			$this->email->message($message);
 
 			$this->email->send();
 			//notify admin
@@ -173,8 +179,9 @@ class Member extends Controller {
 			$this->email->send();
 			
 			
-			$this->session->set_flashdata('notification', nl2br(sprintf(__("Thank you for registering with this site.\n\nPlease check your email %s and get there your password, then turn back to log in.", $this->template['module']), "<b>" . $this->input->post('email') . "</b>")));
-			redirect('member/login');
+			$this->template['title'] = __("User registered", "member");
+			$this->template['message'] = nl2br(sprintf(__("Thank you for registering with this site.\n\nPlease check your email %s and get there your password, then turn back to log in.", "member"), "<b>" . $this->input->post('email') . "</b>"));
+			$this->layout->load($this->template, 'message');
 		}
 
 	}
