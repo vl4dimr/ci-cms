@@ -142,3 +142,23 @@ if ($this->system->modules[$module]['version'] < $version)
 	redirect("admin/module");
 	
 }
+
+
+//update to 1.1.0
+$version = "1.1.0";
+
+// field type for body changed to longtext
+
+if ($this->system->modules[$module]['version'] < $version)
+{
+
+	$this->db->query("ALTER TABLE  " . $this->db->dbprefix('pages') . " CHANGE  `body`  `body` LONGTEXT");
+	
+	$this->session->set_flashdata("notification", sprintf(__("Page module updated to %s", $module), $version)) ;
+	
+	$data = array('version' => $version);
+	$this->db->where(array('name'=> $module));
+	$this->db->update('modules', $data);
+	redirect("admin/module");
+	
+}
