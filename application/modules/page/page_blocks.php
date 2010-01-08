@@ -50,4 +50,13 @@ function page_images($page_id)
 	$obj->load->model('page_model');
 	return $obj->page_model->get_images(array('where' => array('src_id' => $page_id)));
 }
+
+$this->set('page_list', 'page_list');
+
+function page_list($params = array())
+{
+	$obj =& get_instance();
+	$obj->load->model('page_model');
+	return $obj->page_model->get_page_list($params);
+}
 ?>

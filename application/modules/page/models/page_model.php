@@ -370,7 +370,60 @@
 			return $this->db->insert_id();
 			
 		}
+		
+		function get_page_list($params)
+		{
+			
+			$default_params = array
+			(
+				'select' => '*',
+				'order_by' => 'id DESC',
+				'limit' => null,
+				'start' => null,
+				'where' => null,
+				'like' => null,
+				'or_where' => null,
+			);
+			
+			foreach ($default_params as $key => $value)
+			{
+				$params[$key] = (isset($params[$key]))? $params[$key]: $default_params[$key];
+			}
+			$hash = md5(serialize($params));
+			if(!$result = $this->cache->get('get_page_list' . $hash, 'page_list'))
+			{
+				if (!is_null($params['like']))
+				{
+					$this->db->like($params['like']);
+				}
+				if (!is_null($params['where']))
+				{
+					$this->db->where($params['where']);
+				}
+				if (!is_null($params['or_where']))
+				{
+					$this->db->where($params['or_where']);
+				}
+				$this->db->order_by($params['order_by']);
+				$this->db->limit($params['limit'], $params['start']);
+
+				$this->db->select($params['select']);
+				$this->db->from('pages');
+				$query = $this->db->get();
+
+				if ($query->num_rows() == 0 )
+				{
+					$result =  false;
+				}
+				else
+				{
+					$result = $query->result_array();
+				}
+				
+				$this->cache->save('get_page_list' . $hash, $result, 'page_list', 0);
+			}
+			
+			return $result;
+			
+		}		
 	}
-
-
-?>

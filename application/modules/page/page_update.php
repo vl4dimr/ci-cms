@@ -143,6 +143,24 @@ if ($this->system->modules[$module]['version'] < $version)
 	
 }
 
+}
+
+//update to 1.0.5
+$version = "1.0.5";
+
+// adding get_page_list in model and page_list in block
+
+if ($this->system->modules[$module]['version'] < $version)
+{
+
+	$this->session->set_flashdata("notification", sprintf(__("Page module updated to %s", $module), $version)) ;
+	
+	$data = array('version' => $version);
+	$this->db->where(array('name'=> $module));
+	$this->db->update('modules', $data);
+	redirect("admin/module");
+	
+}
 
 //update to 1.1.0
 $version = "1.1.0";
