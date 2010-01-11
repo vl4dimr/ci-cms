@@ -40,5 +40,37 @@
 		}
 	}
 
-	
+	function rss($tag = null, $lang = null)
+	{
+		$limit = 10;
+		if($lang= null) $lang = $this->user->lang;
+		if(!is_null($tag))
+		{
+		
+			if( $rows = $this->tags->get_tags(array('tag' => $tag, 'lang' => $lang)));
+			$data['encoding'] = 'utf-8';
+			$data['feed_name'] = __("Tag:", "tags") . " " .  strip_tags($tag) . " - " . $this->system->site_name ;
+			$data['feed_url'] = base_url();
+			$data['page_description'] = $this->system->meta_description;
+			$data['page_language'] = $lang;
+			$data['creator_email'] = (isset($this->system->admin_email))? $this->system->admin_email : "";
+			
+			
+			foreach ($rows as $key => $row)
+			{
+				$contents[$key]['title'] =  $row['title'];
+				$contents[$key]['url'] = site_url($row['url']);
+				$contents[$key]['body'] = $row['summary'];
+				$contents[$key]['date'] = (isset($row['date'])) ? $row['date'] : '';
+				$contents[$key]['author'] = (isset($row['author'])) ? $row['author'] : '';;
+			}
+			$data['contents'] = $contents;
+			header("Content-Type: application/rss+xml");
+			
+			$this->load->view('rss', $data);
+			
+			
+			
+		}
+	}
 }
