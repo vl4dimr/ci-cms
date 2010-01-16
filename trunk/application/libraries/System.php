@@ -67,6 +67,7 @@
 		function check_update()
 		{
 			
+			/*
 			$fversion = @file_get_contents(APPPATH . "version.txt");
 			
 			if (isset($fversion) && $fversion > $this->version)
@@ -74,6 +75,7 @@
 				include (APPPATH . "update.php");
 			}
 			
+			*/
 			/*
 			if ( $revision = @file_get_contents("http://ci-cms.googlecode.com/svn/") )
 			{
