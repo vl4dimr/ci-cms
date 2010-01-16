@@ -41,6 +41,7 @@
 */
 
 //language route
+
 $route['(\w{2})(/.*)?'] = 'language/set/$2';
 
 $handle = opendir(APPPATH.'modules');
