@@ -11,7 +11,7 @@ class Install extends Controller
 	function index()
 	{
 		echo "<p>You are about to install CI-CMS</p>";
-		echo "<p>Before you continue, <ol><li>check that you have a file database.php in your configuration folder and all values are ok.</li><li>make writable the <b>media</b> folder</li></p>";
+		echo "<p>Before you continue, <ol><li>check that you have a file config.php and database.php in your configuration folder and all values are ok.</li><li>make writable the <b>media</b> folder</li></p>";
 		echo "<p>If you get a database error in the next step then your database.php file is not ok</p>";
 		echo "<p>" . anchor('install/step1', 'Click here to continue') . "</p>";
 
@@ -582,10 +582,7 @@ class Install extends Controller
 		
 		if($query->num_rows() == 0)
 		{
-		$this->db->query("INSERT INTO " . $this->db->dbprefix('modules') . " (id, name, with_admin, version, status, ordering, info, description) VALUES (1, 'admin', 0, '1.2.0', 1, 5, '', 'Admin core module'), (2, 'module', 0, '1.0.0', 1, 20, '', 'Module core module'), (3, 'page', 1, '1.0.3', 1, 60, '', 'Page core module'), (4, 'language', 1, '1.1.0', 1, 10, '', 'Language core module'), (5, 'member', 1, '1.0.0', 1, 30, '', 'Member core module'), (6, 'search', 0, '1.0.0', 1, 50, '', 'Search core module'), (7, 'news', 1, '1.2.1', 1, 101, '', 'News module')");
-		
-
-
+		$this->db->query("INSERT INTO " . $this->db->dbprefix('modules') . " (id, name, with_admin, version, status, ordering, info, description) VALUES (1, 'admin', 0, '1.2.0', 1, 5, '', 'Admin core module'), (2, 'module', 0, '1.0.0', 1, 20, '', 'Module core module'), (3, 'page', 1, '1.1.0', 1, 60, '', 'Page core module'), (4, 'language', 1, '1.1.0', 1, 10, '', 'Language core module'), (5, 'member', 1, '1.0.0', 1, 30, '', 'Member core module'), (6, 'search', 0, '1.0.0', 1, 50, '', 'Search core module'), (7, 'news', 1, '1.3.0', 1, 101, '', 'News module')");
 		
 		$this->db->query("CREATE TABLE IF NOT EXISTS " . $this->db->dbprefix('group_members') . " ( id int(11) NOT NULL auto_increment, g_user varchar(255) NOT NULL default '', g_id varchar(20) NOT NULL default '', g_from int(11) NOT NULL default '0', g_to int(11) NOT NULL default '0', g_date int(11) NOT NULL default '0', PRIMARY KEY (id), KEY g_user (g_user,g_id) )");
 		
@@ -615,6 +612,33 @@ class Install extends Controller
 		$this->db->query("CREATE TABLE IF NOT EXISTS " . $this->db->dbprefix('captcha') . " ( captcha_id bigint( 13 ) unsigned NOT NULL AUTO_INCREMENT , captcha_time int( 10 ) unsigned NOT NULL , ip_address varchar( 16 ) default '0' NOT NULL , word varchar( 20 ) NOT NULL , PRIMARY KEY ( captcha_id ) , KEY ( word ) )");
 
 		$this->db->query("CREATE TABLE IF NOT EXISTS " . $this->db->dbprefix('news_cat') . "  ( `id` int(11) NOT NULL auto_increment, `pid` int(11) NOT NULL default '0', `title` varchar(255) NOT NULL default '', `icon` varchar(255) NOT NULL default '', `desc` text NOT NULL, `date` int(11) NOT NULL default '0', `username` varchar(20) NOT NULL default '', `lang` char(5) NOT NULL default '', `weight` int(11) NOT NULL default '0', `status` int(5) NOT NULL default '1', `acces` varchar(20) NOT NULL default '0', `uri` varchar(100) NOT NULL default '', PRIMARY KEY  (`id`), KEY `title` (`title`) )");
+
+$fields = array(
+	'id' => array(
+			 'type' => 'INT',
+			 'constraint' => 5,
+			 'unsigned' => TRUE,
+			 'auto_increment' => TRUE
+	  ),
+	'tag' => array(
+			 'type' => 'VARCHAR',
+			 'constraint' => '255',
+	  ),
+	'uri' => array(
+			 'type' => 'VARCHAR',
+			 'constraint' => '255',
+	  ),
+	'news_id' => array(
+			 'type' => 'INT',
+			 'constraint' => '5',
+	  )
+);
+$this->load->dbforge();
+$this->dbforge->add_field($fields); 
+$this->dbforge->add_key('id', TRUE);
+$this->dbforge->add_key('tag');
+$this->dbforge->create_table('news_tags', TRUE);
+
 		
 		$query = $this->db->get('news');
 		
