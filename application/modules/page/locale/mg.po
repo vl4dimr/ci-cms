@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Solaitra:Page\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-06-29 08:48+0100\n"
-"PO-Revision-Date: \n"
-"Last-Translator: Eugene Hery <hery@serasera.org>\n"
+"PO-Revision-Date: 2010-01-20 12:22+0100\n"
+"Last-Translator: hery <heriniaina.eugene@gmail.com>\n"
 "Language-Team: Hery serasera.org <hery@serasera.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,6 +22,9 @@ msgstr "Page"
 #: ../page_update.php:21
 #: ../page_update.php:44
 #: ../page_update.php:120
+#: ../page_update.php:137
+#: ../page_update.php:156
+#: ../page_update.php:175
 #, php-format
 msgid "Page module updated to %s"
 msgstr "Module page mis à jour en %s"
@@ -32,68 +35,72 @@ msgstr "Le répertoire <i>images</i> n'est pas permis pour l'écriture. Veuillez
 
 #: ../controllers/admin.php:51
 msgid "First"
-msgstr "Debut"
+msgstr "Voalohany"
 
 #: ../controllers/admin.php:52
 msgid "Last"
-msgstr "Dernier"
+msgstr "Farany"
 
 #: ../controllers/admin.php:80
 msgid "Settings updated"
 msgstr "Configuration enregistr&eacute;"
 
-#: ../controllers/admin.php:429
+#: ../controllers/admin.php:419
 msgid "The image was deleted"
 msgstr "L'image a été supprimée"
 
-#: ../controllers/admin.php:442
+#: ../controllers/admin.php:432
 msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
 msgstr "La taille du fichier exc&eacute;de la directive <code>upload_max_filesize</code> pr&eacute;sente dans le fichier <code>php.ini</code>."
 
-#: ../controllers/admin.php:445
+#: ../controllers/admin.php:435
 msgid "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form"
 msgstr "Le fichier t&eacute;l&eacute;charg&eacute; d&eacute;passe la taille maximale autoris&eacute;e (<em>MAX_FILE_SIZE</em>)"
 
-#: ../controllers/admin.php:448
+#: ../controllers/admin.php:438
 msgid "The uploaded file was only partially uploaded"
 msgstr "Le fichier a &eacute;t&eacute; partiellement t&eacute;l&eacute;charg&eacute;"
 
-#: ../controllers/admin.php:451
+#: ../controllers/admin.php:441
 msgid "No file was uploaded."
 msgstr "Aucun fichier t&eacute;l&eacute;charg&eacute;."
 
-#: ../controllers/admin.php:455
+#: ../controllers/admin.php:445
 msgid "Missing a temporary folder"
 msgstr "R&eacute;pertoire temporaire manquant."
 
-#: ../controllers/admin.php:458
+#: ../controllers/admin.php:448
 msgid "Failed to write file to disk"
 msgstr "L&#8217;&eacute;criture dans le fichier a &eacute;chou&eacute;"
 
-#: ../controllers/admin.php:461
+#: ../controllers/admin.php:451
 msgid "File upload stopped by extension"
 msgstr "Chargement de fichier arreté"
 
-#: ../controllers/admin.php:465
+#: ../controllers/admin.php:455
 msgid "No error code avaiable"
 msgstr "Pas de code erreur disponible"
 
-#: ../controllers/admin.php:470
+#: ../controllers/admin.php:460
 msgid "No file was uploaded.."
-msgstr "Aucun fichier t&eacute;l&eacute;charg&eacute;."
+msgstr "Tsy nisy tovana nampidirina"
 
 #: ../controllers/page.php:26
-#: ../controllers/page.php:45
+#: ../controllers/page.php:47
 msgid "You must submit the security code that appears in the image"
-msgstr "Vous devez écrire le code de sécurité sur l'image"
+msgstr "Ampidiro azafady ilay soratra eo amin'ny sary"
 
-#: ../controllers/page.php:70
-#: ../controllers/page.php:104
+#: ../controllers/page.php:58
+msgid "guest"
+msgstr "mpamangy"
+
+#: ../controllers/page.php:83
+#: ../controllers/page.php:117
 msgid "Comment Notification"
-msgstr "Notification des commentaires"
+msgstr "Filazana momba ny hevitra"
 
-#: ../controllers/page.php:72
-#: ../controllers/page.php:105
+#: ../controllers/page.php:85
+#: ../controllers/page.php:118
 #, php-format
 msgid ""
 "\n"
@@ -120,11 +127,11 @@ msgstr ""
 "\n"
 "et désactiver la notification.\n"
 
-#: ../controllers/page.php:137
+#: ../controllers/page.php:150
 msgid "Comment to approve"
-msgstr "Commentaire à approuver"
+msgstr "Hevitra mila jerena"
 
-#: ../controllers/page.php:139
+#: ../controllers/page.php:152
 #, php-format
 msgid ""
 "\n"
@@ -141,96 +148,101 @@ msgid ""
 "and set to approve comments automatically.\n"
 msgstr ""
 "\n"
-"Bonjour,\n"
+"Miarahaba,\n"
 "\n"
-"Un nouveau commentaire a été posté sur \n"
+"Nisy hevitra vaovao mipetraka ao amin'ny \n"
 "%s\n"
-"Pour l'approuver, cliquer sur le lien ci-dessous\n"
-"%s\n"
-"\n"
-"Si vous ne voulez plus recevoir cette notification, visiter\n"
+"Raha tianao hiseho io hevitra io dia tsindrio ny rohy eto ambany\n"
 "%s\n"
 "\n"
-"et selectionner l'approbation automatique.\n"
+"Raha tsy te handray ity hafatra ity intsony ianao dia mandeha ao amin'ny \n"
+"%s\n"
+"\n"
+"Dia tsindrio ilay hoe ekena daholo ny hevitra.\n"
 
-#: ../controllers/page.php:164
+#: ../controllers/page.php:177
 msgid "Thank you for your comment. In this site, the comments need to be approved by the administrator. Once approved, you will see it listed here."
-msgstr "Merci pour votre commentaire. Dans ce site, les commentaires attendent l'approbation de l'administrateur. Une fois accepté, vous les verrez ici."
+msgstr "Misaotra noho ny hevitra napetrakao. Eto amin'ity takelaka ity dia mandalo ao amin'ny mpandrindra aloha ny hevitra. Rehefa ekeny dia ho hitanao hiseho eto."
 
 #: ../views/404.php:1
 msgid "Page Not Found!"
-msgstr "Page non trouv&eacute;e"
+msgstr "Tsy hita"
 
 #: ../views/404.php:3
 msgid "The page you're looking for couldn't be found!"
-msgstr "La page que vous avez cherch&eacute;e est introuvable"
+msgstr "Tsy hita ny lahatsoratra"
+
+#: ../views/404.php:6
+#, fuzzy
+msgid "You can create it here"
+msgstr "Vous pouvez changer la configuration du forum ici."
 
 #: ../views/admin.php:7
 #: ../views/settings.php:18
 msgid "Settings"
-msgstr "Configurations"
+msgstr "Fanovana"
 
 #: ../views/admin.php:8
 msgid "Create new Page"
-msgstr "Cr&eacute;er une nouvelle page &raquo;"
+msgstr "Hampiditra lahatsoratra"
 
 #: ../views/admin.php:9
 #: ../views/edit.php:111
 msgid "Cancel"
-msgstr "Annuler"
+msgstr "Aoka ihany"
 
 #: ../views/admin.php:24
 msgid "Title"
-msgstr "Titre"
+msgstr "Lohateny"
 
 #: ../views/admin.php:25
 #: ../views/create.php:127
 msgid "SEF address"
-msgstr "Adresse URL"
+msgstr "Adiresy URL"
 
 #: ../views/admin.php:26
 #: ../views/edit.php:156
 msgid "Status"
-msgstr "&Eacute;tat"
+msgstr "Endriny"
 
 #: ../views/admin.php:27
 msgid "Ordering"
-msgstr "Ordre"
+msgstr "Filaharany"
 
 #: ../views/admin.php:28
 msgid "Action"
-msgstr "Action"
+msgstr "Asa"
 
 #: ../views/admin.php:29
 msgid "Hits"
-msgstr "Visites"
+msgstr "Mpamangy"
 
 #: ../views/admin.php:42
 msgid "Move up"
-msgstr "Vers le haut"
+msgstr "Ampakaro"
 
 #: ../views/admin.php:43
 msgid "Move down"
-msgstr "Vers le bas"
+msgstr "Ampidino"
 
 #: ../views/create.php:4
 msgid "Page informations"
-msgstr "Autres informations"
+msgstr "Andinindininy fanampiny"
 
 #: ../views/create.php:7
 #: ../views/edit.php:7
 msgid "Content"
-msgstr "Contenu"
+msgstr "Votoatiny"
 
 #: ../views/create.php:8
 #: ../views/edit.php:8
 msgid "Other fields"
-msgstr "Autres champs"
+msgstr "Safidy hafa"
 
 #: ../views/create.php:9
 #: ../views/edit.php:9
 msgid "Options"
-msgstr "Options"
+msgstr "Safidy"
 
 #: ../views/create.php:27
 #: ../views/edit.php:27
@@ -273,37 +285,37 @@ msgstr "Brouillon"
 #: ../views/create.php:146
 #: ../views/edit.php:159
 msgid "Published"
-msgstr "Publi&eacute;"
+msgstr "Miseho"
 
 #: ../views/create.php:149
 #: ../views/edit.php:162
 msgid "Page Content:"
-msgstr "Contenu de la page"
+msgstr "Votoatiny :"
 
 #: ../views/create.php:153
 #: ../views/edit.php:167
 msgid "Available images:"
-msgstr "Images disponibles"
+msgstr "Sary azo ampidirina :"
 
 #: ../views/create.php:161
 #: ../views/edit.php:175
 msgid "Image"
-msgstr "Image"
+msgstr "Sary"
 
 #: ../views/create.php:166
 #: ../views/edit.php:181
 msgid "Page keywords:"
-msgstr "Mots clés:"
+msgstr "Teny mamaritra :"
 
 #: ../views/create.php:169
 #: ../views/edit.php:184
 msgid "Page description:"
-msgstr "Description :"
+msgstr "Momba ny lahatsoratra :"
 
 #: ../views/create.php:181
 #: ../views/edit.php:196
 msgid "Show subpages"
-msgstr "Afficher les pages-filles"
+msgstr "Aseho ny zana-dahatsoratra"
 
 #: ../views/create.php:183
 #: ../views/create.php:189
@@ -315,8 +327,9 @@ msgstr "Afficher les pages-filles"
 #: ../views/edit.php:217
 #: ../views/settings.php:45
 #: ../views/settings.php:52
+#: ../views/settings.php:59
 msgid "No"
-msgstr "Non"
+msgstr "Tsia"
 
 #: ../views/create.php:184
 #: ../views/create.php:190
@@ -328,91 +341,92 @@ msgstr "Non"
 #: ../views/edit.php:218
 #: ../views/settings.php:44
 #: ../views/settings.php:51
+#: ../views/settings.php:58
 msgid "Yes"
-msgstr "Oui"
+msgstr "Eny"
 
 #: ../views/create.php:187
 #: ../views/edit.php:202
 msgid "Show navigation"
-msgstr "Afficher navigation"
+msgstr "Aseho ny takelaka mifanila"
 
 #: ../views/create.php:194
 #: ../views/edit.php:209
 msgid "Allow comments"
-msgstr "Autoriser les commentaires"
+msgstr "Azo ampidirana hevitra"
 
 #: ../views/create.php:200
 #: ../views/edit.php:215
 msgid "Notify for comment"
-msgstr "Notifie pour les commentaires"
+msgstr "Ilazao isaky ny misy mampiditra hevitra"
 
 #: ../views/edit.php:103
 msgid "Edit page"
-msgstr "Modifier page"
+msgstr "Ahitsio ny lahatsoratra"
 
 #: ../views/edit.php:110
 msgid "Delete page"
-msgstr "Supprimer page"
+msgstr "Fafao"
 
 #: ../views/edit.php:124
 msgid "Page Title:"
-msgstr "Titre de la page"
+msgstr "Lohateny :"
 
 #: ../views/edit.php:128
 msgid "SEF adress:"
-msgstr "Adresse URL"
+msgstr "Adiresy URL :"
 
 #: ../views/index.php:5
 msgid "Add subpage"
-msgstr "Ajouter page-fille"
+msgstr "Hampiditra lahatsoratra anatiny"
 
 #: ../views/index.php:7
 msgid "Edit"
-msgstr "Modifier"
+msgstr "Ahitsio"
 
 #: ../views/index.php:10
 msgid "Delete"
-msgstr "Supprimer"
+msgstr "Fafao"
 
 #: ../views/index.php:58
 msgid "Comments:"
-msgstr "Commentaires :"
+msgstr "Hevitra :"
 
 #: ../views/index.php:75
 msgid "Add a comment"
-msgstr "Ajouter un commentaire"
+msgstr "Hampiditra hevitra"
 
 #: ../views/index.php:79
 msgid "Name:"
-msgstr "Nom&nbsp;:"
-
-#: ../views/index.php:82
-msgid "Email:"
-msgstr "Email:"
+msgstr "Anarana :"
 
 #: ../views/index.php:85
-msgid "Website:"
-msgstr "Site web&nbsp;:"
+msgid "Email:"
+msgstr "Email :"
 
 #: ../views/index.php:88
-msgid "Comment"
-msgstr "Commentaire"
+msgid "Website:"
+msgstr "Takelaka :"
 
 #: ../views/index.php:91
-msgid "Security code:"
-msgstr "Entrer le code:"
-
-#: ../views/index.php:92
-msgid "Confirm security code:"
-msgstr "Confirmer le code"
+msgid "Comment"
+msgstr "Hevitra :"
 
 #: ../views/index.php:94
-msgid "Required"
-msgstr "R&eacute;quis"
+msgid "Security code:"
+msgstr "Marika fiarovana :"
 
 #: ../views/index.php:95
+msgid "Confirm security code:"
+msgstr "Ampidiro ny fiarovana :"
+
+#: ../views/index.php:98
+msgid "Required"
+msgstr "Ilaina"
+
+#: ../views/index.php:99
 msgid "Add comment"
-msgstr "Ajouter commentaire"
+msgstr "Ampidiro ny hevitra"
 
 #: ../views/settings.php:35
 msgid "Use this page to change the settings for the page module."
@@ -420,26 +434,25 @@ msgstr "Utiliser cette page pour changer les options du module page"
 
 #: ../views/settings.php:39
 msgid "Homepage:"
-msgstr "Page d'accueil:"
+msgstr "Pejy fandraisana :"
 
 #: ../views/settings.php:42
 msgid "Approve comments"
-msgstr "Approuver les commentaires"
+msgstr "Ekeo ny hevitra"
 
 #: ../views/settings.php:49
 msgid "Notify admin for comments"
-msgstr "Notifie pour les commentaires"
+msgstr "Ilazao ny mpandrindra rehefa misy hevitra"
+
+#: ../views/settings.php:56
+msgid "Publish feed for page"
+msgstr ""
+
+#: ../views/settings.php:61
+msgid "Whether to publish also page content with feed"
+msgstr ""
 
 #: ../views/blocks/newpages.php:2
 msgid "Latest Pages"
-msgstr "Derni&egrave;res Pages"
-
-#~ msgid "Downloads"
-#~ msgstr "T&eacute;l&eacute;chargements"
-#~ msgid "Download Administration"
-#~ msgstr "Administration T&eacute;l&eacute;chargement"
-#~ msgid "Upload File"
-#~ msgstr "Charger un fichier"
-#~ msgid "Upload files"
-#~ msgstr "Charger fichiers"
+msgstr "Takelaka tonga farany"
 
