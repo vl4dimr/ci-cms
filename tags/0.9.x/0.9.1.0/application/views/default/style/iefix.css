@@ -1,0 +1,36 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	behavior: url("/static/frontend/default/javascript/csshover.htc");
+}
+
+* html .none {
+	display: block;
+}
+
+ul#nav li a,
+ul#navlogin li a {
+	padding: 0.45em 2em 0.45em 2em;
+}
+
+div#breadcrumbs {
+	margin: 0 0 1em 0;
+	_margin: 0 0 3em 0;
+}
+
+* html div#main ul li {
+	margin: 0 0 0 2em;
+	padding: 0;
+	list-style-image: url("../images/ielist.png");
+	background: none;
+}
+
+form.login label {
+	display: inline-block;
+	margin-bottom: 0.25em;
+}
+
+form.login .input-submit { 
+	padding: 0.1em 1em; 
+}

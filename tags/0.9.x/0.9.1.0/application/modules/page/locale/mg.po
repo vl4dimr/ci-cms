@@ -1,0 +1,458 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Solaitra:Page\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-06-29 08:48+0100\n"
+"PO-Revision-Date: 2010-01-20 12:22+0100\n"
+"Last-Translator: hery <heriniaina.eugene@gmail.com>\n"
+"Language-Team: Hery serasera.org <hery@serasera.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Malagasy\n"
+"X-Poedit-Country: MADAGASCAR\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../page_plugins.php:16
+msgid "Page"
+msgstr "Page"
+
+#: ../page_update.php:21
+#: ../page_update.php:44
+#: ../page_update.php:120
+#: ../page_update.php:137
+#: ../page_update.php:156
+#: ../page_update.php:175
+#, php-format
+msgid "Page module updated to %s"
+msgstr "Module page mis à jour en %s"
+
+#: ../controllers/admin.php:26
+msgid "The <i>images</i> directory is not writable. Please fix it'"
+msgstr "Le répertoire <i>images</i> n'est pas permis pour l'écriture. Veuillez corriger."
+
+#: ../controllers/admin.php:51
+msgid "First"
+msgstr "Voalohany"
+
+#: ../controllers/admin.php:52
+msgid "Last"
+msgstr "Farany"
+
+#: ../controllers/admin.php:80
+msgid "Settings updated"
+msgstr "Configuration enregistr&eacute;"
+
+#: ../controllers/admin.php:419
+msgid "The image was deleted"
+msgstr "L'image a été supprimée"
+
+#: ../controllers/admin.php:432
+msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
+msgstr "La taille du fichier exc&eacute;de la directive <code>upload_max_filesize</code> pr&eacute;sente dans le fichier <code>php.ini</code>."
+
+#: ../controllers/admin.php:435
+msgid "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form"
+msgstr "Le fichier t&eacute;l&eacute;charg&eacute; d&eacute;passe la taille maximale autoris&eacute;e (<em>MAX_FILE_SIZE</em>)"
+
+#: ../controllers/admin.php:438
+msgid "The uploaded file was only partially uploaded"
+msgstr "Le fichier a &eacute;t&eacute; partiellement t&eacute;l&eacute;charg&eacute;"
+
+#: ../controllers/admin.php:441
+msgid "No file was uploaded."
+msgstr "Aucun fichier t&eacute;l&eacute;charg&eacute;."
+
+#: ../controllers/admin.php:445
+msgid "Missing a temporary folder"
+msgstr "R&eacute;pertoire temporaire manquant."
+
+#: ../controllers/admin.php:448
+msgid "Failed to write file to disk"
+msgstr "L&#8217;&eacute;criture dans le fichier a &eacute;chou&eacute;"
+
+#: ../controllers/admin.php:451
+msgid "File upload stopped by extension"
+msgstr "Chargement de fichier arreté"
+
+#: ../controllers/admin.php:455
+msgid "No error code avaiable"
+msgstr "Pas de code erreur disponible"
+
+#: ../controllers/admin.php:460
+msgid "No file was uploaded.."
+msgstr "Tsy nisy tovana nampidirina"
+
+#: ../controllers/page.php:26
+#: ../controllers/page.php:47
+msgid "You must submit the security code that appears in the image"
+msgstr "Ampidiro azafady ilay soratra eo amin'ny sary"
+
+#: ../controllers/page.php:58
+msgid "guest"
+msgstr "mpamangy"
+
+#: ../controllers/page.php:83
+#: ../controllers/page.php:117
+msgid "Comment Notification"
+msgstr "Filazana momba ny hevitra"
+
+#: ../controllers/page.php:85
+#: ../controllers/page.php:118
+#, php-format
+msgid ""
+"\n"
+"Hello,\n"
+"\n"
+"A new comment has been sent to the page\n"
+"%s\n"
+"\n"
+"\n"
+"If you don't want to receive other notification, go to\n"
+"%s\n"
+"\n"
+"and disable notification.\n"
+msgstr ""
+"\n"
+"Bonjour,\n"
+"\n"
+"Un nouveau commentaire a été posté sur \n"
+"%s\n"
+"\n"
+"\n"
+"Si vous ne voulez plus recevoir cette notification, visiter\n"
+"%s\n"
+"\n"
+"et désactiver la notification.\n"
+
+#: ../controllers/page.php:150
+msgid "Comment to approve"
+msgstr "Hevitra mila jerena"
+
+#: ../controllers/page.php:152
+#, php-format
+msgid ""
+"\n"
+"Hello,\n"
+"\n"
+"A new comment has been sent to the page\n"
+"%s\n"
+"To approve it click the link below \n"
+"%s\n"
+"\n"
+"If you don't want to receive other notification, go to\n"
+"%s\n"
+"\n"
+"and set to approve comments automatically.\n"
+msgstr ""
+"\n"
+"Miarahaba,\n"
+"\n"
+"Nisy hevitra vaovao mipetraka ao amin'ny \n"
+"%s\n"
+"Raha tianao hiseho io hevitra io dia tsindrio ny rohy eto ambany\n"
+"%s\n"
+"\n"
+"Raha tsy te handray ity hafatra ity intsony ianao dia mandeha ao amin'ny \n"
+"%s\n"
+"\n"
+"Dia tsindrio ilay hoe ekena daholo ny hevitra.\n"
+
+#: ../controllers/page.php:177
+msgid "Thank you for your comment. In this site, the comments need to be approved by the administrator. Once approved, you will see it listed here."
+msgstr "Misaotra noho ny hevitra napetrakao. Eto amin'ity takelaka ity dia mandalo ao amin'ny mpandrindra aloha ny hevitra. Rehefa ekeny dia ho hitanao hiseho eto."
+
+#: ../views/404.php:1
+msgid "Page Not Found!"
+msgstr "Tsy hita"
+
+#: ../views/404.php:3
+msgid "The page you're looking for couldn't be found!"
+msgstr "Tsy hita ny lahatsoratra"
+
+#: ../views/404.php:6
+#, fuzzy
+msgid "You can create it here"
+msgstr "Vous pouvez changer la configuration du forum ici."
+
+#: ../views/admin.php:7
+#: ../views/settings.php:18
+msgid "Settings"
+msgstr "Fanovana"
+
+#: ../views/admin.php:8
+msgid "Create new Page"
+msgstr "Hampiditra lahatsoratra"
+
+#: ../views/admin.php:9
+#: ../views/edit.php:111
+msgid "Cancel"
+msgstr "Aoka ihany"
+
+#: ../views/admin.php:24
+msgid "Title"
+msgstr "Lohateny"
+
+#: ../views/admin.php:25
+#: ../views/create.php:127
+msgid "SEF address"
+msgstr "Adiresy URL"
+
+#: ../views/admin.php:26
+#: ../views/edit.php:156
+msgid "Status"
+msgstr "Endriny"
+
+#: ../views/admin.php:27
+msgid "Ordering"
+msgstr "Filaharany"
+
+#: ../views/admin.php:28
+msgid "Action"
+msgstr "Asa"
+
+#: ../views/admin.php:29
+msgid "Hits"
+msgstr "Mpamangy"
+
+#: ../views/admin.php:42
+msgid "Move up"
+msgstr "Ampakaro"
+
+#: ../views/admin.php:43
+msgid "Move down"
+msgstr "Ampidino"
+
+#: ../views/create.php:4
+msgid "Page informations"
+msgstr "Andinindininy fanampiny"
+
+#: ../views/create.php:7
+#: ../views/edit.php:7
+msgid "Content"
+msgstr "Votoatiny"
+
+#: ../views/create.php:8
+#: ../views/edit.php:8
+msgid "Other fields"
+msgstr "Safidy hafa"
+
+#: ../views/create.php:9
+#: ../views/edit.php:9
+msgid "Options"
+msgstr "Safidy"
+
+#: ../views/create.php:27
+#: ../views/edit.php:27
+msgid "Upload"
+msgstr "T&eacute;l&eacute;charger"
+
+#: ../views/create.php:84
+#: ../views/create.php:156
+#: ../views/edit.php:84
+#: ../views/edit.php:170
+msgid "Delete image"
+msgstr "Supprimer image"
+
+#: ../views/create.php:101
+msgid "Create New Page"
+msgstr "Cr&eacute;er une nouvelle page &raquo;"
+
+#: ../views/create.php:120
+msgid "To create a new page, just fill in your content below and click 'Save page'.<br />If you want to save your progress without publishing the page, Select 'Draft' status."
+msgstr "Pour créer un article, compléter le contenu et cliquer sur 'Enregistrer'. <br />Si vous ne voulez pas que l'article apparaissent directement, selectionner 'Brouillon'."
+
+#: ../views/create.php:122
+msgid "Page Title"
+msgstr "Titre de la page"
+
+#: ../views/create.php:130
+#: ../views/edit.php:131
+msgid "Parent"
+msgstr "Parent"
+
+#: ../views/create.php:143
+msgid "Status:"
+msgstr "&Eacute;tat"
+
+#: ../views/create.php:145
+#: ../views/edit.php:158
+msgid "Draft"
+msgstr "Brouillon"
+
+#: ../views/create.php:146
+#: ../views/edit.php:159
+msgid "Published"
+msgstr "Miseho"
+
+#: ../views/create.php:149
+#: ../views/edit.php:162
+msgid "Page Content:"
+msgstr "Votoatiny :"
+
+#: ../views/create.php:153
+#: ../views/edit.php:167
+msgid "Available images:"
+msgstr "Sary azo ampidirina :"
+
+#: ../views/create.php:161
+#: ../views/edit.php:175
+msgid "Image"
+msgstr "Sary"
+
+#: ../views/create.php:166
+#: ../views/edit.php:181
+msgid "Page keywords:"
+msgstr "Teny mamaritra :"
+
+#: ../views/create.php:169
+#: ../views/edit.php:184
+msgid "Page description:"
+msgstr "Momba ny lahatsoratra :"
+
+#: ../views/create.php:181
+#: ../views/edit.php:196
+msgid "Show subpages"
+msgstr "Aseho ny zana-dahatsoratra"
+
+#: ../views/create.php:183
+#: ../views/create.php:189
+#: ../views/create.php:196
+#: ../views/create.php:202
+#: ../views/edit.php:198
+#: ../views/edit.php:205
+#: ../views/edit.php:211
+#: ../views/edit.php:217
+#: ../views/settings.php:45
+#: ../views/settings.php:52
+#: ../views/settings.php:59
+msgid "No"
+msgstr "Tsia"
+
+#: ../views/create.php:184
+#: ../views/create.php:190
+#: ../views/create.php:197
+#: ../views/create.php:203
+#: ../views/edit.php:199
+#: ../views/edit.php:204
+#: ../views/edit.php:212
+#: ../views/edit.php:218
+#: ../views/settings.php:44
+#: ../views/settings.php:51
+#: ../views/settings.php:58
+msgid "Yes"
+msgstr "Eny"
+
+#: ../views/create.php:187
+#: ../views/edit.php:202
+msgid "Show navigation"
+msgstr "Aseho ny takelaka mifanila"
+
+#: ../views/create.php:194
+#: ../views/edit.php:209
+msgid "Allow comments"
+msgstr "Azo ampidirana hevitra"
+
+#: ../views/create.php:200
+#: ../views/edit.php:215
+msgid "Notify for comment"
+msgstr "Ilazao isaky ny misy mampiditra hevitra"
+
+#: ../views/edit.php:103
+msgid "Edit page"
+msgstr "Ahitsio ny lahatsoratra"
+
+#: ../views/edit.php:110
+msgid "Delete page"
+msgstr "Fafao"
+
+#: ../views/edit.php:124
+msgid "Page Title:"
+msgstr "Lohateny :"
+
+#: ../views/edit.php:128
+msgid "SEF adress:"
+msgstr "Adiresy URL :"
+
+#: ../views/index.php:5
+msgid "Add subpage"
+msgstr "Hampiditra lahatsoratra anatiny"
+
+#: ../views/index.php:7
+msgid "Edit"
+msgstr "Ahitsio"
+
+#: ../views/index.php:10
+msgid "Delete"
+msgstr "Fafao"
+
+#: ../views/index.php:58
+msgid "Comments:"
+msgstr "Hevitra :"
+
+#: ../views/index.php:75
+msgid "Add a comment"
+msgstr "Hampiditra hevitra"
+
+#: ../views/index.php:79
+msgid "Name:"
+msgstr "Anarana :"
+
+#: ../views/index.php:85
+msgid "Email:"
+msgstr "Email :"
+
+#: ../views/index.php:88
+msgid "Website:"
+msgstr "Takelaka :"
+
+#: ../views/index.php:91
+msgid "Comment"
+msgstr "Hevitra :"
+
+#: ../views/index.php:94
+msgid "Security code:"
+msgstr "Marika fiarovana :"
+
+#: ../views/index.php:95
+msgid "Confirm security code:"
+msgstr "Ampidiro ny fiarovana :"
+
+#: ../views/index.php:98
+msgid "Required"
+msgstr "Ilaina"
+
+#: ../views/index.php:99
+msgid "Add comment"
+msgstr "Ampidiro ny hevitra"
+
+#: ../views/settings.php:35
+msgid "Use this page to change the settings for the page module."
+msgstr "Utiliser cette page pour changer les options du module page"
+
+#: ../views/settings.php:39
+msgid "Homepage:"
+msgstr "Pejy fandraisana :"
+
+#: ../views/settings.php:42
+msgid "Approve comments"
+msgstr "Ekeo ny hevitra"
+
+#: ../views/settings.php:49
+msgid "Notify admin for comments"
+msgstr "Ilazao ny mpandrindra rehefa misy hevitra"
+
+#: ../views/settings.php:56
+msgid "Publish feed for page"
+msgstr ""
+
+#: ../views/settings.php:61
+msgid "Whether to publish also page content with feed"
+msgstr ""
+
+#: ../views/blocks/newpages.php:2
+msgid "Latest Pages"
+msgstr "Takelaka tonga farany"
+

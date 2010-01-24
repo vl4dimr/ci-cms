@@ -1,0 +1,4 @@
+0.12 25/04/2009
+This is a wrong way of dealing with tags.
+
+News model is called inside this module => confusing

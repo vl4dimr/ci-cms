@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<module>
+        <name>feed</name>
+        <date>28/11/2008</date>
+        <author>hery</author>
+        <email>hery@serasera.org</email>
+        <url>http://hery.serasera.org</url>
+        <copyright>GNU/GPL License</copyright>
+        <version>1.0.0</version>
+        <description>Generate RSS Feed</description>
+</module>
+
