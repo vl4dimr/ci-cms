@@ -32,7 +32,12 @@ $version = "1.1.0";
 
 if ($this->system->modules[$module]['version'] < $version)
 {
-	$this->db->query("ALTER TABLE " . $this->db->dbprefix('groups') . " ADD `g_owner` VARCHAR( 255 ) NOT NULL DEFAULT '" . $this->user->username . "'") ;
+	$query = $this->db->query("SHOW COLUMNS FROM " . $this->db->dbprefix('groups') . " WHERE Field = 'g_owner'");
+	if($query->num_rows() == 0)
+	{
+		$this->db->query("ALTER TABLE " . $this->db->dbprefix('groups') . " ADD `g_owner` VARCHAR( 255 ) NOT NULL DEFAULT '" . $this->user->username . "'") ;
+	}
+
 	$this->session->set_flashdata("notification", sprintf(__("Admin module updated to %s"), $version)) ;
 	
 	$data = array('version' => $version);
@@ -47,7 +52,12 @@ $version = "1.2.0";
 
 if ($this->system->modules[$module]['version'] < $version)
 {
-	$this->db->query("ALTER TABLE " . $this->db->dbprefix('users') . " ADD `online` INT( 1 ) NOT NULL DEFAULT 0") ;
+	$query = $this->db->query("SHOW COLUMNS FROM " . $this->db->dbprefix('users') . " WHERE Field = 'online'");
+	if($query->num_rows() == 0)
+	{
+		$this->db->query("ALTER IGNORE TABLE " . $this->db->dbprefix('users') . " ADD `online` INT( 1 ) NOT NULL DEFAULT 0") ;
+	}
+
 	$this->session->set_flashdata("notification", sprintf(__("Admin module updated to %s"), $version)) ;
 	
 	$data = array('version' => $version);

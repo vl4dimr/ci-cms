@@ -10,6 +10,13 @@ class Install extends Controller
 	
 	function index()
 	{
+		$query = $this->db->query("SHOW TABLE STATUS WHERE Name = '" . $this->db->dbprefix('settings') . "' ");
+		if($query->num_rows() > 0)
+		{
+			redirect('install/update');
+			exit();
+		}
+
 		echo "<p>You are about to install CI-CMS</p>";
 		echo "<p>Before you continue, <ol><li>check that you have a file config.php and database.php in your configuration folder and all values are ok.</li><li>make writable the <b>media</b> folder</li></p>";
 		echo "<p>If you get a database error in the next step then your database.php file is not ok</p>";
