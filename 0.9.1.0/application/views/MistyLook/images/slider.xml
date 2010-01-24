@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<album
+showbuttons="no"
+showtitles="no"
+randomstart="yes"
+timer="5"
+aligntitles="bottom"
+alignbuttons="bottom"
+transition="blur"
+speed="20"
+>
+<img src="/application/views/fbp/images/header1.jpg" />
+<img src="/application/views/fbp/images/header2.jpg" />
+<img src="/application/views/fbp/images/header3.jpg" />
+</album>

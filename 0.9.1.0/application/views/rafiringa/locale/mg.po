@@ -1,0 +1,41 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Serasera:Theme\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-04-24 00:23+0100\n"
+"PO-Revision-Date: 2009-05-20 17:50+0100\n"
+"Last-Translator: hery <heriniaina.eugene@gmail.com>\n"
+"Language-Team: hery <hery@serasera.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Malagasy\n"
+"X-Poedit-Country: MADAGASCAR\n"
+"X-Poedit-KeywordsList: __\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: header.php:71
+msgid "Please fix, no active language"
+msgstr ""
+
+#: index.php:19
+msgid "Text to search"
+msgstr "Teny hotadiavina"
+
+#: index.php:21
+msgid "Ok"
+msgstr "Ok"
+
+#: index.php:30
+msgid "Photo album"
+msgstr "Tahirintsary"
+
+#: index.php:49
+msgid "News"
+msgstr "Vaovao"
+
+#: index.php:55
+msgid "More"
+msgstr "Tohiny"
+

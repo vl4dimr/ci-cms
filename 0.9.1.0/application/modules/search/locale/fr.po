@@ -1,0 +1,63 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Solaitra:Search\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-11-23 18:31+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Eugene Hery <hery@serasera.org>\n"
+"Language-Team: Hery serasera.org <hery@serasera.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: French\n"
+"X-Poedit-Country: FRANCE\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../controllers/search.php:73
+msgid "Result for:"
+msgstr "R&eacute;sultat sur:"
+
+#: ../views/404.php:11
+msgid "Not found"
+msgstr "Texte non trouv&eacute;"
+
+#: ../views/404.php:12
+msgid "No result found"
+msgstr "Aucun resultat trouv&eacute;"
+
+#: ../views/result.php:11
+#, fuzzy
+msgid "Search again"
+msgstr "Recherche"
+
+#: ../views/result.php:16
+#: ../views/search_form.php:16
+msgid "Text to search"
+msgstr "Texte à chercher"
+
+#: ../views/result.php:24
+#: ../views/search_form.php:24
+msgid "Search"
+msgstr "Recherche"
+
+#: ../views/result.php:28
+msgid "Search result"
+msgstr "R&eacute;sultat de la recherche"
+
+#: ../views/search_form.php:11
+msgid "Search text"
+msgstr "Texte complet"
+
+#~ msgid "Downloads"
+#~ msgstr "T&eacute;l&eacute;chargements"
+#~ msgid "The file you're looking for couldn't be found!"
+#~ msgstr "Fichier non trouv&eacute;"
+#~ msgid "Download Administration"
+#~ msgstr "Administration T&eacute;l&eacute;chargement"
+#~ msgid "Upload File"
+#~ msgstr "Charger un fichier"
+#~ msgid "Upload files"
+#~ msgstr "Charger fichiers"
+
