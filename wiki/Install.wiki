@@ -4,31 +4,13 @@
 = Introduction =
   * Download and extract
   * Directory and file structures should be like this
-
-{{{
-
-your_root
-  |___ index.php
-  |___ .htaccess
-  |___ licence.txt
-  |___ readme.txt
-  |___ cache
-  |___ media
-  |___ application
-  |        |___ etc... 
-  |___ system
-           |___ etc...
-
-
-}}}
-
-= Details =
-
-When you install it under a sub-folder and you want to use .htaccess, verify that you specified the _RewriteBase_
-
-
+    *When you install it under a sub-folder and you want to use .htaccess, verify that you specified the _RewriteBase_
   * Make writable the folders *./media* and *./cache* 
   * Rename database.dist.php in ./application/config to database.php and fill it with your database configuration.
   * Rename config.dist.php in ./application/config to config.php and adjust it to your needs.
-  * Go to yoursite/install and follow the installation steps
+  * Go to http://yoursite/install and follow the installation steps
   * The first username and password will become the main administrator. You can add more later.
+
+
+= Update =
+  * Go to http://yoursite/install to upgrade.
