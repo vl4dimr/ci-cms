@@ -403,8 +403,8 @@ class Page_Model extends Model {
 			$params[$key] = (isset($params[$key]))? $params[$key]: $default_params[$key];
 		}
 		$hash = md5(serialize($params));
-		//if(!$result = $this->cache->get('get_page_list' . $hash, 'page_list'))
-		//{
+		if(!$result = $this->cache->get('get_page_list' . $hash, 'page_list'))
+		{
 			if (!is_null($params['like']))
 			{
 				$this->db->like($params['like']);
@@ -445,8 +445,8 @@ class Page_Model extends Model {
 				}
 			}
 			
-		//	$this->cache->save('get_page_list' . $hash, $result, 'page_list', 0);
-		//}
+			$this->cache->save('get_page_list' . $hash, $result, 'page_list', 0);
+		}
 		
 		return $result;
 		
