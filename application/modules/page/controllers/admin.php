@@ -23,7 +23,6 @@ class Admin extends Controller {
 		$params['where'] = array('parent_id' => $parent_id, 'lang' => $this->user->lang);		
 		$params['order_by'] = 'weight';
 		$search_id = $this->pages->save_params(serialize($params));
-		$this->template['admin_breadcrumb'] = $this->pages->get_parent_recursive($parent_id);
 		
 		$this->results($search_id, $start);
 		return;
@@ -501,7 +500,12 @@ class Admin extends Controller {
 		{
 			$params = unserialize( $tmp);
 		}
-
+		$this->template['admin_breadcrumb'] = false;
+		if(isset($params['where']['parent_id']))
+		{
+			$parent_id = $params['where']['parent_id'];
+			$this->template['admin_breadcrumb'] = $this->pages->get_parent_recursive($parent_id);
+		}
 		$per_page = 20;
 		$params['start'] = $start;
 

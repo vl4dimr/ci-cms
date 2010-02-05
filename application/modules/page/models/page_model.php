@@ -482,21 +482,21 @@ class Page_Model extends Model {
 	function _get_parent($id)
 	{
 		$page = $this->get_page(array('id' => $id));
-		return $this->get_page(array('parent_id' => $page['parent_id']));
+		return $this->get_page(array('id' => $page['parent_id']));
 	}
 	
 	function get_parent_recursive($id)
 	{
 		$bc = false;
+		// itself first
+		
 		if($parent = $this->_get_parent($id))
 		{
-			if($parent['parent_id'] > 0)
-			{
-				$bc[] = array(
-				'title'	=> (strlen($parent['title']) > 20 )? substr($parent['title'], 0, 20) . '...': $parent['title'],
-				'id'	=> $parent['id']
-				);
-			}
+			$bc[] = array(
+			'title'	=> (strlen($parent['title']) > 20 )? substr($parent['title'], 0, 20) . '...': $parent['title'],
+			'id'	=> $parent['id']
+			);
+			
 		
 			while($parent = $this->_get_parent($parent['parent_id']))
 			{

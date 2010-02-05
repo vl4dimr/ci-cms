@@ -18,8 +18,8 @@
 <?php endif;?>
 <div class="pathway">
 <?php echo anchor('admin/page/index', __("Home", $module)) ?> 
-<?php if ($admin_breadcrumb): $count =  count($admin_breadcrumb);?>
-<?php for($i = $count-1; $i >0; $i--) : ?> 
+<?php if ($admin_breadcrumb): $count =  count($admin_breadcrumb); ?>
+<?php for($i = $count-1; $i >=0; $i--) : ?> 
 &gt; <?php echo anchor('admin/page/index/' . $admin_breadcrumb[$i]['id'], $admin_breadcrumb[$i]['title']) ?> 
 <?php endfor; ?>
 <?php endif; ?>
