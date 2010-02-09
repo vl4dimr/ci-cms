@@ -3,7 +3,7 @@
 <h1 id="page"><?php echo $title?></h1>
 
 <ul class="manage">
-	<li><a href="<?php echo site_url('admin/groups/create')?>" class="first"><?php echo __("Add new", $module)?></a></li>
+	<li><a href="<?php echo site_url('admin/groups/create/' . $start)?>" class="first"><?php echo __("Add new", $module)?></a></li>
 	<li><a href="<?php echo site_url('admin')?>" class="last"><?php echo __("Cancel", $module)?></a></li>
 </ul>
 		
@@ -37,7 +37,7 @@
 	<?php echo $row['g_name'] ?>
 	</td>
 	<td valign="top">
-	<?php echo anchor('admin/groups/members/' .$row['g_id'], __("View", $module) . " (". $row['cnt'] . ")") ?>
+	<?php echo anchor('admin/groups/members/list/' .$row['g_id'] . '/' . $start, __("View", $module) . " (". $row['cnt'] . ")") ?>
 	</td>
 	<td valign="top">
 	<?php echo $row['g_owner'] ?>
@@ -45,11 +45,11 @@
 
 	<?php if($this->user->level['admin'] >= LEVEL_EDIT) : ?>
 		<td valign="top">
-		<?php echo  anchor('admin/groups/edit/' . $start . '/' . $row['id'], __("Edit", $module)) ?>
+		<?php echo  anchor('admin/groups/edit/' . $start . '/' . $row['g_id'], __("Edit", $module)) ?>
 		</td>		
 		<?php if($this->user->level['admin'] >= LEVEL_DEL) : ?>
 		<td valign="top">
-		<?php echo  anchor('admin/groups/delete/' . $start . '/' . $row['id'], __("Delete", $module)) ?>
+		<?php echo  anchor('admin/groups/delete/' . $start . '/' . $row['g_id'], __("Delete", $module)) ?>
 		</td>		
 		<?php endif; ?>
 	<?php endif; ?>

@@ -5,7 +5,7 @@
 	
 	<ul id="tabs" class="quickmenu">
 		<li><a href="#one"><?php echo __("Details", $module)?></a></li>
-		<li><a href="#two"><?php echo __("Members", $module)?></a></li>
+		<!--<li><a href="#two"><?php echo __("Members", $module)?></a></li>-->
 	</ul>
 	<div class="quickend"></div>
 
@@ -16,11 +16,11 @@
 <div class="content slim">
 <h1 id="edit"><?php echo $title ?></h1>
 
-<form  enctype="multipart/form-data" class="edit" action="<?php echo site_url('admin/groups/save')?>" method="post" accept-charset="utf-8">
+<form  enctype="multipart/form-data" class="edit" action="<?php echo site_url('admin/groups/save/' . $start)?>" method="post" accept-charset="utf-8">
 		<input type="hidden" name="id" value="<?php echo $row['id']?>" />
 		<ul>
 			<li><input type="submit" name="submit" value="<?php echo __("Save", $module)?>" class="input-submit" /></li>
-			<li><a href="<?php echo site_url('admin/groups/' . $start .'/' . $row['id'] )?>" class="input-submit last"><?php echo __("Cancel", $module)?></a></li>
+			<li><a href="<?php echo site_url('admin/groups/index/' . $start  )?>" class="input-submit last"><?php echo __("Cancel", $module)?></a></li>
 		</ul>
 		
 		<br class="clearfloat" />
