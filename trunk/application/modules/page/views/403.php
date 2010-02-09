@@ -1,3 +1,3 @@
-<h1>Access Forbidden!</h1>
+<h1><?php echo __("Access Forbidden!", $module) ?></h1>
 
-<p>The page you're looking for is not active!</p>
+<?php echo $message ?>

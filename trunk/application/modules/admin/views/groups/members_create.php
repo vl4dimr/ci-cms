@@ -40,7 +40,7 @@
 		<input type="text" name="g_from" value="<?php echo ($row['g_from'] == 0)? 0 : date("d/m/Y", $row['g_from']) ?>" id="g_from" class="input-text" /> (dd/mm/YYYY)<br />
 
 		<label for="g_to"><?php echo __("To", $module)?>:</label>
-		<input type="text" name="g_to" value="<?php echo  ($row['g_to'] == 0)? 0: date("d/m/Y", $row['g_to']) ?>" id="g_to" class="input-text" /> (<?php echo __("0 is unlimited", $module) ?>)<br />
+		<input type="text" name="g_to" value="<?php echo  ($row['g_to'] == 0)? 0: date("d/m/Y", $row['g_to']) ?>" id="g_to" class="input-text" /> (dd/mm/YYYY, <?php echo __("0 is unlimited", $module) ?>)<br />
 
 		</div>
 		<div id="two">

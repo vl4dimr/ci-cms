@@ -3,8 +3,8 @@
 <h1 id="page"><?php echo $title?></h1>
 
 <ul class="manage">
-	<li><a href="<?php echo site_url('admin/groups/members/add/' . $rows['g_id'])?>" class="first"><?php echo __("Add new", $module)?></a></li>
-	<li><a href="<?php echo site_url('admin/groups/list/' . $start)?>" class="last"><?php echo __("Cancel", $module)?></a></li>
+	<li><a href="<?php echo site_url('admin/groups/members/add/' . $rows['g_id'])?>" class="first"><?php echo __("Add member", $module)?></a></li>
+	<li><a href="<?php echo site_url('admin/groups/index/' . $start)?>" class="last"><?php echo __("Cancel", $module)?></a></li>
 </ul>
 		
 <br class="clearfloat" />
@@ -44,18 +44,18 @@
 	<?php echo anchor('admin/groups/user/' . $row['g_user'],  $row['g_user']) ?>
 	</td>
 	<td valign="top" >
-	<?php echo date("d/m/Y", $row['g_from']) ?>
+	<?php echo ($row['g_from'] == 0) ? __("Unlimited", $module) : date("d/m/Y", $row['g_from']) ?>
 	</td>
 	<td valign="top" >
-	<?php echo date("d/m/Y", $row['g_to']) ?>
+	<?php echo ($row['g_to'] == 0) ? __("Unlimited", $module) : date("d/m/Y", $row['g_to']) ?>
 	</td>
 	<?php if($this->user->level['admin'] >= LEVEL_EDIT) : ?>
 		<td valign="top">
-		<?php echo  anchor('admin/groups/member/edit/' . $row['g_user'], __("Edit", $module)) ?>
+		<?php echo  anchor('admin/groups/members/edit/' .$row['g_id'] . '/'. $row['g_user'], __("Edit", $module)) ?>
 		</td>		
 		<?php if($this->user->level['admin'] >= LEVEL_DEL) : ?>
 		<td valign="top">
-		<?php echo  anchor('admin/groups/member/delete/' . $row['g_user'], __("Delete", $module)) ?>
+		<?php echo  anchor('admin/groups/members/delete/' .$row['g_id'] . '/' . $row['g_user'], __("Delete", $module)) ?>
 		</td>		
 		<?php endif; ?>
 	<?php endif; ?>

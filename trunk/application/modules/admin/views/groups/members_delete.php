@@ -12,7 +12,7 @@
 
 		<hr />
 
-		<p class="notice"><?php echo sprintf(__("Do you really want to remove %s from the group?", $moduloe), $g_user);?></p>
+		<p><?php echo sprintf(__("Do you really want to remove %s from the group?", $module), $g_user);?></p>
 		
 	</form>
 </div>

@@ -7,6 +7,7 @@
 		<li><a href="#one"><?php echo __("Content", $module)?></a></li>
 		<li><a href="#two"><?php echo __("Other fields", $module)?></a></li>
 		<li><a href="#three"><?php echo __("Options", $module)?></a></li>
+		<li><a href="#four"><?php echo __("Group access", $module)?></a></li>
 	</ul>
 	<div class="quickend"></div>
 
@@ -219,6 +220,20 @@ function ajaxFileUpload() {
 			</select><br />
 			
 		</div>
+		<div id="four">
+		
+			<label for="page_access"><?php _e("Page access:", $module)?></label><br />
+		<select name="g_id" id="groups" class="select">
+		<?php foreach ($this->user->get_group_list() as $group): ?>
+			<option value="<?php echo $group['g_id'] ?>" <?php if (isset($row['g_id']) && ($group['g_id'] == $row['g_id'])) echo "selected" ?> ><?php echo __($group['g_name'], $module) ?></option>
+		<?php endforeach; ?> 
+		</select>
+		<br />
+			
+			<br />
+		
+		</div>
+		
 	</form>
 <script>
 

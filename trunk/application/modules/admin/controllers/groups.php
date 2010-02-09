@@ -19,10 +19,9 @@ class Groups extends Controller {
 		//group list
 		$this->template['title'] = __("Group list", "admin");
 		
-		$params = array('limit' => 20, 'start' => $start);
-		if ($rows = $this->group->get_list($params))
+		$params = array('limit' => 20, 'start' => $start, 'where' => $this->db->dbprefix("groups") . ".g_id <> '0' AND " . $this->db->dbprefix("groups") . ".g_id <> '1'");
+		$rows = $this->group->get_list($params);
 		$this->load->library('pagination');
-	
 		$config['uri_segment'] = 5;
 		$config['first_link'] = __('First', "admin");
 		$config['last_link'] = __('Last', "admin");
@@ -41,6 +40,7 @@ class Groups extends Controller {
 	
 	function members($action = 'list', $g_id = null, $g_user = null, $confirm = null)
 	{
+		$this->template['g_id'] = $g_id;	
 		switch($action)
 		{
 			case "add":
@@ -54,7 +54,18 @@ class Groups extends Controller {
 			break;
 			case "edit":
 				$this->template['g_id'] = $g_id;	
-				$this->template['row'] = $this->group->get_member(array('where' => array('g_user' => $g_user)));
+				if($rows = $this->group->get_members(array('limit' => 1, 'where' => array('g_id' => $g_id, 'g_user' => $g_user))))
+				{
+					if($rows['members'])
+					{
+						$this->template['row'] = $rows['members']['0'];
+					}
+				}
+				else
+				{
+					echo "Member not found";
+					return;
+				}
 				$this->user->check_level($this->template['module'], LEVEL_ADD);
 
 				$this->template['title'] = __("Add member", "admin");
@@ -110,7 +121,7 @@ class Groups extends Controller {
 						$this->group->save_member($data);
 					}
 					$this->session->set_flashdata('notification', __("Member saved", "admin"));
-					redirect('admin/groups/members/list/' . $g_id, 'refresh');
+					redirect('admin/groups/members/list/' . $g_id);
 					return;
 				}
 				else
@@ -193,15 +204,15 @@ class Groups extends Controller {
 		$this->user->check_level("admin", LEVEL_EDIT);
 		$this->template['title'] = __("Edit a group", "admin");
 		$this->template['start'] = $start;
-		$this->template['row'] = $this->group->get_members(array('where' => array('g_id' => $g_id, 'g_id <>' => '0', 'g_id <>' => '1')));
+		$this->template['row'] = $this->group->get_members(array('where' => array('g_id' => $g_id)));
 		$this->layout->load($this->template, 'groups/create');			
 	
 	}
 
-	function delete($start = 0, $id = null)
+	function delete($start = 0, $g_id = null)
 	{
 		$this->user->check_level("admin", LEVEL_DEL);
-		$this->group->delete(array('where' => array('id' => $id)));
+		$this->group->delete(array('where' => array('g_id' => $g_id)));
 		$this->session->set_flashdata('notification', __("Group deleted", "admin"));
 		redirect('admin/groups/index/' . $start, 'refresh');
 	}

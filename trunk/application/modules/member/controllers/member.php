@@ -198,7 +198,7 @@ class Member extends Controller {
 			return FALSE;
 		}
 		
-		if ( !ereg("^[[:alnum:]]+$", $username))
+		if ( !ereg("^[a-zA-Z0-9._-]+$", $username))
 		{
 			$this->validation->set_message('_verify_username', __("The username format is not valid, please use alphanumeric characters.", $this->template['module']));
 			return FALSE;

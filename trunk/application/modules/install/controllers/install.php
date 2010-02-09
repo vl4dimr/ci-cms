@@ -132,6 +132,11 @@ class Install extends Controller
 					 'constraint' => '255',
 					 'default' => ''
 			  ),
+			'g_id' => array(
+					 'type' => 'VARCHAR',
+					 'constraint' => '20',
+					 'default' => '0'
+			  ),
 			'uri' => array(
 					 'type' => 'VARCHAR',
 					 'constraint' => '255',
@@ -359,7 +364,17 @@ class Install extends Controller
 					 'type' => 'INT',
 					 'constraint' => '11',
 					 'default' => mktime()
-			  )
+			  ),
+			'username' => array(
+					 'type' => 'VARCHAR',
+					 'constraint' => '255',
+					 'default' => ''
+			  ),
+			'g_id' => array(
+					 'type' => 'VARCHAR',
+					 'constraint' => '20',
+					 'default' => '0'
+			  ),
 
 		);
 		$this->dbforge->add_field($fields); 
@@ -530,7 +545,7 @@ class Install extends Controller
 		$this->db->insert('settings', $data);
 		$data = array('name' => 'debug', 'value' => '0');
 		$this->db->insert('settings', $data);
-		$data = array('name' => 'version', 'value' => '0.9.0.0');
+		$data = array('name' => 'version', 'value' => '0.9.1.0');
 		$this->db->insert('settings', $data);
 		$data = array('name' => 'page_approve_comments', 'value' => '1');
 		$this->db->insert('settings', $data);
@@ -589,7 +604,7 @@ class Install extends Controller
 		
 		if($query->num_rows() == 0)
 		{
-		$this->db->query("INSERT INTO " . $this->db->dbprefix('modules') . " (id, name, with_admin, version, status, ordering, info, description) VALUES (1, 'admin', 0, '1.2.0', 1, 5, '', 'Admin core module'), (2, 'module', 0, '1.0.0', 1, 20, '', 'Module core module'), (3, 'page', 1, '1.1.0', 1, 60, '', 'Page core module'), (4, 'language', 1, '1.1.0', 1, 10, '', 'Language core module'), (5, 'member', 1, '1.0.0', 1, 30, '', 'Member core module'), (6, 'search', 0, '1.0.0', 1, 50, '', 'Search core module'), (7, 'news', 1, '1.3.0', 1, 101, '', 'News module')");
+		$this->db->query("INSERT INTO " . $this->db->dbprefix('modules') . " (id, name, with_admin, version, status, ordering, info, description) VALUES (1, 'admin', 0, '1.2.0', 1, 5, '', 'Admin core module'), (2, 'module', 0, '1.0.0', 1, 20, '', 'Module core module'), (3, 'page', 1, '1.2.0', 1, 60, '', 'Page core module'), (4, 'language', 1, '1.1.0', 1, 10, '', 'Language core module'), (5, 'member', 1, '1.0.0', 1, 30, '', 'Member core module'), (6, 'search', 0, '1.0.0', 1, 50, '', 'Search core module'), (7, 'news', 1, '1.3.0', 1, 101, '', 'News module')");
 		
 		$this->db->query("CREATE TABLE IF NOT EXISTS " . $this->db->dbprefix('group_members') . " ( id int(11) NOT NULL auto_increment, g_user varchar(255) NOT NULL default '', g_id varchar(20) NOT NULL default '', g_from int(11) NOT NULL default '0', g_to int(11) NOT NULL default '0', g_date int(11) NOT NULL default '0', PRIMARY KEY (id), KEY g_user (g_user,g_id) )");
 		
