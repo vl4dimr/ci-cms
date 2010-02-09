@@ -72,7 +72,7 @@
 			
 			if (isset($fversion) && $fversion > $this->version)
 			{
-				include (APPPATH . "update.php");
+				//include (APPPATH . "update.php");
 			}
 			
 			*/

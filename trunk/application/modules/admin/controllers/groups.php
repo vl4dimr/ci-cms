@@ -43,11 +43,13 @@ class Groups extends Controller {
 	{
 		$this->user->check_level($this->template['module'], LEVEL_VIEW);
 		//group members
+		$this->template['group'] = $this->groups->get_members($g_id);
 		
 	}
 
 	function create()
 	{
+		$this->template['row'] = $this->group->fields['groups'];
 		$this->user->check_level($this->template['module'], LEVEL_ADD);
 
 		$this->template['title'] = __("Create a new group", "admin");
@@ -55,13 +57,14 @@ class Groups extends Controller {
 	
 	}
 	
-	function edit()
+	function edit($start = 0, $g_id = null)
 	{
+		
 		$this->user->check_level("admin", LEVEL_EDIT);
-		$this->template['title'] = __("Fanitsiana fanontaniana");
+		$this->template['title'] = __("Edit a group", "admin");
 		$this->template['start'] = $start;
-		$this->template['row'] = $this->group->get(array('where' => array('id' => $id)));
-		$this->layout->load($this->template, 'lalao/quiz/index');			
+		$this->template['row'] = $this->group->get(array('where' => array('g_id' => $g_id, 'g_id <>' => '0', 'g_id <>' => '1')));
+		$this->layout->load($this->template, 'groups/create');			
 	
 	}
 
