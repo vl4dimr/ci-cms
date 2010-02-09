@@ -204,6 +204,14 @@ function ajaxFileUpload() {
 			</select><br />
 
 		</div>
+		<div id="four">
+		
+			<label for="page_access"><?php _e("Page access:", $module)?></label>
+			
+			
+			<br />
+		
+		</div>
 		
 	</form>
 <script>
