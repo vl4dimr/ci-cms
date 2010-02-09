@@ -27,7 +27,7 @@
 		</tr>
 	</thead>
 <tbody>
-
+<?php if($rows) :?>
 <?php $i = 1; foreach ($rows as $row): ?>
 <?php if ($i % 2 != 0): $rowClass = 'odd'; else: $rowClass = 'even'; endif;?>
 <tr class="<?php echo $rowClass ?>">
@@ -55,6 +55,7 @@
 	<?php endif; ?>
 </tr>
 <?php $i++; endforeach;?>
+<?php endif; ?>
 </tbody>
 </table>
 

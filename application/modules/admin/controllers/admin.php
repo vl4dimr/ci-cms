@@ -118,6 +118,16 @@
 		
 		function navigation($action = null)
 		{
+			$fields = array(
+				'id' => '',
+				'lang' => $this->user->lang,
+				'parent_id' => 0,
+				'active' => '',
+				'title' => '',
+				'uri' => '',
+				'g_id' => '0'
+			);
+		
 			$this->user->check_level('page', LEVEL_VIEW);
 			switch ($action) 
 			{
@@ -193,30 +203,58 @@
 					
 					
 				break;
-				case 'create':
+				case 'save':
+					$data = array(
+						'lang' => $this->input->post('lang'),
+						'parent_id' => $this->input->post('parent_id'),
+						'active' => $this->input->post('status'),
+						'title' => $this->input->post('title'),
+						'uri' => $this->input->post('uri'),
+						'g_id' => $this->input->post('g_id')
+					);
 					
-					if ($this->input->post('submit'))
+					$this->db->set($data);
+					if($id = $this->input->post('id'))
 					{
-						$data = array(
-							'lang' => $this->input->post('lang'),
-							'parent_id' => $this->input->post('parent_id'),
-							'active' => $this->input->post('status'),
-							'title' => $this->input->post('title'),
-							'uri' => $this->input->post('uri')
-						);
-						
-						$this->db->set($data);
-						$this->db->insert('navigation');
-						
-						$this->session->set_flashdata('notification', __("Navigation item saved", $this->template['module']));
-						$this->cache->remove_group('navigation');
-						redirect('admin/navigation');
+						$this->db->where('id', $id);
+						$this->db->update('navigation');
 					}
 					else
 					{
-						$this->template['parents'] = $this->nav_get();
-							
+						$this->db->insert('navigation');
+					}
+					
+					$this->session->set_flashdata('notification', __("Navigation item saved", $this->template['module']));
+					$this->cache->remove_group('navigation');
+					redirect('admin/navigation');
+				
+				break;
+				case 'create':
+					$this->template['parents'] = $this->nav_get();
+					$this->template['nav'] = $fields;
+					$this->layout->load($this->template, 'navigation/create');
+				break;
+				case 'edit':
+					$id = $this->uri->segment(4);
+					if (!isset($id))
+					{
+						$this->session->set_flashdata('notification', __("Please select a menu", $this->template['module']));
+						redirect('admin/navigation');						
+					}
+					
+					$this->db->where('id', $id);
+					$this->db->limit(1);
+					$query = $this->db->get('navigation');
+					if ($query->num_rows() > 0 )
+					{
+						$this->template['nav'] = $query->row_array();
+						
 						$this->layout->load($this->template, 'navigation/create');
+					}
+					else
+					{
+						$this->session->set_flashdata('notification', __("Navigation item not found", $this->template['module']));
+						redirect('admin/navigation');
 					}
 				break;
 				case 'delete':
@@ -234,50 +272,6 @@
 						$this->session->set_flashdata('notification', __("Navigation item deleted", $this->template['module']));
 						$this->cache->remove_group('navigation');
 						redirect('admin/navigation');
-					}
-				break;
-				case 'edit':
-					$id = $this->uri->segment(4);
-					if (!isset($id))
-					{
-						$this->session->set_flashdata('notification', __("Please select a menu", $this->template['module']));
-						redirect('admin/navigation');						
-					}
-					
-					if ($this->input->post('submit'))
-					{
-						$this->db->where('id', $id);
-						$data = array(
-							'parent_id' => $this->input->post('parent_id'),
-							'active' => $this->input->post('status'),
-							'title' => $this->input->post('title'),
-							'uri' => $this->input->post('uri'),
-							'lang' => $this->input->post('lang')
-						);
-						
-						$this->db->set($data);
-						$this->db->update('navigation');
-						
-						$this->session->set_flashdata('notification', __("Navigation item saved", $this->template['module']));
-						$this->cache->remove_group('navigation');
-						redirect('admin/navigation');
-					}
-					else
-					{
-						$this->db->where('id', $id);
-						$this->db->limit(1);
-						$query = $this->db->get('navigation');
-						if ($query->num_rows() > 0 )
-						{
-							$this->template['nav'] = $query->row_array();
-							
-							$this->layout->load($this->template, 'navigation/edit');
-						}
-						else
-						{
-							$this->session->set_flashdata('notification', __("Navigation item not found", $this->template['module']));
-							redirect('admin/navigation');
-						}
 					}
 				break;
 				default:

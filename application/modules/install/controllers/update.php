@@ -63,6 +63,21 @@ class Update extends Controller
 			
 			$this->_set('version', $to_version);
 		}
+		
+		$to_version = "0.9.2.0";
+		if($old_version <= $to_version)
+		{
+				$query = $this->db->query("SHOW COLUMNS FROM " . $this->db->dbprefix('navigation') . " WHERE Field = 'g_id'");
+				if($query->num_rows() == 0)
+				{
+					$this->db->query("ALTER IGNORE TABLE " . $this->db->dbprefix('navigation') . " ADD `g_id` INT( 1 ) NOT NULL DEFAULT 0") ;
+					echo "<p>Navigation table updated</p>";
+					echo "<p>Now go to " . anchor('admin/module', 'admin/module') . " to update the modules.</p>";
+				}
+			
+			$this->_set('version', $to_version);
+		}
+		
 	}
 
 }

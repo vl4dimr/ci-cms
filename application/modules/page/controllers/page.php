@@ -209,7 +209,24 @@ and set to approve comments automatically.
 			if ( $page = $this->pages->get_page(array('uri' => $built_uri, 'lang' => $this->user->lang)) )
 			{
 				$page = $this->plugin->apply_filters('page_item', $page);
-
+				
+				//can view?
+				if(!in_array($page['g_id'], $this->user->groups))
+				{
+					$this->output->set_header("HTTP/1.0 403 Forbidden");
+					if($this->user->logged_in)
+					{
+						$this->template['message'] = __("Your are already logged in but not allowed to see this page. If it is an error then contact the administrators of the site.", "page");
+					}
+					else
+					{
+						$this->template['message'] = __("Your are not allowed to see this page.", "page") . "<br />" . anchor('member/login', __("Please try to sign in here", "page"));
+					}
+					
+					$this->layout->load($this->template, '403');
+					return;
+				}
+				
 				if ($page['active'] == 1)
 				{
 					
@@ -296,6 +313,7 @@ and set to approve comments automatically.
 				else
 				{
 					$this->output->set_header("HTTP/1.0 403 Forbidden");
+					$this->template['message'] = __("The page you're looking for is not active!", "page");
 					$view = '403';
 				}
 			}

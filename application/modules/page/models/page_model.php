@@ -2,11 +2,31 @@
 
 class Page_Model extends Model {
 	var $tmppages;
+	var $fields;
 	function Page_model()
 	{
 		parent::Model();
 		
 		$this->table = 'pages';
+		
+		$this->fields = array(
+			'pages' => array(
+					'id' 				=> '',
+					'uri'				=> '',
+					'title'				=> '',
+					'parent_id'			=> '',
+					'meta_keywords'		=> '',
+					'meta_description'	=> '',
+					'body'				=> '',
+					'active'			=> 1,
+					'lang'				=> $this->user->lang,
+					'options'			=> '',
+					'email'				=> $this->user->email,
+					'g_id'				=> '0'
+					
+				)
+		);
+		
 	}
 	
 	function get_total($params = array())
@@ -508,5 +528,27 @@ class Page_Model extends Model {
 		}
 		return $bc;
 	}
+	
+	
+	/*
+	
+	not ready
+	//give access of page id to group
+	
+	function set_group($id = 0, $groups = array())
+	{
+		//group = array('g_id', 'level')
+		$this->db->where('page_id', $id);
+		$this->db->delete('page_access');
+		if(is_array($group) && count($group) > 0)
+		{
+			foreach($groups as $group)
+			{
+				$this->db->insert('page_access', $group);
+			}
+		}
+		
+	}
+	*/
 	
 }

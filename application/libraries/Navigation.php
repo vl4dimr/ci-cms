@@ -30,10 +30,12 @@
 		*/
 		function get($where = null)
 		{
+			$this->obj->cache->remove_group('navigation');
 			$hash = $this->obj->user->lang;
 			
 			if (!is_null($where))
 			{
+				$where['g_id IN'] = $this->obj->db->escape_str("(" . join("', '" , $this->obj->user->groups) . ")");
 				if(is_array($where))
 				{
 					$where['lang'] = $this->obj->user->lang;
@@ -44,7 +46,9 @@
 					$hash .= md5($where);
 					$where = array('id' => $where);
 				}
+				
 			}
+			
 			if (!$data = $this->obj->cache->get('navigationarray'.$hash, 'navigation'))
 			{
 				if (is_null($where))
@@ -53,7 +57,8 @@
 				}
 				else
 				{
-					$query = $this->obj->db->get_where('navigation', $where);
+					$this->obj->db->where($where);
+					$query = $this->obj->db->get('navigation');
 					if ($query->num_rows() > 0 )
 					{
 						$row = $query->row_array();
@@ -113,6 +118,7 @@
 		{
 
 			$this->obj->db->where(array('parent_id' => $parent, 'lang' => $this->obj->user->lang, 'active' => 1));
+			$this->obj->db->where(array('g_id IN' => "('" . join("', '" , $this->obj->user->groups) . "')"));
 			$this->obj->db->orderby('parent_id, weight');
 			$query = $this->obj->db->get('navigation');		
 		 	if ($query->num_rows() == 0)

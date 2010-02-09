@@ -180,3 +180,26 @@ if ($this->system->modules[$module]['version'] < $version)
 	redirect("admin/module");
 	
 }
+
+
+
+
+//Group access
+//update to 1.2.0
+$version = "1.2.0";
+
+if ($this->system->modules[$module]['version'] < $version)
+{
+	$query = $this->db->query("SHOW COLUMNS FROM " . $this->db->dbprefix('pages') . " WHERE Field = 'g_id'");
+	if($query->num_rows() == 0)
+	{
+		$this->db->query("ALTER TABLE " . $this->db->dbprefix('pages') . " ADD `g_id` VARCHAR( 255 ) NOT NULL DEFAULT '0'") ;
+	}
+
+	$this->session->set_flashdata("notification", sprintf(__("Page module updated to %s"), $version)) ;
+	
+	$data = array('version' => $version);
+	$this->db->where(array('name'=> $module));
+	$this->db->update('modules', $data);
+	redirect("admin/module");
+}

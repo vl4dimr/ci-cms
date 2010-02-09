@@ -39,6 +39,7 @@ class Group_model extends Model {
 	
 	function get($params = array())
 	{
+		
 		$default_params = array
 		(
 			'order_by' => 'id DESC',
@@ -89,6 +90,7 @@ class Group_model extends Model {
 	
 	function get_list($params = array())
 	{
+		$this->cache->remove_group('groups');
 		$default_params = array
 		(
 			'order_by' => 'id DESC',
@@ -120,7 +122,6 @@ class Group_model extends Model {
 			$this->db->limit($params['limit'], $params['start']);
 			$this->db->group_by('groups.id');
 			$query = $this->db->get();
-			
 			if ($query->num_rows() == 0 )
 			{
 				$result =  false;
@@ -293,6 +294,7 @@ class Group_model extends Model {
 		return $result;
 	}
 
+
 	function get_total_members($params = array())
 	{
 		$default_params = array
@@ -355,7 +357,7 @@ class Group_model extends Model {
 	function delete_member($params = array())
 	{
 		$this->db->where($params['where']);
-		$this->db->delete('groups_members');
+		$this->db->delete('group_members');
 		$this->cache->remove_group('groups');
 	}
 
