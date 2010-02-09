@@ -39,7 +39,7 @@ class Groups extends Controller {
 
 	}
 	
-	function members($action = 'list', $g_id = null, $g_user = null)
+	function members($action = 'list', $g_id = null, $g_user = null, $confirm = null)
 	{
 		switch($action)
 		{
@@ -60,6 +60,21 @@ class Groups extends Controller {
 				$this->template['title'] = __("Add member", "admin");
 				$this->layout->load($this->template, 'groups/members_create');
 			
+			break;
+			case "delete":
+				if(!is_null($confirm))
+				{
+					$this->group->delete_member(array('where' => array('g_user' => $this->input->post('g_user'))));
+					redirect('admin/groups/members/list/' . $g_id);
+					return;
+				}
+				else
+				{
+					$this->template['title'] = __("Remove from group", "admin");
+					$this->template['g_user'] = $g_user;
+					$this->layout->load($this->template, 'groups/members_delete');
+					return;
+				}
 			break;
 			case "save":
 			

@@ -7,6 +7,7 @@
 		<li><a href="<?php echo site_url('admin/settings')?>"><?php echo __("General settings", $this->template['module'])?></a></li>
 		<li><a href="<?php echo site_url('admin/module')?>"><?php echo __("Modules settings", $this->template['module'])?></a></li>		
 		<li><a href="<?php echo site_url('admin/admins')?>"><?php echo __("Administrators", $this->template['module'])?></a></li>		
+		<li><a href="<?php echo site_url('admin/groups')?>"><?php echo __("Group management", $this->template['module'])?></a></li>
 	</ul>
 	<div class="quickend"></div>
 

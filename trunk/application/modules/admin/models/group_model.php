@@ -351,5 +351,13 @@ class Group_model extends Model {
 		$this->db->update('group_members');
 		$this->cache->remove_group('groups');
 	}
+
+	function delete_member($params = array())
+	{
+		$this->db->where($params['where']);
+		$this->db->delete('groups_members');
+		$this->cache->remove_group('groups');
+	}
+
 	
 }
