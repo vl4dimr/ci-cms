@@ -20,7 +20,7 @@
 		<input type="hidden" name="id" value="<?php echo $row['id']?>" />
 		<ul>
 			<li><input type="submit" name="submit" value="<?php echo __("Save", $module)?>" class="input-submit" /></li>
-			<li><a href="<?php echo site_url('admin/groups')?>" class="input-submit last"><?php echo __("Cancel", $module)?></a></li>
+			<li><a href="<?php echo site_url('admin/groups/' . $start .'/' . $row['id'] )?>" class="input-submit last"><?php echo __("Cancel", $module)?></a></li>
 		</ul>
 		
 		<br class="clearfloat" />
