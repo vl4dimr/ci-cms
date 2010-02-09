@@ -39,16 +39,131 @@ class Groups extends Controller {
 
 	}
 	
-	function members()
+	function members($action = 'list', $g_id = null, $g_user = null)
 	{
-		$this->user->check_level($this->template['module'], LEVEL_VIEW);
-		//group members
-		$this->template['group'] = $this->groups->get_members($g_id);
-		
+		switch($action)
+		{
+			case "add":
+				$this->template['g_id'] = $g_id;	
+				$this->template['row'] = $this->group->fields['group_members'];
+				$this->user->check_level($this->template['module'], LEVEL_ADD);
+
+				$this->template['title'] = __("Add member", "admin");
+				$this->layout->load($this->template, 'groups/members_create');
+			
+			break;
+			case "edit":
+				$this->template['g_id'] = $g_id;	
+				$this->template['row'] = $this->group->get_member(array('where' => array('g_user' => $g_user)));
+				$this->user->check_level($this->template['module'], LEVEL_ADD);
+
+				$this->template['title'] = __("Add member", "admin");
+				$this->layout->load($this->template, 'groups/members_create');
+			
+			break;
+			case "save":
+			
+				$g_from = 0;
+				if($this->input->post('g_from') != 0)
+				{
+					$g_froms = explode('/', $this->input->post('g_from'));
+					$g_from = mktime(0,0,0, $g_froms['1'], $g_froms['0'], $g_froms['2']);
+				}
+				
+				$g_to = 0;
+				if($this->input->post('g_to') != 0)
+				{
+					$g_tos = explode('/', $this->input->post('g_to'));
+					$g_to = mktime(0,0,0, $g_tos['1'], $g_tos['0'], $g_tos['2']);
+				}
+				$data = array(
+					'g_user' => $this->input->post('g_user'),
+					'g_id' => $g_id,
+					'g_from' => $g_from,
+					'g_to' => $g_to,
+					'g_date' => mktime()
+				);
+				
+				if($data['g_user'] != '' || is_null($g_id))
+				{
+					if($this->input->post('id') && $this->user->level["admin"] >= LEVEL_EDIT)
+					{
+						$this->group->update_member(array('id' => $this->input->post('id')), $data);
+					}
+					else
+					{
+						$this->group->save_member($data);
+					}
+					$this->session->set_flashdata('notification', __("Member saved", "admin"));
+					redirect('admin/groups/members/list/' . $g_id, 'refresh');
+					return;
+				}
+				else
+				{
+					$this->template['title'] = __("Error", "admin");
+					$this->template['message'] = __("Username required", "admin");
+					$this->layout->load($this->template, 'error');
+					return;
+				}
+			
+			
+			break;
+			case "list":
+			default:
+				$this->user->check_level($this->template['module'], LEVEL_VIEW);
+				$params = array('where' => array('g_id' => $g_id));
+				//group members
+				$search_id = $this->group->save_params(serialize($params));
+				$this->results($search_id);
+			break;
+		}
 	}
 
-	function create()
+	function results($search_id = 0, $start = 0)
 	{
+		$this->user->check_level($this->template['module'], LEVEL_VIEW);
+		$params = array();
+
+		//sorting
+
+		if ($this->group->get_params($search_id))
+		{
+			$params = unserialize( $this->group->get_params($search_id));
+
+		}
+	
+		$per_page = 20;
+		$params['start'] = $start;
+
+		$params['limit'] = $per_page;
+		$this->template['rows'] = $this->group->get_members($params);
+		$this->template['title'] = __("Members for:" , "admin") . " " . $this->template['rows']['g_name'];
+		//echo $this->db->last_query();
+
+		$config['first_link'] = __('First', 'admin');
+		$config['last_link'] = __('Last', 'admin');
+		$config['total_rows'] = $this->group->get_total_members($params);
+		$config['per_page'] = $per_page;
+		$config['base_url'] = base_url() . 'admin/groups/results/' . $search_id;
+		$config['uri_segment'] = 5;
+		$config['num_links'] = 20;
+		$this->load->library('pagination');
+
+		$this->pagination->initialize($config);
+
+		$this->template['pager'] = $this->pagination->create_links();
+		$this->template['start'] = $start;
+		$this->template['total'] = $config['total_rows'];
+		$this->template['per_page'] = $config['per_page'];
+		$this->template['total_rows'] = $config['total_rows'];
+		
+		$this->layout->load($this->template, 'groups/members');
+	
+	}
+	
+	function create($start = 0)
+	{
+		$this->template['start'] = $start;	
 		$this->template['row'] = $this->group->fields['groups'];
 		$this->user->check_level($this->template['module'], LEVEL_ADD);
 
@@ -63,28 +178,29 @@ class Groups extends Controller {
 		$this->user->check_level("admin", LEVEL_EDIT);
 		$this->template['title'] = __("Edit a group", "admin");
 		$this->template['start'] = $start;
-		$this->template['row'] = $this->group->get(array('where' => array('g_id' => $g_id, 'g_id <>' => '0', 'g_id <>' => '1')));
+		$this->template['row'] = $this->group->get_members(array('where' => array('g_id' => $g_id, 'g_id <>' => '0', 'g_id <>' => '1')));
 		$this->layout->load($this->template, 'groups/create');			
 	
 	}
 
-	function delete()
+	function delete($start = 0, $id = null)
 	{
 		$this->user->check_level("admin", LEVEL_DEL);
 		$this->group->delete(array('where' => array('id' => $id)));
-			$this->session->set_flashdata('notification', __("Voafafa ny fanontaniana", "admin"));
-		redirect('karajia/lalao/quiz/lisitra/' . $start, 'refresh');
+		$this->session->set_flashdata('notification', __("Group deleted", "admin"));
+		redirect('admin/groups/index/' . $start, 'refresh');
 	}
 	
-	function save()
+	function save($start = 0)
 	{
-		$data['fanontaniana'] = $this->input->post('fanontaniana');
-		$data['valiny'] = $this->input->post('valiny');
-		$data['username'] = $this->user->username;
-		$data['valid'] = 'N';
-		$data['categorie'] = $this->input->post;
+		$data = array(
+			'g_name'  => $this->input->post('g_name'),
+			'g_desc' => $this->input->post('g_desc'),
+			'g_date' => mktime(),
+			'g_owner' => $this->input->post('g_owner')
+		);
 		
-		if($data['fanontaniana'] != '' && $data['valiny'] != '')
+		if($data['g_name'] != '')
 		{
 			if($this->input->post('id') && $this->user->level["admin"] >= LEVEL_EDIT)
 			{
@@ -94,14 +210,14 @@ class Groups extends Controller {
 			{
 				$this->group->save($data);
 			}
-			$this->session->set_flashdata('notification', sprintf(__("Tafiditra soa amantsara ny fanontaniana. Mbola jeren'ny mpandrindra izany dia hampidirina ao amin'ny #lalao, mampidira hafa indray na %sJereo eto%s ny lisitra", "admin"), "<a href='" . site_url('karajia/lalao/quiz/lisitra') . "'>", "</a>"));
-			redirect('karajia/lalao/quiz/lisitra/' . $start, 'refresh');
+			$this->session->set_flashdata('notification', __("Group saved", "admin"));
+			redirect('admin/groups/index/' . $start, 'refresh');
 			return;
 		}
 		else
 		{
-			$this->template['title'] = __("Hadisoana", "admin");
-			$this->template['message'] = __("Ilaina ny fanontaniana sy valiny, avereno indray", "admin");
+			$this->template['title'] = __("Error", "admin");
+			$this->template['message'] = __("Group name required", "admin");
 			$this->layout->load($this->template, 'error');
 			return;
 		}
