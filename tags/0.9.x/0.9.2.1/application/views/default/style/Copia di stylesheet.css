@@ -1,0 +1,324 @@
+
+
+/**
+layout
+**/
+
+body	{
+	background: #FFFFFF url("../images/body_bg.jpg") repeat-y center;
+	font: 12px Trebuchet MS, Geneva, Helvetica, Arial, sans-serif; 
+	text-align: center;
+	line-height: 150%;
+	padding: 0pt;
+	margin: 0pt;
+}
+
+*, * * {
+	font-family: font: 0.90em Trebuchet MS, Geneva, Helvetica, Arial, sans-serif; 
+}
+
+
+#wrapper {
+	margin:0 auto;
+	width:950px;
+	overflow:hidden;
+	position:relative;
+	text-align:left;
+	/*width:70em;*/
+}
+
+#header {
+	background: transparent url("../images/header_bg.jpg") repeat-x;
+	height: 80px;
+}
+
+#logo {
+	width: 320px;
+	float: left;
+	height: 80px;
+	background-image: url("../images/logo.jpg");
+	background-repeat: no-repeat;
+}
+#logo a {
+	text-decoration: none;
+	display: block;
+	height: 80px;
+	width: 320px;
+}
+
+#pub-top {
+	float: right;
+	margin: 5px;
+	width: 468px;
+	height: 60px;
+	padding-left: 20px;
+	background: transparent url("../images/pub-top.jpg") no-repeat left center;
+}
+
+#page {
+	position: relative;
+	margin: 5px 0 0 0;
+}
+
+#sidebar { 
+	float:left;
+	margin:0 0 0 5px;
+	/*width: 175px;*/
+	width: 18.4%;
+	}
+	
+#content {
+	float:right;
+	/*width: 770px;*/
+	width:81%;
+	}
+
+#left {
+	float:left;
+	/*width:380px;*/
+	width: 49.3%;
+	margin: 0 5px;
+}
+
+#right {
+	float:right;
+	/*width:380px;*/
+	width: 49.3%;
+}	
+	
+
+#footer {
+	margin: 0 auto;
+	border: none;
+	clear: both;
+	text-align: center;
+}
+
+	
+/* main */
+
+
+h1 
+{
+	font-size: 15px;
+	font-weight: bold;
+	color: #009933;
+	background: none;
+	margin: 0pt 0pt 10pt 0pt;
+	padding: 10px 0pt 0pt 0pt;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #FFFFFF #FFFFFF #B4E2BA;
+
+}
+
+
+table .list {
+	border: 1px solid #990000;
+	width: 100%;
+	padding: 0px;
+}
+table .list a {
+	text-decoration: none;
+}
+table .list th {
+	background-color: #EBC6B4;
+}
+
+table .list td {
+	background-color: #FFFFFF;
+	padding: 0px;
+	border-style: none none solid none;
+	border-width: 1px;
+	border-color: #EBC6B4;
+}
+
+
+
+div#menu {
+	border:1px solid #FF9900;
+	background-color:#FFEDA6;
+}
+
+div#menu h2 {
+	background-color:#FFCC66;
+	border-bottom:1px dashed #FF9900;
+	color:#990000;
+	font-size:13px;
+	margin:0pt;
+	padding:3px 5px 0pt;
+}
+
+div#menu ul {
+	list-style-position:outside;
+	list-style-type:none;
+	margin:0pt;
+	padding:0pt;	
+}
+
+div#menu a {
+	border-bottom:1px solid #FF9900;
+	background-color: #FFCC66;
+	color:#990000;
+	display:block;
+	height:20px;
+	text-decoration:none;
+}
+
+div#menu li a:hover {
+	background-color:#FFFF00;
+	color:#009933;
+	cursor:pointer;	
+}
+
+
+div#topmenu  table{
+	font-size: 14px;
+	color: #FFFFFF;
+	width: 100%;
+	background: #FFFFFF none;
+}
+
+
+div#topmenu  table tr{
+	background: #A7D285 none;
+}	
+div#topmenu a {
+	text-decoration: none;
+	color: #FFFFFF;
+	display: block;
+}
+
+div#topmenu a:hover {
+	background: #A7D285 none;
+}
+
+div#topmenu a {
+	text-decoration: none;
+	display: block;
+	line-height: 30px;
+}
+
+div#langbar {
+float: right;
+}
+div#langbar a{
+	display: inline;
+}
+#langbar ul{
+	margin: 0pt;
+}
+#langbar ul li {
+	
+	display: inline;
+}
+
+.clear {
+	clear: both;
+}	
+
+#newsbox h2 {
+	clear: both;
+	}
+#newsbox h2 a {	
+	text-decoration: none;
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFCC00;
+	background: none;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #FFFFFF #FFFFFF #FFCC00;
+}
+
+#newsbox img{
+	float: left;
+	margin-right: 5px;
+	padding: 5px;
+	border: 1px solid #AAAAAA;
+}
+
+#comment_form label {
+clear:both;
+display:block;
+margin: 3px 0pt;
+float:left;
+width:150px;
+}
+
+#comment_form input, #comment_form textarea
+{
+border:1px solid #C4CBD2;
+font-size:90%;
+margin: 5px 0pt;
+padding:5px;
+width:300px;
+}
+
+#comment_form input.input-submit
+{
+width:150px;
+margin-left: 150px;
+}
+
+#comments div {
+	margin: 10px 0pt;
+	padding: 10px;
+	background: #EEEEEE;
+}
+
+#comments .odd
+{
+	border: 1px solid #EBBD52;
+}
+
+#comments .even
+{
+	border: 1px solid #ADDD6C;
+
+}
+
+#login {
+	clear: both;
+	background: #FF6600;
+	margin: 0 5px 5px 0;
+}
+
+#right-bar {
+	float: left;
+	/*width: 250px;*/
+	width: 65.7%;
+}
+
+#right-bar-left {
+	float: left;
+	width: 50%;
+}
+	
+#right-bar-right {
+	float: right;
+	width: 50%;
+}
+
+#skycraper {
+	float: right;
+	/*width: 120px;*/
+	width: 31.5%;
+	background: red;
+	margin: 0 5px;
+}
+
+#main {
+	float: left;
+	/*width: 595;*/
+	width: 82.6%;
+	margin: 0 0 0 5px;
+}
+
+#main-skycraper {
+	float: right;
+	/*width: 120px;*/
+	width: 16.6%;
+	background: red;
+	margin: 0 5px;
+}

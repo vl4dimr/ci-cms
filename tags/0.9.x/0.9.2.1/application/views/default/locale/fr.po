@@ -1,0 +1,148 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Serasera:Theme\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-07-18 00:37+0100\n"
+"PO-Revision-Date: 2009-07-18 00:37+0100\n"
+"Last-Translator: Hery Eugene <hery@serasera.org>\n"
+"Language-Team: hery <hery@serasera.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: French\n"
+"X-Poedit-Country: FRANCE\n"
+"X-Poedit-KeywordsList: __\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: header.php:22
+msgid "Confirm delete?"
+msgstr "Confirmer la suppression?"
+
+#: header.php:51
+msgid "Please fix, no active language"
+msgstr "Il n'y a pas de langue active"
+
+#: header.php:74
+msgid "You are here:"
+msgstr "Vous êtes ici:"
+
+#: header.php:75
+msgid "home"
+msgstr "Accueil"
+
+#: index.php:42
+msgid "News"
+msgstr "Actualités"
+
+#: index.php:49
+msgid "More"
+msgstr "suite"
+
+#: index.php:67
+msgid "Username"
+msgstr "Identification"
+
+#: index.php:68
+msgid "Password"
+msgstr "Mot de passe"
+
+#: index.php:69
+msgid "Go"
+msgstr "Ok!"
+
+#: index.php:71
+msgid "Lost password?"
+msgstr "Mot de passe perdu?"
+
+#: index.php:71
+msgid "Sign up"
+msgstr "Inscription"
+
+#: index.php:73
+msgid "Logged in:"
+msgstr "Connect&eacute; :"
+
+#: index.php:74
+msgid "Change password"
+msgstr "Changer mot de passe"
+
+#: index.php:74
+msgid "Sign out"
+msgstr "D&eacute;connecter"
+
+#~ msgid "Your menu"
+#~ msgstr "Votre espace"
+#~ msgid "Bizna"
+#~ msgstr "Annonces"
+#~ msgid "Latest entries"
+#~ msgstr "Dernières annonces"
+#~ msgid "Ampiasao ny solonanarana serasera.org"
+#~ msgstr "Utiliser l'identification de serasera.org"
+#~ msgid "Solonanarana"
+#~ msgstr "Username"
+#~ msgid "Tenimiafina"
+#~ msgstr "Mot de passe"
+#~ msgid "Ok"
+#~ msgstr "Ok"
+#~ msgid "Adino?"
+#~ msgstr "Tout oublié?"
+#~ msgid "Hisoratra anarana"
+#~ msgstr "S'enregistrer"
+#~ msgid "Tafiditra :"
+#~ msgstr "Identifié :"
+#~ msgid "Hanova tenimiafina"
+#~ msgstr "Changer mot de passe"
+#~ msgid "Hivoaka"
+#~ msgstr "Se déconnecter"
+#~ msgid "Categories"
+#~ msgstr "Cat&eacute;gories"
+#~ msgid "Tags"
+#~ msgstr "Mots clés"
+#~ msgid "tohiny"
+#~ msgstr "suite"
+#~ msgid "Anao manokana"
+#~ msgstr "Votre espace"
+#~ msgid "Album"
+#~ msgstr "Album"
+#~ msgid "Latest albums"
+#~ msgstr "Derniers albums"
+#~ msgid "more"
+#~ msgstr "suite"
+#~ msgid "More news"
+#~ msgstr "autres articles"
+#~ msgid "Latest images"
+#~ msgstr "Dernières photos"
+#~ msgid "Album users"
+#~ msgstr "Utilisateurs"
+#~ msgid "Players"
+#~ msgstr "Ecouter en live"
+#~ msgid "Search"
+#~ msgstr "Recherche"
+#~ msgid "Artist/Title"
+#~ msgstr "Artiste/Titre"
+#~ msgid "Top request"
+#~ msgstr "Les plus demand&eacute;s"
+#~ msgid "New titles"
+#~ msgstr "Nouveaux titres"
+#~ msgid "Please use your serasera.org account"
+#~ msgstr "Insérer votre compte serasera.org"
+#~ msgid "Playing"
+#~ msgstr "En cours"
+#~ msgid "Title:"
+#~ msgstr "Titre :"
+#~ msgid "Listeners:"
+#~ msgstr "Auditeurs :"
+#~ msgid "Duration"
+#~ msgstr "Durée"
+#~ msgid "Requested by:"
+#~ msgstr "Demand&eacute; par :"
+#~ msgid "Message by:"
+#~ msgstr "Message :"
+#~ msgid "Queue"
+#~ msgstr "En attente"
+#~ msgid "What's news?"
+#~ msgstr "Nouveaut&eacute;"
+#~ msgid "Forum"
+#~ msgstr "Forum"
+

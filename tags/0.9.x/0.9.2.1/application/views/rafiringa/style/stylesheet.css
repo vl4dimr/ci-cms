@@ -1,0 +1,428 @@
+
+
+/**
+layout
+using
+http://www.colourlovers.com/palette/525605/
+**/
+body {
+	background: #FFFFFF url("../images/bodybg.jpg") repeat-x top;
+	text-align: center;
+	padding: 0pt;
+	margin: 0pt;
+	line-height: 150%;
+}
+body, table, td, div, p, input	{
+	font-family: Trebuchet MS, Geneva, Helvetica, Arial, sans-serif; 
+	font-size: 13px;
+	color: #333333;
+}
+
+img {
+border: none;
+}
+
+a { text-decoration: none; color: #C24242}
+
+h2 {
+	font-size: 14px;
+	font-weight: bold;
+	clear: both;
+	margin: 15px 0 0 0;
+}
+
+#wrapper {
+	margin:0 auto;
+	width:900px;
+	overflow:hidden;
+	position:relative;
+	text-align:left;
+	/*width:70em;*/
+}
+
+#page {
+	float: left;
+	position: relative;
+	margin: 0;
+	width: 100%;
+	background: #FFFFFF;
+	}
+
+#header {
+	background: transparent url("../images/headerbg.jpg") no-repeat;
+	height: 135px;
+}
+
+#logo {
+	width: 900px;
+	float: left;
+	height: 134px;
+	background: transparent none;
+}
+#logo a {
+	text-decoration: none;
+	display: block;
+	width: 900px;
+	height: 134px;
+}
+
+
+
+
+	
+#content {
+	float:right;
+	width: 900px;
+	/*width:81%;*/
+	overflow: hidden;
+	}
+
+#left {
+	float:left;
+	width:500px;
+	/*width: 50.7%;*/
+	margin: 0;
+	overflow: hidden;
+}
+#left-inner {
+	margin: 0 1px;
+	background: #EEEEEE;
+	padding: 5px;
+}
+#right {
+	float:right;
+	width:393px;
+	/*width: 49.3%;*/
+	overflow: hidden;
+}	
+	
+
+#footer {
+	margin: 0 auto;
+	border: none;
+	clear: both;
+	text-align: center;
+}
+
+	
+/* main */
+
+
+h1 
+{
+	font-size: 15px;
+	font-weight: bold;
+	background: none;
+	margin: 0pt 0pt 10pt 0pt;
+	padding: 10px 0pt 0pt 0pt;
+	border-width: 1px;
+}
+
+
+
+div#menu {
+}
+
+div#usermenu .menubox, div#menu .menubox {
+	margin: 0 0 5px 0;
+	padding: 0;
+	border:none;
+}
+	
+
+div#menu ul , div#left ul, div#right-bar ul {
+	list-style-position:outside;
+	list-style-type:none;
+	margin:0pt;
+	padding:0pt;	
+}
+
+
+div#usermenu a, div#menu a {
+	background-color: #EEEEEE;
+	color:#3C4F52;
+	display:block;
+	height:20px;
+	text-decoration:none;
+	padding-left: 10px;
+	border-top: 1px solid #CCCCCC ;
+}
+
+div#usermenu li a:hover, div#menu li a:hover {
+	background-color:#CCCCCC ;
+	cursor:pointer;	
+}
+
+
+
+div#langbar {
+float: right;
+}
+div#langbar a{
+	display: inline;
+}
+#langbar ul{
+	margin: 0pt;
+}
+#langbar ul li {
+	
+	display: inline;
+}
+
+.clear {
+	clear: both;
+}	
+
+div#newsbox {
+padding: 5px;
+background-color: #F9F9F9;
+}
+
+#newsbox img {
+	float: left;
+	margin-right: 5px;
+	border: 1px solid #AAAAAA;	
+	padding: 0;
+	width: 100px;
+}
+#newsbox h2 a {	
+	text-decoration: none;
+	font-size: 13px;
+	font-weight: bold;
+	color: #CC3333;
+	clear: both;
+}
+
+
+#comment_form label {
+clear:both;
+display:block;
+margin: 3px 0pt;
+float:left;
+width:150px;
+}
+
+#comment_form input, #comment_form textarea
+{
+border:1px solid #C4CBD2;
+font-size:90%;
+margin: 5px 0pt;
+padding:5px;
+width:300px;
+}
+
+#comment_form input.input-submit
+{
+width:150px;
+margin-left: 150px;
+}
+
+#comments div {
+	margin: 10px 0pt;
+	padding: 10px;
+	background: #EEEEEE;
+}
+
+#comments .odd
+{
+	border: 1px solid #EBBD52;
+}
+
+#comments .even
+{
+	border: 1px solid #ADDD6C;
+
+}
+
+
+
+#right-bar {
+	float: left;
+	width: 255px;
+	/*width: 67.1%;*/
+	overflow: hidden;
+}
+
+#right-bar-left {
+	float: left;
+	width: 122px;
+	overflow: hidden;
+}
+	
+#right-bar-right {
+	float: right;
+	width: 122px;
+	overflow: hidden;
+}
+
+#skycraper {
+	float: right;
+	width: 120px;
+	/*width: 32.9%;*/
+	margin: 0;
+	overflow: hidden;
+}
+
+#main {
+	float: left;
+	/*width: 595;*/
+	width: 750px;
+	margin: 0 0 0 5px;
+}
+
+
+.input-file, .input-text {
+	border: 1px solid #C4CBD2; 
+	padding: 0.4em; 
+	font-size: 90%;
+	width: 16em;
+	margin: 1em 1em 0 0;
+}
+
+form.edit .input-textarea {
+	border: 1px solid #C4CBD2; 
+	padding: 0.4em; 
+	font-size: 100%;
+	width: 570px;
+	height: 400px;
+	margin: 1em 0 0 0;
+	font-family: Trebuchet MS, Geneva, Helvetica, Arial, sans-serif; 
+}
+form.homelogin input {
+	border: 1px solid #AAAAAA;
+	padding: 0.4em;
+}
+form.homelogin #password, form.homelogin #username {
+	width: 100px;
+	padding: 0.4em 0.4em 0.4em 2.2em;
+}
+
+#topmenu{padding:3px; margin-bottom:0px; clear:both; float:left; border: 1px solid #CCCCCC}
+#topmenu ul{list-style:none; margin:0; padding:0; float:left; width:100%; background:#EEEEEE  repeat-x bottom left;}
+#topmenu li{float:left; display:block; height:30px;}
+#topmenu a{float:left; display:block; margin:7px 0; padding:0 15px; text-decoration:none; color: #333333; border-left: 1px solid #AAAAAA; border-right: 1px solid #EEEEEE;}
+#topmenu a:visited{text-decoration:none; color:#333333; }
+#topmenu a:hover{text-decoration:none; color:#AAAAAA; }
+#topmenu li.on {background: url(../images/topmenu_bg_on.jpg) repeat-x bottom right;}
+#topmenu li.on a{color:#ffffff; font-weight:bold; text-decoration:none;}
+#topmenu li.on a:visited{color:#333333; font-weight:bold; text-decoration:none;}
+#topmenu li.first a{padding-left:13px; border-left:none; }
+#topmenu li.first a:visited{border-left: none;}
+#topmenu li.last a{padding-right:13px; border-right:none; }
+#topmenu li.last a:visited{border-right:none;}
+
+#forum {
+	margin-top: 10px;
+}
+
+#forum h2 {
+	text-decoration: none;
+	font-size: 12px;
+	color: #0066FF;
+}	
+#rss {
+	background:#A7B8B8 none repeat scroll 0 0;
+	color:#FFFFFF;
+	padding:10px 1px 10px 10px;
+}
+
+#rss h2 , #rss h2 a {
+	text-decoration: none;
+	font-size: 12px;
+	color: #EEEEEE;
+	margin: 0;
+}	
+
+
+#spotlight-out {
+	width: 100%;
+}
+
+#left-left {
+	float: right;
+	width: 375px;
+}
+
+form.homelogin #username {
+	background: url("../images/user-icon.gif") no-repeat 0.5em 0.6em;
+}
+
+form.homelogin #password {
+	background: url("../images/key-icon.gif") no-repeat 0.5em 0.6em;
+}
+
+div.box-gris, #newsbox, #search, #skycraper, #menu, #spotlight-in, #main, #copyright {
+border: 1px solid #CCCCCC;
+margin: 5px 0;
+background: #FFFFFF;
+padding: 5px;
+}
+
+#players img {
+width: 25px;
+height: 25px;
+
+}
+
+#login {
+margin: 5px;
+background: #FFFFFF;
+padding: 5px;
+}
+
+/* tables */
+
+table.list {
+	border: 1px solid #EEEEEE;
+	width: 100%;
+}
+table.list a {
+	text-decoration: none;
+}
+table.list th {
+	background-color: #CCCCCC;
+	text-align: center;
+}
+
+.odd {
+	background-color: #EEEEEE;
+}
+
+.even {
+	background-color: #FFFFFF;
+}
+table.list td {
+	padding: 2px;
+}
+
+
+div.box-gris h1, div#usermenu h2, div#menu h2, #left h1, #right-bar h1 {
+	padding: 5px;
+	background: #EEEEEE none;
+	color: #009900;
+	border: none;
+	margin: 0 0 5px;
+	font-size: 15px;
+}
+
+div#usermenu h2 {
+	background: #FF6600 none;
+}
+
+div#playing h1 {
+background-image: url(../images/ajax-loader.gif);
+background-position: center right;
+background-repeat: no-repeat;
+}
+
+#copyright {
+font-size: 80%;
+clear: both;
+text-align: center;
+background-color: #EEEEEE;
+}
+
+#flickr img {
+width: 60px;
+height: 60px;
+}

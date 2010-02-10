@@ -1,0 +1,784 @@
+@charset "utf-8";
+
+/*
+* BLAZE ADMIN THEME v. 0.90
+* 03/03/2008
+*/
+
+/* --- [ General settings ] --- */
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	color: #000000;
+	font: 0.75em Tahoma, Geneva, Helvetica, Arial, sans-serif; 
+	text-align: center;
+	line-height: 150%;
+	background: url("../images/body.png") #FFFFFF repeat-x top;
+	behavior: url("/static/admin/default/javascript/csshover.htc");
+}
+
+a, a:link, a:visited {
+	color: #0080AA;
+	text-decoration: none;
+}
+
+a:hover, a:focus, a:active {
+}
+
+h1 {font-size: 130%;}
+h2 {font-size: 120%;}
+h3 {font-size: 110%;}
+h4 {font-size: 90%;}
+h5 {font-size: 80%;}
+h6 {font-size: 70%;}
+
+ul {
+	list-style: none;
+	margin: 0 0 10px 0;
+}
+
+ol {
+	margin: 0 0 10px 0;
+}
+
+table, th, td, tr, 
+ul, ol, li { 
+	font-size: 100%; 
+}
+
+img {
+	border: 0 none;
+	margin: 0;
+	padding: 0;
+}
+
+.hidden {
+	visibility: hidden;
+}
+
+.none {
+	display: none;
+}
+
+.bold {
+	font-weight: 900;
+}
+
+.red {
+	color: #990000;
+	font-weight: 900;
+}
+
+.clearfloat { 
+	clear: both;
+	height: 0;
+	font-size: 1px;
+	line-height: 0px;
+}
+
+.clear {
+	clear: both;
+}
+
+/* --- [ Basic layout ] --- */
+
+div#base {
+	width: 960px; 
+	margin: 0 auto; 
+	padding: 0;
+	text-align: left; 
+}
+
+div#header {
+	background: url("../images/header.png") #1C3448 repeat-x top;
+	margin: 0;
+	height: 65px;
+}
+
+div#navigation {
+	background: url("../images/menu.png") #FFFFFF repeat-x top;
+	margin: 0;
+	height: 44px;
+}
+
+div#main {
+	clear: both;
+	font-size: 100%;
+	position: static;
+	overflow: hidden;
+}
+
+div#footer {
+	height: 40px;
+	line-height: 40px;
+	margin: 0;
+	font-size: 90%;
+	color: #101E29;
+	background: url("../images/footer-separator.png") repeat-x top left;
+}
+
+/* --- [ Header ] --- */
+
+a.logo {
+	display: block;
+	float: left;
+	position: relative;
+	top: 0px;
+	left: 0px;
+	height: 60px;
+}
+
+a.logo span {
+	color: #FFFFFF;
+	font-weight: bold;
+}
+
+ul.topnav {
+	float: right;
+	position: relative;
+	top: 10px;
+	right: 20px;
+	text-align: right;
+}
+
+ul.topnav li {
+	display: inline;
+	color: #FFFFFF;
+	font-size: 90%;
+	padding-left: 0.1em;
+}
+
+ul.topnav li a {
+	color: #FEEDAB !important;
+	border-bottom: 1px solid #336186;
+}
+
+ul.topnav li a:hover {
+	color: #FFFFFF !important;
+	border-bottom: 1px solid #FEEDAB;
+}
+
+ul.topnav li.logout {
+	background: url("../images/logout-icon.png") no-repeat 0 2px;
+	padding-left: 1.4em;
+}
+
+ul.topnav li.login {
+	background: url("../images/login-icon.png") no-repeat 0 2px;
+	padding-left: 1.4em;
+}
+
+/* --- [ Main navigation ] --- */
+
+ul#adminnav {
+	float: left;
+	margin: 0;
+	padding: 0 0 0 1px;
+	list-style: none;
+	height: 26px;
+	background: url("../images/menu-separator.png") no-repeat 0 1px;
+}
+
+ul#adminnav li {
+	font-size: 100%;
+	display: inline;
+	float: left;
+	margin: 1px 0 0 0;
+	background: url("../images/menu-separator.png") no-repeat top right;
+}
+
+ul#adminnav li a {
+	display: block;
+	padding: 4px 20px 4px 20px;
+	margin: 0;
+	color: #FFFFFF;
+}
+
+ul#adminnav li a:hover,
+ul#adminnav li.active {
+	background: url("../images/menu-active.png") #FFFFFF no-repeat top right;
+}
+
+ul#adminnav li.active a {
+	background: url("../images/menu-triangle.gif") no-repeat 50% 100%;
+}
+
+ul#adminnav li ul {
+	position: absolute;
+	width: 150px;
+	left: -999em;
+	margin: 0 0 0 -1px;
+	padding-top: 1px;
+	z-index: 999 !important;
+}
+
+ul#adminnav li:hover ul {
+	left: auto;
+}
+
+ul#adminnav li ul li {
+	width: 150px;
+	white-space: nowrap;
+	padding: 0;
+	margin: 0;
+	background: #101E29;
+}
+
+ul#adminnav li ul li a,
+ul#adminnav li ul li.active a {
+	width: 130px;
+	font-size: 96%;
+	display: block;
+	line-height: 26px;
+	padding: 0 0 0 20px;
+	background: url("../images/submenu-separator.gif") repeat-x bottom left !important;
+}
+
+ul#adminnav li ul li a:hover,
+ul#adminnav li ul li.active a:hover {
+	background: url("../images/submenu-hover.png") repeat-x bottom left !important;
+}
+
+/* --- [ Main ] --- */
+
+div#main div#inner {
+	padding: 10px 20px 20px 20px;
+	position: static;
+	overflow: hidden;
+}
+
+div#main a, 
+div#main a:link, 
+div#main a:visited {
+	padding: 0 0 1px 0;
+	border-bottom: 1px solid #BFE5F2;
+}
+
+div#main a:hover, 
+div#main a:focus, 
+div#main a:active {
+	border-bottom: 1px solid #0080AA;
+}
+
+div.handle {
+	float: left;
+	border: 1px solid #CCC;
+	height: 10px;
+	width: 10px;
+	margin: 3px 15px 0 0;
+	cursor: move;
+}
+
+p.notice {
+	color: #759B50;
+	font-weight: 900;
+}
+
+div.slim {
+	width: 700px;
+	margin: 0 0 0 20px;
+}
+
+div.wide {
+	width: 920px;
+	margin: 0;
+}
+
+div.leftmenu {
+	width: 200px;
+	margin: 0;
+	position: static;
+	float: left;
+	overflow: hidden;
+	clear: both;
+	background: url("../images/left-menu-top.png") no-repeat top right;
+}
+
+div.leftmenu h1 {
+	color: #1C3448;
+	padding: 0 0 10px 28px;
+}
+
+div.leftmenu h1#quicklaunch {background: url("../images/quick-launch.png") no-repeat 0 2px;}
+div.leftmenu h1#managecontent {background: url("../images/manage-content.png") no-repeat 0 2px;}
+div.leftmenu h1#pageinfo {background: url("../images/page-info.png") no-repeat 0 2px;}
+
+ul.quickmenu {
+	margin: 0;
+	padding: 0;
+	border-top: 1px solid #C3CAD0;
+}
+
+ul.quickmenu li {
+	line-height: 30px;
+	width: 200px;
+	background: url("../images/left-menu-li.png") no-repeat top right;
+}
+
+ul.quickmenu li a {
+	display: block;
+	line-height: 30px;
+	width: 180px;
+	color: #000000 !important;
+	padding: 0 0 0 20px !important;
+	border-bottom: none !important;
+}
+
+ul.quickmenu li a:hover {
+	text-decoration: none;
+}
+
+ul.quickmenu li a.active {
+	background: #FFFFFF;
+	border-bottom: 1px solid #C3CAD0 !important;
+}
+
+ul.quickmenu li a.active:hover {
+	text-decoration: none;
+}
+
+div.quickend {
+	height: 150px;
+	width: 200px;
+	background: url("../images/left-menu-bottom.png") no-repeat top right;
+}
+
+div.content {
+	position: static;
+	float: left;
+	clear: right;
+}
+
+div.content h1 {
+	color: #990000;
+	padding: 0 0 9px 28px;
+}
+
+div.content h1#login {background: url("../images/login.png") no-repeat 0 1px;}
+div.content h1#dashboard {background: url("../images/dashboard.png") no-repeat 0 1px;}
+div.content h1#settings {background: url("../images/settings.png") no-repeat 0 1px; float: left;}
+div.content h1#navigation {background: url("../images/navigation.png") no-repeat 0 1px; float:left;}
+div.content h1#blog {background: url("../images/blog.png") no-repeat 0 1px; float: left;}
+div.content h1#page {background: url("../images/manage-content.png") no-repeat 0 1px; float: left;}
+div.content h1#edit {background: url("../images/edit-page.png") no-repeat 0 1px; float: left;}
+div.content h1#delete {background: url("../images/delete.png") no-repeat 0 2px;}
+
+div.content hr {
+	color: #C3CAD0;
+	background-color: #C3CAD0;
+	border: none;
+	height: 3px;
+	margin: 0 0 10px 0;
+}
+
+div.content p {
+	margin: 0 0 0.75em 0;
+	line-height: 1.5em;
+}
+
+div.row {
+	padding: 10px 0;
+	display: static;
+	overflow: hidden;
+	height: auto;
+}
+
+div.row div.left {
+	position: relative;
+	float: left;
+	width: 340px;
+	margin: 0 20px 0 0;
+}
+
+div.row div.right {
+	position: relative;
+	float: right;
+	width: 340px;
+}
+
+div.row div.right h2,
+div.row div.left h2 {
+	background: url("../images/dashboard-title.png") no-repeat top right;
+	font-size: 95%;
+	padding: 3px 0 20px 20px;
+}
+
+div.row div.left dl {
+	margin: 0 20px;
+	padding: 0;
+	width: 300px;
+	font-size: 95%;
+}
+
+div.row div.left dt,
+div.row div.left dd {
+	line-height: 225%;
+	background: url("../images/dot-line.gif") repeat-x bottom left;
+}
+
+div.row div.left dt {
+	width: 60%;
+	float: left;
+}
+
+div.row div.left dd {
+	width: 40%;
+	float: right;
+	white-space: nowrap;
+}
+
+
+div.row div.right ul {
+}
+
+div.row div.right ul li {
+	font-size: 95%;
+	line-height: 225%;
+	padding: 0 0 0 33px;
+	background: url("../images/list-blue.gif") no-repeat 20px 12px;
+}
+
+span.delete {
+	font-weight: 900;
+	color: #990000;
+	margin: 0 0 0 10px;
+}
+
+/* --- [ Footer ] --- */
+
+div#footer span.left {
+	position: relative;
+	float: left;
+	left: 20px;
+}
+
+div#footer span.left a.flogo {
+	display: block;
+	color: #000000;
+}
+
+div#footer span.left a.flogo img {
+	padding: 7px 7px 0 0;
+	float: left;
+}
+
+div#footer span.left a.flogo b {
+	font-size: 90%;
+	font-weight: normal;
+	float: left;	
+	display: block;
+}
+
+div#footer span.right {
+	position: relative;
+	float: right;
+	right: 20px;
+	text-align: right;
+}
+
+div#footer span.right a {
+	padding: 0 0 1px 0;
+	border-bottom: 1px solid #BFE5F2;
+}
+
+div#footer span.right a:hover {
+	border-bottom: 1px solid #0080AA;
+}
+
+/* --- [ Forms ] --- */
+
+form.settings,
+form.edit,
+form.login,
+form.delete {
+	padding: 0; 
+	margin: 0 0 20px 0;
+}
+
+form.settings fieldset,
+form.edit fieldset,
+form.login fieldset {
+	width: 100%; 
+	display: block; 
+	border: none;
+	padding: 0; 
+	line-height: 1.5em;
+}
+
+form.login fieldset {
+	width: 22em;
+}
+
+form.settings label,
+form.edit label,
+form.login label {
+	clear: both; 
+	display: block; 
+	float: left; 
+	width: 10em;
+	margin: 1.1em 0 0 0;
+}
+
+form.login label {
+	width: 6em;
+}
+
+.input-file, .input-text {
+	border: 1px solid #C4CBD2; 
+	padding: 0.4em; 
+	font-size: 90%;
+	width: 16em;
+	margin: 1em 1em 0 0;
+}
+
+form.edit .input-textarea {
+	border: 1px solid #C4CBD2; 
+	padding: 0.4em; 
+	font-size: 110%;
+	width: 570px;
+	height: 400px;
+	margin: 1em 0 0 0;
+}
+
+form.edit .input-select,
+form.settings .input-select {
+	border: 1px solid #C4CBD2;
+	font-size: 90%;
+	margin: 1.4em 1em 0 0;
+}
+
+form.edit .input-select option,
+form.settings .input-select option {
+	padding-right: 1.4em; 
+}
+
+form.login .input-text {
+	margin: 1em 0 0 0;
+	padding: 0.4em 0.4em 0.4em 2.2em;
+	width: 13em; 
+	float: right;
+}
+
+form.login #username {
+	background: url("../images/user-icon.gif") no-repeat 0.5em 0.6em;
+}
+
+form.login #password {
+	background: url("../images/key-icon.gif") no-repeat 0.5em 0.6em;
+}
+
+form.settings p,
+form.edit p {
+	margin: 1em 0;
+}
+
+form.login p {
+	margin: 1em 0;
+	text-align: right;
+}
+
+form.settings ul,
+form.edit ul,
+ul.manage {
+	float: right;
+	margin: 4px 0 0 0;
+	padding: 0;
+	background-color: #F1F4F8;
+	border-top: 1px solid #C3CAD0;
+	border-left: 1px solid #C3CAD0;
+	border-right: 1px solid #C3CAD0;
+}
+
+form.settings li,
+form.edit li,
+ul.manage li {
+	display: inline;
+	float: left;
+	margin: 0;
+	background: #F1F4F8 url("../images/form-button.png") repeat-x top left;
+}
+
+form.settings .input-submit,
+form.edit .input-submit,
+form.login .input-submit,
+form.delete .input-submit { 
+	border: none;
+	font-size: 11px;
+	background: url("../images/form-separator.png") no-repeat bottom right;
+	line-height: 150%;
+	padding: 0.35em 0.7em; 
+	cursor: pointer;
+}
+
+form.login .input-submit,
+form.delete .input-submit { 
+	border: 1px solid #C3CAD0;
+	background: #F1F4F8 url("../images/form-button.png") repeat-x top left;
+	padding: 0.35em 1em; 
+}
+
+form.settings a.input-submit,
+form.edit a.input-submit,
+ul.manage a { 
+	display: block;
+	font-size: 11px;
+	color: #000000;
+	border-bottom: none !important;
+	line-height: 150%;
+	background: url("../images/form-separator.png") no-repeat bottom right;
+	padding: 0.3em 1em !important; 
+}
+
+form.settings .last,
+form.edit .last,
+ul.manage .last {
+	background: none !important;
+}
+
+form.settings div#cache,
+form.edit div#discussion {
+	margin: 1.2em 0 0 0;
+	overflow: hidden;
+}
+
+span.mceEditor {
+	display: block;
+	margin: 1em 0 0 0;
+}
+
+span.mceEditor a.mceButtonEnabled {
+	border-bottom: none !important;
+}
+
+span.mceEditor a.mceButtonEnabled:hover {
+	border-bottom: 1px solid #000000 !important;
+}
+
+span.mceEditor a.mceButtonDisabled {
+	border-bottom: none !important;
+}
+
+/* --- [ Tables ] --- */
+
+table.page-list {
+	border-collapse: collapse;
+	table-layout: fixed;
+	width: 99.9%;
+	margin: 10px 0 20px 1px;
+	padding: 0;
+}
+
+table.page-list thead {
+	border: 1px solid #111F2B;
+	height: 2.1em;
+	line-height: 2.1em;
+	color: #FFFFFF;
+}
+
+table.page-list th {
+	padding: 0 1em;
+	font-weight: normal;
+	background: url("../images/thead-separator.png") no-repeat top right;
+}
+
+table.page-list td {
+	border: 1px solid #C4CBD2;
+	padding: 0 1em;
+	vertical-align: top;
+}
+
+table.page-list th.center,
+table.page-list td.center {
+	text-align: center;
+	padding: 0;
+}
+
+table.page-list th.last {
+	background: url("../images/thead.png") repeat-x top left;
+}
+
+table.page-list tbody {
+	height: 2.1em;
+	line-height: 2.1em;
+}
+
+table.page-list tr.even {
+	background: #F1F4F8;
+}
+
+table.page-list tbody tr:hover {
+	background: #E2F2CC;
+}
+
+/* --- [ Other ] --- */
+
+ul#navigation_list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+ul#navigation_list li {
+	margin: 10px 0;
+	padding: 0;
+}
+
+div#navcontain {
+	width: 840px;
+}
+
+ul#nav {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	float: right;
+}
+
+ul#nav li {
+	float: left;
+	margin: 0;
+	padding: 0;
+	display: inline;
+}
+
+ul#nav li a {
+	display: block;
+	padding: 10px;
+	background: #40627C;
+	color: #FFFFFF;
+	margin: 0;
+	text-decoration: none;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+ul#nav li a:hover {
+	background: #6E9DC0;
+}
+
+.rightimage {
+	float:right;
+	margin: 0 0 10px 10px;
+}
+
+p.tiny {
+	font-size: 0.8em;
+	color: #666666;
+}
+
+#langbar {
+float: right;
+}
+#langbar ul{
+}
+#langbar ul li {
+	
+	display: inline;
+}
+#langbar a.active {
+	border: 2px solid white;
+	
+}
