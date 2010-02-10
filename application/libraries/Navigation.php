@@ -30,24 +30,26 @@
 		*/
 		function get($where = null)
 		{
-			$this->obj->cache->remove_group('navigation');
+
 			$hash = $this->obj->user->lang;
+			$hash .= serialize($this->obj->user->groups);
 			
 			if (!is_null($where))
 			{
-				$where['g_id IN'] = $this->obj->db->escape_str("(" . join("', '" , $this->obj->user->groups) . ")");
 				if(is_array($where))
 				{
 					$where['lang'] = $this->obj->user->lang;
-					$hash .= md5(serialize($where));
+					$hash .= serialize($where);
 				}
 				else
 				{
-					$hash .= md5($where);
+					$hash .= $where;
 					$where = array('id' => $where);
 				}
 				
 			}
+			
+			$hash = md5($hash);
 			
 			if (!$data = $this->obj->cache->get('navigationarray'.$hash, 'navigation'))
 			{
@@ -58,7 +60,10 @@
 				else
 				{
 					$this->obj->db->where($where);
+					$where = "lang = '" . $this->obj->user->lang . "' AND g_id IN ('" . join("', '" , $this->obj->user->groups) . "')";
+					$this->obj->db->where($where);
 					$query = $this->obj->db->get('navigation');
+					
 					if ($query->num_rows() > 0 )
 					{
 						$row = $query->row_array();
@@ -74,12 +79,14 @@
 				$data = $this->_get($parent);
 				$this->obj->cache->save('navigationarray'.$hash, $data, 'navigation',0 );
 			}
+			
 			return $data;			
 		}
 		
 		function _get($parent = 0, $level = 0) {
 			// retrieve all children of $parent
 			$this->obj->db->where(array('parent_id' => $parent, 'lang' => $this->obj->user->lang, 'active' => 1));
+			$this->obj->db->where("lang = '" . $this->obj->user->lang . "' AND g_id IN ('" . join("', '" , $this->obj->user->groups) . "')");
 			$this->obj->db->orderby('parent_id, weight');
 			$query = $this->obj->db->get('navigation');
 			

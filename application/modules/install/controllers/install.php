@@ -545,7 +545,7 @@ class Install extends Controller
 		$this->db->insert('settings', $data);
 		$data = array('name' => 'debug', 'value' => '0');
 		$this->db->insert('settings', $data);
-		$data = array('name' => 'version', 'value' => '0.9.1.0');
+		$data = array('name' => 'version', 'value' => '0.9.2.1');
 		$this->db->insert('settings', $data);
 		$data = array('name' => 'page_approve_comments', 'value' => '1');
 		$this->db->insert('settings', $data);
