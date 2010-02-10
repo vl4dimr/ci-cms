@@ -72,6 +72,12 @@ class Update extends Controller
 				{
 					$this->db->query("ALTER TABLE " . $this->db->dbprefix('navigation') . " ADD `g_id` VARCHAR( 20 ) NOT NULL DEFAULT '0'") ;
 					echo "<p>Navigation table updated</p>";
+				}
+				$query = $this->db->query("SHOW COLUMNS FROM " . $this->db->dbprefix('pages') . " WHERE Field = 'g_id'");
+				if($query->num_rows() == 0)
+				{
+					$this->db->query("ALTER TABLE " . $this->db->dbprefix('pages') . " ADD `g_id` VARCHAR( 20 ) NOT NULL DEFAULT '0'") ;
+					echo "<p>Page table updated</p>";
 					echo "<p>Now go to " . anchor('admin/module', 'admin/module') . " to update the modules.</p>";
 				}
 			
