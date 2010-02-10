@@ -24,7 +24,6 @@
 			$dir = $this->obj->config->item('cache_path');
 			$this->obj->load->library('cache', array('dir' => $dir));
 			$this->get_settings();
-			//$this->check_update();
 			$this->find_modules();
 			$this->load_locales();
 			$this->start();
@@ -64,28 +63,7 @@
 			$this->modules = $modules;
 		}
 		
-		function check_update()
-		{
-			
-			/*
-			$fversion = @file_get_contents(APPPATH . "version.txt");
-			
-			if (isset($fversion) && $fversion > $this->version)
-			{
-				//include (APPPATH . "update.php");
-			}
-			
-			*/
-			/*
-			if ( $revision = @file_get_contents("http://ci-cms.googlecode.com/svn/") )
-			{
-				if ( ereg ("<title>(.*)</title>", $revision, $contents)) 
-				{
-					$this->latest_revision = $contents[1];
-				}
-			}*/
-		}
-		
+	
 		function start()
 		{
 			/*
