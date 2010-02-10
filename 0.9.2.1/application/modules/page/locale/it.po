@@ -1,0 +1,439 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Solaitra:Page module\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-06-29 08:44+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Eugene Hery <hery@serasera.org>\n"
+"Language-Team: hery serasera <hery@serasera.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Italian\n"
+"X-Poedit-Country: ITALY\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../page_plugins.php:16
+msgid "Page"
+msgstr "Pagina"
+
+#: ../page_update.php:21
+#: ../page_update.php:44
+#: ../page_update.php:120
+#, php-format
+msgid "Page module updated to %s"
+msgstr ""
+
+#: ../controllers/admin.php:26
+msgid "The <i>images</i> directory is not writable. Please fix it'"
+msgstr "La cartella delle immagini non è accessibile. Correggi."
+
+#: ../controllers/admin.php:51
+msgid "First"
+msgstr "Primo"
+
+#: ../controllers/admin.php:52
+msgid "Last"
+msgstr "Ultimo"
+
+#: ../controllers/admin.php:80
+msgid "Settings updated"
+msgstr "Impostazioni aggiornate"
+
+#: ../controllers/admin.php:429
+msgid "The image was deleted"
+msgstr "L'immagine è stata cancellata"
+
+#: ../controllers/admin.php:442
+msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
+msgstr "Il file da caricare è troppo grande"
+
+#: ../controllers/admin.php:445
+msgid "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form"
+msgstr "Il file da caricare è troppo grande"
+
+#: ../controllers/admin.php:448
+msgid "The uploaded file was only partially uploaded"
+msgstr "Il file è soltanto parzialmente caricato"
+
+#: ../controllers/admin.php:451
+msgid "No file was uploaded."
+msgstr "Nessun file caricato"
+
+#: ../controllers/admin.php:455
+msgid "Missing a temporary folder"
+msgstr "Manca la cartella temporanea"
+
+#: ../controllers/admin.php:458
+msgid "Failed to write file to disk"
+msgstr "Non si riesce a scrivere il file"
+
+#: ../controllers/admin.php:461
+msgid "File upload stopped by extension"
+msgstr "Caricamento del file abbandonato dall'estenzione del file"
+
+#: ../controllers/admin.php:465
+msgid "No error code avaiable"
+msgstr "Nessuna codice di errore disponibile"
+
+#: ../controllers/admin.php:470
+msgid "No file was uploaded.."
+msgstr "Nessun file caricato..."
+
+#: ../controllers/page.php:26
+#: ../controllers/page.php:45
+msgid "You must submit the security code that appears in the image"
+msgstr "Devi inserire il codice anti-spam"
+
+#: ../controllers/page.php:70
+#: ../controllers/page.php:104
+msgid "Comment Notification"
+msgstr "Notifica dei commenti"
+
+#: ../controllers/page.php:72
+#: ../controllers/page.php:105
+#, php-format
+msgid ""
+"\n"
+"Hello,\n"
+"\n"
+"A new comment has been sent to the page\n"
+"%s\n"
+"\n"
+"\n"
+"If you don't want to receive other notification, go to\n"
+"%s\n"
+"\n"
+"and disable notification.\n"
+msgstr ""
+"\n"
+"Salve,\n"
+"\n"
+"C'è un nuovo commento nella pagina \n"
+"%s\n"
+"\n"
+"\n"
+"Se non vuoi ricevere questo tipo di notifica, vai su\n"
+"%s\n"
+"\n"
+"e disattivare.\n"
+
+#: ../controllers/page.php:137
+msgid "Comment to approve"
+msgstr "Commenti da approvare"
+
+#: ../controllers/page.php:139
+#, php-format
+msgid ""
+"\n"
+"Hello,\n"
+"\n"
+"A new comment has been sent to the page\n"
+"%s\n"
+"To approve it click the link below \n"
+"%s\n"
+"\n"
+"If you don't want to receive other notification, go to\n"
+"%s\n"
+"\n"
+"and set to approve comments automatically.\n"
+msgstr ""
+"\n"
+"Salve,\n"
+"\n"
+"C'è un nuovo commento inviato sull'articolo\n"
+"%s\n"
+"Per approvarlo, clicca sul link \n"
+"%s\n"
+"\n"
+"Se non vuoi più ricevere questa notifica, vai su\n"
+"%s\n"
+"\n"
+"E modificare la notifica.\n"
+
+#: ../controllers/page.php:164
+msgid "Thank you for your comment. In this site, the comments need to be approved by the administrator. Once approved, you will see it listed here."
+msgstr "Grazie per il commento. In questo sito, i commenti devono essere approvati dall'amministratore. Quando sar&agrave; accettato, sar&agrave; visto qu&igrave;"
+
+#: ../views/404.php:1
+msgid "Page Not Found!"
+msgstr "Pagina non esistente!"
+
+#: ../views/404.php:3
+msgid "The page you're looking for couldn't be found!"
+msgstr "La pagina che stai cercando non esiste"
+
+#: ../views/admin.php:7
+#: ../views/settings.php:18
+msgid "Settings"
+msgstr "Impostazioni"
+
+#: ../views/admin.php:8
+msgid "Create new Page"
+msgstr "Creare una pagina"
+
+#: ../views/admin.php:9
+#: ../views/edit.php:111
+msgid "Cancel"
+msgstr "Annullare"
+
+#: ../views/admin.php:24
+msgid "Title"
+msgstr "Titolo"
+
+#: ../views/admin.php:25
+#: ../views/create.php:127
+msgid "SEF address"
+msgstr "Indirizzi URL"
+
+#: ../views/admin.php:26
+#: ../views/edit.php:156
+msgid "Status"
+msgstr "Stato"
+
+#: ../views/admin.php:27
+msgid "Ordering"
+msgstr "Ordine"
+
+#: ../views/admin.php:28
+msgid "Action"
+msgstr "Azione"
+
+#: ../views/admin.php:29
+msgid "Hits"
+msgstr "Visite"
+
+#: ../views/admin.php:42
+msgid "Move up"
+msgstr "Sposta giù"
+
+#: ../views/admin.php:43
+msgid "Move down"
+msgstr "Sposta sù"
+
+#: ../views/create.php:4
+msgid "Page informations"
+msgstr "Modifica pagina"
+
+#: ../views/create.php:7
+#: ../views/edit.php:7
+msgid "Content"
+msgstr "Contenuto"
+
+#: ../views/create.php:8
+#: ../views/edit.php:8
+msgid "Other fields"
+msgstr "Altri campi"
+
+#: ../views/create.php:9
+#: ../views/edit.php:9
+msgid "Options"
+msgstr "Opzioni"
+
+#: ../views/create.php:27
+#: ../views/edit.php:27
+msgid "Upload"
+msgstr "Caricare"
+
+#: ../views/create.php:84
+#: ../views/create.php:156
+#: ../views/edit.php:84
+#: ../views/edit.php:170
+msgid "Delete image"
+msgstr "Rimuovere immagine"
+
+#: ../views/create.php:101
+msgid "Create New Page"
+msgstr "Creare una pagina"
+
+#: ../views/create.php:120
+msgid "To create a new page, just fill in your content below and click 'Save page'.<br />If you want to save your progress without publishing the page, Select 'Draft' status."
+msgstr "Per creare una nuova pagina, riempi il modulo e clicca su 'Salva'. <br />Se vuoi salvare senza pubblicare, seleziona 'Bozza' nello stato "
+
+#: ../views/create.php:122
+msgid "Page Title"
+msgstr "Titolo"
+
+#: ../views/create.php:130
+#: ../views/edit.php:131
+msgid "Parent"
+msgstr "Superiore"
+
+#: ../views/create.php:143
+msgid "Status:"
+msgstr "Stato"
+
+#: ../views/create.php:145
+#: ../views/edit.php:158
+msgid "Draft"
+msgstr "Bozza"
+
+#: ../views/create.php:146
+#: ../views/edit.php:159
+msgid "Published"
+msgstr "Pubblicato"
+
+#: ../views/create.php:149
+#: ../views/edit.php:162
+msgid "Page Content:"
+msgstr "Contenuto:"
+
+#: ../views/create.php:153
+#: ../views/edit.php:167
+msgid "Available images:"
+msgstr "Immagini disponibili:"
+
+#: ../views/create.php:161
+#: ../views/edit.php:175
+msgid "Image"
+msgstr "Immagine"
+
+#: ../views/create.php:166
+#: ../views/edit.php:181
+msgid "Page keywords:"
+msgstr "Tags:"
+
+#: ../views/create.php:169
+#: ../views/edit.php:184
+msgid "Page description:"
+msgstr "Descrizione:"
+
+#: ../views/create.php:181
+#: ../views/edit.php:196
+msgid "Show subpages"
+msgstr "Visualizza sottopagine"
+
+#: ../views/create.php:183
+#: ../views/create.php:189
+#: ../views/create.php:196
+#: ../views/create.php:202
+#: ../views/edit.php:198
+#: ../views/edit.php:205
+#: ../views/edit.php:211
+#: ../views/edit.php:217
+#: ../views/settings.php:45
+#: ../views/settings.php:52
+msgid "No"
+msgstr "No"
+
+#: ../views/create.php:184
+#: ../views/create.php:190
+#: ../views/create.php:197
+#: ../views/create.php:203
+#: ../views/edit.php:199
+#: ../views/edit.php:204
+#: ../views/edit.php:212
+#: ../views/edit.php:218
+#: ../views/settings.php:44
+#: ../views/settings.php:51
+msgid "Yes"
+msgstr "Sì"
+
+#: ../views/create.php:187
+#: ../views/edit.php:202
+msgid "Show navigation"
+msgstr "Visualizza navigazione"
+
+#: ../views/create.php:194
+#: ../views/edit.php:209
+msgid "Allow comments"
+msgstr "Attivare commenti"
+
+#: ../views/create.php:200
+#: ../views/edit.php:215
+msgid "Notify for comment"
+msgstr "Notifica per i commenti"
+
+#: ../views/edit.php:103
+msgid "Edit page"
+msgstr "Modifica pagina"
+
+#: ../views/edit.php:110
+msgid "Delete page"
+msgstr "Cancella"
+
+#: ../views/edit.php:124
+msgid "Page Title:"
+msgstr "Titolo:"
+
+#: ../views/edit.php:128
+msgid "SEF adress:"
+msgstr "Indirizzi URL:"
+
+#: ../views/index.php:5
+msgid "Add subpage"
+msgstr "Aggiungere sotto-pagina"
+
+#: ../views/index.php:7
+msgid "Edit"
+msgstr "Modifica"
+
+#: ../views/index.php:10
+msgid "Delete"
+msgstr "Cancella"
+
+#: ../views/index.php:58
+msgid "Comments:"
+msgstr "Commenti:"
+
+#: ../views/index.php:75
+msgid "Add a comment"
+msgstr "Aggiungere commento"
+
+#: ../views/index.php:79
+msgid "Name:"
+msgstr "Nome:"
+
+#: ../views/index.php:82
+msgid "Email:"
+msgstr "Email:"
+
+#: ../views/index.php:85
+msgid "Website:"
+msgstr "Sito web:"
+
+#: ../views/index.php:88
+msgid "Comment"
+msgstr "Commento"
+
+#: ../views/index.php:91
+msgid "Security code:"
+msgstr "Codice anti-spam:"
+
+#: ../views/index.php:92
+msgid "Confirm security code:"
+msgstr "Confirma codice:"
+
+#: ../views/index.php:94
+msgid "Required"
+msgstr "Necessario"
+
+#: ../views/index.php:95
+msgid "Add comment"
+msgstr "Aggiungere commento"
+
+#: ../views/settings.php:35
+msgid "Use this page to change the settings for the page module."
+msgstr "Utilizza questa pagina per cambiare l'impostazione del modulo di pagina"
+
+#: ../views/settings.php:39
+msgid "Homepage:"
+msgstr "Pagina iniziale:"
+
+#: ../views/settings.php:42
+msgid "Approve comments"
+msgstr "Accettare commenti"
+
+#: ../views/settings.php:49
+msgid "Notify admin for comments"
+msgstr "Notifica per i commenti"
+
+#: ../views/blocks/newpages.php:2
+msgid "Latest Pages"
+msgstr "Ultime pagine"
+
+#~ msgid "Meta data"
+#~ msgstr "Meta data"
+
