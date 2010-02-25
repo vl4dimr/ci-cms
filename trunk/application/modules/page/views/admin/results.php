@@ -24,6 +24,14 @@
 <?php endfor; ?>
 <?php endif; ?>
 </div>
+
+<form method='post' action="<?php echo site_url('admin/page/search') ?>" >
+<div class="filter">
+<label for="tosearch"><?php echo __("Search", $module) ?></label>
+<input type="text" name="tosearch" id="tosearch" value="<?php echo $tosearch ?>" />
+<input type="submit" name="submit" value="<?php echo __('Search', $module) ?>" />
+</div>
+</form>
 <table class="page-list">
 	<thead>
 		<tr>
