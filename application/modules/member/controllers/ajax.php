@@ -25,7 +25,7 @@ class Ajax extends Controller {
 			$data['message'] = __("Username is required", $this->template['module']);
 			$data['status'] = 0;
 			$this->output->set_header("Content-type: text/xml");
-			$this->load->view('ajax', $data);
+			$this->load->view('ajax', array('data' => $data));
 			return;
 		}
 		
@@ -34,7 +34,7 @@ class Ajax extends Controller {
 			$data['message'] = __("Please enter your password", $this->template['module']);
 			$data['status'] = 0;
 			$this->output->set_header("Content-type: text/xml");
-			$this->load->view('ajax', $data);
+			$this->load->view('ajax', array('data' => $data));
 			return;
 		}
 	
@@ -45,10 +45,12 @@ class Ajax extends Controller {
 			$data['message'] .= "<br /><a href='" . site_url('member/logout') . "'>" . __("Sign out", $this->template['module']) . "</a>"; 
 		
 			$data['status'] = 1;
+			$data['username'] = $username;
 			
 			$data = $this->plugin->apply_filters('logged_in_message', $data);
 			$this->output->set_header("Content-type: text/xml");
-			$this->load->view('ajax', $data);
+			$this->load->view('ajax', array('data' => $data));
+
 			return;
 		}
 		else
@@ -56,7 +58,7 @@ class Ajax extends Controller {
 			$data['message'] = __("Login error. Please verify your username " . $this->input->post('username') . " and your password.", $this->template['module']);
 			$data['status'] = 0;
 			$this->output->set_header("Content-type: text/xml");
-			$this->load->view('ajax', $data);
+			$this->load->view('ajax', array('data' => $data));
 			return;
 		}
 
