@@ -165,6 +165,15 @@ class Page_Model extends Model {
 		{
 			$row = $query->row_array();
 			$row['options'] = unserialize($row['options']);
+			if($page_break_pos = strpos($row['body'], "<!-- page break -->"))
+			{
+				$row['summary'] = substr($row['body'], 0, $page_break_pos);
+			}
+			else
+			{
+				$row['summary'] = character_limiter(strip_tags($row['body']), 200);
+			}
+			
 			return $row;
 		}
 		else
@@ -454,6 +463,14 @@ class Page_Model extends Model {
 				foreach ($results as $aresult)
 				{
 					$aresult['children'] = 0;
+					if($page_break_pos = strpos($aresult['body'], "<!-- page break -->"))
+					{
+						$aresult['summary'] = substr($aresult['body'], 0, $page_break_pos);
+					}
+					else
+					{
+						$aresult['summary'] = character_limiter(strip_tags($aresult['body']), 200);
+					}
 					$query = $this->db->query("SELECT count('id') cnt FROM " . $this->db->dbprefix('pages') . " WHERE parent_id = '" . $aresult['id'] . "'");
 					
 					if($query->num_rows() > 0)
