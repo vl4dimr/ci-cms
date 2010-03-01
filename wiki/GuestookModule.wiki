@@ -29,3 +29,69 @@ We will create a directory called *guestbook* and put it inside *modules*. At th
                  |__ guestbook_blocks.php
                  |__ setup.xml
 }}}
+
+= setup.xml =
+The setup.xml file will make the module installable. So let's create it first.
+
+This is its content.
+
+{{{
+<?xml version="1.0" ?>
+<module>
+        <name>guestbook</name>
+        <date>01/03/2010</date>
+        <author>hery</author>
+        <email>hery@serasera.org</email>
+        <url>http://hery.serasera.org</url>
+        <copyright>GNU/GPL License</copyright>
+        <version>1.0.0</version>
+        <description>Guestbook module</description>
+</module>
+
+}}}
+There is nothing special, just to define the module.
+
+= Database Structure =
+
+Let us then create first the database structure. We will create 2 tables, one for the guestbook itself and another one for settings. We will let the module installation file to deal with that so we put the creation script inside *guestbook_install.php*
+
+We create the file *guestbook_install.php* and we put it in the guestbook directory (as shown in the file structure above)
+
+content of guestbook_install.php
+
+{{{
+
+<?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
+
+$query =
+"CREATE TABLE IF NOT EXISTS " . $this->db->dbprefix('guestbook_posts') . " (
+  id int(11) NOT NULL auto_increment,
+  g_id varchar(20) NOT NULL default '',
+  g_name varchar(255) NOT NULL default '',
+  g_site varchar(255) NOT NULL default '',
+  g_email varchar(255) NOT NULL default '',
+  g_title varchar(255) NOT NULL default '',
+  g_ip varchar(255) NOT NULL default '',
+  g_msg text NOT NULL,
+  g_daty int(11) NOT NULL default '0',
+  g_country varchar(255) NOT NULL default '',
+  PRIMARY KEY  (id),
+  KEY g_id (g_id)
+);
+"
+
+$this->db->query($query);
+
+$query = 
+"CREATE TABLE IF NOT EXISTS " . $this->db->dbprefix('guestbook_settings')  . " (
+`id` INT NOT NULL  AUTO_INCREMENT,
+`name` VARCHAR( 100 ) NOT NULL ,
+`value` TEXT NOT NULL ,
+PRIMARY KEY ( `id` ) ,
+INDEX ( `username` )
+);";
+
+$this->db->query($query);
+
+
+}}}
