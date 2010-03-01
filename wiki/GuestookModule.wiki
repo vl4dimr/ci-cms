@@ -1,0 +1,31 @@
+#Creating Guestbook module
+
+= Introduction =
+
+With this example, we will create a Guestbook module to help you understand how to create your own module.
+
+
+= File structure =
+
+We will create a directory called *guestbook* and put it inside *modules*. At the end, we will get files like this but let us take it one by one:
+
+{{{
+
+          |__ guestbook
+                 |__ controllers
+                 |       |__ admin.php (backend page: optional)
+                 |       |__ index.php (front-end page of the module)
+                 |
+                 |__ models
+                 |       |__ guestbook_model.php (your model file)
+                 |                         
+                 |__ views
+                 |       |__ admin.php (backend view) 
+                 |       |__ index.php (backend view)
+                 |
+                 |__ guestbook_install.php
+                 |__ guestbook_uninstall.php
+                 |__ guestbook_plugins.php
+                 |__ guestbook_blocks.php
+                 |__ setup.xml
+}}}
