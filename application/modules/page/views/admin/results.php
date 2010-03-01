@@ -6,7 +6,7 @@
 <ul class="manage">
 	<li><a href="<?php echo site_url('admin/page/settings')?>"><?php echo __("Settings", $this->template['module'])?></a></li>
 	<li><a href="<?php echo site_url('admin/page/create')?>"><?php _e("Create new Page", $this->template['module'])?></a></li>
-	<li><a href="<?php echo site_url('admin')?>" class="last"><?php _e("Cancel", $this->template['module'])?></a></li>
+	<li><a href="<?php echo ($this->uri->segment(3) == 'search') ? site_url('admin/page') : site_url('admin')?>" class="last"><?php _e("Cancel", $this->template['module'])?></a></li>
 </ul>
 		
 <br class="clearfloat" />
@@ -27,8 +27,8 @@
 
 <form method='post' action="<?php echo site_url('admin/page/search') ?>" >
 <div class="filter">
-<label for="tosearch"><?php echo __("Search", $module) ?></label>
-<input type="text" name="tosearch" id="tosearch" value="<?php echo $tosearch ?>" />
+<label for="tosearch"><?php echo __("Search title", $module) ?></label>
+<input type="text" name="tosearch" id="tosearch" value="<?php if(isset($tosearch)) echo $tosearch ?>" />
 <input type="submit" name="submit" value="<?php echo __('Search', $module) ?>" />
 </div>
 </form>
@@ -54,9 +54,9 @@
 				<td><?php echo $page['uri']?></td>
 				<td><?php if ($page['active']==1): echo 'Published'; else: echo 'Draft'; endif;?></td>
 				<td>
-				<a href="<?php echo site_url('admin/page/move/up/'. $page['id'])?>"><img src="<?php echo site_url('application/views/admin/images/moveup.gif')?>" width="16" height="16" title="<?php echo __("Move up", $this->template['module'])?>" alt="<?php echo __("Move up", $this->template['module'])?>"/></a>
+				<a href="<?php echo site_url('admin/page/move/up/'. $page['id'] . '/' . $search_id . '/' . $start)?>"><img src="<?php echo site_url('application/views/admin/images/moveup.gif')?>" width="16" height="16" title="<?php echo __("Move up", $this->template['module'])?>" alt="<?php echo __("Move up", $this->template['module'])?>"/></a>
 				</td><td>
-				<a href="<?php echo site_url('admin/page/move/down/'. $page['id'])?>"><img src="<?php echo site_url('application/views/admin/images/movedown.gif')?>" width="16" height="16" title="<?php echo __("Move down", $this->template['module'])?>" alt="<?php echo __("Move down", $this->template['module'])?>"/></a></td>
+				<a href="<?php echo site_url('admin/page/move/down/'. $page['id']. '/' . $search_id . '/' . $start)?>"><img src="<?php echo site_url('application/views/admin/images/movedown.gif')?>" width="16" height="16" title="<?php echo __("Move down", $this->template['module'])?>" alt="<?php echo __("Move down", $this->template['module'])?>"/></a></td>
 				<td><a href="<?php echo site_url($page['uri'])?>" rel="external">View</a></td>
 				<td><a href="<?php echo site_url('admin/'.$module.'/edit/'.$page['id'])?>">Edit</a></td>
 				<td><a href="<?php echo site_url('admin/'.$module.'/delete/'.$page['id'])?>">Delete</a></td>

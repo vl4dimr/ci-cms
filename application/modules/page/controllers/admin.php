@@ -228,7 +228,7 @@ class Admin extends Controller {
 	}
 	
 	
-	function move($direction, $id)
+	function move($direction, $id, $search_id, $start)
 	{
 
 		if (!isset($direction) || !isset($id))
@@ -237,8 +237,7 @@ class Admin extends Controller {
 		}
 		
 		$this->pages->move($direction, $id);
-		
-		redirect('admin/page');					
+		$this->results($search_id, $start);				
 		
 				
 	}
@@ -458,6 +457,7 @@ class Admin extends Controller {
 		$this->template['total'] = $config['total_rows'];
 		$this->template['per_page'] = $config['per_page'];
 		$this->template['total_rows'] = $config['total_rows'];
+		$this->template['search_id'] = $search_id;
 
 		$this->layout->load($this->template, 'admin/results');
 	
@@ -477,8 +477,8 @@ class Admin extends Controller {
 		
 		$params['order_by'] = 'weight';
 		$search_id = $this->pages->save_params(serialize($params));
-		
-		$this->results($search_id, $start);
+		$this->template['tosearch'] = $tosearch;
+		$this->results($search_id);
 
 		
 	}

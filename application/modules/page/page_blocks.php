@@ -35,6 +35,7 @@ function page_item($where = array())
 	$obj =& get_instance();
 	
 	$hash = md5(serialize($where));
+	$obj->cache->remove_group('page_list');
 	if(!$result = $obj->cache->get('page_item_' . $hash, 'page_list'))
 	{
 		$obj->load->model('page_model');
