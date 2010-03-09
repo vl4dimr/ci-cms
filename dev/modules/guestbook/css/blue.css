@@ -1,0 +1,15 @@
+div.gbbox {
+	border: 1px solid #3B68D1;
+	margin: 10px auto;
+}
+
+div.gbbox .title {
+	font-weight: bold;
+	border: none;
+	padding: 5px;
+	background-color: #EEEEEE;
+}
+
+div.gbbox .message {
+	padding: 5px;
+}
