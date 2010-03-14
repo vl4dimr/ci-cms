@@ -67,7 +67,7 @@ class Guestbook extends Controller {
 			return;
 		}
 		
-		$this->gbook->save($data);
+		$data['id'] = $this->gbook->save($data);
 		
 		if($this->gbook->settings['notify_admin'] == 'Y')
 		{

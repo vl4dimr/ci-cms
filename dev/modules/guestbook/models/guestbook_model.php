@@ -179,8 +179,9 @@ class Guestbook_model extends Model {
 	function save($data = array())
 	{
 		$this->db->set($data);
-		$this->db->insert($this->table);
+		
 		$this->cache->remove_group($this->table);
+		return $this->db->insert($this->table);
 	}
 
 	function update($where = array(), $data = array(), $escape = true)
