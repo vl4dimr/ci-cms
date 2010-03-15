@@ -10,7 +10,7 @@ class Install extends Controller
 	
 	function index()
 	{
-		$query = $this->db->query("SHOW TABLE STATUS WHERE Name = '" . $this->db->dbprefix('settings') . "' ");
+		$query = $this->db->query("SHOW TABLE STATUS LIKE '" . $this->db->dbprefix('settings') . "' ");
 		if($query->num_rows() > 0)
 		{
 			redirect('install/update');

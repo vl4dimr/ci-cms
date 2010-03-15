@@ -190,7 +190,7 @@ $version = "1.2.0";
 
 if ($this->system->modules[$module]['version'] < $version)
 {
-	$query = $this->db->query("SHOW COLUMNS FROM " . $this->db->dbprefix('pages') . " WHERE Field = 'g_id'");
+	$query = $this->db->query("SHOW COLUMNS FROM " . $this->db->dbprefix('pages') . " LIKE  'g_id'");
 	if($query->num_rows() == 0)
 	{
 		$this->db->query("ALTER TABLE " . $this->db->dbprefix('pages') . " ADD `g_id` VARCHAR( 255 ) NOT NULL DEFAULT '0'") ;
