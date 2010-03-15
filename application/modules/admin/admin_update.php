@@ -32,7 +32,7 @@ $version = "1.1.0";
 
 if ($this->system->modules[$module]['version'] < $version)
 {
-	$query = $this->db->query("SHOW COLUMNS FROM " . $this->db->dbprefix('groups') . " WHERE Field = 'g_owner'");
+	$query = $this->db->query("SHOW COLUMNS FROM " . $this->db->dbprefix('groups') . " LIKE  'g_owner'");
 	if($query->num_rows() == 0)
 	{
 		$this->db->query("ALTER TABLE " . $this->db->dbprefix('groups') . " ADD `g_owner` VARCHAR( 255 ) NOT NULL DEFAULT '" . $this->user->username . "'") ;
@@ -52,7 +52,7 @@ $version = "1.2.0";
 
 if ($this->system->modules[$module]['version'] < $version)
 {
-	$query = $this->db->query("SHOW COLUMNS FROM " . $this->db->dbprefix('users') . " WHERE Field = 'online'");
+	$query = $this->db->query("SHOW COLUMNS FROM " . $this->db->dbprefix('users') . " LIKE 'online'");
 	if($query->num_rows() == 0)
 	{
 		$this->db->query("ALTER IGNORE TABLE " . $this->db->dbprefix('users') . " ADD `online` INT( 1 ) NOT NULL DEFAULT 0") ;

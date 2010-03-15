@@ -89,31 +89,7 @@ $version = "1.3.0";
 if ($this->system->modules[$module]['version'] < $version)
 {
 
-$fields = array(
-	'id' => array(
-			 'type' => 'INT',
-			 'constraint' => 5,
-			 'unsigned' => TRUE,
-			 'auto_increment' => TRUE
-	  ),
-	'tag' => array(
-			 'type' => 'VARCHAR',
-			 'constraint' => '255',
-	  ),
-	'uri' => array(
-			 'type' => 'VARCHAR',
-			 'constraint' => '255',
-	  ),
-	'news_id' => array(
-			 'type' => 'INT',
-			 'constraint' => '5',
-	  )
-);
-$this->load->dbforge();
-$this->dbforge->add_field($fields); 
-$this->dbforge->add_key('id', TRUE);
-$this->dbforge->add_key('tag');
-$this->dbforge->create_table('news_tags', TRUE);
+	$this->db->query("CREATE TABLE IF NOT EXISTS " . $this->db->dbprefix('news_tags') . " ( `id` INT(5) UNSIGNED AUTO_INCREMENT, `tag` VARCHAR(255), `uri` VARCHAR(255), `news_id` INT(5), PRIMARY KEY `id` (`id`), KEY `tag` (`tag`) )");
 
 	$this->session->set_flashdata("notification", sprintf(__("News module updated to %s", $module), $version)) ;
 	

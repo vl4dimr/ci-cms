@@ -23,13 +23,13 @@ class Update extends Controller
 	function _set($name, $value)
 	{	
 		//update only if changed
-		if (!isset($this->$name)) {
-			$this->$name = $value;
+		if (!isset($this->_settings[$name])) {
+			$this->_settings[$name] = $value;
 			$this->db->insert('settings', array('name' => $name, 'value' => $value));
 		}
-		elseif ($this->$name != $value) 
+		elseif ($this->_settings[$name] != $value) 
 		{
-			$this->$name = $value;
+			$this->_settings[$name] = $value;
 			$this->db->update('settings', array('value' => $value), "name = '$name'");
 		}
 	}
@@ -48,12 +48,16 @@ class Update extends Controller
 			exit();
 		}
 		
+		//update starts only from 0.9.0.0
+		
+		
+		
 		
 		//start upgrade
 		$to_version = "0.9.1.0";
 		if($old_version <= $to_version)
 		{
-				$query = $this->db->query("SHOW COLUMNS FROM " . $this->db->dbprefix('users') . " WHERE Field = 'online'");
+				$query = $this->db->query("SHOW COLUMNS FROM " . $this->db->dbprefix('users') . " LIKE 'online'");
 				if($query->num_rows() == 0)
 				{
 					$this->db->query("ALTER TABLE " . $this->db->dbprefix('users') . " ADD `online` INT( 1 ) NOT NULL DEFAULT 0") ;
@@ -67,13 +71,13 @@ class Update extends Controller
 		$to_version = "0.9.2.0";
 		if($old_version <= $to_version)
 		{
-				$query = $this->db->query("SHOW COLUMNS FROM " . $this->db->dbprefix('navigation') . " WHERE Field = 'g_id'");
+				$query = $this->db->query("SHOW COLUMNS FROM " . $this->db->dbprefix('navigation') . " LIKE 'g_id'");
 				if($query->num_rows() == 0)
 				{
 					$this->db->query("ALTER TABLE " . $this->db->dbprefix('navigation') . " ADD `g_id` VARCHAR( 20 ) NOT NULL DEFAULT '0'") ;
 					echo "<p>Navigation table updated</p>";
 				}
-				$query = $this->db->query("SHOW COLUMNS FROM " . $this->db->dbprefix('pages') . " WHERE Field = 'g_id'");
+				$query = $this->db->query("SHOW COLUMNS FROM " . $this->db->dbprefix('pages') . " LIKE 'g_id'");
 				if($query->num_rows() == 0)
 				{
 					$this->db->query("ALTER TABLE " . $this->db->dbprefix('pages') . " ADD `g_id` VARCHAR( 20 ) NOT NULL DEFAULT '0'") ;
