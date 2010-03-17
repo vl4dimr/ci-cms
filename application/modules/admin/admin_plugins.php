@@ -18,4 +18,14 @@ function admin_profile_quick_menu($rows)
 	}
 }
 
-?>
+
+$this->add_action('member_delete', 'admin_member_delete');
+
+function admin_member_delete($username)
+{
+	//groups
+	$obj->load->module_model('admin', 'group_model');
+	$obj->group_model->delete_member(array('where' => array('g_user' => $username)));
+	
+	
+}
