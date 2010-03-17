@@ -35,6 +35,7 @@
 		
 		function listall($debut = 0, $limit = 20, $order = 'id') 
 		{
+			$this->user->check_level('member', LEVEL_VIEW);
 			$where = array();
 			if ($filter = $this->input->post('filter'))
 			{
@@ -146,8 +147,9 @@
 			
 		}
 
-		function delete($username = null)
+		function delete($username = null, $confirm = 0)
 		{
+			$this->user->check_level('member', LEVEL_DEL);
 			if (is_null($username))
 			{
 				$this->session->set_flashdata("notification", __("Username and status required", $this->template['module']));
@@ -161,11 +163,19 @@
 			
 			}
 			
-			$this->db->delete('users', array('username' => $username));
-			$this->obj->plugin->do_action('member_delete', $username);
-			$this->session->set_flashdata("notification", __("User deleted", $this->template['module']));
-			redirect("admin/member/listall");
-			
+			if($confirm == 0)
+			{
+				$this->template['username'] = $username;
+				$this->layout->load($this->template, 'delete');
+			}
+			else
+			{
+				
+				$this->db->delete('users', array('username' => $username));
+				$this->plugin->do_action('member_delete', $username);
+				$this->session->set_flashdata("notification", __("User deleted", $this->template['module']));
+				redirect("admin/member/listall");
+			}
 		}
 		
 		function status($username = null, $fromstatus = null)
@@ -192,6 +202,7 @@
 		}
 		function edit($username = null) 
 		{
+			$this->user->check_level('member', LEVEL_EDIT);
 			$rules['password'] = "trim|matches[passconf]";
 			$rules['passconf'] = "trim";
 			$rules['email'] = "trim|required|valid_email|callback__verify_mail";	
