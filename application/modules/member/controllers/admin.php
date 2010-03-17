@@ -162,6 +162,7 @@
 			}
 			
 			$this->db->delete('users', array('username' => $username));
+			$this->obj->plugin->do_action('member_delete', $username);
 			$this->session->set_flashdata("notification", __("User deleted", $this->template['module']));
 			redirect("admin/member/listall");
 			
