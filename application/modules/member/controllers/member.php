@@ -64,7 +64,18 @@ class Member extends Controller {
 			if ( !$this->input->post('submit') )
 			{
 				$this->template['last_post'] = $this->session->userdata('last_post');
-				$this->template['redirect'] = $this->session->userdata('redirect');
+				if($this->session->userdata('redirect'))
+				{
+					$this->template['redirect'] = $this->session->userdata('redirect');
+				}
+				elseif( $this->input->server('HTTP_REFERER') )
+				{
+					$this->template['redirect'] = $this->input->server('HTTP_REFERER') ;
+				}
+				else
+				{
+					$this->template['redirect'] = '';
+				}
 				$this->session->unset_userdata('last_post');
 				$this->session->unset_userdata('redirect');
 				$this->layout->load($this->template, 'login');
@@ -102,6 +113,7 @@ class Member extends Controller {
 				}
 				else
 				{	
+					$this->session->set_userdata(array('last_post' => $this->input->post('last_post'), 'redirect' => $this->input->post('redirect')));
 					$this->session->set_flashdata('notification', __("Login error. Please verify your username and your password.", $this->template['module']));
 					redirect('member/login', 'refresh');
 				}
