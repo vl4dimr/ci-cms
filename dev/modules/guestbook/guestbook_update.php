@@ -12,7 +12,7 @@ if ($this->system->modules[$module]['version'] < $version)
 {
 	
 	
-	$this->session->set_flashdata("notification", sprintf(__("Forum module updated to %s", $module), $version)) ;
+	$this->session->set_flashdata("notification", sprintf(__("Guestbook module updated to %s", $module), $version)) ;
 	
 	$data = array('version' => $version);
 	$this->db->where(array('name'=> $module));

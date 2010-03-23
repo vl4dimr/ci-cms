@@ -237,9 +237,9 @@ class Guestbook_model extends Model {
 			$this->settings[$name] = $value;
 			$this->db->insert('guestbook_settings', array('name' => $name, 'value' => $value));
 		}
-		elseif ($this->settings->$name != $value) 
+		elseif ($this->settings[$name] != $value) 
 		{
-			$this->settings->$name = $value;
+			$this->settings[$name] = $value;
 			$this->db->update('guestbook_settings', array('value' => $value), "name = '$name'");
 		}
 	}
