@@ -78,3 +78,53 @@ you should see
 {{{
 Hello world!
 }}}
+
+As you might see, all action is in the *helloworld.php* file inside *controllers*. So that is our conroller.
+
+Now add another function inside the _Helloworld Class_ let us call that function "again".
+
+{{{
+        function again()
+        {
+           echo "Hello World Again!";
+        }
+}}}
+
+The Helloworld controller becomes like this
+
+
+
+{{{
+(...)
+
+class Helloworld extends Controller {
+
+        function Helloworld()
+        {
+           parent::Controller();
+        }
+
+        function index()
+        {
+           echo "Hello World!";
+        }                
+
+        function again()
+        {
+           echo "Hello World Again!";
+        }
+}
+}}}
+
+
+Now, open in your site
+
+http://yoursite/helloworld/again
+
+You should see
+
+{{{
+
+Hello world again!
+}}}
+
