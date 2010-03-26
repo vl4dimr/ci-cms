@@ -212,3 +212,22 @@ Hello World, in the morning again mario
 }}}
 
 So every part after the /again/ in uri now can be treated as parameters.
+
+Of course you can have more that one parameter eg.
+
+http://yoursite/helloworld/morning/again/mario/betty/smith
+
+you can call them like this
+
+
+{{{
+
+        function again($username1 = null, $username2 = null, $username3 = null)
+        {
+           echo "Hello World, in the morning again " . $username1 . ", " . $username2 . ", " . $username3;
+        }
+
+
+}}}
+
+== About views ==
