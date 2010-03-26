@@ -159,7 +159,7 @@ class Morning extends Controller {
 }
 }}}
 
-Now you can open http://yoursite/helloworld/*morning*
+Now you can open http://yoursite/helloworld/morning
 
 And you should see
 {{{
@@ -203,7 +203,7 @@ Open morning.php and modify the *again* function like this
 
 }}}
 
-Now you can open http://yoursite/helloworld/morning/again/*mario*
+Now you can open http://yoursite/helloworld/morning/again/mario
 
 And you should see
 
