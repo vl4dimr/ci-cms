@@ -1,0 +1,23 @@
+#HelloWorld module
+
+= Introduction =
+
+This is for yoiu to understand how to create a base module
+
+
+= Download and install CI-CMS =
+
+Download CI-CMS from here [http://code.google.com/p/ci-cms/downloads/list] and unzip it in your web directory.
+
+  * Make writable the folders *./media* and *./cache* 
+  * Go to the folder *application/config* and rename *database.dist.php*  to *database.php* then change it to fit your database configuration.
+  * Rename config.dist.php to config.php and adjust it to your needs.
+  * Go to http://yoursite/install and follow the installation steps
+
+= Open your site =
+
+Normally you can already open your site http://yoursite/ after installation. 
+
+= Create Hello World module
+
+
