@@ -128,3 +128,54 @@ You should see
 Hello world again!
 }}}
 
+Now you can create as many function (action) as you want inside that Class and open the action in your site.
+
+== Another controller file==
+Now create another file, still inside the *controller* folder. Let's call it *morning.php* and put this inside.
+
+*morning.php*
+
+
+{{{
+<?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
+
+class Morning extends Controller {
+
+        function Morning()
+        {
+           parent::Controller();
+        }
+
+        function index()
+        {
+           echo "Hello World, in the morning!";
+        }                
+
+}
+}}}
+
+Now you can open http://yoursite/helloworld/*morning*
+
+And you should see
+{{{
+Hello World, in the morning!
+
+}}}
+
+That means, you do not need to put all the actions inside one file. Each file can be an action inside the controller (here the action is morning). 
+
+To make *morning* action work here, you needed to name the file *morning.php* and to create the class *Morning* in it.
+
+If you add another function inside the Morning class like this
+
+{{{
+        function again()
+        {
+           echo "Hello World, in the morning again!";
+        }
+}}}
+
+Then you can open your site http://yoursite/helloworld/morning/again to see
+{{{
+Hello World, in the morning again!
+}}}
