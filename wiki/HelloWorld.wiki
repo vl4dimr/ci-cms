@@ -18,6 +18,63 @@ Download CI-CMS from here [http://code.google.com/p/ci-cms/downloads/list] and u
 
 Normally you can already open your site http://yoursite/ after installation. 
 
-= Create Hello World module
+= Create Hello World module =
 
+To create a HelloWorld module
 
+Go to application/modules, and create a folder helloworld
+
+Now, inside that, create these folders: controllers, views, models
+
+Inside controllers create a file setup.xml and helloworld.php
+
+The content of setup.xml is like this
+
+*setup.xml*
+{{{
+<?xml version="1.0" ?>
+<module>
+        <name>helloworld</name>
+        <date>01/03/2010</date>
+        <author>hery</author>
+        <email>hery@serasera.org</email>
+        <url>http://hery.serasera.org</url>
+        <copyright>GNU/GPL License</copyright>
+        <version>1.0.0</version>
+        <description>HelloWorld module</description>
+</module>
+}}}
+
+You can ajust the date, author, email, version, description and url. The name is the module's name, here it is helloworld so you may not change that.
+
+The content of helloworld.php is like this
+
+*helloworld.php*
+
+{{{
+<?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
+
+class Helloworld extends Controller {
+
+        function Helloworld()
+        {
+           parent::Controller();
+        }
+
+        function index()
+        {
+           echo "Hello World!";
+        }                
+
+}
+}}}
+
+Now you can open
+
+http://yoursite/helloworld
+
+you should see
+
+{{{
+Hello world!
+}}}
