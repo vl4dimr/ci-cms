@@ -28,6 +28,7 @@ Now, inside that, create these folders: controllers, views, models
 
 Inside controllers create a file setup.xml and helloworld.php
 
+== The setup file ==
 The content of setup.xml is like this
 
 *setup.xml*
@@ -46,6 +47,10 @@ The content of setup.xml is like this
 }}}
 
 You can ajust the date, author, email, version, description and url. The name is the module's name, here it is helloworld so you may not change that.
+
+== The controller file==
+
+This is the file where you keep the action to be called.
 
 The content of helloworld.php is like this
 
@@ -179,3 +184,31 @@ Then you can open your site http://yoursite/helloworld/morning/again to see
 {{{
 Hello World, in the morning again!
 }}}
+
+== Parameters ==
+
+Each function in your controller can have parameters.
+
+Lets' try to modify the again method in your Morning class.
+
+Open morning.php and modify the *again* function like this
+
+{{{
+
+        function again($username = null)
+        {
+           echo "Hello World, in the morning again " . $username;
+        }
+
+
+}}}
+
+Now you can open http://yoursite/helloworld/morning/again/*mario*
+
+And you should see
+
+{{{
+Hello World, in the morning again mario
+}}}
+
+So every part after the /again/ in uri now can be treated as parameters.
