@@ -97,6 +97,17 @@ class Update extends Controller
 			
 			$this->_set('version', $to_version);
 		}
+
+		$to_version = "0.9.2.2";
+		if($old_version <= $to_version)
+		{
+			$this->db->query("ALTER TABLE " . $this->db->dbprefix('group_members') . " ADD `g_level` INT( 1 ) NOT NULL DEFAULT  0") ;
+			echo "<p>Member level inosde table updated</p>";
+			echo "<p>Now go to " . anchor('admin/module', 'admin/module') . " to update the modules.</p>";
+			
+			$this->_set('version', $to_version);
+		}
+
 	}
 
 }
