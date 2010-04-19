@@ -14,7 +14,7 @@ class Page_Model extends Model {
 					'id' 				=> '',
 					'uri'				=> '',
 					'title'				=> '',
-					'parent_id'			=> '',
+					'parent_id'			=> 0,
 					'meta_keywords'		=> '',
 					'meta_description'	=> '',
 					'body'				=> '',

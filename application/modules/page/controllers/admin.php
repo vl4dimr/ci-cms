@@ -198,11 +198,13 @@ class Admin extends Controller {
 		}			
 		$this->javascripts->add('ajaxfileupload.js');
 		$this->template['parents'] = $data;
-		$this->template['page'] = $this->pages->fields['pages'];
+		$page = $this->pages->fields['pages'];
+		if($parent_id > 0) $page['parent_id'] = $parent_id;
+		$this->template['page'] = $page;
 		//get pending images
 		
 		$this->template['images'] = $this->pages->get_images(array('where' => array('src_id' => 0)));
-		$this->template['parent_id'] = $parent_id;
+		
 		$this->template['uri'] = $uri;
 		$this->layout->load($this->template, 'create');
 	}
