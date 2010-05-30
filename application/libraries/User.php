@@ -119,16 +119,17 @@
 			$this->email			= $this->obj->session->userdata('email');
 		}
 		
-		function _start_session($user)
+		function _start_session()
 		{
 			// $user is an object sent from function login();
 			// Let's build an array of data to put in the session.
 			
 			$data = array(
-						'id' 			=> $user->id,
-						'username' 		=> $user->username,
-						'email'		=> $user->email, 
-						'logged_in'		=> true
+						'id' 			=> $this->id,
+						'username' 		=> $this->username,
+						'email'		=> $this->email, 
+						'logged_in'		=> $this->logged_in,
+						'lang'	=> $this->lang
 					);
 					
 			$this->obj->session->set_userdata($data);
@@ -174,9 +175,15 @@
 				// Let's save some data in their session/cookie/pocket whatever.
 				
 				$user = $query->row();
+				
+				$this->id 				= $user->id;
+				$this->username			= $user->username;
+				$this->logged_in 		= true;
+				$this->lang 			= $this->obj->session->userdata('lang');
+				$this->email			= $user->email;
 
 				
-				$this->_start_session($user);
+				$this->_start_session();
 				
 				$this->obj->session->set_flashdata('notification', 'Login successful...');
 				
@@ -185,20 +192,61 @@
 			else
 			{
 				// Login from database failed...
-				//check from other plugins
-				// to be done
+				//check other form of authorization:
+				//the auth should return username and email to update the user table
 				
-				// Couldn't find the user,
-				// Let's destroy everything just to make sure.
+				$user = false;
+				
+				$user = $this->obj->plugin->apply_filters('user_auth', $username, $password);
+				
+				
+				if($user['username'] == $username)
+				{
+					$query = $this->obj->db->get_where($this->table, array('username' => $username), 1);
+					if ($query->num_rows() == 1)
+					{
+						//updating password and email
+						
+						$this->update($username, array('email' =>   $user['email'] , 'password' =>  $password ));
+					}
+					else
+					{
+						//new user
+						$id = $this->register($user['username'], $password, $user['email']);
+						
+					}
+					$query = $this->obj->db->get_where($this->table, array('username' => $username), 1);
+					$user = $query->row();
+					//update session
+					$this->id 				= $user->id;
+					$this->username			= $user->username;
+					$this->logged_in 		= true;
+					$this->lang 			= $this->obj->session->userdata('lang');
+					$this->email			= $user->email;
 					
-				$this->_destroy_session();
+					$this->_start_session();
+					
+					$this->obj->session->set_flashdata('notification', 'Login successful...');					
+					return true;
+					
+				}
+				else
+				{
 				
-				$this->obj->session->set_flashdata('notification', 'Login failed...');
-				
-				return false;
+					// Couldn't find the user,
+					// Let's destroy everything just to make sure.
+					
+					$this->_destroy_session();
+					
+					$this->obj->session->set_flashdata('notification', 'Login failed...');
+					
+					return false;
+				}
 			}
 			
 		}
+		
+	
 		
 		function logout()
 		{
