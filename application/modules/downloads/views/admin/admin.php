@@ -1,14 +1,14 @@
 <!-- [Content] start -->
 <div class="content wide">
 
-<h1 id="page"><?=__("Download Administration", 'downloads')?></h1>
+<h1 id="page"><?php echo __("Download Administration", 'downloads')?></h1>
 
 <ul class="manage">
-	<li><a href="<?=site_url('admin/downloads/settings')?>"><?=__("Settings", 'downloads')?></a></li>
-	<li><a href="<?=site_url('admin/downloads/upload')?>"><?=__("Upload File", 'downloads')?></a></li>
-	<li><a href="<?=site_url('admin/downloads/document/create/' . $cat['id'])?>"><?=__("New Document", 'downloads')?></a></li>
-	<li><a href="<?=site_url('admin/downloads/category/create/' . $cat['id'])?>"><?=__("New Category", 'downloads')?></a></li>
-	<li><a href="<?=($cat['id']==0)?site_url('admin'):site_url('admin/downloads/index/' . $cat['pid'])?>" class="last"><?=__("Cancel", 'downloads')?></a></li>
+	<li><a href="<?php echo site_url('admin/downloads/settings')?>"><?php echo __("Settings", 'downloads')?></a></li>
+	<li><a href="<?php echo site_url('admin/downloads/upload')?>"><?php echo __("Upload File", 'downloads')?></a></li>
+	<li><a href="<?php echo site_url('admin/downloads/document/create/' . $cat['id'])?>"><?php echo __("New Document", 'downloads')?></a></li>
+	<li><a href="<?php echo site_url('admin/downloads/category/create/' . $cat['id'])?>"><?php echo __("New Category", 'downloads')?></a></li>
+	<li><a href="<?php echo ($cat['id']==0)?site_url('admin'):site_url('admin/downloads/index/' . $cat['pid'])?>" class="last"><?php echo __("Cancel", 'downloads')?></a></li>
 </ul>
 		
 <br class="clearfloat" />
@@ -16,21 +16,21 @@
 <hr />
 
 <?php if (isset($notice) || $notice = $this->session->flashdata('notification')):?>
-<p class="notice"><?=$notice;?></p>
+<p class="notice"><?php echo $notice;?></p>
 <?php endif;?>
 
 <?php if ($rows && count($rows) > 0 ) : ?>
-<h3><?=__("Categories in", 'downloads')?> <?=$cat['title']?></h3>
+<h3><?php echo __("Categories in", 'downloads')?> <?php echo $cat['title']?></h3>
 
 <table class="page-list">
 	<thead>
 		<tr>
 				<th width="3%" class="center">#</th>
-				<th width="27%"><?=__("Title", 'downloads')?></th>
-				<th width="27%"><?=__("Summary", 'downloads')?></th>
-				<th width="15%"><?=__("Status", 'downloads')?></th>
-				<th width="5%"><?=__("Ordering", 'downloads')?></th>
-				<th width="20%" colspan="2"><?=__("Action", 'downloads')?></th>
+				<th width="27%"><?php echo __("Title", 'downloads')?></th>
+				<th width="27%"><?php echo __("Summary", 'downloads')?></th>
+				<th width="15%"><?php echo __("Status", 'downloads')?></th>
+				<th width="5%"><?php echo __("Ordering", 'downloads')?></th>
+				<th width="20%" colspan="2"><?php echo __("Action", 'downloads')?></th>
 				<th width="3%" class="last center">ID</th>
 		</tr>
 	</thead>
@@ -48,17 +48,17 @@ else
 ?>		
 
 <?php if ($i % 2 != 0): $rowClass = 'odd'; else: $rowClass = 'even'; endif;?>
-		<tr class="<?=$rowClass?>">
-				<td class="center"><?=$i?></td>
-				<td><a href="<?=site_url('admin/downloads/index/' . $row['id']) ?>"><?=(strlen($row['title']) > 20? substr($row['title'], 0,20) . '...': $row['title'])?></a></td>
-				<td><?=$row['summary']?></td>
+		<tr class="<?php echo $rowClass?>">
+				<td class="center"><?php echo $i?></td>
+				<td><a href="<?php echo site_url('admin/downloads/index/' . $row['id']) ?>"><?php echo (strlen($row['title']) > 20? substr($row['title'], 0,20) . '...': $row['title'])?></a></td>
+				<td><?php echo $row['summary']?></td>
 				<td><?php if ($row['status']==1): echo 'Active'; else: echo 'Suspended'; endif;?></td>
 				<td>
-				<a href="<?=site_url('admin/downloads/category/move/up/'. $row['id'])?>"><img src="<?=site_url('application/views/admin/images/moveup.gif')?>" width="16" height="16" title="<?=__("Move up", 'downloads')?>" alt="<?=__("Move up", 'downloads')?>"/></a>
-				<a href="<?=site_url('admin/downloads/category/move/down/'. $row['id'])?>"><img src="<?=site_url('application/views/admin/images/movedown.gif')?>" width="16" height="16" title="<?=__("Move down", 'downloads')?>" alt="<?=__("Move down", 'downloads')?>"/></a></td>
-				<td><a href="<?=site_url('admin/downloads/category/create/'. $cat['id'] . '/'.$row['id'])?>">Edit</a></td>
-				<td><a href="<?=site_url('admin/downloads/category/delete/'.$cat['id'] . '/' . $row['id'])?>">Delete</a></td>
-				<td class="center"><?=$row['id']?></td>
+				<a href="<?php echo site_url('admin/downloads/category/move/up/'. $row['id'])?>"><img src="<?php echo site_url('application/views/admin/images/moveup.gif')?>" width="16" height="16" title="<?php echo __("Move up", 'downloads')?>" alt="<?php echo __("Move up", 'downloads')?>"/></a>
+				<a href="<?php echo site_url('admin/downloads/category/move/down/'. $row['id'])?>"><img src="<?php echo site_url('application/views/admin/images/movedown.gif')?>" width="16" height="16" title="<?php echo __("Move down", 'downloads')?>" alt="<?php echo __("Move down", 'downloads')?>"/></a></td>
+				<td><a href="<?php echo site_url('admin/downloads/category/create/'. $cat['id'] . '/'.$row['id'])?>">Edit</a></td>
+				<td><a href="<?php echo site_url('admin/downloads/category/delete/'.$cat['id'] . '/' . $row['id'])?>">Delete</a></td>
+				<td class="center"><?php echo $row['id']?></td>
 		</tr>
 <?php $i++; endforeach;?>
 <?php endif; ?>
@@ -67,17 +67,17 @@ else
 
 <?php if ($files && count($files) > 0 ) : ?>
 
-<h3><?=__("Documents in", 'downloads')?> <?=$cat['title']?></h3>
+<h3><?php echo __("Documents in", 'downloads')?> <?php echo $cat['title']?></h3>
 <table class="page-list">
 	<thead>
 		<tr>
 				<th width="3%" class="center">ID</th>
-				<th width="20%"><?=__("Title", 'downloads')?></th>
-				<th width="30%"><?=__("File", 'downloads')?></th>
-				<th width="15%"><?=__("Status", 'downloads')?></th>
-				<th width="5%"><?=__("Ordering", 'downloads')?></th>
-				<th width="20%" colspan="2"><?=__("Action", 'downloads')?></th>
-				<th width="7%" class="last center"><?=__("Hit", 'downloads')?></th>
+				<th width="20%"><?php echo __("Title", 'downloads')?></th>
+				<th width="30%"><?php echo __("File", 'downloads')?></th>
+				<th width="15%"><?php echo __("Status", 'downloads')?></th>
+				<th width="5%"><?php echo __("Ordering", 'downloads')?></th>
+				<th width="20%" colspan="2"><?php echo __("Action", 'downloads')?></th>
+				<th width="7%" class="last center"><?php echo __("Hit", 'downloads')?></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -99,23 +99,23 @@ else
 	}	
 
 ?>
-		<tr class="<?=$rowClass?>">
-				<td class="center"><?=$i?></td>
-				<td><a href="<?=site_url('admin/downloads/document/create/'. $cat['id'] .'/' . $row['id'])?>"><?=(strlen($row['title']) > 20? substr($row['title'], 0,20) . '...': $row['title'])?></a></td>
-				<td><a href='<?=$row['link']?>'><?=$row['file']?></a></td>
+		<tr class="<?php echo $rowClass?>">
+				<td class="center"><?php echo $i?></td>
+				<td><a href="<?php echo site_url('admin/downloads/document/create/'. $cat['id'] .'/' . $row['id'])?>"><?php echo (strlen($row['title']) > 20? substr($row['title'], 0,20) . '...': $row['title'])?></a></td>
+				<td><a href='<?php echo $row['link']?>'><?php echo substr($row['file'], 0,20)?>...</a></td>
 				<td><?php if ($row['status']==1): echo 'Active'; else: echo 'Suspended'; endif;?></td>
 				<td>
-				<a href="<?=site_url('admin/downloads/document/move/up/'. $row['id']. '/' . $row['cat'])?>"><img src="<?=site_url('application/views/admin/images/moveup.gif')?>" width="16" height="16" title="<?=__("Move up", 'downloads')?>" alt="<?=__("Move up", 'downloads')?>"/></a>
-				<a href="<?=site_url('admin/downloads/document/move/down/'. $row['id']. '/' . $row['cat'])?>"><img src="<?=site_url('application/views/admin/images/movedown.gif')?>" width="16" height="16" title="<?=__("Move down", 'downloads')?>" alt="<?=__("Move down", 'downloads')?>"/></a></td>
-				<td><a href="<?=site_url('admin/downloads/document/create/'. $cat['id'] .'/'.$row['id'])?>">Edit</a></td>
-				<td><a href="<?=site_url('admin/downloads/document/delete/'. $cat['id'] .'/'.$row['id'])?>">Delete</a></td>
-				<td class="center"><?=$row['hit']?></td>
+				<a href="<?php echo site_url('admin/downloads/document/move/up/'. $row['id']. '/' . $row['cat'])?>"><img src="<?php echo site_url('application/views/admin/images/moveup.gif')?>" width="16" height="16" title="<?php echo __("Move up", 'downloads')?>" alt="<?php echo __("Move up", 'downloads')?>"/></a>
+				<a href="<?php echo site_url('admin/downloads/document/move/down/'. $row['id']. '/' . $row['cat'])?>"><img src="<?php echo site_url('application/views/admin/images/movedown.gif')?>" width="16" height="16" title="<?php echo __("Move down", 'downloads')?>" alt="<?php echo __("Move down", 'downloads')?>"/></a></td>
+				<td><a href="<?php echo site_url('admin/downloads/document/create/'. $cat['id'] .'/'.$row['id'])?>">Edit</a></td>
+				<td><a href="<?php echo site_url('admin/downloads/document/delete/'. $cat['id'] .'/'.$row['id'])?>">Delete</a></td>
+				<td class="center"><?php echo $row['hit']?></td>
 		</tr>
 <?php $i++; endforeach;?>
 <?php endif; ?>
 	</tbody>
 </table>
-<?=$pager?>
+<?php echo $pager?>
 
 
 
