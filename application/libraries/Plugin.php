@@ -35,6 +35,7 @@ class Plugin {
 		return true;
 	}
 
+	
 	function apply_filters($tag, $string) {
 
 
@@ -115,6 +116,13 @@ class Plugin {
 		return count(array_keys($this->_action, $tag));
 	}
 
+	// Returns the number of times an filter has been done
+	function did_filter($tag) {
+		
+		return count(array_keys($this->_filter, $tag));
+	}
+	
+	
 	function do_action_ref_array($tag, $args) {
 
 		if ( !is_array($this->_action) )
@@ -139,6 +147,8 @@ class Plugin {
 	function remove_action($tag, $function_to_remove, $priority = 10, $accepted_args = 1) {
 		$this->remove_filter($tag, $function_to_remove, $priority, $accepted_args);
 	}
+
+	
 
 }
 
