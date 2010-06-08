@@ -112,10 +112,10 @@ function deleteFile(obj) {
 		<table id="file_list" class="page-list">
 			<thead>
 				<tr>
-					<th><?=__("Date", 'downloads')?></th>
-					<th><?=__("File", 'downloads')?></th>					
-					<th><?=__("Size", 'downloads')?></th>					
-					<th><?=__("Action", 'downloads')?></th>
+					<th width="10%"><?=__("Date", 'downloads')?></th>
+					<th width="72%"><?=__("File", 'downloads')?></th>					
+					<th width="8%"><?=__("Size", 'downloads')?></th>					
+					<th width="10%"><?=__("Action", 'downloads')?></th>
 				</tr>
 			</thead>
 			<tbody>

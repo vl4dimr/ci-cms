@@ -6,7 +6,7 @@
         <email>hery@serasera.org</email>
         <url>http://hery.serasera.org</url>
         <copyright>GNU/GPL License</copyright>
-        <version>1.0.0</version>
+        <version>1.1.2</version>
         <description>Download module</description>
         <install>
                 <query> 
