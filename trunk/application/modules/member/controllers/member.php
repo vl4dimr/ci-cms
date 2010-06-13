@@ -55,7 +55,7 @@ class Member extends Controller {
 			}
 			else
 			{
-				redirect ($this->system->page_home, 'refresh');
+				redirect($this->system->page_home, 'refresh');
 				return;
 			}
 		}
@@ -102,12 +102,12 @@ class Member extends Controller {
 					if ($redirect && (strpos($redirect, 'member/login') === false))
 					{
 						$redirect = str_replace(site_url(''), '', $redirect); 
-						redirect ($redirect, 'refresh');
+						redirect($redirect, 'refresh');
 						return;
 					}
 					else
 					{
-						redirect ($this->system->page_home, 'refresh');
+						redirect($this->system->page_home, 'refresh');
 						return;
 					}
 				}
