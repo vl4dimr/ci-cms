@@ -24,11 +24,11 @@
 	<thead>
 		<tr>
 				<th width="3%" class="center">#</th>
-				<th width="20%"><?=__("Joined", $module)?></th>
-				<th width="37%"><?=__("Username", $module)?></th>
-				<th width="20%"><?=__("From", $module)?></th>
-				<th width="20%"><?=__("To", $module)?></th>
-				<th width="20%" colspan="2"><?=__("Action", $module)?></th>
+				<th width="20%"><?php echo __("Joined", $module)?></th>
+				<th width="37%"><?php echo __("Username", $module)?></th>
+				<th width="20%"><?php echo __("From", $module)?></th>
+				<th width="20%"><?php echo __("To", $module)?></th>
+				<th width="20%" colspan="2"><?php echo __("Action", $module)?></th>
 		</tr>
 	</thead>
 <tbody>

@@ -20,10 +20,10 @@
 	<thead>
 		<tr>
 				<th width="3%" class="center">#</th>
-				<th width="37%"><?=__("Name", $module)?></th>
-				<th width="20%"><?=__("Members", $module)?></th>
-				<th width="20%"><?=__("Owner", $module)?></th>
-				<th width="20%" colspan="2"><?=__("Action", $module)?></th>
+				<th width="37%"><?php echo __("Name", $module)?></th>
+				<th width="20%"><?php echo __("Members", $module)?></th>
+				<th width="20%"><?php echo __("Owner", $module)?></th>
+				<th width="20%" colspan="2"><?php echo __("Action", $module)?></th>
 		</tr>
 	</thead>
 <tbody>
