@@ -1,7 +1,7 @@
 <!-- [Left menu] start -->
 <div class="leftmenu">
 
-	<h1 id="pageinfo"><?=__("Navigation", $this->template['module'])?></h1>
+	<h1 id="pageinfo"><?php echo __("Navigation", $this->template['module'])?></h1>
 	
 	
 	<div class="quickend"></div>
@@ -12,15 +12,15 @@
 <!-- [Content] start -->
 <div class="content slim">
 
-<h1 id="dashboard"><?=__("Add an administrator", $this->template['module'])?></h1>
+<h1 id="dashboard"><?php echo __("Add an administrator", $this->template['module'])?></h1>
 
 
 
-<form class="settings" action="<?=site_url('admin/admins/save')?>" method="post" accept-charset="utf-8">
-		<input type="hidden" name="id" value="<?=$admin['id']?>" />
+<form class="settings" action="<?php echo site_url('admin/admins/save')?>" method="post" accept-charset="utf-8">
+		<input type="hidden" name="id" value="<?php echo $admin['id']?>" />
 		<ul>
-			<li><input type="submit" name="submit" value="<?=__("Save", $this->template['module'])?>" class="input-submit" /></li>
-			<li><a href="<?=site_url('admin/admins')?>" class="input-submit last"><?=__("Cancel", $this->template['module'])?></a></li>
+			<li><input type="submit" name="submit" value="<?php echo __("Save", $this->template['module'])?>" class="input-submit" /></li>
+			<li><a href="<?php echo site_url('admin/admins')?>" class="input-submit last"><?php echo __("Cancel", $this->template['module'])?></a></li>
 		</ul>
 		
 		<br class="clearfloat" />
@@ -29,22 +29,22 @@
 		
 		<div id="one">
 		
-			<label for="username"><?=__("Username", $this->template['module'])?>: </label>
-			<input name="username" type='text'  value='<?=$admin['username']?>'  class="input-text" />
+			<label for="username"><?php echo __("Username", $this->template['module'])?>: </label>
+			<input name="username" type='text'  value='<?php echo $admin['username']?>'  class="input-text" />
 			<br />
 			
-			<label for="module"><?=__("Module", $this->template['module'])?>: </label>
+			<label for="module"><?php echo __("Module", $this->template['module'])?>: </label>
 			<select name="module" class="input-select" />
 			<?php foreach ($this->system->modules as $module) : ?>
-			<option value='<?=$module['name']?>' <?=($admin['module'] == $module['name'])?'selected':''?>/><?=ucfirst($module['name'])?></option>
+			<option value='<?php echo $module['name']?>' <?php echo ($admin['module'] == $module['name'])?'selected':''?>/><?php echo ucfirst($module['name'])?></option>
 			<?php endforeach; ?>
 			</select>
 			<br />
 			
-			<label for="level"><?=__("Level", $this->template['module'])?>: </label>
+			<label for="level"><?php echo __("Level", $this->template['module'])?>: </label>
 			<select name="level" class="input-select" />
 			<?php for ($i = 0; $i <= 4; $i++) : ?>
-			<option value='<?=$i?>' <?=($admin['level'] == $i)?'selected':''?>/><?=$levels[$i] ?></option>
+			<option value='<?php echo $i?>' <?php echo ($admin['level'] == $i)?'selected':''?>/><?php echo $levels[$i] ?></option>
 			<?php endfor; ?>
 			</select>
 			
