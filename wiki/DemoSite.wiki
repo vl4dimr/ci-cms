@@ -1,9 +1,4 @@
 #summary A demo site for ci-cms
 #labels Featured
 
-You can use the demo at http://solaitra.tuxfamily.org
-
-For admin, http://solaitra.tuxfamily.org/admin
-
-username: admin
-password: admin
+You can __see__ a demo at http://solaitra.tuxfamily.org
