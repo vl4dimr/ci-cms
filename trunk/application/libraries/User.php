@@ -150,6 +150,7 @@
 			$data = array(
 						'id' 			=> 0,
 						'username' 		=> '',
+						'email' 		=> '',
 						'logged_in'		=> false
 					);
 					
