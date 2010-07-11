@@ -41,7 +41,7 @@ class Admin extends Controller {
 			{
 				if ( $this->input->post($field) !== false)
 				{
-					$this->system->set($field, $this->input->post($field));
+					$this->settings->set($field, $this->input->post($field));
 				}
 			}
 			$this->session->set_flashdata('notification', __("Settings updated", $this->template['module']));	
