@@ -15,7 +15,21 @@ class Update extends Controller
 	{
 		if(is_file('settings.php'))
 		{
-			$this->_settings = unserialize(file_get_contents('settings.php'));
+			$settings = unserialize(file_get_contents('settings.php'));
+			if(isset($settings->version) && $settings->version >= '0.9.3.0')
+			{
+				$this->_settings = $settings;
+			}
+			else
+			{
+				$query = $this->db->get("settings");
+				$rows = $query->result_array();
+				foreach($rows as $row)
+				{
+					$this->_settings->{$row['name']} = $row['value'];
+				}
+			
+			}
 		}
 		else
 		{
