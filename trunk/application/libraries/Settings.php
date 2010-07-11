@@ -102,8 +102,14 @@
 				}
 				
 				
+				
 				$settings = unserialize(file_get_contents('settings.php'));
 				
+				if(!isset($settings) || !isset($settings->version))
+				{
+					redirect('install');
+					exit;
+				}
 				foreach ($settings as $key => $value)
 				{
 				  $this->obj->system->{$key} = $value;
