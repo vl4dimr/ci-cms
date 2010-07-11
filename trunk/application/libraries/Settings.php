@@ -51,6 +51,7 @@
 		
 		function load_locales()
 		{
+			$this->obj->load->library('session');
 			$this->obj->load->library('locale');
 			//overall locale
 			//$this->obj->locale->load_textdomain(APPPATH . 'locale/' . $this->obj->session->userdata('lang') . '.mo');
@@ -69,13 +70,16 @@
 		
 		function find_modules()
 		{
+			
 			$this->obj->config->set_item('cache_path', './cache/');
 			$dir = $this->obj->config->item('cache_path');
 			$this->obj->load->library('cache', array('dir' => $dir));
 			
 			
+			/*
 			if ( !$modules = $this->obj->cache->get('modulelist', 'system') )
 			{
+			*/
 				$this->obj->db->where('status', 1);
 				$this->obj->db->order_by('ordering');
 				$query = $this->obj->db->get('modules');
@@ -83,9 +87,10 @@
 				{
 					$modules[ $row['name'] ] = $row;
 				}
+			/*
 				$this->obj->cache->save('modulelist', $modules, 'system', 0);
 			}
-			
+			*/
 			$this->obj->system->modules = $modules;
 		}
 		

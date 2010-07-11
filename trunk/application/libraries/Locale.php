@@ -24,6 +24,7 @@ class Locale {
 		$this->codes = $this->get_codes();
 		$this->default = $this->get_default();
 		
+		$this->obj->load->library('session');
 		if (!$this->obj->session->userdata('lang')) {
 			$this->obj->session->set_userdata('lang', $this->default);
 		}
