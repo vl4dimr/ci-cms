@@ -2,10 +2,11 @@
 
 class Update extends Controller 
 {
-	var $_settings = array();
+	var $_settings;
 	function Update()
 	{
 		parent::Controller();
+		$this->_settings = new stdClass();
 		$this->load->database();
 		$this->_get_settings();
 	}
@@ -31,7 +32,7 @@ class Update extends Controller
 	function _set($name, $value)
 	{	
 		//update only if changed
-		if (!isset($this->_settings[$name]) || $this->_settings[$name] != $value) {
+		if (!isset($this->_settings->{$name}) || $this->_settings->{$name} != $value) {
 			$this->_settings->{$name} = $value;
 			$fp = @fopen('settings.php', serialize($this->_settings));
 		}
@@ -58,7 +59,7 @@ class Update extends Controller
 		
 		//start upgrade
 		$to_version = "0.9.1.0";
-		if($old_version <= $to_version)
+		if($old_version < $to_version)
 		{
 				$query = $this->db->query("SHOW COLUMNS FROM " . $this->db->dbprefix('users') . " LIKE 'online'");
 				if($query->num_rows() == 0)
@@ -72,7 +73,7 @@ class Update extends Controller
 		}
 		
 		$to_version = "0.9.2.0";
-		if($old_version <= $to_version)
+		if($old_version < $to_version)
 		{
 				$query = $this->db->query("SHOW COLUMNS FROM " . $this->db->dbprefix('navigation') . " LIKE 'g_id'");
 				if($query->num_rows() == 0)
@@ -92,7 +93,7 @@ class Update extends Controller
 		}
 		
 		$to_version = "0.9.2.1";
-		if($old_version <= $to_version)
+		if($old_version < $to_version)
 		{
 			$this->db->query("ALTER TABLE " . $this->db->dbprefix('navigation') . " CHANGE  `g_id`  `g_id` VARCHAR( 20 ) NOT NULL DEFAULT  '0'") ;
 			echo "<p>Navigation table updated</p>";
@@ -102,7 +103,7 @@ class Update extends Controller
 		}
 
 		$to_version = "0.9.2.2";
-		if($old_version <= $to_version)
+		if($old_version < $to_version)
 		{
 			$query = $this->db->query("SHOW COLUMNS FROM " . $this->db->dbprefix('group_members') . " LIKE 'g_level'");
 			if($query->num_rows() == 0)
@@ -116,8 +117,12 @@ class Update extends Controller
 		}
 		
 		$to_version = "0.9.3.0";
-		if($old_version <= $to_version)
+		if($old_version < $to_version)
 		{
+			$this->config->set_item('cache_path', './cache/');
+			$dir = $this->config->item('cache_path');
+			$this->load->library('cache', array('dir' => $dir));
+		
 			$this->cache->remove_group('system');
 			$fp = @fopen('settings.php', 'wb');
 			if($fp === false)
