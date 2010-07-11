@@ -37,10 +37,52 @@ class Ajax extends Controller {
 			$this->load->view('ajax', array('data' => $data));
 			return;
 		}
-	
+
+
+		//destroying session
+		$data = array(
+					'id' 			=> 0,
+					'username' 		=> '',
+					'email' 		=> '',
+					'logged_in'		=> false
+				);
+				
+		$this->session->set_userdata($data);
 		
-		if ($this->user->login($username, $password))
+		foreach ($data as $key => $value)
 		{
+			$this->user->$key = $value;
+		}
+		//apply login
+		
+		$result['username'] = $username;
+		$result['password'] = $password;
+		
+		$result = $this->plugin->apply_filters('user_auth', $result);
+	
+
+		if(isset($result['logged_in']) && $result['logged_in'] !== false)
+		{
+			// We found a user!
+			// Let's save some data in their session/cookie/pocket whatever.
+			
+			$this->user->id 				= $result['id'];
+			$this->user->username			= $result['username'];
+			$this->user->logged_in 		= true;
+			$this->user->lang 			= $this->session->userdata('lang');
+			$this->user->email			= $result['email'];
+
+			$data = array(
+						'id' 			=> $this->user->id,
+						'username' 		=> $this->user->username,
+						'email'		=> $this->user->email, 
+						'logged_in'		=> $this->user->logged_in,
+						'lang'	=> $this->user->lang
+					);
+					
+			$this->session->set_userdata($data);
+
+			
 			$data['message'] = __("Logged in:", $this->template['module']) . " " . $username;
 			$data['message'] .= "<br /><a href='" . site_url('member/logout') . "'>" . __("Sign out", $this->template['module']) . "</a>"; 
 		
@@ -54,13 +96,33 @@ class Ajax extends Controller {
 			return;
 		}
 		else
-		{	
-			$data['message'] = __("Login error. Please verify your username " . $this->input->post('username') . " and your password.", $this->template['module']);
+		{
+			
+			
+			if (isset($result['error_message']))
+			{
+				$data['message'] = $result['error_message'];
+			}
+			else
+			{
+				$data['message'] = __("Login error. Please verify your username " . $this->input->post('username') . " and your password.", $this->template['module']);
+			}
+			
 			$data['status'] = 0;
 			$this->output->set_header("Content-type: text/xml");
 			$this->load->view('ajax', array('data' => $data));
 			return;
+		
 		}
+
+
+
+
+
+
+
+		
+		
 
 	}
 	

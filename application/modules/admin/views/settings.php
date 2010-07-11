@@ -67,7 +67,7 @@
 			<label for="theme">Theme:</label>
 				<select name="theme" class="input-select" id="theme">
 				<?php foreach ($themes as $theme):?>
-					<option <?php if ($theme == $this->layout->theme):?>selected='selected' <?php endif;?>value="<?php echo $theme?>"><?php echo ucwords(str_replace('_', ' ', $theme))?></option>
+					<option <?php if ($theme == $this->system->theme):?>selected='selected' <?php endif;?>value="<?php echo $theme?>"><?php echo ucwords(str_replace('_', ' ', $theme))?></option>
 				<?php endforeach;?>
 				</select><br />
 		</div>

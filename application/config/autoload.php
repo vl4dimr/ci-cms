@@ -38,15 +38,9 @@
 |
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
-$ci =& get_instance();
-if ($ci->uri->segment(1) != 'install')
-{
-$autoload['libraries'] = array('session', 'database', 'system', 'javascripts', 'block', 'plugin',  'user', 'layout', 'navigation');
-}
-else
-{
-$autoload['libraries'] = array('system');
-}
+
+$autoload['libraries'] = array('settings');
+
 
 /*
 | -------------------------------------------------------------------

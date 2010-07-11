@@ -7,7 +7,7 @@
  * @license GNU/GPL, see LICENSE.php
  */
 
-	class System {
+	class Settings {
 		var $version ;
 		var $revision;
 		var $modules;
@@ -20,23 +20,44 @@
 			{
 				return;
 			}
-			$this->obj->config->set_item('cache_path', './cache/');
-			$dir = $this->obj->config->item('cache_path');
-			$this->obj->load->library('cache', array('dir' => $dir));
 			$this->get_settings();
 			$this->find_modules();
+			$this->propagate_values();
+			//$this->load_libraries();
 			$this->load_locales();
-			$this->start();
 		}
+		
+		function propagate_values()
+		{
+			foreach ($this->obj->system as $key => $value)
+			{
+				$this->{$key} = $value;
+			}
+		}
+		/*
+		function load_libraries()
+		{
+			$this->obj->load->database();
+			$this->obj->load->library('javascripts');
+			$this->obj->load->library('block');
+			$this->obj->load->library('plugin');
+			$this->obj->load->library('user');
+			$this->obj->load->library('layout');
+			$this->obj->load->library('navigation');
+			$this->obj->load->library('locale');
+		
+		}
+		*/
 		
 		function load_locales()
 		{
-			//overall locale
+			$this->obj->load->library('session');
 			$this->obj->load->library('locale');
+			//overall locale
 			//$this->obj->locale->load_textdomain(APPPATH . 'locale/' . $this->obj->session->userdata('lang') . '.mo');
 			
 			
-			foreach ($this->modules as $module)
+			foreach ($this->obj->system->modules as $module)
 			{
 				$mofile = APPPATH . 'modules/'.$module['name'].'/locale/' . $this->obj->session->userdata('lang') . '.mo' ;
 				if ( file_exists($mofile)) 
@@ -46,8 +67,13 @@
 			}
 		}
 		
+		
 		function find_modules()
 		{
+			$this->obj->config->set_item('cache_path', './cache/');
+			$dir = $this->obj->config->item('cache_path');
+			$this->obj->load->library('cache', array('dir' => $dir));
+			
 			if ( !$modules = $this->obj->cache->get('modulelist', 'system') )
 			{
 				$this->obj->db->where('status', 1);
@@ -60,59 +86,40 @@
 				$this->obj->cache->save('modulelist', $modules, 'system', 0);
 			}
 			
-			$this->modules = $modules;
+			$this->obj->system->modules = $modules;
 		}
 		
-	
-		function start()
-		{
-			/*
-			if ($this->cache && !$this->obj->user->logged_in && $this->obj->uri->segment(1) != 'admin')
-			{
-				$this->obj->output->cache($this->cache_time);
-			}
-			
-			it is better to do the caching in every module. 
-			eg. if cache is activated, then all page item should be cached for cache_time
-			*/
-			
-			
-			
-			//update
-			
-		}
 		
 		function get_settings()
 		{
-			if(!$settings = $this->obj->cache->get('settings', 'settings'))
+			if(is_file('settings.php'))
 			{
-				$query = $this->obj->db->get('settings');
-				$settings = $query->result();
-				$this->obj->cache->save('settings', $settings, 'settings', 0);
+				$settings = unserialize(file_get_contents('settings.php'));
+				foreach ($settings as $key => $value)
+				{
+				  $this->obj->system->{$key} = $value;
+				}
+				
 			}
-			
-			if (!empty($settings))
+			else
 			{
-			   foreach ($settings as $row)
-			   {
-			      $this->{$row->name} = $row->value;
-			   }
-			}			
+				redirect('install');
+				exit();
+			}
 		}
 		
 		function set($name, $value)
 		{	
 			//update only if changed
-			if (!isset($this->$name)) {
+			if (!isset($this->$name) || $this->$name != $value) {
 				$this->$name = $value;
-				$this->obj->db->insert('settings', array('name' => $name, 'value' => $value));
-				$this->obj->cache->remove('settings', 'settings');
-			}
-			elseif ($this->$name != $value) 
-			{
-				$this->$name = $value;
-				$this->obj->db->update('settings', array('value' => $value), "name = '$name'");
-				$this->obj->cache->remove('settings', 'settings');
+				
+				$this->obj->system->{$name} = $value;
+				
+				$fp = @fopen('settings.php', 'wb');
+				fwrite($fp, serialize($this->obj->system));
+				fclose($fp);
+				
 			}
 		}
 		
