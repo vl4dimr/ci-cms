@@ -114,7 +114,6 @@ class Member extends Controller {
 				else
 				{	
 					$this->session->set_userdata(array('last_post' => $this->input->post('last_post'), 'redirect' => $this->input->post('redirect')));
-					$this->session->set_flashdata('notification', __("Login error. Please verify your username and your password.", $this->template['module']));
 					redirect('member/login', 'refresh');
 				}
 			}

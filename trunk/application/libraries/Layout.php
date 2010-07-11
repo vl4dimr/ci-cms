@@ -6,8 +6,8 @@
 		{
 			if ( !isset($this->obj) ) $this->obj =& get_instance();
 
-			$this->theme = $this->obj->system->theme;
-			$this->template = $this->obj->system->template;
+			
+			
 			//$this->_login_action();
 		}
 
@@ -62,12 +62,14 @@
 			$data['view'] = $view;
 
 			//load language for template
-			$mofile = APPPATH . 'views/'.$this->theme.'/locale/' . $this->obj->session->userdata('lang') . '.mo' ;
+			$this->obj->load->library('locale');
+			
+			$mofile = APPPATH . 'views/'.$this->obj->system->theme.'/locale/' . $this->obj->session->userdata('lang') . '.mo' ;
 
 			if ( file_exists($mofile)) 
 			{
 
-				$this->obj->locale->load_textdomain($mofile, $this->theme);
+				$this->obj->locale->load_textdomain($mofile, $this->obj->system->theme);
 			}
 			
 			//$this->obj->locale->load_textdomain(APPPATH . 'locale/' . $this->obj->session->userdata('lang') . '.mo');
@@ -79,7 +81,7 @@
 			}
 			else
 			{
-				$template_path = $this->theme. '/index';
+				$template_path = $this->obj->system->theme. '/index';
 			}
 			
 			$output = $this->obj->load->view($template_path, $data, true);
