@@ -13,17 +13,18 @@
 		var $modules;
 		var $obj;
 		
-		function System()
+		function Settings()
 		{
 			$this->obj =& get_instance();
 			if ($this->obj->uri->segment(1) == "install")
 			{
 				return;
 			}
+			$this->obj->load->database();
 			$this->get_settings();
 			$this->find_modules();
-			$this->propagate_values();
-			//$this->load_libraries();
+			//$this->propagate_values();
+			$this->load_libraries();
 			$this->load_locales();
 		}
 		
@@ -34,24 +35,22 @@
 				$this->{$key} = $value;
 			}
 		}
-		/*
+
 		function load_libraries()
 		{
-			$this->obj->load->database();
 			$this->obj->load->library('javascripts');
 			$this->obj->load->library('block');
 			$this->obj->load->library('plugin');
+			$this->obj->load->library('session');
 			$this->obj->load->library('user');
 			$this->obj->load->library('layout');
 			$this->obj->load->library('navigation');
-			$this->obj->load->library('locale');
 		
 		}
-		*/
+
 		
 		function load_locales()
 		{
-			$this->obj->load->library('session');
 			$this->obj->load->library('locale');
 			//overall locale
 			//$this->obj->locale->load_textdomain(APPPATH . 'locale/' . $this->obj->session->userdata('lang') . '.mo');
@@ -74,6 +73,7 @@
 			$dir = $this->obj->config->item('cache_path');
 			$this->obj->load->library('cache', array('dir' => $dir));
 			
+			
 			if ( !$modules = $this->obj->cache->get('modulelist', 'system') )
 			{
 				$this->obj->db->where('status', 1);
@@ -94,7 +94,16 @@
 		{
 			if(is_file('settings.php'))
 			{
+				$query = $this->obj->db->query("SHOW TABLE STATUS LIKE '" . $this->obj->db->dbprefix('sessions') . "' ");
+				if($query->num_rows() == 0)
+				{
+					redirect('install');
+					exit;
+				}
+				
+				
 				$settings = unserialize(file_get_contents('settings.php'));
+				
 				foreach ($settings as $key => $value)
 				{
 				  $this->obj->system->{$key} = $value;
@@ -112,8 +121,7 @@
 		{	
 			//update only if changed
 			if (!isset($this->$name) || $this->$name != $value) {
-				$this->$name = $value;
-				
+			
 				$this->obj->system->{$name} = $value;
 				
 				$fp = @fopen('settings.php', 'wb');
