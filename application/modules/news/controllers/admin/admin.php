@@ -2,6 +2,7 @@
 
 	class Admin extends Controller {
 		var $settings = array();
+		var $fields = array();
 		var $template = array();
 		function Admin()
 		{
@@ -53,27 +54,40 @@
 		/**
 		 * Dealing with page module settings
 		 **/
-		function settings()
+		function settings($action = null)
 		{
-			$this->user->check_level($this->template['module'], LEVEL_DEL);
-			if ($post = $this->input->post('submit') )
+
+			$this->fields = array(
+				'allow_comments' => 1,
+				'approve_comments' => 1,
+				'notify_admin' => 0
+				);
+			switch ($action)
 			{
-				$fields = array('page_home');
 				
-				foreach ($fields as $field)
-				{
-					if ( $this->input->post($field) !== false)
+				case "save" :
+			
+					$setting = is_array($this->input->post('settings')) ? serialize($this->input->post('settings')) : '';
+					$this->settings->set('news_settings', $setting);
+					$this->session->set_flashdata('notification', __("Settings saved", $this->template['module']));
+					redirect('admin/news/settings');
+				break;
+				default:
+					//fields
+					$this->user->check_level($this->template['module'], LEVEL_EDIT);		
+					$settings = isset($this->system->news_settings) ? unserialize($this->system->news_settings) : array();
+					foreach ($this->fields as $key => $value)
 					{
-						$this->settings->set($field, $this->input->post($field));
+						$this->_settings[$key] = isset($settings[$key])? $settings[$key] : $value;
 					}
-				}
-				$this->session->set_flashdata('notification', __("Settings updated", $this->template['module']));	
-				redirect('admin/page/settings');
+					
+					$this->template['settings'] = $this->_settings;
+						
+					$this->layout->load($this->template, 'settings');
+				
+				break;
 			}
-			else
-			{
-				$this->layout->load($this->template, 'settings');
-			}
+	
 		}
 		
 		function save()
