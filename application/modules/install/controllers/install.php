@@ -5,25 +5,20 @@ class Install extends Controller
 	function Install()
 	{
 		parent::Controller();
-		$this->system->theme = 'index';
 		$this->load->database();
 	}
 	
 	function index()
 	{
-	
-		//legacy	
-		$query = $this->db->query("SHOW TABLE STATUS LIKE '" . $this->db->dbprefix('sessions') . "' ");
-		
+		$query = $this->db->query("SHOW TABLE STATUS LIKE '" . $this->db->dbprefix('settings') . "' ");
 		if($query->num_rows() > 0)
 		{
 			redirect('install/update');
 			exit();
 		}
-		
 
 		echo "<p>You are about to install CI-CMS</p>";
-		echo "<p>Before you continue, <ol><li>check that you have a file config.php and database.php in your configuration folder and all values are ok.</li><li>rename the file <b>settings.dist.php</b> in your webroot to <b>settings.php</b> and make it writtable</li><li>make writable the <b>media</b> and the <b>cache</b> folder</li></p>";
+		echo "<p>Before you continue, <ol><li>check that you have a file config.php and database.php in your configuration folder and all values are ok.</li><li>make writable the <b>media</b> folder</li></p>";
 		echo "<p>If you get a database error in the next step then your database.php file is not ok</p>";
 		echo "<p>" . anchor('install/step1', 'Click here to continue') . "</p>";
 
@@ -31,17 +26,6 @@ class Install extends Controller
 	
 	function step1()
 	{
-	
-		$fp = @fopen('settings.php', 'rb');
-		if($fp === false)
-		{
-			echo "<p>Before you continue, <ul><li>The file settings.php is not writtable. Please rename the file <b>settings.dist.php</b> in your webroot to <b>settings.php</b> or create an empty file <b>settings.php</b> and make it writtable</li></ul></p>";
-			echo "<p>then " . anchor('install/step1', 'Click here to continue') . "</p>";
-			exit;
-		}
-		fclose($fp);
-
-		
 		$folders = array(
 			'./media/images', 
 			'./media/images/o', 
@@ -274,8 +258,6 @@ class Install extends Controller
 							'status'	=> 'active',
 							'registered'=> mktime()
 						);
-			$this->settings->set('admin_email', $email);
-			
 			$this->db->insert('users', $data);
 				$this->db->query("CREATE TABLE IF NOT EXISTS " . $this->db->dbprefix('admins' ) . " ( `id` int(11) NOT NULL auto_increment, `username` varchar(100) NOT NULL default '', `module` varchar(100) NOT NULL default '', `level` tinyint(4) NOT NULL default '0', PRIMARY KEY (`id`), KEY `username` (`username`) ) ");
 				
@@ -517,7 +499,62 @@ class Install extends Controller
 		$this->dbforge->add_field($fields); 
 		$this->dbforge->add_key('session_id', TRUE);
 		$this->dbforge->create_table('sessions', TRUE);
+		//settings
+  		$fields = array(
+			'id' => array(
+					 'type' => 'INT',
+					 'constraint' => 11,
+					 'unsigned' => TRUE,
+					 'auto_increment' => TRUE
+			  ),
+			 'name' => array(
+				'type' => 'VARCHAR',
+				'constraint' => 255,
+				'default' => '0'
+			 ),
+			 'value' => array(
+				'type' => 'TEXT',
+				'default' => ''
+			 )
+		);
+		$this->dbforge->add_field($fields); 
+		$this->dbforge->add_key('id', TRUE);
+		$this->dbforge->add_key('name');
+		$this->dbforge->create_table('settings', TRUE);
 		
+		$query = $this->db->get('settings');
+		
+		if($query->num_rows() == 0)
+		{
+		$data = array('name' => 'site_name', 'value' => 'CI-CMS');
+		$this->db->insert('settings', $data);
+		
+		$data = array('name' => 'meta_keywords', 'value' => 'CI-CMS');
+		$this->db->insert('settings', $data);
+		$data = array('name' => 'meta_description', 'value' => 'CI-CMS, another content managment system');
+		$this->db->insert('settings', $data);
+		$data = array('name' => 'cache', 'value' => '0');
+		$this->db->insert('settings', $data);
+		$data = array('name' => 'cache_time', 'value' => '300');
+		$this->db->insert('settings', $data);
+		$data = array('name' => 'theme', 'value' => 'default');
+		$this->db->insert('settings', $data);
+		$data = array('name' => 'template', 'value' => 'index');
+		$this->db->insert('settings', $data);
+		$data = array('name' => 'page_home', 'value' => 'home');
+		$this->db->insert('settings', $data);
+		$data = array('name' => 'debug', 'value' => '0');
+		$this->db->insert('settings', $data);
+		$data = array('name' => 'version', 'value' => '0.9.2.1');
+		$this->db->insert('settings', $data);
+		$data = array('name' => 'page_approve_comments', 'value' => '1');
+		$this->db->insert('settings', $data);
+		$data = array('name' => 'page_notify_admin', 'value' => '1');
+		$this->db->insert('settings', $data);
+		$data = array('name' => 'news_settings', 'value' => serialize(array('allow_comments' => 1,'approve_comments' => 1)));
+		$this->db->insert('settings', $data);
+		
+		}
 		//modules
   		$fields = array(
 			'id' => array(
@@ -642,32 +679,6 @@ $this->dbforge->create_table('news_tags', TRUE);
 	
 	function step6()
 	{
-		$fp = @fopen('settings.php', 'wb');
-		$array_settings = array(
-		'site_name' => 'CI-CMS', 
-		'meta_keywords' => 'CI-CMS', 
-		'meta_description' => 'CI-CMS, another content managment system', 
-		'cache' => '0', 
-		'cache_time' => '300', 
-		'theme' => 'default', 
-		'template' => 'index', 
-		'page_home' => 'home', 
-		'debug' => '0', 
-		'version' => '0.9.3.0', 
-		'page_approve_comments' => '1', 
-		'page_notify_admin' => '1', 
-		'news_settings' => serialize(array('allow_comments' => 1,'approve_comments' => 1)));
-		
-		//settings is object to avoid to change everything
-		$settings = new stdClass();
-		foreach($array_settings as $key => $value)
-		{
-			$settings->{$key} = $value;
-		}
-		
-		fwrite($fp, serialize($settings));
-		fclose($fp);
-	
 		echo "Installation done. <br />To go to admin interface ". anchor('admin', 'click here') . "<br/>Now you can visit your site " . anchor('', 'here') ;
 
 	}

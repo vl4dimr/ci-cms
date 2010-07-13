@@ -357,13 +357,13 @@
 				{
 					if ( $this->input->post($field) !== false)
 					{
-						$this->settings->set($field, $this->input->post($field));
+						$this->system->set($field, $this->input->post($field));
 					}
 				}
 				
 				if ($this->input->post('cache') == 0)
 				{
-					$this->settings->clear_cache();
+					$this->system->clear_cache();
 				}
 				
 				$this->session->set_flashdata("notification", __("Settings saved successfully.", "admin"));
