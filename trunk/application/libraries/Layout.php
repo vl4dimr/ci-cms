@@ -6,8 +6,8 @@
 		{
 			if ( !isset($this->obj) ) $this->obj =& get_instance();
 
-			
-			
+			$this->theme = $this->obj->system->theme;
+			$this->template = $this->obj->system->template;
 			//$this->_login_action();
 		}
 
@@ -62,9 +62,7 @@
 			$data['view'] = $view;
 
 			//load language for template
-			$this->obj->load->library('locale');
-			
-			$mofile = APPPATH . 'views/'.$this->obj->system->theme.'/locale/' . $this->obj->session->userdata('lang') . '.mo' ;
+			$mofile = APPPATH . 'views/'.$this->theme.'/locale/' . $this->obj->session->userdata('lang') . '.mo' ;
 
 			if ( file_exists($mofile)) 
 			{
