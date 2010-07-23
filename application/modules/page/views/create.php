@@ -52,7 +52,7 @@ function deleteImage(obj) {
 			alert(data);
 		}
 	);
-	$(obj).parent().hide();
+	$(obj).parent().parent().hide();
 }
 
 function ajaxFileUpload() {
@@ -82,7 +82,8 @@ function ajaxFileUpload() {
 						alert(data.error);
 					}else
 					{
-						$("#image_list").append("<div><input type='hidden' name='image_ids[]' value='"+data.imageid+"' /><a href='#' onclick=\"tinyMCE.execCommand('mceInsertContent',false,'<a href=\\'<?php echo site_url('media/images/o') ?>/"+data.image+"\\'><img border=0 align=left hspace=10 src=\\'<?php echo site_url('media/images/m') ?>/"+data.image+"\\'></a>');return false;\">"+data.image+"</a> - <a href='#'  class=\"ajaxdelete\" id='"+data.imageid+"' ><?php echo __('Delete image', $module)?></a></div>\n");
+						$("#image_list tbody").append("<tr><td><input type='hidden' name='image_ids[]' value='"+data.imageid+"' />"+data.image+"</td><td><a href='#' onclick=\"tinyMCE.execCommand('mceInsertContent',false,'<a href=\\'<?php echo site_url('media/images/o') ?>/"+data.image+"\\'><img border=0 align=left hspace=10 src=\\'<?php echo site_url('media/images/s') ?>/"+data.image+"\\'></a>');return false;\"><?php echo __("Small", $module) ?></a> | <a href='#' onclick=\"tinyMCE.execCommand('mceInsertContent',false,'<a href=\\'<?php echo site_url('media/images/o') ?>/"+data.image+"\\'><img border=0 align=left hspace=10 src=\\'<?php echo site_url('media/images/m') ?>/"+data.image+"\\'></a>');return false;\"><?php echo __('Medium', $module) ?></a> | <a href='#' onclick=\"tinyMCE.execCommand('mceInsertContent',false,'<img border=0 align=left hspace=10 src=\\'<?php echo site_url('media/images/o') ?>/"+data.image+"\\'>');return false;\"><?php echo __("Original", $module) ?></a><td><a href='#' class='ajaxdelete' id='"+data.imageid+"'><?php echo __('Delete image', $module) ?></a></td></tr>");
+					
 						$("#image").val("");
 						handleDeleteImage();
 						
@@ -163,14 +164,31 @@ function ajaxFileUpload() {
 			<label for="body"><?php echo __("Page Content:", $module)?></label>
 			<textarea name="body" class="input-textarea"><?php echo $page['body']?></textarea>
 
-		<div id='image_list'>
-		<div style="visibility: hidden"><?php _e("Available images:", $module)?></div>
+		<label for="image_ids"><?php _e("Available images:", $module)?></label>
+		
+		<table id="image_list" class="page-list">
+			<thead>
+				<tr>
+					<th><?=__("Name", $this->template['module'])?></th>
+					<th><?=__("Click to insert", $this->template['module'])?></th>					
+					<th><?=__("Action", $this->template['module'])?></th>
+				</tr>
+			</thead>
+			<tbody>
+
 		<?php if ($images) : ?>
 		<?php foreach($images as $image): ?>
-		<div><input type='hidden' name='image_ids[]' value='<?php echo $image['id'] ?>' /><a href='#' onclick="tinyMCE.execCommand('mceInsertContent',false,'<a href=\'<?php echo site_url('media/images/o')?>/<?php echo $image['file'] ?>\'><img border=\'0\' align=\'left\' hspace=\'10\' src=\'<?php echo site_url('media/images/m')?>/<?php echo $image['file'] ?>\' /></a>');return false;"><?php echo $image['file'] ?></a> - <a href="<?php echo site_url('admin/page/removeimg/' . $image['id']) ?>" class="ajaxdelete" id="<?php echo $image['id'] ?>"><?php echo __("Delete image", $module) ?></a></div>
+		<tr>
+		<td><input type='hidden' name='image_ids[]' value='<?php echo $image['id'] ?>' /><?php echo $image['file'] ?></td>
+		<td><a href='#' onclick="tinyMCE.execCommand('mceInsertContent',false,'<a href=\'<?php echo site_url('media/images/o')?>/<?php echo $image['file'] ?>\'><img border=\'0\' align=\'left\' hspace=\'10\' src=\'<?php echo site_url('media/images/s')?>/<?php echo $image['file'] ?>\' /></a>');return false;"><?php echo __("Small", $module) ?></a> | <a href='#' onclick="tinyMCE.execCommand('mceInsertContent',false,'<a href=\'<?php echo site_url('media/images/o')?>/<?php echo $image['file'] ?>\'><img border=\'0\' align=\'left\' hspace=\'10\' src=\'<?php echo site_url('media/images/m')?>/<?php echo $image['file'] ?>\' /></a>');return false;"><?php echo __("Medium", $module) ?></a> | <a href='#' onclick="tinyMCE.execCommand('mceInsertContent',false,'<img border=\'0\' align=\'left\' hspace=\'10\' src=\'<?php echo site_url('media/images/o')?>/<?php echo $image['file'] ?>\' />');return false;"><?php echo __("Original", $module) ?></a></td>
+		<td><a href="<?php echo site_url('admin/news/removeimg/' . $image['id']) ?>" class="ajaxdelete" id="<?php echo $image['id'] ?>"><?php echo __("Delete image", $this->template['module']) ?></a></td></tr>
 		<?php endforeach; ?>
 		<?php endif;?>
-		</div>
+		</tbody>
+		</table>
+		
+		
+		
 		
 		<label for="image"><?php echo __("Image", $module)?></label>
 		<input type="file" name="image" class="input-file" id="image"/><br />
