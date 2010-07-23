@@ -118,9 +118,9 @@ class Admin extends Controller {
 			//there is an image attached
 			$config['upload_path'] = './media/images/o/';
 			$config['allowed_types'] = 'gif|jpg|png';
-			$config['max_size']	= '500';
-			$config['max_width']  = '1024';
-			$config['max_height']  = '768';
+			$config['max_size']	= '2000';
+			$config['max_width']  = '2058';
+			$config['max_height']  = '1524';
 			
 			//var_dump($config['upload_path']);
 			$this->load->library('upload', $config);
@@ -358,9 +358,9 @@ class Admin extends Controller {
 		
 			$config['upload_path'] = './media/images/o/';
 			$config['allowed_types'] = 'gif|jpg|png';
-			$config['max_size']	= '500';
-			$config['max_width']  = '1024';
-			$config['max_height']  = '768';
+			$config['max_size']	= '2000';
+			$config['max_width']  = '2048';
+			$config['max_height']  = '1536';
 			
 			//var_dump($config['upload_path']);
 			$this->load->library('upload', $config);	

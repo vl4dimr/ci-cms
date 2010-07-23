@@ -1,7 +1,7 @@
 <!-- [Content] start -->
 <div class="content wide">
 
-<h1 id="page">Page Admininistration</h1>
+<h1 id="page"><?php echo __("Page Admininistration", $module) ?></h1>
 
 <ul class="manage">
 	<li><a href="<?=site_url('admin/page/settings')?>"><?=__("Settings", $this->template['module'])?></a></li>
