@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<module>
+        <name>guestbook</name>
+        <date>01/03/2010</date>
+        <author>hery</author>
+        <email>hery@serasera.org</email>
+        <url>http://hery.serasera.org</url>
+        <copyright>GNU/GPL License</copyright>
+        <version>1.2.0</version>
+        <description>Guestbook module</description>
+</module>
+
