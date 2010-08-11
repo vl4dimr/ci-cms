@@ -1,29 +1,45 @@
 <?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 $query =
-"CREATE TABLE IF NOT EXISTS " . $this->db->dbprefix('institute_students') . " (
+"CREATE TABLE IF NOT EXISTS " . $this->db->dbprefix('institute_profiles') . " (
   id int(11) NOT NULL auto_increment,
-  s_id varchar(20) NOT NULL default '',
-  s_name varchar(255) NOT NULL default '',
-  s_address varchar(255) NOT NULL default '',
-  s_city varchar(255) NOT NULL default '',
-  s_state varchar(255) NOT NULL default '',
-  s_zip varchar(255) NOT NULL default '',
-  s_country varchar(255) NOT NULL default '',
-  s_phone varchar(255) NOT NULL default '',
+  p_id varchar(20) NOT NULL default '',
+  p_name varchar(255) NOT NULL default '',
+  p_address varchar(255) NOT NULL default '',
+  p_city varchar(255) NOT NULL default '',
+  p_state varchar(255) NOT NULL default '',
+  p_zip varchar(255) NOT NULL default '',
+  p_country varchar(255) NOT NULL default '',
+  p_phone varchar(255) NOT NULL default '',
+  p_date int(11) NOT NULL default 0,
   PRIMARY KEY  (id),
-  KEY g_name (g_name)
+  INDEX (p_name)
 );";
 
 $this->db->query($query);
 
 $query = 
+"CREATE TABLE IF NOT EXISTS " . $this->db->dbprefix('institute_registrations')  . " (
+`id` INT NOT NULL  AUTO_INCREMENT,
+`student_id` VARCHAR( 100 ) NOT NULL default '',
+`class_id` VARCHAR(100) NOT NULL default '',
+PRIMARY KEY ( `id` ) ,
+INDEX ( `student_id` )
+);";
+
+$this->db->query($query);
+
+
+$query = 
 "CREATE TABLE IF NOT EXISTS " . $this->db->dbprefix('institute_classes')  . " (
 `id` INT NOT NULL  AUTO_INCREMENT,
-`name` VARCHAR( 100 ) NOT NULL ,
-`value` TEXT NOT NULL ,
+`c_id` VARCHAR( 100 ) NOT NULL ,
+`c_parent` VARCHAR( 100 ) NOT NULL ,
+`c_name` VARCHAR( 100 ) NOT NULL ,
+`c_description` TEXT NOT NULL ,
 PRIMARY KEY ( `id` ) ,
-INDEX ( `name` )
+INDEX ( `c_id` ),
+INDEX ( `c_name` )
 );";
 
 $this->db->query($query);

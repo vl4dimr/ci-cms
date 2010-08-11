@@ -19,7 +19,7 @@ class Institute extends Controller {
 		/**
 		aseho ny
 		- Edit profile na create profile
-		- Aseho ny lisitry ny Classes misy hoe Enter Class - Modify - Delete
+		- Aseho ny lisitry ny Classes misy hoe Enter Class - edit - Delete
 		- Aseho ny bouton Register a class
 		*/
 		
@@ -27,7 +27,7 @@ class Institute extends Controller {
 		
 		$this->template['classes'] = false;
 		
-		if($this->template['student'] = $this->institute->get_student())
+		if($this->template['student'] = $this->institute->get_profile())
 		{
 			// only needed for profiled student
 			$this->template['classes'] = $this->institute->get_classes();
@@ -41,7 +41,7 @@ class Institute extends Controller {
 		$this->user->require_login();
 		switch ($action)
 		{
-			case 'modify':
+			case 'edit':
 			
 			break;
 			case 'delete':
@@ -53,5 +53,31 @@ class Institute extends Controller {
 			break;
 		}
 	}
+	
+	function profile($action = 'edit', $class_id = null)
+	{
+		$this->user->require_login();
+		switch ($action)
+		{
+			case 'edit':
+				if($this->template['profile'] = $this->institute->get_profile())
+				{
+					$this->template['title'] = __("Edit your profile", "institute");
+					$this->layout->load($this->template, 'profile/edit');
+				}
+				else
+				{
+					redirect('institute/profile/create');
+				}
+			break;
+			case 'create':
+				$this->template['title'] = __("Create your profile", "institute");
+				$this->template['profile'] = $this->institute->fields['institute_profiles'];
+				$this->layout->load($this->template, 'profile/edit');
+				
+			break;
+		}
+	}
+	
 	
 }
