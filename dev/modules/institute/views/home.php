@@ -1,4 +1,10 @@
 <h1><?php echo $title ?></h1>
+
+<?php if (isset($notice) || $notice = $this->session->flashdata('notification')):?>
+<p class="notice"><?php echo $notice;?></p>
+<?php endif;?>
+
+
 <ul>
 <?php if(!$student) : ?>
 <li><?php echo anchor('institute/profile/create', __("Create your profile", $module)) ?></li>
@@ -12,7 +18,7 @@
 
 <?php if(!$classes || empty($classes)): ?>
 <p><?php echo __("You haven't registered for any class yet.", $module) ?></p>
-<p><?php echo anchor('institute/myclass/register', __("Please click here to register for a class.", $module) ?></p>
+<p><?php echo anchor('institute/myclass/register', __("Please click here to register for a class.", $module)) ?></p>
 <?php else: ?>
 <ul>
 <?php foreach($classes as $class) : ?>

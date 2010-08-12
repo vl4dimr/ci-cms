@@ -39,6 +39,12 @@ class Institute extends Controller {
 	function myclass($action = 'register', $class_id = null)
 	{
 		$this->user->require_login();
+		if(!$this->institute->get_profile())
+		{
+			$this->session->set_flashdata('notification', __("Please fill your profile before registering a class", "institute"));
+			redirect('institute/profile/create');
+			return;
+		}
 		switch ($action)
 		{
 			case 'edit':
@@ -49,7 +55,7 @@ class Institute extends Controller {
 			break;
 			default:
 			case 'register':
-			
+				
 			break;
 		}
 	}
@@ -75,6 +81,30 @@ class Institute extends Controller {
 				$this->template['profile'] = $this->institute->fields['institute_profiles'];
 				$this->layout->load($this->template, 'profile/edit');
 				
+			break;
+			case 'save':
+				if($this->input->post('submit'))
+				{
+					$data = array();
+					foreach($this->institute->fields['institute_profiles'] as $key => $val)
+					{
+						if($this->input->post($key) !== false)
+						{
+							$data[$key] = $this->input->post($key);
+						}
+						else
+						{
+							$data[$key] = $val;
+						}
+					}
+					$this->institute->save_profile($data);
+					$this->session->set_flashdata('notification', __("Your profile was saved", "institute"));
+					redirect('institute');
+				}
+				else
+				{
+					redirect('institute/profile/create');
+				}
 			break;
 		}
 	}

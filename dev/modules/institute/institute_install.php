@@ -2,7 +2,7 @@
 
 $query =
 "CREATE TABLE IF NOT EXISTS " . $this->db->dbprefix('institute_profiles') . " (
-  id int(11) NOT NULL auto_increment,
+  p_username varchar(20) NOT NULL default '',
   p_id varchar(20) NOT NULL default '',
   p_name varchar(255) NOT NULL default '',
   p_address varchar(255) NOT NULL default '',
@@ -12,7 +12,7 @@ $query =
   p_country varchar(255) NOT NULL default '',
   p_phone varchar(255) NOT NULL default '',
   p_date int(11) NOT NULL default 0,
-  PRIMARY KEY  (id),
+  PRIMARY KEY  (p_username),
   INDEX (p_name)
 );";
 

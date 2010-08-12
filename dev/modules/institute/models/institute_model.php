@@ -1,17 +1,16 @@
 <?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Guestbook_model extends Model {
+class Institute_model extends Model {
 
 	var $fields = array();
-	var $settings = array('notify_admin' => 'Y', 'style' => 'blue');
-	function Guestbook_model()
+	var $data = array();
+	function Institute_model()
 	{
 		parent::Model();
-		$this->table = 'guestbook_posts';
 		$this->fields = array(
 			'institute_profiles' => array(
-			  'id' => 0,
 			  'p_id' =>'',
+			  'p_username' => '',
 			  'p_name' =>'',
 			  'p_address' =>'',
 			  'p_city' =>'',
@@ -20,230 +19,80 @@ class Guestbook_model extends Model {
 			  'p_country' =>'',
 			  'p_phone' =>'',
 			  'p_date' => time()
+			),
+			'institute_registrations' => array(
+				'id' => 0,
+				'student_id' => '',
+				'class_id' => '',
+				'reg_date' => time()
+			),
+			'institute_classes' => array(
+				'id' => 0,
+				'c_id' => '',
+				'c_parent' => '',
+				'c_name' => '',
+				'c_description' => ''
 			)
-		);
-		$this->get_settings();		
-
-	}
-
-
-	function get($params = array())
-	{
-		$default_params = array
-		(
-			'order_by' => 'id DESC',
-			'limit' => 1,
-			'start' => null,
-			'where' => null,
-			'like' => null,
+				
 		);
 
-		foreach ($default_params as $key => $value)
-		{
-			$params[$key] = (isset($params[$key]))? $params[$key]: $default_params[$key];
-		}
-		$hash = md5(serialize($params));
-		if(!$result = $this->cache->get('get' . $hash, $this->table))
-		{
-			if (!is_null($params['like']))
-			{
-				$this->db->like($params['like']);
-			}
-			if (!is_null($params['where']))
-			{
-				$this->db->where($params['where']);
-			}
-			$this->db->order_by($params['order_by']);
-			$this->db->limit(1);
-			//$this->db->select('');
-			$this->db->from($this->table);
-
-			$query = $this->db->get();
-
-			if ($query->num_rows() == 0 )
-			{
-				$result =  false;
-			}
-			else
-			{
-				$result = $query->row_array();
-			}
-
-			$this->cache->save('get' . $hash, $result, $this->table, 0);
-		}
-
-		return $result;
-
-
 	}
 
-	function get_list($params = array())
+	function get_profile($username = null)
 	{
-		$default_params = array
-		(
-			'order_by' => 'id DESC',
-			'limit' => null,
-			'start' => null,
-			'where' => null,
-			'like' => null,
-		);
-
-		foreach ($default_params as $key => $value)
-		{
-			$params[$key] = (isset($params[$key]))? $params[$key]: $default_params[$key];
-		}
-		$hash = md5(serialize($params));
-		if(!$result = $this->cache->get('get_list' . $hash, $this->table))
-		{
-			if (!is_null($params['like']))
-			{
-				$this->db->like($params['like']);
-			}
-			if (!is_null($params['where']))
-			{
-				$this->db->where($params['where']);
-			}
-			$this->db->order_by($params['order_by']);
-			$this->db->limit($params['limit'], $params['start']);
-			//$this->db->select('');
-			$this->db->from($this->table);
-
-			$query = $this->db->get();
-
-			if ($query->num_rows() == 0 )
-			{
-				$result =  false;
-			}
-			else
-			{
-				$result = $query->result_array();
-			}
-
-			$this->cache->save('get_list' . $hash, $result, $this->table, 0);
-		}
-
-		return $result;
-
-
-	}
-
-	function get_total($params = array())
-	{
-		$default_params = array
-		(
-			'order_by' => 'id DESC',
-			'limit' => null,
-			'start' => null,
-			'where' => null,
-			'like' => null,
-		);
-
-		foreach ($default_params as $key => $value)
-		{
-			$params[$key] = (isset($params[$key]))? $params[$key]: $default_params[$key];
-		}
-		$hash = md5(serialize($params));
-		if(!$result = $this->cache->get('get_total' . $hash, $this->table))
-		{
-			if (!is_null($params['like']))
-			{
-				$this->db->like($params['like']);
-			}
-			if (!is_null($params['where']))
-			{
-				$this->db->where($params['where']);
-			}
-			$this->db->order_by($params['order_by']);
-
-			$this->db->select('count(id) as cnt');
-			$this->db->from($this->table);
-
-			$query = $this->db->get();
-
-			$row = $query->row_array();
-
-			$result = $row['cnt'];
-
-			$this->cache->save('get_total' . $hash, $result, $this->table, 0);
-		}
-
-		return $result;
-
-	}
-
-	function delete($params = array())
-	{
-		$this->db->where($params['where']);
-		$this->db->delete($this->table);
-		$this->cache->remove_group($this->table);
-	}
-
-	function save($data = array())
-	{
-		$this->db->set($data);
+		if(is_null($username)) $username = $this->user->username;
 		
-		$this->cache->remove_group($this->table);
-		return $this->db->insert($this->table);
+		if(empty($this->data['get_profile' . $username]))
+		{
+			$this->db->where = array('p_username' => $username);
+			$query = $this->db->get('institute_profiles');
+			if($query->num_rows() > 0)
+			{
+				$this->data['get_profile' . $username] = $query->row_array();
+			}
+			else
+			{
+				$this->data['get_profile' . $username] = false;
+			}
+		}
+		
+		return $this->data['get_profile' . $username];
 	}
-
-	function update($where = array(), $data = array(), $escape = true)
+	
+	function save_profile($data, $username = null)
 	{
-		$this->db->where($where);
-		$this->db->set($data, null, $escape);
-		$this->db->update($this->table);
-		$this->cache->remove_group($this->table);
+		if(is_null($username)) $username = $this->user->username;
+		
+		$this->db->query("INSERT INTO " . $this->db->dbprefix('institute_profiles') . " 
+		(p_id, p_username, p_name, p_address, p_city, p_state, p_zip, p_country, p_phone, p_date) VALUES (" . $this->db->escape($data['p_id']) . ", '" . $username . "', " . $this->db->escape($data['p_name']) . ", " . $this->db->escape($data['p_address']) . ", " . $this->db->escape($data['p_city']) . ", " . $this->db->escape($data['p_state']) . ", " . $this->db->escape($data['p_zip']) . ", " . $this->db->escape($data['p_country']) . ", " . $this->db->escape($data['p_phone']) . ", " . time() . ") ON DUPLICATE KEY UPDATE p_name = " . $this->db->escape($data['p_name']) . ",  p_address = " . $this->db->escape($data['p_address']) . ",  p_city = " . $this->db->escape($data['p_city']) . ",  p_state = " . $this->db->escape($data['p_state']) . ",  p_zip = " . $this->db->escape($data['p_zip']) . ",  p_country = " . $this->db->escape($data['p_country']) . ",  p_phone = " . $this->db->escape($data['p_phone']) . ", p_date = " . time())	;
 	}
-
-	function get_params($id)
+	
+	function get_classes($username = null)
 	{
-		if($params = $this->cache->get($id, 'search_' . $this->table))
+		if(is_null($username)) $username = $this->user->username;
+		
+		if(empty($this->data['get_classes' . $username]))
 		{
-			return $params;
+			$query = $this->db->query(
+			"SELECT r.*, c.c_name, c.c_id, p.p_name, u.username
+			FROM " . $this->db->dbprefix('institute_registrations') . " r
+			LEFT JOIN " . $this->db->dbprefix('institute_classes') . " c ON r.class_id=c.c_id 
+			LEFT JOIN " . $this->db->dbprefix('institute_profiles') . " p ON r.student_id=p.p_id
+			LEFT JOIN ". $this->db->dbprefix('users') . " u ON p.p_username=u.username 
+			WHERE u.username='" . $username . "' ORDER BY c.c_name"			
+			);
+			
+			if($query->num_rows() > 0)
+			{
+				$this->data['get_classes' . $username] = $query->result_array();
+			}
+			else
+			{
+				$this->data['get_classes' . $username] = false;
+			}
 		}
-		else
-		{
-			return false;
-		}
+		
+		return $this->data['get_classes' . $username];
 	}
-
-	function save_params($params)
-	{
-		$id = md5($params);
-		if($this->cache->get($id, 'search_' . $this->table))
-		{
-			return $id;
-		}
-		else
-		{
-
-			$this->cache->save($id, $params, 'search_' . $this->table, 0);
-			return $id;
-		}
-	}
-
-	function get_settings()
-	{
-		$query = $this->db->get('guestbook_settings');
-		if ($query->num_rows() > 0)
-		{
-		   foreach ($query->result() as $row)
-		   {
-			  $this->settings[$row->name] = $row->value;
-		   }
-		}			
-	}
-	function save_settings($name, $value)
-	{	
-		//update only if changed
-		if (!isset($this->settings[$name])) {
-			$this->settings[$name] = $value;
-			$this->db->insert('guestbook_settings', array('name' => $name, 'value' => $value));
-		}
-		elseif ($this->settings->$name != $value) 
-		{
-			$this->settings->$name = $value;
-			$this->db->update('guestbook_settings', array('value' => $value), "name = '$name'");
-		}
-	}
-
+	
 }
