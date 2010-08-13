@@ -55,7 +55,19 @@ class Institute extends Controller {
 			break;
 			default:
 			case 'register':
+				if(!$this->input->post('submit'))
+				{
 				
+				}
+				else
+				{
+					$this->template['title'] = __("Class registration", "institute") ;
+					$this->template['classes'] = $this->institute->get_class_list();
+					$this->template['days'] = $this->institute->get_day_list();
+					$this->template['times'] = $this->institute->get_time_list();
+					
+					$this->layout->load($this->template, 'class/registration_form');
+				}
 			break;
 		}
 	}

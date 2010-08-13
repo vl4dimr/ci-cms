@@ -95,4 +95,87 @@ class Institute_model extends Model {
 		return $this->data['get_classes' . $username];
 	}
 	
+	function get_class($id)
+	{
+		if(!is_array($id))
+		{
+			$this->db->where = array('id' => $id);
+		}
+		else
+		{
+			$this->db->where = $id;
+		}
+		$this->db->limit(1);
+		$query = $this->db->get('institute_classes');
+		
+		if($query->num_rows() > 0)
+		{
+			return $query->row_array();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	function get_class_list($start = 0, $limit = null)
+	{
+		$class_tree = $this->_class_tree();
+		
+		
+		if (is_array($class_tree))
+		{
+			
+			if (!is_null($limit)) 
+			{
+				return array_slice($class_tree, $start, $limit);
+			}
+			else
+			{
+				return  array_slice($class_tree, $start);
+			}
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	function _class_tree($parent = 0, $level = 0)
+	{
+
+		$this->db->where(array('c_parent' => $parent));
+		$this->db->orderby('c_name');
+		$query = $this->db->get('institute_classes');
+		
+
+		// display each child
+		if ($query->num_rows() > 0 )
+		{
+			foreach ($query->result_array() as $row) {
+			// indent and display the title of this child
+				$row['level'] = $level;
+				$this->_cats[] = $row;
+				$this->_class_tree($row['id'], $level+1);
+			}
+		}
+		return $this->_cats;
+	}
+	
+	function get_total_classes()
+	{
+		$query = $this->db->get('institute_classes');
+		return $query->num_rows();
+	}
+	
+	function get_day_list()
+	{
+		return array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
+	}
+	
+	function get_time_list()
+	{
+		return array('morning', 'noon', 'afternoon', 'evening', 'night');
+	}
+	
 }
