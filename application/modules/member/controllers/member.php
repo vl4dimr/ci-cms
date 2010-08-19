@@ -185,7 +185,7 @@ class Member extends Controller {
 			$this->email->from($this->system->admin_email, $this->system->site_name);
 			$this->email->to($this->system->admin_email);
 			$this->email->subject(sprintf(__("New member for %s", $this->template['module']), $this->system->site_name));
-			$this->email->message(sprintf(__("Hello admin,\n\nA new member has just registere into your site. These are the submitted information.\n\nUsername: %s\nEmail: %s\nIP: %s\nThank you.\nThe administrator", $this->template['module']), $this->input->post('username'), $this->input->post('email'), $this->input->ip_address()));
+			$this->email->message(sprintf(__("Hello admin,\n\nA new member has just registered into your site. These are the submitted information.\n\nUsername: %s\nEmail: %s\nIP: %s\nThank you.\nThe administrator", $this->template['module']), $this->input->post('username'), $this->input->post('email'), $this->input->ip_address()));
 
 			$this->email->send();
 			
