@@ -35,8 +35,8 @@
 			$this->obj->load->library('locale');
 			//$this->obj->locale->load_textdomain(APPPATH . 'locale/' . $this->obj->session->userdata('lang') . '.mo');
 			
-			$available_langs = $this->locale->codes();
-			$lang = this->obj->session->userdata('lang');
+			$available_langs = $this->obj->locale->codes;
+			$lang = $this->obj->session->userdata('lang');
 			
 			//if lang is deactivated
 			if(!in_array($lang, $available_langs)) $lang = $this->locale->default;
@@ -46,7 +46,7 @@
 			foreach ($this->modules as $module)
 			{
 				$mofile = APPPATH . 'modules/'.$module['name'].'/locale/' . $lang . '.mo' ;
-				if ( in_array( file_exists($mofile)) 
+				if (  file_exists($mofile)) 
 				{
 					$this->obj->locale->load_textdomain($mofile, $module['name']);
 				}
