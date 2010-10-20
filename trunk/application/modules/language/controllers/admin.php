@@ -81,21 +81,9 @@
 		}
 		function add()
 		{
+			$this->template['title'] = __("Add new language", $this->template['module']);
 			if ( $post = $this->input->post('submit') )
 			{
-				$data = array(
-							'name'		=> $this->input->post('name'),
-							'code'		=> $this->input->post('code'),
-							'ordering'	=> $this->input->post('ordering').$this->input->post('uri'),
-							'active'	=> $this->input->post('active')
-						);
-						
-				$this->db->insert('languages', $data);
-				$id = $this->db->insert_id();	
-					
-				$this->session->set_flashdata('notification', __("Language added", $this->template['module']));	
-				
-				redirect('admin/language');
 			}
 			else
 			{
@@ -104,30 +92,57 @@
 			}
 		}
 		
-		function edit($id)
+		function save()
 		{
 			if ( $post = $this->input->post('submit') )
 			{
-				$data = array(
-							'name'		=> $this->input->post('name'),
-							'code'		=> $this->input->post('code'),
-							'ordering'	=> $this->input->post('ordering').$this->input->post('uri'),
-							'active'	=> $this->input->post('active')
-						);
+				if($id = $this->input->post('id'))
+				{
+					$data = array(
+								'name'		=> $this->input->post('name'),
+								'code'		=> $this->input->post('code'),
+								'ordering'	=> $this->input->post('ordering'),
+								'active'	=> $this->input->post('active')
+							);
+						
+					$this->db->where('id', $id);
+					$this->db->update('languages', $data);
 					
-				$this->db->where('id', $id);
-				$this->db->update('languages', $data);
+					$this->session->set_flashdata('notification', __("Language updated", $this->template['module']));
 				
-				$this->session->set_flashdata('notification', __("Language updated", $this->template['module']));
-				
+				}
+				else
+				{
+					$data = array(
+								'name'		=> $this->input->post('name'),
+								'code'		=> $this->input->post('code'),
+								'ordering'	=> $this->input->post('ordering'),
+								'active'	=> $this->input->post('active')
+							);
+							
+					$this->db->insert('languages', $data);
+					$id = $this->db->insert_id();	
+						
+					$this->session->set_flashdata('notification', __("Language added", $this->template['module']));	
+				}
 				redirect('admin/language');
 			}
+		
+		}
+		
+		function edit($id = null)
+		{
+			$this->template['title'] = __("Edit language", $this->template['module']);
 			$this->db->where('id', $id);
 			$query = $this->db->get('languages');
 			$this->template['row'] = $query->row_array();
-			$this->layout->load($this->template, 'edit');
+			$this->layout->load($this->template, 'add');
 		}
 		
+		function move()
+		{
+			 return;
+		}
 		
 	}
 
