@@ -59,6 +59,7 @@ class Locale {
 	function get_active()
 	{
 		$this->obj->db->where('active', 1);
+		$this->obj->db->order_by('ordering');
 		$query = $this->obj->db->get($this->table);
 		
 		$languages = array();
@@ -73,6 +74,7 @@ class Locale {
 	
 	function get_list()
 	{
+		$this->obj->db->order_by('ordering');
 		$query = $this->obj->db->get($this->table);
 		
 		$languages = array();
