@@ -151,8 +151,8 @@ class Upload extends Controller {
 		{
 		
 		
-			$config['upload_path'] = './media/files/';
-			$config['allowed_types'] = isset($this->settings->allowed_file_type) ? $this->settings->allowed_file_type : 'gif|jpg|png|bmp|doc|docx|xls|mp3|swf|exe|pdf|wav';
+			$config['upload_path'] = $this->downloads->settings['upload_path'];
+			$config['allowed_types'] = $this->downloads->settings['allowed_file_types'];
 			$config['max_size']	= '2000';
 			
 			//var_dump($config['upload_path']);

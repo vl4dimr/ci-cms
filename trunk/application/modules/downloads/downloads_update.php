@@ -31,3 +31,29 @@ if ($this->system->modules[$module]['version'] < $version)
 	$this->db->update('modules', $data);
 	redirect("admin/module");
 }
+
+//update to 1.2.0
+$version = "1.2.0";
+
+//CREate settings table
+
+if ($this->system->modules[$module]['version'] < $version)
+{
+	
+	$this->db->query("
+	CREATE TABLE IF NOT EXISTS `" . $this->db->dbprefix('download_settings') . "` (
+	`id` INT NOT NULL AUTO_INCREMENT ,
+	`name` VARCHAR( 255 ) NOT NULL ,
+	`value` TEXT,
+	PRIMARY KEY ( `id` ) ,
+	INDEX ( `name` )
+	);
+	");
+	$this->db->query("INSERT INTO `" . $this->db->dbprefix('download_settings') . "` (name, value) VALUES ('allowed_file_types', 'gif|jpg|png|bmp|doc|docx|xls|mp3|swf|exe|pdf|wav|zip'), ('upload_path', './media/files/')");
+	$this->session->set_flashdata("notification", sprintf(__("%s module updated to %s", $module), $module, $version)) ;
+	
+	$data = array('version' => $version);
+	$this->db->where(array('name'=> $module));
+	$this->db->update('modules', $data);
+	redirect("admin/module");
+}
