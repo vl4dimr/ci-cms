@@ -55,3 +55,15 @@ PRIMARY KEY ( `id` ) ,
 INDEX ( `name` )
 );
 ");
+
+$this->db->query("
+CREATE TABLE IF NOT EXISTS `" . $this->db->dbprefix('download_settings') . "` (
+`id` INT NOT NULL AUTO_INCREMENT ,
+`name` VARCHAR( 255 ) NOT NULL ,
+`value` TEXT,
+PRIMARY KEY ( `id` ) ,
+INDEX ( `name` )
+);
+");
+
+$this->db->query("INSERT INTO `" . $this->db->dbprefix('download_settings') . "` (name, value) VALUES ('allowed_file_types', 'gif|jpg|png|bmp|doc|docx|xls|mp3|swf|exe|pdf|wav|zip'), ('upload_path', './media/files/')");

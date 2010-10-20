@@ -33,7 +33,7 @@ class Document extends Controller {
 		if ($row = $this->downloads->get_doc(array('download_files.file' => $file)))
 		{
 
-			$fn = 'media/files/' . $file;
+			$fn = $this->downloads->settings['upload_path'] . $file;
 			if(file_exists($fn))
 			{
 			
