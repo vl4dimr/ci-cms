@@ -40,7 +40,7 @@ class Settings extends Controller {
 	function save()
 	{
 		$setting = is_array($this->input->post('settings')) ? serialize($this->input->post('settings')) : '';
-		$this->settings->set('news_settings', $setting);
+		$this->system->set('news_settings', $setting);
 		$this->session->set_flashdata('notification', __("Settings saved", $this->template['module']));
 		redirect('admin/news/settings');
 	}
