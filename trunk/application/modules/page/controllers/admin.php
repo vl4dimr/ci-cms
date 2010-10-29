@@ -278,7 +278,7 @@ class Admin extends Controller {
 		$images = array();
 		foreach ($rows as $row)
 		{
-			$images[] = "[\"". stripslashes($row['file']) . "\", \"". site_url('media/images/m/' . $row['file']) . "\"]" ; 
+			$images[] = "[\"". addslashes($row['file']) . "\", \"". site_url('media/images/m/' . $row['file']) . "\"]" ; 
 		}	
 		
 		echo "var tinyMCEImageList = new Array(";
@@ -298,7 +298,7 @@ class Admin extends Controller {
 		foreach ($rows as $row)
 		{
 			$pad = str_repeat('&nbsp;&nbsp;', $row['level']);
-			$pages[] = "[\"".$pad." " . stripslashes($row['title']) . "\", \"". site_url($row['uri']) . "\"]" ; 
+			$pages[] = "[\"".$pad." " . addslashes($row['title']) . "\", \"". site_url($row['uri']) . "\"]" ; 
 		}
 		echo "var tinyMCELinkList = new Array(";
 		echo join(", ", $pages);
