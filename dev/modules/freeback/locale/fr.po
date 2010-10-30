@@ -1,0 +1,395 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: CI-CMS: freeback\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-10-10 08:45+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Eugene Hery <hery@serasera.org>\n"
+"Language-Team: Hery serasera.org <hery@serasera.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: French\n"
+"X-Poedit-Country: FRANCE\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../controllers/admin.php:30
+msgid "First"
+msgstr "Debut"
+
+#: ../controllers/admin.php:31
+msgid "Last"
+msgstr "Dernier"
+
+#: ../controllers/admin.php:49
+#: ../controllers/admin.php:91
+#: ../views/admin.php:22
+#: ../views/create.php:33
+msgid "Title"
+msgstr "Titre"
+
+#: ../controllers/admin.php:50
+#: ../controllers/admin.php:92
+#, php-format
+msgid "The %s field can not be empty"
+msgstr "Le champ %s ne peut pas être vide"
+
+#: ../controllers/admin.php:51
+#: ../controllers/admin.php:93
+#: ../controllers/freeback.php:74
+#: ../views/admin.php:25
+#: ../views/create.php:40
+#: ../views/edit.php:33
+#: ../views/freeback_view.php:24
+msgid "Email"
+msgstr "Email"
+
+#: ../controllers/admin.php:52
+#: ../controllers/admin.php:94
+#, php-format
+msgid "The %s field must contain a valid email address."
+msgstr "Le champ %s doit contenir un email adresse valide"
+
+#: ../controllers/freeback.php:55
+#: ../controllers/freeback.php:69
+msgid "You must submit the security code that appears in the image</p>"
+msgstr "Vous devez écrire le code de sécurité sur l'image</p>"
+
+#: ../controllers/freeback.php:73
+#: ../views/freeback_view.php:21
+msgid "Username"
+msgstr "Login"
+
+#: ../controllers/freeback.php:75
+#: ../views/freeback_view.php:27
+msgid "Message"
+msgstr "Message"
+
+#: ../controllers/freeback.php:93
+#, php-format
+msgid "Message from %s"
+msgstr "Message de %s"
+
+#: ../controllers/freeback.php:94
+msgid "Hello "
+msgstr "Bonjour"
+
+#: ../controllers/freeback.php:96
+msgid "Cannot send Email</p>"
+msgstr "Ne peut pas envoyer email</p>"
+
+#: ../controllers/freeback.php:98
+msgid "Message sended"
+msgstr "Message envoyé"
+
+#: ../views/admin.php:4
+msgid "Freeback Administration"
+msgstr "Param&egrave;tres d&#8217;administration"
+
+#: ../views/admin.php:7
+msgid "Create responder"
+msgstr "Cr&eacute;er Nouveau Répondant"
+
+#: ../views/admin.php:8
+#: ../views/create.php:19
+#: ../views/edit.php:18
+msgid "Cancel"
+msgstr "Annuler"
+
+#: ../views/admin.php:23
+msgid "Ordering"
+msgstr "Ordre"
+
+#: ../views/admin.php:24
+#: ../views/create.php:35
+#: ../views/edit.php:35
+msgid "Status"
+msgstr "&Eacute;tat"
+
+#: ../views/admin.php:26
+msgid "Action"
+msgstr "Action"
+
+#: ../views/admin.php:27
+msgid "Hits"
+msgstr "Visites"
+
+#: ../views/admin.php:37
+msgid "Move up"
+msgstr "Vers le haut"
+
+#: ../views/admin.php:38
+msgid "Move down"
+msgstr "Vers le bas"
+
+#: ../views/admin.php:40
+msgid "Mail"
+msgstr "E-mail"
+
+#: ../views/admin.php:41
+msgid "Edit"
+msgstr "Modifier"
+
+#: ../views/admin.php:42
+#: ../views/delete.php:17
+msgid "Delete"
+msgstr "Supprimer"
+
+#: ../views/create.php:3
+msgid "Quick links"
+msgstr "Liens rapides"
+
+#: ../views/create.php:13
+#: ../views/edit.php:11
+msgid "Edit Responder"
+msgstr "Modifier répondant"
+
+#: ../views/create.php:13
+msgid "Create Responder"
+msgstr "Cr&eacute;er Nouveau Répondant"
+
+#: ../views/create.php:18
+msgid "Save"
+msgstr "Enregistrer"
+
+#: ../views/create.php:31
+msgid "To create a Responder, just fill in your content below and click 'Save'.<br />If you want to save your progress without publishing it, Select 'Draft' status."
+msgstr "Pour créer un répondant, compléter le contenu et cliquer sur 'Enregistrer'. <br />Si vous ne voulez pas que l'article apparaissent directement, selectionner 'Brouillon'."
+
+#: ../views/create.php:37
+#: ../views/edit.php:38
+msgid "Published"
+msgstr "Publi&eacute;"
+
+#: ../views/create.php:38
+#: ../views/edit.php:37
+msgid "Draft"
+msgstr "Brouillon"
+
+#: ../views/delete.php:4
+msgid "Confirm delete?"
+msgstr "Confirmer la suppression?"
+
+#: ../views/delete.php:21
+msgid "Confirm?"
+msgstr "Confirmer?"
+
+#: ../views/delete.php:25
+msgid "No"
+msgstr "Non"
+
+#: ../views/delete.php:26
+msgid "Yes"
+msgstr "Oui"
+
+#: ../views/edit.php:17
+msgid "Delete responder"
+msgstr "Supprimer répondant"
+
+#: ../views/edit.php:31
+msgid "Responder Title:"
+msgstr "Titre du répondant :"
+
+#: ../views/freeback_view.php:9
+msgid "Responder"
+msgstr "Répondant"
+
+#: ../views/freeback_view.php:29
+msgid "Security code:"
+msgstr "Entrer le code:"
+
+#: ../views/freeback_view.php:30
+msgid "Confirm security code:"
+msgstr "Confirmer le code"
+
+#: ../views/freeback_view.php:32
+msgid "Send"
+msgstr "Envoyer"
+
+#~ msgid "Page"
+#~ msgstr "Page"
+#~ msgid "Page module updated to %s"
+#~ msgstr "Module page mis à jour en %s"
+#~ msgid "The <i>images</i> directory is not writable. Please fix it'"
+#~ msgstr ""
+#~ "Le répertoire <i>images</i> n'est pas permis pour l'écriture. Veuillez "
+#~ "corriger."
+#~ msgid "Settings updated"
+#~ msgstr "Configuration enregistr&eacute;"
+#~ msgid "The image was deleted"
+#~ msgstr "L'image a été supprimée"
+#~ msgid ""
+#~ "The uploaded file exceeds the upload_max_filesize directive in php.ini"
+#~ msgstr ""
+#~ "La taille du fichier exc&eacute;de la directive "
+#~ "<code>upload_max_filesize</code> pr&eacute;sente dans le fichier "
+#~ "<code>php.ini</code>."
+#~ msgid ""
+#~ "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified "
+#~ "in the HTML form"
+#~ msgstr ""
+#~ "Le fichier t&eacute;l&eacute;charg&eacute; d&eacute;passe la taille "
+#~ "maximale autoris&eacute;e (<em>MAX_FILE_SIZE</em>)"
+#~ msgid "The uploaded file was only partially uploaded"
+#~ msgstr ""
+#~ "Le fichier a &eacute;t&eacute; partiellement t&eacute;l&eacute;"
+#~ "charg&eacute;"
+#~ msgid "No file was uploaded."
+#~ msgstr "Aucun fichier t&eacute;l&eacute;charg&eacute;."
+#~ msgid "Missing a temporary folder"
+#~ msgstr "R&eacute;pertoire temporaire manquant."
+#~ msgid "Failed to write file to disk"
+#~ msgstr "L&#8217;&eacute;criture dans le fichier a &eacute;chou&eacute;"
+#~ msgid "File upload stopped by extension"
+#~ msgstr "Chargement de fichier arreté"
+#~ msgid "No error code avaiable"
+#~ msgstr "Pas de code erreur disponible"
+#~ msgid "No file was uploaded.."
+#~ msgstr "Aucun fichier t&eacute;l&eacute;charg&eacute;."
+#~ msgid "Comment Notification"
+#~ msgstr "Notification des commentaires"
+#~ msgid ""
+#~ "\n"
+#~ "Hello,\n"
+#~ "\n"
+#~ "A new comment has been sent to the page\n"
+#~ "%s\n"
+#~ "\n"
+#~ "\n"
+#~ "If you don't want to receive other notification, go to\n"
+#~ "%s\n"
+#~ "\n"
+#~ "and disable notification.\n"
+#~ msgstr ""
+#~ "\n"
+#~ "Bonjour,\n"
+#~ "\n"
+#~ "Un nouveau commentaire a été posté sur \n"
+#~ "%s\n"
+#~ "\n"
+#~ "\n"
+#~ "Si vous ne voulez plus recevoir cette notification, visiter\n"
+#~ "%s\n"
+#~ "\n"
+#~ "et désactiver la notification.\n"
+#~ msgid "Comment to approve"
+#~ msgstr "Commentaire à approuver"
+#~ msgid ""
+#~ "\n"
+#~ "Hello,\n"
+#~ "\n"
+#~ "A new comment has been sent to the page\n"
+#~ "%s\n"
+#~ "To approve it click the link below \n"
+#~ "%s\n"
+#~ "\n"
+#~ "If you don't want to receive other notification, go to\n"
+#~ "%s\n"
+#~ "\n"
+#~ "and set to approve comments automatically.\n"
+#~ msgstr ""
+#~ "\n"
+#~ "Bonjour,\n"
+#~ "\n"
+#~ "Un nouveau commentaire a été posté sur \n"
+#~ "%s\n"
+#~ "Pour l'approuver, cliquer sur le lien ci-dessous\n"
+#~ "%s\n"
+#~ "\n"
+#~ "Si vous ne voulez plus recevoir cette notification, visiter\n"
+#~ "%s\n"
+#~ "\n"
+#~ "et selectionner l'approbation automatique.\n"
+#~ msgid ""
+#~ "Thank you for your comment. In this site, the comments need to be "
+#~ "approved by the administrator. Once approved, you will see it listed here."
+#~ msgstr ""
+#~ "Merci pour votre commentaire. Dans ce site, les commentaires attendent "
+#~ "l'approbation de l'administrateur. Une fois accepté, vous les verrez ici."
+#~ msgid "Page Not Found!"
+#~ msgstr "Page non trouv&eacute;e"
+#~ msgid "The page you're looking for couldn't be found!"
+#~ msgstr "La page que vous avez cherch&eacute;e est introuvable"
+#~ msgid "Settings"
+#~ msgstr "Configurations"
+#~ msgid "Create new Page"
+#~ msgstr "Cr&eacute;er une nouvelle page &raquo;"
+#~ msgid "SEF address"
+#~ msgstr "Adresse URL"
+#~ msgid "Page informations"
+#~ msgstr "Autres informations"
+#~ msgid "Content"
+#~ msgstr "Contenu"
+#~ msgid "Other fields"
+#~ msgstr "Autres champs"
+#~ msgid "Options"
+#~ msgstr "Options"
+#~ msgid "Upload"
+#~ msgstr "T&eacute;l&eacute;charger"
+#~ msgid "Delete image"
+#~ msgstr "Supprimer image"
+#~ msgid "Create New Page"
+#~ msgstr "Cr&eacute;er une nouvelle page &raquo;"
+#~ msgid "Page Title"
+#~ msgstr "Titre de la page"
+#~ msgid "Parent"
+#~ msgstr "Parent"
+#~ msgid "Status:"
+#~ msgstr "&Eacute;tat"
+#~ msgid "Page Content:"
+#~ msgstr "Contenu de la page"
+#~ msgid "Available images:"
+#~ msgstr "Images disponibles"
+#~ msgid "Image"
+#~ msgstr "Image"
+#~ msgid "Page keywords:"
+#~ msgstr "Mots clés:"
+#~ msgid "Page description:"
+#~ msgstr "Description :"
+#~ msgid "Show subpages"
+#~ msgstr "Afficher les pages-filles"
+#~ msgid "Show navigation"
+#~ msgstr "Afficher navigation"
+#~ msgid "Allow comments"
+#~ msgstr "Autoriser les commentaires"
+#~ msgid "Notify for comment"
+#~ msgstr "Notifie pour les commentaires"
+#~ msgid "Page Title:"
+#~ msgstr "Titre de la page"
+#~ msgid "SEF adress:"
+#~ msgstr "Adresse URL"
+#~ msgid "Add subpage"
+#~ msgstr "Ajouter page-fille"
+#~ msgid "Comments:"
+#~ msgstr "Commentaires :"
+#~ msgid "Add a comment"
+#~ msgstr "Ajouter un commentaire"
+#~ msgid "Name:"
+#~ msgstr "Nom&nbsp;:"
+#~ msgid "Website:"
+#~ msgstr "Site web&nbsp;:"
+#~ msgid "Comment"
+#~ msgstr "Commentaire"
+#~ msgid "Required"
+#~ msgstr "R&eacute;quis"
+#~ msgid "Add comment"
+#~ msgstr "Ajouter commentaire"
+#~ msgid "Use this page to change the settings for the page module."
+#~ msgstr "Utiliser cette page pour changer les options du module page"
+#~ msgid "Homepage:"
+#~ msgstr "Page d'accueil:"
+#~ msgid "Approve comments"
+#~ msgstr "Approuver les commentaires"
+#~ msgid "Notify admin for comments"
+#~ msgstr "Notifie pour les commentaires"
+#~ msgid "Latest Pages"
+#~ msgstr "Derni&egrave;res Pages"
+#~ msgid "Downloads"
+#~ msgstr "T&eacute;l&eacute;chargements"
+#~ msgid "Upload File"
+#~ msgstr "Charger un fichier"
+#~ msgid "Upload files"
+#~ msgstr "Charger fichiers"
+

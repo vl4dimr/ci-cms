@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<module>
+        <name>freeback</name>
+        <date>10/09/2009</date>
+        <author>Michail1982</author>
+        <email>michail1982@gmail.com</email>
+        <url>http://michail1982.pp.ua</url>
+        <copyright>GNU/GPL License</copyright>
+        <version>1.0.1</version>
+        <description>Freeback module</description>
+</module>
