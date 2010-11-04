@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<module>
+        <name>contacts</name>
+        <date>04/11/2010</date>
+        <author>hery</author>
+        <email>hery@serasera.org</email>
+        <url>http://hery.serasera.org</url>
+        <copyright>GNU/GPL License</copyright>
+        <version>1.0.0</version>
+        <description>Contacts module</description>
+</module>
