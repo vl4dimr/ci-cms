@@ -55,7 +55,7 @@ class Member extends Controller {
 			}
 			else
 			{
-				redirect($this->system->page_home, 'refresh');
+				redirect($this->system->page_home);
 				return;
 			}
 		}
@@ -86,13 +86,13 @@ class Member extends Controller {
 				if(!$username = $this->input->post('username'))
 				{
 					$this->session->set_flashdata('notification', __("Please enter your username", $this->template['module']));
-					redirect('member/login', 'refresh');
+					redirect('member/login');
 				}
 				
 				if(!$password = $this->input->post('password'))
 				{
 					$this->session->set_flashdata('notification', __("Please enter your password", $this->template['module']));
-					redirect('member/login', 'refresh');
+					redirect('member/login');
 				}
 			
 				
@@ -102,12 +102,12 @@ class Member extends Controller {
 					if ($redirect && (strpos($redirect, 'member/login') === false))
 					{
 						$redirect = str_replace(site_url(''), '', $redirect); 
-						redirect($redirect, 'refresh');
+						redirect($redirect);
 						return;
 					}
 					else
 					{
-						redirect($this->system->page_home, 'refresh');
+						redirect($this->system->page_home);
 						return;
 					}
 				}
