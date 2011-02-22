@@ -1,8 +1,8 @@
-<h1><?=__("Sign up", $this->template['module'])?></h1>
+<h1><?php echo __("Sign up", $this->template['module'])?></h1>
 
 
 
-<form class="settings" id="signupform" action="<?=site_url('member/signup')?>" method="post" accept-charset="utf-8">
+<form class="settings" id="signupform" action="<?php echo site_url('member/signup')?>" method="post" accept-charset="utf-8">
 
 		<?php echo $this->validation->error_string; ?>
 
@@ -12,14 +12,14 @@
 		echo $this->plugin->apply_filters('member_signup_pre_form', $msg);
 		?>		
 		
-			<label  id="lusername" for="username"><?=__("Username", $this->template['module'])?>: </label>
+			<label  id="lusername" for="username"><?php echo __("Username", $this->template['module'])?>: </label>
 			<input id="username" name="username" type='text' value='<?php echo $this->validation->username;?>' class="input-text" /><br />
 			
 						
-			<label id="lemail" for="email"><?=__("Email", $this->template['module'])?>:</label>
+			<label id="lemail" for="email"><?php echo __("Email", $this->template['module'])?>:</label>
 			<input type="text" name="email" value="<?php echo $this->validation->email;?>" id="email" class="input-text" /><br />
 
-			<label id="lremail" for="remail"><?=__("Confirm email", $this->template['module'])?>:</label>
+			<label id="lremail" for="remail"><?php echo __("Confirm email", $this->template['module'])?>:</label>
 			<input type="text" name="remail" value="<?php echo $this->validation->remail;?>" id="remail" class="input-text" /><br />
 			
 			<?php

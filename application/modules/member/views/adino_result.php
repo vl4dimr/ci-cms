@@ -1,4 +1,4 @@
-<h1 ><?=__("Lost password", $this->template['module'])?></h1>
+<h1 ><?php echo __("Lost password", $this->template['module'])?></h1>
 <p>
 <?php echo $message ?>
 </p>

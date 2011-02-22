@@ -1,5 +1,5 @@
-<h1 ><?=__("Unauthorized", $this->template['module'])?></h1>
-	<h2><?=__("Module", $this->template['module'])?>: <?=ucfirst($data['module'])?></h2>
+<h1 ><?php echo __("Unauthorized", $this->template['module'])?></h1>
+	<h2><?php echo __("Module", $this->template['module'])?>: <?php echo ucfirst($data['module'])?></h2>
 	<?php 
 	switch ($data['level'])
 	{
@@ -20,7 +20,7 @@
 		break;
 	}
 	?>
-	<?=sprintf( __("Sorry, you cannot %s the %s module", $this->template['module']), $levelword, $data['module'] )?>
+	<?php echo sprintf( __("Sorry, you cannot %s the %s module", $this->template['module']), $levelword, $data['module'] )?>
 	<p>
 	<a href="<?php echo site_url( $this->session->userdata("last_uri") ) ?>"><?php _e("Go back", $this->template['module']) ?></a>
 	</p>
