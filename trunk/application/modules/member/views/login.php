@@ -1,11 +1,11 @@
 <!-- [Content] start -->
 <div class="content wide">
 
-<h1><?=__("Login", $this->template['module'])?></h1>
+<h1><?php echo __("Login", $this->template['module'])?></h1>
 
-<form class="login" action="<?=site_url('member/login')?>" method="post" accept-charset="utf-8">
+<form class="login" action="<?php echo site_url('member/login')?>" method="post" accept-charset="utf-8">
 		<?php if ($notice = $this->session->flashdata('notification')):?>
-		<p class="notice"><?=$notice;?></p>
+		<p class="notice"><?php echo $notice;?></p>
 		<?php endif;?>
 		<p>
 		<?php
@@ -15,9 +15,9 @@
 		</p>
 		<input type='hidden' name='redirect' value='<?php if(isset($redirect)) echo $redirect ?>' />
 		
-		<label for="username"><?=__("Username", $this->template['module'])?>:</label>
+		<label for="username"><?php echo __("Username", $this->template['module'])?>:</label>
 		<input type='text' name='username' id='username' class="input-text" /><br />
-		<label for="password"><?=__("Password", $this->template['module'])?>:</label>
+		<label for="password"><?php echo __("Password", $this->template['module'])?>:</label>
 		<input type="password" name="password" value="" id="password" class="input-text" />
 		<br class="clearfloat" />
 		<p><input type="submit" name="submit" value="Login &raquo;" id="submit" class="input-submit" /></p>
