@@ -33,8 +33,7 @@
 			$this->simplepie->init();
 			$this->simplepie->handle_content_type();
 			
-			$this->template['blaze_news'] = $this->simplepie->get_items();
-			
+			$this->template['news'] = $this->simplepie->get_items(0, 5);
 			$this->layout->load($this->template, 'index');
 		}
 

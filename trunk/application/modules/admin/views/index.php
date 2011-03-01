@@ -55,7 +55,7 @@
 		<h2><?php echo __("Latest News", $this->template['module'])?></h2>
 		<ul>
 <?php //$i = 0; if (BLAZE_VERSION < $this->administration->latest_version): $k = 8; else: $k = 6; endif;?>
-<?php foreach ($blaze_news as $news):?>
+<?php foreach ($news as $news):?>
 <?php //$i ++; if ($i > $k) continue;?>
 			<li><a href="<?php echo $news->get_link()?>" rel="external"><?php echo $news->get_title()?></a></li>
 <?php endforeach;?>
