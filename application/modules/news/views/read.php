@@ -48,7 +48,8 @@
 	<?php $i++; endforeach; ?>
 	</div>
 <?php endif; ?>
-<?if ($news['allow_comments']) :?>
+
+<?if ((isset($this->settings['allow_comments']) && $this->settings['allow_comments'] == 1) && $news['allow_comments']) :?>
 <div id='comment_form' class='clear'>
 <h2><?=__("Add a comment", $module)?></h2>
 <form action="<?=site_url('news/comment')?>" method='post'>
