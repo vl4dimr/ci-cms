@@ -12,9 +12,10 @@ function page_search_result($rows)
 		$where[] = " (body LIKE '%". ereg_replace(" ", "%' AND body LIKE '%", $obj->db->escape_str($tosearch)). "%') ";
 		$where[] = " (title LIKE '%". ereg_replace(" ", "%' AND title LIKE '%", $obj->db->escape_str($tosearch)). "%') ";
 		
+		
 
 		$sql = "SELECT weight result_order, " . $obj->db->escape( __("Page", "page") ) . " AS result_type, title AS result_title, CONCAT('" . site_url() . "', uri) AS result_link, CONCAT('... ', SUBSTRING(body, LOCATE('" . $obj->db->escape_str($tosearch) . "', body) , 200), '... ') AS result_text FROM " . $obj->db->dbprefix('pages') . "  " .
-		(count($where) > 0 ? " WHERE " . join(" OR ", $where) : "") .
+		(count($where) > 0 ? " WHERE  lang = '" . $obj->user->lang . "' AND (" . join(" OR ", $where) .") " : "") .
 		" ORDER BY result_order";
 		
 		

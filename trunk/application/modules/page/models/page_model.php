@@ -312,7 +312,7 @@ class Page_Model extends Model {
 		
 	}
 	
-	function get_images($page_id)
+	function get_images($params)
 	{
 		$default_params = array
 		(
@@ -329,6 +329,7 @@ class Page_Model extends Model {
 		}
 		
 		$hash = md5(serialize($params));
+		
 		if(!$result = $this->cache->get('get_images'. $hash, 'image_list'))
 		{
 		
@@ -348,7 +349,7 @@ class Page_Model extends Model {
 			$this->db->from('images');
 
 			$query = $this->db->get();
-
+		//	echo $this->db->last_query();	
 			if ($query->num_rows() == 0 )
 			{
 				$result = false;
@@ -357,8 +358,10 @@ class Page_Model extends Model {
 			{
 				$result = $query->result_array();
 			}
+			
 			$this->cache->save('get_images'. $hash, $result, 'image_list', 0);
 		}
+		
 		return $result;
 	}
 
