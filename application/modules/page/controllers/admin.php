@@ -203,7 +203,7 @@ class Admin extends Controller {
 		$this->template['page'] = $page;
 		//get pending images
 		
-		$this->template['images'] = $this->pages->get_images(array('where' => array('src_id' => 0)));
+		$this->template['images'] = $this->pages->get_images(array('where' => array('src_id' => '0')));
 		
 		$this->template['uri'] = $uri;
 		$this->layout->load($this->template, 'create');
@@ -223,9 +223,11 @@ class Admin extends Controller {
 		$this->javascripts->add('ajaxfileupload.js');
 		$this->template['parents'] = $data;
 		
-		$this->template['images'] = $this->pages->get_images(array('where' => array('src_id' => 0)));
+		$page = $this->pages->get_page( array('id' => $this->page_id) );
 		
-		$this->template['page'] = $this->pages->get_page( array('id' => $this->page_id) );
+		
+		$this->template['images'] = $this->pages->get_images(array('where' => 'src_id = 0 OR src_id = ' . $page['id'] ));
+		$this->template['page'] = $page;
 		$this->layout->load($this->template, 'create');
 	}
 	
