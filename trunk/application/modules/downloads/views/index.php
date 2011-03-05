@@ -5,6 +5,7 @@
 
 <?php if ($rows && count($rows) > 0) : ?>
 <?php foreach ($rows as $row): ?>
+<div class="downloads-dir">
 <?php 
 if($page_break_pos = strpos($row['desc'], "<!-- page break -->"))
 {
@@ -18,12 +19,13 @@ else
 <img src="<?=site_url('media/images/downloads/dir.gif')?>" >
 <a href="<?=site_url('downloads/index/' . $row['id'])?>"><?=strip_tags($row['title'])?></a><br />
 				<?=$row['summary']?>
-
+</div>
 <?php endforeach;?>
 <?php endif; ?>
 
 <?php unset($row); if ($files && count($files) > 0) : ?>
 <?php foreach ($files as $row): ?>
+<div class="downloads-file">
 <?php 
 if($page_break_pos = strpos($row['desc'], "<!-- page break -->"))
 {
@@ -49,7 +51,7 @@ else
 <img src="<?=site_url('media/images/downloads/' . $row['ext'] . '.gif')?>" >
 <a href="<?=$row['link']?>"><?=$row['title']?></a><br />
 				<?=$row['summary']?>
-
+</div>
 <?php endforeach;?>
 <?php endif; ?>
 
