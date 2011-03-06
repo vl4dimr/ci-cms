@@ -231,7 +231,8 @@ and set to approve comments automatically.
 				{
 					
 					$this->template['comments'] = $this->pages->get_comments(array('where' => array('page_id' => $page['id'], 'status' => 1), 'order_by' => 'id'));
-					$this->template['page'] = $page;
+					
+					$this->template['page'] = $this->plugin->apply_filters("page", $page);
 					$view = 'index';
 					
 					if($parent = $this->pages->get_page(array('id' => $page['parent_id'])))
