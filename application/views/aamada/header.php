@@ -32,7 +32,7 @@
 		<table width="100%" cellspacing="1">
 			<tr>
 		<?php $i=1; foreach ($navs as $nav) : ?>
-				<td align="center" class="menu_<?=$i?>"><a href="<?php echo site_url($nav['uri'])?>" class="menu_<?=$i?>"/><?=$nav['title']?></a></td>
+				<td align="center" class="menu_<?=$i?>"><a href="<?php echo $nav['uri']?>" class="menu_<?=$i?>"/><?=$nav['title']?></a></td>
 		<?php $i++; endforeach; ?>
 		<?php endif; ?>
 			<td align="right" valign="middle">

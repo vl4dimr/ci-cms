@@ -24,6 +24,9 @@
 				<?php if ($rows = $this->block->get('latest_news', 10)) :?>
 				<div id='newsbox'>
 				<h1><?=__("News", "aamada")?></h1>
+				<?php if($this->user->logged_in) : ?>
+				<div><?php echo anchor('admin/news/create', __("Add news", "aamada") ) ?></div>
+				<?php endif; ?>
 				<?foreach($rows as $row):?>
 				<h2><a href="<?=site_url('news/' . $row['uri'])?>" class="more"><?=$row['title']?></a></h2>
 					<p>
